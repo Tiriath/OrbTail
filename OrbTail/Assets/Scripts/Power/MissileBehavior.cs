@@ -99,7 +99,7 @@ public class MissileBehavior : MonoBehaviour {
 
                 }
 
-                collision.gameObject.GetComponent<TailController>().GetDetacherDriverStack().GetHead().DetachOrbs(int.MaxValue, collision.gameObject.GetComponent<Tail>());
+                collision.gameObject.GetComponent<TailController>().GetDetacherDriverStack().Top().DetachOrbs(int.MaxValue, collision.gameObject.GetComponent<Tail>());
 
             }
 

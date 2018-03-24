@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DefaultAttacherDriver : IAttacherDriver {
+public class DefaultAttacherDriver : BaseDriver, IAttacherDriver {
 	//private float forceUp = 0.03f;
 
 	public void AttachOrbs(GameObject orb, Tail tail) {

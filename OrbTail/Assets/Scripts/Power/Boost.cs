@@ -10,8 +10,6 @@ public class Boost : Power
 	private AudioClip launchSound;
 	private GameObject activePlayer;
 
-    private Deactivator deactivator;
-
     public Boost() : base(PowerGroups.Passive, float.MaxValue, "Boost") {
 		launchSound = Resources.Load<AudioClip>("Sounds/Powers/Boost");
 		activePlayer = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>().ActivePlayer;

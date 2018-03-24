@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public interface IDetacherDriver {
+public interface IDetacherDriver : IDriver
+{
 
 	/// <summary>
 	/// Detachs the orbs.

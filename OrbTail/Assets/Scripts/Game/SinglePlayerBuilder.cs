@@ -5,20 +5,20 @@ using System.Linq;
 
 public class SinglePlayerBuilder : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         DontDestroyOnLoad(gameObject);
 
         //Loads the proper arena
         Application.LoadLevel(GetComponent<GameBuilder>().ArenaName);
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+    
+    // Update is called once per frame
+    void Update () {
+    
+    }
 
     // A new level has been loaded
     void OnLevelWasLoaded(int level)

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DefaultWheelDriver : IWheelDriver {
+public class DefaultWheelDriver : BaseDriver, IWheelDriver {
 	private int steeringShip;
 	private float adjustedSteer;
 	

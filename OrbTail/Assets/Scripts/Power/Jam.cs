@@ -8,26 +8,22 @@ public class Jam : Power
 
     public Jam() : base(PowerGroups.Jam, power_time, "Jam") { }
 
-    private Deactivator deactivator;
-
+    private IDriver driver;
+    
     protected override void ActivateClient()
     {
-
-
         var wheel_stack = Owner.GetComponent<MovementController>().GetWheelDriverStack();
 
-        deactivator = wheel_stack.Push( new JammedWheelDriver( wheel_stack.GetPrototype().GetSteering() ));
-        
+        driver = wheel_stack.Push( new JammedWheelDriver( wheel_stack.GetDefaultDriver().GetSteering() ));
     }
 
     public override void Deactivate()
     {
-
         base.Deactivate();
 
-        if (deactivator != null)
+        if (driver != null)
         {
-            deactivator.Deactivate();
+            driver.Deactivate();
         }
     }
     
@@ -35,9 +31,7 @@ public class Jam : Power
 
     public override Power Generate()
     {
-
         return new Jam();
-
     }
 
 }

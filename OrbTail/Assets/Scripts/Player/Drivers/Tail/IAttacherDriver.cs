@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public interface IAttacherDriver {
+public interface IAttacherDriver : IDriver
+{
 
 	/// <summary>
 	/// Attachs the orbs to the given tail

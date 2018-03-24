@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface IEngineDriver {
+public interface IEngineDriver : IDriver
+{
 
 	/// <summary>
 	/// Gets the force of the engine.

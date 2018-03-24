@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface IOffenceDriver {
+public interface IOffenceDriver : IDriver
+{
 
 
 	/// <summary>

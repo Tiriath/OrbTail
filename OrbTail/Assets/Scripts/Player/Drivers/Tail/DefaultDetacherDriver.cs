@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DefaultDetacherDriver : IDetacherDriver {
+public class DefaultDetacherDriver : BaseDriver, IDetacherDriver {
 
 //	private float force = 0.06f;
 

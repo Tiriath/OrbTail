@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DefaultDefenceDriver : IDefenceDriver {
+public class DefaultDefenceDriver : BaseDriver, IDefenceDriver {
 	private int defenceShip;
 	private float adjustedDefence;
 

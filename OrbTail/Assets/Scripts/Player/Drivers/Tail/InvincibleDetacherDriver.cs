@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class InvincibleDetacherDriver : IDetacherDriver {
+public class InvincibleDetacherDriver : BaseDriver, IDetacherDriver {
 
 	public List<GameObject> DetachOrbs(int nOrbs, Tail tail) {
 		return new List<GameObject>();

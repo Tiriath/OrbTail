@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DefaultOffenceDriver : IOffenceDriver {
+public class DefaultOffenceDriver : BaseDriver, IOffenceDriver {
 
 	private int offenceShip;
 	private float adjustedOffence;

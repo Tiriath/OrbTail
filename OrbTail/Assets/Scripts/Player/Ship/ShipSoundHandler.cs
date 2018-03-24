@@ -23,7 +23,7 @@ public class ShipSoundHandler : MonoBehaviour {
 	void Update () {
 
 		if (engineDriverStack != null && !gameFinished) {
-			float engineForce = engineDriverStack.GetHead().GetForce();
+			float engineForce = engineDriverStack.Top().GetForce();
 			PlaySoundEngine(engineForce);
 		}
 

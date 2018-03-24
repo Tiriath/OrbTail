@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DefaultEngineDriver : IEngineDriver {
+public class DefaultEngineDriver : BaseDriver, IEngineDriver {
 	private int powerShip;
 	private float actualForce;
 	private float quickSmooth = 10f;

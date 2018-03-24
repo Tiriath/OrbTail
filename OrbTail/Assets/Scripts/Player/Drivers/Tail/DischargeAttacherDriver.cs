@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DischargeAttacherDriver : IAttacherDriver {
+public class DischargeAttacherDriver : BaseDriver, IAttacherDriver {
 
 	public void AttachOrbs(GameObject orb, Tail tail) {
 		// Do nothing

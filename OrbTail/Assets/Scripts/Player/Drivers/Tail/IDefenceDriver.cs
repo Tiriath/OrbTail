@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface IDefenceDriver {
+public interface IDefenceDriver : IDriver
+{
 
 	/// <summary>
 	/// Given a damage that is a qualitative value about how much orbs have to be detached

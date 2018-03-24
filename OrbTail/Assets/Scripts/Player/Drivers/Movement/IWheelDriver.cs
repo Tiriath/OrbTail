@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface IWheelDriver {
+public interface IWheelDriver : IDriver
+{
 
 	/// <summary>
 	/// Gets the direction.

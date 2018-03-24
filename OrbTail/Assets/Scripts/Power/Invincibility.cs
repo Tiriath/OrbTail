@@ -8,14 +8,14 @@ public class Invincibility : Power
 
     public Invincibility() : base(PowerGroups.Main, power_time, "Invincibility") { }
 
-    private Deactivator deactivator;
+    private IDriver driver;
 
     protected override void ActivateServer()
     {
 
         var tail_stack = Owner.GetComponent<TailController>().GetDetacherDriverStack();
 
-        deactivator = tail_stack.Push( new InvincibleDetacherDriver());
+        driver = tail_stack.Push( new InvincibleDetacherDriver());
     }
 
     public override void Deactivate()
@@ -23,9 +23,9 @@ public class Invincibility : Power
 
         base.Deactivate();
 
-        if (deactivator != null)
-        { 
-            deactivator.Deactivate();
+        if (driver != null)
+        {
+            driver.Deactivate();
         }
 
     }
