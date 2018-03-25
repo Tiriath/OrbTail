@@ -8,6 +8,27 @@ using System.Collections;
 public class ShipPrototype : MonoBehaviour
 {
     /// <summary>
+    /// Maximum steering speed, in radians per second.
+    /// </summary>
+    public float steer = 3.0f;
+
+    /// <summary>
+    /// Maximum steering acceleration, in radians per second squared.
+    /// </summary>
+    public float steer_smooth = 0.7f;
+
+    /// <summary>
+    /// Maximum speed, in units per second.
+    /// </summary>
+    public float speed = 10.0f;
+
+    /// <summary>
+    /// Maximum acceleration, in units per second squared.
+    /// </summary>
+    public float speed_smooth = 0.7f;
+
+
+    /// <summary>
     /// The defence power of the ship. Range [1; 5].
     /// </summary>
     [Range(1,5)]
@@ -18,18 +39,6 @@ public class ShipPrototype : MonoBehaviour
     /// </summary>
     [Range(1, 5)]
     public int offence;
-
-    /// <summary>
-    /// The steering of the ship. Range [1; 5].
-    /// </summary>
-    [Range(1, 5)]
-    public int steering;
-
-    /// <summary>
-    /// The speed of the ship. Range [1; 5].
-    /// </summary>
-    [Range(1, 5)]
-    public int speed;
 
     void Update ()
     {
@@ -66,8 +75,8 @@ public class ShipPrototype : MonoBehaviour
 
             movement_controller.enabled = false;
 
-            movement_controller.GetEngineDriverStack().SetDefaultDriver(new DefaultEngineDriver(speed));
-            movement_controller.GetWheelDriverStack().SetDefaultDriver(new DefaultWheelDriver(steering));
+            movement_controller.GetEngineDriver().SetDefaultDriver(new DefaultEngineDriver(speed, speed_smooth));
+            movement_controller.GetSteerDriver().SetDefaultDriver(new DefaultSteerDriver(steer, steer_smooth));
         }
 
     }

@@ -1,25 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Driver determining how much damage a ship absorbs while colling with another ship.
+/// </summary>
 public interface IDefenceDriver : IDriver
 {
+    /// <summary>
+    /// Gets the defence value of the ship.
+    /// </summary>
+    /// <returns>Returns the defence value of the ship.</returns>
+    int GetDefence();
 
-	/// <summary>
-	/// Given a damage that is a qualitative value about how much orbs have to be detached
-	/// it returns the numbers of orbs to detach from the ship.
-	/// </summary>
-	/// <returns>The real number of orbs to detach considering the defence of the ship.</returns>
-	/// <param name="damage">Damage: qualitative value about how much orbs have to be detached
-	/// without considering the defence of the ship.</param>
-	int DamageToOrbs(float damage);
-
-
-	/// <summary>
-	/// Gets the defence of the ship prototype.
-	/// </summary>
-	/// <returns>The defence of the ship prototype.</returns>
-	int GetDefence();
-
-
-	void Update();
+    /// <summary>
+    /// Get the number of orbs lost by the ship as a result of an impact with another ship.
+    /// </summary>
+    /// <returns>Returns the number of orbs lost by the ship owning this driver as result of an impact with another ship.</returns>
+    /// <param name="damage">Damage suffered by this ship.</param>
+    int DamageToOrbs(float damage);
 }

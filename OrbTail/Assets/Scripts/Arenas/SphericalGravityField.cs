@@ -28,8 +28,8 @@ public class SphericalGravityField: IGravityField
     public void SetGravity(FloatingObject floatie)
     {
 
-        floatie.hoverForce = hoverForce;
-        floatie.hoverDampen = hoverDampen;
+        floatie.hover_force = hoverForce;
+        floatie.hover_dampen = hoverDampen;
 
         floatie.ArenaDown = Center - floatie.transform.position.normalized;
 

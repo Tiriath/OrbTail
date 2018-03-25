@@ -2,19 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DefaultAttacherDriver : BaseDriver, IAttacherDriver {
-	//private float forceUp = 0.03f;
+/// <summary>
+/// Default attacher that just attaches orbs to a tail.
+/// </summary>
+public class DefaultAttacherDriver : BaseDriver, IAttacherDriver
+{
+    public void AttachOrbs(GameObject orb, Tail tail)
+    {
+        tail.AttachOrb(orb);
+    }
 
-	public void AttachOrbs(GameObject orb, Tail tail) {
-		//orb.rigidbody.AddForce(-orb.GetComponent<FloatingObject>().ArenaDown * forceUp, ForceMode.Impulse);
-		tail.AttachOrb(orb);
-	}
-
-	public void AttachOrbs(List<GameObject> orbs, Tail tail) {
-		foreach(GameObject orb in orbs) {
-			AttachOrbs(orb, tail);
-		}
-	}
-
-	public void Update() {}
+    public void AttachOrbs(List<GameObject> orbs, Tail tail)
+    {
+        foreach(GameObject orb in orbs)
+        {
+            AttachOrbs(orb, tail);
+        }
+    }
 }

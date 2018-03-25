@@ -2,79 +2,101 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class MovementController : MonoBehaviour {
+/// <summary>
+/// Controls the movement of a ship inside an arena.
+/// </summary>
+public class MovementController : MonoBehaviour
+{
+    /// <summary>
+    /// Maximum banking while steering, in degrees.
+    /// </summary>
+    public float roll_angle = 80f;
 
-	public float maxTorqueForce = 15f;
-	public float maxSpeedForce = 70.0f;
-	public float maxRoll = 80f;
-	public float rotationSmooth = 10f;
-	
-	public FloatingObject FloatingBody {get; private set;}
+    /// <summary>
+    /// Smooth factor used to smooth out ship roll.
+    /// </summary>
+    public float roll_smooth = 8.0f;
 
+    /// <summary>
+    /// Floating body object used to determine how the ship floats over the arena.
+    /// </summary>
+    public FloatingObject FloatingBody {get; private set;}
 
-	private DriverStack<IEngineDriver> engineDriverStack;
-	private DriverStack<IWheelDriver> wheelDriverStack;
+    void Awake()
+    {
+        engine_driver = new DriverStack<IEngineDriver>();
+        steer_driver = new DriverStack<ISteerDriver>();
+    }
 
-	private InputProxy inputProxy;
+    // Use this for initialization
+    void Start()
+    {
+        FloatingBody = this.GetComponent<FloatingObject>();
 
+        rigid_body = this.GetComponent<Rigidbody>();
+        input = this.GetComponent<InputProxy>();
+    }
+    
+    // Update movement drivers.
+    void Update()
+    {
+        engine_driver.Top().Update(FloatingBody.ForwardVelocity, input.Acceleration);
+        steer_driver.Top().Update(FloatingBody.AngularVelocity, input.Steering);
+    }
 
-	void Awake() {
-		engineDriverStack = new DriverStack<IEngineDriver>();
-		wheelDriverStack = new DriverStack<IWheelDriver>();
-	}
+    // Physics update.
+    void FixedUpdate()
+    {
+        // Engine and steering.
 
-	// Use this for initialization
-	void Start () {
-		FloatingBody = this.GetComponent<FloatingObject>();
-		inputProxy = this.GetComponent<InputProxy>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		engineDriverStack.Top().Update(inputProxy.Acceleration);
-		wheelDriverStack.Top().Update();
-	}
+        var steer = steer_driver.Top().GetSteer();
+        var speed = engine_driver.Top().GetSpeed();
 
-	void FixedUpdate () {
-		Vector3 arenaDown = FloatingBody.ArenaDown;
+        rigid_body.AddForce(FloatingBody.Forward * speed, ForceMode.VelocityChange);
+        rigid_body.AddTorque(FloatingBody.Up * steer, ForceMode.VelocityChange);
 
-		float wheelSteer = wheelDriverStack.Top().GetDirection(inputProxy.Steering);
-		float engineForce = engineDriverStack.Top().GetForce();
+        // Rolling - The ship rolls as result of its steering.
 
-		Vector3 forwardProjected = Vector3.Cross(arenaDown,
-		                                         Vector3.Cross(-arenaDown, this.transform.forward)
-		                                         ).normalized;
+        var rolling_up = Quaternion.AngleAxis(steer_driver.Top().GetSteerInput() * roll_angle, -FloatingBody.Forward) * FloatingBody.Up;
 
-		Quaternion rollRotation = Quaternion.FromToRotation(this.transform.up,
-		                                                    Quaternion.AngleAxis(	wheelSteer * maxRoll, 
-		                     														-this.transform.forward
-		                     													) * -arenaDown);
-		Quaternion yawRotation = Quaternion.AngleAxis(wheelSteer * maxTorqueForce, -arenaDown);
-		Quaternion pitchStabilization = Quaternion.LookRotation(forwardProjected, -arenaDown);
+        rigid_body.rotation = Quaternion.Lerp(rigid_body.rotation, Quaternion.LookRotation(transform.forward, rolling_up), roll_smooth * Time.deltaTime);
+    }
 
-		this.GetComponent<Rigidbody>().AddForce(forwardProjected * engineForce * maxSpeedForce, ForceMode.Acceleration);
-		this.GetComponent<Rigidbody>().rotation = Quaternion.Lerp(this.transform.rotation, rollRotation * yawRotation * pitchStabilization, rotationSmooth * Time.deltaTime);
-	}
+    /// <summary>
+    /// Get the engine driver.
+    /// </summary>
+    /// <returns>Returns the engine driver.</returns>
+    public DriverStack<IEngineDriver> GetEngineDriver()
+    {
+        return engine_driver;
+    }
 
+    /// <summary>
+    /// Get the wheel driver.
+    /// </summary>
+    /// <returns>Returns the steer driver.</returns>
+    public DriverStack<ISteerDriver> GetSteerDriver()
+    {
+        return steer_driver;
+    }
 
-	/// <summary>
-	/// Gets the engine driver stack.
-	/// </summary>
-	/// <returns>The engine driver stack.</returns>
-	public DriverStack<IEngineDriver> GetEngineDriverStack() {
-		return engineDriverStack;
-	}
+    /// <summary>
+    /// Ship engine. Affects ship speed and acceleration.
+    /// </summary>
+    private DriverStack<IEngineDriver> engine_driver;
 
+    /// <summary>
+    /// Ship steering. Affects ship steering.
+    /// </summary>
+    private DriverStack<ISteerDriver> steer_driver;
 
-	/// <summary>
-	/// Gets the wheel driver stack.
-	/// </summary>
-	/// <returns>The wheel driver stack.</returns>
-	public DriverStack<IWheelDriver> GetWheelDriverStack() {
-		return wheelDriverStack;
-	}
+    /// <summary>
+    /// Proxy used to read user or AI input.
+    /// </summary>
+    private InputProxy input;
 
-
-
-
+    /// <summary>
+    /// Rigid body component.
+    /// </summary>
+    private Rigidbody rigid_body;
 }

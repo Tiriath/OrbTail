@@ -1,68 +1,142 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FloatingObject : MonoBehaviour {
-
-    public float hoverForce = 20.0f;//9.8f;
-	public float hoverDistance = 5f;
-	public float hoverDampen = 0f;
-
-    private GravityField gravity_field;
-
-	public Vector3 ArenaDown { get; set; }
+/// <summary>
+/// Represents an object floating onto an arena.
+/// </summary>
+public class FloatingObject : MonoBehaviour
+{
+    /// <summary>
+    /// Smooth factor used to adjust object forward direction and keep it tangent to the gravity field.
+    /// </summary>
+    public float pitch_smooth = 10.0f;
 
     /// <summary>
-    /// Used internally by each gravity field
+    /// Force attracting the object to the arena surface.
     /// </summary>
-    public int GravitySourceIndex { get; set; }
+    public float hover_force = 20.0f;
 
-	private Rigidbody FloatingBody{ get; set; }
+    /// <summary>
+    /// Dampen factor, used to reduce the "springiness" of the hovering force.
+    /// </summary>
+    public float hover_dampen = 0f;
 
-	// Use this for initialization
-	void Start () {
+    /// <summary>
+    /// Hovering distance of the object from the arena surface.
+    /// </summary>
+    public float hover_distance = 5f;
 
+    /// <summary>
+    /// Get the forward vector accounting for gravity direction.
+    /// </summary>
+    public Vector3 Forward
+    {
+        get
+        {
+            return Vector3.Cross(Right, Up).normalized;
+        }
+    }
+
+    /// <summary>
+    /// Get the up vector accounting for gravity direction.
+    /// </summary>
+    public Vector3 Up
+    {
+        get
+        {
+            return -ArenaDown;
+        }
+    }
+
+    /// <summary>
+    /// Get the right vector accounting for gravity direction.
+    /// </summary>
+    public Vector3 Right
+    {
+        get
+        {
+            return Vector3.Cross(Up, this.transform.forward).normalized;
+        }
+    }
+
+    /// <summary>
+    /// Get the object forward velocity.
+    /// </summary>
+    public float ForwardVelocity
+    {
+        get
+        {
+            return Vector3.Dot(rigid_body.velocity, Forward);
+        }
+    }
+
+    /// <summary>
+    /// Get the object vertical velocity.
+    /// </summary>
+    public float VerticalVelocity
+    {
+        get
+        {
+            return Vector3.Dot(rigid_body.velocity, Up);
+        }
+    }
+
+    /// <summary>
+    /// Get the object angular velocity, relative to up axis.
+    /// </summary>
+    public float AngularVelocity
+    {
+        get
+        {
+            return Vector3.Dot(rigid_body.angularVelocity, Up);
+        }
+    }
+
+    /// <summary>
+    /// Current down direction.
+    /// </summary>
+    public Vector3 ArenaDown { get; set; }
+
+    // Use this for initialization
+    void Start ()
+    {
         ArenaDown = Vector3.zero;
-		FloatingBody = GetComponent<Rigidbody>();
+        rigid_body = GetComponent<Rigidbody>();
         gravity_field = GameObject.FindGameObjectWithTag(Tags.Arena).GetComponent<GravityField>();
+    }
 
-	}
-
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-		RaycastHit hit;
-
+    // Update is called once per frame
+    void FixedUpdate ()
+    {
         gravity_field.SetGravity(this);
 
-        if (Vector3.Dot(ArenaDown, transform.up) > 0.5f)
+        // Handle hovering.
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(transform.position, ArenaDown, out hit, Mathf.Infinity, Layers.Field))
         {
-
-            var q = Quaternion.FromToRotation(transform.up, -ArenaDown);
-
-            transform.rotation *= q;
-
+            rigid_body.AddForce(Up * (hover_force * (hover_distance - hit.distance) - hover_dampen * VerticalVelocity), ForceMode.Acceleration);
+            
+            Debug.DrawRay(transform.position, ArenaDown * hit.distance, Color.green);
+        }
+        else
+        {
+            rigid_body.AddForce(ArenaDown * hover_force, ForceMode.Acceleration);
         }
 
-		if(Physics.Raycast(transform.position, ArenaDown, out hit, Mathf.Infinity, Layers.Field)) {
+        // Adjust object pitch such that the object forward is tangent to the gravity field.
 
+        rigid_body.rotation = Quaternion.Lerp(rigid_body.rotation, Quaternion.LookRotation(Forward, Up), pitch_smooth * Time.deltaTime);
+    }
 
-				GetComponent<Rigidbody>().AddForce(-ArenaDown * (hoverForce * (hoverDistance - hit.distance) - 
-				                                 hoverDampen * (Vector3.Dot(FloatingBody.velocity, -ArenaDown))), 
-				                   ForceMode.Acceleration);
+    /// <summary>
+    /// Arena source of gravity.
+    /// </summary>
+    private GravityField gravity_field;
 
-
-            Debug.DrawRay(transform.position, ArenaDown * 25.0f, Color.green);
-
-		}
-		else {
-
-			GetComponent<Rigidbody>().AddForce(ArenaDown * hoverForce, ForceMode.Acceleration);
-            
-		}
-
-
-
-	}
-
-
+    /// <summary>
+    /// Rigid body affected by the gravity field.
+    /// </summary>
+    private Rigidbody rigid_body;
 }

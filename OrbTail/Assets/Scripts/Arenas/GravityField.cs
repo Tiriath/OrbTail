@@ -50,7 +50,7 @@ public class GravityField : MonoBehaviour {
 
             case GravityShape.TripleSpherical:
 
-                Field = new TripleSphericalGravityField(Vector3.zero);
+                //Field = new TripleSphericalGravityField(Vector3.zero);
                 break;
 
             case GravityShape.ZXTorus:
@@ -65,15 +65,15 @@ public class GravityField : MonoBehaviour {
 
     }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Use this for initialization
+    void Start () {
+    
+    }
+    
+    // Update is called once per frame
+    void Update () {
+    
+    }
 
     public void SetGravity(FloatingObject floatie)
     {

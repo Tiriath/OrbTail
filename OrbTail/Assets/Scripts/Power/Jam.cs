@@ -12,9 +12,9 @@ public class Jam : Power
     
     protected override void ActivateClient()
     {
-        var wheel_stack = Owner.GetComponent<MovementController>().GetWheelDriverStack();
+        var steer_driver = Owner.GetComponent<MovementController>().GetSteerDriver();
 
-        driver = wheel_stack.Push( new JammedWheelDriver( wheel_stack.GetDefaultDriver().GetSteering() ));
+        driver = steer_driver.Push( new InvertedSteerDriver(steer_driver.GetDefaultDriver().GetMaxSteer(), steer_driver.GetDefaultDriver().GetSteerSmooth() ));
     }
 
     public override void Deactivate()

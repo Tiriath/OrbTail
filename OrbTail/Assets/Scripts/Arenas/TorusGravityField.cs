@@ -28,8 +28,8 @@ public class ZXTorusGravityField : IGravityField
     public void SetGravity(FloatingObject floatie)
     {
 
-        floatie.hoverForce = hoverForce;
-        floatie.hoverDampen = hoverDampen;
+        floatie.hover_force = hoverForce;
+        floatie.hover_dampen = hoverDampen;
 
         //Hypothesis: the torus is aligned along ZX plane
         Vector3 projected_position = new Vector3(floatie.transform.position.x,
