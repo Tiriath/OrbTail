@@ -7,7 +7,7 @@ using System.Collections.Generic;
 /// </summary>
 public class TailController : MonoBehaviour
 {
-    public delegate void DelegateOnFight(object sender, IList<GameObject> orbs, GameObject attacker, GameObject defender);
+    public delegate void OnFightDelegate(object sender, IList<GameObject> orbs, GameObject attacker, GameObject defender);
 
     /// <summary>
     /// Notify that two ships collided.
@@ -15,7 +15,7 @@ public class TailController : MonoBehaviour
     /// <param name="orbs">The list of the orbs lost by the defender</param>
     /// <param name="attacker">The attacker's ship</param>
     /// <param name="defender">The defender's ship</param>
-    public event DelegateOnFight OnEventFight;
+    public event OnFightDelegate OnEventFight;
 
     /// <summary>
     /// Tail controlled by this object.

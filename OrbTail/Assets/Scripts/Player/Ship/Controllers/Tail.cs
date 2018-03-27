@@ -2,248 +2,232 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Tail : MonoBehaviour {
+/// <summary>
+/// Handles physical appearance of the tail and how orbs are attached to each othes, as well as proper replication mechanics.
+/// </summary>
+public class Tail : MonoBehaviour
+{
+    public delegate void OnOrbAttachedDelegate(object sender, GameObject orb, GameObject ship);
 
-    private Stack<GameObject> orbStack = new Stack<GameObject>();
-    
-    private GameIdentity game_identity = null;
-    private float kOrbColorThreshold = 10;  //Number of orbs to have in order to have a full intensity tail
-    private Color kOrbDeactiveColor;
-    private Material defaultOrbMaterial;
-    private Material myOrbMaterial;
-
-    private float detachForce = 0.06f;
-    private float attachForce = 0.03f;
-
-    private OwnershipMgr ownership_mgr;
-
-    public delegate void DelegateOnOrbAttached(object sender, GameObject orb, GameObject ship);
-
-    public delegate void DelegateOnOrbDetached(object sender, GameObject ship, int count);
+    public delegate void OnOrbDetachedDelegate(object sender, GameObject ship, int count);
 
     /// <summary>
-    /// Notifies than an orb has been attached
+    /// Called whenever an orb is attached to the tail.
     /// </summary>
-    /// <param name="orb">The orb that has been attached</param>
-    /// <param name="ship">The ship that has been attached</param>
-    public event DelegateOnOrbAttached OnEventOrbAttached;
+    public event OnOrbAttachedDelegate OnEventOrbAttached;
 
     /// <summary>
-    /// Notifies that an orb has been detached
+    /// Called whenever an orb is detached from the tail.
     /// </summary>
-    public event DelegateOnOrbDetached OnEventOrbDetached;
+    public event OnOrbDetachedDelegate OnEventOrbDetached;
 
     void Awake()
     {
+        default_orb_material = Resources.Load<Material>("Materials/OrbMat");
 
-        defaultOrbMaterial = Resources.Load<Material>("Materials/OrbMat");
-        kOrbDeactiveColor = defaultOrbMaterial.color;
-        myOrbMaterial = new Material(defaultOrbMaterial);
-        
+        orb_material = new Material(default_orb_material);
+
+        default_orb_color = default_orb_material.color;
     }
-
-    // Use this for initialization
-    void Start () {
-
+    
+    void Start ()
+    {
         var game = GameObject.FindGameObjectWithTag(Tags.Game);
-               
+
+        ownership_mgr = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<OwnershipMgr>();
+
         game_identity = GetComponent<GameIdentity>();
 
         UpdateTailColor();
 
-        game_identity.EventIdSet += game_identity_EventIdSet;
-
-        ownership_mgr = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<OwnershipMgr>();
-
+        game_identity.EventIdSet += OnIdSet;
     }
-
-    void game_identity_EventIdSet(object sender, int id)
-    {
-
-        UpdateTailColor();
-
-    }
-
+    
     /// <summary>
-    /// Attachs the orb to the tail.
+    /// Attach an orb to the tail.
     /// </summary>
     /// <param name="orb">The orb to attach</param>
-    public void AttachOrb(GameObject orb) {
-
-        var orbController = orb.GetComponent<OrbController>();
+    public void AttachOrb(GameObject orb)
+    {
+        var orb_controller = orb.GetComponent<OrbController>();
         
-        //First removes the randompowerattacher
+        // Remove any existing VFX from the orb. #TODO Should be handled by the orb controller rather than the tail!
+
         var power_attacher = orb.GetComponent<RandomPowerAttacher>();
 
         if (power_attacher.enabled)
         {
-
             power_attacher.RemoveFX();
-
         }
 
-        if (GetComponent<NetworkView>().isMine ||
-            Network.peerType == NetworkPeerType.Disconnected)
+        // Fancy upward force while attaching the orb.
+
+        if (GetComponent<NetworkView>().isMine || Network.peerType == NetworkPeerType.Disconnected)
         {
-         
-            orb.GetComponent<Rigidbody>().AddForce(-orb.GetComponent<FloatingObject>().ArenaDown * attachForce, ForceMode.Impulse);
-        
+            orb.GetComponent<Rigidbody>().AddForce(orb.GetComponent<FloatingObject>().Up * attach_impulse, ForceMode.Impulse);
         }
 
-        //Attach the orb to this player
-        GameObject target;
+        // Attach the orb to the existing ones (or the ship itself).
 
-        if (orbStack.Count <= 0)
-        {
-            target = gameObject;
-        }
-        else
-        {
-            target = orbStack.Peek();
-        }
+        GameObject target = orbs.Count > 0 ? orbs.Peek() : gameObject;
 
-        orbStack.Push(orb);
+        orbs.Push(orb);
 
-        orbController.LinkTo(target);
+        orb_controller.LinkTo(target);
 
+        // Update tail color and notify the game of the attachment.
+
+        orb.GetComponent<Renderer>().material = orb_material;
+
+        UpdateTailColor();
 
         if (OnEventOrbAttached != null)
         {
-
             OnEventOrbAttached(this, orb, gameObject);
-
         }
 
-        //Warns other players if this is the server
+        // Notify other players if this is the server.
+
         if (Network.isServer)
         {
-
             var old_id = orb.GetComponent<NetworkView>().viewID;
 
             orb.GetComponent<NetworkView>().viewID = ownership_mgr.FetchViewID(GetComponent<NetworkView>().viewID.owner);
 
             ownership_mgr.StoreViewID( old_id );
 
-            GetComponent<NetworkView>().RPC("RPCAttachOrb",
-                            RPCMode.Others,
-                            old_id,
-                            orb.GetComponent<NetworkView>().viewID);
-
+            GetComponent<NetworkView>().RPC("RPCAttachOrb", RPCMode.Others, old_id, orb.GetComponent<NetworkView>().viewID);
         }
-
-        ColorizeOrb(orb);
-                       
-    }
-
-    private void ColorizeOrb(GameObject orb)
-    {
-       
-        UpdateTailColor();
-        orb.GetComponent<Renderer>().material = myOrbMaterial;
-        
-    }
-
-    private void UpdateTailColor() {
-
-        var color = Color.Lerp(kOrbDeactiveColor, game_identity.Color, orbStack.Count / kOrbColorThreshold);
-        myOrbMaterial.color = color;
-                
-    }
-
-    private void DecolorizeOrbs(List<GameObject> orbs)
-    {
-        
-        foreach (GameObject orb in orbs)
-        {
-
-            orb.GetComponent<Renderer>().material = defaultOrbMaterial;
-
-        }
-
-        UpdateTailColor();
-        
-    }
-
-    [RPC]
-    private void RPCAttachOrb(NetworkViewID orb_view_id, NetworkViewID new_view_id)
-    {
-
-        var orb = NetworkView.Find(orb_view_id).gameObject;
-
-        orb.GetComponent<NetworkView>().viewID = new_view_id;
-
-        AttachOrb(orb);
-
     }
 
     /// <summary>
-    /// Detachs the orbs.
+    /// Detach any number of orbs from the tail.
     /// </summary>
-    /// <returns>The list of the orbs detached. It can be less than the number of the passed parameter.</returns>
-    /// <param name="nOrbs">Number of orbs to deatch.</param>
-    public List<GameObject> DetachOrbs(int nOrbs) {
+    /// <returns>Returns the list of the orbs detached.</returns>
+    /// <param name="count">Maximum number of orbs to deatch.</param>
+    public List<GameObject> DetachOrbs(int count)
+    {
+        List<GameObject> detached_orbs = new List<GameObject>();
+        
+        while (count > 0 && orbs.Count > 0)
+        {
+            GameObject orb = orbs.Pop();
 
-        List<GameObject> detachedOrbs = new List<GameObject>();
+            orb.GetComponent<OrbController>().Unlink();
 
-        int i = 0;
+            // Fire the detached orb in a random direction and restore its original color.
 
-        while (i < nOrbs && orbStack.Count > 0) {
-            GameObject orbToDetach = orbStack.Pop();
-            orbToDetach.GetComponent<OrbController>().Unlink();
+            orb.GetComponent<Rigidbody>().AddForce(Random.onUnitSphere * detach_impulse, ForceMode.Impulse);
 
-            orbToDetach.GetComponent<Rigidbody>().AddForce(Random.onUnitSphere * detachForce, ForceMode.Impulse);
+            orb.GetComponent<Renderer>().material = default_orb_material;
 
-
-            detachedOrbs.Add(orbToDetach);
-            i++;
+            detached_orbs.Add(orb);
         }
 
-        /*if (orbStack.Count <= 0) {
-            firstOrb = null;
-        }*/
-
+        UpdateTailColor();
 
         if (OnEventOrbDetached != null)
         {
-            OnEventOrbDetached(this, gameObject, nOrbs);
+            OnEventOrbDetached(this, gameObject, detached_orbs.Count);
         }
 
-        //Warns other players
+        // Notify other players if this is the server.
+
         if (Network.isServer)
         {
-
-            //eventLogger.NotifyOrbAttached(orb, gameObject);
-            GetComponent<NetworkView>().RPC("RPCDetachOrbs", RPCMode.Others, nOrbs);
-
+            GetComponent<NetworkView>().RPC("RPCDetachOrbs", RPCMode.Others, detached_orbs.Count);
         }
 
-        DecolorizeOrbs(detachedOrbs);
-
-        return detachedOrbs;
-
+        return detached_orbs;
     }
-
-    [RPC]
-    private void RPCDetachOrbs(int nOrbs)
-    {
-
-        DetachOrbs(nOrbs);
-
-    }
-
 
     /// <summary>
     /// Gets the number of the orbs in the tail.
     /// </summary>
     /// <returns>The number of the orbs in the tail.</returns>
-    public int GetOrbCount() {
-        return orbStack.Count;
+    public int GetOrbCount()
+    {
+        return orbs.Count;
     }
 
+    /// <summary>
+    /// RPC version of AttachOrbs. #TODO Deprecated.
+    /// </summary>
+    [RPC]
+    private void RPCAttachOrb(NetworkViewID orb_view_id, NetworkViewID new_view_id)
+    {
+        var orb = NetworkView.Find(orb_view_id).gameObject;
 
-    public void Update() {}
+        orb.GetComponent<NetworkView>().viewID = new_view_id;
 
+        AttachOrb(orb);
+    }
 
+    /// <summary>
+    /// RPC version of DetachOrbs. #TODO Deprecated.
+    /// </summary>
+    /// <param name="count">Number of orbs to detach.</param>
+    [RPC]
+    private void RPCDetachOrbs(int count)
+    {
+        DetachOrbs(count);
+    }
 
+    /// <summary>
+    /// Update current tail color according to the current number or orbs on the tail.
+    /// </summary>
+    private void UpdateTailColor()
+    {
+        const float kMaxOrbs = 10;            //Number of orbs to have for a full colored tail.
 
+        orb_material.color = Color.Lerp(default_orb_color, game_identity.Color, Mathf.Min(1.0f, orbs.Count / kMaxOrbs));
+    }
+
+    /// <summary>
+    /// Called whenever the id of the player is set.
+    /// </summary>
+    private void OnIdSet(object sender, int id)
+    {
+        UpdateTailColor();
+    }
+
+    /// <summary>
+    /// Orbs in this tail.
+    /// </summary>
+    private Stack<GameObject> orbs = new Stack<GameObject>();
+
+    /// <summary>
+    /// Identity of the player owning this tail.
+    /// </summary>
+    private GameIdentity game_identity = null;
+
+    /// <summary>
+    /// Default orbs material.
+    /// </summary>
+    private Material default_orb_material;
+
+    /// <summary>
+    /// Current orbs material.
+    /// </summary>
+    private Material orb_material;
+
+    /// <summary>
+    /// Default orb color.
+    /// </summary>
+    private Color default_orb_color;
+
+    /// <summary>
+    /// Impluse to apply to the orbs when attached. VFX purposes only.
+    /// </Impulse>
+    private float attach_impulse = 0.03f;
+
+    /// <summary>
+    /// Impulse to apply to the orbs when detached. VFX purposes only.
+    /// </summary>
+    private float detach_impulse = 0.06f;
+
+    /// <summary>
+    /// Handles ownership transferring.
+    /// </summary>
+    private OwnershipMgr ownership_mgr;
 }
