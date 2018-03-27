@@ -10,13 +10,12 @@ public interface IOffenceDriver : IDriver
     /// Gets the offence value of the ship.
     /// </summary>
     /// <returns>Returns the offence value of the ship.</returns>
-    int GetOffence();
+    float GetOffence();
 
     /// <summary>
-    /// Calculate the damage dealt by the ship owning this driver to the provided defender ship.
+    /// Calculate the damage dealt by the ship as a result of a collision.
     /// </summary>
     /// <returns>Returns the calculated damage.</returns>
-    /// <param name="defender">The defender ship.</param>
-    /// <param name="collision">Collision between the attacker and the defender ship.</param>
-    float GetDamage(GameObject defender, Collision collision);
+    /// <param name="collision">Collision data.</param>
+    float GetDamage(Collision collision);
 }

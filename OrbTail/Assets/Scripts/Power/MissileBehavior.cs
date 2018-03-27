@@ -11,8 +11,8 @@ public class MissileBehavior : MonoBehaviour {
     private const float maxMissileSpeed = 8.0f;
     private const float explosionForce = 60.0f;
     private const float timeToLive = 2.5f;
-	private const float smoothCurve = 10f;
-	private AudioClip explosionSound;
+    private const float smoothCurve = 10f;
+    private AudioClip explosionSound;
 
     public void SetTarget(GameObject target, GameObject owner)
     {
@@ -42,14 +42,14 @@ public class MissileBehavior : MonoBehaviour {
     void Start()
     {
 
-		if(NetworkHelper.IsServerSide())
-		{
+        if(NetworkHelper.IsServerSide())
+        {
 
-			StartCoroutine("DestroyMissileTTL");
+            StartCoroutine("DestroyMissileTTL");
 
-		}
+        }
 
-		explosionSound = Resources.Load<AudioClip>("Sounds/Powers/Explosion");
+        explosionSound = Resources.Load<AudioClip>("Sounds/Powers/Explosion");
 
     }
 
@@ -71,7 +71,7 @@ public class MissileBehavior : MonoBehaviour {
                                                     Vector3.Cross(-floating.ArenaDown, this.transform.forward)
                                                     ).normalized;
         
-		forwardProjected = Vector3.Lerp(this.transform.forward, forwardProjected, Time.deltaTime * smoothCurve);
+        forwardProjected = Vector3.Lerp(this.transform.forward, forwardProjected, Time.deltaTime * smoothCurve);
 
         this.GetComponent<Rigidbody>().AddForce(forwardProjected * maxMissileSpeed, ForceMode.VelocityChange);
     }
@@ -79,11 +79,11 @@ public class MissileBehavior : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
 
-		if(NetworkHelper.IsServerSide())
+        if(NetworkHelper.IsServerSide())
         {
-			GameObject objectCollided = collision.gameObject;
+            GameObject objectCollided = collision.gameObject;
 
-			if (objectCollided.tag == Tags.Ship && objectCollided != Owner)
+            if (objectCollided.tag == Tags.Ship && objectCollided != Owner)
             {
 
                 if (Network.peerType == NetworkPeerType.Disconnected)
@@ -99,7 +99,7 @@ public class MissileBehavior : MonoBehaviour {
 
                 }
 
-                collision.gameObject.GetComponent<TailController>().GetDetacherDriverStack().Top().DetachOrbs(int.MaxValue, collision.gameObject.GetComponent<Tail>());
+                collision.gameObject.GetComponent<TailController>().DetachDriver.Top().DetachOrbs(int.MaxValue, collision.gameObject.GetComponent<Tail>());
 
             }
 
@@ -159,7 +159,7 @@ public class MissileBehavior : MonoBehaviour {
         var explosion_resource = Resources.Load(explosion_prefab_path);
         GameObject explosion = GameObject.Instantiate(explosion_resource, this.gameObject.transform.position, Quaternion.identity) as GameObject;
         
-		AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+        AudioSource.PlayClipAtPoint(explosionSound, transform.position);
 
         Target = null;
         GetComponent<Collider>().enabled = false;

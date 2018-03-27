@@ -2,133 +2,102 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TailController : MonoBehaviour {
-
-    private DriverStack<IAttacherDriver> attacherDriverStack;
-    private DriverStack<IDetacherDriver> detacherDriverStack;
-    private DriverStack<IOffenceDriver> offenceDriverStack;
-    private DriverStack<IDefenceDriver> defenceDriverStack;
-
+/// <summary>
+/// Controls how orbs are attached to a tail and detached as result of a collision.
+/// </summary>
+public class TailController : MonoBehaviour
+{
     public delegate void DelegateOnFight(object sender, IList<GameObject> orbs, GameObject attacker, GameObject defender);
 
     /// <summary>
-    /// Notify that two ships have fought
+    /// Notify that two ships collided.
     /// </summary>
     /// <param name="orbs">The list of the orbs lost by the defender</param>
     /// <param name="attacker">The attacker's ship</param>
     /// <param name="defender">The defender's ship</param>
     public event DelegateOnFight OnEventFight;
 
+    /// <summary>
+    /// Tail controlled by this object.
+    /// </summary>
     public Tail Tail { get; set;}
 
-    private float dotProductAttackThreshold = 0.2f;
-    // Range [-1, 1] 
-    private float velocityAttackThreshold = -0.8f;
-
+    /// <summary>
+    /// Determine how orbs are attached to the tail.
+    /// </summary>
+    public DriverStack<IAttacherDriver> AttachDriver { get; private set; }
 
     /// <summary>
-    /// Gets the attacher driver stack.
+    /// Determine how orbs are detached from the tail.
     /// </summary>
-    /// <returns>The attacher driver stack.</returns>
-    public DriverStack<IAttacherDriver> GetAttacherDriverStack() {
-        return attacherDriverStack;
-    }
-
+    public DriverStack<IDetacherDriver> DetachDriver { get; private set; }
 
     /// <summary>
-    /// Gets the detacher driver stack.
+    /// Determine the amount of damage dealt by the ship after a collision.
     /// </summary>
-    /// <returns>The detacher driver stack.</returns>
-    public DriverStack<IDetacherDriver> GetDetacherDriverStack() {
-        return detacherDriverStack;
-    }
-
+    public DriverStack<IOffenceDriver> OffenceDriver { get; private set; }
 
     /// <summary>
-    /// Gets the offence driver stack.
+    /// Determine the amount of damage received by the ship after a collision.
     /// </summary>
-    /// <returns>The offence driver stack.</returns>
-    public DriverStack<IOffenceDriver> GetOffenceDriverStack() {
-        return offenceDriverStack;
+    public DriverStack<IDefenceDriver> DefenceDriver { get; private set; }
+
+    void Awake()
+    {
+        AttachDriver = new DriverStack<IAttacherDriver>();
+        DetachDriver = new DriverStack<IDetacherDriver>();
+        OffenceDriver = new DriverStack<IOffenceDriver>();
+        DefenceDriver = new DriverStack<IDefenceDriver>();
     }
 
-
-    /// <summary>
-    /// Gets the defence driver stack.
-    /// </summary>
-    /// <returns>The defence driver stack.</returns>
-    public DriverStack<IDefenceDriver> GetDefenceDriverStack() {
-        return defenceDriverStack;
-    }
-    
-
-    void Awake() {
-        attacherDriverStack = new DriverStack<IAttacherDriver>();
-        detacherDriverStack = new DriverStack<IDetacherDriver>();
-        offenceDriverStack = new DriverStack<IOffenceDriver>();
-        defenceDriverStack = new DriverStack<IDefenceDriver>();
-    }
-
-    void Start () {
+    void Start ()
+    {
         Tail = GetComponent<Tail>();
 
-        // Link proximity field
-        ProximityHandler proximityField = GetComponentInChildren<ProximityHandler>();
-        proximityField.EventOnProximityEnter += OnProximityEnter;
+        GetComponentInChildren<ProximityHandler>().EventOnProximityEnter += OnProximityEnter;       // Event used to collect orbs.
     }
-
-    void OnCollisionEnter(Collision collision) {
-        GameObject collidedObj = collision.gameObject;
-
-        if (collidedObj.tag == Tags.Ship) {
-
-            if (IsAttack(collidedObj)) {
-                float damage = collidedObj.GetComponent<TailController>().GetOffenceDriverStack().Top().GetDamage(this.gameObject, collision);
-                int nOrbsToDetach = defenceDriverStack.Top().DamageToOrbs(damage);
-                List<GameObject> orbsDetached = detacherDriverStack.Top().DetachOrbs(nOrbsToDetach, this.Tail);
-
-                
-                if (OnEventFight != null) {
-                    OnEventFight(this, orbsDetached, collidedObj, this.gameObject);
-                }
-
-            }
-
-        }
-    }
-
-    void OnProximityEnter(object sender, Collider other) {
-        GameObject collidedObj = other.gameObject;
-        
-        if (collidedObj.tag == Tags.Orb) {
-            OrbController orbController = collidedObj.GetComponent<OrbController>();
-            
-            if (!orbController.IsAttached()) {
-                attacherDriverStack.Top().AttachOrbs(collidedObj, Tail);
-            }
-            
-        }
-    }
-    
-
-    // Update is called once per frame
-    void Update () {
-    
-    }
-
-
 
     /// <summary>
-    /// Determines whether the specified attacker is attacking this instance.
+    /// Called whenever the ship hits another ship.
     /// </summary>
-    /// <returns><c>true</c> if the specified attacker is attacking this instance; otherwise, <c>false</c>.</returns>
-    /// <param name="attacker">Attacker.</param>
-    private bool IsAttack(GameObject attacker) {
-        Vector3 relVector = this.transform.position - attacker.transform.position;
-        float dotProduct = Vector3.Dot(attacker.transform.forward, relVector.normalized);
-        //Debug.Log(dotProduct);
+    /// <param name="collision">Collision data.</param>
+    void OnCollisionEnter(Collision collision)
+    {
+        GameObject opponent = collision.gameObject;
 
-        float attackVelocity = Vector3.Dot (attacker.GetComponent<Rigidbody>().velocity.normalized, attacker.transform.forward);
-        return dotProduct >= dotProductAttackThreshold && attackVelocity > velocityAttackThreshold;
+        if (opponent.tag == Tags.Ship)
+        {
+            var damage = opponent.GetComponent<TailController>().OffenceDriver.Top().GetDamage(collision);          // Damage dealt to this ship.
+
+            var orbs_count = DefenceDriver.Top().ReceiveDamage(damage);                                              // Orbs lost by this ship.
+
+            var lost_orbs = DetachDriver.Top().DetachOrbs(orbs_count, this.Tail);
+
+            if (lost_orbs.Count > 0 && OnEventFight != null)
+            {
+                Debug.Log(opponent.name + " hit " + gameObject.name + " causing " + damage + "damage.");
+                
+                OnEventFight(this, lost_orbs, opponent, this.gameObject);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Called whenever a new orb cross the proximity boundaries.
+    /// </summary>
+    void OnProximityEnter(object sender, Collider other)
+    {
+        GameObject orb = other.gameObject;
+        
+        if (orb.tag == Tags.Orb)
+        {
+            OrbController orb_controller = orb.GetComponent<OrbController>();
+            
+            if (!orb_controller.IsAttached())
+            {
+                AttachDriver.Top().AttachOrbs(orb, Tail);
+            }
+            
+        }
     }
 }

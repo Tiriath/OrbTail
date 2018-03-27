@@ -13,7 +13,7 @@ public class Invincibility : Power
     protected override void ActivateServer()
     {
 
-        var tail_stack = Owner.GetComponent<TailController>().GetDetacherDriverStack();
+        var tail_stack = Owner.GetComponent<TailController>().DetachDriver;
 
         driver = tail_stack.Push( new InvincibleDetacherDriver());
     }

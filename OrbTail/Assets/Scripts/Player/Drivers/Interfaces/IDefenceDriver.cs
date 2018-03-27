@@ -2,7 +2,7 @@
 using System.Collections;
 
 /// <summary>
-/// Driver determining how much damage a ship absorbs while colling with another ship.
+/// Driver used to determine the amount of orbs lost as a consequence of an impact.
 /// </summary>
 public interface IDefenceDriver : IDriver
 {
@@ -10,12 +10,12 @@ public interface IDefenceDriver : IDriver
     /// Gets the defence value of the ship.
     /// </summary>
     /// <returns>Returns the defence value of the ship.</returns>
-    int GetDefence();
+    float GetDefence();
 
     /// <summary>
-    /// Get the number of orbs lost by the ship as a result of an impact with another ship.
+    /// Get the number of orbs lost by the ship as a result of a damaging event.
     /// </summary>
-    /// <returns>Returns the number of orbs lost by the ship owning this driver as result of an impact with another ship.</returns>
+    /// <returns>Returns the number of orbs lost by the ship owning this driver as result of the provided damage.</returns>
     /// <param name="damage">Damage suffered by this ship.</param>
-    int DamageToOrbs(float damage);
+    int ReceiveDamage(float damage);
 }

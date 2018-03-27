@@ -6,43 +6,42 @@ using System.Collections;
 /// </summary>
 public class DefaultOffenceDriver : BaseDriver, IOffenceDriver
 {
-    public DefaultOffenceDriver(int offence)
+    public DefaultOffenceDriver(float offence)
     {
         this.offence = offence;
-        this.normalized_offence = Mathf.Sqrt(offence / 5.0f);
     }
 
-    public int GetOffence()
+    public float GetOffence()
     {
         return offence;
     }
 
-    public float GetDamage(GameObject defender, Collision col)
+    public float GetDamage(Collision collision)
     {
-        // #TODO Magic formula!
+        var ship = collision.gameObject;                                                                // Ship that caused the impact.
 
-        var velocity = Mathf.Min(col.relativeVelocity.magnitude, max_velocity);
+        var ship_forward = ship.GetComponent<FloatingObject>().Forward;
 
-        return (velocity / max_velocity) * max_orbs * normalized_offence;
+        // Assumes the ship can only deal damage with its frontal part.
+
+        var damage = 0.0f;
+
+        foreach(var contact_point in collision.contacts)
+        {
+            var impact_direction = (contact_point.point - ship.transform.position).normalized;
+
+            var impact_scale = Mathf.Max(0.0f, Vector3.Dot(impact_direction, ship_forward));            // A frontal hit causes more damage than a glancing one.
+
+            var impact_magnitude = collision.relativeVelocity.magnitude;
+
+            damage += impact_magnitude * impact_scale;
+        }
+
+        return damage * offence;
     }
 
     /// <summary>
-    /// Ship offence value. Range [1;5].
+    /// Ship offence value.
     /// </summary>
-    private int offence;
-
-    /// <summary>
-    /// Normalize ship offence value. Range [0; 1].
-    /// </summary>
-    private float normalized_offence;
-
-    /// <summary>
-    /// Maximum velocity to consider.
-    /// </summary>
-    private const float max_velocity = 5.0f;
-
-    /// <summary>
-    /// Maximum number of orbs that can be lost in a single collision.
-    /// </summary>
-    private const float max_orbs = 10.0f;
+    private float offence = 1.0f;
 }

@@ -6,31 +6,23 @@ using System.Collections;
 /// </summary>
 public class DefaultDefenceDriver : BaseDriver, IDefenceDriver
 {
-    public DefaultDefenceDriver(int defence)
+    public DefaultDefenceDriver(float defence)
     {
         this.defence = defence;
-        this.normalized_defence = (defence / 5.0f) + 1.0f;
     }
 
-    public int GetDefence()
+    public float GetDefence()
     {
         return defence;
     }
 
-    public int DamageToOrbs(float damage)
+    public int ReceiveDamage(float damage)
     {
-        // #TODO Magic formula!
-
-        return Mathf.FloorToInt(damage / normalized_defence);
+        return Mathf.FloorToInt(damage / defence);
     }
 
     /// <summary>
-    /// Ship defence value. Range [1; 5]
+    /// Ship defence value. Amount of damage required to detach a single orb.
     /// </summary>
-    private int defence;
-
-    /// <summary>
-    /// Normalize ship defence value. Range [0; 1].
-    /// </summary>
-    private float normalized_defence;
+    private float defence = 15.0f;
 }

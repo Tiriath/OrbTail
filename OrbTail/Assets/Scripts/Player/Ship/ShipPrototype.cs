@@ -27,18 +27,15 @@ public class ShipPrototype : MonoBehaviour
     /// </summary>
     public float speed_smooth = 0.7f;
 
+    /// <summary>
+    /// The offence power of the ship, as multiplicative factor of dealt damage.
+    /// </summary>
+    public float offence = 1.0f;
 
     /// <summary>
-    /// The defence power of the ship. Range [1; 5].
+    /// The defence power of the ship, as damage required to detach each orb.
     /// </summary>
-    [Range(1,5)]
-    public int defence;
-
-    /// <summary>
-    /// The offence power of the ship. Range [1; 5].
-    /// </summary>
-    [Range(1, 5)]
-    public int offence;
+    public float defence = 15.0f;
 
     void Update ()
     {
@@ -60,10 +57,10 @@ public class ShipPrototype : MonoBehaviour
 
             TailController tail_controller = gameObject.AddComponent<TailController>();
 
-            tail_controller.GetOffenceDriverStack().SetDefaultDriver(new DefaultOffenceDriver(offence));
-            tail_controller.GetDefenceDriverStack().SetDefaultDriver(new DefaultDefenceDriver(defence));
-            tail_controller.GetAttacherDriverStack().SetDefaultDriver(new DefaultAttacherDriver());
-            tail_controller.GetDetacherDriverStack().SetDefaultDriver(new DefaultDetacherDriver());
+            tail_controller.OffenceDriver.SetDefaultDriver(new DefaultOffenceDriver(offence));
+            tail_controller.DefenceDriver.SetDefaultDriver(new DefaultDefenceDriver(defence));
+            tail_controller.AttachDriver.SetDefaultDriver(new DefaultAttacherDriver());
+            tail_controller.DetachDriver.SetDefaultDriver(new DefaultDetacherDriver());
         }
 
         //Client side controls the movement.
