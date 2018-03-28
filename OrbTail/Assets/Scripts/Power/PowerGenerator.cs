@@ -23,7 +23,7 @@ public class PowerGenerator : MonoBehaviour {
 
             return orbs.Where((GameObject orb) =>
             {
-                return !orb.GetComponent<OrbController>().IsAttached() &&
+                return !orb.GetComponent<OrbController>().IsLinked &&
                        !orb.GetComponent<RandomPowerAttacher>().enabled;
             });
         }
@@ -33,8 +33,8 @@ public class PowerGenerator : MonoBehaviour {
 
     private float time_accumulator = 0.0f;
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
 
         if (!Network.isClient)
         {
@@ -74,7 +74,7 @@ public class PowerGenerator : MonoBehaviour {
 
         }
         
-	}
+    }
 
     private void SpawnPower(GameObject orb)
     {

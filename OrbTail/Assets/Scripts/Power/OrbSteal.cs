@@ -27,7 +27,7 @@ public class OrbSteal : Power
 
             foreach (GameObject orb in orbs)
             {
-                if (!orb.GetComponent<OrbController>().IsAttached()) {
+                if (!orb.GetComponent<OrbController>().IsLinked) {
                     attacker.GetComponent<TailController>().AttachDriver.Top().AttachOrbs(orb, attacker.GetComponent<Tail>());
                 }
             }

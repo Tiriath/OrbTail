@@ -73,7 +73,7 @@ public class Tail : MonoBehaviour
 
         orbs.Push(orb);
 
-        orb_controller.LinkTo(target);
+        orb_controller.Link(target);
 
         // Update tail color and notify the game of the attachment.
 

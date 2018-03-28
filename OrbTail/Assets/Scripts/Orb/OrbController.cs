@@ -1,76 +1,86 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OrbController : MonoBehaviour {
-	private GameObject target;
+/// <summary>
+/// Script used to link orbs together forming a tail.
+/// </summary>
+public class OrbController : MonoBehaviour
+{
+    /// <summary>
+    /// Spring dampening factor.
+    /// </summary>
+    public float spring_damper = 0.4f;
 
-	// Values used to create spring
-	private float dampSpring = 0.4f;
-	private float forceSpring = 3f;
-	private float minDistance = 1.0f;
-	private float maxDistance = 1.0f;
-	private float shipDistance = 2.5f;
-	private bool isLinked;
+    /// <summary>
+    /// Spring stiffness.
+    /// </summary>
+    public float spring_stiffness = 3f;
 
+    /// <summary>
+    /// Minimum spring length.
+    /// </summary>
+    public float spring_min_length = 1.0f;
 
+    /// <summary>
+    /// Maximum spring length.
+    /// </summary>
+    public float spring_max_length = 1.0f;
 
-	// Use this for initialization
-	void Start () {
-		isLinked = gameObject.GetComponent<SpringJoint>() != null;
-	}
+    /// <summary>
+    /// Additional length to both minimum and maximum spring length when the orb is attached to a ship.
+    /// </summary>
+    public float ship_distance = 2.5f;
 
+    /// <summary>
+    /// Whether the orb is currently linked to something else.
+    /// </summary>
+    public bool IsLinked { get; private set; }
 
+    void Start ()
+    {
+        IsLinked = (gameObject.GetComponent<SpringJoint>() != null);       // An orb may start already linked, just check if it has some existing SpringJoint.
+    }
 
-	/// <summary>
-	/// Determines whether this instance is attached to something.
-	/// </summary>
-	/// <returns><c>true</c> if this instance is attached; otherwise, <c>false</c>.</returns>
-	public bool IsAttached() {
-		return isLinked;
-	}
+    /// <summary>
+    /// Links this orb to another object via a SpringJoint.
+    /// </summary>
+    /// <param name="target">Object to attach this orb to.</param>
+    public void Link(GameObject target)
+    {
+        Unlink();
 
+        IsLinked = true;
 
-	/// <summary>
-	/// Links this instance to the passed parameter with a SpringJoint.
-	/// </summary>
-	/// <param name="destination">Target.</param>
-	public void LinkTo(GameObject target) {
-		Unlink();
-		isLinked = true;
+        SpringJoint joint = this.gameObject.AddComponent<SpringJoint>();
 
-		SpringJoint joint = this.gameObject.AddComponent<SpringJoint>();
-		joint.connectedBody = target.GetComponent<Rigidbody>();
-		joint.damper = dampSpring;
-		joint.spring = forceSpring;
-		joint.minDistance = minDistance;
-		joint.maxDistance = maxDistance;
+        joint.connectedBody = target.GetComponent<Rigidbody>();
+        joint.damper = spring_damper;
+        joint.spring = spring_stiffness;
+        joint.minDistance = spring_min_length;
+        joint.maxDistance = spring_max_length;
 
-		if (target.tag == Tags.Ship) {
-			joint.minDistance += shipDistance;
-			joint.maxDistance += shipDistance;
-		}
+        if (target.tag == Tags.Ship)
+        {
+            joint.minDistance += ship_distance;
+            joint.maxDistance += ship_distance;
+        }
 
-		joint.autoConfigureConnectedAnchor = false;
-		joint.anchor = Vector3.zero;
-		joint.connectedAnchor = Vector3.zero;
-		
-	}
-	
+        joint.autoConfigureConnectedAnchor = false;
+        joint.anchor = Vector3.zero;
+        joint.connectedAnchor = Vector3.zero;
+    }
 
-	/// <summary>
-	/// Unlink this instance removing the joint.
-	/// </summary>
-	public void Unlink() {
+    /// <summary>
+    /// Unlink this orb from the current object.
+    /// Does nothing if the orb is not linked to anything.
+    /// </summary>
+    public void Unlink()
+    {
+        foreach (SpringJoint joint in GetComponents<SpringJoint>())
+        {
+            Destroy(joint);
+        }
 
-		foreach (SpringJoint jointToRemove in this.GetComponents<SpringJoint>()) {
-			Destroy(jointToRemove);
-		}
-
-		isLinked = false;
-		
-	}
-
-
-
-
+        IsLinked = false;
+    }
 }

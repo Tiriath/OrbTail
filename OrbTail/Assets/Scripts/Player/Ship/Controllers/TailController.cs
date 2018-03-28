@@ -93,7 +93,7 @@ public class TailController : MonoBehaviour
         {
             OrbController orb_controller = orb.GetComponent<OrbController>();
             
-            if (!orb_controller.IsAttached())
+            if (!orb_controller.IsLinked)
             {
                 AttachDriver.Top().AttachOrbs(orb, Tail);
             }
