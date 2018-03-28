@@ -54,7 +54,7 @@ public class TailController : MonoBehaviour
     {
         Tail = GetComponent<Tail>();
 
-        GetComponentInChildren<ProximityHandler>().EventOnProximityEnter += OnProximityEnter;       // Event used to collect orbs.
+        GetComponentInChildren<ProximityHandler>().OnProximityEvent += OnProximityEnter;                            // Event used to collect orbs.
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public class TailController : MonoBehaviour
         {
             var damage = opponent.GetComponent<TailController>().OffenceDriver.Top().GetDamage(collision);          // Damage dealt to this ship.
 
-            var orbs_count = DefenceDriver.Top().ReceiveDamage(damage);                                              // Orbs lost by this ship.
+            var orbs_count = DefenceDriver.Top().ReceiveDamage(damage);                                             // Orbs lost by this ship.
 
             var lost_orbs = DetachDriver.Top().DetachOrbs(orbs_count, this.Tail);
 

@@ -64,11 +64,11 @@ public class HostBuilder : NetworkPlayerBuilder
         
     }
   
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
      
-	}
+    }
 
     void HostBuilder_EventPlayerUnregistered(object sender, int id)
     {
@@ -77,10 +77,10 @@ public class HostBuilder : NetworkPlayerBuilder
         
     }
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Update is called once per frame
+    void Update () {
+    
+    }
 
     void OnMasterServerEvent(MasterServerEvent server_event)
     {
@@ -227,16 +227,16 @@ public class HostBuilder : NetworkPlayerBuilder
 
             ready_players_.Clear();
 
-			var builder = GetComponent<GameBuilder>();
-			
-			var game_name = builder.ArenaName + ";" + builder.GameMode.ToString();
-			
-			Debug.Log("Registering " + game_name);
-			
-			MasterServer.RegisterHost(GameBuilder.kGameTypeName,
-			                          game_name, "closed");
+            var builder = GetComponent<GameBuilder>();
+            
+            var game_name = builder.ArenaName + ";" + builder.GameMode.ToString();
+            
+            Debug.Log("Registering " + game_name);
+            
+            MasterServer.RegisterHost(GameBuilder.kGameTypeName,
+                                      game_name, "closed");
 
-			Network.maxConnections = 0;
+            Network.maxConnections = 0;
             //Every device should load the proper arena
             GetComponent<NetworkView>().RPC("RPCLoadArena", RPCMode.All, GetComponent<GameBuilder>().ArenaName);
             

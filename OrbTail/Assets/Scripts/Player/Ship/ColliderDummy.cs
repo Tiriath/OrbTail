@@ -7,15 +7,15 @@ public class ColliderDummy : MonoBehaviour {
 
     public DelegateCollision EventCollision;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Use this for initialization
+    void Start () {
+    
+    }
+    
+    // Update is called once per frame
+    void Update () {
+    
+    }
 
     void OnCollisionEnter(Collision collision)
     {

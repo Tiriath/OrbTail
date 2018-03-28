@@ -12,7 +12,7 @@ public class PowerController : MonoBehaviour
     /// Fired when a power has been attached
     /// </summary>
     public event DelegatePowerAttached EventPowerAttached;
-	
+    
     private Dictionary<int, Power> powers;
     private InputProxy input;
 
@@ -27,7 +27,7 @@ public class PowerController : MonoBehaviour
             
             // Link proximity field
             ProximityHandler proximityField = GetComponentInChildren<ProximityHandler>();
-            proximityField.EventOnProximityEnter += proximityField_EventOnProximityEnter;
+            proximityField.OnProximityEvent += proximityField_EventOnProximityEnter;
 
         }
 
