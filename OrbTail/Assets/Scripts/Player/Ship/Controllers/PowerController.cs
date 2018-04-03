@@ -82,7 +82,7 @@ public class PowerController : MonoBehaviour
 
         powers.Add(power.Group, power);
 
-        power.EventDestroyed += OnPowerDeactivated;
+        power.OnDeactivatedEvent += OnPowerDeactivated;
 
         power.Activate(gameObject);
 
@@ -146,9 +146,11 @@ public class PowerController : MonoBehaviour
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="group">Power group</param>
-    private void OnPowerDeactivated(object sender, int group)
+    private void OnPowerDeactivated(object sender)
     {
-        powers.Remove(group);
+        var power = (Power)sender;
+
+        powers.Remove(power.Group);
     }
 
     /// <summary>

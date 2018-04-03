@@ -2,51 +2,58 @@
 using System;
 using System.Collections.Generic;
 
-public abstract class Power : PowerView
+/// <summary>
+/// Base class for all powers.
+/// </summary>
+public abstract class Power
 {
-
-    public const string power_prefab_path = "Prefabs/Power/";
-
-    protected int group { get; private set; }
-    protected float? duration { get; set; }
-    protected float activatedTime { get; private set; }
-
-    protected float time_accumulator = 0.0f;
-
-    private GameObject fx;
-
-    protected Power(int group, float? duration, string name)
-    {
-
-        this.group = group;
-        this.duration = duration;
-        this.Name = name;
-
-    }
+    public delegate void DeactivatedDelegate(object sender);
 
     /// <summary>
-    /// The owner of the power
+    /// Event raised whenever the power is deactivated.
+    /// </summary>
+    public event DeactivatedDelegate OnDeactivatedEvent;
+
+    /// <summary>
+    /// Path containing power prefabs.
+    /// </summary>
+    public const string kPowerPrefabPath = "Prefabs/Power/";
+
+    /// <summary>
+    /// Get the power name.
+    /// </summary>
+    public string Name { get; private set; }
+
+    /// <summary>
+    /// Get the group of this power.
+    /// </summary>
+    public int Group { get; private set; }
+
+    /// <summary>
+    /// The owner of the power.
     /// </summary>
     public GameObject Owner { get; private set; }
 
     /// <summary>
-    /// Get the power's group
+    /// Timestamp when the power was activated.
     /// </summary>
-    public override int Group
+    protected float ActivationTime { get; private set; }
+
+    /// <summary>
+    /// Duration of the power in seconds.
+    /// Unset if the power has no duration.
+    /// </summary>
+    protected float? Duration { get; private set; }
+
+    /// <summary>
+    /// Get whether the power is ready, as percentage.
+    /// </summary>
+    public virtual float IsReady
     {
         get
         {
-            return group;
+            return 1.0f;
         }
-    }
-
-    /// <summary>
-    /// The power name
-    /// </summary>
-    public string Name
-    {
-        get;
-        private set;
     }
 
     /// <summary>
@@ -55,50 +62,95 @@ public abstract class Power : PowerView
     public abstract Power Generate();
 
     /// <summary>
-    /// Activate the power up
+    /// Activate the power.
     /// </summary>
-    /// <param name="gameObj">Ship with activated power up</param>
+    /// <param name="gameObj">Ship the power is activated on.</param>
     public void Activate(GameObject owner)
     {
-
         this.Owner = owner;
-        this.activatedTime = Time.time;
-        this.time_accumulator = 0.0f;
+        this.ActivationTime = Time.time;
+
+        // Activate the power.
 
         ActivateShared();
 
         if(NetworkHelper.IsServerSide())
         {
-            
             ActivateServer();
-
         }
 
         if (NetworkHelper.IsOwnerSide(Owner.GetComponent<NetworkView>()))
         {
-            
             ActivateClient();
+        }
+    }
+    
+    /// <summary>
+    /// Deactivate the power.
+    /// </summary>
+    public virtual void Deactivate()
+    {
+        // Destroy the VFX.
 
+        if(fx != null)
+        {
+            fx.transform.parent = null;
+
+            GameObjectFactory.Instance.Destroy(kPowerPrefabPath + Name, fx);
         }
 
-    }
+        // Event.
 
-    protected virtual void ActivateShared()
-    {
-
-        AddFX();
-
+        if (OnDeactivatedEvent != null)
+        {
+            OnDeactivatedEvent(this);
+        };
     }
 
     /// <summary>
-    /// Modify TailController and Tail
+    /// Called at frame-time to update the power status.
+    /// </summary>
+    public virtual void Update()
+    {
+        // Destroy the power when the duration expires.
+
+        if (Duration.HasValue && (Time.time >= ActivationTime + Duration.Value))
+        {
+            Duration = null;
+
+            Deactivate();
+        }
+    }
+    
+    /// <summary>
+    /// Fire the power if possible.
+    /// </summary>
+    /// <returns>Returns true if the power could be fired successfully, returns false otherwise.</returns>
+    public virtual bool Fire() { return false; }
+
+    /// <summary>
+    /// Activate the power.
+    /// Called on both server-side and client-side: used to handle cosmetic stuffs (such as VFX).
+    /// </summary>
+    protected virtual void ActivateShared()
+    {
+        fx = GameObjectFactory.Instance.Instantiate(kPowerPrefabPath + Name, Owner.transform.position, Quaternion.identity);
+
+        fx.transform.parent = Owner.transform;
+    }
+
+    /// <summary>
+    /// Activate the power.
+    /// Called on server-side: used to modify tail controller.
     /// </summary>
     protected virtual void ActivateServer()
     {
-    
+
     }
+
     /// <summary>
-    /// Modify movement controller
+    /// Activate the power. 
+    /// Called on client-side: used to modify movement controller.
     /// </summary>
     protected virtual void ActivateClient()
     {
@@ -106,79 +158,20 @@ public abstract class Power : PowerView
     }
 
     /// <summary>
-    /// Deactivate power up
+    /// Create a new power from explicit group, duration and name.
     /// </summary>
-    public virtual void Deactivate()
+    /// <param name="group">Power group.</param>
+    /// <param name="duration">Duration of the power, in seconds.</param>
+    /// <param name="name">Power name</param>
+    protected Power(int group, float? duration, string name)
     {
-        RemoveFX();
-
-        Destroy();
+        this.Group = group;
+        this.Duration = duration;
+        this.Name = name;
     }
 
     /// <summary>
-    /// Counter to deactivate the active power up
+    /// VFX object associated to the power.
     /// </summary>
-    public virtual void Update()
-    {
-
-        UpdateTimeToLive();
-                
-    }
-
-    /// <summary>
-    /// Updates the time to live of the power and eventually destroy it
-    /// </summary>
-    private void UpdateTimeToLive()
-    {
-
-        time_accumulator += Time.deltaTime;
-
-        // If power up time is expired, deactivate power up
-        if (time_accumulator > (duration ?? float.MaxValue))
-        {
-
-            time_accumulator = 0.0f;
-            duration = null;
-
-            Deactivate();
-
-        }
-
-    }
-
-    /// <summary>
-    /// Fire avaiable power up
-    /// </summary>
-    public virtual bool Fire() { return false; }
-
-    private void AddFX()
-    {
-
-        fx = GameObjectFactory.Instance.Instantiate(power_prefab_path + Name, Owner.transform.position, Quaternion.identity);
-
-        fx.transform.parent = Owner.transform;
-
-    }
-
-    private void RemoveFX()
-    {
-
-        fx.transform.parent = null;
-
-        GameObjectFactory.Instance.Destroy(power_prefab_path + Name, fx);
-
-    }
-
-    public override float IsReady
-    {
-
-        get
-        {
-
-            return 0.0f;
-
-        }
-
-    }
-
+    private GameObject fx;
 }

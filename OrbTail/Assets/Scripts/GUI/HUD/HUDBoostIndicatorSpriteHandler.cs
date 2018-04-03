@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HUDBoostIndicatorSpriteHandler : MonoBehaviour {
 
-	private PowerView boostView;
+	private Power boostView;
 	private float refreshTime = 0.2f;
 	private const float animationTime = 0.2f;
 	private const float scaleBig = 0.2f;

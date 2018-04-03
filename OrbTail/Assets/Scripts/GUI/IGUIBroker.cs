@@ -12,14 +12,14 @@ interface IGUIBroker
     /// <summary>
     /// Add a new power to the GUI
     /// </summary>
-    /// <param name="power_view">The view of the power to add</param>
-    void AddPower(PowerView power_view);
+    /// <param name="power">The power to add.</param>
+    void AddPower(Power power);
 
     /// <summary>
     /// Remove a power from the GUI
     /// </summary>
-    /// <param name="power_view">The view of the power to remove</param>
-    void RemovePower(PowerView power_view);
+    /// <param name="power">The power to remove.</param>
+    void RemovePower(Power power);
 
 }
 

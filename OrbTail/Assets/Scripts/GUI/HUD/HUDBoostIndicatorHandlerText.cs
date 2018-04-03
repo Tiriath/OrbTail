@@ -4,7 +4,7 @@ using System.Collections;
 public class HUDBoostIndicatorHandlerText : MonoBehaviour {
 
 
-    private PowerView boostView;
+    private Power boostView;
     private TextMesh textMesh;
     private float refreshTime = 0.2f;
     private const float animationTime = 1f;

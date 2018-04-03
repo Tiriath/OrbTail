@@ -5,12 +5,12 @@ using System.Text;
 
 class DesktopGUIBroker: IGUIBroker
 {
-    public void AddPower(PowerView power_view)
+    public void AddPower(Power power)
     {
         throw new NotImplementedException();
     }
 
-    public void RemovePower(PowerView power_view)
+    public void RemovePower(Power power)
     {
         throw new NotImplementedException();
     }

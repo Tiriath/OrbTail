@@ -26,12 +26,12 @@ public class PowerFactory
     {
 
         //Preloads all the power's FXs
-        GameObjectFactory.Instance.Preload(Power.power_prefab_path + "Boost", 4);
-        GameObjectFactory.Instance.Preload(Power.power_prefab_path + "Missile", 4);
-        GameObjectFactory.Instance.Preload(Power.power_prefab_path + "Invincibility", 4);
-        GameObjectFactory.Instance.Preload(Power.power_prefab_path + "OrbSteal", 4);
-        GameObjectFactory.Instance.Preload(Power.power_prefab_path + "Magnet", 4);
-        GameObjectFactory.Instance.Preload(Power.power_prefab_path + "Jam", 3);
+        GameObjectFactory.Instance.Preload(Power.kPowerPrefabPath + "Boost", 4);
+        GameObjectFactory.Instance.Preload(Power.kPowerPrefabPath + "Missile", 4);
+        GameObjectFactory.Instance.Preload(Power.kPowerPrefabPath + "Invincibility", 4);
+        GameObjectFactory.Instance.Preload(Power.kPowerPrefabPath + "OrbSteal", 4);
+        GameObjectFactory.Instance.Preload(Power.kPowerPrefabPath + "Magnet", 4);
+        GameObjectFactory.Instance.Preload(Power.kPowerPrefabPath + "Jam", 3);
         GameObjectFactory.Instance.Preload(MissileBehavior.explosion_prefab_path, 4);
 
     }

@@ -13,24 +13,22 @@ public class GUIController : MonoBehaviour {
     /// </summary>
     /// <param name="power_view">The power to add</param>
     [RPC]
-    public void AddPower(PowerView power_view)
+    public void AddPower(Power power)
     {
 
         if (GUIBroker == null)
         {
 
             //Remote call!
-            NetworkInterface.RPC("AddPower", RPCMode.Others, power_view);
+            NetworkInterface.RPC("AddPower", RPCMode.Others, power);
 
         }
         else
         {
 
             //Local call!
-            GUIBroker.AddPower(power_view);
-            
+            GUIBroker.AddPower(power);
         }
-                
     }
 
     
@@ -39,11 +37,9 @@ public class GUIController : MonoBehaviour {
     /// Removes a power from the GUI
     /// </summary>
     /// <param name="power_view">The power view to remove</param>
-    private void RemovePower(PowerView power_view)
+    private void RemovePower(Power power)
     {
-
-        //if( GUIBroker ==)
-
+        
     }
 
     // Use this for initialization
