@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Game : MonoBehaviour {
 
-	private float restart_time = 6f;
+    private float restart_time = 6f;
 
     public const string explosion_prefab_path = "Prefabs/Power/Explosion";
 
@@ -277,8 +277,8 @@ public class Game : MonoBehaviour {
     }
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         //Graphics stuff
         explosion_sound_ = Resources.Load<AudioClip>("Sounds/Powers/Explosion");
@@ -328,9 +328,9 @@ public class Game : MonoBehaviour {
 
         EnableControls(false);
 
-		master.NotifyGameBuilt();
+        master.NotifyGameBuilt();
         
-	}
+    }
 
     void master_EventGameReady(object sender)
     {
@@ -441,12 +441,12 @@ public class Game : MonoBehaviour {
         }
         
     }
-	
-	// Update is called once per frame
-	void Update () {
+    
+    // Update is called once per frame
+    void Update () {
 
 
-	}
+    }
 
     /// <summary>
     /// Enable or disable the controls for all players
@@ -507,22 +507,22 @@ public class Game : MonoBehaviour {
 
     }
 
-	/// <summary>
-	/// Restarts the game. Temporary method
-	/// </summary>
-	private IEnumerator RestartGame() {
-		
+    /// <summary>
+    /// Restarts the game. Temporary method
+    /// </summary>
+    private IEnumerator RestartGame() {
+        
         yield return new WaitForSeconds(restart_time);
 
-		Destroy(GameObject.FindGameObjectWithTag(Tags.Master));
+        Destroy(GameObject.FindGameObjectWithTag(Tags.Master));
 
         GameObjectFactory.Instance.Purge();
 
         //Okay, good game, let's go home...
         Network.Disconnect();
 
-		Application.LoadLevel("MenuMain");
-	}
+        Application.LoadLevel("MenuMain");
+    }
 
     /// <summary>
     /// Used to update the countdown timer

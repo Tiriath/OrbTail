@@ -171,7 +171,7 @@ public class PlayerAI : MonoBehaviour {
         floatingObject = GetComponent<FloatingObject>();	
         
         powerController = GetComponent<PowerController>();
-        powerController.EventPowerAttached += OnEventPowerAttached;
+        powerController.OnPowerAttachedEvent += OnEventPowerAttached;
 
         game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
         game.EventShipEliminated += OnShipEliminated;

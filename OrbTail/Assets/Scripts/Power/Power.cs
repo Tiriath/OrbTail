@@ -112,7 +112,7 @@ public abstract class Power : PowerView
     {
         RemoveFX();
 
-        Destroy(group);
+        Destroy();
     }
 
     /// <summary>

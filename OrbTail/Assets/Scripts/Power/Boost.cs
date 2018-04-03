@@ -6,14 +6,14 @@ public class Boost : Power
 {
     private const float reload_power_time = 5.0f;
     private float time_accumulator_to_reload = reload_power_time;
-	private float boost_force = 60.0f;
-	private AudioClip launchSound;
-	private GameObject activePlayer;
+    private float boost_force = 60.0f;
+    private AudioClip launchSound;
+    private GameObject activePlayer;
 
     public Boost() : base(PowerGroups.Passive, float.MaxValue, "Boost") {
-		launchSound = Resources.Load<AudioClip>("Sounds/Powers/Boost");
-		activePlayer = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>().ActivePlayer;
-	}
+        launchSound = Resources.Load<AudioClip>("Sounds/Powers/Boost");
+        activePlayer = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>().ActivePlayer;
+    }
     
     public override float IsReady
     {
@@ -42,15 +42,15 @@ public class Boost : Power
 
             Owner.GetComponent<Rigidbody>().AddForce(Owner.transform.forward * boost_force, ForceMode.Impulse);
 
-			if (Owner == activePlayer) {
-				AudioSource.PlayClipAtPoint(launchSound, Owner.gameObject.transform.position, 0.2f);
+            if (Owner == activePlayer) {
+                AudioSource.PlayClipAtPoint(launchSound, Owner.gameObject.transform.position, 0.2f);
 
 
-				#if UNITY_ANDROID || UNITY_IPHONE
-					Handheld.Vibrate();
-				#endif
+                #if UNITY_ANDROID || UNITY_IPHONE
+                    Handheld.Vibrate();
+                #endif
 
-			}
+            }
 
             return true;
         }

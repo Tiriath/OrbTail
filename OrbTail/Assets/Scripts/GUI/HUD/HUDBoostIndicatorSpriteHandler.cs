@@ -30,7 +30,7 @@ public class HUDBoostIndicatorSpriteHandler : MonoBehaviour {
 		game.EventShipEliminated += OnShipEliminated;
 		
 		GameObject player = game.ActivePlayer;
-		player.GetComponent<PowerController>().EventPowerAttached += HUDBoostIndicatorHandler_EventPowerAttached;
+		player.GetComponent<PowerController>().OnPowerAttachedEvent += HUDBoostIndicatorHandler_EventPowerAttached;
 		
 		gameBuilder.EventGameBuilt -= OnGameBuilt;
 	}
@@ -51,7 +51,7 @@ public class HUDBoostIndicatorSpriteHandler : MonoBehaviour {
 	
 	
 	private void OnEventEnd(object sender, GameObject winner, int info) {
-		prepareToDisable();
+		PrepareToDisable();
 	}
 	
 	private void OnEventStart(object sender, int countdown) {
@@ -66,7 +66,7 @@ public class HUDBoostIndicatorSpriteHandler : MonoBehaviour {
 	
 	private void OnShipEliminated(object sender, GameObject ship) {
 		if (ship == game.ActivePlayer) {
-			prepareToDisable();
+			PrepareToDisable();
 		}
 	}
 	
@@ -94,7 +94,7 @@ public class HUDBoostIndicatorSpriteHandler : MonoBehaviour {
 		iTween.FadeTo(gameObject, 0f, animationTime);
 	}
 	
-	private void prepareToDisable() {
+	private void PrepareToDisable() {
 		StopCoroutine("RefreshIndicator");
 		
 		game.EventEnd -= OnEventEnd;

@@ -20,7 +20,7 @@ public class HUDMessageInGameHandler : MonoBehaviour {
 		game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
 		GameObject activePlayer = game.ActivePlayer;
 		powerController = activePlayer.GetComponent<PowerController>();
-		powerController.EventPowerAttached += OnEventPowerAttached;
+		powerController.OnPowerAttachedEvent += OnEventPowerAttached;
 
 		ChangeAlphaColor(0f);
 		builder.EventGameBuilt -= OnGameBuilt;
@@ -64,7 +64,7 @@ public class HUDMessageInGameHandler : MonoBehaviour {
 	}
 
 	private void CleanScript() {
-		powerController.EventPowerAttached -= OnEventPowerAttached;
+		powerController.OnPowerAttachedEvent -= OnEventPowerAttached;
 		game.EventEnd -= OnEventEnd;
 	}
 }

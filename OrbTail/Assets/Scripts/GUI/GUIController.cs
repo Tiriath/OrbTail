@@ -46,8 +46,8 @@ public class GUIController : MonoBehaviour {
 
     }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         if (remote_write)
         {
@@ -77,12 +77,12 @@ public class GUIController : MonoBehaviour {
 
         }
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+    
+    // Update is called once per frame
+    void Update () {
+    
+    }
 
     /// <summary>
     /// The GUI broker used by the controller
