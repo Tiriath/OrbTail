@@ -13,6 +13,7 @@ public class Boost : Power
     public Boost()
         : base("Boost", PowerGroups.Passive)
     {
+        this.DropRate = 0;
         this.Duration = 0.0f;
         this.Cooldown = 5.0f;
         this.FireSFX = Resources.Load<AudioClip>("Sounds/Powers/Boost");

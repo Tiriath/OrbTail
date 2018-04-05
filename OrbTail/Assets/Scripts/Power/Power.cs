@@ -30,6 +30,11 @@ public abstract class Power
     public int Group { get; private set; }
 
     /// <summary>
+    /// Get the relative drop rate of this power.
+    /// </summary>
+    public int DropRate { get; protected set; }
+
+    /// <summary>
     /// Duration of the power in seconds.
     /// </summary>
     public float Duration { get; protected set; }

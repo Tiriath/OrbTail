@@ -9,6 +9,7 @@ public class Magnet : Power
     public Magnet() 
         : base("Magnet", PowerGroups.Main)
     {
+        this.DropRate = 2;
         this.Duration = 10.0f;
         this.Cooldown = 0.0f;
         this.FireSFX = null;

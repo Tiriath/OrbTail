@@ -10,6 +10,7 @@ public class Jam : Power
     public Jam() 
         : base("Jam", PowerGroups.Jam)
     {
+        this.DropRate = 1;
         this.Duration = 7.0f;
         this.Cooldown = 0.0f;
         this.FireSFX = null;

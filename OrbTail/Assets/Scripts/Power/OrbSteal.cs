@@ -12,6 +12,7 @@ public class OrbSteal : Power
     public OrbSteal() 
         : base("OrbSteal", PowerGroups.Main)
     {
+        this.DropRate = 2;
         this.Duration = 10.0f;
         this.Cooldown = 0.0f;
         this.FireSFX = null;

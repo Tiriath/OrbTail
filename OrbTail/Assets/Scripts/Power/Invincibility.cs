@@ -10,6 +10,7 @@ public class Invincibility : Power
     public Invincibility() 
         : base("Invincibility", PowerGroups.Main)
     {
+        this.DropRate = 2;
         this.Duration = 10.0f;
         this.Cooldown = 0.0f;
         this.FireSFX = null;

@@ -10,6 +10,7 @@ public class Missile : Power
     public Missile() 
         : base("Missile", PowerGroups.Main)
     {
+        this.DropRate = 2;
         this.Duration = 0.0f;
         this.Cooldown = 0.0f;
         this.FireSFX = Resources.Load<AudioClip>("Sounds/Powers/MissileLaunch");

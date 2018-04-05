@@ -3,7 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class PowerGenerator : MonoBehaviour {
+/// <summary>
+/// Game component used to generate random powers on existing unlinked orbs.
+/// </summary>
+public class PowerGenerator : MonoBehaviour
+{
 
     public float delta_generation = 20.0f;
 

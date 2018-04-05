@@ -109,7 +109,7 @@ public class PowerController : MonoBehaviour
     [RPC]
     public void RPCAddPower(string power_name)
     {
-        var power = PowerFactory.Instance.PowerFromName(power_name);
+        var power = PowerFactory.Instance.GetPower(power_name).Generate();
 
         AddPower(power);
     }
@@ -122,7 +122,7 @@ public class PowerController : MonoBehaviour
     [RPC]
     public void RPCFirePower(string power_name)
     {
-        var group = PowerFactory.Instance.GroupFromName(power_name);
+        var group = PowerFactory.Instance.GetPower(power_name).Group;
 
         powers[group].Fire();
     }
