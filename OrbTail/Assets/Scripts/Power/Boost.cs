@@ -2,72 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Grants a temporary boost in speed which propels the ship forward.
+/// </summary>
 public class Boost : Power
 {
-    private const float reload_power_time = 5.0f;
-    private float time_accumulator_to_reload = reload_power_time;
-    private float boost_force = 60.0f;
-    private AudioClip launchSound;
-    private GameObject activePlayer;
-
-    public Boost() : base(PowerGroups.Passive, float.MaxValue, "Boost") {
-        launchSound = Resources.Load<AudioClip>("Sounds/Powers/Boost");
-        activePlayer = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>().ActivePlayer;
-    }
-    
-    public override float IsReady
+    /// <summary>
+    /// Create a new instance.
+    /// </summary>
+    public Boost()
+        : base("Boost", PowerGroups.Passive)
     {
-        get
-        {
-            return time_accumulator_to_reload / reload_power_time;
-        }
+        this.Duration = 0.0f;
+        this.Cooldown = 5.0f;
+        this.FireSFX = Resources.Load<AudioClip>("Sounds/Powers/Boost");
     }
-    
-    public override void Update()
+    public override Power Generate()
     {
-        base.Update();
-
-        time_accumulator_to_reload = Mathf.Clamp(time_accumulator_to_reload + Time.deltaTime, 0.0f, reload_power_time);
-
+        return new Boost();
     }
 
     /// <summary>
-    /// Activate boost on ship if it's available
+    /// Activate boost on ship.
     /// </summary>
-    public override bool Fire()
+    protected override void OnFired(bool is_server_side, bool is_owner_side)
     {
-        if (IsReady >= 1.0f)
-        {
-            time_accumulator_to_reload = 0.0f;
+        base.OnFired(is_server_side, is_owner_side);
 
-            Owner.GetComponent<Rigidbody>().AddForce(Owner.transform.forward * boost_force, ForceMode.Impulse);
-
-            if (Owner == activePlayer) {
-                AudioSource.PlayClipAtPoint(launchSound, Owner.gameObject.transform.position, 0.2f);
-
-
-                #if UNITY_ANDROID || UNITY_IPHONE
-                    Handheld.Vibrate();
-                #endif
-
-            }
-
-            return true;
-        }
-        else
-        {
-
-            return false;
-
-        }
-
+        Owner.GetComponent<Rigidbody>().AddForce(Owner.transform.forward * boost_force, ForceMode.Impulse);
     }
 
-    public override Power Generate()
-    {
-        
-        return new Boost();
-
-    }
-
+    /// <summary>
+    /// Force applied to the ship when activated.
+    /// </summary>
+    private const float boost_force = 60.0f;
 }

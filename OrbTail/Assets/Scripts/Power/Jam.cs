@@ -2,36 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Grants a debuff that inverts steering control for a limited amount of time.
+/// </summary>
 public class Jam : Power
 {
-    private const float power_time = 7.0f;
-
-    public Jam() : base(PowerGroups.Jam, power_time, "Jam") { }
-
-    private IDriver driver;
-    
-    protected override void ActivateClient()
+    public Jam() 
+        : base("Jam", PowerGroups.Jam)
     {
-        var steer_driver = Owner.GetComponent<MovementController>().GetSteerDriver();
-
-        driver = steer_driver.Push( new InvertedSteerDriver(steer_driver.GetDefaultDriver().GetMaxSteer(), steer_driver.GetDefaultDriver().GetSteerSmooth() ));
+        this.Duration = 7.0f;
+        this.Cooldown = 0.0f;
+        this.FireSFX = null;
     }
-
-    public override void Deactivate()
-    {
-        base.Deactivate();
-
-        if (driver != null)
-        {
-            driver.Deactivate();
-        }
-    }
-    
-    public override float IsReady { get { return 0.0f; } }
 
     public override Power Generate()
     {
         return new Jam();
     }
 
+    protected override void OnActivated(bool is_server_side, bool is_owner_side)
+    {
+        base.OnActivated(is_server_side, is_owner_side);
+
+        if (is_owner_side)
+        {
+            var steer_driver = Owner.GetComponent<MovementController>().GetSteerDriver();
+
+            driver = steer_driver.Push(new InvertedSteerDriver(steer_driver.GetDefaultDriver().GetMaxSteer(), steer_driver.GetDefaultDriver().GetSteerSmooth()));
+        }
+    }
+
+    protected override void OnDeactivated(bool is_server_side, bool is_owner_side)
+    {
+        if (is_owner_side && driver != null)
+        {
+            driver.Deactivate();
+        }
+
+        base.OnDeactivated(is_server_side, is_owner_side);
+    }
+
+    private IDriver driver;
 }

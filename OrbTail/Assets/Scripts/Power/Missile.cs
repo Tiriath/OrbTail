@@ -2,104 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Grants a single homing missile that cause massive damage on impact.
+/// </summary>
 public class Missile : Power
 {
-
-    public const string missile_prefab_path = "Prefabs/Power/MissileRocket";
-    private const float power_time = 7.0f;
-	private const float missileforwardOffset = 6f;
-	private AudioClip launchSound;
-
-    public Missile() : base(PowerGroups.Main, float.MaxValue, "Missile") { 
-		launchSound = Resources.Load<AudioClip>("Sounds/Powers/MissileLaunch");
-	}
-    
-    public override bool Fire()
+    public Missile() 
+        : base("Missile", PowerGroups.Main)
     {
+        this.Duration = 0.0f;
+        this.Cooldown = 0.0f;
+        this.FireSFX = Resources.Load<AudioClip>("Sounds/Powers/MissileLaunch");
 
-        if (NetworkHelper.IsOwnerSide(Owner.GetComponent<NetworkView>()))
+        this.missile_object = Resources.Load<GameObject>("Prefabs/Power/MissileRocket");
+    }
+    public override Power Generate()
+    {
+        return new Missile();
+    }
+
+    protected override void OnFired(bool is_server_side, bool is_owner_side)
+    {
+        if (is_owner_side)
         {
+            var missile_location = Owner.transform.position + Owner.transform.forward * offset;
+            var missile_rotation = Owner.transform.rotation;
 
-            //Create a new rocket
-            GameObject missile;
+            GameObject missile = (Network.peerType == NetworkPeerType.Disconnected) ?
+                GameObject.Instantiate(missile_object, missile_location, missile_rotation) as GameObject :
+                Network.Instantiate(missile_object, missile_location, missile_rotation, 0) as GameObject;
 
-            if (Network.peerType == NetworkPeerType.Disconnected)
-            {
-
-                //missile = GameObjectFactory.Instance.Instantiate(missile_prefab_path, Owner.transform.position + Owner.transform.forward * missileforwardOffset, Owner.transform.rotation);
-                
-                //TODO: fix this SH!T
-                var missileRes = Resources.Load(missile_prefab_path);
-                missile = GameObject.Instantiate(missileRes, Owner.transform.position + Owner.transform.forward * missileforwardOffset, Owner.transform.rotation) as GameObject;
-
-            }
-            else
-            {
-
-                //TODO: fix this SH!T
-                var missileRes = Resources.Load(missile_prefab_path);
-                missile = Network.Instantiate(missileRes, Owner.transform.position + Owner.transform.forward * missileforwardOffset, Owner.transform.rotation, 0) as GameObject;
-
-            }
-
-			AudioSource.PlayClipAtPoint(launchSound, Owner.gameObject.transform.position);
-
-            //The missile should have at least the speed of its owner...
             missile.GetComponent<Rigidbody>().AddForce(Owner.GetComponent<Rigidbody>().velocity, ForceMode.VelocityChange);
 
-            //Set its target
-            missile.GetComponent<MissileBehavior>().SetTarget(FindTarget(Owner),
-                                                              Owner);
-
+            missile.GetComponent<MissileBehavior>().SetTarget(FindTarget(Owner), Owner);
         }
 
-        //Once fire it is destroyed
         Deactivate();
-
-        return true;
-
     }
 
     private GameObject FindTarget(GameObject owner)
     {
+        float min_distance = float.MaxValue;
+        GameObject nearest_ship = null;
 
-        var ships = GameObject.FindGameObjectsWithTag(Tags.Ship);
-        float nearestEnemyDistance = float.MaxValue;
-        GameObject nearestEnemyShip = null;
-
-        foreach (GameObject ship in ships)
+        foreach (GameObject ship in GameObject.FindGameObjectsWithTag(Tags.Ship))
         {
-            if (ship == Owner)
+            if (ship != Owner)
             {
+                var distance = (ship.transform.position - Owner.transform.position).sqrMagnitude;
 
-                continue;
-
+                if (distance < min_distance)
+                {
+                    nearest_ship = ship;
+                    min_distance = distance;
+                }
             }
-
-            Vector3 distanceVector = (ship.transform.position - Owner.transform.position);
-            var distance = distanceVector.sqrMagnitude;
-
-            if (distance < nearestEnemyDistance)
-            {
-
-                nearestEnemyShip = ship;
-                nearestEnemyDistance = distance;
-
-            }
-
         }
 
-        return nearestEnemyShip;
-
+        return nearest_ship;
     }
 
-    public override float IsReady { get { return 1.0f; } }
+    // Forward missile offset.
+    private const float offset = 6f;
 
-    public override Power Generate()
-    {
-
-        return new Missile();
-
-    }
-
+    // Missile prefab.
+    private GameObject missile_object;
 }

@@ -30,34 +30,38 @@ public abstract class Power
     public int Group { get; private set; }
 
     /// <summary>
-    /// The owner of the power.
-    /// </summary>
-    public GameObject Owner { get; private set; }
-
-    /// <summary>
-    /// Timestamp when the power was activated.
-    /// </summary>
-    protected float ActivationTime { get; private set; }
-
-    /// <summary>
     /// Duration of the power in seconds.
-    /// Unset if the power has no duration.
     /// </summary>
-    protected float? Duration { get; private set; }
+    public float Duration { get; protected set; }
 
     /// <summary>
-    /// Get whether the power is ready, as percentage.
+    /// Cooldown of the power in seconds.
     /// </summary>
-    public virtual float IsReady
+    public float Cooldown { get; protected set; }
+
+    /// <summary>
+    /// SFX clip played when the power is fired.
+    /// </summary>
+    public AudioClip FireSFX { get; protected set; }
+
+    /// <summary>
+    /// Whether the power is active.
+    /// </summary>
+    public bool IsActive { get; private set; }
+
+    /// <summary>
+    /// Get whether the power can be fired, as percentage.
+    /// </summary>
+    public float IsReady
     {
         get
         {
-            return 1.0f;
+            return Cooldown > 0.0f ? Mathf.Clamp01((Time.time - FireTime) / Cooldown) : 1.0f;       // Assumes powers without a cooldown are always ready.
         }
     }
 
     /// <summary>
-    /// Clone this power
+    /// Clone this power.
     /// </summary>
     public abstract Power Generate();
 
@@ -69,35 +73,21 @@ public abstract class Power
     {
         this.Owner = owner;
         this.ActivationTime = Time.time;
+        this.FireTime = Time.time;
 
-        // Activate the power.
+        OnActivated(NetworkHelper.IsServerSide(), NetworkHelper.IsOwnerSide(Owner.GetComponent<NetworkView>()));
 
-        ActivateShared();
-
-        if(NetworkHelper.IsServerSide())
-        {
-            ActivateServer();
-        }
-
-        if (NetworkHelper.IsOwnerSide(Owner.GetComponent<NetworkView>()))
-        {
-            ActivateClient();
-        }
+        IsActive = true;
     }
     
     /// <summary>
     /// Deactivate the power.
     /// </summary>
-    public virtual void Deactivate()
+    public void Deactivate()
     {
-        // Destroy the VFX.
+        // Deactivate the power.
 
-        if(fx != null)
-        {
-            fx.transform.parent = null;
-
-            GameObjectFactory.Instance.Destroy(kPowerPrefabPath + Name, fx);
-        }
+        OnDeactivated(NetworkHelper.IsServerSide(), NetworkHelper.IsOwnerSide(Owner.GetComponent<NetworkView>()));
 
         // Event.
 
@@ -105,6 +95,26 @@ public abstract class Power
         {
             OnDeactivatedEvent(this);
         };
+
+        IsActive = false;
+    }
+
+    /// <summary>
+    /// Fire the power if possible.
+    /// </summary>
+    /// <returns>Returns true if the power could be fired successfully, returns false otherwise.</returns>
+    public bool Fire()
+    {
+        if (IsReady >= 1.0f && IsActive)
+        {
+            FireTime = Time.time;
+
+            OnFired(NetworkHelper.IsServerSide(), NetworkHelper.IsOwnerSide(Owner.GetComponent<NetworkView>()));
+
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -112,66 +122,83 @@ public abstract class Power
     /// </summary>
     public virtual void Update()
     {
-        // Destroy the power when the duration expires.
+        // Destroy the power when the duration expires (for powers having a duration).
 
-        if (Duration.HasValue && (Time.time >= ActivationTime + Duration.Value))
+        if (IsActive && Duration > 0.0f && (Time.time >= ActivationTime + Duration))
         {
-            Duration = null;
-
             Deactivate();
         }
     }
-    
-    /// <summary>
-    /// Fire the power if possible.
-    /// </summary>
-    /// <returns>Returns true if the power could be fired successfully, returns false otherwise.</returns>
-    public virtual bool Fire() { return false; }
 
     /// <summary>
-    /// Activate the power.
-    /// Called on both server-side and client-side: used to handle cosmetic stuffs (such as VFX).
+    /// Timestamp when the power was activated.
     /// </summary>
-    protected virtual void ActivateShared()
+    protected float ActivationTime { get; private set; }
+
+    /// <summary>
+    /// Timestamp when the power was fired.
+    /// </summary>
+    protected float FireTime { get; private set; }
+
+    /// <summary>
+    /// The owner of the power.
+    /// </summary>
+    protected GameObject Owner { get; private set; }
+
+    /// <summary>
+    /// Called whenever the power is activated.
+    /// @param is_server_side Whether the activation happened on the server-side.
+    /// @param is_owner_side Whether the activation happened on the owner-side.
+    /// </summary>
+    protected virtual void OnActivated(bool is_server_side, bool is_owner_side)
     {
-        fx = GameObjectFactory.Instance.Instantiate(kPowerPrefabPath + Name, Owner.transform.position, Quaternion.identity);
+        vfx = GameObjectFactory.Instance.Instantiate(kPowerPrefabPath + Name, Owner.transform.position, Quaternion.identity);
 
-        fx.transform.parent = Owner.transform;
+        vfx.transform.parent = Owner.transform;
     }
 
     /// <summary>
-    /// Activate the power.
-    /// Called on server-side: used to modify tail controller.
+    /// Called whenever the power is deactivated.
+    /// @param is_server_side Whether the deactivation happened on the server-side.
+    /// @param is_owner_side Whether the deactivation happened on the owner-side.
     /// </summary>
-    protected virtual void ActivateServer()
+    protected virtual void OnDeactivated(bool is_server_side, bool is_owner_side)
     {
+        if (vfx != null)
+        {
+            vfx.transform.parent = null;
 
+            GameObjectFactory.Instance.Destroy(kPowerPrefabPath + Name, vfx);
+        }
     }
 
     /// <summary>
-    /// Activate the power. 
-    /// Called on client-side: used to modify movement controller.
+    /// Called whenever the power is fired.
+    /// @param is_server_side Whether the firing happened on the server-side.
+    /// @param is_owner_side Whether the firing happened on the owner-side.
     /// </summary>
-    protected virtual void ActivateClient()
+    protected virtual void OnFired(bool is_server_side, bool is_owner_side)
     {
-
+        if (FireSFX)
+        {
+            AudioSource.PlayClipAtPoint(FireSFX, Owner.gameObject.transform.position, 0.2f);
+        }
     }
 
     /// <summary>
-    /// Create a new power from explicit group, duration and name.
+    /// Create a new power.
     /// </summary>
     /// <param name="group">Power group.</param>
-    /// <param name="duration">Duration of the power, in seconds.</param>
     /// <param name="name">Power name</param>
-    protected Power(int group, float? duration, string name)
+    protected Power(string name, int group)
     {
         this.Group = group;
-        this.Duration = duration;
         this.Name = name;
+        this.IsActive = false;
     }
 
     /// <summary>
     /// VFX object associated to the power.
     /// </summary>
-    private GameObject fx;
+    private GameObject vfx;
 }

@@ -2,61 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Orbs that are detached by this ship as a result of a fight are stolen directly.
+/// </summary>
 public class OrbSteal : Power
 {
-    private const float power_time = 10.0f;
     private List<TailController> tailControllers;
 
-    public OrbSteal() : base(PowerGroups.Main, power_time, "OrbSteal") { }
-
-    protected override void ActivateServer()
+    public OrbSteal() 
+        : base("OrbSteal", PowerGroups.Main)
     {
-        tailControllers = new List<TailController>();
+        this.Duration = 10.0f;
+        this.Cooldown = 0.0f;
+        this.FireSFX = null;
+    }
+    public override Power Generate()
+    {
+        return new OrbSteal();
+    }
 
-        foreach (GameObject ship in GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>().ShipsInGame) {
-            TailController tailController = ship.GetComponent<TailController>();
-            tailController.OnEventFight += eventLogger_EventFight;
-            tailControllers.Add(tailController);
+    protected override void OnActivated(bool is_server_side, bool is_owner_side)
+    {
+        base.OnActivated(is_server_side, is_owner_side);
+
+        if (is_server_side)
+        {
+            tailControllers = new List<TailController>();
+
+            foreach (GameObject ship in GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>().ShipsInGame)
+            {
+                TailController tailController = ship.GetComponent<TailController>();
+                tailController.OnEventFight += OnFight;
+                tailControllers.Add(tailController);
+            }
         }
 
     }
-
-    void eventLogger_EventFight(object sender, IList<GameObject> orbs, GameObject attacker, GameObject defender)
+    protected override void OnDeactivated(bool is_server_side, bool is_owner_side)
     {
-        if (attacker == Owner) {
+        if(is_server_side)
+        {
+            foreach (TailController tailController in tailControllers)
+            {
+                tailController.OnEventFight -= OnFight;
+            }
+        }
 
+        base.OnDeactivated(is_server_side, is_owner_side);
+    }
+
+    /// <summary>
+    /// Called whenever a fight between this ship and another one occurs.
+    /// </summary>
+    void OnFight(object sender, IList<GameObject> orbs, GameObject attacker, GameObject defender)
+    {
+        if (attacker == Owner)
+        {
             foreach (GameObject orb in orbs)
             {
-                if (!orb.GetComponent<OrbController>().IsLinked) {
+                if (!orb.GetComponent<OrbController>().IsLinked)
+                {
                     attacker.GetComponent<TailController>().AttachDriver.Top().AttachOrbs(orb, attacker.GetComponent<Tail>());
                 }
             }
-
         }
     }
-
-    public override void Deactivate()
-    {
-
-        if (NetworkHelper.IsServerSide()) {
-
-            foreach (TailController tailController in tailControllers) {
-                tailController.OnEventFight -= eventLogger_EventFight;
-            }
-
-        }
-
-        base.Deactivate();
-
-    }
-
-    public override float IsReady { get { return 1.0f; } }
-
-    public override Power Generate()
-    {
-
-        return new OrbSteal();
-
-    }
-
 }

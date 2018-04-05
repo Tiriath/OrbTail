@@ -1,40 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Magnet : Power {
-	private const float newProximityRadius = 10f;
-	private const float powerTime = 10f;
-	private float oldProximityRadius;
-	private ProximityHandler proximityHandler;
+/// <summary>
+/// Inflate the proximity radius of the ship in order to collect orbs more easily. #TODO Not an actual magnet, limited utility.
+/// </summary>
+public class Magnet : Power
+{
+    public Magnet() 
+        : base("Magnet", PowerGroups.Main)
+    {
+        this.Duration = 10.0f;
+        this.Cooldown = 0.0f;
+        this.FireSFX = null;
+    }
 
-	public Magnet() : base(PowerGroups.Main, powerTime, "Magnet") { }
+    public override Power Generate()
+    {
+        return new Magnet();
+    }
 
+    protected override void OnActivated(bool is_server_side, bool is_owner_side)
+    {
+        base.OnActivated(is_server_side, is_owner_side);
 
-	protected override void ActivateServer()
-	{
-		proximityHandler = Owner.GetComponentInChildren<ProximityHandler>();
-		oldProximityRadius = proximityHandler.Radius;
-		proximityHandler.Radius = newProximityRadius;
-	}
+        if (is_server_side)
+        {
+            proximity = Owner.GetComponentInChildren<ProximityHandler>();
+            proximity.Radius *= radius_factor;
+        }
+    }
 
+    protected override void OnDeactivated(bool is_server_side, bool is_owner_side)
+    {
+        if(is_server_side)
+        {
+            proximity.Radius /= radius_factor;
+        }
 
-	public override void Deactivate()
-	{
+        base.OnDeactivated(is_server_side, is_owner_side);
+    }
 
-		if (NetworkHelper.IsServerSide()) {
-			proximityHandler.Radius = oldProximityRadius;
-		}
+    private const float radius_factor = 5.0f;
 
-		base.Deactivate();
-		
-	}
-	
-	public override float IsReady { get { return 1.0f; } }
-	
-	public override Power Generate()
-	{
-		
-		return new Magnet();
-		
-	}
+    private ProximityHandler proximity;
 }

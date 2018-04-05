@@ -16,32 +16,23 @@ public class MissileBehavior : MonoBehaviour {
 
     public void SetTarget(GameObject target, GameObject owner)
     {
-
         Target = target;
         Owner = owner;
 
-        if (Network.peerType != NetworkPeerType.Disconnected &&
-            GetComponent<NetworkView>().isMine)
+        if (Network.peerType != NetworkPeerType.Disconnected && GetComponent<NetworkView>().isMine)
         {
-
             GetComponent<NetworkView>().RPC("RPCSetTarget", RPCMode.Others, target.GetComponent<NetworkView>().viewID, owner.GetComponent<NetworkView>().viewID);
-
         }
-
     }
 
     [RPC]
     private void RPCSetTarget(NetworkViewID target_id, NetworkViewID owner_id)
     {
-
-        SetTarget(NetworkView.Find(target_id).gameObject,
-                  NetworkView.Find(owner_id).gameObject);
-
+        SetTarget(NetworkView.Find(target_id).gameObject, NetworkView.Find(owner_id).gameObject);
     }
 
     void Start()
     {
-
         if(NetworkHelper.IsServerSide())
         {
 
@@ -50,7 +41,6 @@ public class MissileBehavior : MonoBehaviour {
         }
 
         explosionSound = Resources.Load<AudioClip>("Sounds/Powers/Explosion");
-
     }
 
     void Update()
