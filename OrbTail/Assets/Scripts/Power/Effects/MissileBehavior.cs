@@ -95,7 +95,7 @@ public class MissileBehavior : MonoBehaviour
 
         Target = null;
         GetComponent<Collider>().enabled = false;
-        GetComponent<ParticleSystem>().enableEmission = false;
+
         GetComponent<MeshFilter>().mesh = null;
 
         Destroy(explosion);

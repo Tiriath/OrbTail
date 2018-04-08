@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class HUDMenuButtonHandler : GUIMenuChoose {
@@ -40,7 +41,7 @@ public class HUDMenuButtonHandler : GUIMenuChoose {
 				//Okay, good game, let's go home...
 				Network.Disconnect();
 				
-				Application.LoadLevel("MenuMain");
+				SceneManager.LoadScene("MenuMain");
 			}
 		}
 	}

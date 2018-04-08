@@ -73,17 +73,6 @@ public class GameIdentity : MonoBehaviour {
     }
 
     /// <summary>
-    /// Is the player local?
-    /// </summary>
-    public bool IsLocal
-    {
-        get
-        {
-            return NetworkHelper.IsOwnerSide(gameObject.GetComponent<NetworkView>());
-        }
-    }
-
-    /// <summary>
     /// The score of the player
     /// </summary>
     public int Score;
@@ -125,17 +114,8 @@ public class GameIdentity : MonoBehaviour {
         Score += score;
 
         NotifyScore(score);
-
-        if (Network.isServer)
-        {
-
-            GetComponent<NetworkView>().RPC("SetScore", RPCMode.Others, Score);
-
-        }
-
     }
-
-    [RPC]
+    
     public void SetScore(int score)
     {
 
@@ -144,14 +124,6 @@ public class GameIdentity : MonoBehaviour {
         Score = score;
 
         NotifyScore(delta);
-
-        if (Network.isServer)
-        {
-
-            GetComponent<NetworkView>().RPC("SetScore", RPCMode.Others, Score);
-
-        }
-
     }
 
     public void ResetScore()
@@ -164,15 +136,4 @@ public class GameIdentity : MonoBehaviour {
         NotifyScore(-delta);
 
     }
-
-    [RPC]
-    public void RPCSetGameId(int id)
-    {
-
-        Id = id;
-
-        NotifyIdSet(id);
-
-    }
-
 }

@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Linq;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public abstract class NetworkPlayerBuilder : MonoBehaviour
 {
@@ -188,14 +186,13 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
     public void SetReady(bool value)
     {
 
-        GetComponent<NetworkView>().RPC("RPCPlayerReady", RPCMode.AllBuffered, Id, value);
+        //GetComponent<NetworkView>().RPC("RPCPlayerReady", RPCMode.AllBuffered, Id, value);
 
     }
     
     /// <summary>
     /// Called when this device has acquired an id
     /// </summary>
-    [RPC]
     protected void RPCIdAcquired(int id)
     {
 
@@ -208,7 +205,6 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
     /// <summary>
     /// Called when a new player has been registered
     /// </summary>
-    [RPC]
     protected void RPCPlayerRegistered(int id, string name)
     {
 
@@ -219,7 +215,6 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
     /// <summary>
     /// Called when a player has been unregistered
     /// </summary>
-    [RPC]
     protected void RPCPlayerUnregistered(int id)
     {
 
@@ -230,7 +225,6 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
     /// <summary>
     /// Called when a new player declared himself *ready*
     /// </summary>
-    [RPC]
     protected void RPCPlayerReady(int id, bool value)
     {
 
@@ -241,15 +235,13 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
     /// <summary>
     /// Request the registration of a player
     /// </summary>
-    [RPC]
     protected void RPCRegisterPlayer(NetworkPlayer player, string name)
     {
 
         RegisterPlayer(player, name);
 
     }
-
-    [RPC]
+    
     protected void RPCTutorialDismissed(NetworkPlayer player)
     {
 
@@ -261,7 +253,6 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
     /// Loads an arena
     /// </summary>
     /// <param name="arena">arena name</param>
-    [RPC]
     protected void RPCLoadArena(string arena)
     {
 
@@ -269,22 +260,20 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
 
         IsArenaLoading = true;
 
-        Application.LoadLevel(arena);
+        SceneManager.LoadScene(arena);
 
     }
 
     /// <summary>
     /// Called when the arena has been loaded
     /// </summary>
-    [RPC]
     protected void RPCArenaLoaded(int id)
     {
 
         ArenaLoaded(id);
 
     }
-
-    [RPC]
+    
     protected void RPCCreatePlayer(Vector3 position)
     {
 
@@ -298,7 +287,7 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
         identity.CopyTo(player.GetComponent<PlayerIdentity>());
 
         //TODO: fix this
-        player.GetComponent<NetworkView>().RPC("RPCSetGameId", RPCMode.All, Id.Value);
+        //player.GetComponent<NetworkView>().RPC("RPCSetGameId", RPCMode.All, Id.Value);
         player.GetComponent<GameIdentity>().Id = Id.Value;
 
         Destroy(identity);
@@ -306,13 +295,13 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
         //Tells the server that the player is ready to go
         if (!Network.isServer) {
 
-            GetComponent<NetworkView>().RPC("RPCPlayerCreated", RPCMode.Server, Id, player.GetComponent<NetworkView>().viewID);
+            //GetComponent<NetworkView>().RPC("RPCPlayerCreated", RPCMode.Server, Id, player.GetComponent<NetworkView>().viewID);
 
         }
         else
         {
 
-            RPCPlayerCreated(Id.Value, player.GetComponent<NetworkView>().viewID);
+            //RPCPlayerCreated(Id.Value, player.GetComponent<NetworkView>().viewID);
 
         }
         
@@ -321,8 +310,7 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
         GameObject.FindGameObjectWithTag(Tags.MainCamera).GetComponent<CameraMovement>().LookAt(player);
 
     }
-
-    [RPC]
+    
     protected void RPCPlayerCreated(int id, NetworkViewID view_id)
     {
 

@@ -1,35 +1,36 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GUIChooseArena : GUIMenuChoose {
-	private GameBuilder builder;
-	private float disabledAlpha = 0.1f;
+    private GameBuilder builder;
+    private float disabledAlpha = 0.1f;
 
-	// Use this for initialization
-	public override void Start () {
-		base.Start();
+    // Use this for initialization
+    public override void Start () {
+        base.Start();
 
-		builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-		manageRandomButton();
+        builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+        ManageRandomButton();
 
-		if (builder.Action == GameBuilder.BuildMode.Client) {
-			ManageClientArenaButtons();
-		}
-	}
+        if (builder.Action == GameBuilder.BuildMode.Client) {
+            ManageClientArenaButtons();
+        }
+    }
 
 
-	protected override void OnSelect (GameObject target)
-	{
-		//The touch or the mouse collided with something
-		if (target.tag == Tags.ArenaSelector)
-		{
-			
-			builder.ArenaName = target.name;
-			
-			Application.LoadLevel("MenuChooseShip");
-			
-		}
-		else if (target.name == "Any") {
+    protected override void OnSelect (GameObject target)
+    {
+        //The touch or the mouse collided with something
+        if (target.tag == Tags.ArenaSelector)
+        {
+            
+            builder.ArenaName = target.name;
+            
+            SceneManager.LoadScene("MenuChooseShip");
+            
+        }
+        else if (target.name == "Any") {
 
             if (builder.Action == GameBuilder.BuildMode.SinglePlayer)
             {
@@ -45,49 +46,49 @@ public class GUIChooseArena : GUIMenuChoose {
                 builder.ArenaName = "Any";
 
             }
-            			
-			Application.LoadLevel("MenuChooseShip");
+                        
+            SceneManager.LoadScene("MenuChooseShip");
 
-		}
-		else if (target.tag == Tags.BackButton) {
+        }
+        else if (target.tag == Tags.BackButton) {
 
-			Application.LoadLevel("MenuChooseGameMode");
+            SceneManager.LoadScene("MenuChooseGameMode");
 
-		}
+        }
 
-	}
+    }
 
 
-	private void manageRandomButton() {
-		GameObject randomButton = GameObject.Find("Arenas/Any");
-		
-		switch (builder.Action) {
-		case GameBuilder.BuildMode.Client:
-			randomButton.GetComponent<TextMesh>().text = "Any";
-			break;
-		case GameBuilder.BuildMode.Host:
-			randomButton.GetComponent<Renderer>().enabled = false;
-			randomButton.GetComponent<Collider>().enabled = false;
-			break;
-		}
-	}
+    private void ManageRandomButton() {
+        GameObject randomButton = GameObject.Find("Arenas/Any");
+        
+        switch (builder.Action) {
+        case GameBuilder.BuildMode.Client:
+            randomButton.GetComponent<TextMesh>().text = "Any";
+            break;
+        case GameBuilder.BuildMode.Host:
+            randomButton.GetComponent<Renderer>().enabled = false;
+            randomButton.GetComponent<Collider>().enabled = false;
+            break;
+        }
+    }
 
-	private void ManageClientArenaButtons() {
-		HostFetcher hostFetcher = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<HostFetcher>();
-		bool oneIsActive = false;
+    private void ManageClientArenaButtons() {
+        HostFetcher hostFetcher = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<HostFetcher>();
+        bool oneIsActive = false;
 
-		foreach (GameObject arenaButton in GameObject.FindGameObjectsWithTag(Tags.ArenaSelector)) {
-			if (!hostFetcher.HasArena(arenaButton.name)) {
-				arenaButton.GetComponent<Collider>().enabled = false;
-				arenaButton.GetComponent<Renderer>().material.color = new Color(255, 255, 255, disabledAlpha);
-			}
-			else {
-				oneIsActive = true;
-			}
-		}
+        foreach (GameObject arenaButton in GameObject.FindGameObjectsWithTag(Tags.ArenaSelector)) {
+            if (!hostFetcher.HasArena(arenaButton.name)) {
+                arenaButton.GetComponent<Collider>().enabled = false;
+                arenaButton.GetComponent<Renderer>().material.color = new Color(255, 255, 255, disabledAlpha);
+            }
+            else {
+                oneIsActive = true;
+            }
+        }
 
-		if (!oneIsActive) {
-			GameObject.Find("Arenas/Any").SetActive(false);
-		}
-	}
+        if (!oneIsActive) {
+            GameObject.Find("Arenas/Any").SetActive(false);
+        }
+    }
 }

@@ -9,18 +9,6 @@ using UnityEngine;
 /// </summary>
 public class NetworkHelper
 {
-
-    /// <summary>
-    /// Returns true if the network view is mine or the device is disconnected
-    /// </summary>
-    public static bool IsOwnerSide(NetworkView network_view)
-    {
-
-        return network_view.isMine ||
-               Network.peerType == NetworkPeerType.Disconnected;
-
-    }
-
     /// <summary>
     /// Returns true if this is the server or the device is disconnected
     /// </summary>

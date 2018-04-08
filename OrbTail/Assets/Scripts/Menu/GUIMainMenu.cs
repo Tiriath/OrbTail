@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GUIMainMenu : GUIMenuChoose {
@@ -47,7 +48,7 @@ public class GUIMainMenu : GUIMenuChoose {
             Application.Quit();
         }
         else if (target.name == "CreditsButton") {
-            Application.LoadLevel("MenuCredits");
+            SceneManager.LoadScene("MenuCredits");
         }
     }
     
@@ -57,14 +58,14 @@ public class GUIMainMenu : GUIMenuChoose {
         var builder = master.GetComponent<GameBuilder>();
         builder.Action = GameBuilder.BuildMode.SinglePlayer;
         
-        Application.LoadLevel("MenuChooseGameMode");
+        SceneManager.LoadScene("MenuChooseGameMode");
         
     }
     
     private void StartMultiPlayer()
     {
         
-        Application.LoadLevel("MenuServerClient");
+        SceneManager.LoadScene("MenuServerClient");
         
     }
 

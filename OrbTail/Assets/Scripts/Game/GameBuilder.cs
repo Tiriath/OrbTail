@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Linq;
 
@@ -211,7 +212,7 @@ public class GameBuilder : MonoBehaviour {
 
                 NetworkBuilder.Setup();
 
-                Application.LoadLevel("MenuMatchmaking");
+                SceneManager.LoadScene("MenuMatchmaking");
                 
                 NetworkBuilder.EventDisconnected += NetworkBuilder_EventDisconnected;
 
@@ -228,7 +229,7 @@ public class GameBuilder : MonoBehaviour {
 
                 NetworkBuilder.Setup();
 
-                Application.LoadLevel("MenuMatchmaking");
+                SceneManager.LoadScene("MenuMatchmaking");
                 
                 NetworkBuilder.EventDisconnected += NetworkBuilder_EventDisconnected;
 

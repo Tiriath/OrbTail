@@ -76,9 +76,6 @@ public class HostFetcher : MonoBehaviour
 
         if (server_event == MasterServerEvent.HostListReceived)
         {
-
-            var builder = GetComponent<GameBuilder>();
-
             var all_hosts = MasterServer.PollHostList();
 
             hosts_found_ = from host in all_hosts

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -342,18 +343,17 @@ public class Game : MonoBehaviour {
 
     void master_EventPlayerLeft(object sender, int id)
     {
-
         if (!event_end_fired_)
         {
-
             //Restores the orbs
+
             var disconnected_player = (from player in ShipsInGame
                                        where player.GetComponent<GameIdentity>().Id == id
                                        select player).First();
 
             //Detaches all orbs from the player's tail
-            var orbs = (from orb in disconnected_player.GetComponent<Tail>().DetachOrbs(int.MaxValue)
-                        select orb);
+
+            disconnected_player.GetComponent<Tail>().DetachOrbs(int.MaxValue);
 
             //Removes the disconnected player
             RemoveShip(disconnected_player);
@@ -367,9 +367,7 @@ public class Game : MonoBehaviour {
                 game_mode_.NotifyWin();
 
             }
-
         }
-
     }
 
     void Game_EventStart(object sender, int countdown)
@@ -467,7 +465,7 @@ public class Game : MonoBehaviour {
         //Okay, good game, let's go home...
         Network.Disconnect();
 
-        Application.LoadLevel("MenuMain");
+        SceneManager.LoadScene("MenuMain");
     }
 
     /// <summary>

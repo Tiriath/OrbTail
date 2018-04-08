@@ -1,10 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 public class ClientBuilder : NetworkPlayerBuilder {
 
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
     public override void Setup()
     {
@@ -28,14 +38,14 @@ public class ClientBuilder : NetworkPlayerBuilder {
     void OnConnectedToServer()
     {
 
-        PlayerIdentity identity = GetComponents<PlayerIdentity>().SkipWhile((PlayerIdentity p) => { return !p.IsHuman; }).First();
+        //PlayerIdentity identity = GetComponents<PlayerIdentity>().SkipWhile((PlayerIdentity p) => { return !p.IsHuman; }).First();
        
         EventIdAcquired += ClientBuilder_EventIdAcquired;
 
         //Register the server identity
         Debug.Log("Registering to server...");
 
-        GetComponent<NetworkView>().RPC("RPCRegisterPlayer", RPCMode.Server, Network.player, identity.ShipName);
+        //GetComponent<NetworkView>().RPC("RPCRegisterPlayer", RPCMode.Server, Network.player, identity.ShipName);
         
     }
 
@@ -91,19 +101,17 @@ public class ClientBuilder : NetworkPlayerBuilder {
         }
 
     }
-    
-    // A new level has been loaded
-    void OnLevelWasLoaded(int level)
-    {
 
+    /// <summary>
+    /// Called whenever a new scene is loaded.
+    /// </summary>
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         if (IsArenaLoading)
         {
-
             //Tells the server that the arena was loaded successfully
-            GetComponent<NetworkView>().RPC("RPCArenaLoaded", RPCMode.Server, Id);
-
+            //GetComponent<NetworkView>().RPC("RPCArenaLoaded", RPCMode.Server, Id);
         }
-        
     }
 
 

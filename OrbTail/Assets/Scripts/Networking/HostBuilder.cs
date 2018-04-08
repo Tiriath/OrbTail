@@ -1,10 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 public class HostBuilder : NetworkPlayerBuilder
 {
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
     public override void Setup()
     {
@@ -147,7 +157,7 @@ public class HostBuilder : NetworkPlayerBuilder
 
             Network.RemoveRPCs(player);
 
-            GetComponent<NetworkView>().RPC("RPCPlayerUnregistered", RPCMode.All, id);
+            //GetComponent<NetworkView>().RPC("RPCPlayerUnregistered", RPCMode.All, id);
         
         }
         else
@@ -158,18 +168,14 @@ public class HostBuilder : NetworkPlayerBuilder
         }
 
     }
-    
-    // A new level has been loaded
-    void OnLevelWasLoaded(int level)
-    {
 
+    // A new level has been loaded
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         if (Registered)
         {
-
             ArenaLoaded(Id.Value);
-
         }
-        
     }
 
     private void HostBuilder_EventErrorOccurred(object sender, string message)
@@ -227,7 +233,7 @@ public class HostBuilder : NetworkPlayerBuilder
 
             Network.maxConnections = 0;
             //Every device should load the proper arena
-            GetComponent<NetworkView>().RPC("RPCLoadArena", RPCMode.All, GetComponent<GameBuilder>().ArenaName);
+            //GetComponent<NetworkView>().RPC("RPCLoadArena", RPCMode.All, GetComponent<GameBuilder>().ArenaName);
             
         }
 
@@ -249,7 +255,7 @@ public class HostBuilder : NetworkPlayerBuilder
 
             player_ids_[player] = id;
 
-            GetComponent<NetworkView>().RPC("RPCPlayerRegistered", RPCMode.AllBuffered, id, name);
+            //GetComponent<NetworkView>().RPC("RPCPlayerRegistered", RPCMode.AllBuffered, id, name);
 
             if (Network.player.Equals(player))
             {
@@ -260,7 +266,7 @@ public class HostBuilder : NetworkPlayerBuilder
             else
             {
 
-                GetComponent<NetworkView>().RPC("RPCIdAcquired", player, id);
+                //GetComponent<NetworkView>().RPC("RPCIdAcquired", player, id);
 
             }
 
@@ -282,7 +288,7 @@ public class HostBuilder : NetworkPlayerBuilder
                 for (int i = 0; i < kMaxViewId; i++)
                 {
 
-                    GetComponent<NetworkView>().RPC("RPCSendViewID", RPCMode.All);
+                    //GetComponent<NetworkView>().RPC("RPCSendViewID", RPCMode.All);
 
                 }
 
@@ -290,12 +296,12 @@ public class HostBuilder : NetworkPlayerBuilder
                 ready_players_.Clear();
 
                 //Create the game
-                var game_resource = Resources.Load("Prefabs/Game");
+                //var game_resource = Resources.Load("Prefabs/Game");
 
-                GameObject game = Network.Instantiate(game_resource, Vector3.zero, Quaternion.identity, 0) as GameObject;
+                //GameObject game = Network.Instantiate(game_resource, Vector3.zero, Quaternion.identity, 0) as GameObject;
 
                 //Set the game mode and the arena
-                game.GetComponent<NetworkView>().RPC("RPCSetGame", RPCMode.All, GameModes.Resolve(GetComponent<GameBuilder>().GameMode));
+                //game.GetComponent<NetworkView>().RPC("RPCSetGame", RPCMode.All, GameModes.Resolve(GetComponent<GameBuilder>().GameMode));
 
                 //Create the ships
                 GameObject[] spawn_points = GameObject.FindGameObjectsWithTag(Tags.SpawnPoint);
@@ -306,7 +312,7 @@ public class HostBuilder : NetworkPlayerBuilder
                     if (!player_id.Key.Equals(Network.player))
                     {
 
-                        GetComponent<NetworkView>().RPC("RPCCreatePlayer", player_id.Key, spawn_points[player_id.Value].transform.position);
+                        //GetComponent<NetworkView>().RPC("RPCCreatePlayer", player_id.Key, spawn_points[player_id.Value].transform.position);
 
                     }
                     else
@@ -337,9 +343,9 @@ public class HostBuilder : NetworkPlayerBuilder
             //Everyone created its own ship, wait until each player has dismissed the tutorial
             ready_players_.Clear();
 
-            var game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
+            //var game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
 
-            game.GetComponent<NetworkView>().RPC("RPCGameEnable", RPCMode.All, true);
+            //game.GetComponent<NetworkView>().RPC("RPCGameEnable", RPCMode.All, true);
 
         }
 
@@ -357,7 +363,7 @@ public class HostBuilder : NetworkPlayerBuilder
 
             Debug.Log("All tutorial were dismissed");
 
-            GetComponent<NetworkView>().RPC("RPCNotifyGameReady", RPCMode.All);
+            //GetComponent<NetworkView>().RPC("RPCNotifyGameReady", RPCMode.All);
             
         }
 

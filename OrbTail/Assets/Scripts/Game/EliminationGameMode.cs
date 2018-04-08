@@ -36,7 +36,6 @@ public class EliminationGameMode: BaseGameMode
     {
 
         Tail tail;
-        var tails = new List<Tail>();
 
         var orbs = new Queue<GameObject>(GameObject.FindGameObjectsWithTag(Tags.Orb));
         int orbs_per_player = orbs.Count / Game.ShipsInGame.Count();
@@ -81,7 +80,7 @@ public class EliminationGameMode: BaseGameMode
 
     public override GameObject Winner
     {
-	 
+     
         get
         {
 

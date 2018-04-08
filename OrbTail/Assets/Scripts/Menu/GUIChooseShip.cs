@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GUIChooseShip : GUIMenuChoose {
@@ -6,15 +7,15 @@ public class GUIChooseShip : GUIMenuChoose {
     private GameObject master;
     private GameObject[] selectors;
 
-	// Use this for initialization
-	public override void Start () {
-	
-		base.Start();
+    // Use this for initialization
+    public override void Start () {
+    
+        base.Start();
         master = GameObject.FindGameObjectWithTag(Tags.Master);
         selectors = GameObject.FindGameObjectsWithTag(Tags.ShipSelector);
 
 
-	}
+    }
 
     private void BuildGame()
     {
@@ -51,29 +52,29 @@ public class GUIChooseShip : GUIMenuChoose {
         master.GetComponent<GameBuilder>().BuildGame();
 
     }
-	
+    
 
-	protected override void OnSelect (GameObject target)
-	{
+    protected override void OnSelect (GameObject target)
+    {
 
-		if (target.tag == Tags.ShipSelector)
-		{
-			
-			var chosen_identity = target.GetComponent<PlayerIdentity>();
-			
-			//A ship has been chosen
-			var identity = master.AddComponent<PlayerIdentity>();
-			
-			chosen_identity.CopyTo(identity);
-			
-			identity.IsHuman = true;
-			
-			BuildGame();
-			
-		}
-		else if (target.tag == Tags.BackButton) {
-			Application.LoadLevel("MenuChooseArena");
-		}
-	}
-	
+        if (target.tag == Tags.ShipSelector)
+        {
+            
+            var chosen_identity = target.GetComponent<PlayerIdentity>();
+            
+            //A ship has been chosen
+            var identity = master.AddComponent<PlayerIdentity>();
+            
+            chosen_identity.CopyTo(identity);
+            
+            identity.IsHuman = true;
+            
+            BuildGame();
+            
+        }
+        else if (target.tag == Tags.BackButton) {
+            SceneManager.LoadScene("MenuChooseArena");
+        }
+    }
+    
 }

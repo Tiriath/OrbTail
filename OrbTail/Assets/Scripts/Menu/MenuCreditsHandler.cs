@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class MenuCreditsHandler : GUIMenuChoose {
@@ -7,7 +8,7 @@ public class MenuCreditsHandler : GUIMenuChoose {
 	{
 		base.OnSelect (target);
 		if (target.tag == Tags.BackButton) {
-			Application.LoadLevel("MenuMain");
+			SceneManager.LoadScene("MenuMain");
 		}
 	}
 }

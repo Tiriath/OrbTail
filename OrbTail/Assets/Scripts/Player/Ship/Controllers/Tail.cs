@@ -32,8 +32,6 @@ public class Tail : MonoBehaviour
     
     void Start ()
     {
-        var game = GameObject.FindGameObjectWithTag(Tags.Game);
-
         game_identity = GetComponent<GameIdentity>();
 
         UpdateTailColor();

@@ -1,27 +1,34 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class SinglePlayerBuilder : MonoBehaviour {
-
+public class SinglePlayerBuilder : MonoBehaviour
+{
     // Use this for initialization
     void Start () {
 
         DontDestroyOnLoad(gameObject);
 
-        //Loads the proper arena
-        Application.LoadLevel(GetComponent<GameBuilder>().ArenaName);
-
-    }
-    
-    // Update is called once per frame
-    void Update () {
-    
+        SceneManager.LoadScene(GetComponent<GameBuilder>().ArenaName);      // Load the arena.
     }
 
-    // A new level has been loaded
-    void OnLevelWasLoaded(int level)
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    
+    /// <summary>
+    /// Called whenever a new scene is loaded.
+    /// </summary>
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
 
         //Gathers the players' identities

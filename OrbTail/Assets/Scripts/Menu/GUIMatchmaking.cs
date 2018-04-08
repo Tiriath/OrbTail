@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,10 +17,10 @@ public class GUIMatchmaking : GUIMenuChoose {
     private Vector3 kLocalScale = 0.15f * Vector3.one;
     private static Color kDisabledColor = Color.grey;
 
-	// Use this for initialization
-	public override void Start ()
+    // Use this for initialization
+    public override void Start ()
     {
-		base.Start();
+        base.Start();
 
         //The icons (disabled by default)
         player_icons = (from icon in GameObject.FindGameObjectsWithTag(Tags.ShipSelector)
@@ -47,20 +47,20 @@ public class GUIMatchmaking : GUIMenuChoose {
 
         network_builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>().NetworkBuilder;
 
-        network_builder.EventIdAcquired += network_builder_EventIdAcquired;
-        network_builder.EventPlayerRegistered += network_builder_EventPlayerRegistered;
-        network_builder.EventPlayerUnregistered += network_builder_EventPlayerUnregistered;
-        network_builder.EventPlayerReady += network_builder_EventPlayerReady;
-        network_builder.EventNoGame += network_builder_EventNoGame;
-        network_builder.EventErrorOccurred += network_builder_EventErrorOccurred;
-        network_builder.EventDisconnected += network_builder_EventDisconnected;
+        network_builder.EventIdAcquired += OnEventIdAcquired;
+        network_builder.EventPlayerRegistered += OnEventPlayerRegistered;
+        network_builder.EventPlayerUnregistered += OnEventPlayerUnregistered;
+        network_builder.EventPlayerReady += OnEventPlayerReady;
+        network_builder.EventNoGame += OnEventNoGame;
+        network_builder.EventErrorOccurred += OnEventErrorOccurred;
+        network_builder.EventDisconnected += OnEventDisconnected;
 
-        network_builder.EventErrorOccurred += network_builder_EventErrorOccurred;
-        network_builder.EventNoGame += network_builder_EventNoGame;
+        network_builder.EventErrorOccurred += OnEventErrorOccurred;
+        network_builder.EventNoGame += OnEventNoGame;
         
-	}
+    }
 
-    void network_builder_EventDisconnected(object sender, string message)
+    void OnEventDisconnected(object sender, string message)
     {
 
         error_message.GetComponent<TextMesh>().text = "disconnected";
@@ -68,7 +68,7 @@ public class GUIMatchmaking : GUIMenuChoose {
 
     }
 
-    void network_builder_EventErrorOccurred(object sender, string message)
+    void OnEventErrorOccurred(object sender, string message)
     {
 
         error_message.GetComponent<TextMesh>().text = "error";
@@ -76,7 +76,7 @@ public class GUIMatchmaking : GUIMenuChoose {
 
     }
 
-    void network_builder_EventNoGame(object sender)
+    void OnEventNoGame(object sender)
     {
 
         error_message.GetComponent<TextMesh>().text = "no game";
@@ -84,7 +84,7 @@ public class GUIMatchmaking : GUIMenuChoose {
 
     }
 
-    void network_builder_EventPlayerReady(object sender, int id, bool value)
+    void OnEventPlayerReady(object sender, int id, bool value)
     {
 
         //Toggle the ready button
@@ -105,7 +105,7 @@ public class GUIMatchmaking : GUIMenuChoose {
 
     }
 
-    void network_builder_EventPlayerUnregistered(object sender, int id)
+    void OnEventPlayerUnregistered(object sender, int id)
     {
 
         var icon = player_icons[id];
@@ -115,7 +115,7 @@ public class GUIMatchmaking : GUIMenuChoose {
 
     }
 
-    void network_builder_EventPlayerRegistered(object sender, int id, string name)
+    void OnEventPlayerRegistered(object sender, int id, string name)
     {
 
         var icon = player_icons[id];
@@ -132,7 +132,7 @@ public class GUIMatchmaking : GUIMenuChoose {
 
     }
 
-    void network_builder_EventIdAcquired(object sender, int id)
+    void OnEventIdAcquired(object sender, int id)
     {
 
         ready_button.SetActive(true);
@@ -144,43 +144,43 @@ public class GUIMatchmaking : GUIMenuChoose {
     void OnDestroy()
     {
         
-        network_builder.EventIdAcquired -= network_builder_EventIdAcquired;
-        network_builder.EventPlayerRegistered -= network_builder_EventPlayerRegistered;
-        network_builder.EventPlayerUnregistered -= network_builder_EventPlayerUnregistered;
-        network_builder.EventPlayerReady -= network_builder_EventPlayerReady;
-        network_builder.EventNoGame -= network_builder_EventNoGame;
-        network_builder.EventErrorOccurred -= network_builder_EventErrorOccurred;
-        network_builder.EventDisconnected -= network_builder_EventDisconnected;
+        network_builder.EventIdAcquired -= OnEventIdAcquired;
+        network_builder.EventPlayerRegistered -= OnEventPlayerRegistered;
+        network_builder.EventPlayerUnregistered -= OnEventPlayerUnregistered;
+        network_builder.EventPlayerReady -= OnEventPlayerReady;
+        network_builder.EventNoGame -= OnEventNoGame;
+        network_builder.EventErrorOccurred -= OnEventErrorOccurred;
+        network_builder.EventDisconnected -= OnEventDisconnected;
         
     }
 
 
-	protected override void OnSelect (GameObject target)
-	{
-		base.OnSelect(target);
+    protected override void OnSelect (GameObject target)
+    {
+        base.OnSelect(target);
 
-		if (target == ready_button)
-		{
-			
-			network_builder.SetReady(true);
-			
-		}
-		
-		if (target == not_ready_button)
-		{
-			
-			network_builder.SetReady(false);
-			
-		}
+        if (target == ready_button)
+        {
+            
+            network_builder.SetReady(true);
+            
+        }
+        
+        if (target == not_ready_button)
+        {
+            
+            network_builder.SetReady(false);
+            
+        }
 
-		if (target.tag == Tags.BackButton) {
+        if (target.tag == Tags.BackButton) {
 
             GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>().Restore();
 
-			Application.LoadLevel("MenuChooseShip");
+            SceneManager.LoadScene("MenuChooseShip");
 
-		}
-	}
+        }
+    }
 
 
 }

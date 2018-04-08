@@ -164,7 +164,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         
         if (attacker == this.gameObject && defender == target) {
             alreadyCollided = true;
-            StartCoroutine("decideWhetherContinueFight");
+            StartCoroutine("DecideWhetherContinueFight");
         }
         
     }
@@ -224,7 +224,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         
     }
     
-    private IEnumerator decideWhetherContinueFight() {
+    private IEnumerator DecideWhetherContinueFight() {
         float timeToWait = Random.value * maxTimeToGoAway;
         yield return new WaitForSeconds(timeToWait);
         alreadyCollided = false;
