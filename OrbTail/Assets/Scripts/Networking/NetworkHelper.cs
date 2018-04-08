@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 
 /// <summary>
-/// Utility class for networking
+/// Utility class for networking.
 /// </summary>
 public class NetworkHelper
 {

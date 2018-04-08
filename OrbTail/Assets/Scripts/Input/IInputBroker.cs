@@ -20,9 +20,14 @@ public interface IInputBroker
     float Steering { get; }
 
     /// <summary>
-    /// Returns a collection which indicates all the power ups the user wants to fire. The elements indicates just the group of the proper power
+    /// Returns the fire input status. 0 not firing, 1 firing.
     /// </summary>
-    ICollection<int> FiredPowerUps { get; }
+    bool Fire { get; }
+
+    /// <summary>
+    /// Returns the fire special input status. 0 not firing, 1 firing.
+    /// </summary>
+    bool FireSpecial { get; }
 
     /// <summary>
     /// Updates the broker

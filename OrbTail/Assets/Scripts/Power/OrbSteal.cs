@@ -22,34 +22,28 @@ public class OrbSteal : Power
         return new OrbSteal();
     }
 
-    protected override void OnActivated(bool is_server_side, bool is_owner_side)
+    protected override void OnActivated()
     {
-        base.OnActivated(is_server_side, is_owner_side);
+        base.OnActivated();
 
-        if (is_server_side)
+        tailControllers = new List<TailController>();
+
+        foreach (GameObject ship in GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>().ShipsInGame)
         {
-            tailControllers = new List<TailController>();
-
-            foreach (GameObject ship in GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>().ShipsInGame)
-            {
-                TailController tailController = ship.GetComponent<TailController>();
-                tailController.OnEventFight += OnFight;
-                tailControllers.Add(tailController);
-            }
+            TailController tailController = ship.GetComponent<TailController>();
+            tailController.OnEventFight += OnFight;
+            tailControllers.Add(tailController);
         }
-
     }
-    protected override void OnDeactivated(bool is_server_side, bool is_owner_side)
+
+    protected override void OnDeactivated()
     {
-        if(is_server_side)
+        foreach (TailController tailController in tailControllers)
         {
-            foreach (TailController tailController in tailControllers)
-            {
-                tailController.OnEventFight -= OnFight;
-            }
+            tailController.OnEventFight -= OnFight;
         }
 
-        base.OnDeactivated(is_server_side, is_owner_side);
+        base.OnDeactivated();
     }
 
     /// <summary>

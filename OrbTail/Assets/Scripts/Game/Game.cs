@@ -9,8 +9,6 @@ public class Game : MonoBehaviour {
 
     public const string explosion_prefab_path = "Prefabs/Power/Explosion";
 
-    #region Events
-
     public delegate void DelegateGameStart(object sender, int countdown);
 
     public delegate void DelegateGameEnd(object sender, GameObject winner, int info);
@@ -121,8 +119,6 @@ public class Game : MonoBehaviour {
     /// </summary>
     public const int kInfoNoWinner = 2;
 
-    #endregion
-
     /// <summary>
     /// Countdown duration in seconds
     /// </summary>
@@ -152,14 +148,6 @@ public class Game : MonoBehaviour {
 
     }
 
-    [RPC]
-    public void RPCSetGame(int game_mode)
-    {
-
-        GameMode = game_mode;
-
-    }
-
     /// <summary>
     /// Returns the active player
     /// </summary>
@@ -167,24 +155,13 @@ public class Game : MonoBehaviour {
     {
         get
         {
-
             if (active_player_ == null)
             {
-
-                active_player_ = GameObject.FindGameObjectsWithTag(Tags.Ship).Where((GameObject o) =>
-                {
-
-                    return o.GetComponent<PlayerIdentity>().IsHuman &&
-                           NetworkHelper.IsOwnerSide(o.GetComponent<NetworkView>());
-
-                }).First();
-
+                active_player_ = GameObject.FindGameObjectsWithTag(Tags.Ship).Where(ship => ship.GetComponent<PlayerIdentity>().IsHuman).First();
             }
 
             return active_player_;
-
         }
-
     }
 
     /// <summary>
@@ -378,26 +355,10 @@ public class Game : MonoBehaviour {
             var orbs = (from orb in disconnected_player.GetComponent<Tail>().DetachOrbs(int.MaxValue)
                         select orb);
 
-            if (Network.isServer)
-            {
-
-                var ownership_mgr = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<OwnershipMgr>();
-
-                foreach (GameObject orb in orbs)
-                {
-
-                    GetComponent<NetworkView>().RPC("RPCChangeOwnership", RPCMode.All, orb.GetComponent<NetworkView>().viewID, ownership_mgr.FetchViewID(Network.player));
-
-                }
-
-            }
-
             //Removes the disconnected player
             RemoveShip(disconnected_player);
 
             //Destroy the player who left
-            Network.RemoveRPCs(disconnected_player.GetComponent<NetworkView>().owner);
-            Network.DestroyPlayerObjects(disconnected_player.GetComponent<NetworkView>().owner);
 
             //There's only one player, he must have won
             if (ShipsInGame.Count() <= 1)
@@ -474,25 +435,11 @@ public class Game : MonoBehaviour {
 
     private void GameMode_EventEnd(BaseGameMode sender)
     {
-
-        if (Network.isServer)
-        {
-
-            GetComponent<NetworkView>().RPC("EndMatch", RPCMode.All);
-
-        }
-        else if(!Network.isClient)
-        {
-
-            EndMatch();
-
-        }
-
+        EndMatch();
     }
 
-    [RPC]
-    private void EndMatch(){
-
+    private void EndMatch()
+    {
         GetComponent<PowerGenerator>().enabled = false;
 
         //Stops the coroutine
@@ -504,7 +451,6 @@ public class Game : MonoBehaviour {
         NotifyEnd(kInfoNone);
 
         StartCoroutine("RestartGame");
-
     }
 
     /// <summary>
@@ -583,56 +529,9 @@ public class Game : MonoBehaviour {
 
             game_time_counter -= (end - beg);
 
-            if (Network.isServer)
-            {
-
-                GetComponent<NetworkView>().RPC("RPCSyncTime", RPCMode.Others, game_time_counter);
-
-            }
-            else if (Network.isClient)
-            {
-
-                //This should prevent the end of the match to be fired from clients
-                game_time_counter = Mathf.Max(1.0f, game_time_counter);
-
-            }
-
         } while (!(NetworkHelper.IsServerSide() && game_time_counter <= 0));
 
         NotifyTick(0);
-
-    }
-
-    [RPC]
-    private void RPCSyncTime(float time)
-    {
-
-        game_time_counter = time;
-
-    }
-
-    [RPC]
-    private void RPCChangeOwnership(NetworkViewID old_view_id, NetworkViewID new_view_id)
-    {
-
-        NetworkView.Find(old_view_id).GetComponent<NetworkView>().viewID = new_view_id;
-
-    }
-
-    [RPC]
-    private void RPCSetGameMode(int game_mode)
-    {
-
-        GameMode = game_mode;
-
-    }
-    
-    [RPC]
-    private void RPCGameEnable(bool value)
-    {
-
-        Debug.Log("Enabling the game");
-        this.enabled = value;
 
     }
 

@@ -39,7 +39,7 @@ public class GameBuilder : MonoBehaviour {
     public void Restore()
     {
 
-        //Disconnects everything from anythig :D
+        //Disconnects everything from anything :D
         Network.Disconnect();
 
         //Removes all player identities
@@ -147,8 +147,7 @@ public class GameBuilder : MonoBehaviour {
     /// </summary>
     public event DelegateGameReady EventGameReady;
 
-    [RPC]
-    public void RPCNotifyGameReady()
+    public void NotifyGameReady()
     {
 
         if (EventGameReady != null)
@@ -162,22 +161,15 @@ public class GameBuilder : MonoBehaviour {
 
     public void PlayerReady()
     {
-
         if (Action == BuildMode.SinglePlayer)
         {
-
-            //The game is ready when the (only) player is ready
-            RPCNotifyGameReady();
+            NotifyGameReady();          //The game is ready when the (only) player is ready
 
         }
         else
         {
-
             //The game is ready only when all players have dismissed the tutorial
-            GetComponent<NetworkView>().RPC("RPCTutorialDismissed", RPCMode.All, Network.player);
-            
         }
-
     }
 
     /// <summary>
@@ -220,8 +212,8 @@ public class GameBuilder : MonoBehaviour {
                 NetworkBuilder.Setup();
 
                 Application.LoadLevel("MenuMatchmaking");
-				
-				NetworkBuilder.EventDisconnected += NetworkBuilder_EventDisconnected;
+                
+                NetworkBuilder.EventDisconnected += NetworkBuilder_EventDisconnected;
 
                 break;
 
@@ -237,8 +229,8 @@ public class GameBuilder : MonoBehaviour {
                 NetworkBuilder.Setup();
 
                 Application.LoadLevel("MenuMatchmaking");
-				
-				NetworkBuilder.EventDisconnected += NetworkBuilder_EventDisconnected;
+                
+                NetworkBuilder.EventDisconnected += NetworkBuilder_EventDisconnected;
 
                 break;
 
@@ -294,7 +286,7 @@ public class GameBuilder : MonoBehaviour {
         
     void Awake()
     {
-		DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization

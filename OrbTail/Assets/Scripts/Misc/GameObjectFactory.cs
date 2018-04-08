@@ -5,49 +5,36 @@ using System.Collections.Generic;
 /// <summary>
 /// Reduces the overhead of instantiating and destroying game objects
 /// </summary>
-public class GameObjectFactory {
-
-    private static GameObjectFactory instance_;
-
+public class GameObjectFactory
+{
     /// <summary>
     /// Returns the singleton's instance
     /// </summary>
     public static GameObjectFactory Instance
     {
-        
         get
         {
-
-            if (instance_ == null)
+            if (instance == null)
             {
-
-                instance_ = new GameObjectFactory();
-
+                instance = new GameObjectFactory();
             }
 
-            return instance_;
-
+            return instance;
         }
-
     }
 
     /// <summary>
-    /// Instantiate a new object. It's lifecycle will be managed by this object
+    /// Instantiate a new object. Its lifecycle will be managed by this object.
     /// </summary>
-    /// <param name="resource_path">The path of the game object to instantiate</param>
+    /// <param name="resource_path">The path of the game object to instantiate.</param>
     public GameObject Instantiate(string resource_path, Vector3 positon, Quaternion rotation)
     {
-
         Stack<GameObject> object_stack = null;
 
-        if (resource_table_.TryGetValue(resource_path, out object_stack) &&
-            object_stack.Count > 0)
+        if (resources.TryGetValue(resource_path, out object_stack) && object_stack.Count > 0)
         {
-
-            //Activate an idle object
             try
             {
-
                 var game_object = object_stack.Pop();
 
                 game_object.transform.position = positon;
@@ -55,24 +42,15 @@ public class GameObjectFactory {
                 game_object.SetActive(true);
 
                 return game_object;
-
             }
             catch
             {
-
                 //This should fix random-ass exceptions
                 return InstantiateLocal(resource_path, positon, rotation);
-
             }
-
-        }
-        else
-        {
-
-            return InstantiateLocal(resource_path, positon, rotation);
-
         }
 
+        return InstantiateLocal(resource_path, positon, rotation);
     }
 
     /// <summary>
@@ -80,9 +58,7 @@ public class GameObjectFactory {
     /// </summary>
     public void Purge()
     {
-
-        resource_table_ = new Dictionary<string, Stack<GameObject>>();
-
+        resources = new Dictionary<string, Stack<GameObject>>();
     }
 
     /// <summary>
@@ -90,12 +66,9 @@ public class GameObjectFactory {
     /// </summary>
     public void Destroy(string resource_path, GameObject game_object)
     {
-  
-        //Deactivate the object and push it into the stack
         game_object.SetActive(false);
 
         GetDefaultStack(resource_path).Push(game_object);
-        
     }
 
     /// <summary>
@@ -103,11 +76,9 @@ public class GameObjectFactory {
     /// </summary>
     public void Preload(string resource_path, int count)
     {
-
         var object_stack = GetDefaultStack(resource_path);
 
         PreloadMore(resource_path, object_stack.Count + count);
-
     }
 
     /// <summary>
@@ -115,7 +86,6 @@ public class GameObjectFactory {
     /// </summary>
     public void PreloadMore(string resource_path, int count)
     {
-
         var resource = Resources.Load(resource_path);
 
         var object_stack = GetDefaultStack(resource_path);
@@ -124,7 +94,6 @@ public class GameObjectFactory {
 
         while (count > 0)
         {
-
             game_object = GameObject.Instantiate(resource) as GameObject;
 
             game_object.SetActive(false);
@@ -132,16 +101,12 @@ public class GameObjectFactory {
             object_stack.Push(game_object);
 
             --count;
-
         }
-
     }
 
     private GameObjectFactory()
     {
-
-        resource_table_ = new Dictionary<string, Stack<GameObject>>();
-
+        resources = new Dictionary<string, Stack<GameObject>>();
     }
 
     /// <summary>
@@ -149,37 +114,30 @@ public class GameObjectFactory {
     /// </summary>
     private GameObject InstantiateLocal(string resource_path, Vector3 positon, Quaternion rotation)
     {
-
-        //Instantiate a new object
         var resource = Resources.Load(resource_path);
         var game_object = GameObject.Instantiate(resource, positon, rotation) as GameObject;
 
         return game_object;
-        
     }
 
     /// <summary>
-    /// Get a default stack for the resources or generates a new one
+    /// Get a default stack for the resources or generates a new one.
     /// </summary>
     private Stack<GameObject> GetDefaultStack(string resource_path)
     {
-
         Stack<GameObject> object_stack = null;
 
-        if (!resource_table_.TryGetValue(resource_path, out object_stack))
+        if (!resources.TryGetValue(resource_path, out object_stack))
         {
-
-            //Create a new stack if it is not present
             object_stack = new Stack<GameObject>();
 
-            resource_table_.Add(resource_path, object_stack);
-
+            resources.Add(resource_path, object_stack);
         }
 
         return object_stack;
-
     }
 
-    private IDictionary<string, Stack<GameObject>> resource_table_;
+    private IDictionary<string, Stack<GameObject>> resources;
 
+    private static GameObjectFactory instance;
 }

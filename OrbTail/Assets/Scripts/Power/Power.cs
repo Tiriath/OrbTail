@@ -80,7 +80,7 @@ public abstract class Power
         this.ActivationTime = Time.time;
         this.FireTime = Time.time;
 
-        OnActivated(NetworkHelper.IsServerSide(), NetworkHelper.IsOwnerSide(Owner.GetComponent<NetworkView>()));
+        OnActivated();
 
         IsActive = true;
     }
@@ -92,7 +92,7 @@ public abstract class Power
     {
         // Deactivate the power.
 
-        OnDeactivated(NetworkHelper.IsServerSide(), NetworkHelper.IsOwnerSide(Owner.GetComponent<NetworkView>()));
+        OnDeactivated();
 
         // Event.
 
@@ -114,7 +114,7 @@ public abstract class Power
         {
             FireTime = Time.time;
 
-            OnFired(NetworkHelper.IsServerSide(), NetworkHelper.IsOwnerSide(Owner.GetComponent<NetworkView>()));
+            OnFired();
 
             return true;
         }
@@ -152,22 +152,21 @@ public abstract class Power
 
     /// <summary>
     /// Called whenever the power is activated.
-    /// @param is_server_side Whether the activation happened on the server-side.
-    /// @param is_owner_side Whether the activation happened on the owner-side.
     /// </summary>
-    protected virtual void OnActivated(bool is_server_side, bool is_owner_side)
+    protected virtual void OnActivated()
     {
-        vfx = GameObjectFactory.Instance.Instantiate(kPowerPrefabPath + Name, Owner.transform.position, Quaternion.identity);
+        if(vfx == null)
+        {
+            vfx = GameObjectFactory.Instance.Instantiate(kPowerPrefabPath + Name, Owner.transform.position, Quaternion.identity);
+        }
 
         vfx.transform.parent = Owner.transform;
     }
 
     /// <summary>
     /// Called whenever the power is deactivated.
-    /// @param is_server_side Whether the deactivation happened on the server-side.
-    /// @param is_owner_side Whether the deactivation happened on the owner-side.
     /// </summary>
-    protected virtual void OnDeactivated(bool is_server_side, bool is_owner_side)
+    protected virtual void OnDeactivated()
     {
         if (vfx != null)
         {
@@ -182,7 +181,7 @@ public abstract class Power
     /// @param is_server_side Whether the firing happened on the server-side.
     /// @param is_owner_side Whether the firing happened on the owner-side.
     /// </summary>
-    protected virtual void OnFired(bool is_server_side, bool is_owner_side)
+    protected virtual void OnFired()
     {
         if (FireSFX)
         {

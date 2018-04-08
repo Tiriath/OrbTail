@@ -34,8 +34,6 @@ public class Tail : MonoBehaviour
     {
         var game = GameObject.FindGameObjectWithTag(Tags.Game);
 
-        ownership_mgr = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<OwnershipMgr>();
-
         game_identity = GetComponent<GameIdentity>();
 
         UpdateTailColor();
@@ -53,10 +51,7 @@ public class Tail : MonoBehaviour
 
         // Fancy upward force while attaching the orb.
 
-        if (GetComponent<NetworkView>().isMine || Network.peerType == NetworkPeerType.Disconnected)
-        {
-            orb.GetComponent<Rigidbody>().AddForce(orb.GetComponent<FloatingObject>().Up * attach_impulse, ForceMode.Impulse);
-        }
+        orb.GetComponent<Rigidbody>().AddForce(orb.GetComponent<FloatingObject>().Up * attach_impulse, ForceMode.Impulse);
 
         // Attach the orb to the existing ones (or the ship itself).
 
@@ -75,19 +70,6 @@ public class Tail : MonoBehaviour
         if (OnEventOrbAttached != null)
         {
             OnEventOrbAttached(this, orb, gameObject);
-        }
-
-        // Notify other players if this is the server.
-
-        if (Network.isServer)
-        {
-            var old_id = orb.GetComponent<NetworkView>().viewID;
-
-            orb.GetComponent<NetworkView>().viewID = ownership_mgr.FetchViewID(GetComponent<NetworkView>().viewID.owner);
-
-            ownership_mgr.StoreViewID( old_id );
-
-            GetComponent<NetworkView>().RPC("RPCAttachOrb", RPCMode.Others, old_id, orb.GetComponent<NetworkView>().viewID);
         }
     }
 
@@ -122,13 +104,6 @@ public class Tail : MonoBehaviour
             OnEventOrbDetached(this, gameObject, detached_orbs.Count);
         }
 
-        // Notify other players if this is the server.
-
-        if (Network.isServer)
-        {
-            GetComponent<NetworkView>().RPC("RPCDetachOrbs", RPCMode.Others, detached_orbs.Count);
-        }
-
         return detached_orbs;
     }
 
@@ -139,29 +114,6 @@ public class Tail : MonoBehaviour
     public int GetOrbCount()
     {
         return orbs.Count;
-    }
-
-    /// <summary>
-    /// RPC version of AttachOrbs. #TODO Deprecated.
-    /// </summary>
-    [RPC]
-    private void RPCAttachOrb(NetworkViewID orb_view_id, NetworkViewID new_view_id)
-    {
-        var orb = NetworkView.Find(orb_view_id).gameObject;
-
-        orb.GetComponent<NetworkView>().viewID = new_view_id;
-
-        AttachOrb(orb);
-    }
-
-    /// <summary>
-    /// RPC version of DetachOrbs. #TODO Deprecated.
-    /// </summary>
-    /// <param name="count">Number of orbs to detach.</param>
-    [RPC]
-    private void RPCDetachOrbs(int count)
-    {
-        DetachOrbs(count);
     }
 
     /// <summary>
@@ -208,7 +160,7 @@ public class Tail : MonoBehaviour
     private Color default_orb_color;
 
     /// <summary>
-    /// Impluse to apply to the orbs when attached. VFX purposes only.
+    /// Impulse to apply to the orbs when attached. VFX purposes only.
     /// </Impulse>
     private float attach_impulse = 0.03f;
 
@@ -216,9 +168,4 @@ public class Tail : MonoBehaviour
     /// Impulse to apply to the orbs when detached. VFX purposes only.
     /// </summary>
     private float detach_impulse = 0.06f;
-
-    /// <summary>
-    /// Handles ownership transferring.
-    /// </summary>
-    private OwnershipMgr ownership_mgr;
 }

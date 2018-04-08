@@ -63,23 +63,12 @@ public class HostBuilder : NetworkPlayerBuilder
 
         
     }
-  
-    // Use this for initialization
-    void Start () {
-
-     
-    }
 
     void HostBuilder_EventPlayerUnregistered(object sender, int id)
     {
         
         GetComponent<GameBuilder>().NotifyPlayerLeft(id);
         
-    }
-
-    // Update is called once per frame
-    void Update () {
-    
     }
 
     void OnMasterServerEvent(MasterServerEvent server_event)

@@ -21,26 +21,23 @@ public class Jam : Power
         return new Jam();
     }
 
-    protected override void OnActivated(bool is_server_side, bool is_owner_side)
+    protected override void OnActivated()
     {
-        base.OnActivated(is_server_side, is_owner_side);
+        base.OnActivated();
 
-        if (is_owner_side)
-        {
-            var steer_driver = Owner.GetComponent<MovementController>().GetSteerDriver();
+        var steer_driver = Owner.GetComponent<MovementController>().GetSteerDriver();
 
-            driver = steer_driver.Push(new InvertedSteerDriver(steer_driver.GetDefaultDriver().GetMaxSteer(), steer_driver.GetDefaultDriver().GetSteerSmooth()));
-        }
+        driver = steer_driver.Push(new InvertedSteerDriver(steer_driver.GetDefaultDriver().GetMaxSteer(), steer_driver.GetDefaultDriver().GetSteerSmooth()));
     }
 
-    protected override void OnDeactivated(bool is_server_side, bool is_owner_side)
+    protected override void OnDeactivated()
     {
-        if (is_owner_side && driver != null)
+        if (driver != null)
         {
             driver.Deactivate();
         }
 
-        base.OnDeactivated(is_server_side, is_owner_side);
+        base.OnDeactivated();
     }
 
     private IDriver driver;

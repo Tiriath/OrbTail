@@ -18,26 +18,23 @@ public class Invincibility : Power
 
     private IDriver driver;
 
-    protected override void OnActivated(bool is_server_side, bool is_owner_side)
+    protected override void OnActivated()
     {
-        base.OnActivated(is_server_side, is_owner_side);
+        base.OnActivated();
 
-        if(is_server_side)
-        {
-            var tail_stack = Owner.GetComponent<TailController>().DetachDriver;
+        var tail_stack = Owner.GetComponent<TailController>().DetachDriver;
 
-            driver = tail_stack.Push( new InvincibleDetacherDriver() );
-        }
+        driver = tail_stack.Push(new InvincibleDetacherDriver());
     }
 
-    protected override void OnDeactivated(bool is_server_side, bool is_owner_side)
+    protected override void OnDeactivated()
     {
-        if (is_server_side && driver != null)
+        if (driver != null)
         {
             driver.Deactivate();
         }
 
-        base.OnDeactivated(is_server_side, is_owner_side);
+        base.OnDeactivated();
     }
     
     public override Power Generate()

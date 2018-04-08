@@ -19,15 +19,7 @@ public class PowerController : MonoBehaviour
     {
         input = GetComponent<InputProxy>();
         
-        if (NetworkHelper.IsServerSide())
-        {
-            GetComponentInChildren<ProximityHandler>().OnProximityEvent += OnProximity;
-        }
-    }
-
-    public void Awake()
-    {
-        powers = new Dictionary<int, Power>();
+        GetComponentInChildren<ProximityHandler>().OnProximityEvent += OnProximity;
     }
 
     public void Update()
@@ -35,7 +27,7 @@ public class PowerController : MonoBehaviour
         // Update powers.
         // #TODO Avoid frame-time new.
 
-        foreach (Power power in new List<Power>(powers.Values))
+        foreach (var power in new List<Power>(powers.Values))
         {
             power.Update();
         }
@@ -43,23 +35,14 @@ public class PowerController : MonoBehaviour
         // Only the owner of the power can shoot it.
         // #TODO Input should not be handled here.
 
-        var network_view = GetComponent<NetworkView>();
-
-        if (NetworkHelper.IsOwnerSide(network_view))
+        if(input.Fire && powers.ContainsKey(PowerGroups.Main))
         {
-            Power power;
+            powers[PowerGroups.Main].Fire();
+        }
 
-            foreach (int group in input.FiredPowerUps.Where((int g) => { return powers.ContainsKey(g); }))
-            {
-                // Fire the power and notify the others.
-
-                power = powers[group];
-
-                if (power.Fire() && Network.peerType != NetworkPeerType.Disconnected)
-                {
-                    network_view.RPC("RPCFirePower", RPCMode.Others, power.Name);
-                }
-            }
+        if(input.FireSpecial && powers.ContainsKey(PowerGroups.Passive))
+        {
+            powers[PowerGroups.Passive].Fire();
         }
     }
 
@@ -72,8 +55,8 @@ public class PowerController : MonoBehaviour
         // Deactivate any previous power in the same group.
 
         Power old_power = null;
-        
-        if(powers.TryGetValue(power.Group, out old_power))
+
+        if (powers.TryGetValue(power.Group, out old_power))
         {
             old_power.Deactivate();
         }
@@ -86,45 +69,12 @@ public class PowerController : MonoBehaviour
 
         power.Activate(gameObject);
 
-        // Relay the call.
-
-        if (Network.isServer)
-        {
-            GetComponent<NetworkView>().RPC("RPCAddPower", RPCMode.Others, power.Name);
-        }
-
         // Event.
 
         if (OnPowerAttachedEvent != null)
         {
             OnPowerAttachedEvent(this, gameObject, power);
         }
-    }
-
-    /// <summary>
-    /// Add a new power by name.
-    /// RPC call.
-    /// </summary>
-    /// <param name="power_name">Name of the power to activate.</param>
-    [RPC]
-    public void RPCAddPower(string power_name)
-    {
-        var power = PowerFactory.Instance.GetPower(power_name).Generate();
-
-        AddPower(power);
-    }
-
-    /// <summary>
-    /// Fire an active power by name (for activated powers).
-    /// RPC call.
-    /// </summary>
-    /// <param name="power_name">Name of the power to fire.</param>
-    [RPC]
-    public void RPCFirePower(string power_name)
-    {
-        var group = PowerFactory.Instance.GetPower(power_name).Group;
-
-        powers[group].Fire();
     }
 
     /// <summary>
@@ -135,13 +85,11 @@ public class PowerController : MonoBehaviour
     {
         var orb_controller = other.gameObject.GetComponent<OrbController>();
 
-        if(orb_controller != null && orb_controller.PowerEnabled)
+        if(orb_controller != null && orb_controller.GetImbuedPower() != null)
         {
-            // Consume the power on the orb and grant a random power to the player.
+            AddPower(orb_controller.GetImbuedPower());
 
-            orb_controller.PowerEnabled = false;                // #TODO This must be replicated.
-
-            AddPower(PowerFactory.Instance.RandomPower);
+            orb_controller.ImbuePower(null);
         }
     }
 
@@ -161,7 +109,7 @@ public class PowerController : MonoBehaviour
     /// List of active powers, indexed by power group.
     /// Powers in the same group overwrite each other.
     /// </summary>
-    private Dictionary<int, Power> powers;
+    private Dictionary<int, Power> powers = new Dictionary<int, Power>();
 
     private InputProxy input;
 }

@@ -52,31 +52,23 @@ public class ShipPrototype : MonoBehaviour
 
         //Server side controls the collisions.
 
-        if (NetworkHelper.IsServerSide())
-        {
+        TailController tail_controller = gameObject.AddComponent<TailController>();
 
-            TailController tail_controller = gameObject.AddComponent<TailController>();
-
-            tail_controller.OffenceDriver.SetDefaultDriver(new DefaultOffenceDriver(offence));
-            tail_controller.DefenceDriver.SetDefaultDriver(new DefaultDefenceDriver(defence));
-            tail_controller.AttachDriver.SetDefaultDriver(new DefaultAttacherDriver());
-            tail_controller.DetachDriver.SetDefaultDriver(new DefaultDetacherDriver());
-        }
+        tail_controller.OffenceDriver.SetDefaultDriver(new DefaultOffenceDriver(offence));
+        tail_controller.DefenceDriver.SetDefaultDriver(new DefaultDefenceDriver(defence));
+        tail_controller.AttachDriver.SetDefaultDriver(new DefaultAttacherDriver());
+        tail_controller.DetachDriver.SetDefaultDriver(new DefaultDetacherDriver());
 
         //Client side controls the movement.
 
-        if (NetworkHelper.IsOwnerSide(GetComponent<NetworkView>()))
-        {
+        MovementController movement_controller = gameObject.AddComponent<MovementController>();
 
-            MovementController movement_controller = gameObject.AddComponent<MovementController>();
+        movement_controller.enabled = false;
 
-            movement_controller.enabled = false;
-
-            movement_controller.GetEngineDriver().SetDefaultDriver(new DefaultEngineDriver(speed, speed_smooth));
-            movement_controller.GetSteerDriver().SetDefaultDriver(new DefaultSteerDriver(steer, steer_smooth));
-        }
-
+        movement_controller.GetEngineDriver().SetDefaultDriver(new DefaultEngineDriver(speed, speed_smooth));
+        movement_controller.GetSteerDriver().SetDefaultDriver(new DefaultSteerDriver(steer, steer_smooth));
     }
+
     void Start()
     {
         builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();

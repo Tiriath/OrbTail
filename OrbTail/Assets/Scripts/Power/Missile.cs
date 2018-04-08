@@ -22,21 +22,18 @@ public class Missile : Power
         return new Missile();
     }
 
-    protected override void OnFired(bool is_server_side, bool is_owner_side)
+    protected override void OnFired()
     {
-        if (is_owner_side)
-        {
-            var missile_location = Owner.transform.position + Owner.transform.forward * offset;
-            var missile_rotation = Owner.transform.rotation;
+        var missile_location = Owner.transform.position + Owner.transform.forward * offset;
+        var missile_rotation = Owner.transform.rotation;
 
-            GameObject missile = (Network.peerType == NetworkPeerType.Disconnected) ?
-                GameObject.Instantiate(missile_object, missile_location, missile_rotation) as GameObject :
-                Network.Instantiate(missile_object, missile_location, missile_rotation, 0) as GameObject;
+        GameObject missile = (Network.peerType == NetworkPeerType.Disconnected) ?
+            GameObject.Instantiate(missile_object, missile_location, missile_rotation) as GameObject :
+            Network.Instantiate(missile_object, missile_location, missile_rotation, 0) as GameObject;
 
-            missile.GetComponent<Rigidbody>().AddForce(Owner.GetComponent<Rigidbody>().velocity, ForceMode.VelocityChange);
+        missile.GetComponent<Rigidbody>().AddForce(Owner.GetComponent<Rigidbody>().velocity, ForceMode.VelocityChange);
 
-            missile.GetComponent<MissileBehavior>().SetTarget(FindTarget(Owner), Owner);
-        }
+        missile.GetComponent<MissileBehavior>().SetTarget(FindTarget(Owner), Owner);
 
         Deactivate();
     }

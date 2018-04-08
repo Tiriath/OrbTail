@@ -7,8 +7,8 @@ using System.Collections.Generic;
 /// </summary>
 public class SpectatorMode : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         camera_movement_ = GetComponent<CameraMovement>();
 
@@ -20,7 +20,7 @@ public class SpectatorMode : MonoBehaviour {
 
         LookNext();
 
-	}
+    }
 
     /// <summary>
     /// Removes the eliminated ship and look at the next ship
@@ -58,12 +58,11 @@ public class SpectatorMode : MonoBehaviour {
         }
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+    
+    // Update is called once per frame
+    void Update () {
 
-        if (Input.GetAxis(DesktopInputBroker.fire_main_axis_name) > 0.0f ||
-            Input.touchCount > 0)
+        if (Input.GetAxis(Inputs.Fire) > 0.0f || Input.touchCount > 0)
         {
 
             if (change_target)
@@ -85,7 +84,7 @@ public class SpectatorMode : MonoBehaviour {
         }
 
 
-	}
+    }
     
     private bool change_target = true;
     
@@ -94,5 +93,4 @@ public class SpectatorMode : MonoBehaviour {
     private IList<GameObject> ships_;
 
     private CameraMovement camera_movement_;
-
 }

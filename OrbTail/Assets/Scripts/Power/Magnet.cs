@@ -20,25 +20,19 @@ public class Magnet : Power
         return new Magnet();
     }
 
-    protected override void OnActivated(bool is_server_side, bool is_owner_side)
+    protected override void OnActivated()
     {
-        base.OnActivated(is_server_side, is_owner_side);
+        base.OnActivated();
 
-        if (is_server_side)
-        {
-            proximity = Owner.GetComponentInChildren<ProximityHandler>();
-            proximity.Radius *= radius_factor;
-        }
+        proximity = Owner.GetComponentInChildren<ProximityHandler>();
+        proximity.Radius *= radius_factor;
     }
 
-    protected override void OnDeactivated(bool is_server_side, bool is_owner_side)
+    protected override void OnDeactivated()
     {
-        if(is_server_side)
-        {
-            proximity.Radius /= radius_factor;
-        }
+        proximity.Radius /= radius_factor;
 
-        base.OnDeactivated(is_server_side, is_owner_side);
+        base.OnDeactivated();
     }
 
     private const float radius_factor = 5.0f;

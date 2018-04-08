@@ -10,17 +10,6 @@ using System.Text;
 class DesktopInputBroker: IInputBroker
 {
 
-    #region "Axis names"
-    
-    public const string acceleration_axis_name = "Vertical";
-
-    public const string steering_axis_name = "Horizontal";
-
-    public const string fire_special_axis_name = "FireSpecial";
-
-    public const string fire_main_axis_name = "FireMain";
-    
-    #endregion
 
     /// <summary>
     /// Returns the acceleration command's status. 0 no acceleration, 1 maximum acceleration.
@@ -33,44 +22,21 @@ class DesktopInputBroker: IInputBroker
     public float Steering { get; private set; }
 
     /// <summary>
-    /// Returns a collection which indicates all the power ups the user wants to fire. The elements indicates just the group of the proper power
+    /// Returns the fire input status. 0 not firing, 1 firing.
     /// </summary>
-    public ICollection<int> FiredPowerUps
-    {
-        get { return fired_power_ups_; }
-    }
+    public bool Fire { get; private set; }
+
+    /// <summary>
+    /// Returns the fire special input status. 0 not firing, 1 firing.
+    /// </summary>
+    public bool FireSpecial { get; private set; }
 
     public void Update()
     {
-
-        if (fired_power_ups_.Count > 0)
-        {
-
-            fired_power_ups_.Clear();
-
-        }
-
-        Acceleration = Input.GetAxis(acceleration_axis_name);
-        Steering = Input.GetAxis(steering_axis_name);
-        
-        if (Input.GetAxis(fire_special_axis_name) > 0.0f)
-        {
-
-            fired_power_ups_.Add(PowerGroups.Passive);
-
-        }
-
-        if (Input.GetAxis(fire_main_axis_name) > 0.0f)
-        {
-
-            fired_power_ups_.Add(PowerGroups.Main);
-
-        }
-
+        Acceleration = Input.GetAxis(Inputs.Throttle);
+        Steering = Input.GetAxis(Inputs.Steer);
+        Fire = Input.GetAxis(Inputs.Fire) > 0.0f;
+        FireSpecial = Input.GetAxis(Inputs.FireSpecial) > 0.0f;
     }
-
-
-    private IList<int> fired_power_ups_ = new List<int>();
-
 }
 

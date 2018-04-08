@@ -16,37 +16,6 @@ public class OrbController : MonoBehaviour
     /// </summary>
     public bool IsLinked { get; private set; }
 
-    /// <summary>
-    /// Enable or disable a power on this orb.
-    /// </summary>
-    public bool PowerEnabled
-    {
-        get
-        {
-            return power_enabled;
-        }
-
-        set
-        {
-            power_enabled = value;
-
-            if(glow_vfx == null && value)
-            {
-                // Add a VFX when a power is enabled.
-
-                glow_vfx = GameObjectFactory.Instance.Instantiate(glow_path, gameObject.transform.position, Quaternion.identity);
-                glow_vfx.transform.parent = gameObject.transform;
-            }
-            else if(glow_vfx != null && !value)
-            {
-                // Remove the VFX when a power is disabled.
-
-                GameObjectFactory.Instance.Destroy(glow_path, glow_vfx);
-                glow_vfx = null;
-            }
-        }
-    }
-
     void Start ()
     {
         IsLinked = (gameObject.GetComponent<SpringJoint>() != null);       // An orb may start already linked, just check if it has some existing SpringJoint.
@@ -96,6 +65,35 @@ public class OrbController : MonoBehaviour
     }
 
     /// <summary>
+    /// Imbue the orb with a power.
+    /// </summary>
+    /// <param name="power">Power to imbue.</param>
+    public void ImbuePower(Power power)
+    {
+        imbued_power = power;
+
+        if(imbued_power != null && vfx == null)
+        {
+            vfx = GameObjectFactory.Instance.Instantiate(glow_path, gameObject.transform.position, Quaternion.identity);
+            vfx.transform.parent = gameObject.transform;
+        }
+        else if(imbued_power == null && vfx != null)
+        {
+            GameObjectFactory.Instance.Destroy(glow_path, vfx);
+            vfx = null;
+        }
+    }
+
+    /// <summary>
+    /// Get the power currently imbued in this orb.
+    /// </summary>
+    /// <returns></returns>
+    public Power GetImbuedPower()
+    {
+        return imbued_power;
+    }
+
+    /// <summary>
     /// Spring dampening factor.
     /// </summary>
     private const float spring_damper = 0.4f;
@@ -121,12 +119,12 @@ public class OrbController : MonoBehaviour
     private const float ship_distance = 2.5f;
 
     /// <summary>
-    /// Whether there's a power enabled on this orb.
+    /// Power imbued in this orb.
     /// </summary>
-    private bool power_enabled = false;
+    private Power imbued_power = null;
 
     /// <summary>
-    /// Glow effect.
+    /// VFX associated to the orb.
     /// </summary>
-    private GameObject glow_vfx;
+    private GameObject vfx = null;
 }

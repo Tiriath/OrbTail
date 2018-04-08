@@ -26,9 +26,9 @@ public class Boost : Power
     /// <summary>
     /// Activate boost on ship.
     /// </summary>
-    protected override void OnFired(bool is_server_side, bool is_owner_side)
+    protected override void OnFired()
     {
-        base.OnFired(is_server_side, is_owner_side);
+        base.OnFired();
 
         Owner.GetComponent<Rigidbody>().AddForce(Owner.transform.forward * boost_force, ForceMode.Impulse);
     }

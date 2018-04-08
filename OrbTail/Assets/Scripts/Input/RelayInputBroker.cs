@@ -9,55 +9,50 @@ using System.Text;
 /// </summary>
 public class RelayInputBroker: IInputBroker
 {
-
-    public RelayInputBroker()
-    {
-
-        fired_powers_ = new List<int>();
-        acceleration_ = 0;
-        steering_ = 0;
-        
-    }
-
+    /// <summary>
+    /// Returns the acceleration command status. 0 no acceleration, 1 maximum acceleration.
+    /// </summary>
     public float Acceleration
     {
-
         get
         {
             return acceleration_;
         }
-
         set
         {
             acceleration_ = Mathf.Clamp(value, -1.0f, 1.0f);
         }
-
     }
 
+    /// <summary>
+    /// Returns the steering command status. -1 steer left, 0 no steering, 1 steer right.
+    /// </summary>
     public float Steering
     {
-
         get
         {
             return steering_;
         }
-
         set
         {
             steering_ = Mathf.Clamp(value, -1.0f, 1.0f);
         }
-
     }
 
-    public ICollection<int> FiredPowerUps
+    /// <summary>
+    /// Returns the fire input status. 0 not firing, 1 firing.
+    /// </summary>
+    public bool Fire { get; set; }
+
+    /// <summary>
+    /// Returns the fire special input status. 0 not firing, 1 firing.
+    /// </summary>
+    public bool FireSpecial { get; set; }
+
+    public RelayInputBroker()
     {
-        get
-        {
-            
-            return fired_powers_;
-
-        }
-
+        acceleration_ = 0;
+        steering_ = 0;
     }
 
     public void Update() {}
@@ -71,7 +66,4 @@ public class RelayInputBroker: IInputBroker
     /// The steering
     /// </summary>
     private float steering_;
-
-    private IList<int> fired_powers_;
-
 }

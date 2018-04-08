@@ -233,10 +233,9 @@ public class PlayerAI : MonoBehaviour {
     }
     
     private IEnumerator FirePowerUp() {
-        inputBroker.FiredPowerUps.Clear();
         float timeToWait = Random.value * maxTimeToFirePowerUp;
         yield return new WaitForSeconds(timeToWait);
-        inputBroker.FiredPowerUps.Add(PowerGroups.Main);
+        inputBroker.Fire = true;
     }
     
     private bool IsFreeOrb(GameObject orb) {
