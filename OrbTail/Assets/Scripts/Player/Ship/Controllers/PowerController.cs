@@ -133,10 +133,14 @@ public class PowerController : MonoBehaviour
     /// </summary>
     private void OnProximity(object sender, Collider other)
     {
-        var game_object = other.gameObject;
+        var orb_controller = other.gameObject.GetComponent<OrbController>();
 
-        if (game_object.tag == Tags.Orb && game_object.GetComponent<RandomPowerAttacher>().enabled)
+        if(orb_controller != null && orb_controller.PowerEnabled)
         {
+            // Consume the power on the orb and grant a random power to the player.
+
+            orb_controller.PowerEnabled = false;                // #TODO This must be replicated.
+
             AddPower(PowerFactory.Instance.RandomPower);
         }
     }

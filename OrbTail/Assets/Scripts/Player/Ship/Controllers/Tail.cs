@@ -50,15 +50,6 @@ public class Tail : MonoBehaviour
     public void AttachOrb(GameObject orb)
     {
         var orb_controller = orb.GetComponent<OrbController>();
-        
-        // Remove any existing VFX from the orb. #TODO Should be handled by the orb controller rather than the tail!
-
-        var power_attacher = orb.GetComponent<RandomPowerAttacher>();
-
-        if (power_attacher.enabled)
-        {
-            power_attacher.RemoveFX();
-        }
 
         // Fancy upward force while attaching the orb.
 
