@@ -12,26 +12,25 @@ public interface IInputBroker
     /// <summary>
     /// Returns the acceleration command's status. 0 no acceleration, 1 maximum acceleration.
     /// </summary>
-    float Acceleration { get; }
+    float ThrottleInput { get; }
 
     /// <summary>
     /// Returns the steering command's status. -1 steer left, 0 no steering, 1 steer right
     /// </summary>
-    float Steering { get; }
+    float SteerInput { get; }
 
     /// <summary>
     /// Returns the fire input status. 0 not firing, 1 firing.
     /// </summary>
-    bool Fire { get; }
+    bool FireInput { get; }
 
     /// <summary>
     /// Returns the fire special input status. 0 not firing, 1 firing.
     /// </summary>
-    bool FireSpecial { get; }
+    bool SpecialInput { get; }
 
     /// <summary>
-    /// Updates the broker
+    /// Updates the input status.
     /// </summary>
-    void Update();
-
+    void UpdateInput();
 }

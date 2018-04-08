@@ -6,8 +6,8 @@ using System.Collections;
 /// </summary>
 public class Inputs
 {
-    public const string Throttle = "Vertical";
-    public const string Steer = "Horizontal";
-    public const string FireSpecial = "FireSpecial";
-    public const string Fire = "FireMain";
+    public const string Throttle = "Throttle";
+    public const string Steer = "Steer";
+    public const string Fire = "Fire";
+    public const string Special = "Special";
 }

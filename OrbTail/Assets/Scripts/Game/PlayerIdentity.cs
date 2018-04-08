@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerIdentity : MonoBehaviour {
+public class PlayerIdentity : MonoBehaviour
+{
 
     /// <summary>
     /// The player name
@@ -23,21 +24,8 @@ public class PlayerIdentity : MonoBehaviour {
     /// </summary>
     public void CopyTo(PlayerIdentity other)
     {
-
         other.Name = Name;
         other.ShipName = ShipName;
         other.IsHuman = IsHuman;
-
     }
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 }

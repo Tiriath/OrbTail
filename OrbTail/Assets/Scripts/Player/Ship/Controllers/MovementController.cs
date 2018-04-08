@@ -40,8 +40,8 @@ public class MovementController : MonoBehaviour
     // Update movement drivers.
     void Update()
     {
-        engine_driver.Top().Update(FloatingBody.ForwardVelocity, input.Acceleration);
-        steer_driver.Top().Update(FloatingBody.AngularVelocity, input.Steering);
+        engine_driver.Top().Update(FloatingBody.ForwardVelocity, input.ThrottleInput);
+        steer_driver.Top().Update(FloatingBody.AngularVelocity, input.SteerInput);
     }
 
     // Physics update.

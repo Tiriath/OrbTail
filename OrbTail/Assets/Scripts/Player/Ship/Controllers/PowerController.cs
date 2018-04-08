@@ -33,14 +33,13 @@ public class PowerController : MonoBehaviour
         }
 
         // Only the owner of the power can shoot it.
-        // #TODO Input should not be handled here.
 
-        if(input.Fire && powers.ContainsKey(PowerGroups.Main))
+        if(input.FireInput && powers.ContainsKey(PowerGroups.Main))
         {
             powers[PowerGroups.Main].Fire();
         }
 
-        if(input.FireSpecial && powers.ContainsKey(PowerGroups.Passive))
+        if(input.SpecialInput && powers.ContainsKey(PowerGroups.Passive))
         {
             powers[PowerGroups.Passive].Fire();
         }

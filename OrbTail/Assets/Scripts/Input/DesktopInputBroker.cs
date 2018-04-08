@@ -9,34 +9,32 @@ using System.Text;
 /// </summary>
 class DesktopInputBroker: IInputBroker
 {
-
+    /// <summary>
+    /// Returns the throttle input status. -1 backwards, 0 still, +1 maximum throttle.
+    /// </summary>
+    public float ThrottleInput { get; private set; }
 
     /// <summary>
-    /// Returns the acceleration command's status. 0 no acceleration, 1 maximum acceleration.
+    /// Returns the steer input status. -1 steer left, +1 steer right.
     /// </summary>
-    public float Acceleration { get; private set; }
+    public float SteerInput { get; private set; }
 
     /// <summary>
-    /// Returns the steering command's status. -1 steer left, 0 no steering, 1 steer right
+    /// Returns the fire input status.
     /// </summary>
-    public float Steering { get; private set; }
+    public bool FireInput { get; private set; }
 
     /// <summary>
-    /// Returns the fire input status. 0 not firing, 1 firing.
+    /// Returns the special input status.
     /// </summary>
-    public bool Fire { get; private set; }
+    public bool SpecialInput { get; private set; }
 
-    /// <summary>
-    /// Returns the fire special input status. 0 not firing, 1 firing.
-    /// </summary>
-    public bool FireSpecial { get; private set; }
-
-    public void Update()
+    public void UpdateInput()
     {
-        Acceleration = Input.GetAxis(Inputs.Throttle);
-        Steering = Input.GetAxis(Inputs.Steer);
-        Fire = Input.GetAxis(Inputs.Fire) > 0.0f;
-        FireSpecial = Input.GetAxis(Inputs.FireSpecial) > 0.0f;
+        ThrottleInput = Input.GetAxis(Inputs.Throttle);
+        SteerInput = Input.GetAxis(Inputs.Steer);
+        FireInput = Input.GetButtonDown(Inputs.Fire);
+        SpecialInput = Input.GetButtonDown(Inputs.Special);
     }
 }
 

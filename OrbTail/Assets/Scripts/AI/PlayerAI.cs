@@ -2,9 +2,28 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerAI : MonoBehaviour {
+public class PlayerAI : MonoBehaviour, IInputBroker
+{
+    /// <summary>
+    /// Returns the throttle input status. -1 reverse, +1 maximum throttle.
+    /// </summary>
+    public float ThrottleInput { get; private set; }
+
+    /// <summary>
+    /// Returns the steer input status. -1 steer left, +1 steer right.
+    /// </summary>
+    public float SteerInput { get; private set; }
+
+    /// <summary>
+    /// Returns the fire input status.
+    /// </summary>
+    public bool FireInput { get; private set; }
+
+    /// <summary>
+    /// Returns the special input status.
+    /// </summary>
+    public bool SpecialInput { get; private set; }
     
-    private RelayInputBroker inputBroker = new RelayInputBroker();
     //private EventLogger eventLogger;
     private PowerController powerController;
     
@@ -28,12 +47,7 @@ public class PlayerAI : MonoBehaviour {
     private float maxTimeToGiveUp = 40f;
 
     private HashSet<GameObject> checkpoints;
-    
-    
-    public IInputBroker GetInputBroker() {
-        return inputBroker;
-    }
-    
+
     private void OnFieldOfViewEnter(object sender, Collider other) {
         GameObject colObject = other.gameObject;
         if (target == null || IsPatrolling()) {
@@ -92,21 +106,18 @@ public class PlayerAI : MonoBehaviour {
             }
             
             AvoidOstacles();
-            
-            
-            float steering = Vector3.Dot(-floatingObject.ArenaDown, Vector3.Cross(transform.forward, desideredDirection.normalized));
-            
-            //float steering = -Mathf.Sign(Vector3.Dot(-floatingObject.ArenaDown,
-            //                                         Vector3.Cross(transform.forward, desideredDirection.normalized))) *
-            //	(Vector3.Dot( transform.forward, desideredDirection.normalized ) - 1.0f);
-            
-            inputBroker.Steering = Mathf.Clamp(steering * 5f, -1f, 1f);
-            inputBroker.Acceleration = Mathf.Min (maxAcceleration, 1f - Mathf.Clamp01(Mathf.Abs(steering)));
-            
         }
         
     }
-    
+
+    public void UpdateInput()
+    {
+        float steering = Vector3.Dot(-floatingObject.ArenaDown, Vector3.Cross(transform.forward, desideredDirection.normalized));
+
+        SteerInput = Mathf.Clamp(steering * 5f, -1f, 1f);
+        ThrottleInput = Mathf.Min(maxAcceleration, 1f - Mathf.Clamp01(Mathf.Abs(steering)));
+    }
+
     void ChasingOrb() {
         if (!orbController.IsLinked) {
             Vector3 relVector = target.transform.position - gameObject.transform.position;
@@ -121,9 +132,7 @@ public class PlayerAI : MonoBehaviour {
         Vector3 relVector = gameObject.transform.position - target.transform.position;
         desideredDirection = relVector;
     }
-    
-    
-    
+
     void ChasingPlayer() {
 
         /* Now there's OnShipEliminated
@@ -137,8 +146,9 @@ public class PlayerAI : MonoBehaviour {
         desideredDirection = relVector;
     }
     
-    void AvoidOstacles() {
-        
+    void AvoidOstacles()
+    {
+        // Yep, totally avoiding those obstacles!
     }
     
     void Patrolling() {
@@ -188,9 +198,7 @@ public class PlayerAI : MonoBehaviour {
         GetComponentInChildren<AIFieldOfView>().EventOnFieldOfViewEnter += OnFieldOfViewEnter;
         checkpoints = new HashSet<GameObject>(GameObject.FindGameObjectsWithTag(Tags.AICheckpoint));
 
-        
         gameBuilt = true;
-        
     }
 
     private void OnEventEnd(object sender, GameObject winner, int info) {
@@ -235,7 +243,7 @@ public class PlayerAI : MonoBehaviour {
     private IEnumerator FirePowerUp() {
         float timeToWait = Random.value * maxTimeToFirePowerUp;
         yield return new WaitForSeconds(timeToWait);
-        inputBroker.Fire = true;
+        FireInput = true;
     }
     
     private bool IsFreeOrb(GameObject orb) {

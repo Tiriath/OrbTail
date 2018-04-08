@@ -10,79 +10,79 @@ using System.Text;
 public class MobileInputBroker: IInputBroker
 {
     /// <summary>
-    /// Returns the acceleration command's status. 0 no acceleration, 1 maximum acceleration.
+    /// Returns the throttle input status. -1 backwards, 0 still, +1 maximum throttle.
     /// </summary>
-    public float Acceleration { get; private set; }
+    public float ThrottleInput { get; private set; }
 
     /// <summary>
-    /// Returns the steering command's status. -1 steer left, 0 no steering, 1 steer right
+    /// Returns the steer input status. -1 steer left, +1 steer right.
     /// </summary>
-    public float Steering { get; private set; }
+    public float SteerInput { get; private set; }
 
     /// <summary>
-    /// Returns the fire input status. 0 not firing, 1 firing.
+    /// Returns the fire input status.
     /// </summary>
-    public bool Fire { get; private set; }
+    public bool FireInput { get; private set; }
 
     /// <summary>
-    /// Returns the fire special input status. 0 not firing, 1 firing.
+    /// Returns the special input status.
     /// </summary>
-    public bool FireSpecial { get; private set; }
-
-    /// <summary>
-    /// Returns the accelerometers' offset on z Axis (Acceleration)
-    /// </summary>
-    public float ZOffsetAcceleration { get; private set; }
+    public bool SpecialInput { get; private set; }
 
     public MobileInputBroker()
     {
-
         //Standard position, with the phone in landscape position and the bottom on the right.
-        ZOffsetAcceleration = 0f;
         Calibrate();
-        HUDButtonsHandler hudButtonsHandler = GameObject.FindGameObjectWithTag(Tags.HUD).GetComponent<HUDButtonsHandler>();
-        hudButtonsHandler.EventOnMissileButtonSelect += OnPowerButtonSelect;
+        
+        var handler = GameObject.FindGameObjectWithTag(Tags.HUD).GetComponent<HUDButtonsHandler>();
 
+        handler.EventOnMissileButtonSelect += OnPowerButtonSelect;
     }
 
-    /// <summary>
-    /// Set the actual offset used for the accelerometer's calculation
-    /// </summary>
-    public void Calibrate()
+    public void UpdateInput()
     {
-        ZOffsetAcceleration = Mathf.Clamp(-Input.acceleration.z, -kMaxOffsetAcceleration, kMaxOffsetAcceleration);
-    }
+        FireInput = false;
 
-    public void Update()
-    {
-        //var delta = Vector3.Cross(AccelerometerOffset, Input.acceleration.normalized);
-        //Acceleration = Mathf.Clamp(delta.x * kAccelerationExponent, -1f, 1f);
-        Acceleration = Mathf.Clamp((-Input.acceleration.z - ZOffsetAcceleration) * kAccelerationExponent, -1f, 1f);
-        Steering = Mathf.Clamp(Input.acceleration.x * kSteeringExponent, -1f, 1f);
-        //From -1.0f to 1.0f.
-        //Steering = Mathf.Pow( Mathf.Clamp01( Mathf.Abs( direction.x ) ), 
-        //                                      kSteeringExponent) * Mathf.Sign(direction.x);
-        //Steering = Mathf.Clamp(delta.z * kSteeringExponent, -1f, 1f);
+        // #TODO Review this.
 
-        Fire = false;
+        ThrottleInput = Mathf.Clamp((-Input.acceleration.z - ZOffset) * kThrottleFactor, -1.0f, 1.0f);
+        SteerInput = Mathf.Clamp(Input.acceleration.x * kSteerFactor, -1.0f, 1.0f);
 
-        // TODO: to enhance 
         if (Input.acceleration.sqrMagnitude > kBoostThreshold)
         {
-            FireSpecial = true;
+            SpecialInput = true;
         }
     }
 
-    private void OnPowerButtonSelect(object sender, GameObject button)
+    /// <summary>
+    /// Calibrate device inclination.
+    /// </summary>
+    private void Calibrate()
     {
-        Fire = true;
+        ZOffset = Mathf.Clamp(-Input.acceleration.z, -kMaxZOffset, kMaxZOffset);
     }
 
-    private const float kAccelerationExponent = 4f;
+    /// <summary>
+    /// Called whenever the power button is pressed.
+    /// </summary>
+    private void OnPowerButtonSelect(object sender, GameObject button)
+    {
+        FireInput = true;
+    }
 
-    private const float kSteeringExponent = 2f;
+    private const float kThrottleFactor = 4f;
+
+    private const float kSteerFactor = 2f;
 
     private const float kBoostThreshold = 3.0f;
 
-    private const float kMaxOffsetAcceleration = 0.6f;
+    /// <summary>
+    /// Maximum allowed inclination to use for calibration.
+    /// </summary>
+    private const float kMaxZOffset = 0.6f;
+
+    /// <summary>
+    /// Offset value used to compensate for initial device inclination.
+    /// </summary>
+    private float ZOffset = 0.0f;
 }
