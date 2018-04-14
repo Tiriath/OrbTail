@@ -2,7 +2,8 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class HUDMenuButtonHandler : GUIMenuChoose {
+public class HUDMenuButtonHandler : MonoBehaviour
+{
 	private TextMesh exitMessage;
 	private SpriteRenderer menuSprite;
 	private float shortFadeTime = 0.1f;
@@ -11,16 +12,14 @@ public class HUDMenuButtonHandler : GUIMenuChoose {
 	private Color originalButtonColor;
 
 	// Use this for initialization
-	public override void Start () {
-		base.Start();
+	public void Start () {
 		exitMessage = transform.Find("ExitMessage").GetComponent<TextMesh>();
 		menuSprite = transform.Find("MenuButtonSprite").GetComponent<SpriteRenderer>();
 		originalButtonColor = menuSprite.color;
 	}
 	
-	protected override void OnSelect (GameObject target)
+	protected void OnSelect (GameObject target)
 	{
-		base.OnSelect (target);
 		if (target.name == "MenuButtonSprite") {
 			if (!alreadyPressed) {
 				alreadyPressed = true;

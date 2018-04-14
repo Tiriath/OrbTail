@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class HUDTutorialHandler : GUIMenuChoose
+public class HUDTutorialHandler : MonoBehaviour
 {
 		private GameBuilder builder;
 		private HUDPositionHandler hudPositionHandler;
@@ -15,19 +15,15 @@ public class HUDTutorialHandler : GUIMenuChoose
 	
 
 		// Use this for initialization
-		public override void Start ()
+		public void Start ()
 		{
-				base.Start ();
-		
 				builder = GameObject.FindGameObjectWithTag (Tags.Master).GetComponent<GameBuilder> ();
 				builder.EventGameBuilt += OnGameBuilt;
 
 		}
 	
-		protected override void OnSelect (GameObject target)
+		protected void OnSelect (GameObject target)
 		{
-				base.OnSelect (target);
-
 				if (target.tag == Tags.MenuSelector) {
 						if (target.name == "Dismiss") {
 								hudPositionHandler.enabled = true;

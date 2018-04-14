@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HUDButtonsHandler : GUIMenuChoose {
+public class HUDButtonsHandler : MonoBehaviour
+{
 	public delegate void DelegateOnMissileButtonSelect(object sender, GameObject button);
 	
 	public event DelegateOnMissileButtonSelect EventOnMissileButtonSelect;
@@ -10,16 +11,8 @@ public class HUDButtonsHandler : GUIMenuChoose {
 	
 	public event DelegateOnBackButtonSelect EventOnBackButtonSelect;
 
-	// Use this for initialization
-	public override void Start () {
-		base.Start();
-	}
-	
 
-
-	protected override void OnSelect(GameObject target) {
-		base.OnSelect(target);
-
+	protected void OnSelect(GameObject target) {
 		if (target.tag == Tags.PowerButton)
 		{
 			if (EventOnMissileButtonSelect != null) {
