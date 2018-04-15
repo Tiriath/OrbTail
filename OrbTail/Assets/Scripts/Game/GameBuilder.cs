@@ -6,7 +6,8 @@ using System.Linq;
 /// <summary>
 /// The script builds any game
 /// </summary>
-public class GameBuilder : MonoBehaviour {
+public class GameBuilder : MonoBehaviour
+{
 
     public enum BuildMode{
 
@@ -162,31 +163,16 @@ public class GameBuilder : MonoBehaviour {
 
     public void PlayerReady()
     {
-        if (Action == BuildMode.SinglePlayer)
-        {
-            NotifyGameReady();          //The game is ready when the (only) player is ready
+        //if (Action == BuildMode.SinglePlayer)
+        //{
+        //    NotifyGameReady();          //The game is ready when the (only) player is ready
 
-        }
-        else
-        {
-            //The game is ready only when all players have dismissed the tutorial
-        }
+        //}
+        //else
+        //{
+        //    //The game is ready only when all players have dismissed the tutorial
+        //}
     }
-
-    /// <summary>
-    /// The current arena name
-    /// </summary>
-    public string ArenaName;
-
-    /// <summary>
-    /// The current game mode
-    /// </summary>
-    public int GameMode = GameModes.Any;
-
-    /// <summary>
-    /// The build mode
-    /// </summary>
-    public BuildMode Action = BuildMode.SinglePlayer;
 
     /// <summary>
     /// Builds the game with the proper arena, game mode and modality
@@ -194,50 +180,50 @@ public class GameBuilder : MonoBehaviour {
     public void BuildGame()
     {
 
-        switch (Action)
-        {
-            case BuildMode.SinglePlayer:
+        //switch (Action)
+        //{
+        //    case BuildMode.SinglePlayer:
                 
-                gameObject.AddComponent<SinglePlayerBuilder>();
-                break;
+        //        gameObject.AddComponent<SinglePlayerBuilder>();
+        //        break;
 
-            case BuildMode.Host:
+        //    case BuildMode.Host:
 
-                NetworkBuilder = gameObject.AddComponent<HostBuilder>();
+        //        NetworkBuilder = gameObject.AddComponent<HostBuilder>();
 
-                NetworkBuilder.LocalMasterServer = LocalMasterServer;
-                NetworkBuilder.LocalMasterServerAddress = LocalMasterServerAddress;
-                NetworkBuilder.LocalMasterServerPort = LocalMasterServerPort;
-                NetworkBuilder.NATFacilitatorPort = NATFacilitatorPort;
+        //        NetworkBuilder.LocalMasterServer = LocalMasterServer;
+        //        NetworkBuilder.LocalMasterServerAddress = LocalMasterServerAddress;
+        //        NetworkBuilder.LocalMasterServerPort = LocalMasterServerPort;
+        //        NetworkBuilder.NATFacilitatorPort = NATFacilitatorPort;
 
-                NetworkBuilder.Setup();
+        //        NetworkBuilder.Setup();
 
-                SceneManager.LoadScene("MenuMatchmaking");
+        //        SceneManager.LoadScene("MenuMatchmaking");
                 
-                NetworkBuilder.EventDisconnected += NetworkBuilder_EventDisconnected;
+        //        NetworkBuilder.EventDisconnected += NetworkBuilder_EventDisconnected;
 
-                break;
+        //        break;
 
-            case BuildMode.Client:
+        //    case BuildMode.Client:
 
-                NetworkBuilder = gameObject.AddComponent<ClientBuilder>();
+        //        NetworkBuilder = gameObject.AddComponent<ClientBuilder>();
 
-                NetworkBuilder.LocalMasterServer = LocalMasterServer;
-                NetworkBuilder.LocalMasterServerAddress = LocalMasterServerAddress;
-                NetworkBuilder.LocalMasterServerPort = LocalMasterServerPort;
-                NetworkBuilder.NATFacilitatorPort = NATFacilitatorPort;
+        //        NetworkBuilder.LocalMasterServer = LocalMasterServer;
+        //        NetworkBuilder.LocalMasterServerAddress = LocalMasterServerAddress;
+        //        NetworkBuilder.LocalMasterServerPort = LocalMasterServerPort;
+        //        NetworkBuilder.NATFacilitatorPort = NATFacilitatorPort;
 
-                NetworkBuilder.Setup();
+        //        NetworkBuilder.Setup();
 
-                SceneManager.LoadScene("MenuMatchmaking");
+        //        SceneManager.LoadScene("MenuMatchmaking");
                 
-                NetworkBuilder.EventDisconnected += NetworkBuilder_EventDisconnected;
+        //        NetworkBuilder.EventDisconnected += NetworkBuilder_EventDisconnected;
 
-                break;
+        //        break;
 
-        }
+        //}
                 
-        this.enabled = false;
+        //this.enabled = false;
         
     }
 
@@ -282,25 +268,6 @@ public class GameBuilder : MonoBehaviour {
     {
 
         NotifyServerLeft();
-
-    }
-        
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-        NetworkBuilder = null;
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 

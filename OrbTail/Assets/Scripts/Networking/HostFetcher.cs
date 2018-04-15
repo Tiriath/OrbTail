@@ -43,17 +43,18 @@ public class HostFetcher : MonoBehaviour
     public bool HasArena(string arena_name)
     {
 
-        int game_mode = GetComponent<GameBuilder>().GameMode;
+        //int game_mode = GetComponent<GameBuilder>().GameMode;
 
-        return hosts_found_.Any((string[] h) =>
-        {
-            
-            return h[0] == arena_name &&
-                   (h[1] == game_mode.ToString() ||
-                    game_mode == -1);
+        //return hosts_found_.Any((string[] h) =>
+        //{
 
-        });
+        //    return h[0] == arena_name &&
+        //           (h[1] == game_mode.ToString() ||
+        //            game_mode == -1);
 
+        //});
+
+        return false;
     }
 
     void OnFailedToConnectToMasterServer(NetworkConnectionError info)

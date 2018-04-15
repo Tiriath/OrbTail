@@ -133,7 +133,7 @@ public class Game : MonoBehaviour {
     /// <summary>
     /// The current game mode
     /// </summary>
-    public int GameMode = -1;
+    public GameMode game_mode = GameMode.Any;
 
     /// <summary>
     /// Return the name of the game mode
@@ -269,19 +269,19 @@ public class Game : MonoBehaviour {
         master.EventGameReady += master_EventGameReady;
 
         //Create the proper game mode
-        switch (GameMode)
+        switch (game_mode)
         {
-            case GameModes.Arcade:
+            case GameMode.Arcade:
 
                 game_mode_ = new ArcadeGameMode(this);
                 break;
 
-            case GameModes.LongestTail:
+            case GameMode.LongestTail:
 
                 game_mode_ = new LongestTailGameMode(this);
                 break;
 
-            case GameModes.Elimination:
+            case GameMode.Elimination:
 
                 game_mode_ = new EliminationGameMode(this);
                 break;

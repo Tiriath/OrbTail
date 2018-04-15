@@ -61,14 +61,14 @@ public class HostBuilder : NetworkPlayerBuilder
                                     GameBuilder.kServerPort,
                                     !Network.HavePublicAddress());
 
-        var builder = GetComponent<GameBuilder>();
+        //var builder = GetComponent<GameBuilder>();
         
-        var game_name = builder.ArenaName + ";" + builder.GameMode.ToString();
+        //var game_name = builder.ArenaName + ";" + builder.GameMode.ToString();
 
-        Debug.Log("Registering " + game_name);
+        //Debug.Log("Registering " + game_name);
 
-        MasterServer.RegisterHost(GameBuilder.kGameTypeName,
-                                  game_name, "open");
+        //MasterServer.RegisterHost(GameBuilder.kGameTypeName,
+        //                          game_name, "open");
 
 
         
@@ -222,16 +222,16 @@ public class HostBuilder : NetworkPlayerBuilder
 
             ready_players_.Clear();
 
-            var builder = GetComponent<GameBuilder>();
+            //var builder = GetComponent<GameBuilder>();
             
-            var game_name = builder.ArenaName + ";" + builder.GameMode.ToString();
+            //var game_name = builder.ArenaName + ";" + builder.GameMode.ToString();
             
-            Debug.Log("Registering " + game_name);
+            //Debug.Log("Registering " + game_name);
             
-            MasterServer.RegisterHost(GameBuilder.kGameTypeName,
-                                      game_name, "closed");
+            //MasterServer.RegisterHost(GameBuilder.kGameTypeName,
+            //                          game_name, "closed");
 
-            Network.maxConnections = 0;
+            //Network.maxConnections = 0;
             //Every device should load the proper arena
             //GetComponent<NetworkView>().RPC("RPCLoadArena", RPCMode.All, GetComponent<GameBuilder>().ArenaName);
             

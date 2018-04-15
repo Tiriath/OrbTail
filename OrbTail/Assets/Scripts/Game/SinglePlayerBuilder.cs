@@ -12,7 +12,7 @@ public class SinglePlayerBuilder : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        SceneManager.LoadScene(GetComponent<GameBuilder>().ArenaName);      // Load the arena.
+        //SceneManager.LoadScene(GetComponent<GameBuilder>().ArenaName);      // Load the arena.
     }
 
     void OnEnable()
@@ -78,7 +78,7 @@ public class SinglePlayerBuilder : MonoBehaviour
 
         var game = game_obj.GetComponent<Game>();
 
-        game.GameMode = GameModes.Resolve(GetComponent<GameBuilder>().GameMode);
+        //game.GameMode = GameModes.Resolve(GetComponent<GameBuilder>().GameMode);
         game.enabled = true;
 
     }

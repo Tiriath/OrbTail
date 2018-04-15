@@ -72,31 +72,31 @@ public class ClientBuilder : NetworkPlayerBuilder {
         if (server_event == MasterServerEvent.HostListReceived)
         {
 
-            Debug.Log("Fetching hosts...");
+            //Debug.Log("Fetching hosts...");
 
-            var builder = GetComponent<GameBuilder>();
+            //var builder = GetComponent<GameBuilder>();
 
-            var all_hosts = MasterServer.PollHostList();
+            //var all_hosts = MasterServer.PollHostList();
 
-            //Filters out the servers found
-            hosts_found_ = new Stack<HostData>(all_hosts.Where((HostData h) =>
-            {
+            ////Filters out the servers found
+            //hosts_found_ = new Stack<HostData>(all_hosts.Where((HostData h) =>
+            //{
 
-                var bits = h.gameName.Split(';');
+            //    var bits = h.gameName.Split(';');
 
-                string host_arena = bits[0];
-                int host_game = int.Parse(bits[1]);
+            //    string host_arena = bits[0];
+            //    int host_game = int.Parse(bits[1]);
 
-                return h.connectedPlayers < h.playerLimit &&
-                        h.comment == "open" &&
-                       (builder.ArenaName == "Any" || builder.ArenaName == host_arena) &&
-                       (builder.GameMode == -1 || builder.GameMode == host_game);
+            //    return h.connectedPlayers < h.playerLimit &&
+            //            h.comment == "open" &&
+            //           (builder.ArenaName == "Any" || builder.ArenaName == host_arena) &&
+            //           (builder.GameMode == -1 || builder.GameMode == host_game);
 
-            } ));
+            //} ));
 
-            Debug.Log("Found " + hosts_found_.Count() + " games out of " + all_hosts.Count());
+            //Debug.Log("Found " + hosts_found_.Count() + " games out of " + all_hosts.Count());
 
-            Connect();
+            //Connect();
 
         }
 
@@ -128,37 +128,37 @@ public class ClientBuilder : NetworkPlayerBuilder {
     private void Connect()
     {
 
-        if (hosts_found_.Count > 0)
-        {
+        //if (hosts_found_.Count > 0)
+        //{
 
-            var builder = GetComponent<GameBuilder>();
+        //    var builder = GetComponent<GameBuilder>();
 
-            var host = hosts_found_.Pop();
+        //    var host = hosts_found_.Pop();
 
-            Debug.Log("Connecting to " + host.gameName);
+        //    Debug.Log("Connecting to " + host.gameName);
 
-            var bits = host.gameName.Split(';');
+        //    var bits = host.gameName.Split(';');
 
-            builder.ArenaName = bits[0];
-            builder.GameMode = int.Parse(bits[1]);
-            
-            Network.Connect(host);
+        //    builder.ArenaName = bits[0];
+        //    builder.GameMode = int.Parse(bits[1]);
 
-        }
-        else
-        {
+        //    Network.Connect(host);
+
+        //}
+        //else
+        //{
 
             Debug.Log("No game found...");
 
             NotifyNoGame();
 
-        }
+        //}
 
     }
 
     /// <summary>
     /// List of all hosts found so far
     /// </summary>
-    private Stack<HostData> hosts_found_;
+   // private Stack<HostData> hosts_found_;
 
 }

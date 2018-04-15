@@ -48,26 +48,26 @@ public class HUDTutorialHandler : MonoBehaviour
 
 		private void FetchGameModeTutorial()
 		{
-				string prefabPath = pathTutorial;
-				Game game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
-				switch (game.GameMode) {
+			//	string prefabPath = pathTutorial;
+			//	Game game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
+			//	switch (game.GameMode) {
 
-				case GameModes.Arcade:
-						prefabPath += arcadeTutorialPrefab;
-						break;
-				case GameModes.Elimination:
-						prefabPath += eliminationTutorialPrefab;
-						break;
-				case GameModes.LongestTail:
-						prefabPath += longestTailTutorialPrefab;
-						break;
+			//	case GameModes.Arcade:
+			//			prefabPath += arcadeTutorialPrefab;
+			//			break;
+			//	case GameModes.Elimination:
+			//			prefabPath += eliminationTutorialPrefab;
+			//			break;
+			//	case GameModes.LongestTail:
+			//			prefabPath += longestTailTutorialPrefab;
+			//			break;
 				
-				}
+			//	}
 
-			GameObject tutorial = (GameObject) GameObject.Instantiate(Resources.Load(prefabPath));
-			tutorial.transform.parent = gameObject.transform;
-			tutorial.transform.localPosition = Vector3.zero;
-			tutorial.transform.localRotation = Quaternion.identity;
+			//GameObject tutorial = (GameObject) GameObject.Instantiate(Resources.Load(prefabPath));
+			//tutorial.transform.parent = gameObject.transform;
+			//tutorial.transform.localPosition = Vector3.zero;
+			//tutorial.transform.localRotation = Quaternion.identity;
 		}
 
 		private void ActivateTab (string tabName)

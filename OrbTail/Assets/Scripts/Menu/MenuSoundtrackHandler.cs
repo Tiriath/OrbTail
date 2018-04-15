@@ -7,14 +7,14 @@ public class MenuSoundtrackHandler : MonoBehaviour {
 	private const float fadeTime = 1f;
 	private const float longFadeTime = 4f;
 
-	private GameBuilder builder;
+	//private GameBuilder builder;
 	private GameObject battleSound;
 	private Game game;
 
 	// Use this for initialization
 	void Start () {
-		builder = GetComponent<GameBuilder>();
-		builder.EventGameBuilt += OnGameBuilt;
+		//builder = GetComponent<GameBuilder>();
+		//builder.EventGameBuilt += OnGameBuilt;
 		battleSound = transform.Find("BattleMusic").gameObject;
 	}
 	
