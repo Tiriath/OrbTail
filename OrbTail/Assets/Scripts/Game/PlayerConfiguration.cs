@@ -13,6 +13,11 @@ public class PlayerConfiguration : MonoBehaviour
     public int player_controller_id = 0;
 
     /// <summary>
+    /// Whether this configuration refers to a human.
+    /// </summary>
+    public bool is_human = false;
+
+    /// <summary>
     /// Ship selected by this player.
     /// </summary>
     public GameObject ship_prefab;

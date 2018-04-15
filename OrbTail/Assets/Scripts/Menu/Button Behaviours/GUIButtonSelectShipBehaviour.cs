@@ -28,5 +28,6 @@ public class GUIButtonSelectShipBehaviour : GUIButtonBehaviour
         }
 
         player_configuration.ship_prefab = ship_prefab;
+        player_configuration.is_human = true;
     }
 }

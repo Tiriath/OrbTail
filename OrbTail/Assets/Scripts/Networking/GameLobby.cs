@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Networking.Match;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -7,6 +9,54 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameLobby : NetworkLobbyManager
 {
+    /// <summary>
+    /// Get the singleton instance.
+    /// </summary>
+    public static GameLobby Instance
+    {
+        get
+        {
+            if(game_lobby == null)
+            {
+                game_lobby = FindObjectOfType<GameLobby>();
+            }
+
+            return game_lobby;
+        }
+    }
+
+    /// <summary>
+    /// Check whether the lobby is offline.
+    /// </summary>
+    public bool IsOffline
+    {
+        get
+        {
+            return game_configuration.game_type == GameType.Offline;
+        }
+    }
+
+    /// <summary>
+    /// Get a local player configuration from index.
+    /// </summary>
+    public PlayerConfiguration GetLocalPlayer(int local_player_index)
+    {
+        return local_players[local_player_index];
+    }
+
+    /// <summary>
+    /// Called on the client when connected to a server.
+    /// </summary>
+    public override void OnClientConnect(NetworkConnection connection)
+    {
+        base.OnClientConnect(connection);
+
+        // Add local players after the manager finished initializing the new client.
+        // For some reason if this is performed while on OnLobbyClientEnter it would attempt to create one more lobby player, failing.
+
+        AddLocalPlayers();
+    }
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -31,24 +81,35 @@ public class GameLobby : NetworkLobbyManager
     {
         if (scene.name == lobbyScene)
         {
-            if(game_configuration.game_type == GameType.Offline)
+            if (IsOffline)
             {
-                CreateLobby();          // Offline games are just hosted games where other players are AIs.
+                CreateOfflineLobby();       // Offline games are just hosted games where other players are AIs.
             }
-            else if(game_configuration.game_type == GameType.Online)
+            else
             {
-                SearchLobby();          // Attempt to join an existing lobby, if none is found a new one is created.
+                SearchLobby();              // Attempt to join an existing lobby, create a brand new one when none is found.
             }
         }
-
     }
 
     /// <summary>
-    /// Create the lobby using the current game configuration.
+    /// Create an offline lobby.
     /// </summary>
-    private void CreateLobby()
+    private void CreateOfflineLobby()
     {
-        
+        StartHost();
+    }
+
+    /// <summary>
+    /// Create an online lobby for other players to join.
+    /// </summary>
+    private void CreateOnlineLobby()
+    {
+        // Advertise the match via the matchmaking service.
+
+        StartMatchMaker();
+
+        matchMaker.CreateMatch("OrbtailMatch", 4, true, "", "", "", 0, 0, OnMatchCreate);
     }
 
     /// <summary>
@@ -56,11 +117,36 @@ public class GameLobby : NetworkLobbyManager
     /// </summary>
     private void SearchLobby()
     {
+        // #TODO Assumes no lobby was found, create a new lobby.
 
+        CreateOnlineLobby();
     }
+
+    /// <summary>
+    /// Add local players to the current match (either hosted or joined).
+    /// </summary>
+    private void AddLocalPlayers()
+    {
+        local_players = new List<PlayerConfiguration>(GetComponents<PlayerConfiguration>());
+
+        for (short index = 0; index < local_players.Count; ++index)
+        {
+            TryToAddPlayer();
+        }
+    }
+
+    /// <summary>
+    /// Singleton instance of the game lobby.
+    /// </summary>
+    private static GameLobby game_lobby;
 
     /// <summary>
     /// Current game configuration component.
     /// </summary>
     private GameConfiguration game_configuration = null;
+
+    /// <summary>
+    /// List of local players.
+    /// </summary>
+    private List<PlayerConfiguration> local_players;
 }
