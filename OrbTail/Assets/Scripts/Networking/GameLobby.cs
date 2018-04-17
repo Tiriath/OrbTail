@@ -9,6 +9,10 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameLobby : NetworkLobbyManager
 {
+    public delegate void DelegateLobbyStarted(GameLobby sender);
+    
+    public event DelegateLobbyStarted LobbyStarted;
+
     /// <summary>
     /// Get the singleton instance.
     /// </summary>
@@ -81,14 +85,27 @@ public class GameLobby : NetworkLobbyManager
     {
         if (scene.name == lobbyScene)
         {
-            if (IsOffline)
-            {
-                CreateOfflineLobby();       // Offline games are just hosted games where other players are AIs.
-            }
-            else
-            {
-                SearchLobby();              // Attempt to join an existing lobby, create a brand new one when none is found.
-            }
+            CreateLobby();
+        }
+    }
+
+    /// <summary>
+    /// Create the lobby.
+    /// </summary>
+    private void CreateLobby()
+    {
+        if (LobbyStarted != null)
+        {
+            LobbyStarted(this);
+        }
+
+        if (IsOffline)
+        {
+            CreateOfflineLobby();       // Offline games are just hosted games where other players are AIs.
+        }
+        else
+        {
+            SearchLobby();              // Attempt to join an existing lobby, create a brand new one when none is found.
         }
     }
 
@@ -101,25 +118,26 @@ public class GameLobby : NetworkLobbyManager
     }
 
     /// <summary>
+    /// Join an existing lobby matching the current game configuration.
+    /// </summary>
+    private void SearchLobby()
+    {
+        // #TODO Assumes no lobby was found, create a new lobby.
+        StartClient();
+
+        //CreateOnlineLobby();
+    }
+
+    /// <summary>
     /// Create an online lobby for other players to join.
     /// </summary>
     private void CreateOnlineLobby()
     {
         // Advertise the match via the matchmaking service.
 
-        StartMatchMaker();
+        //StartMatchMaker();
 
-        matchMaker.CreateMatch("OrbtailMatch", 4, true, "", "", "", 0, 0, OnMatchCreate);
-    }
-
-    /// <summary>
-    /// Join an existing lobby matching the current game configuration.
-    /// </summary>
-    private void SearchLobby()
-    {
-        // #TODO Assumes no lobby was found, create a new lobby.
-
-        CreateOnlineLobby();
+        //matchMaker.CreateMatch("OrbtailMatch", 4, true, "", "", "", 0, 0, OnMatchCreate);
     }
 
     /// <summary>

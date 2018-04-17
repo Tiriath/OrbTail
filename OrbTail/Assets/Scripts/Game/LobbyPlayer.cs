@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Networking;
 
 /// <summary>
@@ -6,6 +7,18 @@ using UnityEngine.Networking;
 /// </summary>
 public class LobbyPlayer : NetworkLobbyPlayer
 {
+    public delegate void DelegatePlayerJoined(LobbyPlayer sender);
+    public delegate void DelegatePlayerLeft(LobbyPlayer sender);
+    public delegate void DelegatePlayerIndexChanged(LobbyPlayer sender);
+    public delegate void DelegatePlayerShipChanged(LobbyPlayer sender);
+    public delegate void DelegatePlayerReady(LobbyPlayer sender);
+
+    public static event DelegatePlayerJoined PlayerJoinedEvent;
+    public event DelegatePlayerLeft PlayerLeftEvent;
+    public event DelegatePlayerIndexChanged PlayerIndexChangedEvent;
+    public event DelegatePlayerShipChanged PlayerShipChangedEvent;
+    public event DelegatePlayerReady PlayerReadyEvent;
+
     /// <summary>
     /// Player ship.
     /// </summary>
@@ -23,52 +36,32 @@ public class LobbyPlayer : NetworkLobbyPlayer
     /// </summary>
     public override void OnClientEnterLobby()
     {
-        Debug.Log("OnClientEnterLobby");
+        Debug.Log("Enter!");
 
         base.OnClientEnterLobby();
+
+        if(PlayerJoinedEvent != null)
+        {
+            PlayerJoinedEvent(this);
+        }
     }
 
     /// <summary>
-    /// Called on server and client when the player leaves the lobby.
+    /// Called when the player gets disconnected from the lobby.
     /// </summary>
-    public override void OnClientExitLobby()
+    public void OnDestroy()
     {
-        Debug.Log("OnClientExitLobby");
+        Debug.Log("Escer!");
 
-        base.OnClientExitLobby();
-    }
+        if (player_indexes != null)                      // This is true only on the server.
+        {
+            player_indexes.Push(this.player_index);
+        }
 
-    /// <summary>
-    /// Called on clients when the lobby player switches between ready and not ready.
-    /// </summary>
-    /// <param name="ready_state"></param>
-    public override void OnClientReady(bool ready_state)
-    {
-        Debug.Log("OnClientReady");
-
-        base.OnClientReady(ready_state);
-    }
-
-    /// <summary>
-    /// Called whenever the player ship changes.
-    /// </summary>
-    /// <param name="player_ship">Selected ship name.</param>
-    private void OnShipChanged(string player_ship)
-    {
-        Debug.Log("OnShipChanged");
-
-        this.player_ship = player_ship;
-    }
-
-    /// <summary>
-    /// Called whenever the player color changes.
-    /// </summary>
-    /// <param name="player_index">Player index</param>
-    private void OnPlayerIndexChanged(int player_index)
-    {
-        Debug.Log("OnPlayerIndexChanged");
-
-        this.player_index = player_index;
+        if (PlayerLeftEvent != null)
+        {
+            PlayerLeftEvent(this);
+        }
     }
 
     /// <summary>
@@ -78,10 +71,81 @@ public class LobbyPlayer : NetworkLobbyPlayer
     {
         Debug.Log("OnStartAuthority (controller: " + playerControllerId + ")");
 
-        // #TODO Handle multiple local players.
-
         var player_configuration = GameLobby.Instance.GetLocalPlayer(playerControllerId);
 
         player_ship = player_configuration.ship_prefab.name;
+
+        CmdAcquirePlayerIndex();        // Ask a free player index to the server.
     }
+
+    /// <summary>
+    /// Called on clients when the lobby player switches between ready and not ready.
+    /// </summary>
+    /// <param name="ready_state"></param>
+    public override void OnClientReady(bool ready_state)
+    {
+        base.OnClientReady(ready_state);
+
+        if(PlayerReadyEvent != null)
+        {
+            PlayerReadyEvent(this);
+        }
+    }
+
+    /// <summary>
+    /// Called whenever the player ship changes.
+    /// </summary>
+    /// <param name="player_ship">Selected ship name.</param>
+    private void OnShipChanged(string player_ship)
+    {
+        this.player_ship = player_ship;
+
+        if(PlayerShipChangedEvent != null)
+        {
+            PlayerShipChangedEvent(this);
+        }
+    }
+
+    /// <summary>
+    /// Called whenever the player color changes.
+    /// </summary>
+    /// <param name="player_index">New player index.</param>
+    private void OnPlayerIndexChanged(int player_index)
+    {
+        this.player_index = player_index;
+
+        if(PlayerIndexChangedEvent != null)
+        {
+            PlayerIndexChangedEvent(this);
+        }
+    }
+
+    /// <summary>
+    /// Acquire an unique player index for this lobby.
+    /// Called on the client, executed on the server.
+    /// </summary>
+    [Command]
+    private void CmdAcquirePlayerIndex()
+    {
+        if(player_indexes == null)
+        {
+            // Fill the list with all the available indexes.
+
+            player_indexes = new Stack<int>();
+
+            for(int index = GameLobby.Instance.maxPlayers - 1; index >= 0; --index)
+            {
+                player_indexes.Push(index);
+            }
+        }
+
+        // Fetch the first free index in the list.
+
+        this.player_index = player_indexes.Pop();
+    }
+
+    /// <summary>
+    /// List of available player indexes.
+    /// </summary>
+    private static Stack<int> player_indexes;
 }
