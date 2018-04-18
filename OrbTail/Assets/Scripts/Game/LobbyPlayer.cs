@@ -9,11 +9,13 @@ public class LobbyPlayer : NetworkLobbyPlayer
 {
     public delegate void DelegatePlayerJoined(LobbyPlayer sender);
     public delegate void DelegatePlayerLeft(LobbyPlayer sender);
+    public delegate void DelegatePlayerAuthority(LobbyPlayer sender);
     public delegate void DelegatePlayerIndexChanged(LobbyPlayer sender);
     public delegate void DelegatePlayerShipChanged(LobbyPlayer sender);
     public delegate void DelegatePlayerReady(LobbyPlayer sender);
 
     public static event DelegatePlayerJoined PlayerJoinedEvent;
+    public static event DelegatePlayerAuthority PlayerAuthorityEvent;
     public event DelegatePlayerLeft PlayerLeftEvent;
     public event DelegatePlayerIndexChanged PlayerIndexChangedEvent;
     public event DelegatePlayerShipChanged PlayerShipChangedEvent;
@@ -36,8 +38,6 @@ public class LobbyPlayer : NetworkLobbyPlayer
     /// </summary>
     public override void OnClientEnterLobby()
     {
-        Debug.Log("Enter!");
-
         base.OnClientEnterLobby();
 
         if(PlayerJoinedEvent != null)
@@ -51,8 +51,6 @@ public class LobbyPlayer : NetworkLobbyPlayer
     /// </summary>
     public void OnDestroy()
     {
-        Debug.Log("Escer!");
-
         if (player_indexes != null)                      // This is true only on the server.
         {
             player_indexes.Push(this.player_index);
@@ -75,7 +73,12 @@ public class LobbyPlayer : NetworkLobbyPlayer
 
         player_ship = player_configuration.ship_prefab.name;
 
-        CmdAcquirePlayerIndex();        // Ask a free player index to the server.
+        CmdAcquirePlayerIndex();                        // Ask a free player index to the server.
+
+        if(PlayerAuthorityEvent != null)
+        {
+            PlayerAuthorityEvent(this);
+        }
     }
 
     /// <summary>

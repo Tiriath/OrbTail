@@ -42,9 +42,12 @@ public class GUILobbyPlayer : MonoBehaviour
 
         LobbyPlayer.PlayerJoinedEvent -= OnLobbyPlayerJoined;
 
-        foreach (var player in GameLobby.Instance.lobbySlots)
+        if(GameLobby.Instance != null)
         {
-            UnbindFromPlayer((LobbyPlayer)player);
+            foreach (var player in GameLobby.Instance.lobbySlots)
+            {
+                UnbindFromPlayer((LobbyPlayer)player);
+            }
         }
     }
 
@@ -122,10 +125,13 @@ public class GUILobbyPlayer : MonoBehaviour
     /// </summary>
     private void UnbindFromPlayer(LobbyPlayer lobby_player)
     {
-        lobby_player.PlayerLeftEvent -= OnLobbyPlayerLeft;
-        lobby_player.PlayerIndexChangedEvent -= OnPlayerIndexChanged;
-        lobby_player.PlayerShipChangedEvent -= OnPlayerShipChanged;
-        lobby_player.PlayerReadyEvent -= OnPlayerReadyChanged;
+        if(lobby_player != null)
+        {
+            lobby_player.PlayerLeftEvent -= OnLobbyPlayerLeft;
+            lobby_player.PlayerIndexChangedEvent -= OnPlayerIndexChanged;
+            lobby_player.PlayerShipChangedEvent -= OnPlayerShipChanged;
+            lobby_player.PlayerReadyEvent -= OnPlayerReadyChanged;
+        }
     }
 
     /// <summary>
