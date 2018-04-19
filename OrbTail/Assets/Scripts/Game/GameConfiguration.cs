@@ -23,17 +23,6 @@ public enum GameMode
 }
 
 /// <summary>
-/// Arena.
-/// </summary>
-public enum Arena
-{
-    Flat,
-    Sphere,
-    Torus,
-    Any
-}
-
-/// <summary>
 /// Represent a game configuration.
 /// </summary>
 public class GameConfiguration : MonoBehaviour
@@ -60,7 +49,7 @@ public class GameConfiguration : MonoBehaviour
     public GameMode game_mode = GameMode.Any;
 
     /// <summary>
-    /// Arena.
+    /// Arena name. Empty if any arena.
     /// </summary>
-    public Arena arena = Arena.Any;
+    public string arena;
 }

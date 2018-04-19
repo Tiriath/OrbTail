@@ -31,29 +31,24 @@ public class GUIButtonToggleReadyBehaviour : GUIButtonBehaviour
 
     public void OnDestroy()
     {
-        // Unbind from everything!
+        LobbyPlayer.PlayerAuthorityEvent -= OnLobbyPlayerAuthority;
 
-        LobbyPlayer.PlayerJoinedEvent -= OnLobbyPlayerAuthority;
-
-        if(local_player)
-        {
-            local_player.PlayerReadyEvent -= OnLobbyPlayerReady;
-        }
+        OnLobbyPlayerLeft(bound_local_player);
     }
 
     public override void OnInputConfirm()
     {
-        if(local_player)
+        if(bound_local_player)
         {
             // Toggle ready status.
 
-            if(local_player.readyToBegin)
+            if(bound_local_player.readyToBegin)
             {
-                local_player.SendNotReadyToBeginMessage();
+                bound_local_player.SendNotReadyToBeginMessage();
             }
             else
             {
-                local_player.SendReadyToBeginMessage();
+                bound_local_player.SendReadyToBeginMessage();
             }
         }
     }
@@ -65,27 +60,41 @@ public class GUIButtonToggleReadyBehaviour : GUIButtonBehaviour
     {
         if(lobby_player.playerControllerId == local_player_index)
         {
-            Debug.Assert(local_player == null, "A local player with id " + local_player_index + " was already bound!");
+            Debug.Assert(bound_local_player == null, "A local player with id " + local_player_index + " was already bound!");
 
-            local_player = lobby_player;
-            
-            local_player.PlayerReadyEvent += OnLobbyPlayerReady;
+            bound_local_player = lobby_player;
 
-            OnLobbyPlayerReady(local_player);
+            bound_local_player.PlayerReadyEvent += OnLobbyPlayerReady;
+            bound_local_player.PlayerLeftEvent += OnLobbyPlayerLeft;
+
+            OnLobbyPlayerReady(bound_local_player);
         }
     }
 
     /// <summary>
     /// Called whenever the ready status of the local player changes.
     /// </summary>
-    /// <param name="sender"></param>
     private void OnLobbyPlayerReady(LobbyPlayer lobby_player)
     {
-        GetComponent<TextMesh>().text = local_player.readyToBegin ? ready_text : not_ready_text;
+        GetComponent<TextMesh>().text = bound_local_player.readyToBegin ? ready_text : not_ready_text;
+    }
+
+    /// <summary>
+    /// Called whenever the local player leaves.
+    /// </summary>
+    private void OnLobbyPlayerLeft(LobbyPlayer lobby_player)
+    {
+        if (bound_local_player && lobby_player == bound_local_player)
+        {
+            bound_local_player.PlayerReadyEvent -= OnLobbyPlayerReady;
+            bound_local_player.PlayerLeftEvent -= OnLobbyPlayerLeft;
+
+            bound_local_player = null;
+        }
     }
 
     /// <summary>
     /// Local player this element is currently bound to.
     /// </summary>
-    private LobbyPlayer local_player = null;
+    private LobbyPlayer bound_local_player = null;
 }

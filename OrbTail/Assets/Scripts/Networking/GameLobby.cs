@@ -61,6 +61,52 @@ public class GameLobby : NetworkLobbyManager
         AddLocalPlayers();
     }
 
+    /// <summary>
+    /// Called on the client when disconnected from a server.
+    /// </summary>
+    /// <param name="connection"></param>
+    public override void OnLobbyClientDisconnect(NetworkConnection connection)
+    {
+        Debug.Log("Disconnected from the server!");
+
+        base.OnLobbyClientDisconnect(connection);
+    }
+
+    /// <summary>
+    /// Called on the server when server\host is started.
+    /// </summary>
+    public override void OnLobbyStartServer()
+    {
+        is_host = true;
+    }
+
+    /// <summary>
+    /// Called on the client when client\host is started.
+    /// </summary>
+    /// <param name="lobbyClient"></param>
+    public override void OnLobbyStartClient(NetworkClient lobbyClient)
+    {
+        is_client = true;
+    }
+
+    /// <summary>
+    /// Called on the server when all the players in the lobby are ready.
+    /// </summary>
+    public override void OnLobbyServerPlayersReady()
+    {
+        // Select the arena to start.
+
+        var arena = game_configuration.arena;
+
+        if(arena.Length == 0)
+        {
+            // Randomize an arena.
+
+        }
+
+        ServerChangeScene(arena);
+    }
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -74,6 +120,8 @@ public class GameLobby : NetworkLobbyManager
     void Start()
     {
         game_configuration = GetComponent<GameConfiguration>();
+
+        original_lobby_scene = lobbyScene;
     }
 
     /// <summary>
@@ -83,8 +131,14 @@ public class GameLobby : NetworkLobbyManager
     /// <param name="mode">Scene loading mode.</param>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == lobbyScene)
+        if (scene.name == original_lobby_scene)
         {
+            lobbyScene = original_lobby_scene;
+            playScene = original_lobby_scene;       // Any valid scene will do, this is only needed to prevent some validation errors. OnLobbyServerPlayersReady will take care of the actual arena to load.
+
+            is_host = false;
+            is_client = false;
+
             CreateLobby();
         }
     }
@@ -106,6 +160,24 @@ public class GameLobby : NetworkLobbyManager
         else
         {
             SearchLobby();              // Attempt to join an existing lobby, create a brand new one when none is found.
+        }
+    }
+
+    /// <summary>
+    /// Disconnect from the lobby.
+    /// If the lobby is hosted it will be destroyed.
+    /// </summary>
+    public void DisconnectLobby()
+    {
+        lobbyScene = null;              // Prevent the application from reloading the lobby scene again.
+
+        if (is_host)
+        {
+            StopHost();
+        }
+        else if(is_client)
+        {
+            StopClient();
         }
     }
 
@@ -167,4 +239,19 @@ public class GameLobby : NetworkLobbyManager
     /// List of local players.
     /// </summary>
     private List<PlayerConfiguration> local_players;
+
+    /// <summary>
+    /// Whether this lobby is acting as a host.
+    /// </summary>
+    bool is_host = false;
+
+    /// <summary>
+    /// Whether this lobby is acting as a client. Hosts are also clients!
+    /// </summary>
+    bool is_client = false;
+
+    /// <summary>
+    /// The original lobby scene.
+    /// </summary>
+    string original_lobby_scene;
 }

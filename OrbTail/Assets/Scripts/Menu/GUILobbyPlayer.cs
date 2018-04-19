@@ -38,17 +38,9 @@ public class GUILobbyPlayer : MonoBehaviour
 
     public void OnDestroy()
     {
-        // Unbind from everything!
-
         LobbyPlayer.PlayerJoinedEvent -= OnLobbyPlayerJoined;
 
-        if(GameLobby.Instance != null)
-        {
-            foreach (var player in GameLobby.Instance.lobbySlots)
-            {
-                UnbindFromPlayer((LobbyPlayer)player);
-            }
-        }
+        OnLobbyPlayerLeft(bound_lobby_player);
     }
 
     /// <summary>
@@ -108,29 +100,16 @@ public class GUILobbyPlayer : MonoBehaviour
     /// </summary>
     private void OnLobbyPlayerLeft(LobbyPlayer lobby_player)
     {
-        UnbindFromPlayer(lobby_player);
-
-        if (lobby_player == bound_lobby_player)
-        {
-            // The player bound to this element left.
-
-            bound_lobby_player = null;
-
-            iTween.ScaleTo(gameObject, Vector3.zero, tween_time);
-        }
-    }
-
-    /// <summary>
-    /// Unbind from any event bound to a lobby player.
-    /// </summary>
-    private void UnbindFromPlayer(LobbyPlayer lobby_player)
-    {
-        if(lobby_player != null)
+        if (bound_lobby_player && lobby_player == bound_lobby_player)
         {
             lobby_player.PlayerLeftEvent -= OnLobbyPlayerLeft;
             lobby_player.PlayerIndexChangedEvent -= OnPlayerIndexChanged;
             lobby_player.PlayerShipChangedEvent -= OnPlayerShipChanged;
             lobby_player.PlayerReadyEvent -= OnPlayerReadyChanged;
+
+            bound_lobby_player = null;
+
+            iTween.ScaleTo(gameObject, Vector3.zero, tween_time);
         }
     }
 
