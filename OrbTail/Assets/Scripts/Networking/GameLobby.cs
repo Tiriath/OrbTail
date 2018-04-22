@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
+using UnityEngine.Networking.Types;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -10,8 +11,10 @@ using UnityEngine.SceneManagement;
 public class GameLobby : NetworkLobbyManager
 {
     public delegate void DelegateLobbyStarted(GameLobby sender);
+    public delegate void DelegateLobbyStop(GameLobby sender);
     
     public event DelegateLobbyStarted LobbyStarted;
+    public event DelegateLobbyStop LobbyStop;
 
     /// <summary>
     /// Get the singleton instance.
@@ -28,6 +31,11 @@ public class GameLobby : NetworkLobbyManager
             return game_lobby;
         }
     }
+
+    /// <summary>
+    /// Maximum number of connection attempts before giving up.
+    /// </summary>
+    public int max_attempts = 8;
 
     /// <summary>
     /// Check whether the lobby is offline.
@@ -49,10 +57,45 @@ public class GameLobby : NetworkLobbyManager
     }
 
     /// <summary>
+    /// Disconnect from the lobby.
+    /// If the lobby is hosted it will be destroyed.
+    /// </summary>
+    public void DisconnectLobby()
+    {
+        lobbyScene = null;                                                          // Prevent the application from reloading the lobby scene again.
+        playScene = null;
+
+        if(!is_host)
+        {
+            StopClient();                                                           // Client.
+        }
+        else if(match_id.HasValue)
+        {
+            matchMaker.DestroyMatch(match_id.Value, 0, OnDestroyMatch);             // Online host.
+        }
+        else
+        {
+            StopHost();                                                             // Offline host.
+        }
+    }
+
+    /// <summary>
+    /// Called on the server when server\host is started.
+    /// </summary>
+    public override void OnLobbyStartServer()
+    {
+        Debug.Log("OnLobbyStartServer");
+
+        is_host = true;
+    }
+
+    /// <summary>
     /// Called on the client when connected to a server.
     /// </summary>
     public override void OnClientConnect(NetworkConnection connection)
     {
+        Debug.Log("OnClientConnect");
+
         base.OnClientConnect(connection);
 
         // Add local players after the manager finished initializing the new client.
@@ -62,31 +105,64 @@ public class GameLobby : NetworkLobbyManager
     }
 
     /// <summary>
-    /// Called on the client when disconnected from a server.
+    /// Called on the client whenever the list of online matches is available.
     /// </summary>
-    /// <param name="connection"></param>
-    public override void OnLobbyClientDisconnect(NetworkConnection connection)
+    public override void OnMatchList(bool success, string extended_info, List<MatchInfoSnapshot> match_list)
     {
-        Debug.Log("Disconnected from the server!");
+        this.match_list = new Stack<MatchInfoSnapshot>(match_list);
 
-        base.OnLobbyClientDisconnect(connection);
+        TryConnectToMatch();
     }
 
     /// <summary>
-    /// Called on the server when server\host is started.
+    /// Called on the host whenever a new match is created.
     /// </summary>
-    public override void OnLobbyStartServer()
+    public override void OnMatchCreate(bool success, string extended_info, MatchInfo match_info)
     {
-        is_host = true;
+        Debug.Log("OnMatchCreate");
+
+        if (!success)
+        {
+            Debug.LogError("Could not create an online match.");
+        }
+
+        base.OnMatchCreate(success, extended_info, match_info);
+
+        match_id = match_info.networkId;
     }
 
     /// <summary>
-    /// Called on the client when client\host is started.
+    /// Called on the client whenever a new match is joined.
     /// </summary>
-    /// <param name="lobbyClient"></param>
-    public override void OnLobbyStartClient(NetworkClient lobbyClient)
+    public override void OnMatchJoined(bool success, string extended_info, MatchInfo match_info)
     {
-        is_client = true;
+        Debug.Log("OnMatchJoined");
+
+        base.OnMatchJoined(success, extended_info, match_info);
+
+        match_id = match_info.networkId;
+
+        if(!success)
+        {
+            TryConnectToMatch();            // Process the next candidate match.
+        }
+    }
+
+    /// <summary>
+    /// Called whenever the match is destroyed on the server.
+    /// </summary>
+    public override void OnDestroyMatch(bool success, string extended_info)
+    {
+        Debug.Log("OnDestroyMatch");
+
+        Debug.Assert(success, "Could not destroy the match.");
+
+        base.OnDestroyMatch(success, extended_info);
+
+        StopMatchMaker();
+        StopHost();
+
+        match_id = null;
     }
 
     /// <summary>
@@ -137,7 +213,6 @@ public class GameLobby : NetworkLobbyManager
             playScene = original_lobby_scene;       // Any valid scene will do, this is only needed to prevent some validation errors. OnLobbyServerPlayersReady will take care of the actual arena to load.
 
             is_host = false;
-            is_client = false;
 
             CreateLobby();
         }
@@ -164,28 +239,12 @@ public class GameLobby : NetworkLobbyManager
     }
 
     /// <summary>
-    /// Disconnect from the lobby.
-    /// If the lobby is hosted it will be destroyed.
-    /// </summary>
-    public void DisconnectLobby()
-    {
-        lobbyScene = null;              // Prevent the application from reloading the lobby scene again.
-
-        if (is_host)
-        {
-            StopHost();
-        }
-        else if(is_client)
-        {
-            StopClient();
-        }
-    }
-
-    /// <summary>
     /// Create an offline lobby.
     /// </summary>
     private void CreateOfflineLobby()
     {
+        networkAddress = "localhost";
+
         StartHost();
     }
 
@@ -194,22 +253,37 @@ public class GameLobby : NetworkLobbyManager
     /// </summary>
     private void SearchLobby()
     {
-        // #TODO Assumes no lobby was found, create a new lobby.
-        StartClient();
+        StartMatchMaker();
 
-        //CreateOnlineLobby();
+        matchMaker.ListMatches(0, max_attempts, "", true, 0, 0, OnMatchList);
     }
 
     /// <summary>
-    /// Create an online lobby for other players to join.
+    /// Attempt to connect to the next online match.
+    /// If no other match is available create a new lobby.
+    /// </summary>
+    private void TryConnectToMatch()
+    {
+        if(match_list.Count == 0)
+        {
+            CreateOnlineLobby();
+        }
+        else
+        {
+            var next_match = match_list.Pop();
+
+            matchMaker.JoinMatch(next_match.networkId, "", "", "", 0, 0, OnMatchJoined);
+        }
+    }
+
+    /// <summary>
+    /// Create an online lobby for other players to join via unity's matchmaking.
     /// </summary>
     private void CreateOnlineLobby()
     {
-        // Advertise the match via the matchmaking service.
+        StartMatchMaker();
 
-        //StartMatchMaker();
-
-        //matchMaker.CreateMatch("OrbtailMatch", 4, true, "", "", "", 0, 0, OnMatchCreate);
+        matchMaker.CreateMatch("OrbtailMatch", (uint) maxPlayers, true, "", "", "", 0, 0, OnMatchCreate);
     }
 
     /// <summary>
@@ -246,9 +320,14 @@ public class GameLobby : NetworkLobbyManager
     bool is_host = false;
 
     /// <summary>
-    /// Whether this lobby is acting as a client. Hosts are also clients!
+    /// Current match ID.
     /// </summary>
-    bool is_client = false;
+    NetworkID? match_id;
+
+    /// <summary>
+    /// List of online matches to connect to.
+    /// </summary>
+    Stack<MatchInfoSnapshot> match_list;
 
     /// <summary>
     /// The original lobby scene.
