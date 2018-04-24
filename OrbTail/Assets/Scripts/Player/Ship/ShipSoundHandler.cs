@@ -15,8 +15,8 @@ public class ShipSoundHandler : MonoBehaviour {
 	void Start () {
 		heavyCrash = Resources.Load<AudioClip>("Sounds/Ship/Crash");
 		gatherOrbSound = Resources.Load<AudioClip>("Sounds/Ship/AttachOrb");
-		GameBuilder builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-		builder.EventGameBuilt += OnGameBuilt;
+// 		GameBuilder builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+// 		builder.EventGameBuilt += OnGameBuilt;
 	}
 	
 	// Update is called once per frame

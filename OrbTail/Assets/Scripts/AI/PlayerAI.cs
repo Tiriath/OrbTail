@@ -72,8 +72,8 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     // Use this for initialization
     void Start () {
         
-        GameBuilder gameBuilder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-        gameBuilder.EventGameBuilt += OnGameBuilt;
+//         GameBuilder gameBuilder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+//         gameBuilder.EventGameBuilt += OnGameBuilt;
         
     }
     

@@ -5,7 +5,7 @@ using System.Linq;
 
 public class HUDTutorialHandler : MonoBehaviour
 {
-		private GameBuilder builder;
+/*		private GameBuilder builder;*/
 		private HUDPositionHandler hudPositionHandler;
 		private List<GameObject> tabList;
 		private const string pathTutorial = "Prefabs/HUD/Tutorial/";
@@ -17,8 +17,8 @@ public class HUDTutorialHandler : MonoBehaviour
 		// Use this for initialization
 		public void Start ()
 		{
-				builder = GameObject.FindGameObjectWithTag (Tags.Master).GetComponent<GameBuilder> ();
-				builder.EventGameBuilt += OnGameBuilt;
+// 				builder = GameObject.FindGameObjectWithTag (Tags.Master).GetComponent<GameBuilder> ();
+// 				builder.EventGameBuilt += OnGameBuilt;
 
 		}
 	
@@ -27,7 +27,7 @@ public class HUDTutorialHandler : MonoBehaviour
 				if (target.tag == Tags.MenuSelector) {
 						if (target.name == "Dismiss") {
 								hudPositionHandler.enabled = true;
-								builder.PlayerReady ();
+/*								builder.PlayerReady ();*/
 								Destroy (gameObject);
 						} else if (target.name == "PowerUpButton") {
 								ActivateTab ("PowerTab");
@@ -43,7 +43,7 @@ public class HUDTutorialHandler : MonoBehaviour
 			tabList = new List<GameObject> (GameObject.FindGameObjectsWithTag (Tags.PageTutorial));
 			ActivateTab ("GameModeTab");
 
-			builder.EventGameBuilt -= OnGameBuilt;
+/*			builder.EventGameBuilt -= OnGameBuilt;*/
 		}
 
 		private void FetchGameModeTutorial()

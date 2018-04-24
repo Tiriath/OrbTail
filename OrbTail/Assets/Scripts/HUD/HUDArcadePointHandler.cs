@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class HUDArcadePointHandler : MonoBehaviour {
 
-	private GameBuilder builder;
+	//private GameBuilder builder;
 	private Game game;
 	private const float xOrigin = -6f;
 	private const float yOrigin = 5f;
@@ -17,8 +17,8 @@ public class HUDArcadePointHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-		builder.EventGameBuilt += OnGameBuilt;
+// 		builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+// 		builder.EventGameBuilt += OnGameBuilt;
 		gameIdentityTextMeshes = new Dictionary<GameIdentity, TextMesh>();
 	}
 

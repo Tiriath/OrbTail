@@ -71,9 +71,9 @@ public class ShipPrototype : MonoBehaviour
 
     void Start()
     {
-        builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-
-        builder.EventGameBuilt += OnGameBuilt;
+//         builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+// 
+//         builder.EventGameBuilt += OnGameBuilt;
     }
 
     /// <summary>
@@ -100,8 +100,8 @@ public class ShipPrototype : MonoBehaviour
             }
         }
 
-        builder.EventGameBuilt -= OnGameBuilt;
+/*        builder.EventGameBuilt -= OnGameBuilt;*/
     }
 
-    private GameBuilder builder;
+/*    private GameBuilder builder;*/
 }

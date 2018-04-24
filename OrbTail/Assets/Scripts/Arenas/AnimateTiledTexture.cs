@@ -23,11 +23,11 @@ class AnimateTiledTexture : MonoBehaviour
         
     void Start()
     {
-
-        var builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-
-        builder.EventGameBuilt += builder_EventGameBuilt;
-        
+// 
+//         var builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+// 
+//         builder.EventGameBuilt += builder_EventGameBuilt;
+//         
     }
 
     void builder_EventGameBuilt(object sender)

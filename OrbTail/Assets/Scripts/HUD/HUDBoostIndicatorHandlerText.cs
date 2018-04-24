@@ -9,12 +9,12 @@ public class HUDBoostIndicatorHandlerText : MonoBehaviour {
     private float refreshTime = 0.2f;
     private const float animationTime = 1f;
     private Game game;
-    private GameBuilder gameBuilder;
+    //private GameBuilder gameBuilder;
 
     // Use this for initialization
     void Start () {
-        gameBuilder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-        gameBuilder.EventGameBuilt += OnGameBuilt;
+//         gameBuilder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+//         gameBuilder.EventGameBuilt += OnGameBuilt;
     }
     
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class HUDBoostIndicatorHandlerText : MonoBehaviour {
         player.GetComponent<PowerController>().OnPowerAttachedEvent += HUDBoostIndicatorHandler_EventPowerAttached;
         textMesh = GetComponent<TextMesh>();
 
-        gameBuilder.EventGameBuilt -= OnGameBuilt;
+        //gameBuilder.EventGameBuilt -= OnGameBuilt;
     }
 
     private void HUDBoostIndicatorHandler_EventPowerAttached(object sender, GameObject ship, Power power)

@@ -3,15 +3,15 @@ using System.Collections;
 
 public class HUDMessageInGameHandler : MonoBehaviour {
 	private TextMesh textMesh;
-	private GameBuilder builder;
+	//private GameBuilder builder;
 	private PowerController powerController;
 	private const float fadeTime = 4f;
 	private Game game;
 
 	// Use this for initialization
 	void Start () {
-		builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-		builder.EventGameBuilt += OnGameBuilt;
+// 		builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+// 		builder.EventGameBuilt += OnGameBuilt;
 
 		textMesh = gameObject.GetComponent<TextMesh>();
 	}
@@ -23,7 +23,7 @@ public class HUDMessageInGameHandler : MonoBehaviour {
 		powerController.OnPowerAttachedEvent += OnEventPowerAttached;
 
 		ChangeAlphaColor(0f);
-		builder.EventGameBuilt -= OnGameBuilt;
+/*		builder.EventGameBuilt -= OnGameBuilt;*/
 
 		game.EventEnd += OnEventEnd;
 		game.EventShipEliminated += OnShipEliminated;

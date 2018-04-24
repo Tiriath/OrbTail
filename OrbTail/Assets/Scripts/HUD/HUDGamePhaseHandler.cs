@@ -10,7 +10,7 @@ public class HUDGamePhaseHandler : MonoBehaviour {
 	private float blankOverlayFinalAlpha = 0.8f;
 	private int fontBigSize = 130;
 	private float standardLightPower;
-	private GameBuilder builder;
+	//private GameBuilder builder;
 	private Game game;
 	private GameObject blankOverlay;
 	
@@ -22,8 +22,8 @@ public class HUDGamePhaseHandler : MonoBehaviour {
 
 		textMeshCountdown = gameObject.GetComponent<TextMesh>();
 
-		builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-		builder.EventGameBuilt += OnGameBuilt;
+// 		builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+// 		builder.EventGameBuilt += OnGameBuilt;
 		blankOverlay = Instantiate(Resources.Load("Prefabs/HUD/BlankOverlay")) as GameObject;
 		blankOverlay.GetComponent<Renderer>().material.color = new Color(0,0,0,0);
 		blankOverlay.transform.parent = transform;
@@ -41,7 +41,7 @@ public class HUDGamePhaseHandler : MonoBehaviour {
 		game.EventStart += OnStart;
 		game.EventEnd += OnGameOver;
 
-		builder.EventGameBuilt -= OnGameBuilt;
+		//builder.EventGameBuilt -= OnGameBuilt;
 	}
 	
 	private void OnStart(object sender, int countdown) {

@@ -14,8 +14,8 @@ public class HUDOpponentsPosition : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameBuilder builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-		builder.EventGameBuilt += OnGameBuilt;
+// 		GameBuilder builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+// 		builder.EventGameBuilt += OnGameBuilt;
 		positionShipAndIndicators = new Dictionary<Transform, GameObject>();
 		textMeshes = new Dictionary<GameObject, TextMesh>();
 	}

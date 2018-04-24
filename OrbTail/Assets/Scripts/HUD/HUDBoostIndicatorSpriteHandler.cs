@@ -9,12 +9,12 @@ public class HUDBoostIndicatorSpriteHandler : MonoBehaviour {
 	private const float scaleBig = 0.2f;
 	private bool charged;
 	private Game game;
-	private GameBuilder gameBuilder;
+	//private GameBuilder gameBuilder;
 	
 	// Use this for initialization
 	void Start () {
-		gameBuilder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-		gameBuilder.EventGameBuilt += OnGameBuilt;
+// 		gameBuilder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+// 		gameBuilder.EventGameBuilt += OnGameBuilt;
 	}
 	
 	// Update is called once per frame
@@ -32,7 +32,7 @@ public class HUDBoostIndicatorSpriteHandler : MonoBehaviour {
 		GameObject player = game.ActivePlayer;
 		player.GetComponent<PowerController>().OnPowerAttachedEvent += HUDBoostIndicatorHandler_EventPowerAttached;
 		
-		gameBuilder.EventGameBuilt -= OnGameBuilt;
+		//gameBuilder.EventGameBuilt -= OnGameBuilt;
 	}
 	
 	private void HUDBoostIndicatorHandler_EventPowerAttached(object sender, GameObject ship, Power power)

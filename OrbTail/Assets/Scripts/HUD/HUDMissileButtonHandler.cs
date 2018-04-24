@@ -2,13 +2,13 @@
 using System.Collections;
 
 public class HUDMissileButtonHandler : MonoBehaviour {
-    private GameBuilder builder;
+//     private GameBuilder builder;
 
     // Use this for initialization
     void Start () {
         GetComponent<Renderer>().enabled = false;
-        builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-        builder.EventGameBuilt += OnGameBuilt;
+//         builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+//         builder.EventGameBuilt += OnGameBuilt;
     }
     
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class HUDMissileButtonHandler : MonoBehaviour {
         GameObject player = game.ActivePlayer;
         player.GetComponent<PowerController>().OnPowerAttachedEvent += EventPowerAttached;
         
-        builder.EventGameBuilt -= OnGameBuilt;
+/*        builder.EventGameBuilt -= OnGameBuilt;*/
     }
 
     private void EventPowerAttached(object sender, GameObject ship, Power power) {

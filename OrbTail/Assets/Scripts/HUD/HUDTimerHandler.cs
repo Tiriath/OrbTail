@@ -5,7 +5,7 @@ public class HUDTimerHandler : MonoBehaviour {
 	private TextMesh textMesh;
 	private const float animationTime = 0.4f;
 	private const float factorScale = 0.05f;
-	private GameBuilder builder;
+	//private GameBuilder builder;
 	private Vector3 originalScale;
 	private Game game;
 
@@ -13,8 +13,8 @@ public class HUDTimerHandler : MonoBehaviour {
 	void Start () {
 		originalScale = gameObject.transform.localScale;
 		textMesh = gameObject.GetComponent<TextMesh>();
-		builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-		builder.EventGameBuilt += OnGameBuilt;
+// 		builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+// 		builder.EventGameBuilt += OnGameBuilt;
 	}
 	
 	// Update is called once per frame
@@ -29,7 +29,7 @@ public class HUDTimerHandler : MonoBehaviour {
 		game.EventStart += OnStart;
 		game.EventEnd += OnEnd;
 
-		builder.EventGameBuilt -= OnGameBuilt;
+/*		builder.EventGameBuilt -= OnGameBuilt;*/
 	}
 
 	private void OnStart(object sender, int countdown) {

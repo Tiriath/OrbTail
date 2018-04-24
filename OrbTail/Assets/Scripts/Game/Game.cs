@@ -262,11 +262,11 @@ public class Game : MonoBehaviour {
         explosion_sound_ = Resources.Load<AudioClip>("Sounds/Powers/Explosion");
         explosion_resource_ = Resources.Load<GameObject>(explosion_prefab_path);
 
-        var master = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-
-        master.EventPlayerLeft += master_EventPlayerLeft;
-        master.EventServerLeft += master_EventServerLeft;
-        master.EventGameReady += master_EventGameReady;
+//         var master = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
+// 
+//         master.EventPlayerLeft += master_EventPlayerLeft;
+//         master.EventServerLeft += master_EventServerLeft;
+//         master.EventGameReady += master_EventGameReady;
 
         //Create the proper game mode
         switch (game_mode)
@@ -306,7 +306,7 @@ public class Game : MonoBehaviour {
 
         EnableControls(false);
 
-        master.NotifyGameBuilt();
+/*        master.NotifyGameBuilt();*/
         
     }
 
