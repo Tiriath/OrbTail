@@ -33,9 +33,9 @@ public class GameLobby : NetworkLobbyManager
     }
 
     /// <summary>
-    /// Maximum number of connection attempts before giving up.
+    /// Maximum connection attempts to perform before giving up.
     /// </summary>
-    public int max_attempts = 8;
+    public int max_connection_attempts = 8;
 
     /// <summary>
     /// Check whether the lobby is offline.
@@ -111,6 +111,13 @@ public class GameLobby : NetworkLobbyManager
     {
         this.match_list = new Stack<MatchInfoSnapshot>(match_list);
 
+        ++match_list_page;
+
+        if(match_list.Count == 0)
+        {
+            connection_attempts = 0;            // No compatible match found, exhaust connection attempts so a new lobby can be created on this client.
+        }
+
         TryConnectToMatch();
     }
 
@@ -126,9 +133,9 @@ public class GameLobby : NetworkLobbyManager
             Debug.LogError("Could not create an online match.");
         }
 
-        base.OnMatchCreate(success, extended_info, match_info);
-
         match_id = match_info.networkId;
+
+        base.OnMatchCreate(success, extended_info, match_info);
     }
 
     /// <summary>
@@ -139,6 +146,8 @@ public class GameLobby : NetworkLobbyManager
         Debug.Log("OnMatchJoined");
 
         base.OnMatchJoined(success, extended_info, match_info);
+
+        --connection_attempts;
 
         match_id = match_info.networkId;
 
@@ -170,14 +179,22 @@ public class GameLobby : NetworkLobbyManager
     /// </summary>
     public override void OnLobbyServerPlayersReady()
     {
+        // Unlist the match so other player don't join this match. Start the countdown.
+
+        if (match_id.HasValue)
+        {
+            matchMaker.SetMatchAttributes(match_id.Value, false, 0, OnSetMatchAttributes);
+        }
+
+        // #TODO Reduce server capacity so any other connection from this point on is rejected.
+
         // Select the arena to start.
 
         var arena = game_configuration.arena;
 
-        if(arena.Length == 0)
+        if (arena.Length == 0)
         {
-            // Randomize an arena.
-
+            // #TODO: Randomize the arena.
         }
 
         ServerChangeScene(arena);
@@ -234,6 +251,9 @@ public class GameLobby : NetworkLobbyManager
         }
         else
         {
+            connection_attempts = max_connection_attempts;
+            match_list_page = 0;
+
             SearchLobby();              // Attempt to join an existing lobby, create a brand new one when none is found.
         }
     }
@@ -255,7 +275,7 @@ public class GameLobby : NetworkLobbyManager
     {
         StartMatchMaker();
 
-        matchMaker.ListMatches(0, max_attempts, "", true, 0, 0, OnMatchList);
+        matchMaker.ListMatches(match_list_page, list_page_count, "", true, 0, 0, OnMatchList);
     }
 
     /// <summary>
@@ -264,15 +284,43 @@ public class GameLobby : NetworkLobbyManager
     /// </summary>
     private void TryConnectToMatch()
     {
-        if(match_list.Count == 0)
+        if (connection_attempts == 0)
         {
-            CreateOnlineLobby();
+            CreateOnlineLobby();                                                            // Enough attempts, just create a new one.
         }
         else
         {
-            var next_match = match_list.Pop();
+            var host_configuration = new GameConfiguration();
 
-            matchMaker.JoinMatch(next_match.networkId, "", "", "", 0, 0, OnMatchJoined);
+            try
+            {
+                // Connect to the first compatible match.
+
+                while (match_list.Count > 0)
+                {
+                    var next_match = match_list.Pop();
+
+                    var match_name = next_match.name.Replace("[_]", "_");                   // _ is escaped to [_] for "safety reasons"...
+
+                    JsonUtility.FromJsonOverwrite(match_name, host_configuration);
+
+                    if (game_configuration.IsCompatible(host_configuration))
+                    {
+                        matchMaker.JoinMatch(next_match.networkId, "", "", "", 0, 0, OnMatchJoined);
+                        return;
+                    }
+                }
+            }
+            finally
+            {
+                // Cleanup temporary component.
+
+                DestroyObject(host_configuration);
+            }
+            
+            // List more lobbies.
+
+            SearchLobby();
         }
     }
 
@@ -283,7 +331,7 @@ public class GameLobby : NetworkLobbyManager
     {
         StartMatchMaker();
 
-        matchMaker.CreateMatch("OrbtailMatch", (uint) maxPlayers, true, "", "", "", 0, 0, OnMatchCreate);
+        matchMaker.CreateMatch(JsonUtility.ToJson(game_configuration), (uint) maxPlayers, true, "", "", "", 0, 0, OnMatchCreate);
     }
 
     /// <summary>
@@ -317,20 +365,35 @@ public class GameLobby : NetworkLobbyManager
     /// <summary>
     /// Whether this lobby is acting as a host.
     /// </summary>
-    bool is_host = false;
+    private bool is_host = false;
 
     /// <summary>
     /// Current match ID.
     /// </summary>
-    NetworkID? match_id;
+    private NetworkID? match_id;
+
+    /// <summary>
+    /// Number of host to list per page.
+    /// </summary>
+    private const int list_page_count = 8;
+
+    /// <summary>
+    /// Connection attempts left before giving up.
+    /// </summary>
+    private int connection_attempts = 0;
+
+    /// <summary>
+    /// Current match list page.
+    /// </summary>
+    private int match_list_page = 0;
 
     /// <summary>
     /// List of online matches to connect to.
     /// </summary>
-    Stack<MatchInfoSnapshot> match_list;
+    private Stack<MatchInfoSnapshot> match_list;
 
     /// <summary>
     /// The original lobby scene.
     /// </summary>
-    string original_lobby_scene;
+    private string original_lobby_scene;
 }
