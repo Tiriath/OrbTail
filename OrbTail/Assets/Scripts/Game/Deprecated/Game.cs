@@ -158,7 +158,7 @@ public class Game : MonoBehaviour {
         {
             if (active_player_ == null)
             {
-                active_player_ = GameObject.FindGameObjectsWithTag(Tags.Ship).Where(ship => ship.GetComponent<PlayerIdentity>().IsHuman).First();
+                //active_player_ = GameObject.FindGameObjectsWithTag(Tags.Ship).Where(ship => ship.GetComponent<PlayerIdentity>().IsHuman).First();
             }
 
             return active_player_;

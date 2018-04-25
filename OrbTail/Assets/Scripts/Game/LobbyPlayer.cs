@@ -9,17 +9,21 @@ public class LobbyPlayer : NetworkLobbyPlayer
 {
     public delegate void DelegatePlayerJoined(LobbyPlayer sender);
     public delegate void DelegatePlayerLeft(LobbyPlayer sender);
-    public delegate void DelegatePlayerAuthority(LobbyPlayer sender);
     public delegate void DelegatePlayerIndexChanged(LobbyPlayer sender);
     public delegate void DelegatePlayerShipChanged(LobbyPlayer sender);
     public delegate void DelegatePlayerReady(LobbyPlayer sender);
 
     public static event DelegatePlayerJoined PlayerJoinedEvent;
-    public static event DelegatePlayerAuthority PlayerAuthorityEvent;
     public event DelegatePlayerLeft PlayerLeftEvent;
     public event DelegatePlayerIndexChanged PlayerIndexChangedEvent;
     public event DelegatePlayerShipChanged PlayerShipChangedEvent;
     public event DelegatePlayerReady PlayerReadyEvent;
+
+    /// <summary>
+    /// Player name.
+    /// </summary>
+    [SyncVar]
+    public string player_name = "anon";
 
     /// <summary>
     /// Player ship.
@@ -32,6 +36,12 @@ public class LobbyPlayer : NetworkLobbyPlayer
     /// </summary>
     [SyncVar(hook = "OnPlayerIndexChanged")]
     public int player_index = -1;
+
+    /// <summary>
+    /// Whether this player is human.
+    /// </summary>
+    [SyncVar]
+    public bool is_human = true;
 
     /// <summary>
     /// Called on server and client when the player joins the lobby.
@@ -72,13 +82,9 @@ public class LobbyPlayer : NetworkLobbyPlayer
         var player_configuration = GameLobby.Instance.GetLocalPlayer(playerControllerId);
 
         player_ship = player_configuration.ship_prefab.name;
+        is_human = player_configuration.is_human;
 
         CmdAcquirePlayerIndex();                        // Ask a free player index to the server.
-
-        if(PlayerAuthorityEvent != null)
-        {
-            PlayerAuthorityEvent(this);
-        }
     }
 
     /// <summary>

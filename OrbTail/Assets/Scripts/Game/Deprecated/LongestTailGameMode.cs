@@ -69,7 +69,7 @@ public class LongestTailGameMode: BaseGameMode
     
     public override GameObject Winner
     {
-	 
+     
         get
         {
 

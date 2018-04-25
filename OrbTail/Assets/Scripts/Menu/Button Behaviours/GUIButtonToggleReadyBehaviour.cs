@@ -24,14 +24,14 @@ public class GUIButtonToggleReadyBehaviour : GUIButtonBehaviour
 
     public void Start()
     {
-        LobbyPlayer.PlayerAuthorityEvent += OnLobbyPlayerAuthority;
+        LobbyPlayer.PlayerJoinedEvent += OnPlayerJoined;
 
         GetComponent<TextMesh>().text = "";
     }
 
     public void OnDestroy()
     {
-        LobbyPlayer.PlayerAuthorityEvent -= OnLobbyPlayerAuthority;
+        LobbyPlayer.PlayerJoinedEvent -= OnPlayerJoined;
 
         OnLobbyPlayerLeft(bound_local_player);
     }
@@ -56,9 +56,9 @@ public class GUIButtonToggleReadyBehaviour : GUIButtonBehaviour
     /// <summary>
     /// Called whenever a new player joins the lobby.
     /// </summary>
-    private void OnLobbyPlayerAuthority(LobbyPlayer lobby_player)
+    private void OnPlayerJoined(LobbyPlayer lobby_player)
     {
-        if(lobby_player.playerControllerId == local_player_index)
+        if(lobby_player.playerControllerId == local_player_index && lobby_player.isLocalPlayer)
         {
             Debug.Assert(bound_local_player == null, "A local player with id " + local_player_index + " was already bound!");
 
