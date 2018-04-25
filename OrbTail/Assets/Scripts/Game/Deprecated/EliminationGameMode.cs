@@ -45,7 +45,7 @@ public class EliminationGameMode: BaseGameMode
 
             tail = ship.GetComponent<Tail>();
 
-            if (NetworkHelper.IsServerSide())
+            //if (NetworkHelper.IsServerSide())
             {
 
                 tail.DetachOrbs(int.MaxValue);
@@ -55,7 +55,7 @@ public class EliminationGameMode: BaseGameMode
             tail.OnEventOrbDetached += EliminationGameMode_OnEventOrbDetached;
             tail.OnEventOrbAttached += tail_OnEventOrbAttached;
 
-            if (NetworkHelper.IsServerSide())
+            //if (NetworkHelper.IsServerSide())
             {
 
                 for (int i = 0; i < orbs_per_player; i++)

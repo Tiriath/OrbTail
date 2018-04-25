@@ -294,7 +294,7 @@ public class Game : MonoBehaviour {
         }
         
         //Ok the game has been built
-        if (NetworkHelper.IsServerSide())
+        //if (NetworkHelper.IsServerSide())
         {
 
             //Clients will rely on the server
@@ -381,7 +381,7 @@ public class Game : MonoBehaviour {
 
             GetComponent<PowerGenerator>().enabled = true;
 
-            if (NetworkHelper.IsServerSide())
+            //if (NetworkHelper.IsServerSide())
             {
 
                 var power_controllers = from player in ShipsInGame
@@ -527,7 +527,7 @@ public class Game : MonoBehaviour {
 
             game_time_counter -= (end - beg);
 
-        } while (!(NetworkHelper.IsServerSide() && game_time_counter <= 0));
+        } while (!(/*NetworkHelper.IsServerSide() &&*/ game_time_counter <= 0));
 
         NotifyTick(0);
 

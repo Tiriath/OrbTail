@@ -179,7 +179,7 @@ public class GameLobby : NetworkLobbyManager
     /// </summary>
     public override void OnLobbyServerPlayersReady()
     {
-        // Unlist the match so other player don't join this match. Start the countdown.
+        // Unlist the match so other players don't join this match. Start the countdown.
 
         if (match_id.HasValue)
         {
