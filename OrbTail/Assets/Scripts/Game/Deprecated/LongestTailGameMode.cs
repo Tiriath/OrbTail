@@ -40,7 +40,7 @@ public class LongestTailGameMode: BaseGameMode
             ship.GetComponent<Tail>().OnEventOrbAttached += LongestTailGameMode_OnEventOrbAttached;
             ship.GetComponent<Tail>().OnEventOrbDetached += LongestTailGameMode_OnEventOrbDetached;
 
-            ship.GetComponent<GameIdentity>().ResetScore();
+            //ship.GetComponent<GameIdentity>().SetScore(0);
 
         }
 
@@ -52,18 +52,18 @@ public class LongestTailGameMode: BaseGameMode
     void LongestTailGameMode_OnEventOrbDetached(object sender, GameObject ship, int count)
     {
 
-        var identity = ship.GetComponent<GameIdentity>();
-
-        identity.SetScore(ship.GetComponent<Tail>().GetOrbCount());
+//         var identity = ship.GetComponent<GameIdentity>();
+// 
+//         identity.SetScore(ship.GetComponent<Tail>().GetOrbCount());
 
     }
 
     void LongestTailGameMode_OnEventOrbAttached(object sender, GameObject orb, GameObject ship)
     {
 
-        var identity = ship.GetComponent<GameIdentity>();
-
-        identity.SetScore(ship.GetComponent<Tail>().GetOrbCount());
+//         var identity = ship.GetComponent<GameIdentity>();
+// 
+//         identity.SetScore(ship.GetComponent<Tail>().GetOrbCount());
 
     }
     

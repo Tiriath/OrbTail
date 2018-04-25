@@ -67,7 +67,7 @@ public class EliminationGameMode: BaseGameMode
 
             }
 
-            ship.GetComponent<GameIdentity>().ResetScore();
+            //ship.GetComponent<GameIdentity>().SetScore(0);
             
         }
 
@@ -148,9 +148,9 @@ public class EliminationGameMode: BaseGameMode
     private void EliminationGameMode_OnEventOrbDetached(object sender, GameObject ship, int count)
     {
 
-        var identity = ship.GetComponent<GameIdentity>();
-
-        identity.SetScore(ship.GetComponent<Tail>().GetOrbCount());
+//         var identity = ship.GetComponent<GameIdentity>();
+// 
+//         identity.SetScore(ship.GetComponent<Tail>().GetOrbCount());
 
         if (ship.GetComponent<Tail>().GetOrbCount() == 0)
         {
@@ -172,9 +172,9 @@ public class EliminationGameMode: BaseGameMode
     void NotifyShipScore(GameObject ship)
     {
 
-        var identity = ship.GetComponent<GameIdentity>();
-
-        identity.SetScore(ship.GetComponent<Tail>().GetOrbCount());
+//         var identity = ship.GetComponent<GameIdentity>();
+// 
+//         identity.SetScore(ship.GetComponent<Tail>().GetOrbCount());
 
     }
 

@@ -37,6 +37,11 @@ public class ShipPrototype : MonoBehaviour
     /// </summary>
     public float defence = 15.0f;
 
+    /// <summary>
+    /// Get or set the details color.
+    /// </summary>
+    public Color DetailsColor { get; set; }
+
     void Update ()
     {
         this.enabled = false;
@@ -69,13 +74,6 @@ public class ShipPrototype : MonoBehaviour
         movement_controller.GetSteerDriver().SetDefaultDriver(new DefaultSteerDriver(steer, steer_smooth));
     }
 
-    void Start()
-    {
-//         builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-// 
-//         builder.EventGameBuilt += OnGameBuilt;
-    }
-
     /// <summary>
     /// Called whenever a game is built.
     /// </summary>
@@ -93,15 +91,11 @@ public class ShipPrototype : MonoBehaviour
                 if (material == null)
                 {
                     material = renderer.material;
-                    material.color = GetComponent<GameIdentity>().Color * 0.7f;
+                    material.color = DetailsColor;
                 }
 
                 renderer.material = material;
             }
         }
-
-/*        builder.EventGameBuilt -= OnGameBuilt;*/
     }
-
-/*    private GameBuilder builder;*/
 }

@@ -9,15 +9,21 @@ public class LobbyPlayer : NetworkLobbyPlayer
 {
     public delegate void DelegatePlayerJoined(LobbyPlayer sender);
     public delegate void DelegatePlayerLeft(LobbyPlayer sender);
+
     public delegate void DelegatePlayerIndexChanged(LobbyPlayer sender);
     public delegate void DelegatePlayerShipChanged(LobbyPlayer sender);
     public delegate void DelegatePlayerReady(LobbyPlayer sender);
 
+    public delegate void DelegatePlayerScore(LobbyPlayer sender);
+
     public static event DelegatePlayerJoined PlayerJoinedEvent;
     public event DelegatePlayerLeft PlayerLeftEvent;
+
     public event DelegatePlayerIndexChanged PlayerIndexChangedEvent;
     public event DelegatePlayerShipChanged PlayerShipChangedEvent;
     public event DelegatePlayerReady PlayerReadyEvent;
+
+    public event DelegatePlayerScore PlayerScoreEvent;
 
     /// <summary>
     /// Player name.
@@ -28,20 +34,38 @@ public class LobbyPlayer : NetworkLobbyPlayer
     /// <summary>
     /// Player ship.
     /// </summary>
-    [SyncVar(hook = "OnShipChanged")]
+    [SyncVar(hook = "OnSyncPlayerShip")]
     public string player_ship = null;
 
     /// <summary>
     /// Player index, relative to the match.
     /// </summary>
-    [SyncVar(hook = "OnPlayerIndexChanged")]
+    [SyncVar(hook = "OnSyncPlayerIndex")]
     public int player_index = -1;
 
     /// <summary>
     /// Whether this player is human.
     /// </summary>
-    [SyncVar]
+    [SyncVar(hook = "OnSyncIsHuman")]
     public bool is_human = true;
+
+    /// <summary>
+    /// Current player score. Has different meaning according to the current game mode.
+    /// </summary>
+    [SyncVar(hook = "OnSyncScore")]
+    public int score = 0;
+
+    /// <summary>
+    /// Get the color associated to this player.
+    /// The color depends on the player index only.
+    /// </summary>
+    public Color Color
+    {
+        get
+        {
+            return player_index < 0 ? kDefaultPlayerColor : kPlayerColors[player_index];
+        }
+    }
 
     /// <summary>
     /// Called on server and client when the player joins the lobby.
@@ -83,6 +107,7 @@ public class LobbyPlayer : NetworkLobbyPlayer
 
         player_ship = player_configuration.ship_prefab.name;
         is_human = player_configuration.is_human;
+        score = 0;
 
         CmdAcquirePlayerIndex();                        // Ask a free player index to the server.
     }
@@ -102,10 +127,10 @@ public class LobbyPlayer : NetworkLobbyPlayer
     }
 
     /// <summary>
-    /// Called whenever the player ship changes.
+    /// Called whenever the player ship is synced.
     /// </summary>
     /// <param name="player_ship">Selected ship name.</param>
-    private void OnShipChanged(string player_ship)
+    private void OnSyncPlayerShip(string player_ship)
     {
         this.player_ship = player_ship;
 
@@ -116,16 +141,39 @@ public class LobbyPlayer : NetworkLobbyPlayer
     }
 
     /// <summary>
-    /// Called whenever the player color changes.
+    /// Called whenever the player index is synced.
     /// </summary>
     /// <param name="player_index">New player index.</param>
-    private void OnPlayerIndexChanged(int player_index)
+    private void OnSyncPlayerIndex(int player_index)
     {
         this.player_index = player_index;
 
         if(PlayerIndexChangedEvent != null)
         {
             PlayerIndexChangedEvent(this);
+        }
+    }
+
+    /// <summary>
+    /// Called whenever the player identity is synced.
+    /// </summary>
+    /// <param name="is_human">Whether the player is human or AI.</param>
+    private void OnSyncIsHuman(bool is_human)
+    {
+        this.is_human = is_human;
+    }
+
+    /// <summary>
+    /// Called whenever the player score is synced.
+    /// </summary>
+    /// <param name="score">New score.</param>
+    private void OnSyncScore(int score)
+    {
+        this.score = score;
+
+        if(PlayerScoreEvent != null)
+        {
+            PlayerScoreEvent(this);
         }
     }
 
@@ -157,4 +205,14 @@ public class LobbyPlayer : NetworkLobbyPlayer
     /// List of available player indexes.
     /// </summary>
     private static Stack<int> player_indexes;
+
+    /// <summary>
+    /// Default color for player without an index.
+    /// </summary>
+    private static readonly Color kDefaultPlayerColor = Color.white;
+
+    /// <summary>
+    /// List of colors associated to each player index.
+    /// </summary>
+    private static readonly Color[] kPlayerColors = new Color[] { Color.red, Color.blue, Color.green, Color.yellow };
 }

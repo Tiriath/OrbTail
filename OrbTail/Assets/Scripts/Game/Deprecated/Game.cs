@@ -347,26 +347,26 @@ public class Game : MonoBehaviour {
         {
             //Restores the orbs
 
-            var disconnected_player = (from player in ShipsInGame
-                                       where player.GetComponent<GameIdentity>().Id == id
-                                       select player).First();
+            //var disconnected_player = (from player in ShipsInGame
+            //                           where player.GetComponent<GameIdentity>().Id == id
+            //                           select player).First();
 
-            //Detaches all orbs from the player's tail
+            ////Detaches all orbs from the player's tail
 
-            disconnected_player.GetComponent<Tail>().DetachOrbs(int.MaxValue);
+            //disconnected_player.GetComponent<Tail>().DetachOrbs(int.MaxValue);
 
-            //Removes the disconnected player
-            RemoveShip(disconnected_player);
+            ////Removes the disconnected player
+            //RemoveShip(disconnected_player);
 
-            //Destroy the player who left
+            ////Destroy the player who left
 
-            //There's only one player, he must have won
-            if (ShipsInGame.Count() <= 1)
-            {
+            ////There's only one player, he must have won
+            //if (ShipsInGame.Count() <= 1)
+            //{
 
-                game_mode_.NotifyWin();
+            //    game_mode_.NotifyWin();
 
-            }
+            //}
         }
     }
 

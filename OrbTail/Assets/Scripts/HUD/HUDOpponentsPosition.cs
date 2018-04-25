@@ -57,7 +57,7 @@ public class HUDOpponentsPosition : MonoBehaviour {
 	private void addHUDIndicator(GameObject ship) {
 		GameObject indicator = (GameObject) Instantiate(Resources.Load(HUDIndicatorPrefabPath));
 		TextMesh textMeshIndicator = indicator.GetComponent<TextMesh>();
-		textMeshIndicator.color = ship.GetComponent<GameIdentity>().Color;
+		//textMeshIndicator.color = ship.GetComponent<GameIdentity>().Color;
 		textMeshes.Add(indicator, textMeshIndicator);
 		positionShipAndIndicators.Add(ship.transform, indicator);
 	}

@@ -62,7 +62,7 @@ public class HUDShowRank : MonoBehaviour {
         }
         else {
             //textMesh.text = winner.GetComponent<PlayerIdentity>().ShipName + " wins";
-            textMesh.color = winner.GetComponent<GameIdentity>().Color;
+            //textMesh.color = winner.GetComponent<GameIdentity>().Color;
         }
 
         iTween.ValueTo(this.gameObject, iTween.Hash(

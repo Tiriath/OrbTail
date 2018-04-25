@@ -66,9 +66,13 @@ public class ArcadeGameMode: BaseGameMode
             Debug.Log(ship.name);
 
             ship.GetComponent<Tail>().OnEventOrbAttached += ArcadeGameMode_OnEventOrbAttached;
+        }
 
-            ship.GetComponent<GameIdentity>().ResetScore();
+        // Only on local players, replicates to everyone else.
 
+        foreach(LobbyPlayer lobby_player in GameLobby.Instance.lobbySlots)
+        {
+            lobby_player.score = 0;
         }
 
         //
@@ -79,54 +83,55 @@ public class ArcadeGameMode: BaseGameMode
     void ArcadeGameMode_OnEventOrbAttached(object sender, GameObject orb, GameObject ship)
     {
 
-        var identity = ship.GetComponent<GameIdentity>();
-
-        identity.AddScore(kOrbAttachedScore);
+//         var identity = ship.GetComponent<GameIdentity>();
+// 
+//         identity.SetScore(identity.Score + kOrbAttachedScore);
 
     }
 
     public override GameObject Winner
     {
-	 
+     
         get
         {
+            return null;
 
-            var ships = Game.ShipsInGame;
-
-            //Find the highest score (Can't use linq.max because iOS sucks)
-            int highest_score = 0;
-            int current_score = 0;
-
-            foreach (GameObject go in ships)
-            {
-
-                current_score = go.GetComponent<GameIdentity>().Score;
-
-                if (highest_score < current_score)
-                {
-
-                    highest_score = current_score;
-
-                }
-
-            }
-
-            var winners = from s in ships
-                          where s.GetComponent<GameIdentity>().Score == highest_score
-                          select s;
-
-            if (winners.Count() == 1)
-            {
-
-                return winners.First();
-
-            }
-            else
-            {
-
-                return null;
-
-            }
+//             var ships = Game.ShipsInGame;
+// 
+//             //Find the highest score (Can't use linq.max because iOS sucks)
+//             int highest_score = 0;
+//             int current_score = 0;
+// 
+//             foreach (GameObject go in ships)
+//             {
+// 
+//                 current_score = go.GetComponent<GameIdentity>().Score;
+// 
+//                 if (highest_score < current_score)
+//                 {
+// 
+//                     highest_score = current_score;
+// 
+//                 }
+// 
+//             }
+// 
+//             var winners = from s in ships
+//                           where s.GetComponent<GameIdentity>().Score == highest_score
+//                           select s;
+// 
+//             if (winners.Count() == 1)
+//             {
+// 
+//                 return winners.First();
+// 
+//             }
+//             else
+//             {
+// 
+//                 return null;
+// 
+//             }
             
         }
 
@@ -147,16 +152,16 @@ public class ArcadeGameMode: BaseGameMode
         if (time_left % kInterval == 0)
         {
 
-            var identities = from ship in Game.ShipsInGame
-                             where ship.GetComponent<GameIdentity>().TailLength > kMinimumTailLength
-                             select ship.GetComponent<GameIdentity>();
+            //var identities = from ship in Game.ShipsInGame
+            //                 where ship.GetComponent<GameIdentity>().TailLength > kMinimumTailLength
+            //                 select ship.GetComponent<GameIdentity>();
 
-            foreach (var identity in identities)
-            {
+            //foreach (var identity in identities)
+            //{
 
-                identity.AddScore((identity.TailLength - kMinimumTailLength) * kAboveMinimumOrbScore);
+            //    identity.SetScore(identity.Score + (identity.TailLength - kMinimumTailLength) * kAboveMinimumOrbScore);
 
-            }
+            //}
 
         }
 

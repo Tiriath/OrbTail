@@ -21,6 +21,11 @@ public class Tail : MonoBehaviour
     /// </summary>
     public event OnOrbDetachedDelegate OnEventOrbDetached;
 
+    /// <summary>
+    /// Get or set the tail color.
+    /// </summary>
+    public Color Color { get; set; }
+
     void Awake()
     {
         default_orb_material = Resources.Load<Material>("Materials/OrbMat");
@@ -32,11 +37,7 @@ public class Tail : MonoBehaviour
     
     void Start ()
     {
-        game_identity = GetComponent<GameIdentity>();
-
         UpdateTailColor();
-
-        game_identity.EventIdSet += OnIdSet;
     }
     
     /// <summary>
@@ -121,26 +122,13 @@ public class Tail : MonoBehaviour
     {
         const float kMaxOrbs = 10;            //Number of orbs to have for a full colored tail.
 
-        orb_material.color = Color.Lerp(default_orb_color, game_identity.Color, Mathf.Min(1.0f, orbs.Count / kMaxOrbs));
-    }
-
-    /// <summary>
-    /// Called whenever the id of the player is set.
-    /// </summary>
-    private void OnIdSet(object sender, int id)
-    {
-        UpdateTailColor();
+        orb_material.color = Color.Lerp(default_orb_color, Color, Mathf.Min(1.0f, orbs.Count / kMaxOrbs));
     }
 
     /// <summary>
     /// Orbs in this tail.
     /// </summary>
     private Stack<GameObject> orbs = new Stack<GameObject>();
-
-    /// <summary>
-    /// Identity of the player owning this tail.
-    /// </summary>
-    private GameIdentity game_identity = null;
 
     /// <summary>
     /// Default orbs material.
