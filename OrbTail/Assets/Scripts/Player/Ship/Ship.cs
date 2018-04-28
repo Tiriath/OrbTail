@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
 /// <summary>
-/// Component used to build a ship with necessary components.
-/// This component sets ship default drivers.
+/// Base component for each ship.
 /// </summary>
-public class ShipPrototype : MonoBehaviour
+public class Ship : NetworkBehaviour
 {
-    public delegate void DelegateShipEvent(ShipPrototype sender);
+    public delegate void DelegateShipEvent(Ship sender);
 
     public static event DelegateShipEvent ShipCreatedEvent;
     public static event DelegateShipEvent ShipDestroyedEvent;
@@ -15,7 +14,7 @@ public class ShipPrototype : MonoBehaviour
     /// <summary>
     /// Maximum steering speed, in radians per second.
     /// </summary>
-    public float steer = 3.0f;
+    public float steer = 20.0f;
 
     /// <summary>
     /// Maximum steering acceleration, in radians per second squared.
@@ -25,7 +24,7 @@ public class ShipPrototype : MonoBehaviour
     /// <summary>
     /// Maximum speed, in units per second.
     /// </summary>
-    public float speed = 10.0f;
+    public float speed = 250.0f;
 
     /// <summary>
     /// Maximum acceleration, in units per second squared.
@@ -45,7 +44,7 @@ public class ShipPrototype : MonoBehaviour
     /// <summary>
     /// Get or set the details color.
     /// </summary>
-    public Color  DetailsColor{ get; set; }
+    public Color DetailsColor{ get; set; }
 
     void Awake()
     {

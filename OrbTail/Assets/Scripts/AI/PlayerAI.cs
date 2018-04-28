@@ -70,8 +70,8 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     
     public void Start ()
     {
-        ShipPrototype.ShipCreatedEvent += OnShipCreated;
-        ShipPrototype.ShipDestroyedEvent += OnShipDestroyed;
+        Ship.ShipCreatedEvent += OnShipCreated;
+        Ship.ShipDestroyedEvent += OnShipDestroyed;
 
         floatingObject = GetComponent<FloatingObject>();
         powerController = GetComponent<PowerController>();
@@ -92,8 +92,8 @@ public class PlayerAI : MonoBehaviour, IInputBroker
 
     public void OnDestroy()
     {
-        ShipPrototype.ShipCreatedEvent -= OnShipCreated;
-        ShipPrototype.ShipDestroyedEvent -= OnShipDestroyed;
+        Ship.ShipCreatedEvent -= OnShipCreated;
+        Ship.ShipDestroyedEvent -= OnShipDestroyed;
 
         var tailController = GetComponent<TailController>();
 
@@ -207,7 +207,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     /// <summary>
     /// Called whenever a new ship is created.
     /// </summary>
-    private void OnShipCreated(ShipPrototype ship)
+    private void OnShipCreated(Ship ship)
     {
         TailController tailController = ship.GetComponent<TailController>();
         tailController.OnEventFight += OnEventFight;
@@ -216,7 +216,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     /// <summary>
     /// Called whenever an existing ship is destroyed.
     /// </summary>
-    private void OnShipDestroyed(ShipPrototype ship)
+    private void OnShipDestroyed(Ship ship)
     {
         ship.GetComponent<TailController>().OnEventFight -= OnEventFight;
 

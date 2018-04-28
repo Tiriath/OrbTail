@@ -11,8 +11,8 @@ public class SpectatorMode : MonoBehaviour
     {
         camera_movement_ = GetComponent<CameraMovement>();
 
-        ShipPrototype.ShipCreatedEvent += OnShipCreated;
-        ShipPrototype.ShipDestroyedEvent += OnShipDestroyed;
+        Ship.ShipCreatedEvent += OnShipCreated;
+        Ship.ShipDestroyedEvent += OnShipDestroyed;
 
         LookNext();
     }
@@ -51,7 +51,7 @@ public class SpectatorMode : MonoBehaviour
     /// <summary>
     /// Called whenever a new ship is created.
     /// </summary>
-    private void OnShipCreated(ShipPrototype ship)
+    private void OnShipCreated(Ship ship)
     {
         ships_.Add(ship.gameObject);
     }
@@ -59,7 +59,7 @@ public class SpectatorMode : MonoBehaviour
     /// <summary>
     /// Called whenever a ship is destroyed.
     /// </summary>
-    private void OnShipDestroyed(ShipPrototype ship)
+    private void OnShipDestroyed(Ship ship)
     {
         ships_.Remove(ship.gameObject);
 
