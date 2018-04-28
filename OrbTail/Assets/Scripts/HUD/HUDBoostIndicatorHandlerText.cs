@@ -1,37 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HUDBoostIndicatorHandlerText : MonoBehaviour {
-
-
+public class HUDBoostIndicatorHandlerText : MonoBehaviour
+{
     private Power boostView;
     private TextMesh textMesh;
     private float refreshTime = 0.2f;
     private const float animationTime = 1f;
-    private Game game;
-    //private GameBuilder gameBuilder;
 
     // Use this for initialization
     void Start () {
 //         gameBuilder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
 //         gameBuilder.EventGameBuilt += OnGameBuilt;
     }
-    
-    // Update is called once per frame
-    void Update () {
-    
-    }
 
     private void OnGameBuilt(object sender) {
-        game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
-        game.EventEnd += OnEventEnd;
-        game.EventStart += OnEventStart;
-        game.EventEnd += OnEnd;
-        game.EventShipEliminated += OnShipEliminated;
-
-        GameObject player = game.ActivePlayer;
-        player.GetComponent<PowerController>().OnPowerAttachedEvent += HUDBoostIndicatorHandler_EventPowerAttached;
-        textMesh = GetComponent<TextMesh>();
+//          game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
+//          game.EventEnd += OnEventEnd;
+//          game.EventStart += OnEventStart;
+//          game.EventEnd += OnEnd;
+//          game.EventShipEliminated += OnShipEliminated;
+// 
+//         GameObject player = game.ActivePlayer;
+//         player.GetComponent<PowerController>().OnPowerAttachedEvent += HUDBoostIndicatorHandler_EventPowerAttached;
+    textMesh = GetComponent<TextMesh>();
 
         //gameBuilder.EventGameBuilt -= OnGameBuilt;
     }
@@ -59,15 +51,14 @@ public class HUDBoostIndicatorHandlerText : MonoBehaviour {
         if (countdown <= 0) {
 
             textMesh.color = Color.green;
-                    
         }
 
     }
 
     private void OnShipEliminated(object sender, GameObject ship) {
-        if (ship == game.ActivePlayer) {
-            PrepareToDisable();
-        }
+//         if (ship == game.ActivePlayer) {
+//             PrepareToDisable();
+//         }
     }
 
     private IEnumerator RefreshIndicator() {
@@ -88,9 +79,9 @@ public class HUDBoostIndicatorHandlerText : MonoBehaviour {
     private void PrepareToDisable() {
         StopCoroutine("RefreshIndicator");
         
-        game.EventEnd -= OnEventEnd;
-        game.EventStart -= OnEventStart;
-        game.EventEnd -= OnEnd;
+//         game.EventEnd -= OnEventEnd;
+//         game.EventStart -= OnEventStart;
+//         game.EventEnd -= OnEnd;
     }
 
 

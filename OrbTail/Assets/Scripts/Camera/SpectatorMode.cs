@@ -5,37 +5,30 @@ using System.Collections.Generic;
 /// <summary>
 /// Script used in spectator mode to cycle among different players
 /// </summary>
-public class SpectatorMode : MonoBehaviour {
-
-    // Use this for initialization
-    void Start () {
-
+public class SpectatorMode : MonoBehaviour
+{
+    public void Start ()
+    {
         camera_movement_ = GetComponent<CameraMovement>();
 
-        game_ = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
-
-        ships_ = new List<GameObject>(game_.ShipsInGame);
-
-        game_.EventShipEliminated += game__EventShipEliminated;
+        ShipPrototype.ShipCreatedEvent += OnShipCreated;
+        ShipPrototype.ShipDestroyedEvent += OnShipDestroyed;
 
         LookNext();
-
     }
 
-    /// <summary>
-    /// Removes the eliminated ship and look at the next ship
-    /// </summary>
-    void game__EventShipEliminated(object sender, GameObject ship)
+    void Update()
     {
-
-        ships_.Remove(ship);
-
-        if (camera_movement_.Target == ship){
+        if (Input.GetAxis(Inputs.Fire) <= 0.0f && Input.touchCount <= 0)
+        {
+            toggle_change_target = true;
+        }
+        else if (toggle_change_target)
+        {
+            toggle_change_target = false;
 
             LookNext();
-
-        }       
-
+        }
     }
 
     /// <summary>
@@ -43,10 +36,8 @@ public class SpectatorMode : MonoBehaviour {
     /// </summary>
     private void LookNext()
     {
-
         if (ships_.Count > 0)
         {
-
             var element = ships_[0];
 
             ships_.RemoveAt(0);
@@ -54,43 +45,42 @@ public class SpectatorMode : MonoBehaviour {
             ships_.Add(element);
 
             camera_movement_.LookAt(ships_[0]);
-
         }
+    }
 
+    /// <summary>
+    /// Called whenever a new ship is created.
+    /// </summary>
+    private void OnShipCreated(ShipPrototype ship)
+    {
+        ships_.Add(ship.gameObject);
+    }
+
+    /// <summary>
+    /// Called whenever a ship is destroyed.
+    /// </summary>
+    private void OnShipDestroyed(ShipPrototype ship)
+    {
+        ships_.Remove(ship.gameObject);
+
+        if (camera_movement_.Target == ship)
+        {
+            LookNext();
+        }
     }
     
-    // Update is called once per frame
-    void Update () {
-
-        if (Input.GetAxis(Inputs.Fire) > 0.0f || Input.touchCount > 0)
-        {
-
-            if (change_target)
-            {
-
-                change_target = false;
-
-                LookNext();
-                
-            }
-
-        }
-        else
-        {
-
-            //No key or no touch, reset
-            change_target = true;
-
-        }
-
-
-    }
+    /// <summary>
+    /// Whether to change the target.
+    /// </summary>
+    private bool toggle_change_target = true;
     
-    private bool change_target = true;
-    
-    private Game game_;
+    /// <summary>
+    /// List of all ships in the game.
+    /// </summary>
+    private IList<GameObject> ships_ = new List<GameObject>();
 
-    private IList<GameObject> ships_;
-
+    /// <summary>
+    /// Current camera movement.
+    /// </summary>
     private CameraMovement camera_movement_;
 }

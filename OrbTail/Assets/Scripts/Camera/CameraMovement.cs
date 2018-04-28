@@ -24,24 +24,17 @@ public class CameraMovement : MonoBehaviour {
 
     public void LookAt(GameObject target)
     {
-
         Target = target;
 
-        // Setting up the reference.
         player = target.transform;
         FloatingComponent = target.GetComponent<FloatingObject>();
-    
     }
 
     void Start()
     {
-// 		GameBuilder builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-// 		builder.EventGameBuilt += OnGameBuilt;
-        currentDistanceSmooth = distanceSmooth;
-    }
+        BaseGameMode.Instance.MatchEndEvent += OnMatchEnd;
 
-    void Awake ()
-    {
+        currentDistanceSmooth = distanceSmooth;
     }
     
     void FixedUpdate ()
@@ -73,8 +66,7 @@ public class CameraMovement : MonoBehaviour {
             SmoothLookAt(arenaDown);
         }
     }
-    
-    
+
     bool ViewingPosCheck (Vector3 checkPos)
     {
         RaycastHit hit;
@@ -90,8 +82,7 @@ public class CameraMovement : MonoBehaviour {
         newPos = checkPos;
         return true;
     }
-    
-    
+
     void SmoothLookAt (Vector3 arenaDown)
     {
         // Create a vector from the camera towards the player.
@@ -105,15 +96,14 @@ public class CameraMovement : MonoBehaviour {
         transform.rotation = Quaternion.Lerp(transform.rotation, lookAtRotation, rotationSmooth * Time.deltaTime);
     }
 
-    private void OnGameBuilt(object sender) {
-        Game game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
-        game.EventEnd += OnEventEnd;
-    }
+    private void OnMatchEnd(BaseGameMode game_mode)
+    {
+        BaseGameMode.Instance.MatchEndEvent -= OnMatchEnd;
 
-    private void OnEventEnd(object sender, GameObject winner, int info) {
-        if (winner != null) {
-            distanceSmooth = finalSmooth;
-            LookAt(winner);
-        }
+        //if (winner != null)
+        //{
+        //    distanceSmooth = finalSmooth;
+        //    LookAt(winner);
+        //}
     }
 }

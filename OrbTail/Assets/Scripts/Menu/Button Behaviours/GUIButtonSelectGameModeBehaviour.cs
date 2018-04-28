@@ -10,7 +10,7 @@ public class GUIButtonSelectGameModeBehaviour : GUIButtonBehaviour
     /// <summary>
     /// Game mode to select.
     /// </summary>
-    public GameMode game_mode;
+    public GameObject game_mode;
 
     public override void OnInputConfirm()
     {

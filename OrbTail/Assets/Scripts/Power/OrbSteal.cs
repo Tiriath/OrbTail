@@ -28,12 +28,12 @@ public class OrbSteal : Power
 
         tailControllers = new List<TailController>();
 
-        foreach (GameObject ship in GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>().ShipsInGame)
-        {
-            TailController tailController = ship.GetComponent<TailController>();
-            tailController.OnEventFight += OnFight;
-            tailControllers.Add(tailController);
-        }
+//         foreach (GameObject ship in GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>().ShipsInGame)
+//         {
+//             TailController tailController = ship.GetComponent<TailController>();
+//             tailController.OnEventFight += OnFight;
+//             tailControllers.Add(tailController);
+//         }
     }
 
     protected override void OnDeactivated()

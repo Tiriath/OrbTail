@@ -7,6 +7,11 @@ using System.Collections;
 /// </summary>
 public class ShipPrototype : MonoBehaviour
 {
+    public delegate void DelegateShipEvent(ShipPrototype sender);
+
+    public static event DelegateShipEvent ShipCreatedEvent;
+    public static event DelegateShipEvent ShipDestroyedEvent;
+
     /// <summary>
     /// Maximum steering speed, in radians per second.
     /// </summary>
@@ -40,19 +45,13 @@ public class ShipPrototype : MonoBehaviour
     /// <summary>
     /// Get or set the details color.
     /// </summary>
-    public Color DetailsColor { get; set; }
-
-    void Update ()
-    {
-        this.enabled = false;
-    }
+    public Color  DetailsColor{ get; set; }
 
     void Awake()
     {
         // Add ship controllers.
 
         gameObject.AddComponent<Tail>();
-
         gameObject.AddComponent<PowerController>();
 
         //Server side controls the collisions.
@@ -72,14 +71,7 @@ public class ShipPrototype : MonoBehaviour
 
         movement_controller.GetEngineDriver().SetDefaultDriver(new DefaultEngineDriver(speed, speed_smooth));
         movement_controller.GetSteerDriver().SetDefaultDriver(new DefaultSteerDriver(steer, steer_smooth));
-    }
 
-    /// <summary>
-    /// Called whenever a game is built.
-    /// </summary>
-    /// <param name="sender">Object who raised the event.</param>
-    void OnGameBuilt(object sender)
-    {
         //Colorize this ship. The material is shared to reduce the draw calls.
 
         Material material = null;
@@ -96,6 +88,21 @@ public class ShipPrototype : MonoBehaviour
 
                 renderer.material = material;
             }
+        }
+
+        // Done!
+
+        if (ShipCreatedEvent != null)
+        {
+            ShipCreatedEvent(this);
+        }
+    }
+
+    public void OnDestroy()
+    {
+        if (ShipDestroyedEvent != null)
+        {
+            ShipDestroyedEvent(this);
         }
     }
 }

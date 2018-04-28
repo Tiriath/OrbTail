@@ -10,7 +10,7 @@ public class GUIButtonSelectArenaBehaviour : GUIButtonBehaviour
     /// <summary>
     /// Arena to select.
     /// </summary>
-    public string arena;
+    public SceneField arena;
 
     public override void OnInputConfirm()
     {

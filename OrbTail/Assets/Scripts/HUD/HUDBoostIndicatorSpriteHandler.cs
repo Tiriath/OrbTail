@@ -8,9 +8,7 @@ public class HUDBoostIndicatorSpriteHandler : MonoBehaviour {
 	private const float animationTime = 0.2f;
 	private const float scaleBig = 0.2f;
 	private bool charged;
-	private Game game;
-	//private GameBuilder gameBuilder;
-	
+
 	// Use this for initialization
 	void Start () {
 // 		gameBuilder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
@@ -23,14 +21,14 @@ public class HUDBoostIndicatorSpriteHandler : MonoBehaviour {
 	}
 	
 	private void OnGameBuilt(object sender) {
-		game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
-		game.EventEnd += OnEventEnd;
-		game.EventStart += OnEventStart;
-		game.EventEnd += OnEnd;
-		game.EventShipEliminated += OnShipEliminated;
-		
-		GameObject player = game.ActivePlayer;
-		player.GetComponent<PowerController>().OnPowerAttachedEvent += HUDBoostIndicatorHandler_EventPowerAttached;
+//		game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
+// 		game.EventEnd += OnEventEnd;
+// 		game.EventStart += OnEventStart;
+// 		game.EventEnd += OnEnd;
+// 		game.EventShipEliminated += OnShipEliminated;
+// 		
+// 		GameObject player = game.ActivePlayer;
+// 		player.GetComponent<PowerController>().OnPowerAttachedEvent += HUDBoostIndicatorHandler_EventPowerAttached;
 		
 		//gameBuilder.EventGameBuilt -= OnGameBuilt;
 	}
@@ -65,9 +63,9 @@ public class HUDBoostIndicatorSpriteHandler : MonoBehaviour {
 	}
 	
 	private void OnShipEliminated(object sender, GameObject ship) {
-		if (ship == game.ActivePlayer) {
-			PrepareToDisable();
-		}
+// 		if (ship == game.ActivePlayer) {
+// 			PrepareToDisable();
+// 		}
 	}
 	
 	private IEnumerator RefreshIndicator() {
@@ -97,9 +95,9 @@ public class HUDBoostIndicatorSpriteHandler : MonoBehaviour {
 	private void PrepareToDisable() {
 		StopCoroutine("RefreshIndicator");
 		
-		game.EventEnd -= OnEventEnd;
-		game.EventStart -= OnEventStart;
-		game.EventEnd -= OnEnd;
+// 		game.EventEnd -= OnEventEnd;
+// 		game.EventStart -= OnEventStart;
+// 		game.EventEnd -= OnEnd;
 	}
 
 }

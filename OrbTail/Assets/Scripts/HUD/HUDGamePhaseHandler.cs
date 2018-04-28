@@ -10,8 +10,6 @@ public class HUDGamePhaseHandler : MonoBehaviour {
 	private float blankOverlayFinalAlpha = 0.8f;
 	private int fontBigSize = 130;
 	private float standardLightPower;
-	//private GameBuilder builder;
-	private Game game;
 	private GameObject blankOverlay;
 	
 	// Use this for initialization
@@ -37,9 +35,9 @@ public class HUDGamePhaseHandler : MonoBehaviour {
 	}
 
 	private void OnGameBuilt(object sender) {
-		game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
-		game.EventStart += OnStart;
-		game.EventEnd += OnGameOver;
+//      game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
+// 		game.EventStart += OnStart;
+// 		game.EventEnd += OnGameOver;
 
 		//builder.EventGameBuilt -= OnGameBuilt;
 	}
@@ -95,7 +93,7 @@ public class HUDGamePhaseHandler : MonoBehaviour {
 	}
 
 	private void CleanScript() {
-		game.EventStart -= OnStart;
-		game.EventEnd -= OnGameOver;
+// 		game.EventStart -= OnStart;
+// 		game.EventEnd -= OnGameOver;
 	}
 }

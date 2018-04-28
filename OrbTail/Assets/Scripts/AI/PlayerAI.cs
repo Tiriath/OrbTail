@@ -34,8 +34,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     
     private OrbController orbController;
     private FloatingObject floatingObject;
-    private Game game;
-    
+
     private float maxTimeToGoAway = 4f;
     private float maxTimeToFirePowerUp = 5f;
     private float maxVisibility = 60f;
@@ -69,14 +68,42 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         ResetTarget();
     }
     
-    // Use this for initialization
-    void Start () {
-        
-//         GameBuilder gameBuilder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
-//         gameBuilder.EventGameBuilt += OnGameBuilt;
-        
+    public void Start ()
+    {
+        ShipPrototype.ShipCreatedEvent += OnShipCreated;
+        ShipPrototype.ShipDestroyedEvent += OnShipDestroyed;
+
+        floatingObject = GetComponent<FloatingObject>();
+        powerController = GetComponent<PowerController>();
+        var tailController = GetComponent<TailController>();
+        var tail = GetComponent<Tail>();
+
+        powerController.OnPowerAttachedEvent += OnEventPowerAttached;
+        tailController.OnEventFight += OnEventFight;
+
+        tail.OnEventOrbAttached += OnEventOrbAttached;
+
+        // Attaching field of view notification
+        GetComponentInChildren<AIFieldOfView>().EventOnFieldOfViewEnter += OnFieldOfViewEnter;
+        checkpoints = new HashSet<GameObject>(GameObject.FindGameObjectsWithTag(Tags.AICheckpoint));
+
+        gameBuilt = true;
     }
-    
+
+    public void OnDestroy()
+    {
+        ShipPrototype.ShipCreatedEvent -= OnShipCreated;
+        ShipPrototype.ShipDestroyedEvent -= OnShipDestroyed;
+
+        var tailController = GetComponent<TailController>();
+
+        tailController.OnEventFight -= OnEventFight;
+
+        gameObject.GetComponent<Tail>().OnEventOrbAttached -= OnEventOrbAttached;
+        // Attaching field of view notification
+        //GetComponentInChildren<AIFieldOfView>().EventOnFieldOfViewEnter -= OnFieldOfViewEnter;
+    }
+
     // Update is called once per frame
     void Update () {
         if (gameBuilt) {
@@ -176,46 +203,29 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         }
         
     }
-    
-    private void OnGameBuilt(object sender) {
-        floatingObject = GetComponent<FloatingObject>();	
-        
-        powerController = GetComponent<PowerController>();
-        powerController.OnPowerAttachedEvent += OnEventPowerAttached;
 
-        game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
-        game.EventShipEliminated += OnShipEliminated;
-        game.EventEnd += OnEventEnd;
-        
-        // Listen all event fights
-        foreach (GameObject ship in game.ShipsInGame) {
-            TailController tailController = ship.GetComponent<TailController>();
-            tailController.OnEventFight += OnEventFight;
-        }
-        
-        gameObject.GetComponent<Tail>().OnEventOrbAttached += OnEventOrbAttached;
-        // Attaching field of view notification
-        GetComponentInChildren<AIFieldOfView>().EventOnFieldOfViewEnter += OnFieldOfViewEnter;
-        checkpoints = new HashSet<GameObject>(GameObject.FindGameObjectsWithTag(Tags.AICheckpoint));
-
-        gameBuilt = true;
+    /// <summary>
+    /// Called whenever a new ship is created.
+    /// </summary>
+    private void OnShipCreated(ShipPrototype ship)
+    {
+        TailController tailController = ship.GetComponent<TailController>();
+        tailController.OnEventFight += OnEventFight;
     }
 
-    private void OnEventEnd(object sender, GameObject winner, int info) {
-        CleanAI();
-    }
-
-    private void OnShipEliminated(object sender, GameObject ship) {
+    /// <summary>
+    /// Called whenever an existing ship is destroyed.
+    /// </summary>
+    private void OnShipDestroyed(ShipPrototype ship)
+    {
         ship.GetComponent<TailController>().OnEventFight -= OnEventFight;
 
-        if (ship == target) {
+        if (ship == target)
+        {
             ResetTarget();
         }
-        else if (ship == gameObject) {
-            CleanAI();
-        }
     }
-    
+
     private void CheckVisibility() {
         
         if (target != null && !IsPatrolling() && !IsVisible()) {
@@ -286,22 +296,4 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         orbController = null;
     }
 
-    private void CleanAI() {
-        game.EventShipEliminated -= OnShipEliminated;
-        game.EventEnd -= OnEventEnd;
-
-        // Remove all event fights
-        foreach (GameObject ship in game.ShipsInGame) {
-            TailController tailController = ship.GetComponent<TailController>();
-            tailController.OnEventFight -= OnEventFight;
-        }
-        
-        gameObject.GetComponent<Tail>().OnEventOrbAttached -= OnEventOrbAttached;
-        // Attaching field of view notification
-        //GetComponentInChildren<AIFieldOfView>().EventOnFieldOfViewEnter -= OnFieldOfViewEnter;
-    }
-    
-    
-    
-    
 }

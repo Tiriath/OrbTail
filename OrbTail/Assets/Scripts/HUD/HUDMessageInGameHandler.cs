@@ -4,9 +4,8 @@ using System.Collections;
 public class HUDMessageInGameHandler : MonoBehaviour {
 	private TextMesh textMesh;
 	//private GameBuilder builder;
-	private PowerController powerController;
+//	private PowerController powerController;
 	private const float fadeTime = 4f;
-	private Game game;
 
 	// Use this for initialization
 	void Start () {
@@ -17,16 +16,16 @@ public class HUDMessageInGameHandler : MonoBehaviour {
 	}
 
 	private void OnGameBuilt(object sender) {
-		game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
-		GameObject activePlayer = game.ActivePlayer;
-		powerController = activePlayer.GetComponent<PowerController>();
-		powerController.OnPowerAttachedEvent += OnEventPowerAttached;
+//		game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
+// 		GameObject activePlayer = game.ActivePlayer;
+// 		powerController = activePlayer.GetComponent<PowerController>();
+// 		powerController.OnPowerAttachedEvent += OnEventPowerAttached;
 
 		ChangeAlphaColor(0f);
 /*		builder.EventGameBuilt -= OnGameBuilt;*/
 
-		game.EventEnd += OnEventEnd;
-		game.EventShipEliminated += OnShipEliminated;
+// 		game.EventEnd += OnEventEnd;
+// 		game.EventShipEliminated += OnShipEliminated;
 	}
 	
 	// Update is called once per frame
@@ -52,9 +51,9 @@ public class HUDMessageInGameHandler : MonoBehaviour {
 	}
 
 	private void OnShipEliminated(object sender, GameObject ship) {
-		if (ship == game.ActivePlayer) {
-			ShowText("You are eliminated!");
-		}
+// 		if (ship == game.ActivePlayer) {
+// 			ShowText("You are eliminated!");
+// 		}
 	}
 
 	private void ChangeAlphaColor(float alpha) {
@@ -64,7 +63,7 @@ public class HUDMessageInGameHandler : MonoBehaviour {
 	}
 
 	private void CleanScript() {
-		powerController.OnPowerAttachedEvent -= OnEventPowerAttached;
-		game.EventEnd -= OnEventEnd;
+		//powerController.OnPowerAttachedEvent -= OnEventPowerAttached;
+		//game.EventEnd -= OnEventEnd;
 	}
 }

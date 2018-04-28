@@ -17,9 +17,9 @@ public class HUDMissileButtonHandler : MonoBehaviour {
     }
 
     private void OnGameBuilt(object sender) {
-        Game game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
-        GameObject player = game.ActivePlayer;
-        player.GetComponent<PowerController>().OnPowerAttachedEvent += EventPowerAttached;
+        //Game game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
+//         GameObject player = game.ActivePlayer;
+//         player.GetComponent<PowerController>().OnPowerAttachedEvent += EventPowerAttached;
         
 /*        builder.EventGameBuilt -= OnGameBuilt;*/
     }

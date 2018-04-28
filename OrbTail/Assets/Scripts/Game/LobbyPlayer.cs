@@ -7,23 +7,16 @@ using UnityEngine.Networking;
 /// </summary>
 public class LobbyPlayer : NetworkLobbyPlayer
 {
-    public delegate void DelegatePlayerJoined(LobbyPlayer sender);
-    public delegate void DelegatePlayerLeft(LobbyPlayer sender);
+    public delegate void DelegateLobbyPlayerEvent(LobbyPlayer sender);
 
-    public delegate void DelegatePlayerIndexChanged(LobbyPlayer sender);
-    public delegate void DelegatePlayerShipChanged(LobbyPlayer sender);
-    public delegate void DelegatePlayerReady(LobbyPlayer sender);
+    public static event DelegateLobbyPlayerEvent PlayerJoinedEvent;
+    public static event DelegateLobbyPlayerEvent LocalPlayerJoinedEvent;
 
-    public delegate void DelegatePlayerScore(LobbyPlayer sender);
-
-    public static event DelegatePlayerJoined PlayerJoinedEvent;
-    public event DelegatePlayerLeft PlayerLeftEvent;
-
-    public event DelegatePlayerIndexChanged PlayerIndexChangedEvent;
-    public event DelegatePlayerShipChanged PlayerShipChangedEvent;
-    public event DelegatePlayerReady PlayerReadyEvent;
-
-    public event DelegatePlayerScore PlayerScoreEvent;
+    public event DelegateLobbyPlayerEvent PlayerLeftEvent;
+    public event DelegateLobbyPlayerEvent PlayerIndexChangedEvent;
+    public event DelegateLobbyPlayerEvent PlayerShipChangedEvent;
+    public event DelegateLobbyPlayerEvent PlayerReadyEvent;
+    public event DelegateLobbyPlayerEvent PlayerScoreEvent;
 
     /// <summary>
     /// Player name.
@@ -101,6 +94,8 @@ public class LobbyPlayer : NetworkLobbyPlayer
     /// </summary>
     public override void OnStartAuthority()
     {
+        base.OnStartAuthority();
+
         Debug.Log("OnStartAuthority (controller: " + playerControllerId + ")");
 
         var player_configuration = GameLobby.Instance.GetLocalPlayer(playerControllerId);
@@ -110,6 +105,11 @@ public class LobbyPlayer : NetworkLobbyPlayer
         score = 0;
 
         CmdAcquirePlayerIndex();                        // Ask a free player index to the server.
+
+        if(LocalPlayerJoinedEvent != null)
+        {
+            LocalPlayerJoinedEvent(this);
+        }
     }
 
     /// <summary>

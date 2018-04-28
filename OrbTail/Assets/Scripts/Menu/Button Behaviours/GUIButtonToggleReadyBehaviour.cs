@@ -24,16 +24,19 @@ public class GUIButtonToggleReadyBehaviour : GUIButtonBehaviour
 
     public void Start()
     {
-        LobbyPlayer.PlayerJoinedEvent += OnPlayerJoined;
+        LobbyPlayer.LocalPlayerJoinedEvent += OnLocalPlayerJoined;
 
         GetComponent<TextMesh>().text = "";
     }
 
     public void OnDestroy()
     {
-        LobbyPlayer.PlayerJoinedEvent -= OnPlayerJoined;
+        LobbyPlayer.LocalPlayerJoinedEvent -= OnLocalPlayerJoined;
 
-        OnLobbyPlayerLeft(bound_local_player);
+        if(bound_local_player != null)
+        {
+            OnLobbyPlayerLeft(bound_local_player);
+        }
     }
 
     public override void OnInputConfirm()
@@ -54,11 +57,11 @@ public class GUIButtonToggleReadyBehaviour : GUIButtonBehaviour
     }
 
     /// <summary>
-    /// Called whenever a new player joins the lobby.
+    /// Called whenever a new local player joins the lobby.
     /// </summary>
-    private void OnPlayerJoined(LobbyPlayer lobby_player)
+    private void OnLocalPlayerJoined(LobbyPlayer lobby_player)
     {
-        if(lobby_player.playerControllerId == local_player_index && lobby_player.isLocalPlayer)
+        if(lobby_player.playerControllerId == local_player_index)
         {
             Debug.Assert(bound_local_player == null, "A local player with id " + local_player_index + " was already bound!");
 
@@ -84,13 +87,10 @@ public class GUIButtonToggleReadyBehaviour : GUIButtonBehaviour
     /// </summary>
     private void OnLobbyPlayerLeft(LobbyPlayer lobby_player)
     {
-        if (bound_local_player && lobby_player == bound_local_player)
-        {
-            bound_local_player.PlayerReadyEvent -= OnLobbyPlayerReady;
-            bound_local_player.PlayerLeftEvent -= OnLobbyPlayerLeft;
+        bound_local_player.PlayerReadyEvent -= OnLobbyPlayerReady;
+        bound_local_player.PlayerLeftEvent -= OnLobbyPlayerLeft;
 
-            bound_local_player = null;
-        }
+        bound_local_player = null;
     }
 
     /// <summary>

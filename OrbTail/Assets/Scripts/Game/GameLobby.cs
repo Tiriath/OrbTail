@@ -10,11 +10,9 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameLobby : NetworkLobbyManager
 {
-    public delegate void DelegateLobbyStarted(GameLobby sender);
-    public delegate void DelegateLobbyStop(GameLobby sender);
+    public delegate void DelegateLobbyEvent(GameLobby sender);
     
-    public event DelegateLobbyStarted LobbyStarted;
-    public event DelegateLobbyStop LobbyStop;
+    public event DelegateLobbyEvent LobbyStarted;
 
     /// <summary>
     /// Get the singleton instance.
@@ -36,17 +34,6 @@ public class GameLobby : NetworkLobbyManager
     /// Maximum connection attempts to perform before giving up.
     /// </summary>
     public int max_connection_attempts = 8;
-
-    /// <summary>
-    /// Check whether the lobby is offline.
-    /// </summary>
-    public bool IsOffline
-    {
-        get
-        {
-            return game_configuration.game_type == GameType.Offline;
-        }
-    }
 
     /// <summary>
     /// Get a local player configuration from index.
@@ -80,26 +67,11 @@ public class GameLobby : NetworkLobbyManager
     }
 
     /// <summary>
-    /// Called on the server when server\host is started.
-    /// </summary>
-    public override void OnLobbyStartServer()
-    {
-        Debug.Log("OnLobbyStartServer");
-
-        is_host = true;
-    }
-
-    /// <summary>
     /// Called on the client when connected to a server.
     /// </summary>
     public override void OnClientConnect(NetworkConnection connection)
     {
-        Debug.Log("OnClientConnect");
-
         base.OnClientConnect(connection);
-
-        // Add local players after the manager finished initializing the new client.
-        // For some reason if this is performed while on OnLobbyClientEnter it would attempt to create one more lobby player, failing.
 
         AddLocalPlayers();
     }
@@ -136,6 +108,11 @@ public class GameLobby : NetworkLobbyManager
         match_id = match_info.networkId;
 
         base.OnMatchCreate(success, extended_info, match_info);
+
+        if(success)
+        {
+            PostStartServer();
+        }
     }
 
     /// <summary>
@@ -186,18 +163,9 @@ public class GameLobby : NetworkLobbyManager
             matchMaker.SetMatchAttributes(match_id.Value, false, 0, OnSetMatchAttributes);
         }
 
-        // #TODO Reduce server capacity so any other connection from this point on is rejected.
+        // Start the selected arena.
 
-        // Select the arena to start.
-
-        var arena = game_configuration.arena;
-
-        if (arena.Length == 0)
-        {
-            // #TODO: Randomize the arena.
-        }
-
-        ServerChangeScene(arena);
+        ServerChangeScene(game_configuration.arena);
     }
 
     void OnEnable()
@@ -240,12 +208,14 @@ public class GameLobby : NetworkLobbyManager
     /// </summary>
     private void CreateLobby()
     {
+        // #TODO Game mode and arena must be well-known at this point.
+
         if (LobbyStarted != null)
         {
             LobbyStarted(this);
         }
 
-        if (IsOffline)
+        if (game_configuration.game_type == GameType.Offline)
         {
             CreateOfflineLobby();       // Offline games are just hosted games where other players are AIs.
         }
@@ -265,7 +235,11 @@ public class GameLobby : NetworkLobbyManager
     {
         networkAddress = "localhost";
 
+        game_configuration.Randomize();
+
         StartHost();
+
+        PostStartServer();
     }
 
     /// <summary>
@@ -290,34 +264,19 @@ public class GameLobby : NetworkLobbyManager
         }
         else
         {
-            var host_configuration = new GameConfiguration();
+            // Connect to the first compatible match.
 
-            try
+            while (match_list.Count > 0)
             {
-                // Connect to the first compatible match.
+                var next_match = match_list.Pop();
 
-                while (match_list.Count > 0)
+                if (game_configuration.IsCompatible(next_match.name))
                 {
-                    var next_match = match_list.Pop();
-
-                    var match_name = next_match.name.Replace("[_]", "_");                   // _ is escaped to [_] for "safety reasons"...
-
-                    JsonUtility.FromJsonOverwrite(match_name, host_configuration);
-
-                    if (game_configuration.IsCompatible(host_configuration))
-                    {
-                        matchMaker.JoinMatch(next_match.networkId, "", "", "", 0, 0, OnMatchJoined);
-                        return;
-                    }
+                    matchMaker.JoinMatch(next_match.networkId, "", "", "", 0, 0, OnMatchJoined);
+                    return;
                 }
             }
-            finally
-            {
-                // Cleanup temporary component.
 
-                DestroyObject(host_configuration);
-            }
-            
             // List more lobbies.
 
             SearchLobby();
@@ -331,7 +290,23 @@ public class GameLobby : NetworkLobbyManager
     {
         StartMatchMaker();
 
-        matchMaker.CreateMatch(JsonUtility.ToJson(game_configuration), (uint) maxPlayers, true, "", "", "", 0, 0, OnMatchCreate);
+        game_configuration.Randomize();
+        
+        matchMaker.CreateMatch(game_configuration.ToMatchName(), (uint) maxPlayers, true, "", "", "", 0, 0, OnMatchCreate);
+    }
+
+    /// <summary>
+    /// Called after the server has been started and network properly configured.
+    /// OnStartServer is useless since it gets called before the server
+    /// is actually created, making impossible to spawn objects from there or doing anything meaningful.
+    /// </summary>
+    private void PostStartServer()
+    {
+        is_host = true;
+
+        var game_mode = GameObject.Instantiate(game_configuration.game_mode);
+
+        NetworkServer.Spawn(game_mode);
     }
 
     /// <summary>
