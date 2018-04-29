@@ -61,6 +61,11 @@ public class LobbyPlayer : NetworkLobbyPlayer
     }
 
     /// <summary>
+    /// Get or set the ship controlled by this player.
+    /// </summary>
+    public Ship Ship { get; set; }
+
+    /// <summary>
     /// Called on server and client when the player joins the lobby.
     /// </summary>
     public override void OnClientEnterLobby()

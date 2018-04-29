@@ -39,10 +39,22 @@ public class Ship : NetworkBehaviour
     }
 
     /// <summary>
-    /// Get or set the details color.
+    /// Get or set the lobby player associated to this ship.
     /// </summary>
-    public Color DetailsColor{ get; set; }
-
+    public LobbyPlayer LobbyPlayer
+    {
+        get
+        {
+            return lobby_player;
+        }
+        
+        set
+        {
+            lobby_player = value;
+            OnLobbyPlayerSet();
+        }
+    }
+    
     void Awake()
     {
         // Drivers.
@@ -57,24 +69,6 @@ public class Ship : NetworkBehaviour
 
         GetComponentInChildren<ProximityHandler>().OnProximityEvent += OnProximityEnter;
 
-        //Colorize this ship. The material is shared to reduce the draw calls.
-
-        Material material = null;
-
-        foreach (var renderer in GetComponentsInChildren<MeshRenderer>())
-        {
-            if (renderer.gameObject.tag.Equals(Tags.ShipDetail))
-            {
-                if (material == null)
-                {
-                    material = renderer.material;
-                    material.color = DetailsColor;
-                }
-
-                renderer.material = material;
-            }
-        }
-        
         // Done!
 
         if (ShipCreatedEvent != null)
@@ -147,7 +141,7 @@ public class Ship : NetworkBehaviour
         {
             orb_material = new Material(orb_controller.DefaultMaterial)
             {
-                color = DetailsColor
+                color = LobbyPlayer.Color
             };
         }
 
@@ -191,6 +185,30 @@ public class Ship : NetworkBehaviour
     }
 
     /// <summary>
+    /// Called whenever a new lobby player takes control of this ship.
+    /// </summary>
+    private void OnLobbyPlayerSet()
+    {
+        //Colorize this ship. The material is shared to reduce the draw calls.
+
+        Material material = null;
+
+        foreach (var renderer in GetComponentsInChildren<MeshRenderer>())
+        {
+            if (renderer.gameObject.tag.Equals(Tags.ShipDetail))
+            {
+                if (material == null)
+                {
+                    material = renderer.material;
+                    material.color = LobbyPlayer.Color;
+                }
+
+                renderer.material = material;
+            }
+        }
+    }
+
+    /// <summary>
     /// Orbs attached to the tail.
     /// </summary>
     private Stack<OrbController> orbs = new Stack<OrbController>();
@@ -199,4 +217,9 @@ public class Ship : NetworkBehaviour
     /// Orb material when attached to the ship.
     /// </summary>
     private Material orb_material;
+
+    /// <summary>
+    /// Lobby player controlling this ship.
+    /// </summary>
+    private LobbyPlayer lobby_player;
 }

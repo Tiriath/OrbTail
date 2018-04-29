@@ -168,6 +168,55 @@ public class GameLobby : NetworkLobbyManager
         ServerChangeScene(game_configuration.arena);
     }
 
+    /// <summary>
+    /// Get the game player associated the connection.
+    /// </summary>
+    /// <returns>Returns the game player object to assign to the player.</returns>
+    public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection connection, short player_controller_id)
+    {
+        Debug.Log("OnLobbyServerCreateGamePlayer");
+
+        var start_position = GetStartPosition();
+
+        foreach(var lobby_player in lobbySlots)
+        {
+            if(lobby_player.connectionToClient == connection && lobby_player.playerControllerId == player_controller_id)
+            {
+                // Find a matching prefab inside the list of registered prefabs.
+
+                foreach(var spawn_prefab in spawnPrefabs)
+                {
+                    if(spawn_prefab.name == ((LobbyPlayer)lobby_player).player_ship)
+                    {
+                        // Spawn the proper ship type.
+
+                        return (GameObject)Instantiate(spawn_prefab, start_position.position, start_position.rotation);
+                    }
+                }
+            }
+        }
+        
+        return null;
+    }
+
+    /// <summary>
+    /// Called on the server when a player travels to the game scene.
+    /// </summary>
+    /// <param name="lobby_player">The lobby player.</param>
+    /// <param name="game_player">The game player (ship).</param>
+    public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobby_player, GameObject game_player)
+    {
+        Debug.Log("OnLobbyServerSceneLoadedForPlayer");
+
+        LobbyPlayer lobby_player_object = lobby_player.GetComponent<LobbyPlayer>();
+        Ship ship_object = game_player.GetComponent<Ship>();
+
+        lobby_player_object.Ship = ship_object;
+        ship_object.LobbyPlayer = lobby_player_object;
+
+        return true;
+    }
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
