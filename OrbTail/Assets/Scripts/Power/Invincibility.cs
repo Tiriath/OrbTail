@@ -22,9 +22,7 @@ public class Invincibility : Power
     {
         base.OnActivated();
 
-        var tail_stack = Owner.GetComponent<TailController>().DetachDriver;
-
-        driver = tail_stack.Push(new InvincibleDetacherDriver());
+        driver = Owner.GetComponent<Ship>().DetachDriver.Push(new InvincibleDetacherDriver());
     }
 
     protected override void OnDeactivated()

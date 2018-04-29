@@ -52,7 +52,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         if (target == null || IsPatrolling()) {
             StopCoroutine("GiveUpHandler");
 
-            if (colObject.tag == Tags.Ship && colObject.GetComponent<Tail>().GetOrbCount() >= minOrbsToStartFight) {
+            if (colObject.tag == Tags.Ship && colObject.GetComponent<Ship>().TailLength >= minOrbsToStartFight) {
                 target = colObject;
                 StartCoroutine("GiveUpHandler");
             }
@@ -75,13 +75,12 @@ public class PlayerAI : MonoBehaviour, IInputBroker
 
         floatingObject = GetComponent<FloatingObject>();
         powerController = GetComponent<PowerController>();
-        var tailController = GetComponent<TailController>();
-        var tail = GetComponent<Tail>();
 
         powerController.OnPowerAttachedEvent += OnEventPowerAttached;
-        tailController.OnEventFight += OnEventFight;
 
-        tail.OnEventOrbAttached += OnEventOrbAttached;
+        GetComponent<FightController>().FightEvent += OnEventFight;
+
+        GetComponent<Ship>().OrbAttachedEvent += OnEventOrbAttached;
 
         // Attaching field of view notification
         GetComponentInChildren<AIFieldOfView>().EventOnFieldOfViewEnter += OnFieldOfViewEnter;
@@ -95,11 +94,9 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         Ship.ShipCreatedEvent -= OnShipCreated;
         Ship.ShipDestroyedEvent -= OnShipDestroyed;
 
-        var tailController = GetComponent<TailController>();
+        GetComponent<FightController>().FightEvent -= OnEventFight;
 
-        tailController.OnEventFight -= OnEventFight;
-
-        gameObject.GetComponent<Tail>().OnEventOrbAttached -= OnEventOrbAttached;
+        gameObject.GetComponent<Ship>().OrbAttachedEvent -= OnEventOrbAttached;
         // Attaching field of view notification
         //GetComponentInChildren<AIFieldOfView>().EventOnFieldOfViewEnter -= OnFieldOfViewEnter;
     }
@@ -187,7 +184,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         }
     }
     
-    void OnEventFight(object sender, System.Collections.Generic.IList<GameObject> orbs, GameObject attacker, GameObject defender) {
+    void OnEventFight(GameObject attacker, GameObject defender, IList<GameObject> orbs) {
         
         if (attacker == this.gameObject && defender == target) {
             alreadyCollided = true;
@@ -196,12 +193,12 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         
     }
     
-    void OnEventOrbAttached(object sender, GameObject orb, GameObject ship) {
-        
-        if (target == orb) {
+    void OnEventOrbAttached(Ship ship, List<GameObject> orbs)
+    {
+        if (orbs.Contains(target))
+        {
             ResetTarget();
         }
-        
     }
 
     /// <summary>
@@ -209,8 +206,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     /// </summary>
     private void OnShipCreated(Ship ship)
     {
-        TailController tailController = ship.GetComponent<TailController>();
-        tailController.OnEventFight += OnEventFight;
+        ship.GetComponent<FightController>().FightEvent += OnEventFight;
     }
 
     /// <summary>
@@ -218,7 +214,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     /// </summary>
     private void OnShipDestroyed(Ship ship)
     {
-        ship.GetComponent<TailController>().OnEventFight -= OnEventFight;
+        ship.GetComponent<FightController>().FightEvent -= OnEventFight;
 
         if (ship == target)
         {

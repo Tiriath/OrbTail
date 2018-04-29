@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
 /// A driver used to determine how orbs are detached from a ship.
@@ -8,11 +8,10 @@ using System.Collections.Generic;
 public interface IDetacherDriver : IDriver
 {
     /// <summary>
-    /// Detach a given amount of orbs from a tail.
-    /// The number of detached orbs is always less or equal than the requested amount.
+    /// Execute a detach function a number of times.
     /// </summary>
-    /// <returns>Returns the orbs detached this way.</returns>
-    /// <param name="amount">Number of the orbs to detach.</param>
-    /// <param name="tail">The tail which we detach orbs from.</param>
-    List<GameObject> DetachOrbs(int amount, Tail tail);
+    /// <param name="count">Number of orbs to detach..</param>
+    /// <param name="detacher">Detacher function.</param>
+    /// <returns>Returns the list of orbs detached.</returns>
+    List<GameObject> DetachOrbs(int count, Func<GameObject> detacher);
 }

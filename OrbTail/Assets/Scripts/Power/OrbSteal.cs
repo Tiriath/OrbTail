@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class OrbSteal : Power
 {
-    private List<TailController> tailControllers;
+    private List<FightController> fight_controllers;
 
     public OrbSteal() 
         : base("OrbSteal", PowerGroups.Main)
@@ -26,11 +26,11 @@ public class OrbSteal : Power
     {
         base.OnActivated();
 
-        tailControllers = new List<TailController>();
+        fight_controllers = new List<FightController>();
 
 //         foreach (GameObject ship in GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>().ShipsInGame)
 //         {
-//             TailController tailController = ship.GetComponent<TailController>();
+//             FightController tailController = ship.GetComponent<FightController>();
 //             tailController.OnEventFight += OnFight;
 //             tailControllers.Add(tailController);
 //         }
@@ -38,9 +38,9 @@ public class OrbSteal : Power
 
     protected override void OnDeactivated()
     {
-        foreach (TailController tailController in tailControllers)
+        foreach (FightController tailController in fight_controllers)
         {
-            tailController.OnEventFight -= OnFight;
+            tailController.FightEvent -= OnFight;
         }
 
         base.OnDeactivated();
@@ -49,17 +49,11 @@ public class OrbSteal : Power
     /// <summary>
     /// Called whenever a fight between this ship and another one occurs.
     /// </summary>
-    void OnFight(object sender, IList<GameObject> orbs, GameObject attacker, GameObject defender)
+    void OnFight(GameObject attacker, GameObject defender, List<GameObject> orbs)
     {
         if (attacker == Owner)
         {
-            foreach (GameObject orb in orbs)
-            {
-                if (!orb.GetComponent<OrbController>().IsLinked)
-                {
-                    attacker.GetComponent<TailController>().AttachDriver.Top().AttachOrbs(orb, attacker.GetComponent<Tail>());
-                }
-            }
+            attacker.GetComponent<Ship>().AttachOrb(orbs);
         }
     }
 }

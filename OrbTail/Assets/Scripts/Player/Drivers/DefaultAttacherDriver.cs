@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
-/// Default attacher that just attaches orbs to a tail.
+/// Default attacher that just attaches each provided orb.
 /// </summary>
 public class DefaultAttacherDriver : BaseDriver, IAttacherDriver
 {
-    public void AttachOrbs(GameObject orb, Tail tail)
+    public List<GameObject> AttachOrbs(List<GameObject> orbs, Func<GameObject, bool> attacher)
     {
-        tail.AttachOrb(orb);
-    }
+        var attached_orbs = new List<GameObject>();
 
-    public void AttachOrbs(List<GameObject> orbs, Tail tail)
-    {
-        foreach(GameObject orb in orbs)
+        foreach (var orb in orbs)
         {
-            AttachOrbs(orb, tail);
+            if (attacher(orb))
+            {
+                attached_orbs.Add(orb);
+            }
         }
+
+        return attached_orbs;
     }
 }

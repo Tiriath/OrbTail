@@ -22,7 +22,7 @@ public class ArcadeGameMode : BaseGameMode
 
         foreach (GameObject ship in GameObject.FindGameObjectsWithTag(Tags.Ship))
         {
-            ship.GetComponent<Tail>().OnEventOrbAttached += OnOrbAttached;
+            ship.GetComponent<Ship>().OrbAttachedEvent += OnOrbAttached;
         }
 
         // Reset player scores.
@@ -40,7 +40,7 @@ public class ArcadeGameMode : BaseGameMode
         // #TODO The winner is the one with the highest score.
     }
 
-    private void OnOrbAttached(object sender, GameObject orb, GameObject ship)
+    private void OnOrbAttached(Ship ship, List<GameObject> orbs)
     {
         // #TODO Change player score.
     }

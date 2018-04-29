@@ -16,8 +16,15 @@ public class OrbController : MonoBehaviour
     /// </summary>
     public bool IsLinked { get; private set; }
 
-    void Start ()
+    /// <summary>
+    /// Get the default material assigned to the orb.
+    /// </summary>
+    public Material DefaultMaterial { get; private set; }
+
+    void Awake ()
     {
+        DefaultMaterial = GetComponent<Renderer>().material;
+
         IsLinked = (gameObject.GetComponent<SpringJoint>() != null);       // An orb may start already linked, just check if it has some existing SpringJoint.
     }
 
@@ -25,7 +32,8 @@ public class OrbController : MonoBehaviour
     /// Links this orb to another object via a SpringJoint.
     /// </summary>
     /// <param name="target">Object to attach this orb to.</param>
-    public void Link(GameObject target)
+    /// <param name="material">Material to assign to the orb. May be left null.</param>
+    public void Link(GameObject target, Material material = null)
     {
         Unlink();
 
@@ -34,20 +42,25 @@ public class OrbController : MonoBehaviour
         SpringJoint joint = this.gameObject.AddComponent<SpringJoint>();
 
         joint.connectedBody = target.GetComponent<Rigidbody>();
-        joint.damper = spring_damper;
-        joint.spring = spring_stiffness;
-        joint.minDistance = spring_min_length;
-        joint.maxDistance = spring_max_length;
+        joint.damper = kSpringDamper;
+        joint.spring = kSpringStiffness;
+        joint.minDistance = kSpringMinLength;
+        joint.maxDistance = kSpringMaxLength;
 
         if (target.tag == Tags.Ship)
         {
-            joint.minDistance += ship_distance;
-            joint.maxDistance += ship_distance;
+            joint.minDistance += kShipDistance;
+            joint.maxDistance += kShipDistance;
         }
 
         joint.autoConfigureConnectedAnchor = false;
         joint.anchor = Vector3.zero;
         joint.connectedAnchor = Vector3.zero;
+
+        if(material != null)
+        {
+            GetComponent<Renderer>().material = material;
+        }
     }
 
     /// <summary>
@@ -62,6 +75,10 @@ public class OrbController : MonoBehaviour
         }
 
         IsLinked = false;
+
+        GetComponent<Rigidbody>().AddForce(Random.onUnitSphere * kDetachImpulse, ForceMode.Impulse);
+
+        GetComponent<Renderer>().material = DefaultMaterial;
     }
 
     /// <summary>
@@ -96,27 +113,32 @@ public class OrbController : MonoBehaviour
     /// <summary>
     /// Spring dampening factor.
     /// </summary>
-    private const float spring_damper = 0.4f;
+    private const float kSpringDamper = 0.4f;
 
     /// <summary>
     /// Spring stiffness.
     /// </summary>
-    private const float spring_stiffness = 3f;
+    private const float kSpringStiffness = 3f;
 
     /// <summary>
     /// Minimum spring length.
     /// </summary>
-    private const float spring_min_length = 1.0f;
+    private const float kSpringMinLength = 1.0f;
 
     /// <summary>
     /// Maximum spring length.
     /// </summary>
-    private const float spring_max_length = 1.0f;
+    private const float kSpringMaxLength = 1.0f;
 
     /// <summary>
     /// Additional length to both minimum and maximum spring length when the orb is attached to a ship.
     /// </summary>
-    private const float ship_distance = 2.5f;
+    private const float kShipDistance = 2.5f;
+
+    /// <summary>
+    /// Impulse to apply to the orbs when detached. Cosmetic purposes only.
+    /// </summary>
+    private const float kDetachImpulse = 0.06f;
 
     /// <summary>
     /// Power imbued in this orb.

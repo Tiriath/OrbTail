@@ -17,10 +17,10 @@ public class LongestTailGameMode : BaseGameMode
 
         foreach (GameObject ship in ships)
         {
-            var tail = ship.GetComponent<Tail>();
+            var ship_component = ship.GetComponent<Ship>();
 
-            tail.OnEventOrbDetached += OnOrbDetached;
-            tail.OnEventOrbAttached += OnOrbAttached;
+            ship_component.OrbDetachedEvent += OnOrbChanged;
+            ship_component.OrbAttachedEvent += OnOrbChanged;
 
             //ship.GetComponent<GameIdentity>().SetScore(0);
 
@@ -42,17 +42,9 @@ public class LongestTailGameMode : BaseGameMode
     }
 
     /// <summary>
-    /// Called whenever a ship loses one or more orbs.
+    /// Called whenever a ship orb count changes.
     /// </summary>
-    private void OnOrbDetached(object sender, GameObject ship, int count)
-    {
-        // #TODO Change player score.
-    }
-
-    /// <summary>
-    /// Called whenever a ship acquires an orb.
-    /// </summary>
-    private void OnOrbAttached(object sender, GameObject orb, GameObject ship)
+    private void OnOrbChanged(Ship ship, List<GameObject> orbs)
     {
         // #TODO Change player score.
     }

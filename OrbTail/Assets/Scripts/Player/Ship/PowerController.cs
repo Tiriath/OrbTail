@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using UnityEngine.Networking;
 
 /// <summary>
 /// Component used to control active powers on a ship.
 /// </summary>
-public class PowerController : MonoBehaviour
+public class PowerController : NetworkBehaviour
 {
     public delegate void DelegatePowerAttached(object sender, GameObject ship, Power power);
 
@@ -18,7 +18,7 @@ public class PowerController : MonoBehaviour
     public void Start()
     {
         input = GetComponent<InputProxy>();
-        
+
         GetComponentInChildren<ProximityHandler>().OnProximityEvent += OnProximity;
     }
 

@@ -1,36 +1,26 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
-/// Default detacher that just detaches orbs from a tail.
+/// Default detacher that just detaches each provided orb.
 /// </summary>
 public class DefaultDetacherDriver : BaseDriver, IDetacherDriver
 {
-    public DefaultDetacherDriver()
+    public List<GameObject> DetachOrbs(int count, Func<GameObject> detacher)
     {
-        detach_timestamp = Time.time;
-    }
+        var orbs = new List<GameObject>();
 
-    public List<GameObject> DetachOrbs(int amount, Tail tail)
-    {
-        if (amount == 0 || (Time.time - detach_timestamp < cooldown))
+        for (; count > 0; --count)
         {
-            return new List<GameObject>();
+            var orb = detacher();
+
+            if (orb != null)
+            {
+                orbs.Add(orb);
+            }
         }
 
-        detach_timestamp = Time.time;
-
-        return tail.DetachOrbs(amount);
+        return orbs;
     }
-
-    /// <summary>
-    /// Last time the tail lost some orbs.
-    /// </summary>
-    private float detach_timestamp = 1.0f;
-
-    /// <summary>
-    /// Number of seconds after detaching some orbs in which the tail cannot lose further orbs.
-    /// </summary>
-    private const float cooldown = 1.0f;
 }

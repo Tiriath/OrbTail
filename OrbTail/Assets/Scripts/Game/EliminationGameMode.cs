@@ -21,16 +21,16 @@ public class EliminationGameMode : BaseGameMode
 
         foreach (GameObject ship in ships)
         {
-            var tail = ship.GetComponent<Tail>();
+            var ship_component = ship.GetComponent<Ship>();
 
-            tail.OnEventOrbDetached += OnOrbDetached;
-            tail.OnEventOrbAttached += OnOrbAttached;
+            ship_component.OrbDetachedEvent += OnOrbChanged;
+            ship_component.OrbAttachedEvent += OnOrbChanged;
 
             if (hasAuthority)
             {
                 for (int i = 0; i < orbs_per_player; i++)
                 {
-                    tail.AttachOrb(orbs.Dequeue());
+                    ship_component.AttachOrb(orbs.Dequeue());
                 }
             }
         }
@@ -53,19 +53,11 @@ public class EliminationGameMode : BaseGameMode
     /// <summary>
     /// Called whenever a ship loses one or more orbs.
     /// </summary>
-    private void OnOrbDetached(object sender, GameObject ship, int count)
+    private void OnOrbChanged(Ship ship, List<GameObject> orbs)
     {
         // #TODO Change player score.
         // #TODO Remove the player when the orb count drops to 0.
         // #TODO When the number of players drops to less than 1 the match ends.
-    }
-
-    /// <summary>
-    /// Called whenever a ship acquires an orb.
-    /// </summary>
-    private void OnOrbAttached(object sender, GameObject orb, GameObject ship)
-    {
-        // #TODO Change player score.
     }
 }
 
