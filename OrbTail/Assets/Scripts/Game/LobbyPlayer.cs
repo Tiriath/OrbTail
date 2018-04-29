@@ -105,11 +105,7 @@ public class LobbyPlayer : NetworkLobbyPlayer
 
         var player_configuration = GameLobby.Instance.GetLocalPlayer(playerControllerId);
 
-        player_ship = player_configuration.ship_prefab.name;
-        is_human = player_configuration.is_human;
-        score = 0;
-
-        CmdAcquirePlayerIndex();                        // Ask a free player index to the server.
+        CmdConfigureLobbyPlayer(player_configuration.ship_prefab.name, player_configuration.is_human);
 
         if(LocalPlayerJoinedEvent != null)
         {
@@ -187,7 +183,7 @@ public class LobbyPlayer : NetworkLobbyPlayer
     /// Called on the client, executed on the server.
     /// </summary>
     [Command]
-    private void CmdAcquirePlayerIndex()
+    private void CmdConfigureLobbyPlayer(string ship_prefab, bool is_human)
     {
         if(player_indexes == null)
         {
@@ -201,9 +197,9 @@ public class LobbyPlayer : NetworkLobbyPlayer
             }
         }
 
-        // Fetch the first free index in the list.
-
-        this.player_index = player_indexes.Pop();
+        this.player_index = player_indexes.Pop();               // Fetch a free index in the list.
+        this.player_ship = ship_prefab;                         // Set the ship prefab.
+        this.is_human = is_human;                               // Set player identity.
     }
 
     /// <summary>
