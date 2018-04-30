@@ -12,6 +12,7 @@ public class Ship : NetworkBehaviour
     public delegate void DelegateOrbEvent(Ship ship, List<GameObject> orbs);
 
     public static event DelegateShipEvent ShipCreatedEvent;
+    public static event DelegateShipEvent ShipLocalPlayerEvent;
     public static event DelegateShipEvent ShipDestroyedEvent;
 
     public event DelegateOrbEvent OrbAttachedEvent;
@@ -51,24 +52,13 @@ public class Ship : NetworkBehaviour
     
     void Awake()
     {
-        // Drivers.
-
         AttachDriver = new DriverStack<IAttacherDriver>();
         DetachDriver = new DriverStack<IDetacherDriver>();
 
         AttachDriver.SetDefaultDriver(new DefaultAttacherDriver());
         DetachDriver.SetDefaultDriver(new DefaultDetacherDriver());
 
-        // Ship proximity.
-
         GetComponentInChildren<ProximityHandler>().OnProximityEvent += OnProximityEnter;
-
-        // Done!
-
-        if (ShipCreatedEvent != null)
-        {
-            ShipCreatedEvent(this);
-        }
     }
 
     /// <summary>
@@ -101,6 +91,26 @@ public class Ship : NetworkBehaviour
 
                 renderer.material = material;
             }
+        }
+
+        // Notify after the ship is properly setup.
+
+        if (ShipCreatedEvent != null)
+        {
+            ShipCreatedEvent(this);
+        }
+    }
+
+    /// <summary>
+    /// Called whenever a local player starts controlling this ship.
+    /// </summary>
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+
+        if(ShipLocalPlayerEvent != null)
+        {
+            ShipLocalPlayerEvent(this);
         }
     }
 

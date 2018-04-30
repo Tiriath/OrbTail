@@ -102,13 +102,15 @@ public class FloatingObject : MonoBehaviour
     {
         ArenaDown = Vector3.zero;
         rigid_body = GetComponent<Rigidbody>();
-        gravity_field = GameObject.FindGameObjectWithTag(Tags.Arena).GetComponent<GravityField>();
+        gravity_field = FindObjectOfType<GravityField>();
     }
 
     // Update is called once per frame
     void FixedUpdate ()
     {
-        gravity_field.SetGravity(this);
+        ArenaDown = gravity_field.GetGravityAt(transform.position);
+        hover_force = gravity_field.hover_force;
+        hover_dampen = gravity_field.hover_dampen;
 
         // Handle hovering.
 

@@ -18,6 +18,11 @@ public abstract class BaseGameMode : NetworkBehaviour
     public event DelegateGameModeEvent MatchEndEvent;
 
     /// <summary>
+    /// Prefab representing the follow camera.
+    /// </summary>
+    public GameObject follow_camera;
+
+    /// <summary>
     /// Get the game mode instance.
     /// </summary>
     public static BaseGameMode Instance
@@ -31,6 +36,11 @@ public abstract class BaseGameMode : NetworkBehaviour
 
             return game_mode_instance;
         }
+    }
+
+    public void Awake()
+    {
+        Ship.ShipLocalPlayerEvent += OnShipLocalPlayer;
     }
 
     public void Start()
@@ -102,6 +112,12 @@ public abstract class BaseGameMode : NetworkBehaviour
     protected virtual void OnMatchEnd()
     {
         EnableControls(false);
+
+        //if (winner != null)
+        //{
+        //    distanceSmooth = finalSmooth;
+        //    Camera.LookAt(winner);
+        //}
     }
 
     /// <summary>
@@ -115,6 +131,21 @@ public abstract class BaseGameMode : NetworkBehaviour
 
             movement.enabled = value;
         }
+    }
+
+    /// <summary>
+    /// Called whenever a new ship is created.
+    /// </summary>
+    private void OnShipLocalPlayer(Ship ship)
+    {
+        // Spawn a follow camera for each active local player.
+
+        var camera = Instantiate(follow_camera);
+
+        var camera_movement = camera.GetComponentInChildren<CameraMovement>();
+
+        camera_movement.Owner = ship.LobbyPlayer;
+        camera_movement.ViewTarget = ship.gameObject;
     }
 
     /// <summary>

@@ -44,7 +44,7 @@ public class SpectatorMode : MonoBehaviour
 
             ships_.Add(element);
 
-            camera_movement_.LookAt(ships_[0]);
+            camera_movement_.ViewTarget = ships_[0];
         }
     }
 
@@ -63,7 +63,7 @@ public class SpectatorMode : MonoBehaviour
     {
         ships_.Remove(ship.gameObject);
 
-        if (camera_movement_.Target == ship)
+        if (camera_movement_.ViewTarget == ship)
         {
             LookNext();
         }

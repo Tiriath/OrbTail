@@ -1,85 +1,25 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class GravityField : MonoBehaviour {
+/// <summary>
+/// Base component for gravity fields.
+/// </summary>
+public abstract class GravityField : MonoBehaviour
+{
+    /// <summary>
+    /// Hover force exerted by this field.
+    /// </summary>
+    public float hover_force = 100.0f;
 
     /// <summary>
-    /// Indicates the shape for the gravity field
+    /// Hover dampen exerted by this field.
     /// </summary>
-    public enum GravityShape
-    {
-
-        Flat,
-        Spherical,
-        InverseSpherical,
-        TripleSpherical,
-        ZXTorus
-
-    }
+    public float hover_dampen = 50.0f;
 
     /// <summary>
-    /// The shape of the field
+    /// Get the gravity position at given coordinates.
     /// </summary>
-    public GravityShape shape = GravityShape.Flat;
-
-    /// <summary>
-    /// The field used to impress the gravity
-    /// </summary>
-    private IGravityField Field { get; set; }
-
-    void Awake()
-    {
-
-        switch (shape)
-        {
-
-            case GravityShape.Flat:
-
-                Field = new FlatGravityField();
-                break;
-
-            case GravityShape.Spherical:
-
-                Field = new SphericalGravityField(Vector3.zero);
-                break;
-
-            case GravityShape.InverseSpherical:
-
-                Field = new InverseSphericalGravityField(Vector3.zero);
-                break;
-
-            case GravityShape.TripleSpherical:
-
-                //Field = new TripleSphericalGravityField(Vector3.zero);
-                break;
-
-            case GravityShape.ZXTorus:
-
-                Field = new ZXTorusGravityField(Vector3.zero, 70.0f);
-                break;
-
-            default:
-
-                break;
-        }
-
-    }
-
-    // Use this for initialization
-    void Start () {
-    
-    }
-    
-    // Update is called once per frame
-    void Update () {
-    
-    }
-
-    public void SetGravity(FloatingObject floatie)
-    {
-
-        Field.SetGravity(floatie);
-
-    }
-
+    /// <param name="position">Coordinates to get the gravity of, in world space.</param>
+    /// <returns>Returns the gravity position at given coordinates.</returns>
+    public abstract Vector3 GetGravityAt(Vector3 position);
 }
+
