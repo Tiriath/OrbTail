@@ -67,7 +67,7 @@ public class FollowCamera : MonoBehaviour
         }
     }
 
-    public void Start()
+    public void Awake()
     {
         gravity_field = FindObjectOfType<GravityField>();
 
@@ -78,13 +78,9 @@ public class FollowCamera : MonoBehaviour
     {
         // Move smoothly towards the target.
 
-        Vector3 up = -gravity_field.GetGravityAt(view_target_transform.position);
-
-        var forward = Vector3.Cross(Vector3.Cross(up, view_target_transform.forward).normalized, up).normalized;
-
         current_position = Vector3.Lerp(current_position, view_target_transform.position, movement_smooth * Time.fixedDeltaTime);
 
-        current_rotation = Quaternion.Lerp(Quaternion.LookRotation(forward, up) * Quaternion.Euler(camera_pitch, 0.0f, 0.0f), current_rotation, rotation_smooth * Time.fixedDeltaTime);
+        current_rotation = Quaternion.Lerp(gravity_field.TangentRotation(view_target_transform) * Quaternion.Euler(camera_pitch, 0.0f, 0.0f), current_rotation, rotation_smooth * Time.fixedDeltaTime);
 
         // Retract the boom instantly to prevent it from compenetrating the arena.
 
@@ -114,7 +110,7 @@ public class FollowCamera : MonoBehaviour
     public void Snap()
     {
         current_position = view_target_transform.position;
-
+        current_rotation = gravity_field.TangentRotation(view_target_transform) * Quaternion.Euler(camera_pitch, 0.0f, 0.0f);
         current_length = boom_length;
     }
 
