@@ -64,6 +64,11 @@ public class MovementController : NetworkBehaviour
     // Update movement drivers.
     void Update()
     {
+        if(!isLocalPlayer)
+        {
+            return;
+        }
+
         EngineDriver.Top().Input = input.ThrottleInput;
         SteerDriver.Top().Input = input.SteerInput;
     }
