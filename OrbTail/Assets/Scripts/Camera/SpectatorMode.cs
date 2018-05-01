@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
-/// Script used in spectator mode to cycle among different players
+/// Script used in spectator mode to cycle among different players.
 /// </summary>
 public class SpectatorMode : MonoBehaviour
 {
