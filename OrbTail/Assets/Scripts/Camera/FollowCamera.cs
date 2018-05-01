@@ -6,11 +6,6 @@
 public class FollowCamera : MonoBehaviour
 {
     /// <summary>
-    /// Distance of the camera from the target.
-    /// </summary>
-    public float boom_length = 10.0f;
-
-    /// <summary>
     /// Camera pitch relative to camera's view target.
     /// </summary>
     public float camera_pitch = 15.0f;
@@ -21,33 +16,32 @@ public class FollowCamera : MonoBehaviour
     public float camera_radius = 5.0f;
 
     /// <summary>
-    /// Camera movement smoothing factor.
+    /// Distance of the camera from the target.
+    /// </summary>
+    public float camera_distance = 10.0f;
+
+    /// <summary>
+    /// Movement smoothing factor.
     /// </summary>
     public float movement_smooth = 2.0f;
 
     /// <summary>
-    ///  Camera rotation smoothing factor.
+    ///  Rotation smoothing factor.
     /// </summary>
     public float rotation_smooth = 2.0f;
 
     /// <summary>
-    /// Boom length smoothing factor.
+    /// Distance smoothing factor.
     /// </summary>
-    public float boom_smooth = 2.0f;
+    public float distance_smooth = 2.0f;
     
     /// <summary>
     /// Get or set the lobby player owning this camera.
     /// </summary>
     public LobbyPlayer Owner
     {
-        get
-        {
-            return lobby_player;
-        }
         set
         {
-            lobby_player = value;
-
             // #TODO Set the proper viewport for the player according to the number of local players in the lobby.
         }
     }
@@ -67,6 +61,28 @@ public class FollowCamera : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Get the view target position.
+    /// </summary>
+    public Vector3 ViewTargetPosition
+    {
+        get
+        {
+            return view_target_transform.position;
+        }
+    }
+
+    /// <summary>
+    /// Get the view target rotation.
+    /// </summary>
+    public Quaternion ViewTargetRotation
+    {
+        get
+        {
+            return gravity_field.TangentRotation(view_target_transform) * Quaternion.Euler(camera_pitch, 0.0f, 0.0f);
+        }
+    }
+
     public void Awake()
     {
         gravity_field = FindObjectOfType<GravityField>();
@@ -78,21 +94,20 @@ public class FollowCamera : MonoBehaviour
     {
         // Move smoothly towards the target.
 
-        current_position = Vector3.Lerp(current_position, view_target_transform.position, movement_smooth * Time.fixedDeltaTime);
+        current_position = Vector3.Lerp(current_position, ViewTargetPosition, movement_smooth * Time.fixedDeltaTime);
+        current_rotation = Quaternion.Lerp(current_rotation, ViewTargetRotation, rotation_smooth * Time.fixedDeltaTime);
+        current_length = Mathf.Lerp(current_length, camera_distance, distance_smooth * Time.fixedDeltaTime);
 
-        current_rotation = Quaternion.Lerp(gravity_field.TangentRotation(view_target_transform) * Quaternion.Euler(camera_pitch, 0.0f, 0.0f), current_rotation, rotation_smooth * Time.fixedDeltaTime);
-
-        // Retract the boom instantly to prevent it from compenetrating the arena.
+        // Retract the camera instantly to prevent it from compenetrating the arena.
 
         RaycastHit hit;
         
-        if(Physics.SphereCast(current_position, camera_radius, (camera_transform.position - current_position).normalized, out hit, boom_length + camera_radius, Layers.Obstacles | Layers.Field))
+        if(Physics.SphereCast(current_position, camera_radius, (camera_transform.position - current_position).normalized, out hit, camera_distance, Layers.Obstacles | Layers.Field))
         {
-            current_length = hit.distance;
-        }
-        else
-        {
-            current_length = Mathf.Lerp(current_length, boom_length, boom_smooth * Time.fixedDeltaTime);
+            //if(hit.distance < current_length - camera_radius)
+            {
+                current_length = hit.distance;
+            }
         }
 
         // Update camera position and rotation.
@@ -109,9 +124,9 @@ public class FollowCamera : MonoBehaviour
     /// </summary>
     public void Snap()
     {
-        current_position = view_target_transform.position;
-        current_rotation = gravity_field.TangentRotation(view_target_transform) * Quaternion.Euler(camera_pitch, 0.0f, 0.0f);
-        current_length = boom_length;
+        current_position = ViewTargetPosition;
+        current_rotation = ViewTargetRotation;
+        current_length = camera_distance;
     }
 
     /// <summary>
@@ -125,7 +140,7 @@ public class FollowCamera : MonoBehaviour
     private Transform view_target_transform;
 
     /// <summary>
-    /// Camera attached at the end of the camera boom.
+    /// Camera attached at the end of the boom.
     /// </summary>
     private Transform camera_transform;
 
@@ -140,12 +155,7 @@ public class FollowCamera : MonoBehaviour
     private Quaternion current_rotation;
 
     /// <summary>
-    /// Target boom length.
+    /// Current camera distance from the target.
     /// </summary>
     private float current_length = 0.0f;
-
-    /// <summary>
-    /// Player owning this camera.
-    /// </summary>
-    LobbyPlayer lobby_player;
 }
