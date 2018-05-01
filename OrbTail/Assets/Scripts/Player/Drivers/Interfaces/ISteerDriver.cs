@@ -7,33 +7,19 @@ using System.Collections;
 public interface ISteerDriver : IDriver
 {
     /// <summary>
-    /// Get ship maximum steering, in radians per second.
+    /// Get or set the current input value in the range [-1; +1].
     /// </summary>
-    /// <returns>Returns ship maximum steering, in radians per second.</returns>
-    float GetMaxSteer();
+    float Input { get; set; }
 
     /// <summary>
-    /// Get the factor used to smooth out change in steering, in error percentage per second.
+    /// Get target ship steering, in radians per second.
     /// </summary>
-    /// <returns>Returns the factor used to smooth out change in steering.</returns>
-    float GetSteerSmooth();
+    float Steer { get; }
 
     /// <summary>
-    /// Get current ship steering, in radians per second.
-    /// </summary>
-    /// <returns>Returns current ship steering, in radians per second.</returns>
-    float GetSteer();
-
-    /// <summary>
-    /// Get current steer input value. Range [-1;1].
-    /// </summary>
-    /// <returns>Returns current steer input value.</returns>
-    float GetSteerInput();
-
-    /// <summary>
-    /// Update engine status.
+    /// Get effective steer given the current ship's one.
     /// </summary>
     /// <param name="current_steer">Current ship steer.</param>
-    /// <param name="steer_input">Current steer input. Range [-1;1].</param>
-    void Update(float current_steer, float steer_input);
+    /// <returns>Returns the effective steer.</returns>
+    float GetSteer(float current_steer, float delta_time);
 }

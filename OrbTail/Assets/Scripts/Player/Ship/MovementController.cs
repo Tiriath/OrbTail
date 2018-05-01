@@ -64,8 +64,8 @@ public class MovementController : NetworkBehaviour
     // Update movement drivers.
     void Update()
     {
-        EngineDriver.Top().Update(hover.ForwardVelocity, input.ThrottleInput);
-        SteerDriver.Top().Update(hover.AngularVelocity, input.SteerInput);
+        EngineDriver.Top().Input = input.ThrottleInput;
+        SteerDriver.Top().Input = input.SteerInput;
     }
 
     // Physics update.
@@ -73,17 +73,17 @@ public class MovementController : NetworkBehaviour
     {
         // Engine and steering.
 
-        var steer = SteerDriver.Top().GetSteer();
-        var speed = EngineDriver.Top().GetSpeed();
+        var steer = SteerDriver.Top().GetSteer(hover.AngularVelocity, Time.fixedDeltaTime) * hover.Up;
+        var thrust = EngineDriver.Top().GetThrust(hover.ForwardVelocity, Time.fixedDeltaTime) * hover.Forward;
 
-        rigid_body.AddForce(hover.Forward * speed, ForceMode.VelocityChange);
-        rigid_body.AddTorque(hover.Up * steer, ForceMode.VelocityChange);
+        rigid_body.AddForce(thrust, ForceMode.VelocityChange);
+        rigid_body.AddTorque(steer, ForceMode.VelocityChange);
 
         // Rolling - The ship rolls as result of its steering.
 
-        var rolling_up = Quaternion.AngleAxis(SteerDriver.Top().GetSteerInput() * roll_angle, -hover.Forward) * hover.Up;
+        var rolling_up = Quaternion.AngleAxis(SteerDriver.Top().Input * roll_angle, -hover.Forward) * hover.Up;
 
-        rigid_body.rotation = Quaternion.Lerp(rigid_body.rotation, Quaternion.LookRotation(transform.forward, rolling_up), roll_smooth * Time.deltaTime);
+        rigid_body.rotation = Quaternion.Lerp(rigid_body.rotation, Quaternion.LookRotation(transform.forward, rolling_up), roll_smooth * Time.fixedDeltaTime);
     }
 
     /// <summary>

@@ -21,8 +21,9 @@ public class ShipSoundHandler : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if (engineDriverStack != null && !gameFinished) {
-            float engineForce = engineDriverStack.Top().GetSpeedInput();
+        if (engineDriverStack != null && !gameFinished)
+        {
+            float engineForce = engineDriverStack.Top().Input;
             PlaySoundEngine(engineForce);
         }
 

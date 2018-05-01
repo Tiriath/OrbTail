@@ -7,33 +7,19 @@ using System.Collections;
 public interface IEngineDriver : IDriver
 {
     /// <summary>
-    /// Get ship maximum speed, in units per second.
+    /// Get or set the current input value in the range [-1; +1].
     /// </summary>
-    /// <returns>Returns ship maximum speed, in units per second.</returns>
-    float GetMaxSpeed();
+    float Input { get; set; }
 
     /// <summary>
-    /// Get the factor used to smooth out change in speed, in error percentage per second.
+    /// Get target ship speed, in units per second.
     /// </summary>
-    /// <returns>Returns the factor used to smooth out change in speed.</returns>
-    float GetSpeedSmooth();
+    float Speed { get; }
 
     /// <summary>
-    /// Get current ship speed, in units per second.
-    /// </summary>
-    /// <returns>Returns current ship speed, in units per second.</returns>
-    float GetSpeed();
-
-    /// <summary>
-    /// Get current speed input value. Range [-1;1].
-    /// </summary>
-    /// <returns>Returns current speed input value.</returns>
-    float GetSpeedInput();
-
-    /// <summary>
-    /// Update engine status.
+    /// Get effective engine thrust given the current ship speed.
     /// </summary>
     /// <param name="current_speed">Current ship speed.</param>
-    /// <param name="speed_input">Current speed input. Range [-1;1].</param>
-    void Update(float current_speed, float speed_input);
+    /// <returns>Returns the effective engine thrust.</returns>
+    float GetThrust(float current_speed, float delta_time);
 }

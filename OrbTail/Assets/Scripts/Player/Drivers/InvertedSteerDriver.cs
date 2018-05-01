@@ -2,24 +2,48 @@
 using System.Collections;
 
 /// <summary>
-/// Driver that acts as a default wheel driver except that it returns a steering value which is opposite to the provided input.
-/// Can be used to model a debuff requiring the ship to deal with inverted commands!
+/// Driver that inverts any steering value.
 /// </summary>
-public class InvertedSteerDriver : DefaultSteerDriver
+public class InvertedSteerDriver : BaseDriver, ISteerDriver
 {
+    /// <summary>
+    /// Get or set the current input value in the range [-1; +1].
+    /// </summary>
+    public float Input
+    {
+        get
+        {
+            return driver.Input;
+        }
+        set
+        {
+            driver.Input = value;
+        }
+    }
+
+    /// <summary>
+    /// Get target ship steering, in radians per second.
+    /// </summary>
+    public virtual float Steer
+    {
+        get
+        {
+            return -driver.Steer;
+        }
+    }
+
     /// <summary>
     /// Create a new inverted steer driver.
     /// </summary>
-    /// <param name="max_steering_speed">Maximum steering speed in radians per second</param>
-    /// <param name="max_steering_acceleration">Maximum steering acceleration in radians per second squared</param>
-    public InvertedSteerDriver(float max_steering_speed, float max_steering_acceleration)
-        : base(max_steering_speed, max_steering_acceleration)
+    public InvertedSteerDriver(ISteerDriver driver)
     {
-
+        this.driver = driver;
     }
 
-    public override float GetSteer()
+    public float GetSteer(float current_steer, float delta_time)
     {
-        return -base.GetSteer();
+        return -driver.GetSteer(current_steer, delta_time);
     }
+
+    private ISteerDriver driver;
 }

@@ -27,7 +27,7 @@ public class Jam : Power
 
         var steer_driver = Owner.GetComponent<MovementController>().SteerDriver;
 
-        driver = steer_driver.Push(new InvertedSteerDriver(steer_driver.GetDefaultDriver().GetMaxSteer(), steer_driver.GetDefaultDriver().GetSteerSmooth()));
+        driver = steer_driver.Push(new InvertedSteerDriver(steer_driver.Top()));
     }
 
     protected override void OnDeactivated()

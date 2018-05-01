@@ -6,45 +6,42 @@ using System.Collections;
 /// </summary>
 public class DefaultEngineDriver : BaseDriver, IEngineDriver
 {
+    /// <summary>
+    /// Set the current input value in the range [-1; +1].
+    /// </summary>
+    public float Input { get; set; }
+
+    /// <summary>
+    /// Get target ship speed, in units per second.
+    /// </summary>
+    public float Speed
+    {
+        get
+        {
+            return max_speed * Input;
+        }
+    }
+
     public DefaultEngineDriver(float max_speed, float speed_smooth)
     {
         this.max_speed = max_speed;
         this.speed_smooth = speed_smooth;
     }
 
-    public float GetMaxSpeed()
+    /// <summary>
+    /// Get effective engine thrust given the current ship speed.
+    /// </summary>
+    /// <param name="current_speed">Current ship speed.</param>
+    /// <returns>Returns the effective engine thrust.</returns>
+    public float GetThrust(float current_speed, float delta_time)
     {
-        return max_speed;
-    }
+        var thrust = (Speed - current_speed) * speed_smooth * delta_time;
 
-    public float GetSpeedSmooth()
-    {
-        return speed_smooth;
-    }
-
-    public virtual float GetSpeed()
-    {
-        return speed;
-    }
-
-    public float GetSpeedInput()
-    {
-        return speed_input;
-    }
-
-    public void Update(float current_speed, float speed_input)
-    {
-        this.speed_input = speed_input;
-
-        var target_speed = max_speed * speed_input;
-
-        speed = (target_speed - current_speed) * speed_smooth * Time.deltaTime;
-
-        speed = Mathf.Clamp(speed, -max_speed, +max_speed);
+        return Mathf.Clamp(thrust, -max_speed, +max_speed);
     }
 
     /// <summary>
-    /// Maximum speed, in units per second.
+    /// Maximum thrust, in units per second.
     /// </summary>
     private float max_speed;
 
@@ -52,14 +49,4 @@ public class DefaultEngineDriver : BaseDriver, IEngineDriver
     /// Factor used to smooth out change in speed, in error percentage per second.
     /// </summary>
     private float speed_smooth;
-
-    /// <summary>
-    /// Current speed, in units per second.
-    /// </summary>
-    private float speed;
-
-    /// <summary>
-    /// Current throttle.
-    /// </summary>
-    private float speed_input;
 }
