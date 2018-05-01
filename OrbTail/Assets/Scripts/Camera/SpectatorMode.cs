@@ -9,7 +9,7 @@ public class SpectatorMode : MonoBehaviour
 {
     public void Start ()
     {
-        camera_movement_ = GetComponent<CameraMovement>();
+        camera_movement_ = GetComponent<FollowCamera>();
 
         Ship.ShipCreatedEvent += OnShipCreated;
         Ship.ShipDestroyedEvent += OnShipDestroyed;
@@ -82,5 +82,5 @@ public class SpectatorMode : MonoBehaviour
     /// <summary>
     /// Current camera movement.
     /// </summary>
-    private CameraMovement camera_movement_;
+    private FollowCamera camera_movement_;
 }

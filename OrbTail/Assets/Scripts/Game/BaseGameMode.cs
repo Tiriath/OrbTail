@@ -140,12 +140,12 @@ public abstract class BaseGameMode : NetworkBehaviour
     {
         // Spawn a follow camera for each active local player.
 
-        var camera = Instantiate(follow_camera);
+        var camera = Instantiate(follow_camera).GetComponent<FollowCamera>();
 
-        var camera_movement = camera.GetComponentInChildren<CameraMovement>();
+        camera.Owner = ship.LobbyPlayer;
+        camera.ViewTarget = ship.gameObject;
 
-        camera_movement.Owner = ship.LobbyPlayer;
-        camera_movement.ViewTarget = ship.gameObject;
+        camera.Snap();
     }
 
     /// <summary>
