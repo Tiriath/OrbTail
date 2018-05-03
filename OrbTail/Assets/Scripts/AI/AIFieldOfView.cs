@@ -3,20 +3,20 @@ using System.Collections;
 
 public class AIFieldOfView : MonoBehaviour {
 
-	public delegate void DelegateOnFieldOfViewEnter(object sender, Collider other);
-	
-	public event DelegateOnFieldOfViewEnter EventOnFieldOfViewEnter;
+    public delegate void DelegateOnFieldOfViewEnter(object sender, Collider other);
+    
+    public event DelegateOnFieldOfViewEnter EventOnFieldOfViewEnter;
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Use this for initialization
+    void Start () {
+    }
+    
+    // Update is called once per frame
+    void Update () {
+    
+    }
 
-	void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other) {
         
         if (EventOnFieldOfViewEnter != null)
         {
@@ -24,6 +24,6 @@ public class AIFieldOfView : MonoBehaviour {
             EventOnFieldOfViewEnter(this, other);
 
         }
-		
-	}
+        
+    }
 }

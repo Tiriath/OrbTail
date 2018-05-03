@@ -116,7 +116,6 @@ public class LobbyPlayer : NetworkLobbyPlayer
     /// <summary>
     /// Called on clients when the lobby player switches between ready and not ready.
     /// </summary>
-    /// <param name="ready_state"></param>
     public override void OnClientReady(bool ready_state)
     {
         base.OnClientReady(ready_state);

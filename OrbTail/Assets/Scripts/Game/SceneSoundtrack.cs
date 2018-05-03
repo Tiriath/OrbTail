@@ -2,9 +2,9 @@
 using System.Collections;
 
 /// <summary>
-/// Script used to handle current soundtrack.
+/// Script used to handle scene soundtracks.
 /// </summary>
-public class MenuSoundtrackHandler : MonoBehaviour
+public class SceneSoundtrack : MonoBehaviour
 {
     /// <summary>
     /// Volume of the sound.

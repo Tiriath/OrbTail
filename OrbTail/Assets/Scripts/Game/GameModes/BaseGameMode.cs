@@ -128,8 +128,10 @@ public abstract class BaseGameMode : NetworkBehaviour
         foreach (GameObject ship in GameObject.FindGameObjectsWithTag(Tags.Ship))
         {
             var movement = ship.GetComponent<MovementController>();
+            var power = ship.GetComponent<PowerController>();
 
             movement.enabled = value;
+            power.enabled = value;
         }
     }
 

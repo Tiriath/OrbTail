@@ -104,10 +104,7 @@ public class FollowCamera : MonoBehaviour
         
         if(Physics.SphereCast(current_position, camera_radius, (camera_transform.position - current_position).normalized, out hit, camera_distance, Layers.Obstacles | Layers.Field))
         {
-            //if(hit.distance < current_length - camera_radius)
-            {
-                current_length = hit.distance;
-            }
+            current_length = hit.distance;
         }
 
         // Update camera position and rotation.
