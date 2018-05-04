@@ -1,79 +1,64 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 public class HUDTutorialHandler : MonoBehaviour
 {
-/*		private GameBuilder builder;*/
-		private HUDPositionHandler hudPositionHandler;
-		private List<GameObject> tabList;
-		private const string pathTutorial = "Prefabs/HUD/Tutorial/";
-		private const string arcadeTutorialPrefab = "TutorialArcade";
-		private const string eliminationTutorialPrefab = "TutorialElimination";
-		private const string longestTailTutorialPrefab = "TutorialLongestTail";
-	
+    protected void OnSelect (GameObject target)
+    {
+        if (target.tag == Tags.MenuSelector)
+        {
+            if (target.name == "Dismiss")
+            {
+                /*builder.PlayerReady ();*/
+                Destroy (gameObject);
+            }
+            else if (target.name == "PowerUpButton")
+            {
+                ActivateTab ("PowerTab");
+            }
+            else if (target.name == "GameModeButton")
+            {
+                ActivateTab ("GameModeTab");
+            }
+        }
+    }
 
-		// Use this for initialization
-		public void Start ()
-		{
-// 				builder = GameObject.FindGameObjectWithTag (Tags.Master).GetComponent<GameBuilder> ();
-// 				builder.EventGameBuilt += OnGameBuilt;
+    private void Awake()
+    {
+        var game_mode = FindObjectOfType<BaseGameMode>();
 
-		}
-	
-		protected void OnSelect (GameObject target)
-		{
-				if (target.tag == Tags.MenuSelector) {
-						if (target.name == "Dismiss") {
-								hudPositionHandler.enabled = true;
-/*								builder.PlayerReady ();*/
-								Destroy (gameObject);
-						} else if (target.name == "PowerUpButton") {
-								ActivateTab ("PowerTab");
-						} else if (target.name == "GameModeButton") {
-								ActivateTab ("GameModeTab");
-						}
-				}
-		}
+        if(game_mode.tutorial != null)
+        {
+            var tutorial = Instantiate(game_mode.tutorial);
 
-		private void OnGameBuilt(object sender) {
-			hudPositionHandler = GameObject.FindGameObjectWithTag (Tags.HUD).GetComponent<HUDPositionHandler> ();
-			FetchGameModeTutorial();
-			tabList = new List<GameObject> (GameObject.FindGameObjectsWithTag (Tags.PageTutorial));
-			ActivateTab ("GameModeTab");
+            tutorial.transform.SetParent(transform);
 
-/*			builder.EventGameBuilt -= OnGameBuilt;*/
-		}
+            tutorial.transform.localPosition = Vector3.zero;
+            tutorial.transform.localRotation = Quaternion.identity;
 
-		private void FetchGameModeTutorial()
-		{
-			//	string prefabPath = pathTutorial;
-			//	Game game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
-			//	switch (game.GameMode) {
+            foreach(Transform child in tutorial.transform)
+            {
+                tabs.Add(child.gameObject);
+            }
 
-			//	case GameModes.Arcade:
-			//			prefabPath += arcadeTutorialPrefab;
-			//			break;
-			//	case GameModes.Elimination:
-			//			prefabPath += eliminationTutorialPrefab;
-			//			break;
-			//	case GameModes.LongestTail:
-			//			prefabPath += longestTailTutorialPrefab;
-			//			break;
-				
-			//	}
+            ActivateTab("GameModeTab");
+        }
+    }
 
-			//GameObject tutorial = (GameObject) GameObject.Instantiate(Resources.Load(prefabPath));
-			//tutorial.transform.parent = gameObject.transform;
-			//tutorial.transform.localPosition = Vector3.zero;
-			//tutorial.transform.localRotation = Quaternion.identity;
-		}
+    /// <summary>
+    /// Activate a tutorial tab by name.
+    /// </summary>
+    /// <param name="tab_name">Name of the tab to activate.</param>
+    private void ActivateTab (string tab_name)
+    {
+        foreach (var tab in tabs)
+        {
+            tab.SetActive (tab.name == tab_name);
+        }
+    }
 
-		private void ActivateTab (string tabName)
-		{
-				foreach (GameObject tab in tabList) {
-						tab.SetActive (tab.name == tabName);
-				}
-		}
+    /// <summary>
+    /// Tabs in this tutorial.
+    /// </summary>
+    private List<GameObject> tabs = new List<GameObject>();
 }

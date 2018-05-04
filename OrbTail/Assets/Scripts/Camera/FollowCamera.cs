@@ -5,6 +5,10 @@
 /// </summary>
 public class FollowCamera : MonoBehaviour
 {
+    public delegate void DelegateCameraActivated(FollowCamera camera);
+
+    public static event DelegateCameraActivated CameraActivatedEvent;
+
     /// <summary>
     /// Camera pitch relative to camera's view target.
     /// </summary>
@@ -40,9 +44,20 @@ public class FollowCamera : MonoBehaviour
     /// </summary>
     public LobbyPlayer Owner
     {
+        get
+        {
+            return owner;
+        }
         set
         {
+            owner = value;
+
             // #TODO Set the proper viewport for the player according to the number of local players in the lobby.
+
+            if (CameraActivatedEvent != null)
+            {
+                CameraActivatedEvent(this);
+            }
         }
     }
 
@@ -60,6 +75,11 @@ public class FollowCamera : MonoBehaviour
             view_target_transform = value.transform;
         }
     }
+
+    /// <summary>
+    /// Get the transform of the camera attachet at the end of the boom.
+    /// </summary>
+    public Transform CameraTransform { get; private set; }
 
     /// <summary>
     /// Get the view target position.
@@ -87,7 +107,12 @@ public class FollowCamera : MonoBehaviour
     {
         gravity_field = FindObjectOfType<GravityField>();
 
-        camera_transform = GetComponentInChildren<Camera>().gameObject.transform;
+        CameraTransform = GetComponentInChildren<Camera>().gameObject.transform;
+
+        if(CameraActivatedEvent != null)
+        {
+            CameraActivatedEvent(this);
+        }
     }
 
     public void FixedUpdate ()
@@ -102,7 +127,7 @@ public class FollowCamera : MonoBehaviour
 
         RaycastHit hit;
         
-        if(Physics.SphereCast(current_position, camera_radius, (camera_transform.position - current_position).normalized, out hit, camera_distance, Layers.Obstacles | Layers.Field))
+        if(Physics.SphereCast(current_position, camera_radius, (CameraTransform.position - current_position).normalized, out hit, camera_distance, Layers.Obstacles | Layers.Field))
         {
             current_length = hit.distance;
         }
@@ -112,8 +137,8 @@ public class FollowCamera : MonoBehaviour
         transform.position = current_position;
         transform.rotation = current_rotation;
 
-        camera_transform.localPosition = new Vector3(0.0f, 0.0f, -current_length);
-        camera_transform.localRotation = Quaternion.identity;
+        CameraTransform.localPosition = new Vector3(0.0f, 0.0f, -current_length);
+        CameraTransform.localRotation = Quaternion.identity;
     }
 
     /// <summary>
@@ -137,11 +162,6 @@ public class FollowCamera : MonoBehaviour
     private Transform view_target_transform;
 
     /// <summary>
-    /// Camera attached at the end of the boom.
-    /// </summary>
-    private Transform camera_transform;
-
-    /// <summary>
     /// Current camera target position.
     /// </summary>
     private Vector3 current_position;
@@ -155,4 +175,9 @@ public class FollowCamera : MonoBehaviour
     /// Current camera distance from the target.
     /// </summary>
     private float current_length = 0.0f;
+
+    /// <summary>
+    /// Player owning this camera.
+    /// </summary>
+    private LobbyPlayer owner;
 }
