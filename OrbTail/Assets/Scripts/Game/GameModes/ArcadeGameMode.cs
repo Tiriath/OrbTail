@@ -14,35 +14,30 @@ public class ArcadeGameMode : BaseGameMode
     /// </summary>
     public const int kOrbAttachedScore = 10;
 
-    protected override void OnMatchSetup() 
-    {
-        base.OnMatchSetup();
-
-        // #TODO Attach to Tail's OnEventOrbAttached.
-
-        foreach (GameObject ship in GameObject.FindGameObjectsWithTag(Tags.Ship))
-        {
-            ship.GetComponent<Ship>().OrbAttachedEvent += OnOrbAttached;
-        }
-
-        // Reset player scores.
-
-        foreach (LobbyPlayer lobby_player in GameLobby.Instance.lobbySlots)
-        {
-            lobby_player.score = 0;
-        }
-    }
-
     protected override void OnMatchEnd()
     {
         base.OnMatchEnd();
-
+        
         // #TODO The winner is the one with the highest score.
     }
 
     private void OnOrbAttached(Ship ship, List<GameObject> orbs)
     {
-        // #TODO Change player score.
+        ship.LobbyPlayer.score += kOrbAttachedScore;
+    }
+
+    protected override void OnShipCreated(Ship ship)
+    {
+        base.OnShipCreated(ship);
+
+        ship.OrbAttachedEvent += OnOrbAttached;
+    }
+
+    protected override void OnShipDestroyed(Ship ship)
+    {
+        base.OnShipDestroyed(ship);
+
+        ship.OrbAttachedEvent -= OnOrbAttached;
     }
 }
 

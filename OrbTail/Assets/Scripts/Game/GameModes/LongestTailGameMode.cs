@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -9,31 +6,6 @@ using UnityEngine;
 /// </summary>
 public class LongestTailGameMode : BaseGameMode
 {
-    protected override void OnMatchSetup()
-    {
-        base.OnMatchSetup();
-
-        var ships = new List<GameObject>(GameObject.FindGameObjectsWithTag(Tags.Ship));
-
-        foreach (GameObject ship in ships)
-        {
-            var ship_component = ship.GetComponent<Ship>();
-
-            ship_component.OrbDetachedEvent += OnOrbChanged;
-            ship_component.OrbAttachedEvent += OnOrbChanged;
-
-            //ship.GetComponent<GameIdentity>().SetScore(0);
-
-        }
-
-        // Reset player scores.
-
-        foreach (LobbyPlayer lobby_player in GameLobby.Instance.lobbySlots)
-        {
-            lobby_player.score = 0;
-        }
-    }
-
     protected override void OnMatchEnd()
     {
         base.OnMatchEnd();
@@ -46,7 +18,23 @@ public class LongestTailGameMode : BaseGameMode
     /// </summary>
     private void OnOrbChanged(Ship ship, List<GameObject> orbs)
     {
-        // #TODO Change player score.
+        ship.LobbyPlayer.score = ship.TailLength;
+    }
+
+    protected override void OnShipCreated(Ship ship)
+    {
+        base.OnShipCreated(ship);
+
+        ship.OrbDetachedEvent += OnOrbChanged;
+        ship.OrbAttachedEvent += OnOrbChanged;
+    }
+
+    protected override void OnShipDestroyed(Ship ship)
+    {
+        base.OnShipDestroyed(ship);
+
+        ship.OrbDetachedEvent -= OnOrbChanged;
+        ship.OrbAttachedEvent -= OnOrbChanged;
     }
 
 }

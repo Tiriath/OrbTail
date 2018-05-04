@@ -14,32 +14,16 @@ public class EliminationGameMode : BaseGameMode
     {
         base.OnMatchSetup();
 
-        var orbs = new Queue<GameObject>(GameObject.FindGameObjectsWithTag(Tags.Orb));
-        var ships = new List<GameObject>(GameObject.FindGameObjectsWithTag(Tags.Ship));
-
-        int orbs_per_player = orbs.Count / ships.Count;
-
-        foreach (GameObject ship in ships)
+        if(isServer)
         {
-            var ship_component = ship.GetComponent<Ship>();
+            var orbs = new List<GameObject>(FindObjectsOfType<OrbController>().Select(controller => controller.gameObject));
 
-            ship_component.OrbDetachedEvent += OnOrbChanged;
-            ship_component.OrbAttachedEvent += OnOrbChanged;
+            var orb_count = orbs.Count / ships.Count;
 
-            if (hasAuthority)
+            foreach (Ship ship in ships)
             {
-                for (int i = 0; i < orbs_per_player; i++)
-                {
-                    ship_component.AttachOrb(orbs.Dequeue());
-                }
+                ship.AttachOrb(orbs.GetRange(ship.player_index * orb_count, orb_count));
             }
-        }
-
-        // Initialize player scores.
-
-        foreach (LobbyPlayer lobby_player in GameLobby.Instance.lobbySlots)
-        {
-            lobby_player.score = orbs_per_player;
         }
     }
 
@@ -55,9 +39,30 @@ public class EliminationGameMode : BaseGameMode
     /// </summary>
     private void OnOrbChanged(Ship ship, List<GameObject> orbs)
     {
-        // #TODO Change player score.
-        // #TODO Remove the player when the orb count drops to 0.
+        ship.LobbyPlayer.score = ship.TailLength;
+
+        if(isServer && ship.TailLength == 0)
+        {
+            // #TODO Destroy the ship.
+        }
+
         // #TODO When the number of players drops to less than 1 the match ends.
+    }
+
+    protected override void OnShipCreated(Ship ship)
+    {
+        base.OnShipCreated(ship);
+
+        ship.OrbDetachedEvent += OnOrbChanged;
+        ship.OrbAttachedEvent += OnOrbChanged;
+    }
+
+    protected override void OnShipDestroyed(Ship ship)
+    {
+        base.OnShipDestroyed(ship);
+
+        ship.OrbDetachedEvent -= OnOrbChanged;
+        ship.OrbAttachedEvent -= OnOrbChanged;
     }
 }
 

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Base class inherited by each game mode.
@@ -16,6 +14,11 @@ public abstract class BaseGameMode : NetworkBehaviour
     public event DelegateGameModeEvent MatchSetupEvent;
     public event DelegateGameModeEvent MatchStartEvent;
     public event DelegateGameModeEvent MatchEndEvent;
+
+    /// <summary>
+    /// Tutorial prefab.
+    /// </summary>
+    public GameObject tutorial;
 
     /// <summary>
     /// Prefab representing the follow camera.
@@ -41,6 +44,15 @@ public abstract class BaseGameMode : NetworkBehaviour
     public void Awake()
     {
         Ship.ShipLocalPlayerEvent += OnShipLocalPlayer;
+        Ship.ShipCreatedEvent += OnShipCreated;
+        Ship.ShipDestroyedEvent += OnShipDestroyed;
+    }
+
+    public void OnDestroy()
+    {
+        Ship.ShipLocalPlayerEvent -= OnShipLocalPlayer;
+        Ship.ShipCreatedEvent -= OnShipCreated;
+        Ship.ShipDestroyedEvent -= OnShipDestroyed;
     }
 
     public void Start()
@@ -96,6 +108,13 @@ public abstract class BaseGameMode : NetworkBehaviour
     protected virtual void OnMatchSetup()
     {
         EnableControls(false);
+
+        // Reset player scores.
+
+        foreach (LobbyPlayer lobby_player in GameLobby.Instance.lobbySlots)
+        {
+            lobby_player.score = 0;
+        }
     }
 
     /// <summary>
@@ -125,7 +144,7 @@ public abstract class BaseGameMode : NetworkBehaviour
     /// </summary>
     private void EnableControls(bool value)
     {
-        foreach (GameObject ship in GameObject.FindGameObjectsWithTag(Tags.Ship))
+        foreach (var ship in ships)
         {
             var movement = ship.GetComponent<MovementController>();
             var power = ship.GetComponent<PowerController>();
@@ -136,19 +155,44 @@ public abstract class BaseGameMode : NetworkBehaviour
     }
 
     /// <summary>
-    /// Called whenever a new ship is created.
+    /// Called whenever a new local player ship is created.
     /// </summary>
-    private void OnShipLocalPlayer(Ship ship)
+    protected virtual void OnShipLocalPlayer(Ship ship)
     {
         // Spawn a follow camera for each active local player.
 
         var camera = Instantiate(follow_camera).GetComponent<FollowCamera>();
 
-        camera.Owner = ship.LobbyPlayer;
         camera.ViewTarget = ship.gameObject;
+        camera.Owner = ship.LobbyPlayer;
 
         camera.Snap();
+
+        // #TODO Enable the tutorial on the player.
     }
+
+    /// <summary>
+    /// Called whenever a new ship is created.
+    /// </summary>
+    /// <param name="ship"></param>
+    protected virtual void OnShipCreated(Ship ship)
+    {
+        ships.Add(ship);
+    }
+
+    /// <summary>
+    /// Called whenever a ship is destroyed.
+    /// </summary>
+    /// <param name="ship"></param>
+    protected virtual void OnShipDestroyed(Ship ship)
+    {
+        ships.Remove(ship);
+    }
+
+    /// <summary>
+    /// List of ships in the current match.
+    /// </summary>
+    protected List<Ship> ships = new List<Ship>();
 
     /// <summary>
     /// Singleton instance of the game mode.
