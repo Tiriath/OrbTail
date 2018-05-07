@@ -7,11 +7,6 @@ using System.Collections;
 public class HUDPositionHandler : MonoBehaviour
 {
     /// <summary>
-    /// Index of the player this component should react to.
-    /// </summary>
-    public int player_index = 0;
-
-    /// <summary>
     /// Movement smoothing factor.
     /// </summary>
     public float movement_smooth = 30f;
@@ -26,27 +21,19 @@ public class HUDPositionHandler : MonoBehaviour
     /// </summary>
     public float distance = 10.7f;
 
-    public void Awake ()
+    /// <summary>
+    /// Set the camera this HUD component is attached to.
+    /// </summary>
+    public FollowCamera Camera
     {
-        FollowCamera.CameraActivatedEvent += OnCameraActivated;
-    }
-
-    public void OnDestroy()
-    {
-        FollowCamera.CameraActivatedEvent -= OnCameraActivated;
-    }
-
-    private void OnCameraActivated(FollowCamera camera)
-    {
-        if(camera.Owner != null && camera.Owner.player_index == player_index)
+        set
         {
-            camera_transform = camera.CameraTransform;
+            camera_transform = value.CameraTransform;
 
             transform.position = camera_transform.position;
             transform.rotation = camera_transform.rotation;
         }
     }
-
     void FixedUpdate ()
     {
         if(camera_transform != null)
@@ -60,4 +47,5 @@ public class HUDPositionHandler : MonoBehaviour
     /// Transform of the camera this component is bound to.
     /// </summary>
     private Transform camera_transform;
+
 }

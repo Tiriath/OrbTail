@@ -168,7 +168,17 @@ public abstract class BaseGameMode : NetworkBehaviour
 
         camera.Snap();
 
-        // #TODO Enable the tutorial on the player.
+        // Attach tutorial HUD to the local player camera.
+
+        Instantiate(tutorial).GetComponent<HUDPositionHandler>().Camera = camera;
+
+        // #TODO Attach game-mode HUD to the local player camera.
+
+        // ...
+
+        // #WORKAROUND Each player should have its own GUI input handler.
+
+        FindObjectOfType<GUIInputHandler>().OwningCamera = camera.GetComponentInChildren<Camera>();
     }
 
     /// <summary>

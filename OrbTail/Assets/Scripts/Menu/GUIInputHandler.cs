@@ -7,6 +7,11 @@ using System.Collections.Generic;
 /// </summary>
 public class GUIInputHandler : MonoBehaviour
 {
+    /// <summary>
+    /// Camera owning this input handler. If none is specified the main camera will be used instead.
+    /// </summary>
+    public Camera OwningCamera { get; set; }
+
     public virtual void Update ()
     {
         if(Input.touchCount > 0)
@@ -24,7 +29,9 @@ public class GUIInputHandler : MonoBehaviour
     /// </summary>
     private void HandleInput(Vector2 position, bool confirm_input)
     {
-        var input_ray = Camera.main.ScreenPointToRay(position);
+        var camera = OwningCamera ? OwningCamera : Camera.main;
+
+        var input_ray = camera.ScreenPointToRay(position);
 
         RaycastHit raycast_hit;
 
@@ -80,4 +87,5 @@ public class GUIInputHandler : MonoBehaviour
     /// Last button the input was interacting with.
     /// </summary>
     private GameObject interacting_button = null;
+    
 }
