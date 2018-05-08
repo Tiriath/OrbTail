@@ -7,12 +7,12 @@ using System.Collections.Generic;
 /// </summary>
 public abstract class Power
 {
-    public delegate void DeactivatedDelegate(object sender);
+    public delegate void DelegatePower(Power sender);
 
     /// <summary>
     /// Event raised whenever the power is deactivated.
     /// </summary>
-    public event DeactivatedDelegate OnDeactivatedEvent;
+    public event DelegatePower DeactivatedEvent;
 
     /// <summary>
     /// Path containing power prefabs.
@@ -96,9 +96,9 @@ public abstract class Power
 
         // Event.
 
-        if (OnDeactivatedEvent != null)
+        if (DeactivatedEvent != null)
         {
-            OnDeactivatedEvent(this);
+            DeactivatedEvent(this);
         };
 
         IsActive = false;

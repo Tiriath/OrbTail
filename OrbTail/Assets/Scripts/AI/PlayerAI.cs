@@ -76,7 +76,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         floatingObject = GetComponent<FloatingObject>();
         powerController = GetComponent<PowerController>();
 
-        powerController.OnPowerAttachedEvent += OnEventPowerAttached;
+        powerController.PowerAcquiredEvent += OnEventPowerAttached;
 
         GetComponent<FightController>().FightEvent += OnEventFight;
 
@@ -240,8 +240,9 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         }
     }
     
-    private void OnEventPowerAttached(object sender, GameObject ship, Power power) {
-        if (ship == gameObject) {
+    private void OnEventPowerAttached(PowerController sender, Power power) {
+        if (sender.GetComponent<Ship>() == gameObject)
+        {
             StartCoroutine("FirePowerUp");
         }
     }

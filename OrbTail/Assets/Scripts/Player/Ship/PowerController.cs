@@ -8,12 +8,9 @@ using UnityEngine.Networking;
 /// </summary>
 public class PowerController : NetworkBehaviour
 {
-    public delegate void DelegatePowerAttached(object sender, GameObject ship, Power power);
+    public delegate void DelegatePower(PowerController sender, Power power);
 
-    /// <summary>
-    /// Called whenever a new power is activated on this ship.
-    /// </summary>
-    public event DelegatePowerAttached OnPowerAttachedEvent;
+    public event DelegatePower PowerAcquiredEvent;
 
     public void Start()
     {
@@ -64,15 +61,15 @@ public class PowerController : NetworkBehaviour
 
         powers.Add(power.Group, power);
 
-        power.OnDeactivatedEvent += OnPowerDeactivated;
+        power.DeactivatedEvent += OnPowerDeactivated;
 
         power.Activate(gameObject);
 
         // Event.
 
-        if (OnPowerAttachedEvent != null)
+        if (PowerAcquiredEvent != null)
         {
-            OnPowerAttachedEvent(this, gameObject, power);
+            PowerAcquiredEvent(this, power);
         }
     }
 
