@@ -8,6 +8,8 @@ using UnityEngine.Networking;
 /// </summary>
 public class GameTimer : NetworkBehaviour
 {
+    public delegate void DelegateTick(GameTimer sender);
+
     /// <summary>
     /// Timer duration in seconds.
     /// </summary>
@@ -19,52 +21,44 @@ public class GameTimer : NetworkBehaviour
     [SyncVar]
     public int time = 0;
 
-    public void Start()
+    public event DelegateTick TickEvent;
+
+    public void Awake()
     {
-        // #TODO Bind to game event. Call OnTimerStart.
+        time = duration;
+    }
+
+    public void OnEnable()
+    {
+        timestamp = Time.realtimeSinceStartup;
     }
 
     public void Update ()
     {
-        if(is_active)
+        // Update the timer on each client, the server will overwrite the timer status during synchronization.
+
+        int new_time = Mathf.Max(duration - Mathf.FloorToInt(Time.realtimeSinceStartup - timestamp), 0);
+
+        if(time != new_time)
         {
-            // Update the timer on each client, the server will overwrite the timer status during synchronization.
+            time = new_time;
 
-            int new_time = Mathf.Min(Mathf.FloorToInt(Time.realtimeSinceStartup - timestamp), duration);
-
-            if(time != new_time)
+            if(TickEvent != null)
             {
-                time = new_time;
+                TickEvent(this);
             }
+        }
 
-            if(time == 0)
-            {
-                is_active = false;
+        if(time == 0)
+        {
+            enabled = false;
 
-                // #TODO Transition!
-            }
+            // #TODO Transition!
         }
     }
 
     /// <summary>
-    /// Start the timer.
-    /// </summary>
-    private void OnTimerStart(BaseGameMode game_mode)
-    {
-        timestamp = Time.realtimeSinceStartup;
-
-        time = 0;
-
-        is_active = true;
-    }
-
-    /// <summary>
-    /// Whether the timer is active.
-    /// </summary>
-    private bool is_active = false;
-
-    /// <summary>
-    /// Timestamp when the game first began.
+    /// Timestamp when the timer is activated.
     /// </summary>
     private float timestamp = 0.0f;
 }
