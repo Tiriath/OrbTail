@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 /// </summary>
 public class GameTimer : NetworkBehaviour
 {
-    public delegate void DelegateTick(GameTimer sender);
+    public delegate void DelegateTimerEvent(GameTimer sender);
 
     /// <summary>
     /// Timer duration in seconds.
@@ -21,7 +21,8 @@ public class GameTimer : NetworkBehaviour
     [SyncVar]
     public int time = 0;
 
-    public event DelegateTick TickEvent;
+    public event DelegateTimerEvent TickEvent;
+    public event DelegateTimerEvent TimeOutEvent;
 
     public void Awake()
     {
@@ -47,13 +48,17 @@ public class GameTimer : NetworkBehaviour
             {
                 TickEvent(this);
             }
-        }
 
-        if(time == 0)
-        {
-            enabled = false;
+            if (time == 0)
+            {
+                enabled = false;
 
-            // #TODO Transition!
+                if(TimeOutEvent != null)
+                {
+                    TimeOutEvent(this);
+                }
+            }
+
         }
     }
 

@@ -50,6 +50,7 @@ public class HUDGameTimer : MonoBehaviour
     private void OnTick(GameTimer timer)
     {
         // Start pulsating below the critical time threshold.
+
         if(timer.time > critical_time)
         {
             gameObject.transform.localScale = original_scale;
