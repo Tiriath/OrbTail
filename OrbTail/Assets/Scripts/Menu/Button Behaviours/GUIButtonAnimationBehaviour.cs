@@ -15,7 +15,7 @@ public class GUIButtonAnimationBehaviour : GUIButtonBehaviour
     /// </summary>
     public float time = 0.2f;
 
-    public override void OnInputInteract()
+    public override void OnInputEnter()
     {
         iTween.ScaleTo(gameObject, original_scale * scale, time);
     }

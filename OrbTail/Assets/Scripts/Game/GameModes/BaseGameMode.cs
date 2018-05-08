@@ -21,6 +21,11 @@ public abstract class BaseGameMode : NetworkBehaviour
     public GameObject tutorial;
 
     /// <summary>
+    /// HUD prefab.
+    /// </summary>
+    public GameObject hud;
+
+    /// <summary>
     /// Prefab representing the follow camera.
     /// </summary>
     public GameObject follow_camera;
@@ -170,11 +175,17 @@ public abstract class BaseGameMode : NetworkBehaviour
 
         // Attach tutorial HUD to the local player camera.
 
-        Instantiate(tutorial).GetComponent<HUDPositionHandler>().Camera = camera;
+        if(tutorial)
+        {
+            Instantiate(tutorial).GetComponent<HUDPositionHandler>().Camera = camera;
+        }
 
-        // #TODO Attach game-mode HUD to the local player camera.
+        // Attach game-mode HUD to the local player camera.
 
-        // ...
+        if(hud)
+        {
+            Instantiate(hud).GetComponent<HUDPositionHandler>().Camera = camera;
+        }
 
         // #WORKAROUND Each player should have its own GUI input handler.
 

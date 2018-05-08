@@ -33,10 +33,10 @@ public class MobileInputBroker: IInputBroker
     {
         //Standard position, with the phone in landscape position and the bottom on the right.
         Calibrate();
-        
-        var handler = GameObject.FindGameObjectWithTag(Tags.HUD).GetComponent<HUDButtonsHandler>();
 
-        handler.EventOnMissileButtonSelect += OnPowerButtonSelect;
+        //var handler = GameObject.FindGameObjectWithTag(Tags.HUD).GetComponent<HUDButtonsHandler>();
+
+        //handler.EventOnMissileButtonSelect += OnPowerButtonSelect;
     }
 
     public void UpdateInput()
