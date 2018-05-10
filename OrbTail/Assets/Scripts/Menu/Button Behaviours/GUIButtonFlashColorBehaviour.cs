@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Causes the component supporting the "color" property to flash over time when pressed.
 /// </summary>
-public class GUIButtonFlashColorBehaviour : GUIButtonBehaviour
+public class GUIButtonFlashColorBehaviour : GUIElement
 {
     /// <summary>
     /// Flash color.

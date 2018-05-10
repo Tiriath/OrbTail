@@ -5,7 +5,7 @@ using System.Collections.Generic;
 /// <summary>
 /// Button used to cycle multiple tabs when the button is pressed.
 /// </summary>
-public class GUIButtonTabBehaviour : GUIButtonBehaviour
+public class GUIButtonTabBehaviour : GUIElement
 {
     /// <summary>
     /// Name of the tabs to cycle through.

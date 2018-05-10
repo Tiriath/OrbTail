@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Script used to select the game mode.
 /// </summary>
-public class GUIButtonSelectGameModeBehaviour : GUIButtonBehaviour
+public class GUIButtonSelectGameModeBehaviour : GUIElement
 {
     /// <summary>
     /// Game mode to select.

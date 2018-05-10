@@ -3,7 +3,7 @@
 /// <summary>
 /// Causes the parent of this object to be destroyed when the button is pressed.
 /// </summary>
-public class GUIButtonDestroyParentBehaviour : GUIButtonBehaviour
+public class GUIButtonDestroyParentBehaviour : GUIElement
 {
     public override void OnInputConfirm()
     {

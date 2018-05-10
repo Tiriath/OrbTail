@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Script used to select the arena.
 /// </summary>
-public class GUIButtonSelectGameTypeBehaviour : GUIButtonBehaviour
+public class GUIButtonSelectGameTypeBehaviour : GUIElement
 {
     /// <summary>
     /// Game type to select.

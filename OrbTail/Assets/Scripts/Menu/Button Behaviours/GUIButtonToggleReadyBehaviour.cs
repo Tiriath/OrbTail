@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Toggle the local player ready status when pressed.
 /// </summary>
-public class GUIButtonToggleReadyBehaviour : GUIButtonBehaviour
+public class GUIButtonToggleReadyBehaviour : GUIElement
 {
     /// <summary>
     /// Text to display when the local player is ready.

@@ -3,7 +3,7 @@
 /// <summary>
 /// Base class for UI objects reacting to press input.
 /// </summary>
-public class GUIButtonBehaviour : MonoBehaviour
+public class GUIElement : MonoBehaviour
 {
     /// <summary>
     /// Whether this button requires a double tap in order to be confirmed.

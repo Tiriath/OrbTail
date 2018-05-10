@@ -3,7 +3,7 @@
 /// <summary>
 /// Causes the application to exit when the button pressed.
 /// </summary>
-public class GUIButtonExitApplicationBehaviour : GUIButtonBehaviour
+public class GUIButtonExitApplicationBehaviour : GUIElement
 {
     public override void OnInputConfirm()
     {

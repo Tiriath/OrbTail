@@ -3,7 +3,7 @@
 /// <summary>
 /// Causes the button to appear pressed when the input starts interacting with the button.
 /// </summary>
-public class GUIButtonAnimationBehaviour : GUIButtonBehaviour
+public class GUIButtonAnimationBehaviour : GUIElement
 {
     /// <summary>
     /// Scale factor when the button is pressed.

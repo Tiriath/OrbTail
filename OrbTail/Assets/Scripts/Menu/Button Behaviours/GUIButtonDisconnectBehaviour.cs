@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Script used to disconnect from the current lobby.
 /// </summary>
-public class GUIButtonDisconnectBehaviour : GUIButtonBehaviour
+public class GUIButtonDisconnectBehaviour : GUIElement
 {
     public override void OnInputConfirm()
     {

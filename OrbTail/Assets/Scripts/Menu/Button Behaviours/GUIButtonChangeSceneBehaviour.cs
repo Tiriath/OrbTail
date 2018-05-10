@@ -3,7 +3,7 @@
 /// <summary>
 /// Causes a new scene to be loaded when the button is pressed.
 /// </summary>
-public class GUIButtonChangeSceneBehaviour : GUIButtonBehaviour
+public class GUIButtonChangeSceneBehaviour : GUIElement
 {
     /// <summary>
     /// Name of the scene to load when this button is pressed.

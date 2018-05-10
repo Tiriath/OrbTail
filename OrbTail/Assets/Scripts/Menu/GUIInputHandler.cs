@@ -83,7 +83,7 @@ public class GUIInputHandler : MonoBehaviour
     {
         if (interacting_button)
         {
-            foreach (var behaviour in interacting_button.GetComponents<GUIButtonBehaviour>())
+            foreach (var behaviour in interacting_button.GetComponents<GUIElement>())
             {
                 behaviour.OnInputEnter();
             }
@@ -97,7 +97,7 @@ public class GUIInputHandler : MonoBehaviour
     {
         if (interacting_button)
         {
-            foreach (var behaviour in interacting_button.GetComponents<GUIButtonBehaviour>())
+            foreach (var behaviour in interacting_button.GetComponents<GUIElement>())
             {
                 if (!behaviour.double_tap || (Time.time - timestamp < double_tap_time))
                 {
@@ -114,7 +114,7 @@ public class GUIInputHandler : MonoBehaviour
     {
         if (interacting_button)
         {
-            foreach (var behaviour in interacting_button.GetComponents<GUIButtonBehaviour>())
+            foreach (var behaviour in interacting_button.GetComponents<GUIElement>())
             {
                 behaviour.OnInputLeave();
             }

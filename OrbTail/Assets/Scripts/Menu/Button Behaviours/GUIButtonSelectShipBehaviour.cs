@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Script used to select a ship.
 /// </summary>
-public class GUIButtonSelectShipBehaviour : GUIButtonBehaviour
+public class GUIButtonSelectShipBehaviour : GUIElement
 {
     /// <summary>
     /// Ship to select.
