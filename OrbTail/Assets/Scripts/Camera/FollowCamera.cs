@@ -5,10 +5,6 @@
 /// </summary>
 public class FollowCamera : MonoBehaviour
 {
-    public delegate void DelegateCameraActivated(FollowCamera camera);
-
-    public static event DelegateCameraActivated CameraActivatedEvent;
-
     /// <summary>
     /// Camera pitch relative to camera's view target.
     /// </summary>
@@ -38,28 +34,6 @@ public class FollowCamera : MonoBehaviour
     /// Distance smoothing factor.
     /// </summary>
     public float distance_smooth = 2.0f;
-    
-    /// <summary>
-    /// Get or set the lobby player owning this camera.
-    /// </summary>
-    public LobbyPlayer Owner
-    {
-        get
-        {
-            return owner;
-        }
-        set
-        {
-            owner = value;
-
-            // #TODO Set the proper viewport for the player according to the number of local players in the lobby.
-
-            if (CameraActivatedEvent != null)
-            {
-                CameraActivatedEvent(this);
-            }
-        }
-    }
 
     /// <summary>
     /// Get or set the current camera target.
@@ -77,7 +51,7 @@ public class FollowCamera : MonoBehaviour
     }
 
     /// <summary>
-    /// Get the transform of the camera attachet at the end of the boom.
+    /// Get the transform of the camera attached at the end of the boom.
     /// </summary>
     public Transform CameraTransform { get; private set; }
 
@@ -108,11 +82,6 @@ public class FollowCamera : MonoBehaviour
         gravity_field = FindObjectOfType<GravityField>();
 
         CameraTransform = GetComponentInChildren<Camera>().transform;
-
-        if(CameraActivatedEvent != null)
-        {
-            CameraActivatedEvent(this);
-        }
     }
 
     public void FixedUpdate ()

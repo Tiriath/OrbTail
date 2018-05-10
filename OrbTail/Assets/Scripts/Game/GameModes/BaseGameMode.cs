@@ -187,7 +187,6 @@ public abstract class BaseGameMode : NetworkBehaviour
         var camera = Instantiate(follow_camera).GetComponent<FollowCamera>();
 
         camera.ViewTarget = ship.gameObject;
-        camera.Owner = GameLobby.Instance.lobbySlots[ship.player_index] as LobbyPlayer;
 
         camera.Snap();
 
