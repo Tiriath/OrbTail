@@ -19,12 +19,12 @@ public abstract class BaseGameMode : NetworkBehaviour
     /// <summary>
     /// Tutorial prefab.
     /// </summary>
-    public GameObject tutorial;
+    public GameObject tutorial_hud;
 
     /// <summary>
     /// HUD prefab.
     /// </summary>
-    public GameObject hud;
+    public GameObject game_hud;
 
     /// <summary>
     /// Prefab representing the follow camera.
@@ -151,6 +151,11 @@ public abstract class BaseGameMode : NetworkBehaviour
     protected virtual void OnMatchCountdown()
     {
         EnableControls(false);
+
+        timer.TimeOutEvent += OnEndCountdown;
+
+        timer.duration = countdown;
+        timer.enabled = true;
     }
 
     /// <summary>
@@ -176,6 +181,17 @@ public abstract class BaseGameMode : NetworkBehaviour
     }
 
     /// <summary>
+    /// Check whether the end conditions for this game mode are met.
+    /// </summary>
+    /// <returns>Returns true if the end conditions are met and the match should be terminated, returns false otherwise.</returns>
+    protected virtual bool CheckEndConditions()
+    {
+        // Either the time's up OR there are less than one ship in the game.
+
+        return false;
+    }
+
+    /// <summary>
     /// Called whenever a new local player ship is created.
     /// </summary>
     protected virtual void OnShipLocalPlayer(Ship ship)
@@ -190,14 +206,24 @@ public abstract class BaseGameMode : NetworkBehaviour
 
         camera.Snap();
 
-        // Attach tutorial HUD to the local player camera.
+        // Attach the tutorial HUD to the local player camera.
 
-        if (tutorial)
+        if (tutorial_hud)
         {
-            var tutorial_hud = Instantiate(tutorial).GetComponent<HUDHandler>();
+            var hud = Instantiate(tutorial_hud).GetComponent<HUDHandler>();
 
-            tutorial_hud.Camera = camera.GetComponentInChildren<Camera>();
-            tutorial_hud.Owner = ship.gameObject;
+            hud.Camera = camera.GetComponentInChildren<Camera>();
+            hud.Owner = ship.gameObject;
+        }
+
+        // Attach the game HUD to the local player camera.
+
+        if (game_hud)
+        {
+            var hud = Instantiate(game_hud).GetComponent<HUDHandler>();
+
+            hud.Camera = camera.GetComponentInChildren<Camera>();
+            hud.Owner = ship.gameObject;
         }
 
         // #WORKAROUND Each player should have its own GUI input handler.
@@ -214,6 +240,10 @@ public abstract class BaseGameMode : NetworkBehaviour
         Debug.Log("BaseGameMode::OnShipCreated");
 
         ships.Add(ship);
+
+        ship.ShipReadyEvent += OnShipReady;
+
+        CheckShipReady();
     }
 
     /// <summary>
@@ -224,18 +254,11 @@ public abstract class BaseGameMode : NetworkBehaviour
     {
         Debug.Log("BaseGameMode::OnShipDestroyed");
 
+        ship.ShipReadyEvent -= OnShipReady;
+
         ships.Remove(ship);
-    }
 
-    /// <summary>
-    /// Check whether the end conditions for this game mode are met.
-    /// </summary>
-    /// <returns>Returns true if the end conditions are met and the match should be terminated, returns false otherwise.</returns>
-    protected virtual bool CheckEndConditions()
-    {
-        // Either the time's up OR there are less than one ship in the game.
-
-        return false;
+        CheckShipReady();
     }
 
     /// <summary>
@@ -250,6 +273,48 @@ public abstract class BaseGameMode : NetworkBehaviour
         if (MatchSetupEvent != null)
         {
             MatchSetupEvent(this);
+        }
+    }
+
+    /// <summary>
+    /// Called whenever a ship is ready.
+    /// </summary>
+    private void OnShipReady(Ship ship)
+    {
+        CheckShipReady();
+    }
+
+    /// <summary>
+    /// Check whether the ships in the match are ready.
+    /// </summary>
+    private void CheckShipReady()
+    {
+        if (isServer)
+        {
+            // Start the match when each ship is ready.
+
+            foreach (var ship in ships)
+            {
+                if (!ship.is_ready)
+                {
+                    return;
+                }
+            }
+
+            RpcMatchCountdown();
+        }
+    }
+
+    /// <summary>
+    /// Called whenever the countdown timer ends.
+    /// </summary>
+    private void OnEndCountdown(GameTimer timer)
+    {
+        timer.TimeOutEvent -= OnEndCountdown;
+
+        if (isServer)
+        {
+            RpcMatchStart();
         }
     }
 

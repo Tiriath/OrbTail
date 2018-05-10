@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 /// <summary>
-/// Represents a player state in a lobby.
+/// Represents a player status.
 /// </summary>
 public class LobbyPlayer : NetworkLobbyPlayer
 {
@@ -61,22 +61,10 @@ public class LobbyPlayer : NetworkLobbyPlayer
     }
 
     /// <summary>
-    /// Get or set the ship controlled by this player.
-    /// </summary>
-    public Ship Ship { get; private set; }
-
-    public void Awake()
-    {
-        Ship.ShipCreatedEvent += OnShipCreated;
-    }
-
-    /// <summary>
     /// Called when the player gets disconnected from the lobby.
     /// </summary>
     public void OnDestroy()
     {
-        Ship.ShipCreatedEvent -= OnShipCreated;
-
         if (player_indexes != null)                      // This is true only on the server.
         {
             player_indexes.Push(this.player_index);
@@ -102,7 +90,7 @@ public class LobbyPlayer : NetworkLobbyPlayer
     }
 
     /// <summary>
-    /// Called on the local version of this behaviour.
+    /// Called on the local version of this behavior.
     /// </summary>
     public override void OnStartAuthority()
     {
@@ -130,19 +118,6 @@ public class LobbyPlayer : NetworkLobbyPlayer
         if(PlayerReadyEvent != null)
         {
             PlayerReadyEvent(this);
-        }
-    }
-
-    /// <summary>
-    /// Called whenever a new ship is created.
-    /// </summary>
-    private void OnShipCreated(Ship ship)
-    {
-        if(ship.player_index == this.player_index)
-        {
-            Ship = ship;
-
-            Ship.Color = Color;
         }
     }
 

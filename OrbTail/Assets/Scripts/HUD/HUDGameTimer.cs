@@ -36,7 +36,7 @@ public class HUDGameTimer : MonoBehaviour
 
         timer = BaseGameMode.Instance.GetComponent<GameTimer>();
 
-        FindObjectOfType<GameTimer>().TickEvent += OnTick;
+        timer.TickEvent += OnTick;
     }
 
     public void OnDestroy()
@@ -97,7 +97,7 @@ public class HUDGameTimer : MonoBehaviour
     private GameTimer timer;
 
     /// <summary>
-    /// Element used to displayer the game time.
+    /// Element used to displayer the game time on.
     /// </summary>
     private TextMesh text_mesh;
 

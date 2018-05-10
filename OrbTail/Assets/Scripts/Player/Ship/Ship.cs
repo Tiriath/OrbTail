@@ -15,6 +15,8 @@ public class Ship : NetworkBehaviour
     public static event DelegateShipEvent ShipLocalPlayerEvent;
     public static event DelegateShipEvent ShipDestroyedEvent;
 
+    public event DelegateShipEvent ShipReadyEvent;
+
     public event DelegateOrbEvent OrbAttachedEvent;
     public event DelegateOrbEvent OrbDetachedEvent;
 
@@ -23,6 +25,17 @@ public class Ship : NetworkBehaviour
     /// </summary>
     [SyncVar]
     public int player_index = -1;
+
+    /// <summary>
+    /// Whether this ship is ready.
+    /// </summary>
+    [SyncVar(hook = "OnSyncIsReady")]
+    public bool is_ready = false;
+
+    /// <summary>
+    /// Get the lobby player associated to this ship.
+    /// </summary>
+    public LobbyPlayer LobbyPlayer { get; private set; }
 
     /// <summary>
     /// Determine how orbs are attached to the tail.
@@ -44,41 +57,8 @@ public class Ship : NetworkBehaviour
             return orbs.Count;
         }
     }
-    
-    /// <summary>
-    /// Get or set the ship color.
-    /// </summary>
-    public Color Color
-    {
-        get
-        {
-            return color;
-        }
-        set
-        {
-            color = value;
 
-            //Colorize this ship. The material is shared to reduce the draw calls.
-
-            Material material = null;
-
-            foreach (var renderer in GetComponentsInChildren<MeshRenderer>())
-            {
-                if (renderer.gameObject.tag.Equals(Tags.ShipDetail))
-                {
-                    if (material == null)
-                    {
-                        material = renderer.material;
-                        material.color = color;
-                    }
-
-                    renderer.material = material;
-                }
-            }
-        }
-    }
-
-    void Awake()
+    public void Awake()
     {
         AttachDriver = new DriverStack<IAttacherDriver>();
         DetachDriver = new DriverStack<IDetacherDriver>();
@@ -97,7 +77,11 @@ public class Ship : NetworkBehaviour
         base.OnStartClient();
 
         Debug.Assert(player_index >= 0, "Invalid player index on ship creation.");
-        
+
+        LobbyPlayer = GameLobby.Instance.lobbySlots[player_index] as LobbyPlayer;
+
+        RefreshColor();
+
         // Defer this event until we are sure the ship is properly setup.
 
         if (ShipCreatedEvent != null)
@@ -166,6 +150,17 @@ public class Ship : NetworkBehaviour
     }
 
     /// <summary>
+    /// Set this ship status to "ready".
+    /// </summary>
+    public void SetReady()
+    {
+        if(isLocalPlayer)
+        {
+            CmdSetReady();
+        }
+    }
+
+    /// <summary>
     /// Called whenever a new orb is attached to the ship.
     /// </summary>
     /// <param name="orb">Orb being attached.</param>
@@ -183,7 +178,7 @@ public class Ship : NetworkBehaviour
         {
             orb_material = new Material(orb_controller.DefaultMaterial);
 
-            orb_material.color = this.color;
+            orb_material.color = LobbyPlayer.Color;
         }
 
         // Either link to the last orb or to the ship itself.
@@ -226,6 +221,54 @@ public class Ship : NetworkBehaviour
     }
 
     /// <summary>
+    /// Refresh the ship color.
+    /// </summary>
+    private void RefreshColor()
+    {
+        //The material is shared to reduce the draw calls.
+
+        Material material = null;
+
+        foreach (var renderer in GetComponentsInChildren<MeshRenderer>())
+        {
+            if (renderer.gameObject.tag.Equals(Tags.ShipDetail))
+            {
+                if (material == null)
+                {
+                    material = renderer.material;
+                    material.color = LobbyPlayer.Color;
+                }
+
+                renderer.material = material;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Set this ship status to "ready".
+    /// Server-side.
+    /// </summary>
+    [Command]
+    private void CmdSetReady()
+    {
+        is_ready = true;
+    }
+
+    /// <summary>
+    /// Set this ship status to "ready."
+    /// Client-side.
+    /// </summary>
+    private void OnSyncIsReady(bool is_ready)
+    {
+        this.is_ready = is_ready;
+
+        if (is_ready && ShipReadyEvent != null)
+        {
+            ShipReadyEvent(this);
+        }
+    }
+
+    /// <summary>
     /// Orbs attached to the tail.
     /// </summary>
     private Stack<OrbController> orbs = new Stack<OrbController>();
@@ -234,9 +277,4 @@ public class Ship : NetworkBehaviour
     /// Orb material when attached to the ship.
     /// </summary>
     private Material orb_material;
-
-    /// <summary>
-    /// Ship color.
-    /// </summary>
-    private Color color;
 }
