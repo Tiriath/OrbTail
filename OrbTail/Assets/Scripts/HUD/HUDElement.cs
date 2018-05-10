@@ -2,14 +2,14 @@
 
 
 /// <summary>
-/// Represents a base class for each HUD elements.
+/// A HUD element that reacts to the input of a single player.
 /// </summary>
-public class HUDElement : MonoBehaviour
+public class HUDElement : GUIElement
 {
     /// <summary>
     /// Get or set the owner of this HUD element.
     /// </summary>
-    public LobbyPlayer Owner
+    public GameObject Owner
     {
         get
         {
@@ -32,7 +32,7 @@ public class HUDElement : MonoBehaviour
     }
 
     /// <summary>
-    /// Player owning this HUD element.
+    /// Owner of this HUD element.
     /// </summary>
-    private LobbyPlayer owner;
+    private GameObject owner;
 }

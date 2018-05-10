@@ -107,7 +107,7 @@ public class FollowCamera : MonoBehaviour
     {
         gravity_field = FindObjectOfType<GravityField>();
 
-        CameraTransform = GetComponentInChildren<Camera>().gameObject.transform;
+        CameraTransform = GetComponentInChildren<Camera>().transform;
 
         if(CameraActivatedEvent != null)
         {

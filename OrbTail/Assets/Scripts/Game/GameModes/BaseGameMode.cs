@@ -195,15 +195,11 @@ public abstract class BaseGameMode : NetworkBehaviour
 
         if (tutorial)
         {
-            Instantiate(tutorial).GetComponent<HUDPositionHandler>().Camera = camera;
+            var tutorial_hud = Instantiate(tutorial).GetComponent<HUDHandler>();
+
+            tutorial_hud.Camera = camera.GetComponentInChildren<Camera>();
+            tutorial_hud.Owner = ship.gameObject;
         }
-
-        // Attach game-mode HUD to the local player camera.
-
-        //         if(hud)
-        //         {
-        //             Instantiate(hud).GetComponent<HUDPositionHandler>().Camera = camera;
-        //         }
 
         // #WORKAROUND Each player should have its own GUI input handler.
 

@@ -2,9 +2,9 @@
 using System.Collections;
 
 /// <summary>
-/// Script used to move a layer of HUD in front of a camera.
+/// Script used to handle the HUD of a player.
 /// </summary>
-public class HUDPositionHandler : MonoBehaviour
+public class HUDHandler : MonoBehaviour
 {
     /// <summary>
     /// Movement smoothing factor.
@@ -22,18 +22,39 @@ public class HUDPositionHandler : MonoBehaviour
     public float distance = 10.7f;
 
     /// <summary>
+    /// Set the owner of this HUD.
+    /// </summary>
+    public GameObject Owner
+    {
+        get
+        {
+            return owner;
+        }
+        set
+        {
+            owner = value;
+
+            foreach(var hud_element in GetComponentsInChildren<HUDElement>())
+            {
+                hud_element.Owner = owner;
+            }
+        }
+    }
+
+    /// <summary>
     /// Set the camera this HUD component is attached to.
     /// </summary>
-    public FollowCamera Camera
+    public Camera Camera
     {
         set
         {
-            camera_transform = value.CameraTransform;
+            camera_transform = value.transform;
 
             transform.position = camera_transform.position;
             transform.rotation = camera_transform.rotation;
         }
     }
+
     void FixedUpdate ()
     {
         if(camera_transform != null)
@@ -48,4 +69,8 @@ public class HUDPositionHandler : MonoBehaviour
     /// </summary>
     private Transform camera_transform;
 
+    /// <summary>
+    /// Owner of this HUD.
+    /// </summary>
+    private GameObject owner;
 }

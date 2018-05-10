@@ -23,9 +23,9 @@ public class HUDPower : HUDElement
 
     protected override void OnOwnerChanged()
     {
-        var power_controller = Owner.Ship.GetComponent<PowerController>();
+        //var power_controller = Owner.Ship.GetComponent<PowerController>();
 
-        power_controller.PowerAcquiredEvent += OnPowerAcquired;
+        //power_controller.PowerAcquiredEvent += OnPowerAcquired;
     }
 
     private void OnPowerAcquired(PowerController sender, Power power)
