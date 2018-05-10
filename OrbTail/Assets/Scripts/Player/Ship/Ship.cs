@@ -44,12 +44,40 @@ public class Ship : NetworkBehaviour
             return orbs.Count;
         }
     }
-
-    /// <summary>
-    /// Get the lobby player associated to this ship.
-    /// </summary>
-    public LobbyPlayer LobbyPlayer { get; private set; }
     
+    /// <summary>
+    /// Get or set the ship color.
+    /// </summary>
+    public Color Color
+    {
+        get
+        {
+            return color;
+        }
+        set
+        {
+            color = value;
+
+            //Colorize this ship. The material is shared to reduce the draw calls.
+
+            Material material = null;
+
+            foreach (var renderer in GetComponentsInChildren<MeshRenderer>())
+            {
+                if (renderer.gameObject.tag.Equals(Tags.ShipDetail))
+                {
+                    if (material == null)
+                    {
+                        material = renderer.material;
+                        material.color = color;
+                    }
+
+                    renderer.material = material;
+                }
+            }
+        }
+    }
+
     void Awake()
     {
         AttachDriver = new DriverStack<IAttacherDriver>();
@@ -68,32 +96,9 @@ public class Ship : NetworkBehaviour
     {
         base.OnStartClient();
 
-        Debug.Assert(player_index >= 0, "Player index should be set when the client starts!");
-
-        // Link this ship to its lobby player.
-
-        LobbyPlayer = (LobbyPlayer)GameLobby.Instance.lobbySlots[player_index];
-        LobbyPlayer.Ship = this;
-
-        //Colorize this ship. The material is shared to reduce the draw calls.
-
-        Material material = null;
-
-        foreach (var renderer in GetComponentsInChildren<MeshRenderer>())
-        {
-            if (renderer.gameObject.tag.Equals(Tags.ShipDetail))
-            {
-                if (material == null)
-                {
-                    material = renderer.material;
-                    material.color = LobbyPlayer.Color;
-                }
-
-                renderer.material = material;
-            }
-        }
-
-        // Notify after the ship is properly setup.
+        Debug.Assert(player_index >= 0, "Invalid player index on ship creation.");
+        
+        // Defer this event until we are sure the ship is properly setup.
 
         if (ShipCreatedEvent != null)
         {
@@ -176,10 +181,9 @@ public class Ship : NetworkBehaviour
 
         if (orb_material == null)
         {
-            orb_material = new Material(orb_controller.DefaultMaterial)
-            {
-                color = LobbyPlayer.Color
-            };
+            orb_material = new Material(orb_controller.DefaultMaterial);
+
+            orb_material.color = this.color;
         }
 
         // Either link to the last orb or to the ship itself.
@@ -230,4 +234,9 @@ public class Ship : NetworkBehaviour
     /// Orb material when attached to the ship.
     /// </summary>
     private Material orb_material;
+
+    /// <summary>
+    /// Ship color.
+    /// </summary>
+    private Color color;
 }

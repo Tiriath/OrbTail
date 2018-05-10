@@ -21,11 +21,6 @@ public class ArcadeGameMode : BaseGameMode
         // #TODO The winner is the one with the highest score.
     }
 
-    private void OnOrbAttached(Ship ship, List<GameObject> orbs)
-    {
-        ship.LobbyPlayer.score += kOrbAttachedScore;
-    }
-
     protected override void OnShipCreated(Ship ship)
     {
         base.OnShipCreated(ship);
@@ -38,6 +33,16 @@ public class ArcadeGameMode : BaseGameMode
         base.OnShipDestroyed(ship);
 
         ship.OrbAttachedEvent -= OnOrbAttached;
+    }
+
+    /// <summary>
+    /// Called whenever an orb is attached to a ship.
+    /// </summary>
+    private void OnOrbAttached(Ship ship, List<GameObject> orbs)
+    {
+        var player = (LobbyPlayer) GameLobby.Instance.lobbySlots[ship.player_index];
+
+        player.score += kOrbAttachedScore;
     }
 }
 

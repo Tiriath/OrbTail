@@ -13,14 +13,6 @@ public class LongestTailGameMode : BaseGameMode
         // #TODO The winner is the ship with the longest tail.
     }
 
-    /// <summary>
-    /// Called whenever a ship orb count changes.
-    /// </summary>
-    private void OnOrbChanged(Ship ship, List<GameObject> orbs)
-    {
-        ship.LobbyPlayer.score = ship.TailLength;
-    }
-
     protected override void OnShipCreated(Ship ship)
     {
         base.OnShipCreated(ship);
@@ -37,5 +29,14 @@ public class LongestTailGameMode : BaseGameMode
         ship.OrbAttachedEvent -= OnOrbChanged;
     }
 
+    /// <summary>
+    /// Called whenever a ship orb count changes.
+    /// </summary>
+    private void OnOrbChanged(Ship ship, List<GameObject> orbs)
+    {
+        var player = (LobbyPlayer)GameLobby.Instance.lobbySlots[ship.player_index];
+
+        player.score = ship.TailLength;
+    }
 }
 

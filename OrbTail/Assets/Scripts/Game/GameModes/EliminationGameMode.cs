@@ -10,22 +10,10 @@ using UnityEngine;
 /// </summary>
 public class EliminationGameMode : BaseGameMode
 {
-    protected override void OnMatchSetup()
-    {
-        base.OnMatchSetup();
-
-        if(isServer)
-        {
-            var orbs = new List<GameObject>(FindObjectsOfType<OrbController>().Select(controller => controller.gameObject));
-
-            var orb_count = orbs.Count / ships.Count;
-
-            foreach (Ship ship in ships)
-            {
-                ship.AttachOrb(orbs.GetRange(ship.player_index * orb_count, orb_count));
-            }
-        }
-    }
+    /// <summary>
+    /// Initial amount of lives for each player.
+    /// </summary>
+    public int lives = 5;
 
     protected override void OnMatchEnd()
     {
@@ -34,27 +22,17 @@ public class EliminationGameMode : BaseGameMode
         // #TODO The winner is the last ship standing (or tie if none).
     }
 
-    /// <summary>
-    /// Called whenever a ship loses one or more orbs.
-    /// </summary>
-    private void OnOrbChanged(Ship ship, List<GameObject> orbs)
-    {
-        ship.LobbyPlayer.score = ship.TailLength;
-
-        if(isServer && ship.TailLength == 0)
-        {
-            // #TODO Destroy the ship.
-        }
-
-        // #TODO When the number of players drops to less than 1 the match ends.
-    }
-
     protected override void OnShipCreated(Ship ship)
     {
         base.OnShipCreated(ship);
 
         ship.OrbDetachedEvent += OnOrbChanged;
         ship.OrbAttachedEvent += OnOrbChanged;
+
+        if (isServer)
+        {
+            ship.AttachOrb(new List<GameObject>(orbs.GetRange(ship.player_index * lives, lives).Select(orb => orb.gameObject)));
+        }
     }
 
     protected override void OnShipDestroyed(Ship ship)
@@ -63,6 +41,21 @@ public class EliminationGameMode : BaseGameMode
 
         ship.OrbDetachedEvent -= OnOrbChanged;
         ship.OrbAttachedEvent -= OnOrbChanged;
+    }
+
+    /// <summary>
+    /// Called whenever a ship loses one or more orbs.
+    /// </summary>
+    private void OnOrbChanged(Ship ship, List<GameObject> orbs)
+    {
+        var player = (LobbyPlayer)GameLobby.Instance.lobbySlots[ship.player_index];
+
+        player.score = ship.TailLength;
+
+        if(isServer && ship.TailLength == 0)
+        {
+            Destroy(ship);
+        }
     }
 }
 
