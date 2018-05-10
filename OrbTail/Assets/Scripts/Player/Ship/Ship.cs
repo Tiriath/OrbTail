@@ -76,9 +76,12 @@ public class Ship : NetworkBehaviour
     {
         base.OnStartClient();
 
-        Debug.Assert(player_index >= 0, "Invalid player index on ship creation.");
-
         LobbyPlayer = GameLobby.Instance.lobbySlots[player_index] as LobbyPlayer;
+
+        if(!LobbyPlayer.is_human && isServer)
+        {
+            gameObject.AddComponent<PlayerAI>();
+        }
 
         RefreshColor();
 
@@ -97,9 +100,16 @@ public class Ship : NetworkBehaviour
     {
         base.OnStartLocalPlayer();
 
+        Debug.Assert(hasAuthority, "Local player is expected to have authority!");
+
         if(ShipLocalPlayerEvent != null)
         {
             ShipLocalPlayerEvent(this);
+        }
+
+        if(!LobbyPlayer.is_human)
+        {
+            SetReady();                             // The AI is always ready!
         }
     }
 

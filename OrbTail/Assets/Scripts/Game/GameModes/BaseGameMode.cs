@@ -203,37 +203,40 @@ public abstract class BaseGameMode : NetworkBehaviour
     {
         Debug.Log("BaseGameMode::OnShipLocalPlayer");
 
-        // Spawn a follow camera for each active local player.
-
-        var camera = Instantiate(follow_camera).GetComponent<FollowCamera>();
-
-        camera.ViewTarget = ship.gameObject;
-
-        camera.Snap();
-
-        // Attach the tutorial HUD to the local player camera.
-
-        if (tutorial_hud)
+        if(ship.LobbyPlayer.is_human)
         {
-            var hud = Instantiate(tutorial_hud).GetComponent<HUDHandler>();
+            // Spawn a follow camera for each active local human player.
 
-            hud.Camera = camera.GetComponentInChildren<Camera>();
-            hud.Owner = ship.gameObject;
+            var camera = Instantiate(follow_camera).GetComponent<FollowCamera>();
+
+            camera.ViewTarget = ship.gameObject;
+
+            camera.Snap();
+
+            // Attach the tutorial HUD to the local player camera.
+
+            if (tutorial_hud)
+            {
+                var hud = Instantiate(tutorial_hud).GetComponent<HUDHandler>();
+
+                hud.Camera = camera.GetComponentInChildren<Camera>();
+                hud.Owner = ship.gameObject;
+            }
+
+            // Attach the game HUD to the local player camera.
+
+            if (game_hud)
+            {
+                var hud = Instantiate(game_hud).GetComponent<HUDHandler>();
+
+                hud.Camera = camera.GetComponentInChildren<Camera>();
+                hud.Owner = ship.gameObject;
+            }
+
+            // #WORKAROUND Each player should have its own GUI input handler.
+
+            FindObjectOfType<GUIInputHandler>().OwningCamera = camera.GetComponentInChildren<Camera>();
         }
-
-        // Attach the game HUD to the local player camera.
-
-        if (game_hud)
-        {
-            var hud = Instantiate(game_hud).GetComponent<HUDHandler>();
-
-            hud.Camera = camera.GetComponentInChildren<Camera>();
-            hud.Owner = ship.gameObject;
-        }
-
-        // #WORKAROUND Each player should have its own GUI input handler.
-
-        FindObjectOfType<GUIInputHandler>().OwningCamera = camera.GetComponentInChildren<Camera>();
     }
 
     /// <summary>
