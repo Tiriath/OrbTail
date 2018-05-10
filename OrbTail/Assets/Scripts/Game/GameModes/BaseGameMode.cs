@@ -246,6 +246,8 @@ public abstract class BaseGameMode : NetworkBehaviour
 
         ships.Add(ship);
 
+        EnableControls(ship, false);
+
         ship.ShipReadyEvent += OnShipReady;
 
         CheckShipReady();
@@ -343,12 +345,20 @@ public abstract class BaseGameMode : NetworkBehaviour
     {
         foreach (var ship in ships)
         {
-            var movement = ship.GetComponent<MovementController>();
-            var power = ship.GetComponent<PowerController>();
-
-            movement.enabled = value;
-            power.enabled = value;
+            EnableControls(ship, value);
         }
+    }
+
+    /// <summary>
+    /// Enable or disable the controls on the provided ship.
+    /// </summary>
+    private void EnableControls(Ship ship, bool value)
+    {
+        var movement = ship.GetComponent<MovementController>();
+        var power = ship.GetComponent<PowerController>();
+
+        movement.enabled = value;
+        power.enabled = value;
     }
 
     /// <summary>
