@@ -16,33 +16,44 @@ public class HUDPlayerScore : MonoBehaviour
     {
         text_mesh = GetComponent<TextMesh>();
 
+        text_mesh.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+
         foreach (LobbyPlayer lobby_player in GameLobby.Instance.lobbySlots)
         {
             if(lobby_player && lobby_player.player_index == player_index)
             {
                 this.lobby_player = lobby_player;
+
+                lobby_player.PlayerScoreEvent += OnPlayerScore;
+                lobby_player.PlayerLeftEvent += OnPlayerLeft;
+
+                OnPlayerScore(lobby_player);
+
                 break;
             }
         }
 
-        if(lobby_player)
-        {
-            lobby_player.PlayerScoreEvent += OnPlayerScore;
-            lobby_player.PlayerLeftEvent += OnPlayerLeft;
-
-            text_mesh.color = lobby_player.Color;
-
-            OnPlayerScore(lobby_player);
-        }
-        else
-        {
-            gameObject.SetActive(false);                        // Hide the element if no player can be found.
-        }
+        BaseGameMode.Instance.MatchCountdownEvent += OnMatchCountdown;
     }
 
     public void OnDestroy()
     {
+        BaseGameMode.Instance.MatchCountdownEvent -= OnMatchCountdown;
+
         OnPlayerLeft(lobby_player);
+    }
+
+    /// <summary>
+    /// Called whenever the game mode countdown starts.
+    /// </summary>
+    private void OnMatchCountdown(BaseGameMode game_mode)
+    {
+        BaseGameMode.Instance.MatchCountdownEvent -= OnMatchCountdown;
+
+        if(lobby_player)
+        {
+            text_mesh.color = lobby_player.Color;
+        }
     }
 
     /// <summary>

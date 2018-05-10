@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 /// <summary>
 /// HUD element used to show the current game time.
 /// </summary>
-public class HUDGameTimer : MonoBehaviour
+public class HUDGameTimer : HUDElement
 {
     /// <summary>
     /// Time for which the HUD element starts pulsating.
@@ -26,22 +25,76 @@ public class HUDGameTimer : MonoBehaviour
     /// </summary>
     public float pulse_duration = 0.4f;
 
+    /// <summary>
+    /// Pulse easing curve.
+    /// </summary>
+    public iTween.EaseType pulse_ease = iTween.EaseType.easeOutCirc;
+
+    /// <summary>
+    /// Time to wait before fading the element away.
+    /// </summary>
+    public float fade_delay = 0.5f;
+
+    /// <summary>
+    /// Time fade duration.
+    /// </summary>
+    public float fade_duration = 1.0f;
+
+    /// <summary>
+    /// Fade easing curve.
+    /// </summary>
+    public iTween.EaseType fade_ease = iTween.EaseType.easeInCubic;
+
     public void Awake()
     {
-        original_scale = gameObject.transform.localScale;
-
         text_mesh = gameObject.GetComponent<TextMesh>();
-
-        original_color = text_mesh.color;
-
         timer = BaseGameMode.Instance.GetComponent<GameTimer>();
 
-        timer.TickEvent += OnTick;
+        original_scale = gameObject.transform.localScale;
+        original_color = text_mesh.color;
+
+        text_mesh.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+
+        BaseGameMode.Instance.MatchCountdownEvent += OnMatchCountdown;
+        BaseGameMode.Instance.MatchStartEvent += OnMatchStart;
     }
 
     public void OnDestroy()
     {
+        BaseGameMode.Instance.MatchCountdownEvent -= OnMatchCountdown;
+        BaseGameMode.Instance.MatchCountdownEvent -= OnMatchStart;
+
         timer.TickEvent -= OnTick;
+    }
+
+    /// <summary>
+    /// Called whenever the game mode countdown starts.
+    /// </summary>
+    private void OnMatchCountdown(BaseGameMode game_mode)
+    {
+        BaseGameMode.Instance.MatchCountdownEvent -= OnMatchCountdown;
+
+        gameObject.transform.localScale = original_scale;
+        text_mesh.color = original_color;
+
+        time = BaseGameMode.Instance.duration;
+
+        UpdateTime();
+    }
+
+    /// <summary>
+    /// Called whenever the game mode starts.
+    /// </summary>
+    private void OnMatchStart(BaseGameMode game_mode)
+    {
+        BaseGameMode.Instance.MatchCountdownEvent -= OnMatchStart;
+
+        timer.TickEvent += OnTick;
+
+        gameObject.transform.localScale = original_scale;
+        text_mesh.color = original_color;
+
+        UpdateTime();
     }
 
     /// <summary>
@@ -49,9 +102,11 @@ public class HUDGameTimer : MonoBehaviour
     /// </summary>
     private void OnTick(GameTimer timer)
     {
+        time = timer.time;                                              // Snapshot the current time since it may change when the tweening coroutine is executed.
+
         // Start pulsating below the critical time threshold.
 
-        if(timer.time > critical_time)
+        if (time > critical_time)
         {
             gameObject.transform.localScale = original_scale;
             text_mesh.color = original_color;
@@ -64,11 +119,22 @@ public class HUDGameTimer : MonoBehaviour
                 "from", 0f,
                 "to", 1f,
                 "time", pulse_duration,
-                "easeType", iTween.EaseType.easeOutCirc,
+                "easeType", pulse_ease,
                 "onUpdate", "PulseTimer"));
+
+            if(time <= 0)
+            {
+                timer.TickEvent -= OnTick;
+
+                iTween.FadeTo(this.gameObject, iTween.Hash(
+                    "alpha", 0f,
+                    "time", fade_duration,
+                    "easeType", fade_ease,
+                    "delay", fade_delay));
+            }
         }
     }
-    
+
     /// <summary>
     /// Called whenever the timer is pulsating.
     /// </summary>
@@ -85,8 +151,8 @@ public class HUDGameTimer : MonoBehaviour
     /// </summary>
     private void UpdateTime()
     {
-        var minutes = timer.time / 60;
-        var seconds = timer.time % 60;
+        var minutes = time / 60;
+        var seconds = time % 60;
 
         text_mesh.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
@@ -95,6 +161,11 @@ public class HUDGameTimer : MonoBehaviour
     /// Game timer to display.
     /// </summary>
     private GameTimer timer;
+
+    /// <summary>
+    /// Time to display.
+    /// </summary>
+    private int time;
 
     /// <summary>
     /// Element used to displayer the game time on.

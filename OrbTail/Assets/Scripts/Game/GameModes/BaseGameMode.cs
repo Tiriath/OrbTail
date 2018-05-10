@@ -164,6 +164,11 @@ public abstract class BaseGameMode : NetworkBehaviour
     protected virtual void OnMatchStart()
     {
         EnableControls(true);
+
+        timer.TimeOutEvent += OnEndTime;
+
+        timer.duration = duration;
+        timer.enabled = true;
     }
 
     /// <summary>
@@ -315,6 +320,19 @@ public abstract class BaseGameMode : NetworkBehaviour
         if (isServer)
         {
             RpcMatchStart();
+        }
+    }
+
+    /// <summary>
+    /// Called whenever the countdown timer ends.
+    /// </summary>
+    private void OnEndTime(GameTimer timer)
+    {
+        timer.TimeOutEvent -= OnEndTime;
+
+        if (isServer)
+        {
+            RpcMatchEnd();
         }
     }
 

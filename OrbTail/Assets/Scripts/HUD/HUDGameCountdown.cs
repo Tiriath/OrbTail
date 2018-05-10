@@ -58,7 +58,6 @@ public class HUDGameCountdown : HUDElement
         BaseGameMode.Instance.MatchCountdownEvent -= OnMatchCountdown;
 
         timer.TickEvent -= OnTick;
-        timer.TimeOutEvent -= OnTimeout;
     }
 
     /// <summary>
@@ -69,7 +68,6 @@ public class HUDGameCountdown : HUDElement
         BaseGameMode.Instance.MatchCountdownEvent -= OnMatchCountdown;
 
         timer.TickEvent += OnTick;
-        timer.TimeOutEvent += OnTimeout;
 
         PulseTimer(0.0f);
     }
@@ -79,27 +77,25 @@ public class HUDGameCountdown : HUDElement
     /// </summary>
     private void OnTick(GameTimer timer)
     {
+        time = timer.time;                                              // Snapshot the current time since it may change when the tweening coroutine is executed.
+
         iTween.ValueTo(this.gameObject, iTween.Hash(
             "from", 0f,
             "to", 1f,
             "time", pulse_duration,
             "easeType", pulse_ease,
             "onUpdate", "PulseTimer"));
-    }
 
-    /// <summary>
-    /// Called whenever the timer finishes.
-    /// </summary>
-    private void OnTimeout(GameTimer timer)
-    {
-        timer.TickEvent -= OnTick;
-        timer.TimeOutEvent -= OnTimeout;
+        if(timer.time <= 0)
+        {
+            timer.TickEvent -= OnTick;
 
-        iTween.FadeTo(this.gameObject, iTween.Hash(
-            "alpha", 0f,
-            "time", fade_duration,
-            "easeType", fade_ease,
-            "delay", fade_delay));
+            iTween.FadeTo(this.gameObject, iTween.Hash(
+                "alpha", 0f,
+                "time", fade_duration,
+                "easeType", fade_ease,
+                "delay", fade_delay));
+        }
     }
 
     /// <summary>
@@ -110,13 +106,18 @@ public class HUDGameCountdown : HUDElement
         gameObject.transform.localScale = Vector3.Lerp(original_scale, original_scale * pulse_scale, 1.0f - alpha);
         text_mesh.color = original_color;
 
-        text_mesh.text = (timer.time > 0) ? timer.time.ToString() : timeout_text;
+        text_mesh.text = (time > 0) ? timer.time.ToString() : timeout_text;
     }
 
     /// <summary>
     /// Countdown timer.
     /// </summary>
     private GameTimer timer;
+
+    /// <summary>
+    /// Time to display.
+    /// </summary>
+    private int time;
 
     /// <summary>
     /// Element used to displayer the countdown on.

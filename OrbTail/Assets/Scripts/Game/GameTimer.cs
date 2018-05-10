@@ -44,7 +44,7 @@ public class GameTimer : NetworkBehaviour
         {
             time = new_time;
 
-            if(TickEvent != null)
+            if (TickEvent != null)
             {
                 TickEvent(this);
             }
@@ -58,7 +58,6 @@ public class GameTimer : NetworkBehaviour
                     TimeOutEvent(this);
                 }
             }
-
         }
     }
 
