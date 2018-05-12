@@ -193,9 +193,9 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         
     }
     
-    void OnEventOrbAttached(Ship ship, List<GameObject> orbs)
+    void OnEventOrbAttached(Ship ship, GameObject orb)
     {
-        if (orbs.Contains(target))
+        if (orb == target)
         {
             ResetTarget();
         }

@@ -15,6 +15,22 @@ public class EliminationGameMode : BaseGameMode
     /// </summary>
     public int lives = 5;
 
+    protected override void OnMatchCountdown()
+    {
+        base.OnMatchCountdown();
+
+        if (isServer)
+        {
+            foreach(var ship in ships)
+            {
+                for(int orb_index = 0; orb_index < lives; ++orb_index)
+                {
+                    ship.RpcAttachOrb(orbs[ship.player_index * lives + orb_index].gameObject);
+                }
+            }
+        }
+    }
+
     protected override void OnMatchEnd()
     {
         base.OnMatchEnd();
@@ -28,11 +44,6 @@ public class EliminationGameMode : BaseGameMode
 
         ship.OrbDetachedEvent += OnOrbChanged;
         ship.OrbAttachedEvent += OnOrbChanged;
-
-        if (isServer)
-        {
-            ship.AttachOrb(new List<GameObject>(orbs.GetRange(ship.player_index * lives, lives).Select(orb => orb.gameObject)));
-        }
     }
 
     protected override void OnShipDestroyed(Ship ship)
@@ -44,17 +55,15 @@ public class EliminationGameMode : BaseGameMode
     }
 
     /// <summary>
-    /// Called whenever a ship loses one or more orbs.
+    /// Called whenever a ship acquires or loses one orb.
     /// </summary>
-    private void OnOrbChanged(Ship ship, List<GameObject> orbs)
+    private void OnOrbChanged(Ship ship, GameObject orb)
     {
-        var player = (LobbyPlayer)GameLobby.Instance.lobbySlots[ship.player_index];
-
-        player.score = ship.TailLength;
+        ship.LobbyPlayer.score = ship.TailLength;
 
         if(isServer && ship.TailLength == 0)
         {
-            Destroy(ship);
+            //Destroy(ship);
         }
     }
 }

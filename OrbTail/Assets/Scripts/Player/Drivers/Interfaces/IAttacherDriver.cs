@@ -9,10 +9,10 @@ using System;
 public interface IAttacherDriver : IDriver
 {
     /// <summary>
-    /// Execute an attach function for each orb in the list.
+    /// Execute an attach function to an orb.
     /// </summary>
-    /// <param name="orbs">Orbs to attach.</param>
+    /// <param name="orb">Orb to attach.</param>
     /// <param name="attacher">Attacher function.</param>
-    /// <returns>Returns the list of orbs detached.</returns>
-    List<GameObject> AttachOrbs(List<GameObject> orbs, Func<GameObject, bool> attacher);
+    /// <returns>Returns true if the orb could be attached, returns false otherwise.</returns>
+    bool AttachOrb(GameObject orb, Func<GameObject, bool> attacher);
 }

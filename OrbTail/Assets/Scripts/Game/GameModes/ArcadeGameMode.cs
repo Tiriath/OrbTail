@@ -38,11 +38,11 @@ public class ArcadeGameMode : BaseGameMode
     /// <summary>
     /// Called whenever an orb is attached to a ship.
     /// </summary>
-    private void OnOrbAttached(Ship ship, List<GameObject> orbs)
+    private void OnOrbAttached(Ship ship, GameObject orb)
     {
         var player = (LobbyPlayer) GameLobby.Instance.lobbySlots[ship.player_index];
 
-        player.score += kOrbAttachedScore;
+        ship.LobbyPlayer.score += kOrbAttachedScore;
     }
 }
 

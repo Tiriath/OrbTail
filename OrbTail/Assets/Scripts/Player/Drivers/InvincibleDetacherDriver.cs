@@ -8,8 +8,8 @@ using System;
 /// </summary>
 public class InvincibleDetacherDriver : BaseDriver, IDetacherDriver
 {
-    public List<GameObject> DetachOrbs(int count, Func<GameObject> detacher)
+    public GameObject DetachOrb(Func<GameObject> detacher)
     {
-        return new List<GameObject>();
+        return null;
     }
 }

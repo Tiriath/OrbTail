@@ -8,10 +8,9 @@ using System;
 public interface IDetacherDriver : IDriver
 {
     /// <summary>
-    /// Execute a detach function a number of times.
+    /// Execute a detach function on an attached orb.
     /// </summary>
-    /// <param name="count">Number of orbs to detach..</param>
     /// <param name="detacher">Detacher function.</param>
-    /// <returns>Returns the list of orbs detached.</returns>
-    List<GameObject> DetachOrbs(int count, Func<GameObject> detacher);
+    /// <returns>Returns the detached orb, if any.</returns>
+    GameObject DetachOrb(Func<GameObject> detacher);
 }

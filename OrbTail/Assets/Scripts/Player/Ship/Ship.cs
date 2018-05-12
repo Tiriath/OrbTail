@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class Ship : NetworkBehaviour
 {
     public delegate void DelegateShipEvent(Ship sender);
-    public delegate void DelegateOrbEvent(Ship ship, List<GameObject> orbs);
+    public delegate void DelegateOrbEvent(Ship ship, GameObject orb);
 
     public static event DelegateShipEvent ShipCreatedEvent;
     public static event DelegateShipEvent ShipLocalPlayerEvent;
@@ -123,40 +123,32 @@ public class Ship : NetworkBehaviour
 
     /// <summary>
     /// Attach one orb to the ship.
+    /// Only the server is allowed to attach orbs.
     /// </summary>
-    public bool AttachOrb(GameObject orb)
+    [ClientRpc]
+    public void RpcAttachOrb(GameObject orb)
     {
-        return AttachOrb(new List<GameObject>() { orb }).Contains(orb);
+        bool attached = AttachDriver.Top().AttachOrb(orb, OnOrbAttached);
+
+        if (attached && OrbAttachedEvent != null)
+        {
+            OrbAttachedEvent(this, orb);
+        }
     }
 
     /// <summary>
-    /// Attach one or more orbs to the ship.
+    /// Detach one orb from the ship.
+    /// Only the server is allowed to detach orbs.
     /// </summary>
-    public List<GameObject> AttachOrb(List<GameObject> orbs)
+    [ClientRpc]
+    public void RpcDetachOrb()
     {
-        orbs = AttachDriver.Top().AttachOrbs(orbs, OnOrbAttached);
+        var detached_orb = DetachDriver.Top().DetachOrb(OnOrbDetached);
 
-        if (OrbAttachedEvent != null)
+        if (OrbDetachedEvent != null && detached_orb)
         {
-            OrbAttachedEvent(this, orbs);
+            OrbDetachedEvent(this, detached_orb);
         }
-
-        return orbs;
-    }
-
-    /// <summary>
-    /// Detach one or more orbs from the ship.
-    /// </summary>
-    public List<GameObject> DetachOrbs(int count)
-    {
-        var detached_orbs = DetachDriver.Top().DetachOrbs(Mathf.Min(count, orbs.Count), OnOrbDetached);
-
-        if (OrbDetachedEvent != null && detached_orbs.Count > 0)
-        {
-            OrbDetachedEvent(this, detached_orbs);
-        }
-
-        return detached_orbs;
     }
 
     /// <summary>
@@ -205,11 +197,18 @@ public class Ship : NetworkBehaviour
     /// </summary>
     private GameObject OnOrbDetached()
     {
-        var orb = orbs.Pop();
+        if(orbs.Count > 0)
+        {
+            var orb = orbs.Pop();
 
-        orb.Unlink();
+            orb.Unlink();
 
-        return orb.gameObject;
+            return orb.gameObject;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     /// <summary>
@@ -217,15 +216,18 @@ public class Ship : NetworkBehaviour
     /// </summary>
     private void OnProximityEnter(object sender, Collider other)
     {
-        GameObject game_object = other.gameObject;
-
-        if (game_object.tag == Tags.Orb)
+        if(isServer)
         {
-            OrbController orb_controller = game_object.GetComponent<OrbController>();
+            GameObject game_object = other.gameObject;
 
-            if (!orb_controller.IsLinked)
+            if (game_object.tag == Tags.Orb)
             {
-                AttachOrb(game_object);
+                OrbController orb_controller = game_object.GetComponent<OrbController>();
+
+                if (!orb_controller.IsLinked)
+                {
+                    RpcAttachOrb(game_object);
+                }
             }
         }
     }

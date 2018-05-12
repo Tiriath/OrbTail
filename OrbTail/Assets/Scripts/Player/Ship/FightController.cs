@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 /// </summary>
 public class FightController : NetworkBehaviour
 {
-    public delegate void DelegateFight(GameObject attacker, GameObject defender, List<GameObject> orbs);
+    public delegate void DelegateFight(GameObject attacker, GameObject defender, IList<GameObject> orbs);
 
     public event DelegateFight FightEvent;
 
@@ -46,23 +46,31 @@ public class FightController : NetworkBehaviour
     /// <param name="collision">Collision data.</param>
     private void OnCollisionEnter(Collision collision)
     {
-        // This ship is the defender, whereas the other is the attacker. This event is triggered on both ships simultaneously with reversed roles.
-
-        GameObject game_object = collision.gameObject;
-
-        if (game_object.tag == Tags.Ship)
+        if(isServer)
         {
-            var damage = game_object.GetComponent<FightController>().OffenceDriver.Top().GetDamage(collision);      // Damage dealt to this ship.
+            // This ship is the defender, whereas the other is the attacker. This event is triggered on both ships simultaneously with reversed roles.
 
-            var orbs_count = DefenceDriver.Top().ReceiveDamage(damage);                                             // Orbs lost by this ship.
+            GameObject game_object = collision.gameObject;
 
-            var lost_orbs = GetComponent<Ship>().DetachOrbs(orbs_count);                                            // Detach orbs from this ship.
-            
-            if (FightEvent != null && lost_orbs.Count > 0)
+            if (game_object.tag == Tags.Ship)
             {
+                var defender = GetComponent<Ship>();
+
+                var damage = game_object.GetComponent<FightController>().OffenceDriver.Top().GetDamage(collision);      // Damage dealt to this ship.
+
+                var orbs_count = DefenceDriver.Top().ReceiveDamage(damage);                                             // Orbs lost by this ship.
+
                 Debug.Log(game_object.name + " hit " + gameObject.name + " causing " + damage + "damage.");
 
-                FightEvent(game_object, this.gameObject, lost_orbs);                                                // Notify.
+                for (;orbs_count > 0; --orbs_count)
+                {
+                    defender.RpcDetachOrb();
+
+                    //if (FightEvent != null)
+                    //{
+                    //    FightEvent(game_object, this.gameObject, lost_orbs);                                            // Notify.
+                    //}
+                }
             }
         }
     }

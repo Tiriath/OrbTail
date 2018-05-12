@@ -49,11 +49,11 @@ public class OrbSteal : Power
     /// <summary>
     /// Called whenever a fight between this ship and another one occurs.
     /// </summary>
-    void OnFight(GameObject attacker, GameObject defender, List<GameObject> orbs)
+    void OnFight(GameObject attacker, GameObject defender, IList<GameObject> orbs)
     {
         if (attacker == Owner)
         {
-            attacker.GetComponent<Ship>().AttachOrb(orbs);
+            //attacker.GetComponent<Ship>().AttachOrb(orbs);
         }
     }
 }

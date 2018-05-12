@@ -42,6 +42,11 @@ public abstract class BaseGameMode : NetworkBehaviour
     public int countdown = 3;
 
     /// <summary>
+    /// Number of orbs in the match.
+    /// </summary>
+    private int orb_count = 28;
+
+    /// <summary>
     /// Get the game mode instance.
     /// </summary>
     public static BaseGameMode Instance
@@ -65,6 +70,8 @@ public abstract class BaseGameMode : NetworkBehaviour
         Ship.ShipCreatedEvent += OnShipCreated;
         Ship.ShipDestroyedEvent += OnShipDestroyed;
 
+        OrbController.OrbCreatedEvent += OnOrbCreated;
+
         timer = GetComponent<GameTimer>();
     }
 
@@ -73,6 +80,8 @@ public abstract class BaseGameMode : NetworkBehaviour
         Ship.ShipDestroyedEvent -= OnShipDestroyed;
         Ship.ShipCreatedEvent -= OnShipCreated;
         Ship.ShipLocalPlayerEvent -= OnShipLocalPlayer;
+
+        OrbController.OrbCreatedEvent -= OnOrbCreated;
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
@@ -83,48 +92,6 @@ public abstract class BaseGameMode : NetworkBehaviour
     }
 
     /// <summary>
-    /// Start the initial countdown.
-    /// </summary>
-    [ClientRpc]
-    public void RpcMatchCountdown()
-    {
-        OnMatchCountdown();
-
-        if (MatchCountdownEvent != null)
-        {
-            MatchCountdownEvent(this);
-        }
-    }
-
-    /// <summary>
-    /// Start the current match.
-    /// </summary>
-    [ClientRpc]
-    public void RpcMatchStart()
-    {
-        OnMatchStart();
-
-        if (MatchStartEvent != null)
-        {
-            MatchStartEvent(this);
-        }
-    }
-
-    /// <summary>
-    /// End the current match.
-    /// </summary>
-    [ClientRpc]
-    public void RpcMatchEnd()
-    {
-        OnMatchEnd();
-
-        if (MatchEndEvent != null)
-        {
-            MatchEndEvent(this);
-        }
-    }
-
-    /// <summary>
     /// Called whenever the match is created.
     /// Synchronizes the game mode until each ship has been created and each player is ready.
     /// This event is started autonomously.
@@ -132,8 +99,6 @@ public abstract class BaseGameMode : NetworkBehaviour
     protected virtual void OnMatchSetup()
     {
         Debug.Log("BaseGameMode::OnMatchSetup");
-
-        orbs.AddRange(FindObjectsOfType<OrbController>());
 
         foreach (LobbyPlayer lobby_player in GameLobby.Instance.lobbySlots)
         {
@@ -183,17 +148,6 @@ public abstract class BaseGameMode : NetworkBehaviour
         //    distanceSmooth = finalSmooth;
         //    Camera.LookAt(winner);
         //}
-    }
-
-    /// <summary>
-    /// Check whether the end conditions for this game mode are met.
-    /// </summary>
-    /// <returns>Returns true if the end conditions are met and the match should be terminated, returns false otherwise.</returns>
-    protected virtual bool CheckEndConditions()
-    {
-        // Either the time's up OR there are less than one ship in the game.
-
-        return false;
     }
 
     /// <summary>
@@ -251,9 +205,9 @@ public abstract class BaseGameMode : NetworkBehaviour
 
         EnableControls(ship, false);
 
-        ship.ShipReadyEvent += OnShipReady;
+        CheckCountdownConditions();
 
-        CheckShipReady();
+        ship.ShipReadyEvent += OnShipReady;
     }
 
     /// <summary>
@@ -268,7 +222,60 @@ public abstract class BaseGameMode : NetworkBehaviour
 
         ships.Remove(ship);
 
-        CheckShipReady();
+        CheckCountdownConditions();
+    }
+
+    /// <summary>
+    /// Called whenever an orb is created.
+    /// </summary>
+    /// <param name="orb"></param>
+    protected virtual void OnOrbCreated(OrbController orb)
+    {
+        orbs.Add(orb);
+
+        CheckCountdownConditions();
+    }
+
+    /// <summary>
+    /// Start the initial countdown.
+    /// </summary>
+    [ClientRpc]
+    private void RpcMatchCountdown()
+    {
+        OnMatchCountdown();
+
+        if (MatchCountdownEvent != null)
+        {
+            MatchCountdownEvent(this);
+        }
+    }
+
+    /// <summary>
+    /// Start the current match.
+    /// </summary>
+    [ClientRpc]
+    private void RpcMatchStart()
+    {
+        OnMatchStart();
+
+        if (MatchStartEvent != null)
+        {
+            MatchStartEvent(this);
+        }
+    }
+
+    /// <summary>
+    /// End the current match.
+    /// </summary>
+    [ClientRpc]
+    private void RpcMatchEnd()
+    {
+        OnMatchEnd();
+
+        if (MatchEndEvent != null)
+        {
+            MatchEndEvent(this);
+        }
     }
 
     /// <summary>
@@ -291,13 +298,13 @@ public abstract class BaseGameMode : NetworkBehaviour
     /// </summary>
     private void OnShipReady(Ship ship)
     {
-        CheckShipReady();
+        CheckCountdownConditions();
     }
 
     /// <summary>
-    /// Check whether the ships in the match are ready.
+    /// Check whether the countdown conditions are met.
     /// </summary>
-    private void CheckShipReady()
+    private void CheckCountdownConditions()
     {
         if (isServer)
         {
@@ -309,6 +316,13 @@ public abstract class BaseGameMode : NetworkBehaviour
                 {
                     return;
                 }
+            }
+
+            // Start the match when each orb has been spawned on the server.
+
+            if(orbs.Count < orb_count)
+            {
+                return;
             }
 
             RpcMatchCountdown();

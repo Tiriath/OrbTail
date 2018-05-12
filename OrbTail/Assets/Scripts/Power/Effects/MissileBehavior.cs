@@ -78,7 +78,7 @@ public class MissileBehavior : MonoBehaviour
         {
             collision.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * explosionForce, ForceMode.Impulse);
 
-            collision.gameObject.GetComponent<Ship>().DetachOrbs(int.MaxValue);
+            //collision.gameObject.GetComponent<Ship>().DetachOrbs(int.MaxValue);
 
             DestroyMissile();
         }

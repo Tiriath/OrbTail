@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 /// <summary>
 /// Script used to link orbs together forming a tail.
 /// </summary>
-public class OrbController : MonoBehaviour
+public class OrbController : NetworkBehaviour
 {
+    public delegate void DelegateOrbEvent(OrbController orb);
+
+    public static event DelegateOrbEvent OrbCreatedEvent;
+
     /// <summary>
     /// Path of the prefab used to make the orb glow.
     /// </summary>
@@ -29,39 +34,52 @@ public class OrbController : MonoBehaviour
     }
 
     /// <summary>
+    /// Called on each client after being activated.
+    /// </summary>
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        if (OrbCreatedEvent != null)
+        {
+            OrbCreatedEvent(this);
+        }
+    }
+
+    /// <summary>
     /// Links this orb to another object via a SpringJoint.
     /// </summary>
     /// <param name="target">Object to attach this orb to.</param>
     /// <param name="material">Material to assign to the orb. May be left null.</param>
     public void Link(GameObject target, Material material = null)
+{
+    Unlink();
+
+    IsLinked = true;
+
+    SpringJoint joint = this.gameObject.AddComponent<SpringJoint>();
+
+    joint.connectedBody = target.GetComponent<Rigidbody>();
+    joint.damper = kSpringDamper;
+    joint.spring = kSpringStiffness;
+    joint.minDistance = kSpringMinLength;
+    joint.maxDistance = kSpringMaxLength;
+
+    if (target.tag == Tags.Ship)
     {
-        Unlink();
-
-        IsLinked = true;
-
-        SpringJoint joint = this.gameObject.AddComponent<SpringJoint>();
-
-        joint.connectedBody = target.GetComponent<Rigidbody>();
-        joint.damper = kSpringDamper;
-        joint.spring = kSpringStiffness;
-        joint.minDistance = kSpringMinLength;
-        joint.maxDistance = kSpringMaxLength;
-
-        if (target.tag == Tags.Ship)
-        {
-            joint.minDistance += kShipDistance;
-            joint.maxDistance += kShipDistance;
-        }
-
-        joint.autoConfigureConnectedAnchor = false;
-        joint.anchor = Vector3.zero;
-        joint.connectedAnchor = Vector3.zero;
-
-        if(material != null)
-        {
-            GetComponent<Renderer>().material = material;
-        }
+        joint.minDistance += kShipDistance;
+        joint.maxDistance += kShipDistance;
     }
+
+    joint.autoConfigureConnectedAnchor = false;
+    joint.anchor = Vector3.zero;
+    joint.connectedAnchor = Vector3.zero;
+
+    if(material != null)
+    {
+        GetComponent<Renderer>().material = material;
+    }
+}
 
     /// <summary>
     /// Unlink this orb from the current object.

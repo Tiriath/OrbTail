@@ -30,13 +30,11 @@ public class LongestTailGameMode : BaseGameMode
     }
 
     /// <summary>
-    /// Called whenever a ship orb count changes.
+    /// Called whenever a ship acquires or loses one orb.
     /// </summary>
-    private void OnOrbChanged(Ship ship, List<GameObject> orbs)
+    private void OnOrbChanged(Ship ship, GameObject orb)
     {
-        var player = (LobbyPlayer)GameLobby.Instance.lobbySlots[ship.player_index];
-
-        player.score = ship.TailLength;
+        ship.LobbyPlayer.score = ship.TailLength;
     }
 }
 
