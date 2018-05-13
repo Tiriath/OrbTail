@@ -6,9 +6,14 @@
 public class HUDShipOutcome : HUDElement
 {
     /// <summary>
-    /// Message to show when a player wins.
+    /// Message to show when the player wins.
     /// </summary>
-    public string win_message = "{0} wins!";
+    public string win_message = "you win!";
+
+    /// <summary>
+    /// Message to show when the player looses.
+    /// </summary>
+    public string loss_message = "you lose!";
 
     /// <summary>
     /// Message to show when the match ended with a tie.
@@ -34,7 +39,20 @@ public class HUDShipOutcome : HUDElement
     {
         BaseGameMode.Instance.MatchCountdownEvent -= OnMatchEnd;
 
-        text_mesh.text = "Game over";
+        var winner = BaseGameMode.Instance.Winner;
+
+        if (winner == null)
+        {
+            text_mesh.text = tie_message;
+        }
+        else if (winner == Owner.GetComponent<Ship>().LobbyPlayer)
+        {
+            text_mesh.text = win_message;
+        }
+        else
+        {
+            text_mesh.text = loss_message;
+        }
     }
 
     /// <summary>

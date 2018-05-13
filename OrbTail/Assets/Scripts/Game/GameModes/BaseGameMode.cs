@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 /// <summary>
 /// Base class inherited by each game mode.
@@ -59,6 +60,46 @@ public abstract class BaseGameMode : NetworkBehaviour
             }
 
             return game_mode_instance;
+        }
+    }
+
+    /// <summary>
+    /// Get the current ranks.
+    /// </summary>
+    public List<LobbyPlayer> Ranks
+    {
+        get
+        {
+            var ranks = new List<LobbyPlayer>(GameLobby.Instance.lobbySlots.Where(player => player).Select(slot => (LobbyPlayer)slot));
+
+            ranks.Sort((first, second) => second.score.CompareTo(first.score));
+
+            return ranks;
+        }
+    }
+
+    /// <summary>
+    /// Get the current winner.
+    /// </summary>
+
+    public LobbyPlayer Winner
+    {
+        get
+        {
+            var ranks = Ranks;
+
+            if(ranks.Count == 1)                    // Single player, must be the winner.
+            {
+                return ranks.First();
+            }
+            else if(ranks.Count > 1 && ranks[0].score > ranks[1].score)
+            {
+                return ranks.First();               // The first player score is strictly greater than second's one.
+            }
+            else
+            {
+                return null;                        // Tie or empty match: no winner.
+            }
         }
     }
 
@@ -143,11 +184,19 @@ public abstract class BaseGameMode : NetworkBehaviour
     {
         EnableControls(false);
 
-        //if (winner != null)
-        //{
-        //    distanceSmooth = finalSmooth;
-        //    Camera.LookAt(winner);
-        //}
+        // Snap each local camera on the winner (if any).
+
+        var winner = Winner;
+
+        if (winner)
+        {
+            foreach(var camera in FindObjectsOfType<FollowCamera>())
+            {
+                camera.ViewTarget = ships[winner.player_index].gameObject;
+
+                //camera.Snap();
+            }
+        }
     }
 
     /// <summary>
