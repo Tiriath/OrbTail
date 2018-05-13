@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 /// <summary>
 /// The last player standing wins the game. If the player has no more orbs it gets eliminated
@@ -14,6 +15,11 @@ public class EliminationGameMode : BaseGameMode
     /// Initial amount of lives for each player.
     /// </summary>
     public int lives = 5;
+
+    /// <summary>
+    /// Prefab used for spectating the match.
+    /// </summary>
+    public GameObject spectator_prefab;
 
     protected override void OnMatchCountdown()
     {
@@ -29,13 +35,6 @@ public class EliminationGameMode : BaseGameMode
                 }
             }
         }
-    }
-
-    protected override void OnMatchEnd()
-    {
-        base.OnMatchEnd();
-
-        // #TODO The winner is the last ship standing (or tie if none).
     }
 
     protected override void OnShipCreated(Ship ship)
@@ -63,7 +62,18 @@ public class EliminationGameMode : BaseGameMode
 
         if(isServer && ship.TailLength == 0)
         {
-            //Destroy(ship);
+            var connection = ship.LobbyPlayer.connectionToClient;
+
+            Destroy(ship.gameObject);
+
+            // Activate the spectator on the killed player.
+
+            if(spectator_prefab != null)
+            {
+                var spectator = Instantiate<GameObject>(spectator_prefab);
+
+                NetworkServer.ReplacePlayerForConnection(connection, spectator_prefab, ship.LobbyPlayer.playerControllerId);
+            }
         }
     }
 }

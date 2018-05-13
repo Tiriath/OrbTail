@@ -115,6 +115,8 @@ public class Ship : NetworkBehaviour
 
     public void OnDestroy()
     {
+        GetComponentInChildren<ProximityHandler>().OnProximityEvent -= OnProximityEnter;
+
         if (ShipDestroyedEvent != null)
         {
             ShipDestroyedEvent(this);

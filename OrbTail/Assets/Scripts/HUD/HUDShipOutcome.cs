@@ -29,7 +29,12 @@ public class HUDShipOutcome : HUDElement
 
     public void OnDestroy()
     {
-        BaseGameMode.Instance.MatchEndEvent -= OnMatchEnd;
+        var game_mode = BaseGameMode.Instance;
+
+        if (game_mode)
+        {
+            game_mode.MatchEndEvent -= OnMatchEnd;
+        }
     }
 
     /// <summary>
@@ -45,7 +50,7 @@ public class HUDShipOutcome : HUDElement
         {
             text_mesh.text = tie_message;
         }
-        else if (winner == Owner.GetComponent<Ship>().LobbyPlayer)
+        else if (Owner && (winner == Owner.GetComponent<Ship>().LobbyPlayer))
         {
             text_mesh.text = win_message;
         }

@@ -69,26 +69,41 @@ public class MovementController : NetworkBehaviour
             return;
         }
 
-        EngineDriver.Top().Input = input.ThrottleInput;
-        SteerDriver.Top().Input = input.SteerInput;
+        if(EngineDriver != null)
+        {
+            EngineDriver.Top().Input = input.ThrottleInput;
+        }
+
+        if(SteerDriver != null)
+        {
+            SteerDriver.Top().Input = input.SteerInput;
+        }
     }
 
     // Physics update.
     void FixedUpdate()
     {
-        // Engine and steering.
+        if(SteerDriver != null)
+        {
+            var steer = SteerDriver.Top().GetSteer(hover.AngularVelocity, Time.fixedDeltaTime) * hover.Up;
 
-        var steer = SteerDriver.Top().GetSteer(hover.AngularVelocity, Time.fixedDeltaTime) * hover.Up;
-        var thrust = EngineDriver.Top().GetThrust(hover.ForwardVelocity, Time.fixedDeltaTime) * hover.Forward;
+            rigid_body.AddTorque(steer, ForceMode.VelocityChange);
 
-        rigid_body.AddForce(thrust, ForceMode.VelocityChange);
-        rigid_body.AddTorque(steer, ForceMode.VelocityChange);
+            // Rolling - The ship rolls as result of its steering.
 
-        // Rolling - The ship rolls as result of its steering.
+            var rolling_up = Quaternion.AngleAxis(SteerDriver.Top().Input * roll_angle, -hover.Forward) * hover.Up;
 
-        var rolling_up = Quaternion.AngleAxis(SteerDriver.Top().Input * roll_angle, -hover.Forward) * hover.Up;
+            rigid_body.rotation = Quaternion.Lerp(rigid_body.rotation, Quaternion.LookRotation(transform.forward, rolling_up), roll_smooth * Time.fixedDeltaTime);
 
-        rigid_body.rotation = Quaternion.Lerp(rigid_body.rotation, Quaternion.LookRotation(transform.forward, rolling_up), roll_smooth * Time.fixedDeltaTime);
+        }
+
+        if(EngineDriver != null)
+        {
+            var thrust = EngineDriver.Top().GetThrust(hover.ForwardVelocity, Time.fixedDeltaTime) * hover.Forward;
+
+            rigid_body.AddForce(thrust, ForceMode.VelocityChange);
+
+        }
     }
 
     /// <summary>

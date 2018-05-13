@@ -6,13 +6,6 @@ using UnityEngine;
 /// </summary>
 public class LongestTailGameMode : BaseGameMode
 {
-    protected override void OnMatchEnd()
-    {
-        base.OnMatchEnd();
-
-        // #TODO The winner is the ship with the longest tail.
-    }
-
     protected override void OnShipCreated(Ship ship)
     {
         base.OnShipCreated(ship);

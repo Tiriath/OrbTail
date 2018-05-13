@@ -82,8 +82,8 @@ public class PlayerAI : MonoBehaviour, IInputBroker
 
         GetComponent<Ship>().OrbAttachedEvent += OnEventOrbAttached;
 
-        // Attaching field of view notification
         GetComponentInChildren<AIFieldOfView>().EventOnFieldOfViewEnter += OnFieldOfViewEnter;
+
         checkpoints = new HashSet<GameObject>(GameObject.FindGameObjectsWithTag(Tags.AICheckpoint));
 
         gameBuilt = true;
@@ -94,11 +94,20 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         Ship.ShipCreatedEvent -= OnShipCreated;
         Ship.ShipDestroyedEvent -= OnShipDestroyed;
 
+        powerController.PowerAcquiredEvent -= OnEventPowerAttached;
+
         GetComponent<FightController>().FightEvent -= OnEventFight;
 
-        gameObject.GetComponent<Ship>().OrbAttachedEvent -= OnEventOrbAttached;
-        // Attaching field of view notification
-        //GetComponentInChildren<AIFieldOfView>().EventOnFieldOfViewEnter -= OnFieldOfViewEnter;
+        GetComponent<Ship>().OrbAttachedEvent -= OnEventOrbAttached;
+
+        GetComponentInChildren<AIFieldOfView>().EventOnFieldOfViewEnter -= OnFieldOfViewEnter;
+
+        var ship = gameObject.GetComponent<Ship>();
+
+        if(ship)
+        {
+            ship.OrbAttachedEvent -= OnEventOrbAttached;
+        }
     }
 
     // Update is called once per frame

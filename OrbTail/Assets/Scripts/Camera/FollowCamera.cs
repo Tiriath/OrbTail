@@ -86,28 +86,31 @@ public class FollowCamera : MonoBehaviour
 
     public void FixedUpdate ()
     {
-        // Move smoothly towards the target.
-
-        current_position = Vector3.Lerp(current_position, ViewTargetPosition, movement_smooth * Time.fixedDeltaTime);
-        current_rotation = Quaternion.Lerp(current_rotation, ViewTargetRotation, rotation_smooth * Time.fixedDeltaTime);
-        current_length = Mathf.Lerp(current_length, camera_distance, distance_smooth * Time.fixedDeltaTime);
-
-        // Retract the camera instantly to prevent it from compenetrating the arena.
-
-        RaycastHit hit;
-        
-        if(Physics.SphereCast(current_position, camera_radius, (CameraTransform.position - current_position).normalized, out hit, camera_distance, Layers.Obstacles | Layers.Field))
+        if(view_target_transform != null)
         {
-            current_length = hit.distance;
+            // Move smoothly towards the target.
+
+            current_position = Vector3.Lerp(current_position, ViewTargetPosition, movement_smooth * Time.fixedDeltaTime);
+            current_rotation = Quaternion.Lerp(current_rotation, ViewTargetRotation, rotation_smooth * Time.fixedDeltaTime);
+            current_length = Mathf.Lerp(current_length, camera_distance, distance_smooth * Time.fixedDeltaTime);
+
+            // Retract the camera instantly to prevent it from compenetrating the arena.
+
+            RaycastHit hit;
+
+            if (Physics.SphereCast(current_position, camera_radius, (CameraTransform.position - current_position).normalized, out hit, camera_distance, Layers.Obstacles | Layers.Field))
+            {
+                current_length = hit.distance;
+            }
+
+            // Update camera position and rotation.
+
+            transform.position = current_position;
+            transform.rotation = current_rotation;
+
+            CameraTransform.localPosition = new Vector3(0.0f, 0.0f, -current_length);
+            CameraTransform.localRotation = Quaternion.identity;
         }
-
-        // Update camera position and rotation.
-
-        transform.position = current_position;
-        transform.rotation = current_rotation;
-
-        CameraTransform.localPosition = new Vector3(0.0f, 0.0f, -current_length);
-        CameraTransform.localRotation = Quaternion.identity;
     }
 
     /// <summary>

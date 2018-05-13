@@ -24,7 +24,12 @@ public class HUDGameDimmer : HUDElement
 
     public void OnDestroy()
     {
-        BaseGameMode.Instance.MatchEndEvent -= OnMatchEnd;
+        var game_mode = BaseGameMode.Instance;
+
+        if (game_mode)
+        {
+            game_mode.MatchEndEvent -= OnMatchEnd;
+        }
     }
 
     /// <summary>

@@ -14,13 +14,6 @@ public class ArcadeGameMode : BaseGameMode
     /// </summary>
     public const int kOrbAttachedScore = 10;
 
-    protected override void OnMatchEnd()
-    {
-        base.OnMatchEnd();
-        
-        // #TODO The winner is the one with the highest score.
-    }
-
     protected override void OnShipCreated(Ship ship)
     {
         base.OnShipCreated(ship);

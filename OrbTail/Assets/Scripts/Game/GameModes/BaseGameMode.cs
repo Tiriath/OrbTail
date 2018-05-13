@@ -5,6 +5,18 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 
 /// <summary>
+/// Game state.
+/// </summary>
+public enum GameState
+{
+    kUninitialized,
+    kSetup,
+    kCountdown,
+    kGame,
+    kEnd
+}
+
+/// <summary>
 /// Base class inherited by each game mode.
 /// Exposes common game events and game states.
 /// </summary>
@@ -132,6 +144,17 @@ public abstract class BaseGameMode : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void Update()
+    {
+        if(isServer && game_state == GameState.kGame)
+        {
+            if(ships.Count <= 1)
+            {
+                timer.Stop();           // Jump at the end of the match right away.
+            }
+        }
+    }
+
     /// <summary>
     /// Called whenever the match is created.
     /// Synchronizes the game mode until each ship has been created and each player is ready.
@@ -192,7 +215,7 @@ public abstract class BaseGameMode : NetworkBehaviour
         {
             foreach(var camera in FindObjectsOfType<FollowCamera>())
             {
-                camera.ViewTarget = ships[winner.player_index].gameObject;
+                camera.ViewTarget = ships.Where(ship => (ship.player_index == winner.player_index)).First().gameObject;
 
                 //camera.Snap();
             }
@@ -205,6 +228,8 @@ public abstract class BaseGameMode : NetworkBehaviour
     protected virtual void OnShipLocalPlayer(Ship ship)
     {
         Debug.Log("BaseGameMode::OnShipLocalPlayer");
+
+        Debug.Assert(game_state == GameState.kSetup);
 
         if(ship.LobbyPlayer.is_human)
         {
@@ -250,6 +275,8 @@ public abstract class BaseGameMode : NetworkBehaviour
     {
         Debug.Log("BaseGameMode::OnShipCreated");
 
+        Debug.Assert(game_state == GameState.kSetup);
+
         ships.Add(ship);
 
         EnableControls(ship, false);
@@ -270,8 +297,11 @@ public abstract class BaseGameMode : NetworkBehaviour
         ship.ShipReadyEvent -= OnShipReady;
 
         ships.Remove(ship);
-
-        CheckCountdownConditions();
+        
+        if(game_state == GameState.kSetup)
+        {
+            CheckCountdownConditions();
+        }
     }
 
     /// <summary>
@@ -280,51 +310,11 @@ public abstract class BaseGameMode : NetworkBehaviour
     /// <param name="orb"></param>
     protected virtual void OnOrbCreated(OrbController orb)
     {
+        Debug.Assert(game_state == GameState.kSetup);
+
         orbs.Add(orb);
 
         CheckCountdownConditions();
-    }
-
-    /// <summary>
-    /// Start the initial countdown.
-    /// </summary>
-    [ClientRpc]
-    private void RpcMatchCountdown()
-    {
-        OnMatchCountdown();
-
-        if (MatchCountdownEvent != null)
-        {
-            MatchCountdownEvent(this);
-        }
-    }
-
-    /// <summary>
-    /// Start the current match.
-    /// </summary>
-    [ClientRpc]
-    private void RpcMatchStart()
-    {
-        OnMatchStart();
-
-        if (MatchStartEvent != null)
-        {
-            MatchStartEvent(this);
-        }
-    }
-
-    /// <summary>
-    /// End the current match.
-    /// </summary>
-    [ClientRpc]
-    private void RpcMatchEnd()
-    {
-        OnMatchEnd();
-
-        if (MatchEndEvent != null)
-        {
-            MatchEndEvent(this);
-        }
     }
 
     /// <summary>
@@ -334,6 +324,8 @@ public abstract class BaseGameMode : NetworkBehaviour
     /// <param name="mode">Scene loading mode.</param>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        game_state = GameState.kSetup;
+
         OnMatchSetup();
 
         if (MatchSetupEvent != null)
@@ -357,14 +349,13 @@ public abstract class BaseGameMode : NetworkBehaviour
     {
         if (isServer)
         {
+            Debug.Assert(game_state == GameState.kSetup);
+
             // Start the match when each ship is ready.
 
-            foreach (var ship in ships)
+            if(ships.Any(ship => !ship.is_ready))
             {
-                if (!ship.is_ready)
-                {
-                    return;
-                }
+                return;
             }
 
             // Start the match when each orb has been spawned on the server.
@@ -374,7 +365,7 @@ public abstract class BaseGameMode : NetworkBehaviour
                 return;
             }
 
-            RpcMatchCountdown();
+            game_state = GameState.kCountdown;
         }
     }
 
@@ -387,7 +378,9 @@ public abstract class BaseGameMode : NetworkBehaviour
 
         if (isServer)
         {
-            RpcMatchStart();
+            Debug.Assert(game_state == GameState.kCountdown);
+
+            game_state = GameState.kGame;
         }
     }
 
@@ -400,7 +393,9 @@ public abstract class BaseGameMode : NetworkBehaviour
 
         if (isServer)
         {
-            RpcMatchEnd();
+            Debug.Assert(game_state == GameState.kGame);
+
+            game_state = GameState.kEnd;
         }
     }
 
@@ -428,6 +423,44 @@ public abstract class BaseGameMode : NetworkBehaviour
     }
 
     /// <summary>
+    /// Called whenever the game state changes.
+    /// </summary>
+    private void OnGameStateChanged(GameState game_state)
+    {
+        this.game_state = game_state;
+
+        // Kinda ugly, but will do the trick.
+
+        if (game_state == GameState.kCountdown)
+        {
+            OnMatchCountdown();
+
+            if (MatchCountdownEvent != null)
+            {
+                MatchCountdownEvent(this);
+            }
+        }
+        else if(game_state == GameState.kGame)
+        {
+            OnMatchStart();
+
+            if (MatchStartEvent != null)
+            {
+                MatchStartEvent(this);
+            }
+        }
+        else if(game_state == GameState.kEnd)
+        {
+            OnMatchEnd();
+
+            if (MatchEndEvent != null)
+            {
+                MatchEndEvent(this);
+            }
+        }
+    }
+
+    /// <summary>
     /// List of ships in the current match.
     /// </summary>
     protected List<Ship> ships = new List<Ship>();
@@ -441,6 +474,12 @@ public abstract class BaseGameMode : NetworkBehaviour
     /// Singleton instance of the game mode.
     /// </summary>
     private static BaseGameMode game_mode_instance;
+
+    /// <summary>
+    /// Current game state.
+    /// </summary>
+    [SyncVar(hook ="OnGameStateChanged")]
+    protected GameState game_state = GameState.kSetup;
 
     /// <summary>
     /// Game timer.

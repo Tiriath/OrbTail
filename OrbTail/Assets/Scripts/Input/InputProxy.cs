@@ -14,7 +14,7 @@ public class InputProxy : MonoBehaviour, IInputBroker
     {
         get
         {
-            return InputBroker.ThrottleInput;
+            return (InputBroker != null) ? InputBroker.ThrottleInput : 0.0f;
         }
     }
 
@@ -25,7 +25,7 @@ public class InputProxy : MonoBehaviour, IInputBroker
     {
         get
         {
-            return InputBroker.SteerInput;
+            return (InputBroker != null) ? InputBroker.SteerInput : 0.0f;
         }
     }
 
@@ -36,7 +36,7 @@ public class InputProxy : MonoBehaviour, IInputBroker
     {
         get
         {
-            return InputBroker.FireInput;
+            return (InputBroker != null) ? InputBroker.FireInput : false;
         }
     }
 
@@ -47,7 +47,7 @@ public class InputProxy : MonoBehaviour, IInputBroker
     {
         get
         {
-            return InputBroker.SpecialInput;
+            return (InputBroker != null) ? InputBroker.SpecialInput : false;
         }
     }
 

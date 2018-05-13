@@ -38,11 +38,27 @@ public class GameTimer : NetworkBehaviour
     {
         // Update the timer on each client, the server will overwrite the timer status during synchronization.
 
-        int new_time = Mathf.Max(duration - Mathf.FloorToInt(Time.realtimeSinceStartup - timestamp), 0);
+        SetTime(duration - Mathf.FloorToInt(Time.realtimeSinceStartup - timestamp));
+    }
 
-        if(time != new_time)
+    /// <summary>
+    /// Stop the timer right away.
+    /// </summary>
+    public void Stop()
+    {
+        SetTime(0);
+    }
+
+    /// <summary>
+    /// Tick the clock.
+    /// </summary>
+    private void SetTime(int time)
+    {
+        time = Mathf.Max(time, 0);
+
+        if (this.time != time)
         {
-            time = new_time;
+            this.time = time;
 
             if (TickEvent != null)
             {
@@ -53,7 +69,7 @@ public class GameTimer : NetworkBehaviour
             {
                 enabled = false;
 
-                if(TimeOutEvent != null)
+                if (TimeOutEvent != null)
                 {
                     TimeOutEvent(this);
                 }

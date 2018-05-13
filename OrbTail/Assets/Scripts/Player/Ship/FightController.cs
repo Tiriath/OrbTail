@@ -60,9 +60,9 @@ public class FightController : NetworkBehaviour
 
                 var orbs_count = DefenceDriver.Top().ReceiveDamage(damage);                                             // Orbs lost by this ship.
 
-                Debug.Log(game_object.name + " hit " + gameObject.name + " causing " + damage + "damage.");
+                //Debug.Log(game_object.name + " hit " + gameObject.name + " causing " + damage + "damage.");
 
-                for (;orbs_count > 0; --orbs_count)
+                for (;orbs_count > 0 && defender != null; --orbs_count)
                 {
                     defender.RpcDetachOrb();
 
