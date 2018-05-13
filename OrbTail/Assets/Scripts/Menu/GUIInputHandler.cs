@@ -17,6 +17,13 @@ public class GUIInputHandler : MonoBehaviour
     /// </summary>
     public Camera OwningCamera { get; set; }
 
+    public void Awake()
+    {
+        Debug.Log("GUIInputHandler: " + gameObject.name);
+
+        Debug.Assert(FindObjectsOfType<GUIInputHandler>().Length == 1, "Only one GUIInput handler is allowed per scene.");
+    }
+
     public virtual void Update ()
     {
         if(Input.touchCount > 0)
