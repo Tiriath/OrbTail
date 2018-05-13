@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
 using UnityEngine.Networking.Types;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 /// <summary>
 /// Script used to create and handle the game lobby.
@@ -29,11 +30,16 @@ public class GameLobby : NetworkLobbyManager
             return game_lobby;
         }
     }
-
+    
     /// <summary>
     /// Maximum connection attempts to perform before giving up.
     /// </summary>
     public int max_connection_attempts = 8;
+
+    /// <summary>
+    /// List of ship prefabs.
+    /// </summary>
+    public GameObject[] ship_prefabs;
 
     /// <summary>
     /// Get a local player configuration from index.
@@ -64,6 +70,15 @@ public class GameLobby : NetworkLobbyManager
         {
             StopHost();                                                             // Offline host.
         }
+    }
+
+    /// <summary>
+    /// This is called on the server when the server is started - including when a host is started.
+    /// </summary>
+
+    public override void OnLobbyStartServer()
+    {
+        LobbyPlayer.PlayerJoinedEvent += OnPlayerJoined;
     }
 
     /// <summary>
@@ -156,12 +171,7 @@ public class GameLobby : NetworkLobbyManager
     /// </summary>
     public override void OnLobbyServerPlayersReady()
     {
-        // Unlist the match so other players don't join this match. Start the countdown.
-
-        if (match_id.HasValue)
-        {
-            matchMaker.SetMatchAttributes(match_id.Value, false, 0, OnSetMatchAttributes);
-        }
+        // #TODO Start the countdown.
 
         // Start the selected arena.
 
@@ -354,6 +364,64 @@ public class GameLobby : NetworkLobbyManager
         for (short index = 0; index < local_players.Count; ++index)
         {
             TryToAddPlayer();
+        }
+    }
+
+    /// <summary>
+    /// Add a new AI in an empty slot.
+    /// </summary>
+    private void AddAI()
+    {
+        // Choose a ship that hasn't been already chosen.
+
+        var ai_ships = new List<GameObject>(ship_prefabs.Where(prefab => !lobbySlots.Any(slot => (slot != null) && ((LobbyPlayer)slot).player_ship == prefab.name)));
+
+        var ai_configuration = gameObject.AddComponent<PlayerConfiguration>();
+
+        ai_configuration.ship_prefab = ai_ships[0];
+        ai_configuration.is_human = false;
+
+        local_players.Add(ai_configuration);
+
+        TryToAddPlayer();
+    }
+
+    /// <summary>
+    /// Called whenever a new player joins the lobby.
+    /// </summary>
+    private void OnPlayerJoined(LobbyPlayer lobby_player)
+    {
+        lobby_player.PlayerReadyEvent += OnPlayerReady;
+    }
+
+    /// <summary>
+    /// Called whenever a player ready status changes.
+    /// </summary>
+    private void OnPlayerReady(LobbyPlayer lobby_player)
+    {
+        // Check if everyone is ready and fill the remaining slots with AIs.
+
+        if(lobbySlots.All(slot => (slot == null) || slot.readyToBegin))                 // Everyone is ready.
+        {
+            LockMatch();                                                                // Prevent any other player from joining.
+
+            if(lobbySlots.Count(slot => slot == null) > 0)
+            {
+                AddAI();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Lock the match, preventing any other player from joining.
+    /// </summary>
+    private void LockMatch()
+    {
+        // Unlist the match so other players don't join this match.
+
+        if (match_id.HasValue)
+        {
+            matchMaker.SetMatchAttributes(match_id.Value, false, 0, OnSetMatchAttributes);
         }
     }
 

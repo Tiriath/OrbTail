@@ -156,6 +156,11 @@ public class LobbyPlayer : NetworkLobbyPlayer
     private void OnSyncIsHuman(bool is_human)
     {
         this.is_human = is_human;
+
+        if(!is_human)
+        {
+            SendReadyToBeginMessage();                          // The AI is born ready!
+        }
     }
 
     /// <summary>
