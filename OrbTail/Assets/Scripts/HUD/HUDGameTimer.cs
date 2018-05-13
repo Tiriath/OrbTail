@@ -61,8 +61,13 @@ public class HUDGameTimer : HUDElement
 
     public void OnDestroy()
     {
-        BaseGameMode.Instance.MatchCountdownEvent -= OnMatchCountdown;
-        BaseGameMode.Instance.MatchCountdownEvent -= OnMatchStart;
+        var game_mode = BaseGameMode.Instance;
+
+        if(game_mode)
+        {
+            game_mode.MatchCountdownEvent -= OnMatchCountdown;
+            game_mode.MatchCountdownEvent -= OnMatchStart;
+        }
 
         timer.TickEvent -= OnTick;
     }

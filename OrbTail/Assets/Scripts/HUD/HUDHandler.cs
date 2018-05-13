@@ -34,7 +34,7 @@ public class HUDHandler : MonoBehaviour
         {
             owner = value;
 
-            foreach(var hud_element in GetComponentsInChildren<HUDElement>())
+            foreach(var hud_element in GetComponentsInChildren<HUDElement>(true))
             {
                 hud_element.Owner = owner;
             }
