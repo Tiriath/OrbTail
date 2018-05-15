@@ -50,7 +50,7 @@ public class HUDShipOutcome : HUDElement
         {
             text_mesh.text = tie_message;
         }
-        else if (Owner && (winner == Owner.GetComponent<Ship>().LobbyPlayer))
+        else if (winner == player)
         {
             text_mesh.text = win_message;
         }
@@ -61,7 +61,44 @@ public class HUDShipOutcome : HUDElement
     }
 
     /// <summary>
+    /// Called whenever the owner of this HUD changes.
+    /// </summary>
+    protected override void OnOwnerChanged()
+    {
+        base.OnOwnerChanged();
+
+        if(Owner)
+        {
+            var lobby_player = Owner.GetComponent<LobbyPlayer>();
+            var ship = Owner.GetComponent<Ship>();
+            var spectator = Owner.GetComponent<Spectator>();
+
+            if(lobby_player)
+            {
+                player = lobby_player;
+            }
+            else if(ship)
+            {
+                player = ship.LobbyPlayer;
+            }
+            else if(spectator)
+            {
+                player = spectator.LobbyPlayer;
+            }
+        }
+        else
+        {
+            player = null;
+        }
+    }
+
+    /// <summary>
     /// Element used to displayer the game time on.
     /// </summary>
     private TextMesh text_mesh;
+
+    /// <summary>
+    /// Player this HUD element refers to.
+    /// </summary>
+    private LobbyPlayer player;
 }

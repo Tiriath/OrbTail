@@ -51,6 +51,11 @@ public class FollowCamera : MonoBehaviour
     }
 
     /// <summary>
+    /// Owner of this camera.
+    /// </summary>
+    public GameObject Owner { get; set; }
+
+    /// <summary>
     /// Get the transform of the camera attached at the end of the boom.
     /// </summary>
     public Transform CameraTransform { get; private set; }
@@ -147,9 +152,4 @@ public class FollowCamera : MonoBehaviour
     /// Current camera distance from the target.
     /// </summary>
     private float current_length = 0.0f;
-
-    /// <summary>
-    /// Player owning this camera.
-    /// </summary>
-    private LobbyPlayer owner;
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Linq;
 
 /// <summary>
 /// The last player standing wins the game. If the player has no more orbs it gets eliminated
@@ -51,6 +52,32 @@ public class EliminationGameMode : BaseGameMode
 
         ship.OrbDetachedEvent -= OnOrbChanged;
         ship.OrbAttachedEvent -= OnOrbChanged;
+
+        // Activate the spectator on the killed player.
+
+        if (spectator_prefab != null && ship.LobbyPlayer.is_human && ship.isLocalPlayer)
+        {
+            var spectator = Instantiate<GameObject>(spectator_prefab).GetComponent<Spectator>();
+
+            spectator.LobbyPlayer = ship.LobbyPlayer;
+
+            // Attach the follow camera to the spectator.
+
+            foreach(var camera in FindObjectsOfType<FollowCamera>().Where(follow_camera => (follow_camera.Owner == ship.gameObject)))
+            {
+                camera.ViewTarget = spectator.gameObject;
+                camera.Owner = spectator.gameObject;
+            }
+            
+            // Reassign HUD ownership.
+
+            foreach(var hud in FindObjectsOfType<HUDHandler>().Where(hud_handler => (hud_handler.Owner == ship.gameObject)))
+            {
+                hud.Owner = spectator.gameObject;
+            }
+        }
+
+        base.OnShipDestroyed(ship);
     }
 
     /// <summary>
@@ -62,18 +89,7 @@ public class EliminationGameMode : BaseGameMode
 
         if(isServer && ship.TailLength == 0)
         {
-            var connection = ship.LobbyPlayer.connectionToClient;
-
             Destroy(ship.gameObject);
-
-            // Activate the spectator on the killed player.
-
-            if(spectator_prefab != null)
-            {
-                var spectator = Instantiate<GameObject>(spectator_prefab);
-
-                NetworkServer.ReplacePlayerForConnection(connection, spectator_prefab, ship.LobbyPlayer.playerControllerId);
-            }
         }
     }
 }
