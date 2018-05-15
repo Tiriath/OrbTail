@@ -65,11 +65,6 @@ public class LobbyPlayer : NetworkLobbyPlayer
     /// </summary>
     public void OnDestroy()
     {
-        if (player_indexes != null)                      // This is true only on the server.
-        {
-            player_indexes.Push(this.player_index);
-        }
-
         if (PlayerLeftEvent != null)
         {
             PlayerLeftEvent(this);
@@ -184,27 +179,20 @@ public class LobbyPlayer : NetworkLobbyPlayer
     [Command]
     private void CmdConfigureLobbyPlayer(string ship_prefab, bool is_human)
     {
-        if(player_indexes == null)
+        var game_lobby = GameLobby.Instance;
+
+        for (int index = 0; index < game_lobby.maxPlayers; ++index)
         {
-            // Fill the list with all the available indexes.
-
-            player_indexes = new Stack<int>();
-
-            for(int index = GameLobby.Instance.maxPlayers - 1; index >= 0; --index)
+            if(game_lobby.lobbySlots[index] == this)
             {
-                player_indexes.Push(index);
+                this.player_index = index;              // Set the player index.
+                break;
             }
         }
-
-        this.player_index = player_indexes.Pop();               // Fetch a free index in the list.
-        this.player_ship = ship_prefab;                         // Set the ship prefab.
-        this.is_human = is_human;                               // Set player identity.
+        
+        this.player_ship = ship_prefab;                 // Set the ship prefab.
+        this.is_human = is_human;                       // Set player identity.
     }
-
-    /// <summary>
-    /// List of available player indexes.
-    /// </summary>
-    private static Stack<int> player_indexes;
 
     /// <summary>
     /// Default color for player without an index.
