@@ -16,8 +16,12 @@ public class GUIButtonDisconnectBehaviour : GUIElement
     {
         base.OnInputConfirm();
 
-        GameLobby.Instance.disconnected_scene = scene;
+        var game_lobby = GameLobby.Instance;
 
-        GameLobby.Instance.DisconnectLobby();
+        game_lobby.disconnected_scene = scene;
+
+        game_lobby.Clear();
+
+        game_lobby.DisconnectLobby();
     }
 }

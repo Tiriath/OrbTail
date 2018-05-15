@@ -243,21 +243,35 @@ public class GameLobby : NetworkLobbyManager
         }
     }
 
-    void OnEnable()
+    public void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void OnDisable()
+    public void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    void Start()
+    public void Start()
     {
         game_configuration = GetComponent<GameConfiguration>();
 
         original_lobby_scene = lobbyScene;
+
+        original_components = new List<Component>(GetComponents<Component>());
+    }
+
+    public void Clear()
+    {
+        // Remove any component that is not part of the original set.
+
+        var components = new List<Component>(GetComponents<Component>().Where(component => !original_components.Contains(component)));
+
+        foreach(var component in components)
+        {
+            Destroy(component);
+        }
     }
 
     /// <summary>
@@ -510,4 +524,9 @@ public class GameLobby : NetworkLobbyManager
     /// The original lobby scene.
     /// </summary>
     private string original_lobby_scene;
+
+    /// <summary>
+    /// Original components on this game object.
+    /// </summary>
+    private List<Component> original_components;
 }
