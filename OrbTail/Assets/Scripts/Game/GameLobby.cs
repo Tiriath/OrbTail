@@ -84,6 +84,18 @@ public class GameLobby : NetworkLobbyManager
     public override void OnLobbyStartServer()
     {
         LobbyPlayer.PlayerJoinedEvent += OnPlayerJoined;
+        LobbyPlayer.PlayerLeftEvent += OnPlayerLeft;
+    }
+
+    /// <summary>
+    /// Called whenever the server is stopped.
+    /// </summary>
+    public override void OnStopServer()
+    {
+        LobbyPlayer.PlayerJoinedEvent -= OnPlayerJoined;
+        LobbyPlayer.PlayerLeftEvent -= OnPlayerLeft;
+
+        base.OnStopServer();
     }
 
     /// <summary>
@@ -408,6 +420,14 @@ public class GameLobby : NetworkLobbyManager
     private void OnPlayerJoined(LobbyPlayer lobby_player)
     {
         lobby_player.PlayerReadyEvent += OnPlayerReady;
+    }
+
+    /// <summary>
+    /// Called whenever a player leaves the lobby.
+    /// </summary>
+    private void OnPlayerLeft(LobbyPlayer lobby_player)
+    {
+        lobby_player.PlayerReadyEvent -= OnPlayerReady;
     }
 
     /// <summary>

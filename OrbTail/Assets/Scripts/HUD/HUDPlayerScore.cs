@@ -12,11 +12,18 @@ public class HUDPlayerScore : MonoBehaviour
     /// </summary>
     public int player_index = -1;
 
+    /// <summary>
+    /// Fade duration when this element fades out, in seconds.
+    /// </summary>
+    public float fade_duration = 0.4f;
+
     public void Awake ()
     {
         text_mesh = GetComponent<TextMesh>();
 
         text_mesh.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+
+        LobbyPlayer.PlayerLeftEvent += OnPlayerLeft;
 
         foreach (LobbyPlayer lobby_player in GameLobby.Instance.lobbySlots)
         {
@@ -25,7 +32,6 @@ public class HUDPlayerScore : MonoBehaviour
                 this.lobby_player = lobby_player;
 
                 lobby_player.PlayerScoreEvent += OnPlayerScore;
-                lobby_player.PlayerLeftEvent += OnPlayerLeft;
 
                 OnPlayerScore(lobby_player);
 
@@ -46,6 +52,8 @@ public class HUDPlayerScore : MonoBehaviour
         }
 
         OnPlayerLeft(lobby_player);
+
+        LobbyPlayer.PlayerLeftEvent -= OnPlayerLeft;
     }
 
     /// <summary>
@@ -74,14 +82,13 @@ public class HUDPlayerScore : MonoBehaviour
     /// </summary>
     private void OnPlayerLeft(LobbyPlayer lobby_player)
     {
-        gameObject.SetActive(false);
-
-        this.lobby_player = null;
-
-        if(lobby_player)
+        if(lobby_player && lobby_player.player_index == player_index)
         {
+            iTween.FadeTo(gameObject, 0.0f, fade_duration);
+
             lobby_player.PlayerScoreEvent -= OnPlayerScore;
-            lobby_player.PlayerLeftEvent -= OnPlayerLeft;
+
+            this.lobby_player = null;
         }
     }
 

@@ -30,6 +30,7 @@ public class GUILobbyPlayer : MonoBehaviour
     public void Start ()
     {
         LobbyPlayer.PlayerJoinedEvent += OnLobbyPlayerJoined;
+        LobbyPlayer.PlayerLeftEvent += OnLobbyPlayerLeft;
 
         original_scale = gameObject.transform.localScale;
 
@@ -39,8 +40,14 @@ public class GUILobbyPlayer : MonoBehaviour
     public void OnDestroy()
     {
         LobbyPlayer.PlayerJoinedEvent -= OnLobbyPlayerJoined;
+        LobbyPlayer.PlayerLeftEvent -= OnLobbyPlayerLeft;
 
-        OnLobbyPlayerLeft(bound_lobby_player);
+        if(bound_lobby_player)
+        {
+            bound_lobby_player.PlayerIndexChangedEvent -= OnPlayerIndexChanged;
+            bound_lobby_player.PlayerShipChangedEvent -= OnPlayerShipChanged;
+            bound_lobby_player.PlayerReadyEvent -= OnPlayerReadyChanged;
+        }
     }
 
     /// <summary>
@@ -48,7 +55,6 @@ public class GUILobbyPlayer : MonoBehaviour
     /// </summary>
     private void OnLobbyPlayerJoined(LobbyPlayer lobby_player)
     {
-        lobby_player.PlayerLeftEvent += OnLobbyPlayerLeft;
         lobby_player.PlayerIndexChangedEvent += OnPlayerIndexChanged;
 
         OnPlayerIndexChanged(lobby_player);
@@ -102,7 +108,6 @@ public class GUILobbyPlayer : MonoBehaviour
     {
         if (bound_lobby_player && lobby_player == bound_lobby_player)
         {
-            lobby_player.PlayerLeftEvent -= OnLobbyPlayerLeft;
             lobby_player.PlayerIndexChangedEvent -= OnPlayerIndexChanged;
             lobby_player.PlayerShipChangedEvent -= OnPlayerShipChanged;
             lobby_player.PlayerReadyEvent -= OnPlayerReadyChanged;

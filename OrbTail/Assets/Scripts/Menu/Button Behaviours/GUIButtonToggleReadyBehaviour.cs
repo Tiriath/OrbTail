@@ -25,6 +25,7 @@ public class GUIButtonToggleReadyBehaviour : GUIElement
     public void Start()
     {
         LobbyPlayer.LocalPlayerJoinedEvent += OnLocalPlayerJoined;
+        LobbyPlayer.PlayerLeftEvent += OnLobbyPlayerLeft;
 
         GetComponent<TextMesh>().text = "";
     }
@@ -32,8 +33,9 @@ public class GUIButtonToggleReadyBehaviour : GUIElement
     public void OnDestroy()
     {
         LobbyPlayer.LocalPlayerJoinedEvent -= OnLocalPlayerJoined;
+        LobbyPlayer.PlayerLeftEvent -= OnLobbyPlayerLeft;
 
-        if(bound_local_player != null)
+        if (bound_local_player != null)
         {
             OnLobbyPlayerLeft(bound_local_player);
         }
@@ -68,7 +70,6 @@ public class GUIButtonToggleReadyBehaviour : GUIElement
             bound_local_player = lobby_player;
 
             bound_local_player.PlayerReadyEvent += OnLobbyPlayerReady;
-            bound_local_player.PlayerLeftEvent += OnLobbyPlayerLeft;
 
             OnLobbyPlayerReady(bound_local_player);
         }
@@ -87,10 +88,12 @@ public class GUIButtonToggleReadyBehaviour : GUIElement
     /// </summary>
     private void OnLobbyPlayerLeft(LobbyPlayer lobby_player)
     {
-        bound_local_player.PlayerReadyEvent -= OnLobbyPlayerReady;
-        bound_local_player.PlayerLeftEvent -= OnLobbyPlayerLeft;
+        if(lobby_player == bound_local_player)
+        {
+            bound_local_player.PlayerReadyEvent -= OnLobbyPlayerReady;
 
-        bound_local_player = null;
+            bound_local_player = null;
+        }
     }
 
     /// <summary>

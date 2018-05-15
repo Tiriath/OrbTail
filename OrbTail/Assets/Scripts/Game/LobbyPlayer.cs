@@ -11,8 +11,8 @@ public class LobbyPlayer : NetworkLobbyPlayer
 
     public static event DelegateLobbyPlayerEvent PlayerJoinedEvent;
     public static event DelegateLobbyPlayerEvent LocalPlayerJoinedEvent;
+    public static event DelegateLobbyPlayerEvent PlayerLeftEvent;
 
-    public event DelegateLobbyPlayerEvent PlayerLeftEvent;
     public event DelegateLobbyPlayerEvent PlayerIndexChangedEvent;
     public event DelegateLobbyPlayerEvent PlayerShipChangedEvent;
     public event DelegateLobbyPlayerEvent PlayerReadyEvent;
