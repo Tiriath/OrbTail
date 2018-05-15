@@ -32,7 +32,7 @@ public class Spectator : MonoBehaviour
 
     void Update()
     {
-        if(input.FireInput)
+        if(input.FireInput && enable_change_target)
         {
             enable_change_target = false;
 
