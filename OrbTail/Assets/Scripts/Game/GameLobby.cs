@@ -50,6 +50,11 @@ public class GameLobby : NetworkLobbyManager
     }
 
     /// <summary>
+    /// Scene to travel to load when disconnected from the lobby.
+    /// </summary>
+    public SceneField disconnected_scene;
+
+    /// <summary>
     /// Disconnect from the lobby.
     /// If the lobby is hosted it will be destroyed.
     /// </summary>
@@ -213,6 +218,19 @@ public class GameLobby : NetworkLobbyManager
         return null;
     }
 
+    /// <summary>
+    /// This is called on the client when the client stops.
+    /// </summary>
+    public override void OnLobbyStopClient()
+    {
+        base.OnLobbyStopClient();
+
+        if (disconnected_scene.IsValid)
+        {
+            SceneManager.LoadSceneAsync(disconnected_scene);
+        }
+    }
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -253,8 +271,6 @@ public class GameLobby : NetworkLobbyManager
     /// </summary>
     private void CreateLobby()
     {
-        // #TODO Game mode and arena must be well-known at this point.
-
         if (LobbyStarted != null)
         {
             LobbyStarted(this);
@@ -262,14 +278,14 @@ public class GameLobby : NetworkLobbyManager
 
         if (game_configuration.game_type == GameType.Offline)
         {
-            CreateOfflineLobby();       // Offline games are just hosted games where other players are AIs.
+            CreateOfflineLobby();                   // Offline games are just hosted games where other players are AIs.
         }
         else
         {
             connection_attempts = max_connection_attempts;
             match_list_page = 0;
 
-            SearchLobby();              // Attempt to join an existing lobby, create a brand new one when none is found.
+            SearchLobby();                          // Attempt to join an existing lobby, create a brand new one when none is found.
         }
     }
 

@@ -8,11 +8,11 @@ public class GUIButtonChangeSceneBehaviour : GUIElement
     /// <summary>
     /// Name of the scene to load when this button is pressed.
     /// </summary>
-    public string scene;
+    public SceneField scene;
 
     public override void OnInputConfirm()
     {
-        if (scene.Length > 0)
+        if (scene.IsValid)
         {
             SceneManager.LoadSceneAsync(scene);
         }
