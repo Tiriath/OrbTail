@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System;
-using System.Collections.Generic;
 using UnityEngine.Networking;
 
 /// <summary>
@@ -35,9 +33,12 @@ public class PowerController : NetworkBehaviour
     {
         var collectable = other.gameObject.GetComponent<PowerUpCollectable>();
 
-        if(collectable)
+        if(collectable && collectable.IsActive)
         {
             // #TODO Collect the power up.
+
+            collectable.Collect();
+
 
             if (PowerAcquiredEvent != null)
             {

@@ -27,6 +27,11 @@ public class FloatingObject : MonoBehaviour
     public float hover_distance = 5f;
 
     /// <summary>
+    /// Whether to align the object to the gravity field.
+    /// </summary>
+    public bool align_to_gravity_field = true;
+
+    /// <summary>
     /// Get the forward vector accounting for gravity direction.
     /// </summary>
     public Vector3 Forward
@@ -116,20 +121,27 @@ public class FloatingObject : MonoBehaviour
 
         RaycastHit hit;
 
+        Vector3 force;
+
         if(Physics.Raycast(transform.position, ArenaDown, out hit, Mathf.Infinity, Layers.Field))
         {
-            rigid_body.AddForce(Up * (hover_force * (hover_distance - hit.distance) - hover_dampen * VerticalVelocity), ForceMode.Acceleration);
+            force = Up * (hover_force * (hover_distance - hit.distance) - hover_dampen * VerticalVelocity);
             
             Debug.DrawRay(transform.position, ArenaDown * hit.distance, Color.green);
         }
         else
         {
-            rigid_body.AddForce(ArenaDown * hover_force, ForceMode.Acceleration);
+            force = ArenaDown * hover_force;
         }
 
-        // Adjust object pitch such that the object forward is tangent to the gravity field.
+        rigid_body.AddForce(force, ForceMode.Acceleration);
+        
+        if (align_to_gravity_field)
+        {
+            // Adjust object pitch such that the object forward is tangent to the gravity field.
 
-        rigid_body.rotation = Quaternion.Lerp(rigid_body.rotation, Quaternion.LookRotation(Forward, Up), pitch_smooth * Time.deltaTime);
+            rigid_body.rotation = Quaternion.Lerp(rigid_body.rotation, Quaternion.LookRotation(Forward, Up), pitch_smooth * Time.deltaTime);
+        }
     }
 
     /// <summary>
@@ -138,7 +150,7 @@ public class FloatingObject : MonoBehaviour
     private GravityField gravity_field;
 
     /// <summary>
-    /// Rigid body affected by the gravity field.
+    /// Rigid body affected by the gravity field, if any.
     /// </summary>
     private Rigidbody rigid_body;
 }
