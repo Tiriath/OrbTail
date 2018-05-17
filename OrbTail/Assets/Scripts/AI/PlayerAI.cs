@@ -17,7 +17,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     /// <summary>
     /// Returns the fire input status.
     /// </summary>
-    public bool FireInput { get; private set; }
+    public bool PowerUpInput { get; private set; }
 
     /// <summary>
     /// Returns the special input status.
@@ -249,7 +249,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         }
     }
     
-    private void OnEventPowerAttached(PowerController sender, Power power) {
+    private void OnEventPowerAttached(PowerController sender, PowerUp power) {
         if (sender.GetComponent<Ship>() == gameObject)
         {
             StartCoroutine("FirePowerUp");
@@ -259,7 +259,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     private IEnumerator FirePowerUp() {
         float timeToWait = Random.value * maxTimeToFirePowerUp;
         yield return new WaitForSeconds(timeToWait);
-        FireInput = true;
+        PowerUpInput = true;
     }
     
     private bool IsFreeOrb(GameObject orb) {

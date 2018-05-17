@@ -5,20 +5,20 @@ using UnityEngine;
 /// <summary>
 /// Grants a temporary boost in speed which propels the ship forward.
 /// </summary>
-public class Boost : Power
+public class Boost : PowerUp
 {
     /// <summary>
     /// Create a new instance.
     /// </summary>
     public Boost()
-        : base("Boost", PowerGroups.Passive)
+        : base("Boost", 0)
     {
         this.DropRate = 0;
         this.Duration = 0.0f;
         this.Cooldown = 5.0f;
         this.FireSFX = Resources.Load<AudioClip>("Sounds/Powers/Boost");
     }
-    public override Power Generate()
+    public override PowerUp Generate()
     {
         return new Boost();
     }

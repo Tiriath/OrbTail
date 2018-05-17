@@ -5,9 +5,9 @@ using System.Collections.Generic;
 /// <summary>
 /// Base class for all powers.
 /// </summary>
-public abstract class Power
+public abstract class PowerUp
 {
-    public delegate void DelegatePower(Power sender);
+    public delegate void DelegatePower(PowerUp sender);
 
     /// <summary>
     /// Event raised whenever the power is deactivated.
@@ -68,7 +68,7 @@ public abstract class Power
     /// <summary>
     /// Clone this power.
     /// </summary>
-    public abstract Power Generate();
+    public abstract PowerUp Generate();
 
     /// <summary>
     /// Activate the power.
@@ -194,7 +194,7 @@ public abstract class Power
     /// </summary>
     /// <param name="group">Power group.</param>
     /// <param name="name">Power name</param>
-    protected Power(string name, int group)
+    protected PowerUp(string name, int group)
     {
         this.Group = group;
         this.Name = name;

@@ -30,24 +30,13 @@ public class InputProxy : MonoBehaviour, IInputBroker
     }
 
     /// <summary>
-    /// Returns the fire input status. 0 not firing, 1 firing.
+    /// Returns the power input status.
     /// </summary>
-    public bool FireInput
+    public bool PowerUpInput
     {
         get
         {
-            return (InputBroker != null) ? InputBroker.FireInput : false;
-        }
-    }
-
-    /// <summary>
-    /// Returns the fire special input status. 0 not firing, 1 firing.
-    /// </summary>
-    public bool SpecialInput
-    {
-        get
-        {
-            return (InputBroker != null) ? InputBroker.SpecialInput : false;
+            return (InputBroker != null) ? InputBroker.PowerUpInput : false;
         }
     }
 

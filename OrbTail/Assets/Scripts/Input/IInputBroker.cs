@@ -20,14 +20,9 @@ public interface IInputBroker
     float SteerInput { get; }
 
     /// <summary>
-    /// Returns the fire input status. 0 not firing, 1 firing.
+    /// Returns the powerup input status. 1 using the power up, 0 not using the power up.
     /// </summary>
-    bool FireInput { get; }
-
-    /// <summary>
-    /// Returns the fire special input status. 0 not firing, 1 firing.
-    /// </summary>
-    bool SpecialInput { get; }
+    bool PowerUpInput { get; }
 
     /// <summary>
     /// Updates the input status.

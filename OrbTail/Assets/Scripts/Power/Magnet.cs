@@ -4,10 +4,10 @@ using System.Collections;
 /// <summary>
 /// Inflate the proximity radius of the ship in order to collect orbs more easily. #TODO Not an actual magnet, limited utility.
 /// </summary>
-public class Magnet : Power
+public class Magnet : PowerUp
 {
     public Magnet() 
-        : base("Magnet", PowerGroups.Main)
+        : base("Magnet", 0)
     {
         this.DropRate = 2;
         this.Duration = 10.0f;
@@ -15,7 +15,7 @@ public class Magnet : Power
         this.FireSFX = null;
     }
 
-    public override Power Generate()
+    public override PowerUp Generate()
     {
         return new Magnet();
     }

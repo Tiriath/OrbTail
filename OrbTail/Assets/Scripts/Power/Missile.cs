@@ -5,10 +5,10 @@ using UnityEngine;
 /// <summary>
 /// Grants a single homing missile that cause massive damage on impact.
 /// </summary>
-public class Missile : Power
+public class Missile : PowerUp
 {
     public Missile() 
-        : base("Missile", PowerGroups.Main)
+        : base("Missile", 0)
     {
         this.DropRate = 2;
         this.Duration = 0.0f;
@@ -17,7 +17,7 @@ public class Missile : Power
 
         this.missile_object = Resources.Load<GameObject>("Prefabs/Power/MissileRocket");
     }
-    public override Power Generate()
+    public override PowerUp Generate()
     {
         return new Missile();
     }

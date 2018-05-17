@@ -12,11 +12,6 @@ public class OrbController : NetworkBehaviour
     public static event DelegateOrbEvent OrbCreatedEvent;
 
     /// <summary>
-    /// Path of the prefab used to make the orb glow.
-    /// </summary>
-    public const string glow_path = "Prefabs/Power/PowerGlow";
-
-    /// <summary>
     /// Whether the orb is currently linked to something else.
     /// </summary>
     public bool IsLinked { get; private set; }
@@ -100,35 +95,6 @@ public class OrbController : NetworkBehaviour
     }
 
     /// <summary>
-    /// Imbue the orb with a power.
-    /// </summary>
-    /// <param name="power">Power to imbue.</param>
-    public void ImbuePower(Power power)
-    {
-        imbued_power = power;
-
-        if(imbued_power != null && vfx == null)
-        {
-            vfx = GameObjectFactory.Instance.Instantiate(glow_path, gameObject.transform.position, Quaternion.identity);
-            vfx.transform.parent = gameObject.transform;
-        }
-        else if(imbued_power == null && vfx != null)
-        {
-            GameObjectFactory.Instance.Destroy(glow_path, vfx);
-            vfx = null;
-        }
-    }
-
-    /// <summary>
-    /// Get the power currently imbued in this orb.
-    /// </summary>
-    /// <returns></returns>
-    public Power GetImbuedPower()
-    {
-        return imbued_power;
-    }
-
-    /// <summary>
     /// Spring dampening factor.
     /// </summary>
     private const float kSpringDamper = 0.4f;
@@ -161,7 +127,7 @@ public class OrbController : NetworkBehaviour
     /// <summary>
     /// Power imbued in this orb.
     /// </summary>
-    private Power imbued_power = null;
+    private PowerUp imbued_power = null;
 
     /// <summary>
     /// VFX associated to the orb.

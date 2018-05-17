@@ -5,10 +5,10 @@ using UnityEngine;
 /// <summary>
 /// Grants a debuff that inverts steering control for a limited amount of time.
 /// </summary>
-public class Jam : Power
+public class Jam : PowerUp
 {
     public Jam() 
-        : base("Jam", PowerGroups.Jam)
+        : base("Jam", 0)
     {
         this.DropRate = 1;
         this.Duration = 7.0f;
@@ -16,7 +16,7 @@ public class Jam : Power
         this.FireSFX = null;
     }
 
-    public override Power Generate()
+    public override PowerUp Generate()
     {
         return new Jam();
     }

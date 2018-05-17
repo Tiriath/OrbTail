@@ -22,19 +22,13 @@ class DesktopInputBroker: IInputBroker
     /// <summary>
     /// Returns the fire input status.
     /// </summary>
-    public bool FireInput { get; private set; }
-
-    /// <summary>
-    /// Returns the special input status.
-    /// </summary>
-    public bool SpecialInput { get; private set; }
+    public bool PowerUpInput { get; private set; }
 
     public void UpdateInput()
     {
         ThrottleInput = Input.GetAxis(Inputs.Throttle);
         SteerInput = Input.GetAxis(Inputs.Steer);
-        FireInput = Input.GetButtonDown(Inputs.Fire);
-        SpecialInput = Input.GetButtonDown(Inputs.Special);
+        PowerUpInput = Input.GetButtonDown(Inputs.Fire);
     }
 }
 

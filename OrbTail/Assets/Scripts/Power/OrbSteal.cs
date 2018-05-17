@@ -5,19 +5,19 @@ using UnityEngine;
 /// <summary>
 /// Orbs that are detached by this ship as a result of a fight are stolen directly.
 /// </summary>
-public class OrbSteal : Power
+public class OrbSteal : PowerUp
 {
     private List<FightController> fight_controllers;
 
     public OrbSteal() 
-        : base("OrbSteal", PowerGroups.Main)
+        : base("OrbSteal", 0)
     {
         this.DropRate = 2;
         this.Duration = 10.0f;
         this.Cooldown = 0.0f;
         this.FireSFX = null;
     }
-    public override Power Generate()
+    public override PowerUp Generate()
     {
         return new OrbSteal();
     }

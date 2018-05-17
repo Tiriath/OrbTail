@@ -5,10 +5,10 @@ using UnityEngine;
 /// <summary>
 /// Grants immunity to collisions. Prevents any orb from being detached for a limited amount of time.
 /// </summary>
-public class Invincibility : Power
+public class Invincibility : PowerUp
 {
     public Invincibility() 
-        : base("Invincibility", PowerGroups.Main)
+        : base("Invincibility", 0)
     {
         this.DropRate = 2;
         this.Duration = 10.0f;
@@ -35,7 +35,7 @@ public class Invincibility : Power
         base.OnDeactivated();
     }
     
-    public override Power Generate()
+    public override PowerUp Generate()
     {
         return new Invincibility();
     }

@@ -22,7 +22,7 @@ public class MobileInputBroker: IInputBroker
     /// <summary>
     /// Returns the fire input status.
     /// </summary>
-    public bool FireInput { get; private set; }
+    public bool PowerUpInput { get; private set; }
 
     /// <summary>
     /// Returns the special input status.
@@ -41,7 +41,7 @@ public class MobileInputBroker: IInputBroker
 
     public void UpdateInput()
     {
-        FireInput = false;
+        PowerUpInput = false;
 
         // #TODO Review this.
 
@@ -67,7 +67,7 @@ public class MobileInputBroker: IInputBroker
     /// </summary>
     private void OnPowerButtonSelect(object sender, GameObject button)
     {
-        FireInput = true;
+        PowerUpInput = true;
     }
 
     private const float kThrottleFactor = 4f;

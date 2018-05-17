@@ -28,7 +28,7 @@ public class HUDPower : HUDElement
         //power_controller.PowerAcquiredEvent += OnPowerAcquired;
     }
 
-    private void OnPowerAcquired(PowerController sender, Power power)
+    private void OnPowerAcquired(PowerController sender, PowerUp power)
     {
         if (power.Group == power_group)
         {
@@ -46,7 +46,7 @@ public class HUDPower : HUDElement
         }
     }
 
-    private void OnPowerDeactivated(Power power)
+    private void OnPowerDeactivated(PowerUp power)
     {
         this.power = null;
 
@@ -58,5 +58,5 @@ public class HUDPower : HUDElement
     /// <summary>
     /// Current power.
     /// </summary>
-    private Power power;
+    private PowerUp power;
 }
