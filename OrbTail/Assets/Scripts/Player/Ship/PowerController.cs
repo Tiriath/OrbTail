@@ -6,9 +6,14 @@ using UnityEngine.Networking;
 /// </summary>
 public class PowerController : NetworkBehaviour
 {
-    public delegate void DelegatePower(PowerController sender, PowerUp power);
+    public delegate void DelegatePowerEvent(PowerController sender);
 
-    public event DelegatePower PowerAcquiredEvent;
+    public event DelegatePowerEvent PowerAcquiredEvent;
+
+    /// <summary>
+    /// Get the current power-up.
+    /// </summary>
+    public PowerUp PowerUp { get; private set; }
 
     public void Start()
     {
@@ -17,11 +22,21 @@ public class PowerController : NetworkBehaviour
         GetComponentInChildren<ProximityHandler>().OnProximityEvent += OnProximity;
     }
 
+    public void OnDestroy()
+    {
+        GetComponentInChildren<ProximityHandler>().OnProximityEvent -= OnProximity;
+
+        if (PowerUp != null)
+        {
+            OnPowerUpDestroyed(PowerUp);
+        }
+    }
+
     public void Update()
     {
-        if(input.PowerUpInput && power_up != null)
+        if(input.PowerUpInput && PowerUp != null)
         {
-            // #TODO Activate the power-up
+            PowerUp.Fire();
         }
     }
 
@@ -33,24 +48,44 @@ public class PowerController : NetworkBehaviour
     {
         var collectable = other.gameObject.GetComponent<PowerUpCollectable>();
 
-        if(collectable && collectable.IsActive)
+        if (collectable && collectable.IsActive)
         {
-            // #TODO Collect the power up.
+            // Deactivate any existing powerup.
 
-            collectable.Collect();
+            if (PowerUp != null)
+            {
+                Destroy(PowerUp);
+            }
 
+            // Collect a new powerup.
+
+            PowerUp = Instantiate(collectable.Collect()).GetComponent<PowerUp>();
+
+            PowerUp.DestroyedEvent += OnPowerUpDestroyed;
+
+            PowerUp.Owner = GetComponent<Ship>();
+
+            NetworkServer.Spawn(PowerUp.gameObject);
 
             if (PowerAcquiredEvent != null)
             {
-                //PowerAcquiredEvent(this, power);
+                PowerAcquiredEvent(this);
             }
         }
     }
 
     /// <summary>
-    /// Power-up ready to be used.
+    /// Called whenever a power on this owner is destroyed.
     /// </summary>
-    private PowerUp power_up;
+    private void OnPowerUpDestroyed(PowerUp power)
+    {
+        if(power == PowerUp)
+        {
+            PowerUp = null;     // This check is needed since when a power is replaced by another one, its destruction won't happen instantly.
+        }
+
+        power.DestroyedEvent -= OnPowerUpDestroyed;
+    }
 
     /// <summary>
     /// Used to read user input.

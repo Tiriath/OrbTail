@@ -5,40 +5,26 @@ using UnityEngine;
 /// <summary>
 /// Grants a debuff that inverts steering control for a limited amount of time.
 /// </summary>
-public class Jam : PowerUp
+public class Jam : PowerUpEffect
 {
-    public Jam() 
-        : base("Jam", 0)
-    {
-        this.DropRate = 1;
-        this.Duration = 7.0f;
-        this.Cooldown = 0.0f;
-        this.FireSFX = null;
-    }
+    //protected override void OnActivated()
+    //{
+    //    base.OnActivated();
 
-    public override PowerUp Generate()
-    {
-        return new Jam();
-    }
+    //    var steer_driver = Owner.GetComponent<MovementController>().SteerDriver;
 
-    protected override void OnActivated()
-    {
-        base.OnActivated();
+    //    driver = steer_driver.Push(new InvertedSteerDriver(steer_driver.Top()));
+    //}
 
-        var steer_driver = Owner.GetComponent<MovementController>().SteerDriver;
+    //protected override void OnDeactivated()
+    //{
+    //    if (driver != null)
+    //    {
+    //        driver.Deactivate();
+    //    }
 
-        driver = steer_driver.Push(new InvertedSteerDriver(steer_driver.Top()));
-    }
+    //    base.OnDeactivated();
+    //}
 
-    protected override void OnDeactivated()
-    {
-        if (driver != null)
-        {
-            driver.Deactivate();
-        }
-
-        base.OnDeactivated();
-    }
-
-    private IDriver driver;
+    //private IDriver driver;
 }

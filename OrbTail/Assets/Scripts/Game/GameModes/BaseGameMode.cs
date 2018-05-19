@@ -45,6 +45,11 @@ public abstract class BaseGameMode : NetworkBehaviour
     public GameObject follow_camera;
 
     /// <summary>
+    /// List of power-ups allowed this game mode.
+    /// </summary>
+    public GameObject[] power_ups;
+
+    /// <summary>
     /// Match duration, in seconds.
     /// </summary>
     public int duration = 120;

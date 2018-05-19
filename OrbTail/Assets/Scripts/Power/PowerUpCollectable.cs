@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Networking;
 
 /// <summary>
@@ -6,6 +7,8 @@ using UnityEngine.Networking;
 /// </summary>
 public class PowerUpCollectable : MonoBehaviour
 {
+    public System.Type type;
+
     /// <summary>
     /// Spinning speed in degrees per second for each axis
     /// </summary>
@@ -46,7 +49,8 @@ public class PowerUpCollectable : MonoBehaviour
     /// <summary>
     /// Collect this power and temporarily disable it.
     /// </summary>
-    public void Collect()
+    /// <returns>Returns the collected power up prefab.</returns>
+    public GameObject Collect()
     {
         if(IsActive)
         {
@@ -59,7 +63,18 @@ public class PowerUpCollectable : MonoBehaviour
                 "easetype", fade_easing,
                 "onUpdate", "OnScaleChanged",
                 "onComplete", "OnDeactivated"));
+
+            // Pick a random powerup from the game mode.
+
+            var power_ups = BaseGameMode.Instance.power_ups;
+
+            if(power_ups.Length > 0)
+            {
+                return power_ups[UnityEngine.Random.Range(0, power_ups.Length)];
+            }
         }
+
+        return null;
     }
 
     /// <summary>

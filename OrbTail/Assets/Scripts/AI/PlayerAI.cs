@@ -249,14 +249,16 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         }
     }
     
-    private void OnEventPowerAttached(PowerController sender, PowerUp power) {
+    private void OnEventPowerAttached(PowerController sender)
+    {
         if (sender.GetComponent<Ship>() == gameObject)
         {
             StartCoroutine("FirePowerUp");
         }
     }
     
-    private IEnumerator FirePowerUp() {
+    private IEnumerator FirePowerUp()
+    {
         float timeToWait = Random.value * maxTimeToFirePowerUp;
         yield return new WaitForSeconds(timeToWait);
         PowerUpInput = true;

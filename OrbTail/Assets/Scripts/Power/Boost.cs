@@ -1,40 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
-/// Grants a temporary boost in speed which propels the ship forward.
+/// Grants a temporary boost in speed which constantly propels the ship forward.
 /// </summary>
-public class Boost : PowerUp
+public class Boost : PowerUpEffect
 {
     /// <summary>
-    /// Create a new instance.
+    /// Boost force.
     /// </summary>
-    public Boost()
-        : base("Boost", 0)
+    public float boost = 20.0f;
+
+    public override void OnStartClient()
     {
-        this.DropRate = 0;
-        this.Duration = 0.0f;
-        this.Cooldown = 5.0f;
-        this.FireSFX = Resources.Load<AudioClip>("Sounds/Powers/Boost");
+        base.OnStartClient();
+
+        rigid_body = Owner.GetComponent<Rigidbody>();
+
+        transform.SetParent(Owner.transform);
+
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
     }
-    public override PowerUp Generate()
+
+    public override void Update()
     {
-        return new Boost();
+        base.Update();
+
+        if(rigid_body)
+        {
+            rigid_body.AddForce(Owner.transform.forward * boost, ForceMode.VelocityChange);
+        }
     }
 
     /// <summary>
-    /// Activate boost on ship.
+    /// Rigid body to propel forward.
     /// </summary>
-    protected override void OnFired()
-    {
-        base.OnFired();
-
-        Owner.GetComponent<Rigidbody>().AddForce(Owner.transform.forward * boost_force, ForceMode.Impulse);
-    }
-
-    /// <summary>
-    /// Force applied to the ship when activated.
-    /// </summary>
-    private const float boost_force = 60.0f;
+    private Rigidbody rigid_body;
 }

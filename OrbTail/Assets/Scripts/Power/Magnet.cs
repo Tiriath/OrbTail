@@ -4,38 +4,24 @@ using System.Collections;
 /// <summary>
 /// Inflate the proximity radius of the ship in order to collect orbs more easily. #TODO Not an actual magnet, limited utility.
 /// </summary>
-public class Magnet : PowerUp
+public class Magnet : PowerUpEffect
 {
-    public Magnet() 
-        : base("Magnet", 0)
-    {
-        this.DropRate = 2;
-        this.Duration = 10.0f;
-        this.Cooldown = 0.0f;
-        this.FireSFX = null;
-    }
+    //protected override void OnActivated()
+    //{
+    //    base.OnActivated();
 
-    public override PowerUp Generate()
-    {
-        return new Magnet();
-    }
+    //    proximity = Owner.GetComponentInChildren<ProximityHandler>();
+    //    proximity.Radius *= radius_factor;
+    //}
 
-    protected override void OnActivated()
-    {
-        base.OnActivated();
+    //protected override void OnDeactivated()
+    //{
+    //    proximity.Radius /= radius_factor;
 
-        proximity = Owner.GetComponentInChildren<ProximityHandler>();
-        proximity.Radius *= radius_factor;
-    }
+    //    base.OnDeactivated();
+    //}
 
-    protected override void OnDeactivated()
-    {
-        proximity.Radius /= radius_factor;
+    //private const float radius_factor = 5.0f;
 
-        base.OnDeactivated();
-    }
-
-    private const float radius_factor = 5.0f;
-
-    private ProximityHandler proximity;
+    //private ProximityHandler proximity;
 }

@@ -1,107 +1,82 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
 /// <summary>
 /// Base class for all powers.
 /// </summary>
-public abstract class PowerUp
+public class PowerUp : NetworkBehaviour
 {
     public delegate void DelegatePower(PowerUp sender);
 
     /// <summary>
-    /// Event raised whenever the power is deactivated.
+    /// Event raised whenever the powerup is destroyed.
     /// </summary>
-    public event DelegatePower DeactivatedEvent;
+    public event DelegatePower DestroyedEvent;
 
     /// <summary>
-    /// Path containing power prefabs.
+    /// Name of the power-up.
     /// </summary>
-    public const string kPowerPrefabPath = "Prefabs/Power/";
+    public string power_up_name = "Powerup";
 
     /// <summary>
-    /// Get the power name.
+    /// Minimum seconds between two consecutive usages of this power-up.
     /// </summary>
-    public string Name { get; private set; }
+    public float cooldown = 1.0f;
 
     /// <summary>
-    /// Get the group of this power.
+    /// Number of times this power-up can be used for before being destroyed.
     /// </summary>
-    public int Group { get; private set; }
+    public int stacks = 1;
 
     /// <summary>
-    /// Get the relative drop rate of this power.
+    /// Prefab of the effect of this power-up;
     /// </summary>
-    public int DropRate { get; protected set; }
+    public GameObject effect;
 
     /// <summary>
-    /// Duration of the power in seconds.
+    /// The ship owning this powerup.
     /// </summary>
-    public float Duration { get; protected set; }
-
-    /// <summary>
-    /// Cooldown of the power in seconds.
-    /// </summary>
-    public float Cooldown { get; protected set; }
-
-    /// <summary>
-    /// SFX clip played when the power is fired.
-    /// </summary>
-    public AudioClip FireSFX { get; protected set; }
-
-    /// <summary>
-    /// Whether the power is active.
-    /// </summary>
-    public bool IsActive { get; private set; }
-
-    /// <summary>
-    /// Get whether the power can be fired, as percentage.
-    /// </summary>
-    public float IsReady
+    public Ship Owner
     {
         get
         {
-            return Cooldown > 0.0f ? Mathf.Clamp01((Time.time - FireTime) / Cooldown) : 1.0f;       // Assumes powers without a cooldown are always ready.
+            return owner;
+        }
+        set
+        {
+            if (owner != value)
+            {
+                owner = value;
+
+                transform.SetParent(owner.transform);
+
+                transform.localPosition = Vector3.zero;
+                transform.localRotation = Quaternion.identity;
+
+                fire_time = 0;
+            }
         }
     }
 
     /// <summary>
-    /// Clone this power.
+    /// Get the remaining cooldown in seconds.
     /// </summary>
-    public abstract PowerUp Generate();
-
-    /// <summary>
-    /// Activate the power.
-    /// </summary>
-    /// <param name="gameObj">Ship the power is activated on.</param>
-    public void Activate(GameObject owner)
+    public float RemainingCooldown
     {
-        this.Owner = owner;
-        this.ActivationTime = Time.time;
-        this.FireTime = Time.time;
-
-        OnActivated();
-
-        IsActive = true;
-    }
-    
-    /// <summary>
-    /// Deactivate the power.
-    /// </summary>
-    public void Deactivate()
-    {
-        // Deactivate the power.
-
-        OnDeactivated();
-
-        // Event.
-
-        if (DeactivatedEvent != null)
+        get
         {
-            DeactivatedEvent(this);
-        };
+            return cooldown - Mathf.Clamp(Time.time - fire_time, 0.0f, cooldown);
+        }
+    }
 
-        IsActive = false;
+    public void OnDestroy()
+    {
+        if (DestroyedEvent != null)
+        {
+            DestroyedEvent(this);
+        }
     }
 
     /// <summary>
@@ -110,11 +85,26 @@ public abstract class PowerUp
     /// <returns>Returns true if the power could be fired successfully, returns false otherwise.</returns>
     public bool Fire()
     {
-        if (IsReady >= 1.0f && IsActive)
+        if(RemainingCooldown <= 0.0f)
         {
-            FireTime = Time.time;
+            fire_time = Time.time;
 
-            OnFired();
+            // Fire the powerup.
+
+            var power_up_effect = Instantiate(effect, transform.position, transform.rotation).GetComponent<PowerUpEffect>();
+
+            power_up_effect.Owner = owner;
+
+            NetworkServer.Spawn(power_up_effect.gameObject);
+
+            // Reduce the number of stacks and eventually unbind the power.
+
+            --stacks;
+
+            if(stacks <= 0)
+            {
+                Destroy(gameObject);
+            }
 
             return true;
         }
@@ -123,86 +113,12 @@ public abstract class PowerUp
     }
 
     /// <summary>
-    /// Called at frame-time to update the power status.
-    /// </summary>
-    public virtual void Update()
-    {
-        // Destroy the power when the duration expires (for powers having a duration).
-
-        if (IsActive && Duration > 0.0f && (Time.time >= ActivationTime + Duration))
-        {
-            Deactivate();
-        }
-    }
-
-    /// <summary>
-    /// Timestamp when the power was activated.
-    /// </summary>
-    protected float ActivationTime { get; private set; }
-
-    /// <summary>
     /// Timestamp when the power was fired.
     /// </summary>
-    protected float FireTime { get; private set; }
+    private float fire_time;
 
     /// <summary>
-    /// The owner of the power.
+    /// Ship owning this power.
     /// </summary>
-    protected GameObject Owner { get; private set; }
-
-    /// <summary>
-    /// Called whenever the power is activated.
-    /// </summary>
-    protected virtual void OnActivated()
-    {
-        if(vfx == null)
-        {
-            vfx = GameObjectFactory.Instance.Instantiate(kPowerPrefabPath + Name, Owner.transform.position, Quaternion.identity);
-        }
-
-        vfx.transform.parent = Owner.transform;
-    }
-
-    /// <summary>
-    /// Called whenever the power is deactivated.
-    /// </summary>
-    protected virtual void OnDeactivated()
-    {
-        if (vfx != null)
-        {
-            vfx.transform.parent = null;
-
-            GameObjectFactory.Instance.Destroy(kPowerPrefabPath + Name, vfx);
-        }
-    }
-
-    /// <summary>
-    /// Called whenever the power is fired.
-    /// @param is_server_side Whether the firing happened on the server-side.
-    /// @param is_owner_side Whether the firing happened on the owner-side.
-    /// </summary>
-    protected virtual void OnFired()
-    {
-        if (FireSFX)
-        {
-            AudioSource.PlayClipAtPoint(FireSFX, Owner.gameObject.transform.position, 0.2f);
-        }
-    }
-
-    /// <summary>
-    /// Create a new power.
-    /// </summary>
-    /// <param name="group">Power group.</param>
-    /// <param name="name">Power name</param>
-    protected PowerUp(string name, int group)
-    {
-        this.Group = group;
-        this.Name = name;
-        this.IsActive = false;
-    }
-
-    /// <summary>
-    /// VFX object associated to the power.
-    /// </summary>
-    private GameObject vfx;
+    private Ship owner;
 }
