@@ -60,11 +60,14 @@ public class Projectile : PowerUpEffect
 
             if (ship && ship != Owner)
             {
-                ship.GetComponent<Rigidbody>().AddForce(transform.forward * explosion_force, ForceMode.VelocityChange);
-
-                for (int number = 0; number < damage; ++number)
+                if(!ship.GetComponent<Bubble>())
                 {
-                    ship.RpcDetachOrb();
+                    ship.GetComponent<Rigidbody>().AddForce(transform.forward * explosion_force, ForceMode.VelocityChange);
+
+                    for (int number = 0; number < damage; ++number)
+                    {
+                        ship.RpcDetachOrb();
+                    }
                 }
 
                 Destroy(gameObject);
