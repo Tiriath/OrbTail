@@ -10,6 +10,7 @@ public class Ship : NetworkBehaviour
 {
     public delegate void DelegateShipEvent(Ship sender);
     public delegate void DelegateOrbEvent(Ship ship, GameObject orb);
+    public delegate void DelegateOrbsEvent(Ship ship, List<GameObject> orbs);
 
     public static event DelegateShipEvent ShipCreatedEvent;
     public static event DelegateShipEvent ShipLocalPlayerEvent;
@@ -18,7 +19,7 @@ public class Ship : NetworkBehaviour
     public event DelegateShipEvent ShipReadyEvent;
 
     public event DelegateOrbEvent OrbAttachedEvent;
-    public event DelegateOrbEvent OrbDetachedEvent;
+    public event DelegateOrbsEvent OrbDetachedEvent;
 
     /// <summary>
     /// Player index, relative to the match.
@@ -38,16 +39,6 @@ public class Ship : NetworkBehaviour
     public LobbyPlayer LobbyPlayer { get; private set; }
 
     /// <summary>
-    /// Determine how orbs are attached to the tail.
-    /// </summary>
-    public DriverStack<IAttacherDriver> AttachDriver { get; private set; }
-
-    /// <summary>
-    /// Determine how orbs are detached from the tail.
-    /// </summary>
-    public DriverStack<IDetacherDriver> DetachDriver { get; private set; }
-
-    /// <summary>
     /// Get the number of orbs in the ship's tail.
     /// </summary>
     public int TailLength
@@ -60,12 +51,6 @@ public class Ship : NetworkBehaviour
 
     public void Awake()
     {
-        AttachDriver = new DriverStack<IAttacherDriver>();
-        DetachDriver = new DriverStack<IDetacherDriver>();
-
-        AttachDriver.SetDefaultDriver(new DefaultAttacherDriver());
-        DetachDriver.SetDefaultDriver(new DefaultDetacherDriver());
-
         GetComponentInChildren<ProximityHandler>().OnProximityEvent += OnProximityEnter;
     }
 
@@ -124,32 +109,33 @@ public class Ship : NetworkBehaviour
     }
 
     /// <summary>
-    /// Attach one orb to the ship.
-    /// Only the server is allowed to attach orbs.
+    /// Attach an orb to the ship.
     /// </summary>
-    [ClientRpc]
-    public void RpcAttachOrb(GameObject orb)
+    /// <param name="orb">Orb to attach.</param>
+    /// <returns>Returns true if the orb could be attached, returns false otherwise.</returns>
+    public void AttachOrb(GameObject orb)
     {
-        bool attached = AttachDriver.Top().AttachOrb(orb, OnOrbAttached);
+        Debug.Assert(isServer);
 
-        if (attached && OrbAttachedEvent != null)
+        if(!orb.GetComponent<OrbController>().IsLinked)
         {
-            OrbAttachedEvent(this, orb);
+            RpcAttachOrb(orb);
         }
     }
 
     /// <summary>
-    /// Detach one orb from the ship.
-    /// Only the server is allowed to detach orbs.
+    /// Detach one or more orbs from the ship.
     /// </summary>
-    [ClientRpc]
-    public void RpcDetachOrb()
+    /// <param name="count">Number of orbs to detach.</param>
+    public void DetachOrbs(int count)
     {
-        var detached_orb = DetachDriver.Top().DetachOrb(OnOrbDetached);
+        Debug.Assert(isServer);
 
-        if (OrbDetachedEvent != null && detached_orb)
+        count = Mathf.Min(orbs.Count, count);
+
+        if(count > 0 && !GetComponent<Invincibility>())
         {
-            OrbDetachedEvent(this, detached_orb);
+            RpcDetachOrb(count);
         }
     }
 
@@ -165,18 +151,12 @@ public class Ship : NetworkBehaviour
     }
 
     /// <summary>
-    /// Called whenever a new orb is attached to the ship.
+    /// Attach one orb to the ship.
     /// </summary>
-    /// <param name="orb">Orb being attached.</param>
-    /// <return>Return true if the orb could be attached, returns false otherwise.</return>
-    private bool OnOrbAttached(GameObject orb)
+    [ClientRpc]
+    private void RpcAttachOrb(GameObject orb)
     {
         var orb_controller = orb.GetComponent<OrbController>();
-
-        if(orb_controller.IsLinked)
-        {
-            return false;                   // We may not attach a linked orb since it may linked to something else.
-        }
 
         if (orb_material == null)
         {
@@ -192,25 +172,33 @@ public class Ship : NetworkBehaviour
 
         orbs.Push(orb_controller);
 
-        return true;
+        if (OrbAttachedEvent != null)
+        {
+            OrbAttachedEvent(this, orb);
+        }
     }
 
     /// <summary>
-    /// Called whenever an orb is detached from the ship.
+    /// Detach one orb from the ship.
+    /// Only the server is allowed to detach orbs.
     /// </summary>
-    private GameObject OnOrbDetached()
+    [ClientRpc]
+    private void RpcDetachOrb(int count)
     {
-        if(orbs.Count > 0)
+        var detached_orbs = new List<GameObject>();
+
+        for(;count > 0; --count)
         {
             var orb = orbs.Pop();
 
             orb.Unlink();
 
-            return orb.gameObject;
+            detached_orbs.Add(orb.gameObject);
         }
-        else
+        
+        if (OrbDetachedEvent != null)
         {
-            return null;
+            OrbDetachedEvent(this, detached_orbs);
         }
     }
 

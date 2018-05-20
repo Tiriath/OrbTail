@@ -3,26 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Grants immunity to collisions. Prevents any orb from being detached for a limited amount of time.
+/// Prevents any orb from being detached from the ship when this power is active.
 /// </summary>
 public class Invincibility : PowerUpEffect
 {
-    //private IDriver driver;
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
 
-    //protected override void OnActivated()
-    //{
-    //    base.OnActivated();
+        transform.SetParent(Owner.transform);
 
-    //    driver = Owner.GetComponent<Ship>().DetachDriver.Push(new InvincibleDetacherDriver());
-    //}
-
-    //protected override void OnDeactivated()
-    //{
-    //    if (driver != null)
-    //    {
-    //        driver.Deactivate();
-    //    }
-
-    //    base.OnDeactivated();
-    //}
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
 }

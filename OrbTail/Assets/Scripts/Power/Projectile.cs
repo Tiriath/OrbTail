@@ -64,10 +64,7 @@ public class Projectile : PowerUpEffect
                 {
                     ship.GetComponent<Rigidbody>().AddForce(transform.forward * explosion_force, ForceMode.VelocityChange);
 
-                    for (int number = 0; number < damage; ++number)
-                    {
-                        ship.RpcDetachOrb();
-                    }
+                    ship.DetachOrbs(damage);
                 }
 
                 Destroy(gameObject);

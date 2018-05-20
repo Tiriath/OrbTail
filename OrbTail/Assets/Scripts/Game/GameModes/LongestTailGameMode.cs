@@ -10,22 +10,30 @@ public class LongestTailGameMode : BaseGameMode
     {
         base.OnShipCreated(ship);
 
-        ship.OrbDetachedEvent += OnOrbChanged;
-        ship.OrbAttachedEvent += OnOrbChanged;
+        ship.OrbDetachedEvent += OnOrbDetached;
+        ship.OrbAttachedEvent += OnOrbAttached;
     }
 
     protected override void OnShipDestroyed(Ship ship)
     {
         base.OnShipDestroyed(ship);
 
-        ship.OrbDetachedEvent -= OnOrbChanged;
-        ship.OrbAttachedEvent -= OnOrbChanged;
+        ship.OrbDetachedEvent -= OnOrbDetached;
+        ship.OrbAttachedEvent -= OnOrbAttached;
     }
 
     /// <summary>
-    /// Called whenever a ship acquires or loses one orb.
+    /// Called whenever a ship acquires an orb.
     /// </summary>
-    private void OnOrbChanged(Ship ship, GameObject orb)
+    private void OnOrbAttached(Ship ship, GameObject orb)
+    {
+        ship.LobbyPlayer.score = ship.TailLength;
+    }
+
+    /// <summary>
+    /// Called whenever a ship loses one or more orbs.
+    /// </summary>
+    private void OnOrbDetached(Ship ship, List<GameObject> orbs)
     {
         ship.LobbyPlayer.score = ship.TailLength;
     }

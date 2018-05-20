@@ -2,10 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
-using UnityEngine.Networking;
-using System.Linq;
 
 /// <summary>
 /// The last player standing wins the game. If the player has no more orbs it gets eliminated
@@ -32,7 +29,7 @@ public class EliminationGameMode : BaseGameMode
             {
                 for(int orb_index = 0; orb_index < lives; ++orb_index)
                 {
-                    ship.RpcAttachOrb(orbs[ship.player_index * lives + orb_index].gameObject);
+                    ship.AttachOrb(orbs[ship.player_index * lives + orb_index].gameObject);
                 }
             }
         }
@@ -42,16 +39,16 @@ public class EliminationGameMode : BaseGameMode
     {
         base.OnShipCreated(ship);
 
-        ship.OrbDetachedEvent += OnOrbChanged;
-        ship.OrbAttachedEvent += OnOrbChanged;
+        ship.OrbDetachedEvent += OnOrbDetached;
+        ship.OrbAttachedEvent += OnOrbAttached;
     }
 
     protected override void OnShipDestroyed(Ship ship)
     {
         base.OnShipDestroyed(ship);
 
-        ship.OrbDetachedEvent -= OnOrbChanged;
-        ship.OrbAttachedEvent -= OnOrbChanged;
+        ship.OrbDetachedEvent -= OnOrbDetached;
+        ship.OrbAttachedEvent -= OnOrbAttached;
 
         // Activate the spectator on the killed player.
 
@@ -81,13 +78,21 @@ public class EliminationGameMode : BaseGameMode
     }
 
     /// <summary>
-    /// Called whenever a ship acquires or loses one orb.
+    /// Called whenever a ship acquires an orb.
     /// </summary>
-    private void OnOrbChanged(Ship ship, GameObject orb)
+    private void OnOrbAttached(Ship ship, GameObject orb)
+    {
+        ship.LobbyPlayer.score = ship.TailLength;
+    }
+
+    /// <summary>
+    /// Called whenever a ship loses one or more orbs.
+    /// </summary>
+    private void OnOrbDetached(Ship ship, List<GameObject> orbs)
     {
         ship.LobbyPlayer.score = ship.TailLength;
 
-        if(isServer && ship.TailLength == 0)
+        if (isServer && ship.TailLength == 0)
         {
             Destroy(ship.gameObject);
         }

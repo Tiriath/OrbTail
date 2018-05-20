@@ -62,15 +62,12 @@ public class FightController : NetworkBehaviour
 
                 //Debug.Log(game_object.name + " hit " + gameObject.name + " causing " + damage + "damage.");
 
-                for (;orbs_count > 0 && defender != null; --orbs_count)
-                {
-                    defender.RpcDetachOrb();
+                defender.DetachOrbs(orbs_count);
 
-                    //if (FightEvent != null)
-                    //{
-                    //    FightEvent(game_object, this.gameObject, lost_orbs);                                            // Notify.
-                    //}
-                }
+                //if (FightEvent != null)
+                //{
+                //    FightEvent(game_object, this.gameObject, lost_orbs);                                            // Notify.
+                //}
             }
         }
     }
