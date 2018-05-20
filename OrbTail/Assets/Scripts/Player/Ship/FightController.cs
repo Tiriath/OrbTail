@@ -20,24 +20,10 @@ public class FightController : NetworkBehaviour
     /// The defence power of the ship, as damage required to detach each orb.
     /// </summary>
     public float defence = 15.0f;
-    
-    /// <summary>
-    /// Determine the amount of damage dealt by the ship after a collision.
-    /// </summary>
-    public DriverStack<IOffenceDriver> OffenceDriver { get; private set; }
-
-    /// <summary>
-    /// Determine the amount of damage received by the ship after a collision.
-    /// </summary>
-    public DriverStack<IDefenceDriver> DefenceDriver { get; private set; }
-
-    void Awake()
+    public void Awake()
     {
-        OffenceDriver = new DriverStack<IOffenceDriver>();
-        DefenceDriver = new DriverStack<IDefenceDriver>();
-        
-        OffenceDriver.SetDefaultDriver(new DefaultOffenceDriver(offence));
-        DefenceDriver.SetDefaultDriver(new DefaultDefenceDriver(defence));
+        ship = GetComponent<Ship>();
+        floating_object = GetComponent<FloatingObject>();
     }
 
     /// <summary>
@@ -46,29 +32,64 @@ public class FightController : NetworkBehaviour
     /// <param name="collision">Collision data.</param>
     private void OnCollisionEnter(Collision collision)
     {
-        if(isServer)
+        if (isServer)
         {
             // This ship is the defender, whereas the other is the attacker. This event is triggered on both ships simultaneously with reversed roles.
 
-            GameObject game_object = collision.gameObject;
+            var attacker = collision.gameObject.GetComponent<FightController>();
 
-            if (game_object.tag == Tags.Ship)
+            if (attacker)
             {
-                var defender = GetComponent<Ship>();
-
-                var damage = game_object.GetComponent<FightController>().OffenceDriver.Top().GetDamage(collision);      // Damage dealt to this ship.
-
-                var orbs_count = DefenceDriver.Top().ReceiveDamage(damage);                                             // Orbs lost by this ship.
-
-                //Debug.Log(game_object.name + " hit " + gameObject.name + " causing " + damage + "damage.");
-
-                defender.DetachOrbs(orbs_count);
+                ReceiveDamage(attacker.GetDamage(collision));
 
                 //if (FightEvent != null)
                 //{
-                //    FightEvent(game_object, this.gameObject, lost_orbs);                                            // Notify.
+                //    FightEvent(game_object, this.gameObject, lost_orbs);                          // Notify.
                 //}
             }
         }
     }
+
+    /// <summary>
+    /// Get the damage dealt by this ship as a result of a collision result.
+    /// </summary>
+    private float GetDamage(Collision collision)
+    {
+        var ship_forward = floating_object.Forward;
+
+        // Assumes the ship can only deal damage with its frontal part.
+
+        var damage = 0.0f;
+
+        foreach (var contact_point in collision.contacts)
+        {
+            var impact_direction = (contact_point.point - transform.position).normalized;
+
+            var impact_scale = Mathf.Max(0.0f, Vector3.Dot(impact_direction, ship_forward));        // A frontal hit causes more damage than a glancing one.
+
+            damage += collision.relativeVelocity.magnitude * impact_scale;
+        }
+
+        return damage * offence;
+    }
+
+    /// <summary>
+    /// Receive some damage and detach orbs as result.
+    /// </summary>
+    private void ReceiveDamage(float damage)
+    {
+        var lost_orbs = Mathf.FloorToInt(damage / defence);
+
+        ship.DetachOrbs(lost_orbs);
+    }
+
+    /// <summary>
+    /// Ship this controller refers to.
+    /// </summary>
+    private Ship ship;
+
+    /// <summary>
+    /// Floating object associated to the ship.
+    /// </summary>
+    private FloatingObject floating_object;
 }
