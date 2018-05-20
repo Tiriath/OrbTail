@@ -113,8 +113,6 @@ public class MovementController : NetworkBehaviour
         rigid_body.rotation = Quaternion.Lerp(rigid_body.rotation, Quaternion.LookRotation(transform.forward, rolling_up), roll_smooth * Time.fixedDeltaTime);
     }
 
-
-
     /// <summary>
     /// Proxy used to read user or AI input.
     /// </summary>
