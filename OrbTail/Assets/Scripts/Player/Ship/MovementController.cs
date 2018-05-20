@@ -37,28 +37,46 @@ public class MovementController : NetworkBehaviour
     public float roll_smooth = 8.0f;
 
     /// <summary>
-    /// Get the engine driver.
+    /// Get the current ship thrust.
     /// </summary>
-    /// <returns>Returns the engine driver.</returns>
-    public DriverStack<IEngineDriver> EngineDriver { get; private set; }
+    public float Thrust
+    {
+        get
+        {
+            var value = (speed * ThrottleInput - hover.ForwardVelocity) * speed_smooth * Time.fixedDeltaTime;
+
+            return Mathf.Clamp(value, -speed, +speed);
+        }
+    }
 
     /// <summary>
-    /// Get the wheel driver.
+    /// Get the current ship steering.
     /// </summary>
-    /// <returns>Returns the steer driver.</returns>
-    public DriverStack<ISteerDriver> SteerDriver { get; private set; }
+    public float Steer
+    {
+        get
+        {
+            var value = (steer * SteerInput - hover.AngularVelocity) * steer_smooth * Time.fixedDeltaTime;
+
+            return Mathf.Clamp(value, -steer, +steer);
+        }
+    }
+
+    /// <summary>
+    /// Current throttle input.
+    /// </summary>
+    public float ThrottleInput { get; private set; }
+
+    /// <summary>
+    /// Current steer input.
+    /// </summary>
+    public float SteerInput { get; private set; }
 
     void Awake()
     {
         hover = this.GetComponent<FloatingObject>();
         rigid_body = this.GetComponent<Rigidbody>();
         input = this.GetComponent<InputProxy>();
-
-        EngineDriver = new DriverStack<IEngineDriver>();
-        SteerDriver = new DriverStack<ISteerDriver>();
-
-        EngineDriver.SetDefaultDriver(new DefaultEngineDriver(speed, speed_smooth));
-        SteerDriver.SetDefaultDriver(new DefaultSteerDriver(steer, steer_smooth));
     }
 
     // Update movement drivers.
@@ -69,42 +87,33 @@ public class MovementController : NetworkBehaviour
             return;
         }
 
-        if(EngineDriver != null)
-        {
-            EngineDriver.Top().Input = input.ThrottleInput;
-        }
-
-        if(SteerDriver != null)
-        {
-            SteerDriver.Top().Input = input.SteerInput;
-        }
+        ThrottleInput = input.ThrottleInput;
+        SteerInput = input.SteerInput;
     }
 
     // Physics update.
     void FixedUpdate()
     {
-        if(SteerDriver != null)
-        {
-            var steer = SteerDriver.Top().GetSteer(hover.AngularVelocity, Time.fixedDeltaTime) * hover.Up;
+        // Forward thrust.
 
-            rigid_body.AddTorque(steer, ForceMode.VelocityChange);
+        var thrust = Thrust * hover.Forward;
 
-            // Rolling - The ship rolls as result of its steering.
+        rigid_body.AddForce(thrust, ForceMode.VelocityChange);
 
-            var rolling_up = Quaternion.AngleAxis(SteerDriver.Top().Input * roll_angle, -hover.Forward) * hover.Up;
+        // Steering.
 
-            rigid_body.rotation = Quaternion.Lerp(rigid_body.rotation, Quaternion.LookRotation(transform.forward, rolling_up), roll_smooth * Time.fixedDeltaTime);
+        var steer = Steer * hover.Up;
 
-        }
+        rigid_body.AddTorque(steer, ForceMode.VelocityChange);
 
-        if(EngineDriver != null)
-        {
-            var thrust = EngineDriver.Top().GetThrust(hover.ForwardVelocity, Time.fixedDeltaTime) * hover.Forward;
+        // Rolling - The ship rolls as result of its steering.
 
-            rigid_body.AddForce(thrust, ForceMode.VelocityChange);
+        var rolling_up = Quaternion.AngleAxis(SteerInput * roll_angle, -hover.Forward) * hover.Up;
 
-        }
+        rigid_body.rotation = Quaternion.Lerp(rigid_body.rotation, Quaternion.LookRotation(transform.forward, rolling_up), roll_smooth * Time.fixedDeltaTime);
     }
+
+
 
     /// <summary>
     /// Proxy used to read user or AI input.

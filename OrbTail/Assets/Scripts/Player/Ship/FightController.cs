@@ -20,6 +20,7 @@ public class FightController : NetworkBehaviour
     /// The defence power of the ship, as damage required to detach each orb.
     /// </summary>
     public float defence = 15.0f;
+
     public void Awake()
     {
         ship = GetComponent<Ship>();

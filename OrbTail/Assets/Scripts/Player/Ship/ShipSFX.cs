@@ -56,9 +56,7 @@ public class ShipSFX : MonoBehaviour
     {
         if(audio_source != null)
         {
-            var engine = movement_controller.EngineDriver.Top();
-
-            audio_source.pitch = Mathf.Abs(engine.Input) * (engine_max_pitch - engine_min_pitch) + engine_min_pitch;
+            audio_source.pitch = Mathf.Abs(movement_controller.ThrottleInput) * (engine_max_pitch - engine_min_pitch) + engine_min_pitch;
         }
     }
 
