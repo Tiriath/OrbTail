@@ -27,20 +27,15 @@ public class HomingMissile : PowerUpEffect
     public float speed = 8.0f;
 
     /// <summary>
-    /// Missile forward speed smoothing factor.
-    /// </summary>
-    public float speed_smooth = 10f;
-
-    /// <summary>
     /// Number of orbs detached upon impact.
     /// </summary>
-    public int damage = 3;
+    public int damage = 2;
 
     public void OnDestroy()
     {
         if(explosion)
         {
-            var instance = Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(explosion, transform.position, Quaternion.identity);
         }
     }
 
@@ -74,6 +69,8 @@ public class HomingMissile : PowerUpEffect
     {
         base.Update();
 
+        // Adjust missile direction.
+
         if (target != null)
         {
             var direction = (target.transform.position - transform.position).normalized;
@@ -83,9 +80,9 @@ public class HomingMissile : PowerUpEffect
             transform.rotation = Quaternion.LookRotation(forward, floating_object.Up);
         }
 
-        var missile_forward = Vector3.Lerp(transform.forward, floating_object.Forward, Time.deltaTime * speed_smooth);
+        // Propel the missile forward.
 
-        rigid_body.AddForce(missile_forward * speed, ForceMode.VelocityChange);
+        rigid_body.AddForce(transform.forward * speed, ForceMode.VelocityChange);
     }
 
     /// <summary>
