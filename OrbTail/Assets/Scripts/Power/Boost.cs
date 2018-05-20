@@ -22,10 +22,8 @@ public class Boost : PowerUpEffect
         transform.localRotation = Quaternion.identity;
     }
 
-    public override void Update()
+    public void FixedUpdate()
     {
-        base.Update();
-
         if(rigid_body)
         {
             rigid_body.AddForce(Owner.transform.forward * boost, ForceMode.VelocityChange);

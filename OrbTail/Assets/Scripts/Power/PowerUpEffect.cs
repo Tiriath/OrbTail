@@ -32,6 +32,15 @@ public class PowerUpEffect : NetworkBehaviour
     }
 
     /// <summary>
+    /// Refresh the remaining duration of this powerup.
+    /// </summary>
+    public void RefreshDuration(float duration)
+    {
+        this.duration = duration;
+        timestamp = Time.time;
+    }
+
+    /// <summary>
     /// Timestamp when this power was created.
     /// </summary>
     private float timestamp;

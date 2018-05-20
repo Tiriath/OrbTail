@@ -77,6 +77,11 @@ public class MovementController : NetworkBehaviour
     /// </summary>
     public float Overdrive { get; set; }
 
+    /// <summary>
+    /// Whether the input is enabled.
+    /// </summary>
+    public bool EnableInput { get; set; }
+
     void Awake()
     {
         hover = this.GetComponent<FloatingObject>();
@@ -85,6 +90,7 @@ public class MovementController : NetworkBehaviour
         power_controller = this.GetComponent<PowerController>();
 
         Overdrive = 0.0f;
+        EnableInput = true;
     }
 
     // Update movement drivers.
@@ -95,8 +101,16 @@ public class MovementController : NetworkBehaviour
             return;
         }
 
-        ThrottleInput = input.ThrottleInput;
-        SteerInput = input.SteerInput;
+        if (EnableInput)
+        {
+            ThrottleInput = input.ThrottleInput;
+            SteerInput = input.SteerInput;
+        }
+        else
+        {
+            ThrottleInput = 0.0f;
+            SteerInput = 0.0f;
+        }
     }
 
     // Physics update.

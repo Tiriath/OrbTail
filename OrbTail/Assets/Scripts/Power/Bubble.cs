@@ -23,11 +23,13 @@ public class Bubble : PowerUpEffect
     {
         if (isServer)
         {
-            // Destroy the barrier upon impact with projectiles.
+            // Destroy the barrier upon impact with projectiles and drops.
 
             var projectile = collision.gameObject.GetComponent<Projectile>();
+            var hijack = collision.gameObject.GetComponent<Hijack>();
 
-            if(projectile && projectile.Owner != Owner)
+            if((projectile && projectile.Owner != Owner) ||
+               (hijack && hijack.Owner != Owner))
             {
                 Destroy(gameObject);
             }
