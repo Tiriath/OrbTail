@@ -27,7 +27,7 @@ public class HomingMissile : Projectile
 
                 if (distance < min_distance)
                 {
-                    target = ship;
+                    Target = ship;
                     min_distance = distance;
                 }
             }
@@ -40,18 +40,13 @@ public class HomingMissile : Projectile
 
         // Adjust missile direction.
 
-        if (target != null)
+        if (Target != null)
         {
-            var direction = (target.transform.position - transform.position).normalized;
+            var direction = (Target.transform.position - transform.position).normalized;
 
             var forward = Vector3.RotateTowards(transform.forward, direction, Time.deltaTime * steering, 0).normalized;
 
             transform.rotation = Quaternion.LookRotation(forward, floating_object.Up);
         }
     }
-
-    /// <summary>
-    /// Target of this missile.
-    /// </summary>
-    private Ship target;
 }

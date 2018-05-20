@@ -16,6 +16,11 @@ public class PowerUpEffect : NetworkBehaviour
     /// </summary>
     public Ship Owner { get; set; }
 
+    /// <summary>
+    /// The target of this effect.
+    /// </summary>
+    public Ship Target { get; set; }
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -29,15 +34,6 @@ public class PowerUpEffect : NetworkBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    /// <summary>
-    /// Refresh the remaining duration of this powerup.
-    /// </summary>
-    public void RefreshDuration(float duration)
-    {
-        this.duration = duration;
-        timestamp = Time.time;
     }
 
     /// <summary>
