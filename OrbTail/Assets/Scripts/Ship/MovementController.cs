@@ -45,7 +45,7 @@ public class MovementController : NetworkBehaviour
         {
             var value = (speed * ThrottleInput - hover.ForwardVelocity) * speed_smooth * Time.fixedDeltaTime;
 
-            return Mathf.Clamp(value, -speed, +speed);
+            return Mathf.Clamp(value, -speed, +speed) * (1.0f + Overdrive);
         }
     }
 
@@ -72,11 +72,19 @@ public class MovementController : NetworkBehaviour
     /// </summary>
     public float SteerInput { get; private set; }
 
+    /// <summary>
+    /// Overdrive factor, used to increase the ship speed.
+    /// </summary>
+    public float Overdrive { get; set; }
+
     void Awake()
     {
         hover = this.GetComponent<FloatingObject>();
         rigid_body = this.GetComponent<Rigidbody>();
         input = this.GetComponent<InputProxy>();
+        power_controller = this.GetComponent<PowerController>();
+
+        Overdrive = 0.0f;
     }
 
     // Update movement drivers.
@@ -127,4 +135,9 @@ public class MovementController : NetworkBehaviour
     /// Handles the hovering of the ship.
     /// </summary>
     private FloatingObject hover;
+
+    /// <summary>
+    /// Power controller.
+    /// </summary>
+    private PowerController power_controller;
 }
