@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// Script used to handle the HUD of a player.
 /// </summary>
-public class HUDHandler : MonoBehaviour
+public class HUDHandler : GUIInputHandler
 {
     /// <summary>
     /// Movement smoothing factor.
@@ -42,6 +42,38 @@ public class HUDHandler : MonoBehaviour
     }
 
     /// <summary>
+    /// Get or set the lobby player this camera belongs to.
+    /// </summary>
+    public LobbyPlayer LobbyPlayer
+    {
+        get
+        {
+            return lobby_player;
+        }
+        set
+        {
+            lobby_player = value;
+
+            // The HUD is visible and reacts only to the lobby player.
+
+            if (lobby_player)
+            {
+                var player_layer = Layers.GetPlayerLayer(lobby_player);
+
+                Layers.SetLayerRecursive(gameObject, player_layer);
+
+                GUILayer = player_layer;
+            }
+
+            // Propagate to the elements.
+            foreach (var hud_element in GetComponentsInChildren<HUDElement>(true))
+            {
+                hud_element.LobbyPlayer = lobby_player;
+            }
+        }
+    }
+
+    /// <summary>
     /// Set the camera this HUD component is attached to.
     /// </summary>
     public Camera Camera
@@ -52,6 +84,8 @@ public class HUDHandler : MonoBehaviour
 
             transform.position = camera_transform.position;
             transform.rotation = camera_transform.rotation;
+
+            OwningCamera = value;
         }
     }
 
@@ -73,4 +107,9 @@ public class HUDHandler : MonoBehaviour
     /// Owner of this HUD.
     /// </summary>
     private GameObject owner;
+
+    /// <summary>
+    /// Lobby player this HUD refers to.
+    /// </summary>
+    private LobbyPlayer lobby_player;
 }

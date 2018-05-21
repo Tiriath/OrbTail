@@ -8,6 +8,11 @@ using System.Collections.Generic;
 public class GUIInputHandler : MonoBehaviour
 {
     /// <summary>
+    /// Layer containing the GUI elements.
+    /// </summary>
+    public string gui_layer = "MenuButton";
+
+    /// <summary>
     /// Maximum time between two consecutive interactions that register as a single "double tap".
     /// </summary>
     public float double_tap_time = 2.0f;
@@ -17,11 +22,28 @@ public class GUIInputHandler : MonoBehaviour
     /// </summary>
     public Camera OwningCamera { get; set; }
 
+    /// <summary>
+    /// Get or set the layer the GUI elements belong to.
+    /// </summary>
+    public int GUILayer
+    {
+        get
+        {
+            return gui_layer_bitmask;
+        }
+        set
+        {
+            gui_layer_bitmask = 1 << value;
+
+            gui_layer = LayerMask.LayerToName(value);
+        }
+    }
+
     public void Awake()
     {
         Debug.Log("GUIInputHandler: " + gameObject.name);
 
-        Debug.Assert(FindObjectsOfType<GUIInputHandler>().Length == 1, "Only one GUIInput handler is allowed per scene.");
+        GUILayer = LayerMask.NameToLayer(gui_layer);
     }
 
     public virtual void Update ()
@@ -51,35 +73,38 @@ public class GUIInputHandler : MonoBehaviour
     {
         var camera = OwningCamera ? OwningCamera : Camera.main;
 
-        RaycastHit raycast_hit;
-
-        bool hit = Physics.Raycast(camera.ScreenPointToRay(position), out raycast_hit, Mathf.Infinity, Layers.MenuButton);
-
-        var hit_button = hit ? raycast_hit.collider.gameObject : null;
-
-        // Handle inputs.
-
-        if(touch_phase == TouchPhase.Began)
+        if(camera)
         {
-            interacting_button = hit_button;
+            RaycastHit raycast_hit;
 
-            InputEnter();
+            bool hit = Physics.Raycast(camera.ScreenPointToRay(position), out raycast_hit, Mathf.Infinity, gui_layer_bitmask);
 
-        }
-        else if(touch_phase == TouchPhase.Ended)
-        {
-            if (hit_button == interacting_button)
+            var hit_button = hit ? raycast_hit.collider.gameObject : null;
+
+            // Handle inputs.
+
+            if (touch_phase == TouchPhase.Began)
             {
-                InputConfirm();
+                interacting_button = hit_button;
+
+                InputEnter();
+
             }
+            else if (touch_phase == TouchPhase.Ended)
+            {
+                if (hit_button == interacting_button)
+                {
+                    InputConfirm();
+                }
 
-            InputLeave();
+                InputLeave();
 
-            timestamp = Time.realtimeSinceStartup;
-        }
-        else if(touch_phase == TouchPhase.Canceled)
-        {
-            InputLeave();
+                timestamp = Time.realtimeSinceStartup;
+            }
+            else if (touch_phase == TouchPhase.Canceled)
+            {
+                InputLeave();
+            }
         }
     }
 
@@ -137,4 +162,9 @@ public class GUIInputHandler : MonoBehaviour
     /// Last time an input was confirmed.
     /// </summary>
     private float timestamp = 0.0f;
+
+    /// <summary>
+    /// Bitmask of the GUI layer.
+    /// </summary>
+    private int gui_layer_bitmask = 0;
 }

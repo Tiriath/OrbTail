@@ -51,9 +51,30 @@ public class FollowCamera : MonoBehaviour
     }
 
     /// <summary>
-    /// Owner of this camera.
+    /// Get or set the lobby player this camera belongs to.
     /// </summary>
-    public GameObject Owner { get; set; }
+    public LobbyPlayer LobbyPlayer
+    {
+        get
+        {
+            return lobby_player;
+        }
+        set
+        {
+            var camera = GetComponentInChildren<Camera>();
+
+            // Set the cull mask for the objects that can only be seen by this lobby player.
+
+            if(lobby_player)
+            {
+                camera.cullingMask &= ~Layers.GetPlayerLayerBitmask(lobby_player);
+            }
+            
+            lobby_player = value;
+
+            camera.cullingMask |= Layers.GetPlayerLayerBitmask(lobby_player);
+        }
+    }
 
     /// <summary>
     /// Get the transform of the camera attached at the end of the boom.
@@ -147,6 +168,11 @@ public class FollowCamera : MonoBehaviour
     /// Current camera target rotation.
     /// </summary>
     private Quaternion current_rotation;
+
+    /// <summary>
+    /// Lobby player this camera refers to.
+    /// </summary>
+    private LobbyPlayer lobby_player;
 
     /// <summary>
     /// Current camera distance from the target.

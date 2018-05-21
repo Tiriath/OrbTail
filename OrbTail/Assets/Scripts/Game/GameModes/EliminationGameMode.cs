@@ -60,15 +60,14 @@ public class EliminationGameMode : BaseGameMode
 
             // Attach the follow camera to the spectator.
 
-            foreach(var camera in FindObjectsOfType<FollowCamera>().Where(follow_camera => (follow_camera.Owner == ship.gameObject)))
+            foreach(var camera in FindObjectsOfType<FollowCamera>().Where(follow_camera => (follow_camera.LobbyPlayer == ship.LobbyPlayer)))
             {
                 camera.ViewTarget = spectator.gameObject;
-                camera.Owner = spectator.gameObject;
             }
             
             // Reassign HUD ownership.
 
-            foreach(var hud in FindObjectsOfType<HUDHandler>().Where(hud_handler => (hud_handler.Owner == ship.gameObject)))
+            foreach(var hud in FindObjectsOfType<HUDHandler>().Where(hud_handler => (hud_handler.LobbyPlayer == ship.LobbyPlayer)))
             {
                 hud.Owner = spectator.gameObject;
             }

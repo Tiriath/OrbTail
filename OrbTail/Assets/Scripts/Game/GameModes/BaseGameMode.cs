@@ -184,7 +184,18 @@ public abstract class BaseGameMode : NetworkBehaviour
     /// </summary>
     protected virtual void OnMatchCountdown()
     {
+        // Disable player controls.
+
         EnableControls(false);
+
+        // Enable the in-game HUD for each local player.
+
+        foreach(var hud in FindObjectsOfType<HUDHandler>())
+        {
+            hud.enabled = true;
+        }
+
+        // Start the countdown.
 
         timer.TimeOutEvent += OnEndCountdown;
 
@@ -243,7 +254,7 @@ public abstract class BaseGameMode : NetworkBehaviour
             var camera = Instantiate(follow_camera).GetComponent<FollowCamera>();
 
             camera.ViewTarget = ship.gameObject;
-            camera.Owner = ship.gameObject;
+            camera.LobbyPlayer = ship.LobbyPlayer;
 
             camera.Snap();
 
@@ -253,8 +264,11 @@ public abstract class BaseGameMode : NetworkBehaviour
             {
                 var hud = Instantiate(tutorial_hud).GetComponent<HUDHandler>();
 
+                hud.LobbyPlayer = ship.LobbyPlayer;
                 hud.Camera = camera.GetComponentInChildren<Camera>();
                 hud.Owner = ship.gameObject;
+
+                hud.enabled = true;
             }
 
             // Attach the game HUD to the local player camera.
@@ -263,13 +277,12 @@ public abstract class BaseGameMode : NetworkBehaviour
             {
                 var hud = Instantiate(game_hud).GetComponent<HUDHandler>();
 
+                hud.LobbyPlayer = ship.LobbyPlayer;
                 hud.Camera = camera.GetComponentInChildren<Camera>();
                 hud.Owner = ship.gameObject;
+
+                hud.enabled = false;
             }
-
-            // #WORKAROUND Each player should have its own GUI input handler.
-
-            FindObjectOfType<GUIInputHandler>().OwningCamera = camera.GetComponentInChildren<Camera>();
         }
     }
 

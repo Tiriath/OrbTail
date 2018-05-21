@@ -24,6 +24,11 @@ public class HUDElement : GUIElement
     }
 
     /// <summary>
+    /// Get or set the lobby player this HUD element belongs to.
+    /// </summary>
+    public LobbyPlayer LobbyPlayer { get; set; }
+
+    /// <summary>
     /// Called whenever the owner of this element changes.
     /// </summary>
     protected virtual void OnOwnerChanged()
