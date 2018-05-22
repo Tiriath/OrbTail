@@ -90,11 +90,6 @@ public class Spectator : MonoBehaviour
     private List<Ship> ships;
 
     /// <summary>
-    /// Current camera movement.
-    /// </summary>
-    private FollowCamera camera_movement_;
-
-    /// <summary>
     /// Proxy used to read user or AI input.
     /// </summary>
     private InputProxy input;

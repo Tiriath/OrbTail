@@ -19,9 +19,6 @@ public class Soundtrack : MonoBehaviour
     /// Fade out time, in seconds.
     /// </summary>
     public float fade_out = 0.5f;
-    
-    //private GameBuilder builder;
-    private GameObject battleSound;
 
     // Use this for initialization
     public void Awake ()
