@@ -20,12 +20,7 @@ public class GUIButtonSelectShipBehaviour : GUIElement
 
         var master = GameObject.FindGameObjectWithTag(Tags.Master);
 
-        var player_configuration = master.GetComponent<PlayerConfiguration>();
-
-        if(!player_configuration)
-        {
-            player_configuration = master.AddComponent<PlayerConfiguration>();
-        }
+        var player_configuration = master.AddComponent<PlayerConfiguration>();
 
         player_configuration.ship_prefab = ship_prefab;
         player_configuration.is_human = true;

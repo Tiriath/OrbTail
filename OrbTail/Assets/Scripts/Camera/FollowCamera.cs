@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Script used to handle camera movement.
@@ -73,6 +74,28 @@ public class FollowCamera : MonoBehaviour
             lobby_player = value;
 
             camera.cullingMask |= Layers.GetPlayerLayerBitmask(lobby_player);
+
+            // Set the camera viewport depending on the local player index and the total number of local human players.
+
+            var human_players = FindObjectsOfType<PlayerConfiguration>().Count(player_configuration => player_configuration.is_human);
+
+            var local_player_index = lobby_player.playerControllerId;
+
+            if(human_players == 1)
+            {
+                camera.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
+            }
+            else if(human_players == 2)
+            {
+                camera.rect = new Rect(0.5f * local_player_index, 0.0f, 0.5f, 1.0f);
+            }
+            else if(human_players <= 4)
+            {
+                int x = local_player_index % 2;
+                int y = 1 - local_player_index / 2;
+
+                camera.rect = new Rect(0.5f * x, 0.5f * y, 0.5f, 0.5f);
+            }
         }
     }
 
