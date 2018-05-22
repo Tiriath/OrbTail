@@ -118,7 +118,7 @@ struct HUDCompassNeedle
     /// </summary>
     public void OnDestroy()
     {
-        Ship.ShipDestroyedEvent += OnShipDestroyed;
+        Ship.ShipDestroyedEvent -= OnShipDestroyed;
 
         if(needle)
         {
