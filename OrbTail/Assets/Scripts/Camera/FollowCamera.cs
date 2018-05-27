@@ -83,18 +83,18 @@ public class FollowCamera : MonoBehaviour
 
             if(human_players == 1)
             {
-                camera.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
+                camera.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);                                     // Full screen.
             }
             else if(human_players == 2)
             {
-                camera.rect = new Rect(0.5f * local_player_index, 0.0f, 0.5f, 1.0f);
+                camera.rect = new Rect(0.5f * local_player_index, 0.0f, 0.5f, 1.0f);                // Vertical split-screen.
             }
             else if(human_players <= 4)
             {
                 int x = local_player_index % 2;
                 int y = 1 - local_player_index / 2;
 
-                camera.rect = new Rect(0.5f * x, 0.5f * y, 0.5f, 0.5f);
+                camera.rect = new Rect(0.5f * x, 0.5f * y, 0.5f, 0.5f);                             // Vertical and horizontal split-screen.
             }
         }
     }

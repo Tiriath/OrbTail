@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Script used to show the status of a lobby player inside the lobby scene.
@@ -13,19 +12,39 @@ public class GUILobbyPlayer : MonoBehaviour
     public int index = -1;
 
     /// <summary>
-    /// Scale of the element when the player it represents is ready.
+    /// Scale of the element when the player is ready.
     /// </summary>
     public float ready_scale = 1.0f;
 
     /// <summary>
-    /// Scale of the element when the player it represents is not ready.
+    /// Scale of the element when the player is not ready.
     /// </summary>
     public float not_ready_scale = 0.5f;
+
+    /// <summary>
+    /// Alpha of the element when the player is ready.
+    /// </summary>
+    public float ready_alpha = 1.0f;
+
+    /// <summary>
+    /// Alpha of the element when the player is not ready.
+    /// </summary>
+    public float not_ready_alpha = 0.75f;
 
     /// <summary>
     /// Time needed to tween the element.
     /// </summary>
     public float tween_time = 0.2f;
+
+    /// <summary>
+    /// Default ship icon.
+    /// </summary>
+    public Sprite default_icon;
+
+    /// <summary>
+    /// Associate each ship to its icon.
+    /// </summary>
+    public ShipIcon[] ship_icons;
 
     public void Start ()
     {
@@ -86,7 +105,11 @@ public class GUILobbyPlayer : MonoBehaviour
     {
         Debug.Assert(lobby_player == bound_lobby_player);
 
-        // #TODO Change the icon!
+        var ship_icons = this.ship_icons.Where(ship_icon => ship_icon.ship.name == lobby_player.player_ship).ToArray();
+
+        var ship_sprite = ship_icons.Length > 0 ? ship_icons[0].sprite : default_icon;
+
+        GetComponent<SpriteRenderer>().sprite = ship_sprite;
     }
 
     /// <summary>
@@ -99,10 +122,12 @@ public class GUILobbyPlayer : MonoBehaviour
         var target_scale = lobby_player.readyToBegin ? ready_scale : not_ready_scale;
 
         iTween.ScaleTo(gameObject, original_scale * target_scale, tween_time);
+
+        iTween.FadeTo(gameObject, lobby_player.readyToBegin ? ready_alpha : not_ready_alpha, tween_time);
     }
 
     /// <summary>
-    /// Called whenever a a player lefts the lobby.
+    /// Called whenever a a player leaves the lobby.
     /// </summary>
     private void OnLobbyPlayerLeft(LobbyPlayer lobby_player)
     {
@@ -127,4 +152,21 @@ public class GUILobbyPlayer : MonoBehaviour
     /// Original element scale.
     /// </summary>
     private Vector3 original_scale;
+}
+
+/// <summary>
+/// Associate a ship to its icon.
+/// </summary>
+[System.Serializable]
+public class ShipIcon
+{
+    /// <summary>
+    /// Ship this icon refers to.
+    /// </summary>
+    public GameObject ship;
+
+    /// <summary>
+    /// Actual sprite to display.
+    /// </summary>
+    public Sprite sprite;
 }
