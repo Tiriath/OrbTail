@@ -5,6 +5,7 @@ using UnityEngine.Networking.Match;
 using UnityEngine.Networking.Types;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.Collections;
 
 /// <summary>
 /// Script used to create and handle the game lobby.
@@ -35,6 +36,16 @@ public class GameLobby : NetworkLobbyManager
     /// Maximum connection attempts to perform before giving up.
     /// </summary>
     public int max_connection_attempts = 8;
+
+    /// <summary>
+    /// Countdown timer before starting a new match when everyone is ready.
+    /// </summary>
+    public int match_countdown = 5;
+
+    /// <summary>
+    /// Delay before adding a new AI to the match when every other human is ready, in seconds.
+    /// </summary>
+    public float ai_join_delay = 1.0f;
 
     /// <summary>
     /// List of ship prefabs.
@@ -189,10 +200,11 @@ public class GameLobby : NetworkLobbyManager
     public override void OnLobbyServerPlayersReady()
     {
         // #TODO Start the countdown.
+        Debug.Log("COUNTDOWN!");
 
         // Start the selected arena.
 
-        ServerChangeScene(game_configuration.arena);
+        //ServerChangeScene(game_configuration.arena);
     }
 
     /// <summary>
@@ -412,10 +424,12 @@ public class GameLobby : NetworkLobbyManager
     /// <summary>
     /// Add a new AI in an empty slot.
     /// </summary>
-    private void AddAI()
+    private IEnumerator AddAI()
     {
-        // Choose a ship that hasn't been already chosen.
+        yield return new WaitForSeconds(ai_join_delay);
 
+        // Choose a ship that hasn't been already chosen.
+        
         var ai_ships = new List<GameObject>(ship_prefabs.Where(prefab => !lobbySlots.Any(slot => (slot != null) && ((LobbyPlayer)slot).player_ship == prefab.name)));
 
         var ai_configuration = gameObject.AddComponent<PlayerConfiguration>();
@@ -457,7 +471,7 @@ public class GameLobby : NetworkLobbyManager
 
             if(lobbySlots.Count(slot => slot == null) > 0)
             {
-                AddAI();
+                StartCoroutine(AddAI());
             }
         }
     }
