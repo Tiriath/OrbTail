@@ -125,7 +125,7 @@ public class HUDGameCountdown : HUDElement
     private int time;
 
     /// <summary>
-    /// Element used to displayer the countdown on.
+    /// Element used to display the countdown on.
     /// </summary>
     private TextMesh text_mesh;
 

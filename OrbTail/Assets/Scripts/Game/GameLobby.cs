@@ -31,17 +31,12 @@ public class GameLobby : NetworkLobbyManager
             return game_lobby;
         }
     }
-    
+
     /// <summary>
     /// Maximum connection attempts to perform before giving up.
     /// </summary>
     public int max_connection_attempts = 8;
-
-    /// <summary>
-    /// Countdown timer before starting a new match when everyone is ready.
-    /// </summary>
-    public int match_countdown = 5;
-
+    
     /// <summary>
     /// Delay before adding a new AI to the match when every other human is ready, in seconds.
     /// </summary>
@@ -51,6 +46,11 @@ public class GameLobby : NetworkLobbyManager
     /// List of ship prefabs.
     /// </summary>
     public GameObject[] ship_prefabs;
+
+    /// <summary>
+    /// Prefab used to start the match after a short countdown.
+    /// </summary>
+    public GameObject countdown_prefab;
 
     /// <summary>
     /// Get a local player configuration from index.
@@ -199,12 +199,18 @@ public class GameLobby : NetworkLobbyManager
     /// </summary>
     public override void OnLobbyServerPlayersReady()
     {
-        // #TODO Start the countdown.
-        Debug.Log("COUNTDOWN!");
+        if(countdown_prefab)
+        {
+            var countdown = Instantiate(countdown_prefab, Vector3.zero, Quaternion.identity).GetComponent<LobbyCountdown>();
 
-        // Start the selected arena.
+            countdown.TimeOutEvent += OnCountdown;
 
-        //ServerChangeScene(game_configuration.arena);
+            NetworkServer.Spawn(countdown.gameObject);
+        }
+        else
+        {
+            OnCountdown(null);
+        }
     }
 
     /// <summary>
@@ -477,11 +483,24 @@ public class GameLobby : NetworkLobbyManager
     }
 
     /// <summary>
+    /// Called whenever the match countdown reaches 0.
+    /// </summary>
+    private void OnCountdown(GameTimer timer)
+    {
+        if(timer)
+        {
+            timer.TimeOutEvent -= OnCountdown;
+        }
+
+        ServerChangeScene(game_configuration.arena);
+    }
+
+    /// <summary>
     /// Lock the match, preventing any other player from joining.
     /// </summary>
     private void LockMatch()
     {
-        // Unlist the match so other players don't join this match.
+        // Unlist the match so other players don't join it.
 
         if (match_id.HasValue)
         {

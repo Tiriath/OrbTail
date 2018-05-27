@@ -22,10 +22,12 @@ public class GUIButtonToggleReadyBehaviour : GUIElement
     /// </summary>
     public int local_player_index = 0;
 
-    public void Start()
+    public void Awake()
     {
         LobbyPlayer.LocalPlayerJoinedEvent += OnLocalPlayerJoined;
         LobbyPlayer.PlayerLeftEvent += OnLobbyPlayerLeft;
+
+        LobbyCountdown.LobbyCountdownStartedEvent += OnLobbyCountdownStarted;
 
         GetComponent<TextMesh>().text = "";
     }
@@ -34,6 +36,8 @@ public class GUIButtonToggleReadyBehaviour : GUIElement
     {
         LobbyPlayer.LocalPlayerJoinedEvent -= OnLocalPlayerJoined;
         LobbyPlayer.PlayerLeftEvent -= OnLobbyPlayerLeft;
+
+        LobbyCountdown.LobbyCountdownStartedEvent -= OnLobbyCountdownStarted;
 
         if (bound_local_player != null)
         {
@@ -94,6 +98,14 @@ public class GUIButtonToggleReadyBehaviour : GUIElement
 
             bound_local_player = null;
         }
+    }
+
+    /// <summary>
+    /// Called whenever the lobby countdown starts.
+    /// </summary>
+    public void OnLobbyCountdownStarted(LobbyCountdown timer)
+    {
+        gameObject.SetActive(false);
     }
 
     /// <summary>
