@@ -82,10 +82,9 @@ public class PowerUp : NetworkBehaviour
     /// <summary>
     /// Fire the power if possible.
     /// </summary>
-    /// <returns>Returns true if the power could be fired successfully, returns false otherwise.</returns>
-    public bool Fire()
+    public void Fire()
     {
-        if(RemainingCooldown <= 0.0f)
+        if (RemainingCooldown <= 0.0f && isServer)
         {
             fire_time = Time.time;
 
@@ -101,15 +100,11 @@ public class PowerUp : NetworkBehaviour
 
             --stacks;
 
-            if(stacks <= 0)
+            if (stacks <= 0)
             {
                 Destroy(gameObject);
             }
-
-            return true;
         }
-
-        return false;
     }
 
     /// <summary>

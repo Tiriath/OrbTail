@@ -12,6 +12,12 @@ public class PowerUpEffect : NetworkBehaviour
     public float duration = 0.0f;
 
     /// <summary>
+    /// Target game object.
+    /// </summary>
+    [SyncVar(hook ="OnSyncTarget")]
+    public GameObject target;
+
+    /// <summary>
     /// The ship owning this powerup effect.
     /// </summary>
     public Ship Owner { get; set; }
@@ -40,4 +46,13 @@ public class PowerUpEffect : NetworkBehaviour
     /// Timestamp when this power was created.
     /// </summary>
     private float timestamp;
+
+    /// <summary>
+    /// Called whenever the target of this powerup changes.
+    /// </summary>
+    private void OnSyncTarget(GameObject ship)
+    {
+        this.target = ship;
+        Target = ship.GetComponent<Ship>();
+    }
 }

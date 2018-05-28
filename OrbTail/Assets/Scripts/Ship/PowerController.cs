@@ -34,9 +34,9 @@ public class PowerController : NetworkBehaviour
 
     public void Update()
     {
-        if(input.PowerUpInput && PowerUp != null)
+        if (isLocalPlayer && input.PowerUpInput)
         {
-            PowerUp.Fire();
+            CmdFire();
         }
     }
 
@@ -46,6 +46,11 @@ public class PowerController : NetworkBehaviour
     /// </summary>
     private void OnProximity(object sender, Collider other)
     {
+        if(!isServer)
+        {
+            return;
+        }
+
         var collectable = other.gameObject.GetComponent<PowerUpCollectable>();
 
         if (collectable && collectable.IsActive)
@@ -59,18 +64,41 @@ public class PowerController : NetworkBehaviour
 
             // Collect a new powerup.
 
-            PowerUp = Instantiate(collectable.Collect()).GetComponent<PowerUp>();
+            var power_up = Instantiate(collectable.Collect()).GetComponent<PowerUp>();
 
-            PowerUp.DestroyedEvent += OnPowerUpDestroyed;
+            power_up.Owner = GetComponent<Ship>();
 
-            PowerUp.Owner = GetComponent<Ship>();
+            NetworkServer.Spawn(power_up.gameObject);
 
-            NetworkServer.Spawn(PowerUp.gameObject);
+            RpcOnPowerAcquired(power_up.gameObject);
+        }
+    }
 
-            if (PowerAcquiredEvent != null)
-            {
-                PowerAcquiredEvent(this);
-            }
+    /// <summary>
+    /// Called on each client when this ship acquires a new power.
+    /// </summary>
+    [ClientRpc]
+    private void RpcOnPowerAcquired(GameObject power_up)
+    {
+        PowerUp = power_up.GetComponent<PowerUp>();
+
+        PowerUp.DestroyedEvent += OnPowerUpDestroyed;
+
+        if (PowerAcquiredEvent != null)
+        {
+            PowerAcquiredEvent(this);
+        }
+    }
+
+    /// <summary>
+    /// Fire the active powerup.
+    /// </summary>
+    [Command]
+    private void CmdFire()
+    {
+        if(PowerUp != null)
+        {
+            PowerUp.Fire();
         }
     }
 

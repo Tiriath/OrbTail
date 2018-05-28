@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 /// <summary>
 /// Represents a power-up on a map any ship can collect upon collision.
 /// </summary>
-public class PowerUpCollectable : MonoBehaviour
+public class PowerUpCollectable : NetworkBehaviour
 {
     public System.Type type;
 
@@ -56,13 +56,10 @@ public class PowerUpCollectable : MonoBehaviour
         {
             IsActive = false;
 
-            iTween.ValueTo(this.gameObject, iTween.Hash(
-                "from", 0.0f,
-                "to", 1.0f,
-                "time", fade_duration,
-                "easetype", fade_easing,
-                "onUpdate", "OnScaleChanged",
-                "onComplete", "OnDeactivated"));
+            if(isServer)
+            {
+                RpcOnCollected();
+            }
 
             // Pick a random powerup from the game mode.
 
@@ -75,6 +72,21 @@ public class PowerUpCollectable : MonoBehaviour
         }
 
         return null;
+    }
+
+    /// <summary>
+    /// Called on each client when the power up is collected.
+    /// </summary>
+    [ClientRpc]
+    private void RpcOnCollected()
+    {
+        iTween.ValueTo(this.gameObject, iTween.Hash(
+                "from", 0.0f,
+                "to", 1.0f,
+                "time", fade_duration,
+                "easetype", fade_easing,
+                "onUpdate", "OnScaleChanged",
+                "onComplete", "OnDeactivated"));
     }
 
     /// <summary>

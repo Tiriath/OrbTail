@@ -11,9 +11,9 @@ public class HomingMissile : Projectile
     /// </summary>
     public float steering = 6.0f;
 
-    public override void OnStartClient()
+    public override void OnStartAuthority()
     {
-        base.OnStartClient();
+        base.OnStartAuthority();
 
         // Lock onto the nearest target.
 
