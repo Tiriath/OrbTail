@@ -66,7 +66,7 @@ public class PowerController : NetworkBehaviour
 
             var power_up = Instantiate(collectable.Collect()).GetComponent<PowerUp>();
 
-            power_up.Owner = GetComponent<Ship>();
+            power_up.owner = gameObject;
 
             NetworkServer.Spawn(power_up.gameObject);
 

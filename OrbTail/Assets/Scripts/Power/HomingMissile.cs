@@ -27,7 +27,7 @@ public class HomingMissile : Projectile
 
                 if (distance < min_distance)
                 {
-                    Target = ship;
+                    target = ship.gameObject;
                     min_distance = distance;
                 }
             }

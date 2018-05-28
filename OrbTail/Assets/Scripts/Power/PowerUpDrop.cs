@@ -26,8 +26,8 @@ public class PowerUpDrop : PowerUpEffect
                 {
                     var effect = Instantiate(pickup_effect, transform.position, transform.rotation).GetComponent<PowerUpEffect>();
 
-                    effect.Owner = Owner;
-                    effect.Target = ship;
+                    effect.owner = owner;
+                    effect.target = ship.gameObject;
 
                     NetworkServer.Spawn(effect.gameObject);
                 }

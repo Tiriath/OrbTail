@@ -36,29 +36,15 @@ public class PowerUp : NetworkBehaviour
     public GameObject effect;
 
     /// <summary>
+    /// The ship owning this powerup effect.
+    /// </summary>
+    [SyncVar(hook = "OnSyncOwner")]
+    public GameObject owner;
+
+    /// <summary>
     /// The ship owning this powerup.
     /// </summary>
-    public Ship Owner
-    {
-        get
-        {
-            return owner;
-        }
-        set
-        {
-            if (owner != value)
-            {
-                owner = value;
-
-                transform.SetParent(owner.transform);
-
-                transform.localPosition = Vector3.zero;
-                transform.localRotation = Quaternion.identity;
-
-                fire_time = 0;
-            }
-        }
-    }
+    public Ship Owner { get; private set; }
 
     /// <summary>
     /// Get the remaining cooldown in seconds.
@@ -80,6 +66,16 @@ public class PowerUp : NetworkBehaviour
     }
 
     /// <summary>
+    /// Called whenever the client starts for this instance.
+    /// </summary>
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        OnSyncOwner(owner);
+    }
+
+    /// <summary>
     /// Fire the power if possible.
     /// </summary>
     public void Fire()
@@ -92,7 +88,7 @@ public class PowerUp : NetworkBehaviour
 
             var power_up_effect = Instantiate(effect, transform.position, transform.rotation).GetComponent<PowerUpEffect>();
 
-            power_up_effect.Owner = owner;
+            power_up_effect.owner = owner;
 
             NetworkServer.Spawn(power_up_effect.gameObject);
 
@@ -106,14 +102,29 @@ public class PowerUp : NetworkBehaviour
             }
         }
     }
+    
+    /// <summary>
+    /// Called whenever the owner of this powerup changes.
+    /// </summary>
+    private void OnSyncOwner(GameObject owner)
+    {
+        this.owner = owner;
+
+        if (owner)
+        {
+            Owner = owner.GetComponent<Ship>();
+
+            transform.SetParent(owner.transform);
+
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+
+            fire_time = 0;
+        }
+    }
 
     /// <summary>
     /// Timestamp when the power was fired.
     /// </summary>
     private float fire_time;
-
-    /// <summary>
-    /// Ship owning this power.
-    /// </summary>
-    private Ship owner;
 }
