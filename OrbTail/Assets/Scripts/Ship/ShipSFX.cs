@@ -42,8 +42,6 @@ public class ShipSFX : MonoBehaviour
 
         movement_controller = GetComponent<MovementController>();
 
-        engine_pitch = audio_source.pitch;
-
         GetComponent<Ship>().OrbAttachedEvent += OnOrbAttached;
     }
 
@@ -92,9 +90,4 @@ public class ShipSFX : MonoBehaviour
     /// Ship audio source.
     /// </summary>
     private AudioSource audio_source;
-
-    /// <summary>
-    /// Default engine pitch.
-    /// </summary>
-    private float engine_pitch;
 }

@@ -87,7 +87,6 @@ public class MovementController : NetworkBehaviour
         hover = this.GetComponent<FloatingObject>();
         rigid_body = this.GetComponent<Rigidbody>();
         input = this.GetComponent<InputProxy>();
-        power_controller = this.GetComponent<PowerController>();
 
         Overdrive = 0.0f;
         EnableInput = true;
@@ -149,9 +148,4 @@ public class MovementController : NetworkBehaviour
     /// Handles the hovering of the ship.
     /// </summary>
     private FloatingObject hover;
-
-    /// <summary>
-    /// Power controller.
-    /// </summary>
-    private PowerController power_controller;
 }

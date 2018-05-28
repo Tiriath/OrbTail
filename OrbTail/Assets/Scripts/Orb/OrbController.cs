@@ -123,14 +123,4 @@ public class OrbController : NetworkBehaviour
     /// Impulse to apply to the orbs when detached. Cosmetic purposes only.
     /// </summary>
     private const float kDetachImpulse = 0.06f;
-
-    /// <summary>
-    /// Power imbued in this orb.
-    /// </summary>
-    private PowerUp imbued_power = null;
-
-    /// <summary>
-    /// VFX associated to the orb.
-    /// </summary>
-    private GameObject vfx = null;
 }

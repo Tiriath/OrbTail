@@ -87,7 +87,7 @@ public class GUILobbyCountdown : MonoBehaviour
     {
         gameObject.transform.localScale = Vector3.Lerp(original_scale, original_scale * pulse_scale, 1.0f - alpha);
 
-        text_mesh.text = timer.time > 0 ? timer.time.ToString() : "";
+        text_mesh.text = time > 0 ? time.ToString() : "";
     }
 
     /// <summary>
@@ -110,3 +110,4 @@ public class GUILobbyCountdown : MonoBehaviour
     /// </summary>
     private int time;
 }
+

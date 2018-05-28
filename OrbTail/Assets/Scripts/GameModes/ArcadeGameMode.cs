@@ -33,8 +33,6 @@ public class ArcadeGameMode : BaseGameMode
     /// </summary>
     private void OnOrbAttached(Ship ship, GameObject orb)
     {
-        var player = (LobbyPlayer) GameLobby.Instance.lobbySlots[ship.player_index];
-
         ship.LobbyPlayer.score += kOrbAttachedScore;
     }
 }
