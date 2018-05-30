@@ -1,31 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
-/// Toggle the local player ready status when pressed.
+/// Toggle the local players ready status when pressed.
 /// </summary>
 public class GUIButtonToggleReadyBehaviour : GUIElement
 {
     /// <summary>
-    /// Text to display when the local player is ready.
+    /// Text to display when the local players are ready.
     /// </summary>
     public string ready_text = "ready";
 
     /// <summary>
-    /// Text to display when the local player is not ready.
+    /// Text to display when the local player are ready.
     /// </summary>
     public string not_ready_text = "not ready";
-
-    /// <summary>
-    /// Index of the local player controller to bound to.
-    /// </summary>
-    public int local_player_index = 0;
 
     public void Awake()
     {
         LobbyPlayer.LocalPlayerJoinedEvent += OnLocalPlayerJoined;
-        LobbyPlayer.PlayerLeftEvent += OnLobbyPlayerLeft;
 
         LobbyCountdown.LobbyCountdownStartedEvent += OnLobbyCountdownStarted;
 
@@ -35,29 +29,28 @@ public class GUIButtonToggleReadyBehaviour : GUIElement
     public void OnDestroy()
     {
         LobbyPlayer.LocalPlayerJoinedEvent -= OnLocalPlayerJoined;
-        LobbyPlayer.PlayerLeftEvent -= OnLobbyPlayerLeft;
 
         LobbyCountdown.LobbyCountdownStartedEvent -= OnLobbyCountdownStarted;
 
-        if (bound_local_player != null)
+        foreach (var local_player in local_players)
         {
-            OnLobbyPlayerLeft(bound_local_player);
+            local_player.PlayerReadyEvent -= OnLobbyPlayerReady;
         }
+
+        local_players.Clear();
     }
 
     public override void OnInputConfirm()
     {
-        if(bound_local_player)
+        foreach (var local_player in local_players)
         {
-            // Toggle ready status.
-
-            if(bound_local_player.readyToBegin)
+            if (local_player.readyToBegin)
             {
-                bound_local_player.SendNotReadyToBeginMessage();
+                local_player.SendNotReadyToBeginMessage();
             }
             else
             {
-                bound_local_player.SendReadyToBeginMessage();
+                local_player.SendReadyToBeginMessage();
             }
         }
     }
@@ -67,15 +60,11 @@ public class GUIButtonToggleReadyBehaviour : GUIElement
     /// </summary>
     private void OnLocalPlayerJoined(LobbyPlayer lobby_player)
     {
-        if(lobby_player.playerControllerId == local_player_index)
+        if(local_players.Add(lobby_player))
         {
-            Debug.Assert(bound_local_player == null, "A local player with id " + local_player_index + " was already bound!");
+            lobby_player.PlayerReadyEvent += OnLobbyPlayerReady;
 
-            bound_local_player = lobby_player;
-
-            bound_local_player.PlayerReadyEvent += OnLobbyPlayerReady;
-
-            OnLobbyPlayerReady(bound_local_player);
+            OnLobbyPlayerReady(lobby_player);
         }
     }
 
@@ -84,20 +73,7 @@ public class GUIButtonToggleReadyBehaviour : GUIElement
     /// </summary>
     private void OnLobbyPlayerReady(LobbyPlayer lobby_player)
     {
-        GetComponent<TextMesh>().text = bound_local_player.readyToBegin ? ready_text : not_ready_text;
-    }
-
-    /// <summary>
-    /// Called whenever the local player leaves.
-    /// </summary>
-    private void OnLobbyPlayerLeft(LobbyPlayer lobby_player)
-    {
-        if(lobby_player == bound_local_player)
-        {
-            bound_local_player.PlayerReadyEvent -= OnLobbyPlayerReady;
-
-            bound_local_player = null;
-        }
+        GetComponent<TextMesh>().text = local_players.All(local_player => local_player.readyToBegin) ? ready_text : not_ready_text;
     }
 
     /// <summary>
@@ -109,7 +85,7 @@ public class GUIButtonToggleReadyBehaviour : GUIElement
     }
 
     /// <summary>
-    /// Local player this element is currently bound to.
+    /// Local players this element is currently bound to.
     /// </summary>
-    private LobbyPlayer bound_local_player = null;
+    private HashSet<LobbyPlayer> local_players = new HashSet<LobbyPlayer>();
 }
