@@ -55,9 +55,11 @@ public class GameLobby : NetworkLobbyManager
     /// <summary>
     /// Get a local player configuration from index.
     /// </summary>
-    public PlayerConfiguration GetLocalPlayer(int local_player_index)
+    public PlayerConfiguration GetLocalPlayer(short controller_id)
     {
-        return local_players[local_player_index];
+        var players = local_players.Where(local_player => local_player.player_controller_id == controller_id).ToArray();
+
+        return players.Length == 0 ? null : players[0];
     }
 
     /// <summary>
@@ -423,7 +425,7 @@ public class GameLobby : NetworkLobbyManager
 
         for (short index = 0; index < local_players.Count; ++index)
         {
-            TryToAddPlayer();
+            ClientScene.AddPlayer(NetworkClient.allClients[0].connection, index);           // Can't use TryToAddPlayer since it will add a player with a wrong controller id.
         }
     }
 
@@ -440,6 +442,7 @@ public class GameLobby : NetworkLobbyManager
 
         var ai_configuration = gameObject.AddComponent<PlayerConfiguration>();
 
+        ai_configuration.player_controller_id = local_players.Count;
         ai_configuration.ship_prefab = ai_ships[0];
         ai_configuration.is_human = false;
 
