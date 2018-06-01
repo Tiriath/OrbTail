@@ -27,7 +27,6 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     //private EventLogger eventLogger;
     private PowerController powerController;
     
-    private bool gameBuilt = false;
     private GameObject target = null;
     private Vector3 desideredDirection;
     private bool alreadyCollided = false;
@@ -85,8 +84,6 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         GetComponentInChildren<AIFieldOfView>().EventOnFieldOfViewEnter += OnFieldOfViewEnter;
 
         checkpoints = new HashSet<GameObject>(GameObject.FindGameObjectsWithTag(Tags.AICheckpoint));
-
-        gameBuilt = true;
     }
 
     public void OnDestroy()
@@ -111,40 +108,44 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     }
 
     // Update is called once per frame
-    void Update () {
-        if (gameBuilt) {
-            CheckVisibility();
-            
-            if (target != null) {
-                
-                if (target.tag == Tags.Ship) {
-                    
-                    if (!alreadyCollided) {
-                        ChasingPlayer();
-                    }
-                    else {
-                        GoAway();
-                    }
-                    
-                }
-                else if (IsPatrolling()) {
-                    Patrolling();
-                }
-                else {
-                    ChasingOrb();
-                }
-            }
-            else {
-                ChangeCheckpoint();
-            }
-            
-            AvoidOstacles();
-        }
-        
-    }
-
-    public void UpdateInput()
+    public void Update ()
     {
+        CheckVisibility();
+
+        if (target != null)
+        {
+
+            if (target.tag == Tags.Ship)
+            {
+
+                if (!alreadyCollided)
+                {
+                    ChasingPlayer();
+                }
+                else
+                {
+                    GoAway();
+                }
+
+            }
+            else if (IsPatrolling())
+            {
+                Patrolling();
+            }
+            else
+            {
+                ChasingOrb();
+            }
+        }
+        else
+        {
+            ChangeCheckpoint();
+        }
+
+        AvoidOstacles();
+
+        // Input
+
         float steering = Vector3.Dot(-floatingObject.ArenaDown, Vector3.Cross(transform.forward, desideredDirection.normalized));
 
         SteerInput = Mathf.Clamp(steering * 5f, -1f, 1f);

@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.Networking;
 
 /// <summary>
 /// Facade over the various input systems (AI, mobile, desktop, etc.)
 /// </summary>
-public class InputProxy : MonoBehaviour, IInputBroker
+public class InputProxy : NetworkBehaviour, IInputBroker
 {
     /// <summary>
     /// Returns the acceleration command's status. 0 no acceleration, 1 maximum acceleration.
@@ -40,34 +39,29 @@ public class InputProxy : MonoBehaviour, IInputBroker
         }
     }
 
-    public void Start ()
+    public override void OnStartLocalPlayer()
     {
         var AI = GetComponent<PlayerAI>();
 
         if (AI)
         {
-            InputBroker = AI;                               // AI.
+            InputBroker = AI;                                               // AI.
         }
         else if (SystemInfo.supportsAccelerometer)
         {
-            InputBroker = new MobileInputBroker();          // Mobile.
+            InputBroker = new MobileInputBroker();                          // Mobile.
         }
         else
         {
-            InputBroker = new DesktopInputBroker();         // Desktop.
+            InputBroker = new DesktopInputBroker(playerControllerId);       // Desktop.
         }
     }
 
-    void Update()
-    {
-        UpdateInput();
-    }
-
-    public void UpdateInput ()
+    public void Update()
     {
         if (InputBroker != null)
         {
-            InputBroker.UpdateInput();
+            InputBroker.Update();
         }
     }
 

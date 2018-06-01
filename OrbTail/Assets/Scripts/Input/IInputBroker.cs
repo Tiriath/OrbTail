@@ -27,5 +27,5 @@ public interface IInputBroker
     /// <summary>
     /// Updates the input status.
     /// </summary>
-    void UpdateInput();
+    void Update();
 }

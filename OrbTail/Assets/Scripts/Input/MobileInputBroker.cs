@@ -24,11 +24,6 @@ public class MobileInputBroker: IInputBroker
     /// </summary>
     public bool PowerUpInput { get; private set; }
 
-    /// <summary>
-    /// Returns the special input status.
-    /// </summary>
-    public bool SpecialInput { get; private set; }
-
     public MobileInputBroker()
     {
         //Standard position, with the phone in landscape position and the bottom on the right.
@@ -39,7 +34,7 @@ public class MobileInputBroker: IInputBroker
         //handler.EventOnMissileButtonSelect += OnPowerButtonSelect;
     }
 
-    public void UpdateInput()
+    public void Update()
     {
         PowerUpInput = false;
 
@@ -47,11 +42,6 @@ public class MobileInputBroker: IInputBroker
 
         ThrottleInput = Mathf.Clamp((-Input.acceleration.z - ZOffset) * kThrottleFactor, -1.0f, 1.0f);
         SteerInput = Mathf.Clamp(Input.acceleration.x * kSteerFactor, -1.0f, 1.0f);
-
-        if (Input.acceleration.sqrMagnitude > kBoostThreshold)
-        {
-            SpecialInput = true;
-        }
     }
 
     /// <summary>
