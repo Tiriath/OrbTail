@@ -80,6 +80,15 @@ public class FollowCamera : MonoBehaviour
             var human_players = FindObjectsOfType<PlayerConfiguration>().Count(player_configuration => player_configuration.is_human);
 
             camera.rect = SplitScreen.GetCameraViewport(lobby_player.playerControllerId, human_players);
+
+            // Set the audio listener.
+
+            //#BUG Unity doesn't support multiple audio listeners! For now only the player 1 gets to hear full 3D sound.
+
+            if(lobby_player.player_index == 0)
+            {
+                camera.gameObject.AddComponent<AudioListener>();
+            }
         }
     }
 
