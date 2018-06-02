@@ -79,23 +79,7 @@ public class FollowCamera : MonoBehaviour
 
             var human_players = FindObjectsOfType<PlayerConfiguration>().Count(player_configuration => player_configuration.is_human);
 
-            var local_player_index = lobby_player.playerControllerId;
-
-            if(human_players == 1)
-            {
-                camera.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);                                     // Full screen.
-            }
-            else if(human_players == 2)
-            {
-                camera.rect = new Rect(0.5f * local_player_index, 0.0f, 0.5f, 1.0f);                // Vertical split-screen.
-            }
-            else if(human_players <= 4)
-            {
-                int x = local_player_index % 2;
-                int y = 1 - local_player_index / 2;
-
-                camera.rect = new Rect(0.5f * x, 0.5f * y, 0.5f, 0.5f);                             // Vertical and horizontal split-screen.
-            }
+            camera.rect = SplitScreen.GetCameraViewport(lobby_player.playerControllerId, human_players);
         }
     }
 

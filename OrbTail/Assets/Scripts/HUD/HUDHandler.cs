@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 /// <summary>
 /// Script used to handle the HUD of a player.
@@ -54,15 +53,25 @@ public class HUDHandler : GUIInputHandler
         {
             lobby_player = value;
 
-            // The HUD is visible and reacts only to the lobby player.
-
             if (lobby_player)
             {
+                // The HUD is visible and reacts only to the lobby player.
+
                 var player_layer = Layers.GetPlayerLayer(lobby_player);
 
                 Layers.SetLayerRecursive(gameObject, player_layer);
 
                 GUILayer = player_layer;
+            }
+            else
+            {
+                // The HUD is visible only via the global camera.
+
+                var global_hud_layer = Layers.GetGlobalLayer();
+
+                Layers.SetLayerRecursive(gameObject, global_hud_layer);
+
+                GUILayer = global_hud_layer;
             }
 
             // Propagate to the elements.
@@ -80,12 +89,20 @@ public class HUDHandler : GUIInputHandler
     {
         set
         {
-            camera_transform = value.transform;
+            if(value)
+            {
+                camera_transform = value.transform;
 
-            transform.position = camera_transform.position;
-            transform.rotation = camera_transform.rotation;
+                transform.position = camera_transform.position;
+                transform.rotation = camera_transform.rotation;
 
-            OwningCamera = value;
+                OwningCamera = value;
+            }
+            else
+            {
+                camera_transform = null;
+                OwningCamera = null;
+            }
         }
     }
 

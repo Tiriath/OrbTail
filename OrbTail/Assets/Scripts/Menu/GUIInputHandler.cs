@@ -39,7 +39,7 @@ public class GUIInputHandler : MonoBehaviour
         }
     }
 
-    public void Awake()
+    public virtual void Awake()
     {
         Debug.Log("GUIInputHandler: " + gameObject.name);
 

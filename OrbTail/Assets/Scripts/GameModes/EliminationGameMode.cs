@@ -60,7 +60,7 @@ public class EliminationGameMode : BaseGameMode
 
             // Attach the follow camera to the spectator.
 
-            foreach(var camera in FindObjectsOfType<FollowCamera>().Where(follow_camera => (follow_camera.LobbyPlayer == ship.LobbyPlayer)))
+            foreach(var camera in FindObjectsOfType<FollowCamera>().Where(player_camera => (player_camera.LobbyPlayer == ship.LobbyPlayer)))
             {
                 camera.ViewTarget = spectator.gameObject;
             }

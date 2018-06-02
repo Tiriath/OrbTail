@@ -23,6 +23,14 @@ public class Layers
     }
 
     /// <summary>
+    /// Get the global layer.
+    /// </summary>
+    public static int GetGlobalLayer()
+    {
+        return LayerMask.NameToLayer("Global");
+    }
+
+    /// <summary>
     /// Get the layer bitmask associated to a specific player.
     /// Used to filter out things that can only be seen by a given player (such as HUD, ecc.)
     /// </summary>

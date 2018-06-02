@@ -30,19 +30,29 @@ public abstract class BaseGameMode : NetworkBehaviour
     public event DelegateGameModeEvent MatchEndEvent;
 
     /// <summary>
-    /// Tutorial prefab.
+    /// Tutorial HUD prefab, global.
     /// </summary>
     public GameObject tutorial_hud;
 
     /// <summary>
-    /// HUD prefab.
+    /// In-game HUD prefab, global.
     /// </summary>
     public GameObject game_hud;
 
     /// <summary>
-    /// Prefab representing the follow camera.
+    /// In-game HUD prefab, per player.
     /// </summary>
-    public GameObject follow_camera;
+    public GameObject player_hud;
+
+    /// <summary>
+    /// Camera prefab, global.
+    /// </summary>
+    public GameObject game_camera;
+
+    /// <summary>
+    /// Camera prefab, per player.
+    /// </summary>
+    public GameObject player_camera;
 
     /// <summary>
     /// List of power-ups allowed this game mode.
@@ -176,6 +186,37 @@ public abstract class BaseGameMode : NetworkBehaviour
                 lobby_player.score = 0;
             }
         }
+
+        // Spawn the game camera.
+
+        var camera = Instantiate(game_camera);
+
+        // Attach the game HUD to the game camera.
+
+        if (game_hud)
+        {
+            var hud = Instantiate(game_hud).GetComponent<HUDHandler>();
+
+            hud.LobbyPlayer = null;
+            hud.Camera = camera.GetComponentInChildren<Camera>();
+            hud.Owner = null;
+
+            hud.enabled = false;
+        }
+
+        // Attach the tutorial HUD to the game camera.
+
+        if (tutorial_hud)
+        {
+            var hud = Instantiate(tutorial_hud).GetComponent<HUDHandler>();
+
+            hud.LobbyPlayer = null;
+            hud.Camera = camera.GetComponentInChildren<Camera>();
+            hud.Owner = null;
+
+            hud.enabled = true;
+        }
+
     }
 
     /// <summary>
@@ -188,7 +229,7 @@ public abstract class BaseGameMode : NetworkBehaviour
 
         EnableControls(false);
 
-        // Enable the in-game HUD for each local player.
+        // Enable the in-game HUD for each local player and the global one.
 
         foreach(var hud in FindObjectsOfType<HUDHandler>())
         {
@@ -251,31 +292,18 @@ public abstract class BaseGameMode : NetworkBehaviour
         {
             // Spawn a follow camera for each active local human player.
 
-            var camera = Instantiate(follow_camera).GetComponent<FollowCamera>();
+            var camera = Instantiate(player_camera).GetComponent<FollowCamera>();
 
             camera.ViewTarget = ship.gameObject;
             camera.LobbyPlayer = ship.LobbyPlayer;
 
             camera.Snap();
-
-            // Attach the tutorial HUD to the local player camera.
-
-            if (tutorial_hud)
-            {
-                var hud = Instantiate(tutorial_hud).GetComponent<HUDHandler>();
-
-                hud.LobbyPlayer = ship.LobbyPlayer;
-                hud.Camera = camera.GetComponentInChildren<Camera>();
-                hud.Owner = ship.gameObject;
-
-                hud.enabled = true;
-            }
-
+            
             // Attach the game HUD to the local player camera.
 
-            if (game_hud)
+            if (player_hud)
             {
-                var hud = Instantiate(game_hud).GetComponent<HUDHandler>();
+                var hud = Instantiate(player_hud).GetComponent<HUDHandler>();
 
                 hud.LobbyPlayer = ship.LobbyPlayer;
                 hud.Camera = camera.GetComponentInChildren<Camera>();
