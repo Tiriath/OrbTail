@@ -7,17 +7,6 @@ using System.Linq;
 /// </summary>
 class DesktopInputBroker: IInputBroker
 {
-    // Base action names.
-
-    public const string Throttle = "Throttle";
-    public const string Steer = "Steer";
-    public const string PowerUp = "PowerUp";
-
-    // Prefixes (device and player index)
-
-    public const string KeyboardPrefix = "K1_";
-    public static readonly string[] JoystickPrefix = new string[] { "J1_", "J2_", "J3_", "J4_" };
-
     /// <summary>
     /// Returns the throttle input status. -1 backwards, 0 still, +1 maximum throttle.
     /// </summary>
@@ -39,29 +28,19 @@ class DesktopInputBroker: IInputBroker
     /// <param name="controller_id">Id of the player to read the input from.</param>
     public DesktopInputBroker(short controller_id)
     {
-        if(controller_id == 0)
-        {
-            throttle_axis.Add(KeyboardPrefix + Throttle);
-            steer_axis.Add(KeyboardPrefix + Steer);
-            powerup_button.Add(KeyboardPrefix + PowerUp);
-        }
-
-        throttle_axis.Add(JoystickPrefix[controller_id] + Throttle);
-        steer_axis.Add(JoystickPrefix[controller_id] + Steer);
-        powerup_button.Add(JoystickPrefix[controller_id] + PowerUp);
+        input_manager = new InputManager(controller_id);
     }
 
     public void Update()
     {
-        ThrottleInput = Mathf.Clamp(throttle_axis.Sum(axis => Input.GetAxis(axis)), -1.0f, 1.0f);
-        SteerInput = Mathf.Clamp(steer_axis.Sum(axis => Input.GetAxis(axis)), -1.0f, 1.0f);
-        PowerUpInput = powerup_button.Any(button => Input.GetButtonDown(button));
+        ThrottleInput = input_manager.Throttle;
+        SteerInput = input_manager.Steer;
+        PowerUpInput = input_manager.PowerUp;
     }
 
-    private List<string> throttle_axis = new List<string>();
-
-    private List<string> steer_axis = new List<string>();
-
-    private List<string> powerup_button = new List<string>();
+    /// <summary>
+    /// Input manager for the player controlling this ship.
+    /// </summary>
+    private InputManager input_manager;
 }
 
