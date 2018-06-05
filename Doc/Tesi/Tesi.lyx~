@@ -26,7 +26,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 12
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -87,17 +88,6 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section*
-Sommario
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
 Ringraziamenti
 \end_layout
 
@@ -109,16 +99,7 @@ Ringraziamenti
 \end_layout
 
 \begin_layout Section
-Introduzione
-\end_layout
-
-\begin_layout Standard
-L'esplosione della cultura del videogame nonché il notevole sviluppo tecnologico
-, ha consentito la nascita di migliaia di titoli su decine di piattaforme
- diverse e la nascita di nuovi paradigmi di gioco.
- Sebbene nei loro rispettivi ambiti queste piattaforme godono di un ricco
- ecosistema di titoli e giocatori, solitamente questi ecosistemi sono isolati
- gli uni dagli altri; é pertanto molto raro assistere allo sviluppo di 
+Sommario
 \end_layout
 
 \begin_layout Standard
@@ -210,6 +191,101 @@ Contesto
 \end_layout
 
 \begin_layout Standard
+I videogame, nati come forma di intrattenimento nel anni '70, rappresentano,
+ ad oggi, una delle piú importanti forme di intrattenimento in grado, da
+ sola, di rivaleggiare e talvolta sovrastare quella cinematografica (1)(2).
+ Le motivazioni del successo sono da ricercarsi sia nei recenti sviluppi
+ tecnologici, i quali ne hanno consentito la diffusione sul larga scala,
+ e sia nella nascita di nuovi ecosistemi.
+ Laddove il buon esito di una nuova tecnologia é principalmente influenzato
+ dal suo tasso d'adozione nonché dal suo potenziale, il successo di un ecosistem
+a dipende generalmente dalla dimensione della community in grado di formarsi
+ attorno ad esso.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Multiplayer???
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Crossplay???
+\end_layout
+
+\begin_layout Subsection
+Piattaforme
+\end_layout
+
+\begin_layout Standard
+L'industria del videogame é per sua natura pervasiva: nata per una nicchia
+ di dispositivi si é evoluta e diffusa fino ad inglobare di diversa potenza
+ e capacitá.
+\end_layout
+
+\begin_layout Standard
+Tra le piattaforme classiche troviamo i pc e le console.
+ Sebbene di recente le due sono diventate architetturalmente identiche,
+ queste piattaforme rispondono ad esigenze ben diverse tra loro: la prima
+ é solitamente una piattaforma senza compromessi, la quale molto spesso
+ non é usata esclusivamente per il gioco e richiede manutenzione.
+ La seconda risponde all'esigenza dei giocatori in maniera molto diretta:
+ il focus della piattaforma é l'intrattenimento e la manutenzione é minima.
+ Il pc vanta tutte le periferiche disponibili, le console prediligono l'uso
+ del pad (e talvolta volanti).
+\end_layout
+
+\begin_layout Standard
+Le piattaforme mobile, nonostante siano nate solo recentemente, godono di
+ una diffusione senza precedenti e di un volume d'affari pari alla metá
+ del totale dell'industria.
+ A differenza delle controparti 
+\begin_inset Quotes eld
+\end_inset
+
+classiche
+\begin_inset Quotes erd
+\end_inset
+
+ questi dispositivi compromettono le performance in favore della mobilitá.
+ L'interazione é profondamente diversa e si affida ad input touch e altri
+ sensori dedicati (molto spesso usati come gimmick).
+ Il paradigma cambia profondamente si baratta la durata della sessione di
+ gioco con la possibilitá di avviarla dappertutto.
+ L'utenza é meno esigente.
+\end_layout
+
+\begin_layout Standard
+Un design di successo deve tenere conto delle peculiaritá delle varie piattaform
+e.
+ Sviluppare un titolo per entrambi i dispositivi é particolarmente arduo
+ ed oneroso.
+\end_layout
+
+\begin_layout Subsection
+Multiplayer
+\end_layout
+
+\begin_layout Standard
+Server dedicati, peer to peer
+\end_layout
+
+\begin_layout Subsection
+Meccaniche
+\end_layout
+
+\begin_layout Standard
+Minimo comune multiplo tra le piattaforme.
+ Vari competitor.
+\end_layout
+
+\begin_layout Subsection
+Direzione artistica
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -262,6 +338,19 @@ Conclusioni
 
 \begin_layout Section*
 Bibliografia
+\end_layout
+
+\begin_layout Itemize
+(1) https://www.statista.com/statistics/271856/global-box-office-revenue/
+\end_layout
+
+\begin_layout Itemize
+(2) https://newzoo.com/insights/articles/global-games-market-reaches-137-9-billio
+n-in-2018-mobile-games-take-half/
+\end_layout
+
+\begin_layout Itemize
+(3) http://www.theesa.com/wp-content/uploads/2018/05/EF2018_FINAL.pdf
 \end_layout
 
 \end_body
