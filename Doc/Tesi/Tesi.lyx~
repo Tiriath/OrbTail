@@ -11,11 +11,11 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
+\font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
-\font_default_family default
+\font_default_family rmdefault
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
@@ -98,14 +98,13 @@ Ringraziamenti
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Section*
 Sommario
 \end_layout
 
 \begin_layout Standard
 In questo elaborato di tesi si descrive il processo di sviluppo di Orbtail,
- un gioco multiplayer per piattaforme mobile e desktop, che coniuga elementi
- 
+ un gioco multiplayer multipiattaforma che coniuga elementi 
 \emph on
 racing
 \emph default
@@ -118,17 +117,16 @@ arena
  and Programming, é stato rielaborato ed esteso, andando ad aggiornare l'intero
  comparto tecnico, il design originale e la direzione artistica.
  Il pregio principale di Orbtail risiede nella sua capacitá di poter essere
- giocato da piú giocatori contemporaneamente, in una qualsiasi combinazione
- di dispositivi e
+ giocato da piú giocatori contemporaneamente, online o offline, in una qualsiasi
+ combinazione di dispositivi e
 \backslash
-o numero di giocatori locali in splitscreen.
- Questo documento ne descrive l'intero processo produttivo, a partire dal
- 
+o numero di giocatori locali.
+ Questo documento ne descrive il processo di sviluppo, a partire dal 
 \emph on
 concept 
 \emph default
 fino alle varie scelte tecniche, facendo numerosi paralleli con la versione
- precedente al fine di individuare carenze e spunti per migliorie.
+ originale al fine di individuare carenze e spunti per migliorie.
 \end_layout
 
 \begin_layout Standard
@@ -187,32 +185,187 @@ Il capitolo finale é dedicato alle conclusioni nonché ad eventuali sviluppi
 \end_layout
 
 \begin_layout Section
-Contesto
+Introduzione
 \end_layout
 
 \begin_layout Standard
-I videogame, nati come forma di intrattenimento nel anni '70, rappresentano,
- ad oggi, una delle piú importanti forme di intrattenimento in grado, da
- sola, di rivaleggiare e talvolta sovrastare quella cinematografica (1)(2).
- Le motivazioni del successo sono da ricercarsi sia nei recenti sviluppi
- tecnologici, i quali ne hanno consentito la diffusione sul larga scala,
- e sia nella nascita di nuovi ecosistemi.
- Laddove il buon esito di una nuova tecnologia é principalmente influenzato
- dal suo tasso d'adozione nonché dal suo potenziale, il successo di un ecosistem
-a dipende generalmente dalla dimensione della community in grado di formarsi
- attorno ad esso.
+I videogame rappresentano una delle forme di intrattenimento moderne piú
+ affermate e diffuse.
+ A differenza di quanto avviene con i mezzi classici quali 
+\emph on
+film
+\emph default
+ e 
+\emph on
+libri
+\emph default
+, il giocatore é artefice della propria esperienza: alcuni giochi richiedono
+ concentrazione, altri una buona dose di coordinazione e reattivitá, altri
+ ancora pazienza e pianificazione.
+ Sebbene vi siano esempi di videogiochi che fanno dell'esperienza 
+\emph on
+single-player
+\emph default
+ il loro punto focale, i giochi intesi nel senso classico del termine, nascono
+ come mezzo di 
+\emph on
+condivisione 
+\emph default
+dell'esperienza con altri giocatori, sia essa di natura 
+\emph on
+competitiva 
+\emph default
+o 
+\emph on
+collaborativa
+\emph default
+.
+ Questo bisogno rimane indubbiamente vero anche per la controparte elettronica,
+ tanto da costituire una discriminante per l'acquisto da gran parte degli
+ utenti
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GameStatistics"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
+In questa tesi si descrive il processo di sviluppo di 
+\emph on
+Orbtail, 
+\emph default
+un gioco
+\emph on
+ multiplayer
+\emph default
+ ad arene
+\emph on
+ 
+\emph default
+con elementi 
+\emph on
+racing 
+\emph default
+disponibile per dispositivi mobile e desktop quali Android, iOS, Windows
+ e OSX.
+ Il videogioco consente fino a quattro giocatori di sfidarsi online in modalitá
+ 
+\emph on
+cross-platform play
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Il termine 
+\size normal
+\emph on
+cross-platform play
+\emph default
+ identifica una modalitá di gioco online in cui giocatori con dispositivi
+ appartenenti ad ecosistemi differenti possono giocare tra loro indipendentement
+e dalla piattaforma.
+ 
+\end_layout
+
+\end_inset
+
+ su tre arene differenti secondo una modalitá di gioco a tempo scelta tra
+ tre disponibili.
+ Un'ulteriore caratteristica di pregio é data dalla possibilitá di condivisione
+ di uno stesso dispositivo desktop o laptop tra due o piú giocatori locali
+ mediante un'apposita modalitá 
+\emph on
+splitscreen
+\emph default
+ 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Il termine 
+\size normal
+\emph on
+splitscreen 
+\emph default
+identifica una modalitá di gioco in cui lo schermo viene suddiviso in piú
+ quadranti in modo da consentire a piú giocatori di usare uno stesso schermo
+ per giocare contemporaneamente.
+ É una caratteristica molto rara nei videogame moderni per via dell'ingente
+ impatto sulle risorse GPU che richiede un meticoloso processo di ottimizzazione
+ per ottenere performance accettabili.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La necessitá di dover supportare piattaforme dalle differenze molto marcate
+ impedendo che qualsiasi tra esse potesse risultare avvantaggiata nelle
+ sessioni 
+\emph on
+cross-platform play
+\emph default
+, ha portato alla sviluppo di un prodotto dal 
+\emph on
+gameplay
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Il 
+\emph on
+gameplay 
+\emph default
+(in italiano traducibile come 
+\begin_inset Quotes eld
+\end_inset
+
 
 \emph on
-Multiplayer???
+esperienza utente
+\begin_inset Quotes erd
+\end_inset
+
+) 
+\emph default
+comprende gli elementi del gioco quali storia, regole, obiettivi, progressioni,
+ interazione utente, ecc.
 \end_layout
 
-\begin_layout Standard
+\end_inset
 
+ 
+\emph default
+semplice e chiaro.
+ La durata limitata delle sessioni lo rende particolarmente adatto ad un
+ pubblico di 
 \emph on
-Crossplay???
+casual gamer
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Si definisce 
+\size normal
+\emph on
+casual gamer 
+\emph default
+un giocatore saltuario, non particolarmente interessato alla cultura dei
+ videogiochi e, solitamente, alla tecnologia in generale.
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -269,7 +422,33 @@ Multiplayer
 \end_layout
 
 \begin_layout Standard
+Esperienza multiplayer come parte essenziale di un videogioco.
+ Aumento del livello di sfida, aumento del tasso di rigiocabilitá.
+\end_layout
+
+\begin_layout Standard
 Server dedicati, peer to peer
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Crossplay??? 
+\emph default
+Caratteristica ignorata nella stragrande maggioranza dei casi.
+ Sviluppo infrastrutture oneroso (a carico dello sviluppatore), interazione
+ servizi complicata.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Design
 \end_layout
 
 \begin_layout Subsection
@@ -283,17 +462,6 @@ Minimo comune multiplo tra le piattaforme.
 
 \begin_layout Subsection
 Direzione artistica
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Design
 \end_layout
 
 \begin_layout Standard
@@ -336,21 +504,15 @@ Conclusioni
 
 \end_layout
 
-\begin_layout Section*
-Bibliografia
-\end_layout
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1"
+key "GameStatistics"
 
-\begin_layout Itemize
-(1) https://www.statista.com/statistics/271856/global-box-office-revenue/
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-(2) https://newzoo.com/insights/articles/global-games-market-reaches-137-9-billio
-n-in-2018-mobile-games-take-half/
-\end_layout
-
-\begin_layout Itemize
-(3) http://www.theesa.com/wp-content/uploads/2018/05/EF2018_FINAL.pdf
+http://www.theesa.com/wp-content/uploads/2018/05/EF2018_FINAL.pdf
 \end_layout
 
 \end_body
