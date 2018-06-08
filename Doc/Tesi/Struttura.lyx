@@ -157,7 +157,15 @@ Introduzione
 \end_layout
 
 \begin_layout Itemize
+condividere esperienza, competere, collaborare.
+\end_layout
+
+\begin_layout Itemize
 Descrizione delle piattaforme e differenze (desktop, laptop, mobile, console).
+\end_layout
+
+\begin_layout Itemize
+Esports? Competizione?
 \end_layout
 
 \begin_layout Itemize
@@ -167,28 +175,6 @@ Analisi
 \series default
 videogame e mercato generale.
  Focus su giochi multiplayer, specie arena e casual game.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Multiplayer 
-\series default
-a squadre, cooperativi
-\backslash
-competitivi ecc.
- server-client p2p
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione Orbtail
-\series default
-: genere e piattaforme.
- Competizione in arena con diverse condizioni di vittoria.
- Split-screen e crossplay.
- Interazione utente immediata, partite brevi ed autoconclusive.
 \end_layout
 
 \begin_layout Subsection
@@ -205,12 +191,87 @@ piattaforme desktop e mobile, necessitá di impiegare interazioni semplici
  Analisi dei sistemi di input.
 \end_layout
 
+\begin_layout Standard
+
+\lang italian
+La differenza tra queste piattaforme, generalmente associate ad un tipo
+ di utenza con le proprie peculiaritá, richiede necessariamente che il processo
+ di sviluppo sia tagliato su misura per la particolare piattaforma di riferiment
+o.
+ Laddove lo sviluppo multipiattaforma per dispositivi simili (come potrebbero
+ essere pc e console) é difficoltoso ed oneroso, la presenza di piattaforme
+ radicalmente diversi puó risultare incredibilmente difficile, se non impossibil
+e, a meno di importanti cambiamenti al design.
+ Un cross-platform play in cui giocatori diversi hanno ruoli diversi é possibile
+, ma se i ruoli sono simmetrici é un delirio.
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Le piattaforme mobile, pur essendo nate solo di recente, hanno subito una
+ diffusione senza precedenti, generando un volume d'affari pari alla metá
+ del totale dell'industria videoludica.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GameStatistics"
+
+\end_inset
+
+.
+ I dispositivi mobile sono pensati per essere pratici e non godono di performanc
+es particolarmente elevate (per quanto il livello odierno é paragonabile
+ a quello delle console di qualche generazione precedente).
+ L'interazione si affida all'input touch, tuttavia la presenza di sensori
+ dedicati quali GPS, giroscopi, accelerometri e bussole talvolta possono
+ essere usati come parte integrante del gameplay (richiede molta attenzione
+ per evitare interazioni 
+\begin_inset Quotes fld
+\end_inset
+
+strane
+\begin_inset Quotes frd
+\end_inset
+
+).
+ Il paradigma cambia profondamente si baratta la durata della sessione di
+ gioco con la possibilitá di avviarla dappertutto.
+ L'utenza é generalmente meno esigente.
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Tra le piattaforme classiche troviamo i pc e le console.
+ Sebbene di recente le due sono diventate architetturalmente identiche,
+ queste piattaforme rispondono ad esigenze ben diverse tra loro: la prima
+ é solitamente una piattaforma senza compromessi, la quale molto spesso
+ non é usata esclusivamente per il gioco e richiede manutenzione.
+ La seconda risponde all'esigenza dei giocatori in maniera molto diretta:
+ il focus della piattaforma é l'intrattenimento e la manutenzione é minima.
+ Il pc vanta tutte le periferiche disponibili, le console prediligono l'uso
+ del pad (e talvolta volanti).
+\end_layout
+
+\begin_layout Standard
+
+\lang italian
+Piattaforme ibride (switch, vita, shield)
+\end_layout
+
 \begin_layout Subsection
-Arena
+Multiplayer
 \end_layout
 
 \begin_layout Itemize
-?!
+
+\series bold
+Multiplayer 
+\series default
+a squadre, cooperativi
+\backslash
+competitivi ecc.
+ server-client p2p
 \end_layout
 
 \begin_layout Section
@@ -257,10 +318,6 @@ Descrizione direzione artistica
 Wipeout
 \end_layout
 
-\begin_layout Subsection
-Elementi di Orbtail
-\end_layout
-
 \begin_layout Section
 Orbtail - Design
 \end_layout
@@ -271,6 +328,17 @@ Concept
 
 \begin_layout Itemize
 Competitivo, non c'é necessitá di avere tutti i giocatori presenti fisicamente.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione Orbtail
+\series default
+: genere e piattaforme.
+ Competizione in arena con diverse condizioni di vittoria.
+ Split-screen e crossplay.
+ Interazione utente immediata, partite brevi ed autoconclusive.
 \end_layout
 
 \begin_layout Subsection

@@ -7,7 +7,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language italian
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -58,7 +58,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -199,37 +199,20 @@ film
 \emph on
 libri
 \emph default
-, il giocatore é artefice della propria esperienza: alcuni giochi richiedono
+, il giocatore ha pieno controllo dell'esperienza: alcuni giochi richiedono
  concentrazione, altri una buona dose di coordinazione e reattivitá, altri
  ancora pazienza e pianificazione.
- Sebbene vi siano esempi di videogiochi che fanno dell'esperienza 
+ Sebbene vi siano videogiochi che si concentrano principalmente sulla componente
+ 
 \emph on
 single-player
 \emph default
- il loro punto focale, i giochi intesi nel senso classico del termine, nascono
- come mezzo di 
+, i giochi, intesi nel senso classico del termine, nascono come mezzo di
+ 
 \emph on
 condivisione 
 \emph default
-dell'esperienza con altri giocatori, sia essa di natura 
-\emph on
-competitiva 
-\emph default
-o 
-\emph on
-collaborativa
-\emph default
-.
- Questo bisogno rimane indubbiamente vero anche per la controparte elettronica,
- tanto da costituire una discriminante per l'acquisto da gran parte degli
- utenti
-\begin_inset CommandInset citation
-LatexCommand cite
-key "GameStatistics"
-
-\end_inset
-
-.
+dell'esperienza con altri giocatori
 \end_layout
 
 \begin_layout Standard
@@ -237,7 +220,7 @@ In questa tesi si descrive il processo di sviluppo di
 \emph on
 Orbtail, 
 \emph default
-un gioco
+un videogioco
 \emph on
  multiplayer
 \emph default
@@ -251,8 +234,8 @@ racing
 \emph default
 disponibile per dispositivi mobile e desktop quali Android, iOS, Windows
  e OSX.
- Il videogioco consente fino a quattro giocatori di sfidarsi online in modalitá
- 
+ Il gioco prevede tre modalitá di gioco differenti e consente fino a quattro
+ giocatori di sfidarsi online in modalitá 
 \emph on
 cross-platform play
 \emph default
@@ -267,24 +250,22 @@ Il termine
 cross-platform play
 \emph default
  identifica una modalitá di gioco online in cui giocatori con dispositivi
- appartenenti ad ecosistemi differenti possono giocare tra loro indipendentement
-e dalla piattaforma.
+ differenti possono giocare tra loro indipendentemente dal'ecosistema d'apparten
+enza.
  
 \end_layout
 
 \end_inset
 
- su tre arene differenti secondo una modalitá di gioco a tempo scelta tra
- tre disponibili.
- Un'ulteriore caratteristica di pregio é data dalla possibilitá di condivisione
- di uno stesso dispositivo desktop o laptop tra due o piú giocatori locali
- mediante un'apposita modalitá 
+ su una delle tre arene disponibili.
+ Vi é inoltre la possibilitá di condividere uno stesso dispositivo desktop
+ tra due o piú giocatori locali mediante un'apposita modalitá 
 \emph on
 splitscreen
 \emph default
  
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Il termine 
@@ -293,8 +274,8 @@ Il termine
 splitscreen 
 \emph default
 identifica una modalitá di gioco in cui lo schermo viene suddiviso in piú
- quadranti in modo da consentire a piú giocatori di usare uno stesso schermo
- per giocare contemporaneamente.
+ quadranti in modo da consentire a piú giocatori di usare uno stesso dispositivo
+ contemporaneamente.
 \end_layout
 
 \end_inset
@@ -303,15 +284,15 @@ identifica una modalitá di gioco in cui lo schermo viene suddiviso in piú
 \end_layout
 
 \begin_layout Standard
-La necessitá di dover supportare piattaforme dalle differenze molto marcate
- impedendo che qualsiasi tra esse potesse risultare avvantaggiata nelle
- sessioni 
+La necessitá di supportare piú piattaforme, impedendo che ciascuna di esse
+ potesse risultare avvantaggiata rispetto alle altre durante le sessioni
+ 
 \emph on
 cross-platform play
 \emph default
-, ha portato alla sviluppo di un prodotto dal 
+, ha portato allo sviluppo di un 
 \emph on
-gameplay
+gameplay 
 \begin_inset Foot
 status collapsed
 
@@ -332,7 +313,7 @@ esperienza utente
 
 ) 
 \emph default
-comprende gli elementi del gioco quali storia, regole, obiettivi, progressioni,
+comprende gli elementi di gioco quali storia, regole, obiettivi, progressioni,
  interazione utente, ecc.
 \end_layout
 
@@ -340,9 +321,9 @@ comprende gli elementi del gioco quali storia, regole, obiettivi, progressioni,
 
  
 \emph default
-semplice e chiaro.
- La durata limitata delle sessioni lo rende particolarmente adatto ad un
- pubblico di 
+essenziale ed immediato.
+ La durata limitata delle sessioni, unita ad una curva d'apprendimento semplice,
+ rende il prodotto particolarmente adatto ad un pubblico di 
 \emph on
 casual gamer
 \emph default
@@ -365,57 +346,223 @@ un giocatore saltuario, non particolarmente interessato alla cultura dei
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Piattaforme
 \end_layout
 
 \begin_layout Standard
-L'industria del videogame é per sua natura pervasiva: nata per una nicchia
- di dispositivi si é evoluta e diffusa fino ad inglobare di diversa potenza
- e capacitá.
+L'esperienza videoludica ha il grande vantaggio di poter essere creata su
+ misura in modo da soddifare tipologie d'utenza profondamente diverse su
+ un ampio ventaglio di dispositivi.
+ Ad oggi esistono decine di tipologie di dispositivi di intrattenimento
+ differenziati per costo, performance, interazione utente e mobilitá.
+ 
 \end_layout
 
 \begin_layout Standard
-Tra le piattaforme classiche troviamo i pc e le console.
- Sebbene di recente le due sono diventate architetturalmente identiche,
- queste piattaforme rispondono ad esigenze ben diverse tra loro: la prima
- é solitamente una piattaforma senza compromessi, la quale molto spesso
- non é usata esclusivamente per il gioco e richiede manutenzione.
- La seconda risponde all'esigenza dei giocatori in maniera molto diretta:
- il focus della piattaforma é l'intrattenimento e la manutenzione é minima.
- Il pc vanta tutte le periferiche disponibili, le console prediligono l'uso
- del pad (e talvolta volanti).
-\end_layout
+I 
+\emph on
+pc 
+\emph default
+e le 
+\emph on
+console 
+\emph default
+sono i primi dispositivi elettronici su cui sono nati i videogame.Sebbene
+ le 
+\emph on
+console 
+\emph default
+nascono come dispositivo dedicato, a differnza dei 
+\emph on
+pc
+\emph default
+, le due piattaforme sono ad oggi molto simili tra loro.
+ Questi dispositivi sono caratterizzati da elevate prestazioni, le quali
+ garantiscono una resa visiva d'impatto.
+ La presenza di un immensa varietá di periferiche di input generiche quali
+ tastiere, mouse e gamepad unite a periferiche specializzate quali volanti,
+ 
+\emph on
+HOTAS
+\emph default
+ 
+\begin_inset Foot
+status collapsed
 
-\begin_layout Standard
-Le piattaforme mobile, nonostante siano nate solo recentemente, godono di
- una diffusione senza precedenti e di un volume d'affari pari alla metá
- del totale dell'industria.
- A differenza delle controparti 
-\begin_inset Quotes eld
+\begin_layout Plain Layout
+L'
+\emph on
+HOTAS
+\emph default
+, acronimo di 
+\begin_inset Quotes fld
 \end_inset
 
-classiche
-\begin_inset Quotes erd
+
+\emph on
+hands on throttle and stick
+\emph default
+
+\begin_inset Quotes frd
 \end_inset
 
- questi dispositivi compromettono le performance in favore della mobilitá.
- L'interazione é profondamente diversa e si affida ad input touch e altri
- sensori dedicati (molto spesso usati come gimmick).
- Il paradigma cambia profondamente si baratta la durata della sessione di
- gioco con la possibilitá di avviarla dappertutto.
- L'utenza é meno esigente.
+, é una duplice periferica che consiste di un joystick a 4 o piú assi e
+ una leva d'accelerazione.
+ Usato solitamente per giocare a simulatori di volo.
+\end_layout
+
+\end_inset
+
+e 
+\emph on
+HUD 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Insomma quella roba che abbiamo a lavoro per le moto
+\end_layout
+
+\end_inset
+
+
+\emph default
+ rende queste piattaforme adatte a qualsiasi gioco e modalitá d'interazione.
+ I pc sono solitamente molto costosi e destinati ad un pubblico di 
+\emph on
+hardcore gamer, 
+\emph default
+le console sono invece caratterizzate da costi piú contenuti ed un ciclo
+ di vita estremamente elevato (superiore ai 5 anni).
 \end_layout
 
 \begin_layout Standard
-Un design di successo deve tenere conto delle peculiaritá delle varie piattaform
-e.
- Sviluppare un titolo per entrambi i dispositivi é particolarmente arduo
- ed oneroso.
+Le piattaforme 
+\emph on
+mobile
+\emph default
+, pur essendo nate solo di recente, si sono subito affermate come una delle
+ principali piattaforme da gaming.
+ Il loro successo senza precedenti ha consentito all'industria mobile di
+ generare un volume d'affari pari a quello di 
+\emph on
+pc 
+\emph default
+e 
+\emph on
+console 
+\emph default
+combinati.
+ Pur non godendo della stessa potenza delle controparti classiche, i dispositivi
+ mobile godono di una piú vasta diffusione e si rivolgono ad un pubblico
+ decisamente piú ampio.
+ L'interazione primaria affidata all'
+\emph on
+input
+\emph default
+ 
+\emph on
+touch
+\emph default
+ é affiancata da un ampio parco di sensori accessori quali 
+\emph on
+GPS, accelerometri, giroscopi, bussole 
+\emph default
+e
+\emph on
+ videocamere.
+ 
+\emph default
+Rrecenti sviluppi tecnologici quali 
+\emph on
+augmented reality
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La 
+\emph on
+augmented reality 
+\emph default
+(in italiano 
+\begin_inset Quotes fld
+\end_inset
+
+realtá aumentata
+\begin_inset Quotes frd
+\end_inset
+
+), consiste nel 
+\begin_inset Quotes fld
+\end_inset
+
+aumentare
+\begin_inset Quotes frd
+\end_inset
+
+ le informazioni del mondo circostante attraverso contenuto generato da
+ un elaboratore di tipo visivo, aptico o uditivo.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+e 
+\emph on
+virtual reality
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+blah blah
+\end_layout
+
+\end_inset
+
+, unito all'uso sapiente di queste nuove modalitá d'interazione, ha permesso
+ la nascita di nuovi paradigmi di 
+\emph on
+gameplay 
+\emph default
+rimasti finora inesplorati.
 \end_layout
 
 \begin_layout Subsection
 Multiplayer
+\end_layout
+
+\begin_layout Standard
+, sia essa di natura 
+\emph on
+competitiva 
+\emph default
+o 
+\emph on
+collaborativa
+\emph default
+.
+ Questo bisogno rimane indubbiamente vero anche per la controparte elettronica,
+ tanto da costituire una discriminante per l'acquisto da gran parte degli
+ utenti
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GameStatistics"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -424,7 +571,7 @@ Esperienza multiplayer come parte essenziale di un videogioco.
 \end_layout
 
 \begin_layout Standard
-Server dedicati, peer to peer
+Server dedicati, peer to peer, multiplayer locale (splitscreen, a turni)
 \end_layout
 
 \begin_layout Standard

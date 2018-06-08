@@ -157,34 +157,24 @@ Introduzione
 \end_layout
 
 \begin_layout Itemize
+condividere esperienza, competere, collaborare.
+\end_layout
+
+\begin_layout Itemize
+Descrizione delle piattaforme e differenze (desktop, laptop, mobile, console).
+\end_layout
+
+\begin_layout Itemize
+Esports? Competizione?
+\end_layout
+
+\begin_layout Itemize
 
 \series bold
 Analisi 
 \series default
 videogame e mercato generale.
  Focus su giochi multiplayer, specie arena e casual game.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Multiplayer 
-\series default
-a squadre, cooperativi
-\backslash
-competitivi ecc.
- server-client p2p
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Descrizione Orbtail
-\series default
-: genere e piattaforme.
- Competizione in arena con diverse condizioni di vittoria.
- Split-screen e crossplay.
- Interazione utente immediata, partite brevi ed autoconclusive.
 \end_layout
 
 \begin_layout Subsection
@@ -202,11 +192,18 @@ piattaforme desktop e mobile, necessitá di impiegare interazioni semplici
 \end_layout
 
 \begin_layout Subsection
-Arena
+Multiplayer
 \end_layout
 
 \begin_layout Itemize
-?!
+
+\series bold
+Multiplayer 
+\series default
+a squadre, cooperativi
+\backslash
+competitivi ecc.
+ server-client p2p
 \end_layout
 
 \begin_layout Section
@@ -253,10 +250,6 @@ Descrizione direzione artistica
 Wipeout
 \end_layout
 
-\begin_layout Subsection
-Elementi di Orbtail
-\end_layout
-
 \begin_layout Section
 Orbtail - Design
 \end_layout
@@ -267,6 +260,17 @@ Concept
 
 \begin_layout Itemize
 Competitivo, non c'é necessitá di avere tutti i giocatori presenti fisicamente.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descrizione Orbtail
+\series default
+: genere e piattaforme.
+ Competizione in arena con diverse condizioni di vittoria.
+ Split-screen e crossplay.
+ Interazione utente immediata, partite brevi ed autoconclusive.
 \end_layout
 
 \begin_layout Subsection
