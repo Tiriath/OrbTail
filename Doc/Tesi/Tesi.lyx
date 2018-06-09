@@ -199,7 +199,7 @@ film
 \emph on
 libri
 \emph default
-, il giocatore ha pieno controllo dell'esperienza: alcuni giochi richiedono
+, l'utente ha pieno controllo dell'esperienza: alcuni giochi richiedono
  concentrazione, altri una buona dose di coordinazione e reattivitá, altri
  ancora pazienza e pianificazione.
  Sebbene vi siano videogiochi che si concentrano principalmente sulla componente
@@ -212,7 +212,7 @@ single-player
 \emph on
 condivisione 
 \emph default
-dell'esperienza con altri giocatori
+dell'esperienza con altri giocatori.
 \end_layout
 
 \begin_layout Standard
@@ -222,11 +222,7 @@ Orbtail,
 \emph default
 un videogioco
 \emph on
- multiplayer
-\emph default
- ad arene
-\emph on
- 
+ multiplayer 
 \emph default
 con elementi 
 \emph on
@@ -249,9 +245,8 @@ Il termine
 \emph on
 cross-platform play
 \emph default
- identifica una modalitá di gioco online in cui giocatori con dispositivi
- differenti possono giocare tra loro indipendentemente dal'ecosistema d'apparten
-enza.
+ identifica una modalitá di gioco online in cui giocatori possono giocare
+ tra loro indipendentemente dalla piattaforma utilizzata.
  
 \end_layout
 
@@ -358,12 +353,11 @@ Piattaforme
 \end_layout
 
 \begin_layout Standard
-L'esperienza videoludica ha il grande vantaggio di poter essere creata su
- misura in modo da soddifare tipologie d'utenza profondamente diverse su
- un ampio ventaglio di dispositivi.
+L'industria videoludica ha il grande vantaggio di poter essere studiata
+ per soddisfare utenze dai gusti profondamente diversi su un vasto numero
+ di piattaforme.
  Ad oggi esistono decine di tipologie di dispositivi di intrattenimento
- differenziati per costo, performance, interazione utente e mobilitá.
- 
+ differenziati per costo, performance, modalitá d'interazione e mobilitá.
 \end_layout
 
 \begin_layout Standard
@@ -375,34 +369,79 @@ e le
 \emph on
 console 
 \emph default
-sono i primi dispositivi elettronici su cui sono nati i videogame.Sebbene
- le 
+sono le piattaforme storiche su cui sono nati e diffusi i videogame.
+ Accomunate da paradigmi d'interazione e performance molto simili, queste
+ due famiglie di dispositivi sono nate per scopi diversi.
+ Laddove le 
+\emph on
+console
+\emph default
+ sono pensate per essere un dispositivo d'intrattenimento 
+\emph on
+dedicato
+\emph default
+, facendo della 
+\emph on
+facilitá d'uso 
+\emph default
+il loro cavallo di battaglia, i 
+\emph on
+p
+\emph default
+c hanno una natura piú generica e garantiscono performance e flessibilitá
+ maggiori al costo di un uso piú consapevole da parte dell'utenza.
+ 
+\end_layout
+
+\begin_layout Standard
+Il ciclo di vita e il costo delle due piattaforme é inoltre molto diverso.
+ Le 
 \emph on
 console 
 \emph default
-nascono come dispositivo dedicato, a differnza dei 
+sono dei 
+\emph on
+sistemi embedded 
+\emph default
+precostruiti e difficilmente aggiornabili; il loro ciclo di vita é generalmente
+ superiore al quinquennio e sono caratterizzati da un costo relativamente
+ basso.
+ I 
 \emph on
 pc
 \emph default
-, le due piattaforme sono ad oggi molto simili tra loro.
- Questi dispositivi sono caratterizzati da elevate prestazioni, le quali
- garantiscono una resa visiva d'impatto.
- La presenza di un immensa varietá di periferiche di input generiche quali
- tastiere, mouse e gamepad unite a periferiche specializzate quali volanti,
- 
+, d'altro canto
 \emph on
-HOTAS
+, 
 \emph default
- 
+possono essere assemblati scegliendo le singole componenti in modo da adattarsi
+ perfettamente alle esigenze dell'utente ed aggiornati quando ritenuto necessari
+o.
+ Il costo di un 
+\emph on
+pc 
+\emph default
+é generalmente molto piú alto rispetto a quello di una console, anche a
+ paritá di specifiche tecniche.
+\end_layout
+
+\begin_layout Standard
+L'ampio parco di periferiche di input supportate, dalle piú comuni quali
+ tastiere, mouse e gamepad a quelle piú specializzate quali volanti, pedaliere
+ e 
+\emph on
+HOTAS 
+\emph default
+
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 L'
 \emph on
 HOTAS
 \emph default
-, acronimo di 
+ (acronimo di 
 \begin_inset Quotes fld
 \end_inset
 
@@ -414,34 +453,14 @@ hands on throttle and stick
 \begin_inset Quotes frd
 \end_inset
 
-, é una duplice periferica che consiste di un joystick a 4 o piú assi e
- una leva d'accelerazione.
- Usato solitamente per giocare a simulatori di volo.
+), usato solitamente per giocare a simulatori di volo, consiste di un joystick
+ a 4 o piú assi e una leva d'accelerazione.
 \end_layout
 
 \end_inset
 
-e 
-\emph on
-HUD 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Insomma quella roba che abbiamo a lavoro per le moto
-\end_layout
-
-\end_inset
-
-
-\emph default
- rende queste piattaforme adatte a qualsiasi gioco e modalitá d'interazione.
- I pc sono solitamente molto costosi e destinati ad un pubblico di 
-\emph on
-hardcore gamer, 
-\emph default
-le console sono invece caratterizzate da costi piú contenuti ed un ciclo
- di vita estremamente elevato (superiore ai 5 anni).
+, rendono queste piattaforme adatte a qualsiasi tipologia di gioco ed interazion
+e utente.
 \end_layout
 
 \begin_layout Standard
@@ -451,8 +470,16 @@ mobile
 \emph default
 , pur essendo nate solo di recente, si sono subito affermate come una delle
  principali piattaforme da gaming.
- Il loro successo senza precedenti ha consentito all'industria mobile di
- generare un volume d'affari pari a quello di 
+ Il successo senza precedenti di 
+\emph on
+smartphone 
+\emph default
+e 
+\emph on
+tablet 
+\emph default
+ha consentito all'industria mobile di generare un volume d'affari pari a
+ quello di 
 \emph on
 pc 
 \emph default
@@ -460,11 +487,25 @@ e
 \emph on
 console 
 \emph default
-combinati.
- Pur non godendo della stessa potenza delle controparti classiche, i dispositivi
- mobile godono di una piú vasta diffusione e si rivolgono ad un pubblico
- decisamente piú ampio.
- L'interazione primaria affidata all'
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GameStatistics"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pur non godendo delle stesse performance e manifestando un ciclo di vita
+ piú breve rispetto alle controparti classiche, i dispositivi mobile godono
+ di una piú vasta diffusione e si rivolgono ad un pubblico decisamente piú
+ ampio.
+\end_layout
+
+\begin_layout Standard
+L'interazione primaria affidata all'
 \emph on
 input
 \emph default
@@ -472,7 +513,7 @@ input
 \emph on
 touch
 \emph default
- é affiancata da un ampio parco di sensori accessori quali 
+ é affiancata da un grande numero di sensori accessori quali 
 \emph on
 GPS, accelerometri, giroscopi, bussole 
 \emph default
@@ -481,7 +522,7 @@ e
  videocamere.
  
 \emph default
-Rrecenti sviluppi tecnologici quali 
+Recenti sviluppi tecnologici quali 
 \emph on
 augmented reality
 \begin_inset Foot
@@ -500,16 +541,8 @@ realtá aumentata
 \begin_inset Quotes frd
 \end_inset
 
-), consiste nel 
-\begin_inset Quotes fld
-\end_inset
-
-aumentare
-\begin_inset Quotes frd
-\end_inset
-
- le informazioni del mondo circostante attraverso contenuto generato da
- un elaboratore di tipo visivo, aptico o uditivo.
+), consiste nell'arricchire il mondo circostante attraverso contenuti di
+ tipo visivo, aptico o uditivo generati da un elaboratore.
  
 \end_layout
 
@@ -526,7 +559,21 @@ virtual reality
 status collapsed
 
 \begin_layout Plain Layout
-blah blah
+La 
+\emph on
+virtual reality 
+\emph default
+(in italiano 
+\begin_inset Quotes fld
+\end_inset
+
+realtá virtuale
+\begin_inset Quotes frd
+\end_inset
+
+) consiste nel simulare un ambiente tridimensionale tramite un elaboratore
+ e lasciare che l'utente vi interagisca attraverso periferiche di input
+ specializzate quali visori, cuffie e controller.
 \end_layout
 
 \end_inset
@@ -537,6 +584,38 @@ blah blah
 gameplay 
 \emph default
 rimasti finora inesplorati.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Subsection
+Processo di sviluppo
+\end_layout
+
+\begin_layout Standard
+Il processo di sviluppo di un videogioco cambia radicalmente in funzione
+ della piattaforma di destinazione.
+ Un design di successo deve essere in grado di avvantaggiarsi delle peculiaritá
+ di ciascun dispositivo e prendere in considerazione le limitazioni e i
+ requisiti tecnici di ciascuno di esso.
+\end_layout
+
+\begin_layout Standard
+Generalmente il processo di sviluppo per una console é molto piú 
+\emph on
+efficiente 
+\emph default
+in quanto le specifiche hardware sono note agli sviluppatori, talvolta anni
+ prima che le console raggiungono il mercato, ed é possibile effettuare
+ delle ottimizzazioni particolari per piattaforma.
+ Il processo di ottimizzazione risulta molto piú arduo per i giochi 
+\emph on
+pc 
+\emph default
+per via dell'ampio range di performance e sistemi supportati.
+ 
 \end_layout
 
 \begin_layout Subsection
