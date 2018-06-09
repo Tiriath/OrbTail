@@ -353,7 +353,7 @@ Piattaforme
 \end_layout
 
 \begin_layout Standard
-L'industria videoludica ha il grande vantaggio di poter essere studiata
+L'esperienza videoludica ha il grande vantaggio di poter essere studiata
  per soddisfare utenze dai gusti profondamente diversi su un vasto numero
  di piattaforme.
  Ad oggi esistono decine di tipologie di dispositivi di intrattenimento
@@ -383,6 +383,10 @@ pc
 e 
 \emph on
 console 
+\emph default
+combinati
+\emph on
+ 
 \emph default
 
 \begin_inset CommandInset citation
@@ -503,16 +507,17 @@ console
 \emph on
 dedicato
 \emph default
-, facendo della 
+, che fa della 
 \emph on
 facilitá d'uso 
 \emph default
-il loro cavallo di battaglia, i 
+il suo cavallo di battaglia, i 
 \emph on
 p
 \emph default
 c hanno una natura piú generica e garantiscono performance e flessibilitá
- maggiori al costo di un uso piú consapevole da parte dell'utenza.
+ maggiori al costo di una richiesta piú elevata di competenza da parte dell'uten
+za.
  
 \end_layout
 
@@ -537,9 +542,8 @@ pc
 \emph on
 , 
 \emph default
-possono essere assemblati scegliendo le singole componenti in modo da adattarsi
- perfettamente alle esigenze dell'utente ed aggiornati quando ritenuto necessari
-o.
+possono essere assemblati scegliendo i componenti che meglio si adattano
+ alle esigenze dell'utente ed aggiornati quando ritenuto necessario.
  Il costo di un 
 \emph on
 pc 
@@ -587,80 +591,34 @@ e utente.
 \end_layout
 
 \begin_layout Standard
-Queste piattaforme sono inoltre affiancate da dispositivi basati su concetti
- simili ma rivisitati in chiave 
+A questa categoria appartengono inoltre dispositivi quali 
 \emph on
-mobile.
+laptop da gaming 
+\emph default
+e 
+\emph on
+console mobile o ibride.
  
 \emph default
-Un 
-\emph on
-laptop da gaming
-\emph default
-, ad esempio, é un dispositivo 
+Il primo di questi é un dispositivo 
 \emph on
 pc 
 \emph default
 liberamente trasportabile caratterizzato da elevate performance.
- Vi sono inoltre esempi di 
+ Le console mobile, invece, possono essere utilizzate come dispositivi 
 \emph on
-console trasportabili o ibride 
+stand-alone 
 \emph default
-che é possibile utilizzare in mobilit
+ovunque
 \emph on
  
-\end_layout
+\emph default
+oppure collegate a monitor esterni.
 
-\begin_layout Standard
-quali 
 \emph on
-laptop da gaming 
-\emph default
-oppure 
-\emph on
-console mobile
-\backslash
-ibride.
  
 \emph default
-a quelli giá citati ma con paradigmi diversi.
- Un 
-\emph on
-laptop da gaming
-\emph default
- é un dispositivo 
-\emph on
-pc 
-\emph default
-trasportabile e talvolta potenziabile attraverso schede video esterne.
- 
-\end_layout
-
-\begin_layout Standard
-Grazie anche ai recenti sviluppi tecnologici, é inoltre possibile trovare
- piattaforme che uniscono il concetto classico di 
-\emph on
-pc 
-\emph default
-e 
-\emph on
-console
-\emph default
- rivisitato in chiave 
-\emph on
-mobile.
- 
-\emph default
-Questa categoria, a cui appartengono 
-\emph on
-laptop da gaming
-\emph default
-, 
-\emph on
-console mobile e console ibride, 
-\emph default
-unisce l'interazione tramite pulsanti e stick fisici alla mobilitá che consente
- a questi dispositivi di poter essere utilizzati dappertutto.
+La modalitá d'interazione prevede l'uso di pulsanti e stick fisici.
 \end_layout
 
 \begin_layout Subsection
@@ -669,26 +627,74 @@ Processo di sviluppo
 
 \begin_layout Standard
 Il processo di sviluppo di un videogioco cambia radicalmente in funzione
- della piattaforma di destinazione.
- Un design di successo deve essere in grado di avvantaggiarsi delle peculiaritá
- di ciascun dispositivo e prendere in considerazione le limitazioni e i
- requisiti tecnici di ciascuno di esso.
+ della piattaforma e dell'utenza a cui viene destinato il prodotto.
+ Un design di successo deve essere in grado di sfruttare le peculiaritá
+ di ciascun dispositivo e considerarne le limitazioni tecniche, senza pregiudica
+re l'esperienza utente.
 \end_layout
 
 \begin_layout Standard
-Generalmente il processo di sviluppo per una console é molto piú 
+Lo sviluppo risulta solitamente tanto piú avvantaggiato quanto minori sono
+ le limitazioni delle piattaforma o se le sue caratteristiche sono note
+ a priori.
+ Per le console il processo é estremamente efficiente: le caratteristiche
+ hardware sono note a priori e tutti i dispositivi sono identici.
+ Un prodotto che gira egregiamente su un kit di sviluppo ha la garanzia
+ di essere eseguito nello stesso ambiente dagli utenti finale, e ció consente
+ un processo di ottimizzazione ad una scala molto fine.
+ Questo processo di ottimizzazione é impraticabile per dispositivi mobile
+ quali smartphone e tablet o desktop quali pc e laptop per via dell'enorme
+ numero di combinazioni e variazioni disponibili.
+ Solitamente questo non costituisce un'utenza 
 \emph on
-efficiente 
+pc
 \emph default
-in quanto le specifiche hardware sono note agli sviluppatori, talvolta anni
- prima che le console raggiungono il mercato, ed é possibile effettuare
- delle ottimizzazioni particolari per piattaforma.
- Il processo di ottimizzazione risulta molto piú arduo per i giochi 
+ i quanto i dispositivi tendono ad avere prestazioni piú che abbondanti
+ anche in caso di assenza di ottimizzazioni, lo stesso non si puó dire per
+ i dispostivi mobile.
+ Questi dispositivi solitamente combinano alte densitá di pixel con un livello
+ di performance non all'altezza, e ció costituisce un serio problema per
+ lo sviluppo.
+\end_layout
+
+\begin_layout Standard
+La necessitá di aumentare il bacino d'utenza non di rado porta allo sviluppo
+ 
+\emph on
+cross-platform 
+\emph default
+di uno stesso videogioco.
+ Laddove sviluppare un gioco per piattaforme simili quali potrebbero essere
+ 
 \emph on
 pc 
 \emph default
-per via dell'ampio range di performance e sistemi supportati.
+e 
+\emph on
+console 
+\emph default
+oppure 
+\emph on
+smartphone 
+\emph default
+e 
+\emph on
+tablet
+\emph default
+ é un processo solitamente difficoltoso ed oneroso, é ancor piú raro assistere
+ all sviluppo di uno stesso gioco su piattaforme completamente diverse.
+ Esistono esempi di giochi sviluppati su piattaforme diverse, come ad esempio
  
+\series bold
+Battlefield 4, 
+\series default
+in cui una modalitá specifica é giocabile sia su pc che su tablet, tuttavia
+ ad oggi rimangono esperienze di nicchia o meri esercizi di stile.
+ Affinché ció risulti praticabile, di solito si fa in modo che dispositivi
+ diversi abbiano ruoli diversi all'interno del gioco.
+ Per via delle differenze tra le varie piattaforme, garantire le stesse
+ possibilitá a tutti i dispositivi é parecchio difficoltoso e ad oggi non
+ esistono titoli di grande successo che si sono avvantaggiati.
 \end_layout
 
 \begin_layout Subsection

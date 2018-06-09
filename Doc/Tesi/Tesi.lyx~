@@ -614,8 +614,8 @@ ovunque
  
 \emph default
 oppure collegate a monitor esterni.
+
 \emph on
-.
  
 \emph default
 La modalitá d'interazione prevede l'uso di pulsanti e stick fisici.
@@ -627,26 +627,73 @@ Processo di sviluppo
 
 \begin_layout Standard
 Il processo di sviluppo di un videogioco cambia radicalmente in funzione
- della piattaforma di destinazione.
- Un design di successo deve essere in grado di avvantaggiarsi delle peculiaritá
- di ciascun dispositivo e prendere in considerazione le limitazioni e i
- requisiti tecnici di ciascuno di esso.
+ della piattaforma e dell'utenza a cui viene destinato il prodotto.
+ Un design di successo deve essere in grado di sfruttare le peculiaritá
+ di ciascun dispositivo e considerarne le limitazioni tecniche, senza pregiudica
+re l'esperienza utente.
 \end_layout
 
 \begin_layout Standard
-Generalmente il processo di sviluppo per una console é molto piú 
+Lo sviluppo risulta solitamente tanto piú avvantaggiato quanto minori sono
+ le limitazioni delle piattaforma o se le sue specifiche sono note a priori.
+ Per le console il processo é estremamente efficiente: le caratteristiche
+ hardware sono note a priori e tutti i dispositivi sono identici.
+ Un prodotto che gira egregiamente su un kit di sviluppo ha la garanzia
+ di essere eseguito nello stesso ambiente dagli utenti finale, e ció consente
+ un processo di ottimizzazione ad una scala molto fine.
+ Questo processo di ottimizzazione é impraticabile per dispositivi mobile
+ quali smartphone e tablet o desktop quali pc e laptop per via dell'enorme
+ numero di combinazioni e variazioni disponibili.
+ Solitamente questo non costituisce un'utenza 
 \emph on
-efficiente 
+pc
 \emph default
-in quanto le specifiche hardware sono note agli sviluppatori, talvolta anni
- prima che le console raggiungono il mercato, ed é possibile effettuare
- delle ottimizzazioni particolari per piattaforma.
- Il processo di ottimizzazione risulta molto piú arduo per i giochi 
+ i quanto i dispositivi tendono ad avere prestazioni piú che abbondanti
+ anche in caso di assenza di ottimizzazioni, lo stesso non si puó dire per
+ i dispostivi mobile.
+ Questi dispositivi solitamente combinano alte densitá di pixel con un livello
+ di performance non all'altezza, e ció costituisce un serio problema per
+ lo sviluppo.
+\end_layout
+
+\begin_layout Standard
+La necessitá di aumentare il bacino d'utenza non di rado porta allo sviluppo
+ 
+\emph on
+cross-platform 
+\emph default
+di uno stesso videogioco.
+ Laddove sviluppare un gioco per piattaforme simili quali potrebbero essere
+ 
 \emph on
 pc 
 \emph default
-per via dell'ampio range di performance e sistemi supportati.
+e 
+\emph on
+console 
+\emph default
+oppure 
+\emph on
+smartphone 
+\emph default
+e 
+\emph on
+tablet
+\emph default
+ é un processo solitamente difficoltoso ed oneroso, é ancor piú raro assistere
+ all sviluppo di uno stesso gioco su piattaforme completamente diverse.
+ Esistono esempi di giochi sviluppati su piattaforme diverse, come ad esempio
  
+\series bold
+Battlefield 4, 
+\series default
+in cui una modalitá specifica é giocabile sia su pc che su tablet, tuttavia
+ ad oggi rimangono esperienze di nicchia o meri esercizi di stile.
+ Affinché ció risulti praticabile, di solito si fa in modo che dispositivi
+ diversi abbiano ruoli diversi all'interno del gioco.
+ Per via delle differenze tra le varie piattaforme, garantire le stesse
+ possibilitá a tutti i dispositivi é parecchio difficoltoso e ad oggi non
+ esistono titoli di grande successo che si sono avvantaggiati.
 \end_layout
 
 \begin_layout Subsection
