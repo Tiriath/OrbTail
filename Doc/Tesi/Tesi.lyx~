@@ -353,114 +353,11 @@ Piattaforme
 \end_layout
 
 \begin_layout Standard
-L'industria videoludica ha il grande vantaggio di poter essere studiata
+L'esperienza videoludica ha il grande vantaggio di poter essere studiata
  per soddisfare utenze dai gusti profondamente diversi su un vasto numero
  di piattaforme.
  Ad oggi esistono decine di tipologie di dispositivi di intrattenimento
  differenziati per costo, performance, modalitá d'interazione e mobilitá.
-\end_layout
-
-\begin_layout Standard
-I 
-\emph on
-pc 
-\emph default
-e le 
-\emph on
-console 
-\emph default
-sono le piattaforme storiche su cui sono nati e diffusi i videogame.
- Accomunate da paradigmi d'interazione e performance molto simili, queste
- due famiglie di dispositivi sono nate per scopi diversi.
- Laddove le 
-\emph on
-console
-\emph default
- sono pensate per essere un dispositivo d'intrattenimento 
-\emph on
-dedicato
-\emph default
-, facendo della 
-\emph on
-facilitá d'uso 
-\emph default
-il loro cavallo di battaglia, i 
-\emph on
-p
-\emph default
-c hanno una natura piú generica e garantiscono performance e flessibilitá
- maggiori al costo di un uso piú consapevole da parte dell'utenza.
- 
-\end_layout
-
-\begin_layout Standard
-Il ciclo di vita e il costo delle due piattaforme é inoltre molto diverso.
- Le 
-\emph on
-console 
-\emph default
-sono dei 
-\emph on
-sistemi embedded 
-\emph default
-precostruiti e difficilmente aggiornabili; il loro ciclo di vita é generalmente
- superiore al quinquennio e sono caratterizzati da un costo relativamente
- basso.
- I 
-\emph on
-pc
-\emph default
-, d'altro canto
-\emph on
-, 
-\emph default
-possono essere assemblati scegliendo le singole componenti in modo da adattarsi
- perfettamente alle esigenze dell'utente ed aggiornati quando ritenuto necessari
-o.
- Il costo di un 
-\emph on
-pc 
-\emph default
-é generalmente molto piú alto rispetto a quello di una console, anche a
- paritá di specifiche tecniche.
-\end_layout
-
-\begin_layout Standard
-L'ampio parco di periferiche di input supportate, dalle piú comuni quali
- tastiere, mouse e gamepad a quelle piú specializzate quali volanti, pedaliere
- e 
-\emph on
-HOTAS 
-\emph default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-L'
-\emph on
-HOTAS
-\emph default
- (acronimo di 
-\begin_inset Quotes fld
-\end_inset
-
-
-\emph on
-hands on throttle and stick
-\emph default
-
-\begin_inset Quotes frd
-\end_inset
-
-), usato solitamente per giocare a simulatori di volo, consiste di un joystick
- a 4 o piú assi e una leva d'accelerazione.
-\end_layout
-
-\end_inset
-
-, rendono queste piattaforme adatte a qualsiasi tipologia di gioco ed interazion
-e utente.
 \end_layout
 
 \begin_layout Standard
@@ -486,6 +383,10 @@ pc
 e 
 \emph on
 console 
+\emph default
+combinati
+\emph on
+ 
 \emph default
 
 \begin_inset CommandInset citation
@@ -584,6 +485,140 @@ realtá virtuale
 gameplay 
 \emph default
 rimasti finora inesplorati.
+\end_layout
+
+\begin_layout Standard
+I 
+\emph on
+pc 
+\emph default
+e le 
+\emph on
+console 
+\emph default
+sono le piattaforme storiche su cui sono nati e diffusi i videogame.
+ Accomunate da paradigmi d'interazione e performance molto simili, queste
+ due famiglie di dispositivi sono nate per scopi diversi.
+ Laddove le 
+\emph on
+console
+\emph default
+ sono pensate per essere un dispositivo d'intrattenimento 
+\emph on
+dedicato
+\emph default
+, che fa della 
+\emph on
+facilitá d'uso 
+\emph default
+il suo cavallo di battaglia, i 
+\emph on
+p
+\emph default
+c hanno una natura piú generica e garantiscono performance e flessibilitá
+ maggiori al costo di una richiesta piú elevata di competenza da parte dell'uten
+za.
+ 
+\end_layout
+
+\begin_layout Standard
+Il ciclo di vita e il costo delle due piattaforme é inoltre molto diverso.
+ Le 
+\emph on
+console 
+\emph default
+sono dei 
+\emph on
+sistemi embedded 
+\emph default
+precostruiti e difficilmente aggiornabili; il loro ciclo di vita é generalmente
+ superiore al quinquennio e sono caratterizzati da un costo relativamente
+ basso.
+ I 
+\emph on
+pc
+\emph default
+, d'altro canto
+\emph on
+, 
+\emph default
+possono essere assemblati scegliendo i componenti che meglio si adattano
+ alle esigenze dell'utente ed aggiornati quando ritenuto necessario.
+ Il costo di un 
+\emph on
+pc 
+\emph default
+é generalmente molto piú alto rispetto a quello di una console, anche a
+ paritá di specifiche tecniche.
+\end_layout
+
+\begin_layout Standard
+L'ampio parco di periferiche di input supportate, dalle piú comuni quali
+ tastiere, mouse e gamepad a quelle piú specializzate quali volanti, pedaliere
+ e 
+\emph on
+HOTAS 
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+L'
+\emph on
+HOTAS
+\emph default
+ (acronimo di 
+\begin_inset Quotes fld
+\end_inset
+
+
+\emph on
+hands on throttle and stick
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+), usato solitamente per giocare a simulatori di volo, consiste di un joystick
+ a 4 o piú assi e una leva d'accelerazione.
+\end_layout
+
+\end_inset
+
+, rendono queste piattaforme adatte a qualsiasi tipologia di gioco ed interazion
+e utente.
+\end_layout
+
+\begin_layout Standard
+A questa categoria appartengono inoltre dispositivi quali 
+\emph on
+laptop da gaming 
+\emph default
+e 
+\emph on
+console mobile o ibride.
+ 
+\emph default
+Il primo di questi é un dispositivo 
+\emph on
+pc 
+\emph default
+liberamente trasportabile caratterizzato da elevate performance.
+ Le console mobile, invece, possono essere utilizzate come dispositivi 
+\emph on
+stand-alone 
+\emph default
+ovunque
+\emph on
+ 
+\emph default
+oppure collegate a monitor esterni.
+\emph on
+.
+ 
+\emph default
+La modalitá d'interazione prevede l'uso di pulsanti e stick fisici.
 \end_layout
 
 \begin_layout Subsection
