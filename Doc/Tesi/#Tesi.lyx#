@@ -693,25 +693,33 @@ Sebbene esistono titoli sviluppati in
 esclusiva 
 \emph default
 per alcune piattaforme, la necessitá di aumentare il bacino d'utenza, e
- di conseguenza i ricavi, richiede che un videogioco venga distribuito su
- piú ecosistemi allo stesso tempo.
- Un tempo processo lungo ed oneroso, per via delle marcate differenze tra
- le architetture e carenza di tool, ad oggi lo sviluppo 
+ di conseguenza i ricavi, solitamente richiede che un prodotto venga distribuito
+ su piú ecosistemi.
+ Un tempo processo lungo ed oneroso per via delle marcate differenze tra
+ le architetture e carenza di 
+\emph on
+tool
+\emph default
+, ad oggi lo sviluppo 
 \emph on
 cross-platform
 \emph default
  risulta molto avvantaggiato.
- La nascita di nuovi engine 
+ Il rilascio di 
+\emph on
+engine
+\emph default
+ 
 \emph on
 third-party,
 \emph default
  unito alla convergeza delle piattaforme verso architetture simili, permette
  agli sviluppatori di lavorare ad un livello di astrazione piú elevato evitando
- di creare supporti di basso livello specifici per piattaforma.
+ di creare supporti di basso livello specifici per dispositivo.
 \end_layout
 
 \begin_layout Standard
-Laddove sviluppare un videogioco per piattaforme simuli quali potrebbero
+Laddove sviluppare un videogioco per piattaforme simili quali potrebbero
  essere 
 \emph on
 pc 
@@ -728,9 +736,9 @@ e
 \emph on
 tablet
 \emph default
-, costituisce piú un problema tecnico che non a livello di gameplay, sviluppare
- per piattaforme profondamente diverse richiede importanti considerazioni
- a livello di 
+, costituisce piú un problema implementativo che non a livello di gameplay,
+ sviluppare per piattaforme profondamente diverse richiede importanti consideraz
+ioni a livello di 
 \emph on
 design
 \emph default
@@ -739,9 +747,103 @@ design
 asset
 \emph default
 .
- In primo luogo é necessario considerare che le  l'utenza delle diverse
- piattaforme potrebbe rispondere diversamente alla tipologia di gioco e
- ció preclude il successo a tipologie di nicchia
+ In primo luogo il differente grado di apprezzamento dell'utenza delle varie
+ piattaforme puó precludere il successo a certe tipologie di gioco di nicchia
+ (quali potrebbero essere simulatori o strategici) e favorire i design che
+ si rivolgono un pubblico piú 
+\emph on
+mainstream
+\emph default
+.
+ Le differenti modalitá d'intrazione potrebbero inoltre richiedere la rivisitazi
+one dell'interfaccia grafica e l'eventuale eliminazione degli input disponibili
+ solo su certe tipologie di dispositivi.
+ Il comparto tecnico deve inoltre consentire al prodotto di poter scalare
+ in funzione delle performance a disposizione.
+ Possibili interventi consistono nella riduzione del dettaglio delle 
+\emph on
+texture
+\emph default
+ o della complessitá poligonale, riduzione o rimozione dell'effettistica,
+ limitazione degli oggetti a schermo.
+ Ove ció non fosse possibile o insufficiente potrebbe essere necessario
+ rivisitare il 
+\emph on
+gameplay 
+\emph default
+attraverso la riduzione di giocatori o avversari, semplificazione della
+ 
+\emph on
+IA
+\emph default
+ o rimozione di feature particolarmente onerose.
+\end_layout
+
+\begin_layout Subsection
+Multiplayer
+\end_layout
+
+\begin_layout Standard
+L'interazione sociale come mezzo per aumentare il coinvolgimento videoludico,
+ unita al bisogno di condividere l'esperienza tra individui, é il motivo
+ principale per cui i videogiochi multiplayer hanno da sempre riscosso un
+ grande successo.
+ Sebbene esistono infinite variazioni sul tema, le modalitá di gioco multiplayer
+ possono essere classificate in due famiglie: 
+\emph on
+cooperative 
+\emph default
+e 
+\emph on
+competitive.
+ 
+\emph default
+Alla prima categoria appartengono quelle modalitá in cui due o piú giocatori
+ 
+\emph on
+collaborano 
+\emph default
+tra loro al fine di raggiungere un obiettivo comune.
+ In queste modalitá, note anche con l'acronimo 
+\emph on
+PvE 
+\emph default
+(dall'inglese 
+\emph on
+player-vs-environment
+\emph default
+)
+\emph on
+ 
+\emph default
+o
+\emph on
+ co-op,
+\emph default
+ l'elemento di sfida é rappresentato dal gioco stesso e governato da 
+\emph on
+intelligenze artificiali 
+\emph default
+piú o meno sofisticate.
+ Nelle modalitá 
+\emph on
+competitive
+\emph default
+ l'elemento di sfida é invece rappresentato dai giocatori stessi: gli utenti
+ sono portati a confrontarsi gli uni con gli altri al fine di raggiungere
+ un obiettivo impedendo al contempo che gli altri giocatori possano fare
+ altrettanto.
+ Il livello di sfida offerto da alcuni titoli é tale per cui, pur di eccellere,
+ alcuni giocatori hanno deciso di farne una carriera, sottoponendosi costantemen
+te a veri e propri allenamenti.
+ Questo fenomeno ha di recente portato alla nascita di competizioni a livello
+ agonistico, organizzate e regolamentate da entitá terze, in cui i partecipanti
+ non sono semplici giocatori ma veri e propri atleti.
+ Queste competizioni prendono il nome di 
+\emph on
+e-sports 
+\emph default
+(sport elettronici).
 \end_layout
 
 \begin_layout Standard
@@ -752,87 +854,40 @@ asset
 \end_layout
 
 \begin_layout Standard
-In primo luogo é necessario considerare che le differenti modalitá di interazion
-e possono precludere asdasd.
- che le diverse modalitá d'interazione potrebbero richiedere la rimozione
- di elementi
+I primi esperimenti di modalitá multiplaye risalgono ad un'epoca in cui
+ Internet non era cosí diffuso com'é lo é oggi.
+ In queste implementazioni i giocatori condividono uno stesso dispositivo
+ fisico e pertanto é richiesto che i giocatori siano fisicamente assieme.
+ L'implementazione piú semplice di un'esperienza multiplayer locale consiste
+ nell utilizzare una visuale unica condivisa tra tutti i giocatori coinvolti.
+ In questa modalitá il gioco fornisce una chiara panoramica del gioco e
+ tutti i giocatori hanno a disposizione le stesse identiche informazioni.
+ Esempi di queste modalitá di gioco sono lo storico 
+\series bold
+Pong 
+\series default
+e il piú recente Overcooked.
+ Esistono esempi di giochi a visuale unica che usano i turni per aumentare
+ l'asimmetria informativa trai vari giocatori.
+ In questi giochi i giocatori interagiscono col gioco a seconda di turni
+ ciclici, Esempi 
+\series bold
+Homm3
+\series default
+.
+ Queste modalitá hanno il vantaggio di non richiedere performance o periferiche
+ in piú.
+ Una realizzazione piú sofisticata consiste ne
 \end_layout
 
 \begin_layout Standard
-differenze tra utenti
+Splitscreen dove piú punti di vista sono necessari richiede performance
+ piú elevate o stratagemmi usato molto di raro nei videogiochi moderni (halo
+ ce).
 \end_layout
 
 \begin_layout Standard
-Il comparto tecnico deve inoltre permettere al prodotto di poter scalare
- in funzione delle performance a disposizione.
- Possibili interventi consistono nella riduzione del dettaglio delle 
-\emph on
-texture
-\emph default
- o della complessitá poligonale, riduzione o rimozione di effettistica varia,
- limitazione degli oggetti a schermo.
- Talvolta queste limitazioni possono impattare sul 
-\emph on
-gameplay 
-\emph default
-comportando la riduzione di giocatori o avversari, semplificazione della
- 
-\emph on
-IA
-\emph default
-, rimozione di feature particolarmente onerose.
-\end_layout
-
-\begin_layout Subsection
-Multiplayer
-\end_layout
-
-\begin_layout Standard
-In un gioco multiplayer due o piú giocatori prendono parte ad una stessa
- partita allo stesso tempo.
- Diversi gameplay permettono a giocatori diversi di 
-\emph on
-competere 
-\emph default
-tra loro al fine di raggiungere un obiettivo, oppure di 
-\emph on
-collaborare 
-\emph default
-tra loro.
- É ovviamente possibile organizzare i giocatori in gruppi in competizione
- tra loro in cui gli elementi del team cooperano.
- Sebbene vi siano stati importanti passi avanti nel settore dell'intelligenza
- artificiale, non siamo nemmeno lontanamente vicini al grado di sfida che
- si ha sfidando un altro giocatore.
- La condivisione dell'esperienza, unit all'interazione sociale e gameplay
- sempre piú
-\begin_inset space \space{}
-\end_inset
-
-vasti consente alla componente multiplayer di aumentare il ciclo di vita
- di uno stesso gioco e ció ha un impatto positivo sulla monetizzazione.
- Nascita di community e tornei ed esports.
- Esistono diverse tipologie di muliplayer divise principalmente in due gruppo:
- il multiplayer locale e quello online.
-\end_layout
-
-\begin_layout Standard
-Nella prima categoria ricate la piú vecchia consiste nel condividere uno
- stesso dispositivo a visuale unica (
-\emph on
-pong
-\emph default
-, 
-\emph on
-overcooked
-\emph default
-) tra due giocatori Giochi a turno (
-\emph on
-homm3
-\emph default
-) performance friendly.Splitscreen dove piú punti di vista sono necessari
- richiede performance piú elevate o stratagemmi usato molto di raro nei
- videogiochi moderni (halo ce).
+La realizzazione delle esperienze multiplayer
 \end_layout
 
 \begin_layout Standard

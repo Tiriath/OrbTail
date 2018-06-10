@@ -75,78 +75,6 @@ ORBTAIL
 \end_layout
 
 \begin_layout Section
-Sommario
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-(1 pagina massimo)
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Crossplay 
-\series default
-Multiplayer e piattaforme.
- Esclusive e titoli cross platform.
- Problema del crossplay.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Titolo
-\series default
-: Orbtail
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Genere
-\series default
-: Racing, Arena multipiattaforma (Windows, Android, Mac, iOS), Casual.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Engine
-\series default
- Unity3D
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Feature 
-\series default
-Cross-play misto split-screen (seamless online
-\backslash
-offline).
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Estensioni
-\series default
-: Porting all'ultima versione di Unity da 2014 a 2018.
- Riscrittura del layer di networking per supportare le AI online.
- Supporto multigiocatore locale e split-screen (anche online).
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Stuttura della tesi
-\series default
-: capitoli e contenuti.
-\end_layout
-
-\begin_layout Section
 Introduzione
 \end_layout
 
@@ -157,53 +85,7 @@ Introduzione
 \end_layout
 
 \begin_layout Itemize
-condividere esperienza, competere, collaborare.
-\end_layout
-
-\begin_layout Itemize
-Descrizione delle piattaforme e differenze (desktop, laptop, mobile, console).
-\end_layout
-
-\begin_layout Itemize
 Esports? Competizione?
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Analisi 
-\series default
-videogame e mercato generale.
- Focus su giochi multiplayer, specie arena e casual game.
-\end_layout
-
-\begin_layout Subsection
-Multipiattaforma
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Peculiaritá 
-\series default
-piattaforme desktop e mobile, necessitá di impiegare interazioni semplici
- su entrambi i dispositivi per non avvantaggiarne nessuno.
- Analisi dei sistemi di input.
-\end_layout
-
-\begin_layout Subsection
-Multiplayer
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Multiplayer 
-\series default
-a squadre, cooperativi
-\backslash
-competitivi ecc.
- server-client p2p
 \end_layout
 
 \begin_layout Section
@@ -219,6 +101,15 @@ Analisi competitor
 \begin_layout Itemize
 Descrizione dei genre (racing).
  Arena, rottura stalli.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Analisi 
+\series default
+videogame e mercato generale.
+ Focus su giochi multiplayer, specie arena e casual game.
 \end_layout
 
 \begin_layout Subsection

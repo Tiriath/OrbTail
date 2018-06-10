@@ -784,59 +784,125 @@ Multiplayer
 \end_layout
 
 \begin_layout Standard
-In un gioco multiplayer due o piú giocatori prendono parte ad una stessa
- partita allo stesso tempo.
- Diversi gameplay permettono a giocatori diversi di 
+L'interazione sociale come mezzo per aumentare il coinvolgimento videoludico,
+ unita al bisogno di condividere l'esperienza tra individui, é il motivo
+ principale per cui i videogiochi multiplayer hanno da sempre riscosso un
+ grande successo.
+ Sebbene esistono infinite variazioni sul tema, le modalitá di gioco multiplayer
+ possono essere classificate in due famiglie: 
 \emph on
-competere 
+cooperative 
 \emph default
-tra loro al fine di raggiungere un obiettivo, oppure di 
+e 
 \emph on
-collaborare 
+competitive.
+ 
 \emph default
-tra loro.
- É ovviamente possibile organizzare i giocatori in gruppi in competizione
- tra loro in cui gli elementi del team cooperano.
- Sebbene vi siano stati importanti passi avanti nel settore dell'intelligenza
- artificiale, non siamo nemmeno lontanamente vicini al grado di sfida che
- si ha sfidando un altro giocatore.
- La condivisione dell'esperienza, unit all'interazione sociale e gameplay
- sempre piú
-\begin_inset space \space{}
+Alla prima categoria appartengono quelle modalitá in cui due o piú giocatori
+ 
+\emph on
+collaborano 
+\emph default
+tra loro al fine di raggiungere un obiettivo comune.
+ In queste modalitá, note anche con l'acronimo 
+\emph on
+PvE 
+\emph default
+(dall'inglese 
+\emph on
+player-vs-environment
+\emph default
+)
+\emph on
+ 
+\emph default
+o
+\emph on
+ co-op,
+\emph default
+ l'elemento di sfida é rappresentato dal gioco stesso e governato da 
+\emph on
+intelligenze artificiali 
+\emph default
+piú o meno sofisticate.
+ Nelle modalitá 
+\emph on
+competitive
+\emph default
+ l'elemento di sfida é invece rappresentato dai giocatori stessi: gli utenti
+ sono portati a confrontarsi gli uni con gli altri al fine di raggiungere
+ un obiettivo impedendo al contempo che gli altri giocatori possano fare
+ altrettanto.
+ Il livello di sfida offerto da alcuni titoli é tale per cui, pur di eccellere,
+ alcuni giocatori hanno deciso di farne una carriera, sottoponendosi costantemen
+te a veri e propri allenamenti.
+ Questo fenomeno ha di recente portato alla nascita di competizioni a livello
+ agonistico, organizzate e regolamentate da entitá terze, in cui i partecipanti
+ non sono semplici giocatori ma veri e propri atleti.
+ Queste competizioni prendono il nome di 
+\emph on
+e-sports 
+\emph default
+(sport elettronici).
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
 \end_inset
 
-vasti consente alla componente multiplayer di aumentare il ciclo di vita
- di uno stesso gioco e ció ha un impatto positivo sulla monetizzazione.
- Nascita di community e tornei ed esports.
- Esistono diverse tipologie di muliplayer divise principalmente in due gruppo:
- il multiplayer locale e quello online.
+
 \end_layout
 
 \begin_layout Standard
-Nella prima categoria ricate la piú vecchia consiste nel condividere uno
- stesso dispositivo a visuale unica (
-\emph on
-pong
-\emph default
-, 
-\emph on
-overcooked
-\emph default
-) tra due giocatori Giochi a turno (
-\emph on
-homm3
-\emph default
-) performance friendly.Splitscreen dove piú punti di vista sono necessari
- richiede performance piú elevate o stratagemmi usato molto di raro nei
- videogiochi moderni (halo ce).
+I primi esperimenti di modalitá multiplaye risalgono ad un'epoca in cui
+ Internet non era cosí diffuso com'é lo é oggi.
+ In queste implementazioni i giocatori condividono uno stesso dispositivo
+ fisico e pertanto é richiesto che i giocatori siano fisicamente assieme.
+ L'implementazione piú semplice di un'esperienza multiplayer locale consiste
+ nell utilizzare una visuale unica condivisa tra tutti i giocatori coinvolti.
+ In questa modalitá il gioco fornisce una chiara panoramica del gioco e
+ tutti i giocatori hanno a disposizione le stesse identiche informazioni.
+ Esempi di queste modalitá di gioco sono lo storico 
+\series bold
+Pong 
+\series default
+e il piú recente 
+\series bold
+Overcooked
+\series default
+.
+ Esistono esempi di giochi a visuale unica che usano i turni per aumentare
+ l'asimmetria informativa trai vari giocatori.
+ In questi giochi i giocatori interagiscono col gioco a seconda di turni
+ ciclici, Esempi 
+\series bold
+Homm3
+\series default
+.
+ Queste modalitá hanno il vantaggio di non richiedere performance o periferiche
+ in piú.
+ Una realizzazione piú sofisticata consiste nel suddividere lo schermo in
+ quadranti da associare a ciascun giocatore.
+ Questo permette di avere visuali indipendenti e pertanto ambienti piú grandi,
+ tuttavia ha lo svantaggio di richiedere piú performance.
+ Esempi 
+\series bold
+Lego Racers 
+\series default
+e 
+\series bold
+Mario Karts
+\series default
+.
+ Di recente questa modalitá é caduta in disuso (multiplayer networked é
+ piú flessibile e non richiede ulteriori limitazioni).
 \end_layout
 
 \begin_layout Standard
-Multiplayer networked: peer to peer o server dedicati.
-\end_layout
-
-\begin_layout Standard
-Peer to peer con un utente che fa da host oppure ad autoritá condivisa (raro).
+In epoche recenti si é assistito all'esplosione di esperienze multiplayer
+ sulla rete realizzazione delle esperienze multiplayer.
+ Peer to peer con un utente che fa da host oppure ad autoritá condivisa
+ (raro).
  A volte si usano server esterni per gestire piccole parti quali matchmaking,
  achievement e leaderboards.
  Solitamente usato per risparmiare sulle infrastrutture server (molto dispendios
