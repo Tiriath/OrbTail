@@ -135,9 +135,9 @@ Questa tesi é strutturata in capitoli.
 \end_layout
 
 \begin_layout Standard
-Nel secondo capitolo viene dato un contesto al progetto, andando ad individuare
- la sua posizione rispetto ai vari competitor al fine di estrarre un sottoinsiem
-e di caratteristiche desiderate per il prodotto finito.
+Nel secondo capitolo viene dato un contesto al progetto, andando ad analizzare
+ i requisiti dello sviluppo multipiattaforma e delle varie modalitá multigiocato
+re.
 \end_layout
 
 \begin_layout Standard
@@ -145,7 +145,7 @@ Il terzo capitolo si concentra sul
 \emph on
 design 
 \emph default
-del gioco e sulle sue meccaniche e 
+del gioco ovvero sulle sue meccaniche e 
 \emph on
 level design
 \emph default
@@ -153,16 +153,20 @@ level design
  della versione precedente al fine di equilibrarne e migliorarne il 
 \emph on
 gameplay.
+ 
+\emph default
+Vengono inoltre analizzati alcuni competitor, limitatamente al design, al
+ fine di individare meccaniche simili ed analizzarne lo sviluppo.
 \end_layout
 
 \begin_layout Standard
 Nel capitolo successivo verrá inquadrata la direzione artistica del progetto
- compresa la produzione dei vari 
+ usando diversi titoli esistenti come riferimento.
+ Viene inoltre analizzata la produzione dei vari 
 \emph on
 asset 
 \emph default
-utilizzati all'interno del gioco.
- Le scelte aristiche saranno fortemente influenzate dai requisiti tecnici.
+utilizzati all'interno del gioco considerando i requisiti tecnici e di design.
 \end_layout
 
 \begin_layout Standard
@@ -357,7 +361,7 @@ L'esperienza videoludica ha il grande vantaggio di poter essere studiata
  per soddisfare utenze dai gusti profondamente diversi su un vasto numero
  di piattaforme.
  Ad oggi esistono decine di tipologie di dispositivi di intrattenimento
- differenziati per costo, performance, modalitá d'interazione e mobilitá.
+ differenziati per costo, performance e modalitá d'interazione.
 \end_layout
 
 \begin_layout Standard
@@ -497,7 +501,7 @@ e le
 console 
 \emph default
 sono le piattaforme storiche su cui sono nati e diffusi i videogame.
- Accomunate da paradigmi d'interazione e performance molto simili, queste
+ Accomunate da paradigmi d'interazione e performance paragonabili, queste
  due famiglie di dispositivi sono nate per scopi diversi.
  Laddove le 
 \emph on
@@ -531,7 +535,7 @@ sono dei
 \emph on
 sistemi embedded 
 \emph default
-precostruiti e difficilmente aggiornabili; il loro ciclo di vita é generalmente
+precostruiti e limitatamente aggiornabili; il loro ciclo di vita é generalmente
  superiore al quinquennio e sono caratterizzati da un costo relativamente
  basso.
  I 
@@ -600,11 +604,11 @@ e
 console mobile o ibride.
  
 \emph default
-Il primo di questi é un dispositivo 
+I primi sono 
 \emph on
 pc 
 \emph default
-liberamente trasportabile caratterizzato da elevate performance.
+liberamente trasportabili caratterizzati da elevate performance.
  Le console mobile, invece, possono essere utilizzate come dispositivi 
 \emph on
 stand-alone 
@@ -635,37 +639,80 @@ re l'esperienza utente.
 
 \begin_layout Standard
 Lo sviluppo risulta solitamente tanto piú avvantaggiato quanto minori sono
- le limitazioni delle piattaforma o se le sue caratteristiche sono note
- a priori.
- Per le console il processo é estremamente efficiente: le caratteristiche
- hardware sono note a priori e tutti i dispositivi sono identici.
- Un prodotto che gira egregiamente su un kit di sviluppo ha la garanzia
- di essere eseguito nello stesso ambiente dagli utenti finale, e ció consente
- un processo di ottimizzazione ad una scala molto fine.
- Questo processo di ottimizzazione é impraticabile per dispositivi mobile
- quali smartphone e tablet o desktop quali pc e laptop per via dell'enorme
- numero di combinazioni e variazioni disponibili.
- Solitamente questo non costituisce un'utenza 
+ le limitazioni delle piattaforma o varietá di specifiche tra dispositivi.
+ La presenza di dispositivi 
 \emph on
-pc
+identici
 \emph default
- i quanto i dispositivi tendono ad avere prestazioni piú che abbondanti
- anche in caso di assenza di ottimizzazioni, lo stesso non si puó dire per
- i dispostivi mobile.
- Questi dispositivi solitamente combinano alte densitá di pixel con un livello
- di performance non all'altezza, e ció costituisce un serio problema per
- lo sviluppo.
+ tra 
+\emph on
+console
+\emph default
+ appartenenti ad uno stesso ecosistema garantisce un'elevata consistenza
+ dell'esperienza utente e consente interventi di ottimizzazione ad una granulari
+tá molto fine.
+ Laddove questo processo é solitamente molto 
+\emph on
+efficiente
+\emph default
+ su console, lo stesso non puó essere detto per piattaforme 
+\emph on
+mobile 
+\emph default
+e 
+\emph on
+desktop 
+\emph default
+per via dell'elevata varietá di specifiche tecniche o combinazioni di componenti.
+ I 
+\emph on
+pc 
+\emph default
+risultano avvantaggiati per via delle elevate performance e assenza di grosse
+ limitazioni e ció consente loro di mantenere un elevata fedeltá e fruibilitá
+ del contenuto.
+ Lo sviluppo su dispositivi quali 
+\emph on
+smartphone 
+\emph default
+e 
+\emph on
+tablet
+\emph default
+, d'altro canto, deve scontrarsi con la presenza di dispositivi con capacitá
+ profondamente diverse e comparti tecnici non sempre in equilibrio tra loro
+ (non é raro assistere a dispositivi che associano elevate risoluzioni a
+ performance mediocri).
+ In questo caso é richiesto uno sforzo maggiore affinché l'applicazione
+ scali in funzione del dispositivo per garantire una buona esperienza utente.
 \end_layout
 
 \begin_layout Standard
-La necessitá di aumentare il bacino d'utenza non di rado porta allo sviluppo
- 
+Sebbene esistono titoli sviluppati in 
 \emph on
-cross-platform 
+esclusiva 
 \emph default
-di uno stesso videogioco.
- Laddove sviluppare un gioco per piattaforme simili quali potrebbero essere
- 
+per alcune piattaforme, la necessitá di aumentare il bacino d'utenza, e
+ di conseguenza i ricavi, richiede che un videogioco venga distribuito su
+ piú ecosistemi allo stesso tempo.
+ Un tempo processo lungo ed oneroso, per via delle marcate differenze tra
+ le architetture e carenza di tool, ad oggi lo sviluppo 
+\emph on
+cross-platform
+\emph default
+ risulta molto avvantaggiato.
+ La nascita di nuovi engine 
+\emph on
+third-party,
+\emph default
+ unito alla convergeza delle piattaforme verso architetture simili, permette
+ agli sviluppatori di lavorare ad un livello di astrazione piú elevato evitando
+ di creare supporti di basso livello specifici per piattaforma.
+\end_layout
+
+\begin_layout Standard
+Laddove sviluppare un videogioco per piattaforme simuli quali potrebbero
+ essere 
 \emph on
 pc 
 \emph default
@@ -681,9 +728,136 @@ e
 \emph on
 tablet
 \emph default
- é un processo solitamente difficoltoso ed oneroso, é ancor piú raro assistere
- all sviluppo di uno stesso gioco su piattaforme completamente diverse.
- Esistono esempi di giochi sviluppati su piattaforme diverse, come ad esempio
+, costituisce piú un problema tecnico che non a livello di gameplay, sviluppare
+ per piattaforme profondamente diverse richiede importanti considerazioni
+ a livello di 
+\emph on
+design
+\emph default
+ e produzione 
+\emph on
+asset
+\emph default
+.
+ In primo luogo é necessario considerare che le  l'utenza delle diverse
+ piattaforme potrebbe rispondere diversamente alla tipologia di gioco e
+ ció preclude il successo a tipologie di nicchia
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In primo luogo é necessario considerare che le differenti modalitá di interazion
+e possono precludere asdasd.
+ che le diverse modalitá d'interazione potrebbero richiedere la rimozione
+ di elementi
+\end_layout
+
+\begin_layout Standard
+differenze tra utenti
+\end_layout
+
+\begin_layout Standard
+Il comparto tecnico deve inoltre permettere al prodotto di poter scalare
+ in funzione delle performance a disposizione.
+ Possibili interventi consistono nella riduzione del dettaglio delle 
+\emph on
+texture
+\emph default
+ o della complessitá poligonale, riduzione o rimozione di effettistica varia,
+ limitazione degli oggetti a schermo.
+ Talvolta queste limitazioni possono impattare sul 
+\emph on
+gameplay 
+\emph default
+comportando la riduzione di giocatori o avversari, semplificazione della
+ 
+\emph on
+IA
+\emph default
+, rimozione di feature particolarmente onerose.
+\end_layout
+
+\begin_layout Subsection
+Multiplayer
+\end_layout
+
+\begin_layout Standard
+In un gioco multiplayer due o piú giocatori prendono parte ad una stessa
+ partita allo stesso tempo.
+ Diversi gameplay permettono a giocatori diversi di 
+\emph on
+competere 
+\emph default
+tra loro al fine di raggiungere un obiettivo, oppure di 
+\emph on
+collaborare 
+\emph default
+tra loro.
+ É ovviamente possibile organizzare i giocatori in gruppi in competizione
+ tra loro in cui gli elementi del team cooperano.
+ Sebbene vi siano stati importanti passi avanti nel settore dell'intelligenza
+ artificiale, non siamo nemmeno lontanamente vicini al grado di sfida che
+ si ha sfidando un altro giocatore.
+ La condivisione dell'esperienza, unit all'interazione sociale e gameplay
+ sempre piú
+\begin_inset space \space{}
+\end_inset
+
+vasti consente alla componente multiplayer di aumentare il ciclo di vita
+ di uno stesso gioco e ció ha un impatto positivo sulla monetizzazione.
+ Nascita di community e tornei ed esports.
+ Esistono diverse tipologie di muliplayer divise principalmente in due gruppo:
+ il multiplayer locale e quello online.
+\end_layout
+
+\begin_layout Standard
+Nella prima categoria ricate la piú vecchia consiste nel condividere uno
+ stesso dispositivo a visuale unica (
+\emph on
+pong
+\emph default
+, 
+\emph on
+overcooked
+\emph default
+) tra due giocatori Giochi a turno (
+\emph on
+homm3
+\emph default
+) performance friendly.Splitscreen dove piú punti di vista sono necessari
+ richiede performance piú elevate o stratagemmi usato molto di raro nei
+ videogiochi moderni (halo ce).
+\end_layout
+
+\begin_layout Standard
+Multiplayer networked: peer to peer o server dedicati.
+\end_layout
+
+\begin_layout Standard
+Peer to peer con un utente che fa da host oppure ad autoritá condivisa (raro).
+ A volte si usano server esterni per gestire piccole parti quali matchmaking,
+ achievement e leaderboards.
+ Solitamente usato per risparmiare sulle infrastrutture server (molto dispendios
+e).
+ Host recovery connessione lenta dell'host pregiudica esperienza utente.
+ Condivisione autoritá raro per motivi di sicurezza.
+\end_layout
+
+\begin_layout Standard
+Server dedicati, consentono ad un gran numero di utenti di partecipare ad
+ una stessa partita.
+ Mondi persistenti MMO, MOBA o recenti battle royale PUBG Fortnite (100+
+ giocatori).
+\end_layout
+
+\begin_layout Standard
+Esistono esempi di giochi sviluppati su piattaforme diverse, come ad esempio
  
 \series bold
 Battlefield 4, 
@@ -695,51 +869,8 @@ in cui una modalitá specifica é giocabile sia su pc che su tablet, tuttavia
  Per via delle differenze tra le varie piattaforme, garantire le stesse
  possibilitá a tutti i dispositivi é parecchio difficoltoso e ad oggi non
  esistono titoli di grande successo che si sono avvantaggiati.
-\end_layout
-
-\begin_layout Subsection
-Multiplayer
-\end_layout
-
-\begin_layout Standard
-, sia essa di natura 
-\emph on
-competitiva 
-\emph default
-o 
-\emph on
-collaborativa
-\emph default
-.
- Questo bisogno rimane indubbiamente vero anche per la controparte elettronica,
- tanto da costituire una discriminante per l'acquisto da gran parte degli
- utenti
-\begin_inset CommandInset citation
-LatexCommand cite
-key "GameStatistics"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Esperienza multiplayer come parte essenziale di un videogioco.
- Aumento del livello di sfida, aumento del tasso di rigiocabilitá.
-\end_layout
-
-\begin_layout Standard
-Server dedicati, peer to peer, multiplayer locale (splitscreen, a turni)
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Crossplay??? 
-\emph default
-Caratteristica ignorata nella stragrande maggioranza dei casi.
- Sviluppo infrastrutture oneroso (a carico dello sviluppatore), interazione
- servizi complicata.
+ Crossplay, solitamente ignoranto per via dei costi di interop tra i vari
+ ecosistemi e limitazioni dei vendor.
 \end_layout
 
 \begin_layout Standard
@@ -751,19 +882,6 @@ Caratteristica ignorata nella stragrande maggioranza dei casi.
 
 \begin_layout Section
 Design
-\end_layout
-
-\begin_layout Subsection
-Meccaniche
-\end_layout
-
-\begin_layout Standard
-Minimo comune multiplo tra le piattaforme.
- Vari competitor.
-\end_layout
-
-\begin_layout Subsection
-Direzione artistica
 \end_layout
 
 \begin_layout Standard
