@@ -925,7 +925,7 @@ Overcooked - Party game
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -988,22 +988,182 @@ split-screen,
 \end_layout
 
 \begin_layout Standard
-\begin_inset space ~
+La rapida diffusione di Internet, unita al suo rapido sviluppo degli ultimi
+ decenni, ha permesso la nascita di nuove modalitá multigiocatore 
+\emph on
+online
+\emph default
+.
+ Rispetto all'approccio classico, un gioco multiplayer online permette agli
+ utenti di usare il proprio dispositivo per accedere a sessioni di gioco
+ con un numero di partecipanti che varia tra la decina e il migliaio, indipenden
+temente dalla distanza fisica che li separa.
+ Il rinnovato successo del gioco multiplayer ha consentito la nascita di
+ nuovi genere di giochi, dai 
+\emph on
+MOBA (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Battlerite"
+
+\end_inset
+
+)
+\emph default
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/mp_battlerite.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Battlerite"
+
+\end_inset
+
+Battlerite - Multiplayer online battle arena.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+in cui due team dal numero ristretto di giocatori si sfidano all'interno
+ di un'arena, agli 
+\emph on
+MMO (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EVE"
+
+\end_inset
+
+)
+\emph default
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/mmo_eveonline.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:EVE"
+
+\end_inset
+
+EVE Online - Massive multiplayer online game
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ i cui mondi persistenti vantano migliaia di giocatori attivi contemporaneamente
+, passando per i piú recenti 
+\emph on
+Battle Royale 
+\emph default
+caratterizzati da centinaia di giocatori che lottano per la sopravvivenza
+ (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PUBG"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/br_pubg.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PUBG"
+
+\end_inset
+
+Playerunknown's Battleground - Battle royale
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-La rapida diffusione di Internet, unita al suo rapido sviluppo negli ultimi
- decenni, ha rinvigorito lo sviluppo di modalitá multiplayer consentendo
- la nascita di nuove.
- consentito la nascita di nuove modalitá multiplayer che oggi permettono
- a milioni di utenti di giocare 
-\emph on
-online 
-\emph default
-tra di loro indipendentemente dalla loro lontananza.
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1029,7 +1189,7 @@ ha completa autoritá sulla partita.
  al server e ricevere continui aggiornamenti sullo stato della partita.
  I client non parlano mai tra di loro e tutte le comunicazioni sono ridirezionat
 e verso il server.
- Nelle architetture con server dedicate una macchina esterna alla partita,
+ Nelle architetture con server dedicati una macchina esterna alla partita,
  solitamente un pc di classe server, coordina le partite.
  Se il numero di giocatori é relativamente basso un dispositivo client puó
  fare da 
@@ -1042,24 +1202,24 @@ Nelle architeture
 \emph on
 peer-to-peer 
 \emph default
-i dispositivi sono allo stesso livello e possono fungere
-\end_layout
-
-\begin_layout Standard
-Peer to peer con un utente che fa da host oppure ad autoritá condivisa (raro).
- A volte si usano server esterni per gestire piccole parti quali matchmaking,
- achievement e leaderboards.
+(raramente impiegate per i videogiochi) i dispositivi sono allo stesso livello
+ e possono fungere sia da client che da server.
  Solitamente usato per risparmiare sulle infrastrutture server (molto dispendios
 e).
  Host recovery connessione lenta dell'host pregiudica esperienza utente.
- Condivisione autoritá raro per motivi di sicurezza.
 \end_layout
 
 \begin_layout Standard
-Server dedicati, consentono ad un gran numero di utenti di partecipare ad
- una stessa partita.
- Mondi persistenti MMO, MOBA o recenti battle royale PUBG Fortnite (100+
- giocatori).
+A volte si usano server esterni per gestire piccole parti quali matchmaking,
+ achievement e leaderboards.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
