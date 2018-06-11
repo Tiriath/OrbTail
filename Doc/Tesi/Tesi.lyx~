@@ -847,6 +847,147 @@ e-sports
 \end_layout
 
 \begin_layout Standard
+Le modalitá multiplayer hanno accompagnato lo sviluppo dei videogiochi fin
+ dagli albori, in un'epoca in cui la diffusione di Internet era molto limitata.
+ Le realizzazioni piú semplici consistono nello sfruttare uno stesso dispositivo
+ col quale tutti i giocatori possono interagirvi.
+ La presenza fisica di tutti i partecipanti coinvolti favorisce un'interazione
+ sociale piú immediata e rende queste modalitá di gioco particolarmente
+ adatte ai 
+\emph on
+party-game
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I 
+\emph on
+party-game 
+\emph default
+sono l'equivalente videoludico dei giochi di societá.
+ A questa categoria appartengono tutti quei videogiochi dall'alto valore
+ ricreativo che é possibile giocare con piú giocatori fisicamente vicini.
+\end_layout
+
+\end_inset
+
+
+\emph default
+.
+ Le implementazioni piú semplici consistono nell'utilizzare una visuale
+ condivisa tra tutti i partecipanti (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Overcooked"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/mp_overcooked.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Overcooked"
+
+\end_inset
+
+Overcooked - Party game
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/mp_hommiii.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:HoMM3"
+
+\end_inset
+
+Heroes of Might & Magic - Multiplayer a turni
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ oppure, laddove l'interazione in contemporanea non fosse necessaria, sfruttare
+ la meccanica dei 
+\emph on
+turni
+\emph default
+ affinché ciascun giocatore goda di un punto di vista unico sul mondo di
+ gioco (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:HoMM3"
+
+\end_inset
+
+).
+  Un'implementazione piú sofisticata, nota col termine 
+\emph on
+split-screen,
+\emph default
+ consiste nel suddividere lo schermo in quadranti, solitamente da due a
+ quattro, e mostrare in ciascuno di essi il punto di vista di uno dei giocatori
+ in maniera indipendente.
+ L'elevato impatto sulle performance, tale da rendere necessarie ottimizzazioni
+ particolarmente aggressive ed onerose, unita al ridotto bacino d'utenza
+ cui queste modalitá si rivolgono, ha di recente portato ad un calo di titoli
+ che offrono questo tipo di esperienze multigiocatore.
+\end_layout
+
+\begin_layout Standard
 \begin_inset space ~
 \end_inset
 
@@ -854,56 +995,54 @@ e-sports
 \end_layout
 
 \begin_layout Standard
-I primi esperimenti di modalitá multiplaye risalgono ad un'epoca in cui
- Internet non era cosí diffuso com'é lo é oggi.
- In queste implementazioni i giocatori condividono uno stesso dispositivo
- fisico e pertanto é richiesto che i giocatori siano fisicamente assieme.
- L'implementazione piú semplice di un'esperienza multiplayer locale consiste
- nell utilizzare una visuale unica condivisa tra tutti i giocatori coinvolti.
- In questa modalitá il gioco fornisce una chiara panoramica del gioco e
- tutti i giocatori hanno a disposizione le stesse identiche informazioni.
- Esempi di queste modalitá di gioco sono lo storico 
-\series bold
-Pong 
-\series default
-e il piú recente 
-\series bold
-Overcooked
-\series default
-.
- Esistono esempi di giochi a visuale unica che usano i turni per aumentare
- l'asimmetria informativa trai vari giocatori.
- In questi giochi i giocatori interagiscono col gioco a seconda di turni
- ciclici, Esempi 
-\series bold
-Homm3
-\series default
-.
- Queste modalitá hanno il vantaggio di non richiedere performance o periferiche
- in piú.
- Una realizzazione piú sofisticata consiste nel suddividere lo schermo in
- quadranti da associare a ciascun giocatore.
- Questo permette di avere visuali indipendenti e pertanto ambienti piú grandi,
- tuttavia ha lo svantaggio di richiedere piú performance.
- Esempi 
-\series bold
-Lego Racers 
-\series default
-e 
-\series bold
-Mario Karts
-\series default
-.
- Di recente questa modalitá é caduta in disuso (multiplayer networked é
- piú flessibile e non richiede ulteriori limitazioni).
+La rapida diffusione di Internet, unita al suo rapido sviluppo negli ultimi
+ decenni, ha rinvigorito lo sviluppo di modalitá multiplayer consentendo
+ la nascita di nuove.
+ consentito la nascita di nuove modalitá multiplayer che oggi permettono
+ a milioni di utenti di giocare 
+\emph on
+online 
+\emph default
+tra di loro indipendentemente dalla loro lontananza.
 \end_layout
 
 \begin_layout Standard
-La realizzazione delle esperienze multiplayer
+Esistono diverse 
+\emph on
+architetture 
+\emph default
+differenziate per il ruolo di ciascun dispositivo che prende parte ad una
+ stessa sessione.
 \end_layout
 
 \begin_layout Standard
-Multiplayer networked: peer to peer o server dedicati.
+Nelle architetture 
+\emph on
+client-server 
+\emph default
+un dispositivo, il 
+\emph on
+server, 
+\emph default
+ha completa autoritá sulla partita.
+ Gli altri dispositivi, client, si limitano ad inviare le azioni utente
+ al server e ricevere continui aggiornamenti sullo stato della partita.
+ I client non parlano mai tra di loro e tutte le comunicazioni sono ridirezionat
+e verso il server.
+ Nelle architetture con server dedicate una macchina esterna alla partita,
+ solitamente un pc di classe server, coordina le partite.
+ Se il numero di giocatori é relativamente basso un dispositivo client puó
+ fare da 
+\emph on
+host.
+\end_layout
+
+\begin_layout Standard
+Nelle architeture 
+\emph on
+peer-to-peer 
+\emph default
+i dispositivi sono allo stesso livello e possono fungere
 \end_layout
 
 \begin_layout Standard
