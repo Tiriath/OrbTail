@@ -1264,7 +1264,7 @@ trasferimento
 del ruolo di server ad uno degli altri dispositivi (processo noto col termine
  
 \emph on
-host recovery
+host migration
 \emph default
 ).
 \end_layout

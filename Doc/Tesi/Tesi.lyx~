@@ -843,7 +843,7 @@ reference "fig:Overcooked"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1347,7 +1347,8 @@ reference "fig:BF4"
 
 \end_inset
 
-) 
+).
+ 
 \begin_inset Float figure
 wide false
 sideways false
