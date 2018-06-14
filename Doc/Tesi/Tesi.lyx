@@ -87,6 +87,21 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 Ringraziamenti
 \end_layout
@@ -121,7 +136,7 @@ arena
  combinazione di piattaforme e
 \backslash
 o numero di giocatori locali.
- Questo documento ne descrive il processo di sviluppo, a partire dal 
+ Questo documento ne descrive il processo produttivo, a partire dal 
 \emph on
 concept 
 \emph default
@@ -131,17 +146,16 @@ fino alle varie scelte tecniche, facendo numerosi paralleli con la versione
 
 \begin_layout Standard
 Questa tesi é strutturata in capitoli.
- Nel primo di questi é fornita una panoramica generale del lavoro svolto.
 \end_layout
 
 \begin_layout Standard
-Nel secondo capitolo viene dato un contesto al progetto, andando ad analizzare
- i requisiti dello sviluppo multipiattaforma e delle varie modalitá multigiocato
-re.
+Nel primo capitolo viene dato un contesto al progetto, fornendo una panoramica
+ generale ed andando ad analizzare i requisiti dello sviluppo multipiattaforma
+ e di varie modalitá multigiocatore.
 \end_layout
 
 \begin_layout Standard
-Nel terzo capitolo vengono delineate le meccaniche del gioco e definiti
+Nel secondo capitolo vengono delineate le meccaniche del gioco e definiti
  i requisiti di 
 \emph on
 level design.
@@ -162,7 +176,7 @@ utilizzati all'interno del gioco considerando i requisiti tecnici e di design.
 \end_layout
 
 \begin_layout Standard
-Il quinto capitolo verte sulle scelte tecnologiche, a partire dalla scelta
+Il quarto capitolo verte sulle scelte tecnologiche, a partire dalla scelta
  dell'engine, delle piattaforme e dell'architettura del gioco.
  Ogni scelta verrá contestualizzata rispetto a varie alternative e opportunament
 e giustificata, considerando necessariamente i requisiti di design.
@@ -203,8 +217,8 @@ libri
 \emph on
 single-player
 \emph default
-, i giochi, intesi nel senso classico del termine, nascono come mezzo di
- 
+, i giochi, intesi anche nel senso classico del termine, nascono come mezzo
+ di 
 \emph on
 condivisione 
 \emph default
@@ -854,7 +868,7 @@ name "fig:Overcooked"
 
 \end_inset
 
-Overcooked - Party game
+Overcooked - Party game a visuale condivisa
 \end_layout
 
 \end_inset
@@ -1333,7 +1347,8 @@ reference "fig:BF4"
 
 \end_inset
 
-) 
+).
+ 
 \begin_inset Float figure
 wide false
 sideways false
@@ -1343,7 +1358,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1391,7 +1406,7 @@ comandante
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1415,7 +1430,7 @@ Mobile - Strategico.
 comandante 
 \emph default
 gestisce la conquista dispiegando soldati e risorse, lanciando attacchi
- missilistici e proteggendo i propri soldati dal comandante avversario.
+ missilistici e proteggendo i propri soldati dagli avversari.
 \end_layout
 
 \end_inset
