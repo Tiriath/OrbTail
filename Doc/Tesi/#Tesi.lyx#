@@ -1488,47 +1488,76 @@ Orbtail é un gioco competitivo con elementi
 \emph on
 racing 
 \emph default
-in cui quattro giocatori si sfidano all'interno di un'arena.
+in cui quattro partecipanti si sfidano all'interno di un'arena.
+ Il prodotto offre diverse modalitá di gioco a tempo caratterizzate da condizion
+i di vittoria differenti e molteplici arene con un diverso grado di difficoltá.
  Il titolo é stato sviluppato per le principali piattaforme 
 \emph on
-mobile 
+desktop 
 \emph default
 e 
 \emph on
-desktop
+mobile
 \emph default
- quali Windows, OSX, Android e iOS e consente ai partecipanti di sfidarsi
- indipendentemente dalla piattaforma utilizzata.
- Il gioco offre diverse modalitá di gioco ed arene e puó essere giocato
- in 
+ quali Windows, OSX, Android e iOS e consente agli utenti di giocare tra
+ loro indipendentemente dalla piattaforma utilizzata.
+ Il gioco é fruibile in modalitá 
 \emph on
-single-player, multiplayer locale in splitscreen
+single-player 
 \emph default
- o
+o 
 \emph on
- multiplayer online.
+multiplayer locale 
+\emph default
+e, qualora fosse disponibile una connessione internet, in modalitá 
+\emph on
+multiplayer online
+\emph default
+ o 
+\emph on
+mista
+\emph default
+ locale
+\backslash
+online
+\emph on
+.
  
 \emph default
-É inoltre possibile giocare in splitscreen contro altri giocatori online
- su altre piattaforme.
- I partecipanti controllano un veicolo a metá tra un'astronave ed un hovercraft
- (al quale ci si riferirá col termine generico di 
+Le modalitá 
 \emph on
-nave
+multiplayer locali 
 \emph default
-) e il loro obiettivo consiste nel raccogliere elementi distribuiti sull'arena
- per fare punti o guadagnare potenziamenti e scontrarsi con le altre navi
- al fine di far perdere loro gli elementi raccolti.
+sono disponibili per le sole piattaforme 
+\emph on
+desktop 
+\emph default
+essendo queste le uniche in grado di supportare diverse periferiche di input
+ contemporaneamente.
+\end_layout
+
+\begin_layout Standard
+In Orbtail ciascun partecipante controlla un veicolo a scelta tra diverse
+ varianti, ciascuna delle quali caratterizzata da un diverso stile di guida,
+ al fine di collezionare elementi distribuiti casualmente all'interno dell'arena.
+ Gli elementi raccolti formano una coda piú o meno lunga dietro al veicolo
+ e il loro scopo é determinato dalla modalitá di gioco.
+ É inoltre possibile 
+\emph on
+perdere 
+\emph default
+questi elementi a seguito di collisioni con i veicoli degli altri partecipanti
+ in numero proporzionale alla forza d'impatto.
 \end_layout
 
 \begin_layout Standard
 Pur essendo disponibile per tutte le maggiori piattaforme, il design di
- Orbtail lo rende piú simile ad un'esperienza mobile, caratterizzato da
- match dalla durata ridotta e meccaniche molto semplici.
+ Orbtail lo rende piú con ad un'esperienza mobile, caratterizzato da match
+ dalla durata ridotta e meccaniche molto semplici.
 \end_layout
 
 \begin_layout Standard
-Utenza?
+L'utenza cui si rivolge il gioco é principalmente quella dei casual gamer.
 \end_layout
 
 \begin_layout Standard
@@ -1563,7 +1592,7 @@ Core mechanic.
 \end_layout
 
 \begin_layout Subsection
-Ships
+Veicoli
 \end_layout
 
 \begin_layout Standard
