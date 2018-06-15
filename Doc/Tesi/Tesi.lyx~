@@ -1264,7 +1264,7 @@ trasferimento
 del ruolo di server ad uno degli altri dispositivi (processo noto col termine
  
 \emph on
-host recovery
+host migration
 \emph default
 ).
 \end_layout
@@ -1352,7 +1352,7 @@ reference "fig:BF4"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Float figure
@@ -1484,6 +1484,134 @@ Design
 \end_layout
 
 \begin_layout Standard
+Orbtail é un gioco competitivo con elementi 
+\emph on
+racing 
+\emph default
+in cui quattro giocatori si sfidano all'interno di un'arena.
+ Il titolo é stato sviluppato per le principali piattaforme 
+\emph on
+mobile 
+\emph default
+e 
+\emph on
+desktop
+\emph default
+ quali Windows, OSX, Android e iOS e consente ai partecipanti di sfidarsi
+ indipendentemente dalla piattaforma utilizzata.
+ Il gioco offre diverse modalitá di gioco ed arene e puó essere giocato
+ in 
+\emph on
+single-player, multiplayer locale in splitscreen
+\emph default
+ o
+\emph on
+ multiplayer online.
+ 
+\emph default
+É inoltre possibile giocare in splitscreen contro altri giocatori online
+ su altre piattaforme.
+ I partecipanti controllano un veicolo a metá tra un'astronave ed un hovercraft
+ (al quale ci si riferirá col termine generico di 
+\emph on
+nave
+\emph default
+) e il loro obiettivo consiste nel raccogliere elementi distribuiti sull'arena
+ per fare punti o guadagnare potenziamenti e scontrarsi con le altre navi
+ al fine di far perdere loro gli elementi raccolti.
+\end_layout
+
+\begin_layout Standard
+Pur essendo disponibile per tutte le maggiori piattaforme, il design di
+ Orbtail lo rende piú simile ad un'esperienza mobile, caratterizzato da
+ match dalla durata ridotta e meccaniche molto semplici.
+\end_layout
+
+\begin_layout Standard
+L'utenza cui si rivolge il gioco é principalmente quella dei casual gamer.
+\end_layout
+
+\begin_layout Standard
+Nei capitoli successivi si analizzano i titoli che presentano similaritá
+ a livello di gameplay, le meccaniche di base e la descrizione in dettaglio
+ delle modalitá di gioco, navi ed arene.
+\end_layout
+
+\begin_layout Subsection
+Titoli sul mercato
+\end_layout
+
+\begin_layout Subsubsection
+Crash Team Racing
+\end_layout
+
+\begin_layout Subsubsection
+Rocket League
+\end_layout
+
+\begin_layout Subsubsection
+Geometry Wars 3: Dimensions
+\end_layout
+
+\begin_layout Subsection
+Modalitá di gioco
+\end_layout
+
+\begin_layout Standard
+Core mechanic.
+ Arcade, longest tail, elimination
+\end_layout
+
+\begin_layout Subsection
+Ships
+\end_layout
+
+\begin_layout Standard
+Speed, acceleration, steering, offense, defense.
+\end_layout
+
+\begin_layout Subsection
+Level design
+\end_layout
+
+\begin_layout Standard
+Flat, sphere, torus
+\end_layout
+
+\begin_layout Subsection
+Powerups
+\end_layout
+
+\begin_layout Standard
+I powerup sono pensati per rompere le simmetrie all'interno del gioco..
+ Uso dei powerup, descrizione scopo.
+\end_layout
+
+\begin_layout Subsection
+Multigiocatore
+\end_layout
+
+\begin_layout Standard
+offline, splitscreen, online, multipiattaforma.
+\end_layout
+
+\begin_layout Subsection
+Intelligenza artificiale.
+\end_layout
+
+\begin_layout Standard
+strategie di base.
+\end_layout
+
+\begin_layout Subsection
+Interazione utente
+\end_layout
+
+\begin_layout Standard
+tastiera, pad, touch.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -1492,6 +1620,10 @@ Design
 
 \begin_layout Section
 Direzione artistica
+\end_layout
+
+\begin_layout Standard
+3D
 \end_layout
 
 \begin_layout Standard

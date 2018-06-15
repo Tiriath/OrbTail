@@ -1499,8 +1499,7 @@ desktop
 \emph default
  quali Windows, OSX, Android e iOS e consente ai partecipanti di sfidarsi
  indipendentemente dalla piattaforma utilizzata.
- Il gioco offre diverse modalitá di gioco caratterizzate da diverse condizioni
- di vittoria ed arene con un grado di sfida diverso e puó essere giocato
+ Il gioco offre diverse modalitá di gioco ed arene e puó essere giocato
  in 
 \emph on
 single-player, multiplayer locale in splitscreen
@@ -1512,11 +1511,14 @@ single-player, multiplayer locale in splitscreen
 \emph default
 É inoltre possibile giocare in splitscreen contro altri giocatori online
  su altre piattaforme.
- I partecipanti controllano un veicolo a scelta ciascuno con le proprie
- caratteristiche a metá tra un'astronave ed un hovercraft e il loro obiettivo
- consiste nel raccogliere elementi distribuiti sull'arena per fare punti
- o guadagnare potenziamenti e scontrarsi con altri veicoli al fine di far
- perdere loro gli elementi raccolti.
+ I partecipanti controllano un veicolo a metá tra un'astronave ed un hovercraft
+ (al quale ci si riferirá col termine generico di 
+\emph on
+nave
+\emph default
+) e il loro obiettivo consiste nel raccogliere elementi distribuiti sull'arena
+ per fare punti o guadagnare potenziamenti e scontrarsi con le altre navi
+ al fine di far perdere loro gli elementi raccolti.
 \end_layout
 
 \begin_layout Standard
@@ -1526,7 +1528,7 @@ Pur essendo disponibile per tutte le maggiori piattaforme, il design di
 \end_layout
 
 \begin_layout Standard
-L'utenza cui si rivolge il gioco é principalmente quella dei casual gamer.
+Utenza?
 \end_layout
 
 \begin_layout Standard
@@ -1561,7 +1563,7 @@ Core mechanic.
 \end_layout
 
 \begin_layout Subsection
-Veicoli
+Ships
 \end_layout
 
 \begin_layout Standard

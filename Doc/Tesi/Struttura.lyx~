@@ -75,45 +75,7 @@ ORBTAIL
 \end_layout
 
 \begin_layout Section
-Introduzione
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-(3 pagine circa)
-\end_layout
-
-\begin_layout Itemize
-Esports? Competizione?
-\end_layout
-
-\begin_layout Section
-Analisi competitor
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-(10 pagine circa)
-\end_layout
-
-\begin_layout Itemize
-Descrizione dei genre (racing).
- Arena, rottura stalli.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Analisi 
-\series default
-videogame e mercato generale.
- Focus su giochi multiplayer, specie arena e casual game.
-\end_layout
-
-\begin_layout Subsection
-Meccaniche
+Design
 \end_layout
 
 \begin_layout Standard
@@ -127,22 +89,6 @@ Crash team racing
 
 \begin_layout Itemize
 Rocket league
-\end_layout
-
-\begin_layout Subsection
-Direzione artistica
-\end_layout
-
-\begin_layout Standard
-Descrizione direzione artistica
-\end_layout
-
-\begin_layout Itemize
-Wipeout
-\end_layout
-
-\begin_layout Section
-Orbtail - Design
 \end_layout
 
 \begin_layout Subsection
@@ -220,6 +166,14 @@ Online, offline, splitscreen misto.
 
 \begin_layout Section
 Orbtail - Direzione artistica
+\end_layout
+
+\begin_layout Standard
+Descrizione direzione artistica
+\end_layout
+
+\begin_layout Itemize
+Wipeout
 \end_layout
 
 \begin_layout Subsection
