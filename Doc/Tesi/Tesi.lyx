@@ -1573,8 +1573,327 @@ Nei capitoli seguenti verranno analizzati i titoli che presentano similaritá
 Titoli sul mercato
 \end_layout
 
+\begin_layout Standard
+In questo capitolo vengono presentati alcuni titoli esistenti al fine di
+ analizzarne le meccaniche di base e trovare spunti interessanti da integrare
+ all'interno del 
+\emph on
+concept 
+\emph default
+di gioco.
+ I titoli sono stati selezionati tra diverse piattaforme in modo da individuare
+ un sottoinsieme di caratteristiche desiderate e facilmente adattabili alla
+ grande diversitá di dispositivi per cui verrá sviluppato il titolo.
+ La data di pubblicazione dei titoli scelti copre inoltre un orizzonte temporale
+ molto vasto: l'intento é quello di conuigare tra loro caratteristiche dei
+ giochi recenti con vecchi paradigmi di gameplay da rivisitare in chiave
+ moderna.
+\end_layout
+
 \begin_layout Subsubsection
 Crash Team Racing
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Crash Team Racing
+\emph default
+, sviluppato da 
+\emph on
+Naughty Dogs 
+\emph default
+e pubblicato da 
+\emph on
+Sony Computer Entertainment 
+\emph default
+nel 1999 per 
+\emph on
+PlayStation
+\emph default
+, é un videogioco di guida tratto dalla fortunata serie platform 
+\emph on
+Crash Bandicoot
+\emph default
+ (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTR"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/sp_ctr.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTR"
+
+\end_inset
+
+Crash Team Racing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\emph on
+.
+ 
+\emph default
+Il gioco ruota attorno alle vicende di un team di piloti di kart che si
+ batte per difendere la Terra da un alieno, 
+\emph on
+Nitros Oxide, 
+\emph default
+il quale vuol fare del pianeta un parcheggio e rendere schiavi i suoi abitanti.
+ All'interno del gioco l'utente controlla uno tra quindici personaggi disponibil
+i, contraddistinti ciascuno da uno proprio kart dalle caratteristiche uniche
+ e modelli di guida differenti.
+ Oltre agli ovvi controlli che ci si aspetterebbe dai veicoli, quali accelerare,
+ sterzare e frenare, i kart sono inoltre in grado di saltare ed utilizzare
+ varie potenziamenti ed armi sparsi casualmente all'interno del circuito.
+ É inoltre possibile collezionare speciali frutti 
+\begin_inset Quotes fld
+\end_inset
+
+wumpa
+\begin_inset Quotes frd
+\end_inset
+
+ i quali aumentano la velocitá del veicolo e aumentano l'effetto dei suddetti
+ potenziamenti ed armi.
+ É inoltre possibile sfruttare la meccanica del 
+\begin_inset Quotes fld
+\end_inset
+
+power slide
+\begin_inset Quotes frd
+\end_inset
+
+ durante un 
+\emph on
+drift 
+\emph default
+al fine di ottenere un'accelerazione addizionale temporanea.
+ Il gioco offre cinque modalitá, di cui tre a giocatore singolo e due multigioca
+tore locale.
+ Nella prima di queste modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+avventura
+\begin_inset Quotes frd
+\end_inset
+
+, il giocatore seleziona uno dei personaggi a disposizione, gareggiendo
+ su tutte e sedici le piste presenti in gioco, al fine di collezionare trofei,
+ reliquie e altri oggetti necessari per poter gareggiare contro l'antagonista
+ e salvare il pianeta dalla schiavitú.
+ I tracciati disponibili sono suddivisi in 
+\begin_inset Quotes fld
+\end_inset
+
+diversi
+\begin_inset Quotes frd
+\end_inset
+
+ mondi, ciascuno contenente quattro tracciati, al termine del quale é necessario
+ fronteggiare un 
+\emph on
+boss 
+\emph default
+in una gara testa a testa al fine di ottenere una delle chiavi necessarie
+ per sbloccare la gara finale.
+ La modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+avventura
+\begin_inset Quotes frd
+\end_inset
+
+ é inoltre caratterizzata dalla presenza di 
+\begin_inset Quotes fld
+\end_inset
+
+sotto modalitá
+\begin_inset Quotes frd
+\end_inset
+
+ che richiedono al giocatore di raccogliere praticolari oggetti nascosti
+ all'interno del circuito, vincere piú gare in successione, terminare la
+ gara entro un tempo limite e collezionando oggetti particolari in grado
+ di 
+\begin_inset Quotes fld
+\end_inset
+
+congelare
+\begin_inset Quotes frd
+\end_inset
+
+ il tempo per pochi secondi.
+ Nella modaltá 
+\begin_inset Quotes fld
+\end_inset
+
+sfida a tempo
+\begin_inset Quotes frd
+\end_inset
+
+, il giocatore gareggia da solo al fine di registrare il miglior tempo s
+ tutti i tracciati disponibili.
+ Questa modalitá é caratterizzata dall'assenza di avversari e potenziamenti
+ di alcun genere.
+ Nella modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+sala giochi
+\begin_inset Quotes frd
+\end_inset
+
+ il giocatore puó gareggiare su uno dei tracciati disponibili oppure selezionarn
+e quattro da giocare consecutivamente (coppa).
+ I traccati prevedono tutti i potenziamenti disponibili nella modalitá arcade.
+ Le modalitá multiplayer, invece, sono due: la prima modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+versus
+\begin_inset Quotes frd
+\end_inset
+
+ é identica alla modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+arcade
+\begin_inset Quotes frd
+\end_inset
+
+ ma consente fino a quattro giocatori di gareggiare contemporaneamente in
+ modalitá splitscreen.
+ L'ultima modalitá multiplayer 
+\begin_inset Quotes fld
+\end_inset
+
+battaglia
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/mp_ctr_battle.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTRBattle"
+
+\end_inset
+
+Crash Team Racing - Modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+battaglia
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+é caratterizzata da regole completamente diverse: in questa modalitá due
+ o piú giocatori si sfidano all'interno di un'arena collezionando le armi
+ ed i potenziamenti sparsi al suo interno al fine di colpire e danneggiare
+ gli avversari (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTRBattle"
+
+\end_inset
+
+).
+ Esistono diverse condizioni di vittoria per questa modalitá, alcune richiedono
+ il raggiungimento di un certo numero di punti (guadagnabili colpendo gli
+ avversari), altre hanno un tempo limite scaduto il quale il giocatore col
+ punteggio piú alto é proclamato vincitore, un'altra prevede la presenza
+ di 
+\begin_inset Quotes fld
+\end_inset
+
+vite
+\begin_inset Quotes frd
+\end_inset
+
+ che vengono perse ogni volta che si viene colpiti da un'arma nemica.
+ In questo caso l'ultimo giocatore rimasto vince.
+\end_layout
+
+\begin_layout Standard
+I kart a disposizione sono caratterizzati da diversi parametri quali 
+\emph on
+velocitá, accelerazione 
+\emph default
+e 
+\emph on
+manovrabilitá
+\emph default
+ che influenzano lo stile di guida e la difficoltá di utilizzo del personaggio.
+ I potenziamenti collezionabili comprendono un ricco assortimento di armi
+ usate per danneggiare e intralciare gli avversari, quali proiettili e trappole,
+ mezzi difensivi usati per proteggersi dalle armi avversarie quali barriere
+ ed infine potenziamenti che permettono al veicolo di procedere ad una maggiore
+ velocitá.
 \end_layout
 
 \begin_layout Subsubsection
