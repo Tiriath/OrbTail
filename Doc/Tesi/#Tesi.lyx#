@@ -1630,86 +1630,10 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
 \begin_inset Graphics
 	filename img/sp_ctr.jpg
 	lyxscale 20
 	height 7cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Modalitá singleplayer 
-\begin_inset Quotes fld
-\end_inset
-
-corsa singola
-\begin_inset Quotes frd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/mp_ctr_battle.jpg
-	lyxscale 20
-	height 7cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Modalitá multiplayer 
-\begin_inset Quotes fld
-\end_inset
-
-battaglia
-\begin_inset Quotes frd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -1741,19 +1665,78 @@ Crash Team Racing
 .
  
 \emph default
-Il gioco ruota attorno alle vicende di un team di piloti di kart che si
- batte per difendere la Terra da un alieno, 
+Il gioco ruota attorno alle vicende di un team di piloti di 
 \emph on
-Nitros Oxide, 
+kart 
 \emph default
-il quale vuol fare del pianeta un parcheggio e rendere schiavi i suoi abitanti.
- All'interno del gioco l'utente controlla uno tra quindici personaggi disponibil
-i, contraddistinti ciascuno da uno proprio kart dalle caratteristiche uniche
- e modelli di guida differenti.
- Oltre agli ovvi controlli che ci si aspetterebbe dai veicoli, quali accelerare,
- sterzare e frenare, i kart sono inoltre in grado di saltare ed utilizzare
- varie potenziamenti ed armi sparsi casualmente all'interno del circuito.
- É inoltre possibile collezionare speciali frutti 
+intenti a difendere la Terra da un alieno, 
+\emph on
+Nitros Oxide
+\emph default
+, il quale vuole fare del pianeta un parcheggio e rendere schiavi i suoi
+ abitanti.
+ 
+\end_layout
+
+\begin_layout Standard
+Nel gioco l'utente controlla uno tra quindici personaggi disponibili, contraddis
+tinti ciascuno da un proprio kart dalle caratteristiche uniche.
+ I veicoli sono in grado di accelerare, sterzare, frenare e 
+\emph on
+saltare
+\emph default
+; la meccanica del 
+\emph on
+power slide 
+\emph default
+garantisce inoltre un'accelerazione temporanea durante i 
+\emph on
+drift
+\emph default
+.
+ I veicoli sono caratterizzati da tre parametri fondamentali, 
+\emph on
+velocitá, accelerazione 
+\emph default
+e 
+\emph on
+manovrabilitá, 
+\emph default
+i quali influenzano lo stile di guida e la difficoltá del personaggio.
+\end_layout
+
+\begin_layout Standard
+All'interno di ogni circuito sono distribuite delle 
+\emph on
+casse 
+\emph default
+speciali che, raccolte, garantiscono al giocatore un potenziamento casuale,
+ tanto piú potente quanto piú svantaggiato risulta il giocatore all'interno
+ della partita corrente.
+ Questi oggetti collezionabili comprendono un ricco assortimento di armi,
+ quali missili e trappole, usate per intralciare gli avversari, barriere
+ per proteggersi dagli avversari ed infine potenziamenti che carantiscono
+ bonus temporaneai sulla v
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ottenere collezionare varie 
+\emph on
+armi
+\emph default
+ e 
+\emph on
+potenziamenti
+\emph default
+ sparsi nel circuito.
+ Speciali frutti 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1761,23 +1744,25 @@ wumpa
 \begin_inset Quotes frd
 \end_inset
 
- i quali aumentano la velocitá del veicolo e aumentano l'effetto dei suddetti
- potenziamenti ed armi.
- É inoltre possibile sfruttare la meccanica del 
-\begin_inset Quotes fld
+ consentono ai veicoli di aumentare la propria velocitá e migliorare i suddetti
+ potenziamenti.
+ I potenziamenti collezionabili comprendono un ricco assortimento di armi
+ usate per danneggiare e intralciare gli avversari, quali proiettili e trappole,
+ mezzi difensivi usati per proteggersi dalle armi avversarie quali barriere
+ ed infine potenziamenti che permettono al veicolo di procedere ad una maggiore
+ velocitá.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
 \end_inset
 
-power slide
-\begin_inset Quotes frd
-\end_inset
 
- durante un 
-\emph on
-drift 
-\emph default
-al fine di ottenere un'accelerazione addizionale temporanea.
- Il gioco offre cinque modalitá, di cui tre a giocatore singolo e due multigioca
-tore locale.
+\end_layout
+
+\begin_layout Standard
+Il gioco offre cinque modalitá di gioco, di cui tre a giocatore singolo
+ e due multigiocatore locale in splitscreen.
  Nella prima di queste modalitá 
 \begin_inset Quotes fld
 \end_inset
@@ -1786,54 +1771,36 @@ avventura
 \begin_inset Quotes frd
 \end_inset
 
-, il giocatore seleziona uno dei personaggi a disposizione, gareggiendo
- su tutte e sedici le piste presenti in gioco, al fine di collezionare trofei,
- reliquie e altri oggetti necessari per poter gareggiare contro l'antagonista
- e salvare il pianeta dalla schiavitú.
- I tracciati disponibili sono suddivisi in 
-\begin_inset Quotes fld
-\end_inset
-
-diversi
-\begin_inset Quotes frd
-\end_inset
-
- mondi, ciascuno contenente quattro tracciati, al termine del quale é necessario
- fronteggiare un 
+ il giocatore seleziona uno dei personaggi a disposizione, gareggiando sui
+ sedici circuiti diversi in gioco, al fine di collezionare 
+\emph on
+trofei
+\emph default
+, 
+\emph on
+reliquie 
+\emph default
+ed altri oggetti necessari per poter proseguire con la trama.
+ I circuiti sono suddivisi in diversi 
+\emph on
+mondi
+\emph default
+, ciascuno contenente quattro di questi, al termine del quale viene richiesto
+ di fronteggiare un 
 \emph on
 boss 
 \emph default
-in una gara testa a testa al fine di ottenere una delle chiavi necessarie
- per sbloccare la gara finale.
- La modalitá 
-\begin_inset Quotes fld
-\end_inset
-
-avventura
-\begin_inset Quotes frd
-\end_inset
-
- é inoltre caratterizzata dalla presenza di 
-\begin_inset Quotes fld
-\end_inset
-
-sotto modalitá
-\begin_inset Quotes frd
-\end_inset
-
- che richiedono al giocatore di raccogliere praticolari oggetti nascosti
- all'interno del circuito, vincere piú gare in successione, terminare la
- gara entro un tempo limite e collezionando oggetti particolari in grado
- di 
-\begin_inset Quotes fld
-\end_inset
-
-congelare
-\begin_inset Quotes frd
-\end_inset
-
- il tempo per pochi secondi.
- Nella modaltá 
+in una gara testa a testa.
+ All'interno della modalitá avventura sono inoltre presenti diverse 
+\emph on
+sotto-modalitá 
+\emph default
+che cambiano leggermente le regole delle varie gare, le quali richiedono
+ al giocatore di collezionare oggetti nascosti all'interno del circuito,
+ vincere piú gare in successione e terminare la gara entro un tempo limite
+ usando un singolo potenziamento in grado di congelare il tempo per pochi
+ secondi.
+ Nella modalitá 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1841,7 +1808,7 @@ sfida a tempo
 \begin_inset Quotes frd
 \end_inset
 
-, il giocatore gareggia da solo al fine di registrare il miglior tempo s
+, il giocatore gareggia da solo al fine di registrare il miglior tempo su
  tutti i tracciati disponibili.
  Questa modalitá é caratterizzata dall'assenza di avversari e potenziamenti
  di alcun genere.
@@ -1853,28 +1820,17 @@ sala giochi
 \begin_inset Quotes frd
 \end_inset
 
- il giocatore puó gareggiare su uno dei tracciati disponibili oppure selezionarn
-e quattro da giocare consecutivamente (coppa).
- I traccati prevedono tutti i potenziamenti disponibili nella modalitá arcade.
- Le modalitá multiplayer, invece, sono due: la prima modalitá 
-\begin_inset Quotes fld
-\end_inset
-
-versus
-\begin_inset Quotes frd
-\end_inset
-
- é identica alla modalitá 
-\begin_inset Quotes fld
-\end_inset
-
-arcade
-\begin_inset Quotes frd
-\end_inset
-
- ma consente fino a quattro giocatori di gareggiare contemporaneamente in
- modalitá splitscreen.
- L'ultima modalitá multiplayer 
+ il giocatore puó gareggiare su uno qualisiasi dei cicuiti disponibili o
+ organizzarne quattro di questi in 
+\emph on
+campionati
+\emph default
+.
+ In questa modalitá é prevista la presenza di otto partecipanti e l'intero
+ arsenale di armi e potenziamenti.
+ Quest'ultima modalitá é anche fruibile in formato multiplayer locale con
+ numero di giocatori compreso tra due e quattro.
+ L'ultima modalitá 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1882,7 +1838,85 @@ battaglia
 \begin_inset Quotes frd
 \end_inset
 
- é caratterizzata da regole completamente diverse: in questa modalitá
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/mp_ctr_battle.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTRBattle"
+
+\end_inset
+
+Crash Team Racing - Modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+battaglia
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ é caratterizzata da regole completamente diverse: i partecipanti si sfidano
+ all'interno di un'arena chiusa collezionando armi e potenziamenti al fine
+ di colpire e danneggiare gli avversari (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTRBattle"
+
+\end_inset
+
+).
+ Esistono diverse condizioni di vittoria configurabilii, alcune richiedono
+ il raggiungimento di un certo numero di punti, guadagnabili colpendo gli
+ avversari, altre hanno un tempo limite scaduto il quale il giocatore col
+ punteggio piú alto viene proclamato vincitore, un'altra prevede la presenza
+ di un numero predefinito di 
+\begin_inset Quotes fld
+\end_inset
+
+vite
+\begin_inset Quotes frd
+\end_inset
+
+ che vengono perse ogni olta che si viene colpiti da un'avversario.
+ Una volta che questo valore scende a zero, il giocatore é eliminato.
+ L'ultimo giocatore rimasto in partita é il vincitore.
+ Questa modalitá é caratterizzata dall'assenza di partecipanti governati
+ dall'
+\emph on
+intelligenza artificiale
+\emph default
+ ed é pertanto preclusa dall'esperienza 
+\emph on
+singleplayer.
 \end_layout
 
 \begin_layout Subsubsection
