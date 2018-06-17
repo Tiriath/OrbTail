@@ -1856,12 +1856,12 @@ reference "fig:CTRBattle"
 \end_inset
 
 ).
- Esistono diverse condizioni di vittoria configurabili: alcune richiedono
- il raggiungimento di un certo numero di punti guadagnabili colpendo gli
- avversari, altre hanno un tempo limite scaduto il quale il giocatore col
- punteggio piú alto viene proclamato vincitore, in un'altra ogni giocatore
- inizia la sfida con un numero predefinito di vite che vengono decrementate
- ogni volta che il kart viene colpito da un'arma.
+ Esistono diverse condizioni di vittoria configurabili: una richiede il
+ raggiungimento di un certo numero di punti guadagnabili colpendo gli avversari,
+ un'altra ha un tempo limite scaduto il quale il giocatore col punteggio
+ piú alto viene proclamato vincitore, nell'ultima ogni giocatore inizia
+ la sfida con un numero predefinito di vite che vengono decrementate ogni
+ volta che il kart viene colpito da un'arma.
  Quando il numero di vite scende a zero il giocatore viene eliminato: l'ultimo
  rimasto in partita é proclamato vincitore.
  Questa modalitá é caratterizzata dall'assenza di partecipanti governati
@@ -1876,6 +1876,355 @@ singleplayer.
 
 \begin_layout Subsubsection
 Rocket League
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Rocket League 
+\emph default
+é un gioco multipiattaforma sviluppato e pubblicato da 
+\emph on
+Psyonix 
+\emph default
+nel 2015 per 
+\emph on
+Windows 
+\emph default
+e 
+\emph on
+PlayStation 4
+\emph default
+ e successivamente rilasciato per 
+\emph on
+OSX, Linux 
+\emph default
+e 
+\emph on
+Nintendo Switch
+\emph default
+.
+ Il gioco combina due generi, quello 
+\emph on
+sportivo 
+\emph default
+e quello 
+\emph on
+racing
+\emph default
+, in un gameplay inedito in cui due team formati da potenti veicoli si sfidano
+ ad una partita di 
+\emph on
+calcio 
+\emph default
+all'interno di uno 
+\emph on
+stadio.
+\end_layout
+
+\begin_layout Standard
+Ogni giocatore ha a disposizione decine di veicoli differenti, identici
+ nelle prestazioni e modelli di guida, ma riccamente personalizzabili tramite
+ 
+\emph on
+livree
+\emph default
+, 
+\emph on
+decalcomanie
+\emph default
+, 
+\emph on
+pneumatici, razzi 
+\emph default
+e molto altro ancora (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RocketLeagueCustom"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/mp_rocketleague_custom.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RocketLeagueCustom"
+
+\end_inset
+
+Rocket League - Personalizzazione del veicolo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ I veicoli sono inoltre in grado di saltare e roteare in volo al fine di
+ colpire la palla, effettuare salvataggi o portarsi in vantaggio rispetto
+ agli avversari.
+ Un potente razzo posteriore consente di aumentare drasticamente la propria
+ velocitá, planare o spiccare il volo per brevi periodi.
+ É inoltre possibile usare il proprio veicolo come un ariete contro i veicoli
+ avversari in modo da farli esplodere e rimuoverli dalla partita per pochi
+ secondi.
+\end_layout
+
+\begin_layout Standard
+Ogni 
+\emph on
+stadio
+\emph default
+ é caratterizzato da uno stile diverso.
+ La presenza di zone speciali all'interno di essi consente ai veicoli di
+ ottenere un'accelerazione aggiuntiva quando attraversate; particolari oggetti
+ distribuiti nello stadio consentono al veicolo di recuperare parte dell'energia
+ necessaria per azionare i razzi posteriori.
+\end_layout
+
+\begin_layout Standard
+Il gioco offre diverse modalitá a 
+\emph on
+giocatore singolo
+\emph default
+ e 
+\emph on
+multigiocatore locale
+\emph default
+ tramite 
+\emph on
+splitscreen
+\emph default
+, 
+\emph on
+online
+\emph default
+ o 
+\emph on
+misto
+\emph default
+.
+ Le modalitá 
+\emph on
+online 
+\emph default
+sono inoltre fruibili nel formato 
+\emph on
+cross-platform play 
+\emph default
+tra 
+\emph on
+Windows 
+\emph default
+e 
+\emph on
+PlayStation 4 
+\emph default
+oppure tra 
+\emph on
+Windows, XBoxOne 
+\emph default
+e 
+\emph on
+Nintendo
+\emph default
+ 
+\emph on
+Switch
+\emph default
+.
+ La modalitá di gioco principale 
+\begin_inset Quotes fld
+\end_inset
+
+Carlcio
+\begin_inset Quotes frd
+\end_inset
+
+ (gioco di parole originato dalle parole 
+\begin_inset Quotes fld
+\end_inset
+
+car
+\begin_inset Quotes frd
+\end_inset
+
+ e 
+\begin_inset Quotes fld
+\end_inset
+
+calcio
+\begin_inset Quotes frd
+\end_inset
+
+) prevede la sfida tra due team di dimensione variabile tra uno e quattro
+ giocatori (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RocketLeague"
+
+\end_inset
+
+) 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/mp_rocketleague.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RocketLeague"
+
+\end_inset
+
+Rocket League
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ I partecipanti usano i propri veicoli per colpire una grossa palla al fine
+ di spingerla nella porta avversaria ed ottenere punti.
+ Allo scadere del tempo il team col maggior numero di punti é dichiarato
+ vincitore.
+ In caso di paritá il primo team a segnare oltre lo scadere del tempo vince.
+ Ogni giocatore ha inoltre un proprio punteggio personale che puó essere
+ incrementato tirando la palla in porta, segnando, effettuando salvataggi,
+ distruggendo i veicoli avversari e cosí via.
+ Aggiornamenti successivi del gioco hanno introdotto nuove modalitá di gioco
+ quali 
+\begin_inset Quotes fld
+\end_inset
+
+Snowday
+\begin_inset Quotes frd
+\end_inset
+
+ ispirata ad una partita di 
+\emph on
+hockey su ghiaccio
+\emph default
+ in cui la palla é sostituita da un 
+\emph on
+disco
+\emph default
+ caratterizzato da una fisica diversa
+\emph on
+, 
+\begin_inset Quotes fld
+\end_inset
+
+Hoops
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\emph default
+ispirata al 
+\emph on
+basket 
+\emph default
+in cui la porta é sostituita con un 
+\emph on
+canestro 
+\emph default
+ed infine 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+Rissa
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\emph default
+in cui i giocatori possono usare diversi potenziamenti casuali al fine di
+ congelare la palla, agganciarla con una fune e cosí via.
+ L'ultima modalitá di gioco introdotta nel 2017 
+\begin_inset Quotes fld
+\end_inset
+
+Dropshot
+\begin_inset Quotes frd
+\end_inset
+
+ stravolge le regole del gioco, rimuovendo completamente le porte.
+ In questa modalitá il pavimento é suddiviso in piastrelle esagonali che,
+ colpite dalla palla due volte in successione, crollano lasciando una voragine
+ nel pavimento che funge da porta per il team a cui appartiene la mezzeria
+ di campo.
+\end_layout
+
+\begin_layout Standard
+Il gioco presenta inoltre una modalitá 
+\emph on
+competitiva 
+\emph default
+basata sulle regole principali le cui 
+\emph on
+stagioni 
+\emph default
+hanno durata pari ad alcuni mesi.
+ I giocatori sono organizzati per abilitá in 
+\emph on
+categorie 
+\emph default
+suddivise a loro volta in quattro
+\emph on
+ divisioni
+\emph default
+; i risultati del team consentono allo stesso di cambiare di divisione all'inter
+no della 
+\emph on
+categoria 
+\emph default
+d'appartenenza.
 \end_layout
 
 \begin_layout Subsubsection
