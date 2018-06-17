@@ -1915,9 +1915,11 @@ racing
 , in un gameplay inedito in cui due team formati da potenti veicoli si sfidano
  ad una partita di 
 \emph on
-calcio
+calcio 
 \emph default
-.
+all'interno di uno 
+\emph on
+stadio.
 \end_layout
 
 \begin_layout Standard
@@ -1935,12 +1937,57 @@ decalcomanie
 \emph on
 pneumatici, razzi 
 \emph default
-e molto altro ancora.
+e molto altro ancora (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RocketLeagueCustom"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/mp_rocketleague_custom.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RocketLeagueCustom"
+
+\end_inset
+
+Rocket League - Personalizzazione del veicolo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
  I veicoli sono inoltre in grado di saltare e roteare in volo al fine di
  colpire la palla, effettuare salvataggi o portarsi in vantaggio rispetto
  agli avversari.
- Un potente razzo posteriore consente al veicolo di aumentare drasticamente
- la propria velocitá, planare o spiccare il volo per brevi periodi.
+ Un potente razzo posteriore consente di aumentare drasticamente la propria
+ velocitá, planare o spiccare il volo per brevi periodi.
  É inoltre possibile usare il proprio veicolo come un ariete contro i veicoli
  avversari in modo da farli esplodere e rimuoverli dalla partita per pochi
  secondi.
@@ -2001,6 +2048,10 @@ oppure tra
 Windows, XBoxOne 
 \emph default
 e 
+\emph on
+Nintendo
+\emph default
+ 
 \emph on
 Switch
 \emph default
@@ -2133,8 +2184,8 @@ Rissa
 
  
 \emph default
-in cui i giocatori possono usare diversi potenziamenti casuali quali congelare
- la palla, agganciarla con una fune e cosí via.
+in cui i giocatori possono usare diversi potenziamenti casuali al fine di
+ congelare la palla, agganciarla con una fune e cosí via.
  L'ultima modalitá di gioco introdotta nel 2017 
 \begin_inset Quotes fld
 \end_inset
@@ -2155,16 +2206,16 @@ Il gioco presenta inoltre una modalitá
 \emph on
 competitiva 
 \emph default
-basata sulle regole principali e organizzata in 
+basata sulle regole principali le cui 
 \emph on
 stagioni 
 \emph default
-dalla durata di alcuni mesi.
- I giocatori sono suddivisi per livello di abilitá in diciotto 
+hanno durata pari ad alcuni mesi.
+ I giocatori sono organizzati in 
 \emph on
-categorie 
+categorie, 
 \emph default
-suddivise a loro volta in quattro
+in funzione del proprio livello di abilitá, suddivise a loro volta in quattro
 \emph on
  divisioni
 \emph default
@@ -2177,7 +2228,293 @@ d'appartenenza.
 \end_layout
 
 \begin_layout Subsubsection
-Geometry Wars 3: Dimensions
+Geometry Wars 3: Dimensions Evolved
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Geometry Wars 3: Dimensions Evolved 
+\emph default
+é un gioco 
+\emph on
+shoot 'em up 
+\emph default
+sviluppato da 
+\emph on
+Lucid Games 
+\emph default
+e pubblicato da 
+\emph on
+Sierra Entertainment 
+\emph default
+nel 2014 per tutte le maggiori piattaforme 
+\emph on
+desktop
+\emph default
+, 
+\emph on
+mobile 
+\emph default
+e 
+\emph on
+console
+\emph default
+.
+ Terzo capitolo della saga 
+\emph on
+Geometry Wars 
+\emph default
+é il primo gioco della serie ad introdurre una modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+avventura
+\begin_inset Quotes frd
+\end_inset
+
+ ed un'ambiente di gioco totalmente 3D (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:GW3Sphere"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/sp_geometrywars3_sphere.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:GW3Sphere"
+
+\end_inset
+
+Geometry Wars 3: Dimensions Evolved - Arena sferica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nel gioco l'utente controlla una piccola astronave in grado di muoversi
+ rapidamente e sparare in qualsiasi direzione al fine di evitare e distruggere
+ ondate di astronavi nemiche.
+ Il giocatore ha a disposizione un 
+\emph on
+drone
+\emph default
+ che lo accompagnerá in battaglia aumentandone la potenza di fuoco ed aiutandolo
+ a collezionare gli oggetti sparsi per la mappa e una 
+\emph on
+super
+\emph default
+ abilitá dagli effetti devastanti utilizzabile un numero limitato di volte.
+ Esistono diversi 
+\emph on
+droni 
+\emph default
+e 
+\emph on
+super 
+\emph default
+abilitá, ciascuna caratterizzata da diversi stili di gioco ed effetti.
+ Durante le partite é inoltre possibile collezionare 
+\emph on
+super stati
+\emph default
+, potenziamenti generati casualmente nel livello che forniscono 
+\emph on
+barriere, armi potenziate 
+\emph default
+e
+\emph on
+ magneti 
+\emph default
+per brevi periodi di tempo, e 
+\emph on
+geom
+\emph default
+, oggetti che fungono da 
+\emph on
+moltiplicatore di punteggio 
+\emph default
+ottenibili abbattendo le navi avversarie.
+ Collezionare 
+\emph on
+geom 
+\emph default
+é una delle meccaniche fondamentali del gioco in quanto consente al giocatore
+ di aumentare il proprio punteggio di svariati ordini di grandezza.
+ Al raggiungimento di certe soglie di punti, il giocatore viene inoltre
+ premiato con 
+\emph on
+vite extra 
+\emph default
+o potenti 
+\emph on
+bombe 
+\emph default
+in grado di distruggere tutte le astronavi nemiche.
+\end_layout
+
+\begin_layout Standard
+Ciascuno dei molteplici livelli a disposizione é caratterizzato da una diversa
+\emph on
+ topologia, dimensione 
+\emph default
+ed 
+\emph on
+ostacoli
+\emph default
+ e si sviluppa a mo di solido tridimensionale quali 
+\emph on
+sfere, cubi 
+\emph default
+e
+\emph on
+ cilindri 
+\emph default
+percorribili lungo la superficie
+\emph on
+ 
+\emph default
+(Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:GW3Funnel"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/sp_geometrywars3_funnel.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:GW3Funnel"
+
+\end_inset
+
+Geometry Wars 3: Dimensions Evolved - Arena 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il gioco prevede due modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+avventura
+\begin_inset Quotes frd
+\end_inset
+
+ e 
+\begin_inset Quotes fld
+\end_inset
+
+classica
+\begin_inset Quotes frd
+\end_inset
+
+.
+ La prima di queste modalitá prevede una sequenza di livelli con diverse
+ modalitá di gioco esclusive.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nella sua incarnazione piú semplice il gioco consiste nel sopravvivere ad
+ un numero crescente di nemici, generati ad ondate in punti casuali della
+ mappa, e caratterizzati da diversi schemi di movimento e strategie.
+ Alcuni nemici tendono ad essere piú aggressivi, altri piú rapidi, altri
+ ancora seguono una strategia piú elusiva.
+ La successione delle ondate é prestabilita e pertanto é importante che
+ il giocatore ricordi la successione per massimizzare il risultato della
+ partita.
+ Nella modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+avventura
+\begin_inset Quotes frd
+\end_inset
+
+ cento livelli si succedono gli uni dopo gli altri, alternando questi a
+ scontri con boss da sconfiggere.
+ Multiplayer competitivo o cooperativo in splitscren.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
