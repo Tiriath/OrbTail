@@ -2381,26 +2381,27 @@ o potenti
 bombe 
 \emph default
 in grado di distruggere tutte le astronavi nemiche.
+ 
 \end_layout
 
 \begin_layout Standard
-Ciascuno dei molteplici livelli a disposizione é caratterizzato da una diversa
+I livelli sono caratterizzati da diverse 
 \emph on
- topologia, dimensione 
+topologie 
 \emph default
-ed 
+e 
 \emph on
-ostacoli
+dimensioni
 \emph default
- e si sviluppa a mo di solido tridimensionale quali 
+ e si sviluppano formando solidi tridimensionali quali 
 \emph on
 sfere, cubi 
 \emph default
-e
+e 
 \emph on
- cilindri 
+nastri
 \emph default
-percorribili lungo la superficie
+ percorribili lungo la superficie
 \emph on
  
 \emph default
@@ -2453,22 +2454,15 @@ Geometry Wars 3: Dimensions Evolved - Arena
 \end_layout
 
 \begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Il gioco prevede due modalitá 
-\begin_inset Quotes fld
-\end_inset
-
-avventura
-\begin_inset Quotes frd
-\end_inset
-
- e 
+Il gioco prevede 
+\emph on
+dodici 
+\emph default
+modalitá di gioco 
+\emph on
+single-player
+\emph default
+ organizzate in una modalitá 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2476,9 +2470,63 @@ classica
 \begin_inset Quotes frd
 \end_inset
 
+ che comprende 
+\emph on
+sei 
+\emph default
+delle modalitá storiche della saga e giocabili su qualsiasi livello ed una
+ modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+avventura
+\begin_inset Quotes frd
+\end_inset
+
+ in cui il giocatore affronta 
+\emph on
+cinquanta livelli 
+\emph default
+diversi in sequenza, ciascuno dei quali caratterizzato da proprie regole.
+ Le modalitá di gioco consistono nel ottenere il maggior numero di punti
+ avendo a disposizione solo un numero limitato di vite ed oggetti speciali
+ oppure entro un tempo limite prestabilito.
+ Alcune modalitá inoltre introducono diverse regole, quali numero limitato
+ di munizioni, assenza di armi, presenza di nemici in grado di dividersi,
+ aree di gioco che diventano via via sempre piú ristrette, e cosí via.
+ Durante la modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+avventura
+\begin_inset Quotes frd
+\end_inset
+
+ il giocatore sará costretto ad affrontare dei 
+\emph on
+boss, 
+\emph default
+potenti nemici in grado di sostenere molteplici danni e in grado di usare
+ speciali scudi per rigenerare la propria 
+\emph on
+salute
+\emph default
 .
- La prima di queste modalitá prevede una sequenza di livelli con diverse
- modalitá di gioco esclusive.
+ Sono inoltre disponibili due modalitá 
+\emph on
+multiplayer
+\emph default
+: una 
+\emph on
+locale 
+\emph default
+cooperativa a visuale condivisa, caratterizzata dalla presenza di arene
+ bidimensionali e un numero di giocatori compreso tra due e quattro, ed
+ una 
+\emph on
+online competitiva 
+\emph default
+fino ad un massimo di otto giocatori
 \end_layout
 
 \begin_layout Standard
@@ -2486,6 +2534,12 @@ classica
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Modalitá multiplayer locale coop a visuale condivisa, dieci livelli limitati
+ alle forme 2D piú semplici fino a quattro giocatori.
+ Multiplayer online da 2 a 8 giocatori competitiva.
 \end_layout
 
 \begin_layout Standard
@@ -2507,7 +2561,6 @@ avventura
 
  cento livelli si succedono gli uni dopo gli altri, alternando questi a
  scontri con boss da sconfiggere.
- Multiplayer competitivo o cooperativo in splitscren.
 \end_layout
 
 \begin_layout Standard
