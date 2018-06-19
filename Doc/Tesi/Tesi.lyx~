@@ -2497,7 +2497,7 @@ avventura
 \emph on
 cinquanta livelli 
 \emph default
-diversi in sequenza, ciascuno dei quali caratterizzato da proprie regole.
+diversi in sequenza, ciascuno dei quali caratterizzato da regole proprie.
  Le modalitá di gioco consistono nel ottenere il maggior numero di punti
  avendo a disposizione solo un numero limitato di vite ed oggetti speciali
  oppure entro un tempo limite prestabilito.
@@ -2551,8 +2551,220 @@ Modalitá di gioco
 \end_layout
 
 \begin_layout Standard
-Core mechanic.
- Arcade, longest tail, elimination
+In OrbTail 
+\emph on
+quattro 
+\emph default
+giocatori si sfidano all'interno di arene al fine di collezionare oggetti
+ e fare piú punti possibili.
+ 
+\end_layout
+
+\begin_layout Standard
+La filosofia alla base di OrbTail é un gioco che possa essere fruito in
+ qualsiasi posto e a qualsiasi momento, in presenza di connessione internet
+ o meno e giocabile con altri utenti indipendentemente dalla piattaforma
+ utilizzata.
+\end_layout
+
+\begin_layout Standard
+Le meccaniche alla base del gioco sono volutamente molto semplici in quanto
+ é necessario supportare piattaforme dalle caratteristiche completamente
+ diverse e garantire che in sessioni 
+\emph on
+crossplatform play 
+\emph default
+nessuna piattaforma possa essere avvantaggiata.
+ 
+\end_layout
+
+\begin_layout Standard
+In OrbTail ogni giocatore ha il controllo di un veicolo a scelta tra sei
+ in grado di muoversi liberamente nell'arena.
+ Speciali elementi detti 
+\emph on
+orb
+\emph default
+ sono distribuiti casualmente all'interno di esse e possono essere collezionati
+ entrandovi in prossimitá.
+ Una volta raccolti questi orb formano una coda dietro il veicolo del giocatore
+ e non possono essere collezionati da altri giocatori.
+ Quando due navi si scontrano, a seconda della direzione e forza d'impatto,
+ i veicoli convolti perdono un certo numero di 
+\emph on
+orb 
+\emph default
+non superiore al numero di elementi in coda.
+ Gli orb in scena sono limitati ad un numero fisso, 28, e ció li rende la
+ 
+\emph on
+risorsa limitata 
+\emph default
+del gioco, ovvero l'elemento di conflitto che porta i giocatori a scontrarsi.
+\end_layout
+
+\begin_layout Standard
+Vi sono inoltre altri elementi sparsi che forniscono abilitá speciali al
+ giocatore.
+ Un tempo questi powerup venivano generati casualmente su certi 
+\emph on
+orb 
+\emph default
+e assegnati al giocatore che lo raccoglieva, tuttavia questa meccanica azzerava
+ competamente le chances di vittoria dei giocatori meno forti in quanto
+ un giocatore avrebbe potuto collezionare gran parte degli orb nell'arena
+ e fuggire da qualsiasi scontro, impedendo che alcun giocatore potesse fermarlo.
+ La presenza di oggetti dedicati collezionabili ma che non entrano a far
+ parte della coda del giocatore consente di rompere questi stalli e permette
+ agli altri giocatori di ottenere vantaggi.
+ Questi oggetti speciali sono presenti in numero ridotto (quattro) in punti
+ prestabiliti dell'arena.
+ Una volta collezionati questi oggetti scompaiono per poi essere rigenerati
+ alcuni secondi dopo.
+ Una volta collezionati, questi oggetti forniscono un potenziamento casuale
+ al giocatore.
+ Ogni giocatore ha a disposizione al massimo un potenziamento, non cumulabile,
+ e attivabile a comando.
+ Una volta utilizzato il potenziamento viene perduto.
+\end_layout
+
+\begin_layout Standard
+OrbTail offre tre modalitá di gioco, identiche nelle meccaniche di base,
+ differenziate per condizioni di vittoria.
+\end_layout
+
+\begin_layout Standard
+Nella prima modalitá 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+arcade
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\emph default
+l'obiettivo di ciascun giocatore é fare piú punti possibili allo scadere
+ del tempo di gara.
+ I punti possono essere guadagnati collezionando i vari 
+\emph on
+orb 
+\emph default
+sparsi per l'arena.
+ Questa modalitá di gioco é pensata per premiare i giocatori che manifestano
+ un livello di abilitá alto durante l'intera sfida.
+ Il numero limitato di 
+\emph on
+orb 
+\emph default
+in scena costringe inoltre i giocatori allo scontro costante al fine di
+ collezionare 
+\emph on
+orb 
+\emph default
+aggiuntivi, sottraendoli agli avversari.
+ La perdita stessa di orb é fondamentale, pertanto il giocatore dovrá perdere
+ la propria coda e ricollezionare gli elementi perduti prima che lo facciano
+ gli avversari, creado un gameplay molto bilanciato.
+ Nella prima versione del gioco, questa modalitá assegnava punti extra ai
+ giocatori ogni 5 secondi per ogni 
+\emph on
+orb 
+\emph default
+nella loro coda: questa regola tuttavia scoraggiava gli scontri diretti
+ in quanto era possibile collezionare quanti piú orb possibili e 
+\begin_inset Quotes fld
+\end_inset
+
+fuggire
+\begin_inset Quotes frd
+\end_inset
+
+ per il resto della partita, rendendo la sfida monotona.
+ La rimozione di questa regola ha permesso al gameplay di essere piú frenetico
+ nella prima parte della partita e piú strategico nella seconda, dove bisogna
+ stare attenti quando si perdono gli orb e non avvantaggiare gli avversari.
+ La durata del match é di 120 secondi garantisce una sfida sempre frenetica
+ ma dalla durata estremamente ridotta.
+\end_layout
+
+\begin_layout Standard
+La seconda modalitá 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+longest tail
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\emph default
+é una modalitá a tempo il cui l'obiettivo del giocatore é quello di avere
+ la coda piú lunga allo scadere del tempo.
+ A differenza della modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+arcade
+\begin_inset Quotes frd
+\end_inset
+
+, questa modalitá concentra la maggior parte dell'azione nella seconda metá
+ della sfida, in quanto i giocatori saranno portati ad essere piú cauti
+ negli scontri e rischiare di perdere 
+\emph on
+orb.
+ 
+\emph default
+In questa modalitá, la prima parte rappresenta una sorta di 
+\emph on
+riscaldamento 
+\emph default
+in cui i giocatori possono collezionare alcuni orb e potenziamenti.
+ Le regole di gioco favoriscono un gameplay estremamente imprevedibile nel
+ end game in quanto la presenza di potenziamenti o scontri particolarmente
+ fortunati puó ribaltare l'esito della partita.
+ La durata del match é 120 secondi.
+\end_layout
+
+\begin_layout Standard
+Nell'ultima modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+
+\emph on
+elimination
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\emph default
+ogni giocatore inizia la sfida con 7 orb nella sua coda.
+ Ogni volta che un giocatore perde tutti gli elementi nella sua coda viene
+ eliminato.
+ L'ultimo giocatore a rimanere in sfida viene proclamato vincitore.
+ La durata del match é maggiore, 180 secondi, in modo da aumentare la probabilit
+á che il match finisca perché tre dei quattro giocatori sono stati eliminati.
+ Al termine dei 180 secondi il giocatore con la coda piú lunga vince.
+ Questa limitazione di tempo serve sia per fornire un upperbound alla modalitá
+ e seguire la filosofia di gioco, e sia per impedire che i giocatori si
+ sottraggano allo scontro aspettando che siano gli altri avversari ad eliminarsi
+ a vicenda.
+ Questa modalitá favorisce uno stile di gioco vario, offensivo affinché
+ gli avversari possano essere eliminati e difensivo per evitare di perdere
+ orb.
+ Anche in questo caso gli orb possono essere collezionati e salvare i giocatori
+ dalla sconfitta e ció rende la loro raccolta di fondamentale importanza.
+ Dato che il numero di orb rimane costante durante la partita, la sfida
+ diventa via via sempre piú difficile con un numero decrescente di giocatori,
+ in quanto gli orb vengono mediamente redistribuiti tra meno navi con piú
+ vite.
+ Questo favorisce incontri uno-contro-uno.
 \end_layout
 
 \begin_layout Subsection
