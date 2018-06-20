@@ -2551,92 +2551,68 @@ Modalitá di gioco
 \end_layout
 
 \begin_layout Standard
-In OrbTail 
+OrbTail é un videogioco in cui quattro giocatori si sfidano all'interno
+ di un'arena al fine di collezionare il maggior numero possibile di oggetti
+ speciali.
+ Le meccaniche di base sono volutamente semplici, adatte al vasto numero
+ di piattaforme supportate e bilanciate in modo che nessuna di quest'ultime
+ possa essere avvantaggiata durante le sessioni 
 \emph on
-quattro 
-\emph default
-giocatori si sfidano all'interno di arene al fine di collezionare oggetti
- e fare piú punti possibili.
- 
+crossplatform play.
 \end_layout
 
 \begin_layout Standard
-La filosofia alla base di OrbTail é un gioco che possa essere fruito in
- qualsiasi posto e a qualsiasi momento, in presenza di connessione internet
- o meno e giocabile con altri utenti indipendentemente dalla piattaforma
- utilizzata.
-\end_layout
-
-\begin_layout Standard
-Le meccaniche alla base del gioco sono volutamente molto semplici in quanto
- é necessario supportare piattaforme dalle caratteristiche completamente
- diverse e garantire che in sessioni 
-\emph on
-crossplatform play 
-\emph default
-nessuna piattaforma possa essere avvantaggiata.
- 
-\end_layout
-
-\begin_layout Standard
-In OrbTail ogni giocatore ha il controllo di un veicolo a scelta tra sei
- in grado di muoversi liberamente nell'arena.
- Speciali elementi detti 
-\emph on
-orb
-\emph default
- sono distribuiti casualmente all'interno di esse e possono essere collezionati
- entrandovi in prossimitá.
- Una volta raccolti questi orb formano una coda dietro il veicolo del giocatore
- e non possono essere collezionati da altri giocatori.
- Quando due navi si scontrano, a seconda della direzione e forza d'impatto,
- i veicoli convolti perdono un certo numero di 
+Ogni giocatore controlla un veicolo al fine di collezionare elementi di
+ gioco sferici detti 
 \emph on
 orb 
 \emph default
-non superiore al numero di elementi in coda.
- Gli orb in scena sono limitati ad un numero fisso, 28, e ció li rende la
+che si agganciano ad esso formando una lunga coda
+\emph on
+.
  
+\emph default
+Lo scontro tra due o piú veicoli causa il distacco di un certo numero di
+ 
+\emph on
+orb 
+\emph default
+in misura proporzionale alla forza d'impatto.
+ Gli 
+\emph on
+orb 
+\emph default
+distaccati in questo modo possono essere recuperati nuovamente.
+ Gli 
+\emph on
+orb 
+\emph default
+sono distribuiti uniformemente lungo la superficie dell'arena e il loro
+ numero é predeterminato, rendendoli una 
 \emph on
 risorsa limitata 
 \emph default
-del gioco, ovvero l'elemento di conflitto che porta i giocatori a scontrarsi.
+che porta i vari giocatori al conflitto.
 \end_layout
 
 \begin_layout Standard
-Vi sono inoltre altri elementi sparsi che forniscono abilitá speciali al
- giocatore.
- Un tempo questi powerup venivano generati casualmente su certi 
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il titolo offre 
 \emph on
-orb 
+tre
 \emph default
-e assegnati al giocatore che lo raccoglieva, tuttavia questa meccanica azzerava
- competamente le chances di vittoria dei giocatori meno forti in quanto
- un giocatore avrebbe potuto collezionare gran parte degli orb nell'arena
- e fuggire da qualsiasi scontro, impedendo che alcun giocatore potesse fermarlo.
- La presenza di oggetti dedicati collezionabili ma che non entrano a far
- parte della coda del giocatore consente di rompere questi stalli e permette
- agli altri giocatori di ottenere vantaggi.
- Questi oggetti speciali sono presenti in numero ridotto (quattro) in punti
- prestabiliti dell'arena.
- Una volta collezionati questi oggetti scompaiono per poi essere rigenerati
- alcuni secondi dopo.
- Una volta collezionati, questi oggetti forniscono un potenziamento casuale
- al giocatore.
- Ogni giocatore ha a disposizione al massimo un potenziamento, non cumulabile,
- e attivabile a comando.
- Una volta utilizzato il potenziamento viene perduto.
+ modalitá di gioco accomunate dalle medesime meccaniche di base ma con condizion
+i di vittoria differenti.
 \end_layout
 
 \begin_layout Standard
-OrbTail offre tre modalitá di gioco, identiche nelle meccaniche di base,
- differenziate per condizioni di vittoria.
-\end_layout
-
-\begin_layout Standard
-Nella prima modalitá 
-\emph on
-
+Nella modalitá 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2644,67 +2620,81 @@ arcade
 \begin_inset Quotes frd
 \end_inset
 
- 
-\emph default
-l'obiettivo di ciascun giocatore é fare piú punti possibili allo scadere
- del tempo di gara.
- I punti possono essere guadagnati collezionando i vari 
+ l'obiettivo di ciascun giocatore é fare piú punti possibili entro un tempo
+ limite di 120 secondi.
+ Ogni 
 \emph on
 orb 
 \emph default
-sparsi per l'arena.
- Questa modalitá di gioco é pensata per premiare i giocatori che manifestano
- un livello di abilitá alto durante l'intera sfida.
+raccolto aumenta il punteggio del giocatore di 10 punti.
+ Questa modalitá di gioco é caratterizzata 
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Questa modalitá di gioco é pensata per premiare i giocatori piú 
+\emph on
+consistenti
+\emph default
+ in grado di bilanciare fasi offensive e fasi di raccolta durante tutto
+ l'arco della partita.
  Il numero limitato di 
 \emph on
 orb 
 \emph default
-in scena costringe inoltre i giocatori allo scontro costante al fine di
- collezionare 
+in scena costringe i giocatori a scontrarsi continuamente al fine di sottrarli
+ agli avversari.
+ La perdita stessa di 
 \emph on
 orb 
 \emph default
-aggiuntivi, sottraendoli agli avversari.
- La perdita stessa di orb é fondamentale, pertanto il giocatore dovrá perdere
- la propria coda e ricollezionare gli elementi perduti prima che lo facciano
- gli avversari, creado un gameplay molto bilanciato.
- Nella prima versione del gioco, questa modalitá assegnava punti extra ai
- giocatori ogni 5 secondi per ogni 
+é fondamentale in quanto non é possibile accumulare elementi se non prima
+ perdendoli impedendo che gli avversari possano recuperarli.
+ Questa modalitá é caratterizzata da una prima parte frenetica in cui l'obiettiv
+o principale é quello di scontrarsi il piú possibile per ottenere punti
+ ed un 
+\emph on
+endgame
+\emph default
+ piú strategico in quanto tutti gli 
 \emph on
 orb 
 \emph default
-nella loro coda: questa regola tuttavia scoraggiava gli scontri diretti
- in quanto era possibile collezionare quanti piú orb possibili e 
-\begin_inset Quotes fld
+staccati dalla propria coda potranno andare ad avvantaggiare gli avversari.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
 \end_inset
 
-fuggire
-\begin_inset Quotes frd
-\end_inset
 
- per il resto della partita, rendendo la sfida monotona.
- La rimozione di questa regola ha permesso al gameplay di essere piú frenetico
- nella prima parte della partita e piú strategico nella seconda, dove bisogna
- stare attenti quando si perdono gli orb e non avvantaggiare gli avversari.
- La durata del match é di 120 secondi garantisce una sfida sempre frenetica
- ma dalla durata estremamente ridotta.
 \end_layout
 
 \begin_layout Standard
 La seconda modalitá 
-\emph on
-
 \begin_inset Quotes fld
 \end_inset
 
+
+\emph on
 longest tail
 \begin_inset Quotes frd
 \end_inset
 
- 
+
 \emph default
-é una modalitá a tempo il cui l'obiettivo del giocatore é quello di avere
- la coda piú lunga allo scadere del tempo.
+ é una modalitá a tempo in allo scadere di un tempo prestabilito il giocatore
+ con la 
+\emph on
+coda 
+\emph default
+piú lunga viene proclamato vincitore.
  A differenza della modalitá 
 \begin_inset Quotes fld
 \end_inset
@@ -2713,22 +2703,38 @@ arcade
 \begin_inset Quotes frd
 \end_inset
 
-, questa modalitá concentra la maggior parte dell'azione nella seconda metá
- della sfida, in quanto i giocatori saranno portati ad essere piú cauti
- negli scontri e rischiare di perdere 
+, in questa modalitá la maggior parte dell'azione é concentrata nell'
 \emph on
-orb.
- 
+endgame
 \emph default
-In questa modalitá, la prima parte rappresenta una sorta di 
+ in quanto i giocatori in vantaggio saranno portati ad essere piú cauti
+ ed evitare di perdere 
+\emph on
+orb 
+\emph default
+e quelli in svantaggio saranno piú spericolati sperando di ribaltare l'esito
+ della partita.
+ La prima parte della sfida costituisce una sorta di 
 \emph on
 riscaldamento 
 \emph default
-in cui i giocatori possono collezionare alcuni orb e potenziamenti.
- Le regole di gioco favoriscono un gameplay estremamente imprevedibile nel
- end game in quanto la presenza di potenziamenti o scontri particolarmente
- fortunati puó ribaltare l'esito della partita.
- La durata del match é 120 secondi.
+in cui i giocatori possono costruire la maggior parte della propria coda
+ e collezionare potenziamenti utili per sopravvivere all'
+\emph on
+endgame
+\emph default
+.
+ Le regole di gioco favoriscono un gameplay molto imprevedibile in cui potenziam
+enti utilizzati nel momento giusto o scontri particolarmente fortunati possono
+ ribaltare l'esito della partita.
+ La durata del match é di 120 secondi.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2739,32 +2745,79 @@ Nell'ultima modalitá
 
 \emph on
 elimination
+\emph default
+
 \begin_inset Quotes frd
 \end_inset
 
+ ogni giocatore inizia la sfida con 7
+\emph on
+ orb
+\emph default
+.
+ Un giocatore che dovesse perdere l'ultimo orb nella sua coda viene eliminato
+ istantaneamente.
+ L'ultimo giocatore a rimanere in sfida viene proclamato vincitore.
+ La durata del match é maggiore rispetto alle altre due modalitá in moodo
+ da aumentare la probabilitá che il match finisca a causa dell'eliminazione
+ dei giocatori stessi e non per 
+\emph on
+timeout
+\emph default
+.
+ Allo scadere dei 180 secondi il giocatore con la coda piú lunga vince.
+ Questa regola impone un limite superiore alla durata del match e promuove
+ lo scontro aperto tra giocatori.
+ L'introduzione della regola di 
+\emph on
+eliminazione 
+\emph default
+rende la collezione degli orb di fondamentale importanza.
+ Questa modalitá é caratterizzata da una difficoltá crescente in quanto
+ una volta che i giocatori vengono eliminati i suoi 
+\emph on
+orb 
+\emph default
+potranno essere collezionati dagli altri giocatori che avranno quindi piú
+ vite a disposizione.
+ I giocatori eliminati possono assistere al resto del match attraverso un'opport
+una modalitá 
+\emph on
+spettatore 
+\emph default
+che li consente di inquadrare una qualsiasi trai veicoli rimanenti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le modalitá di gioco qui descritte sono fruibili in 
+\emph on
+single-player,
+\emph default
+ 
+\emph on
+multiplayer locale
+\emph default
+ e 
+\emph on
+multiplayer online.
  
 \emph default
-ogni giocatore inizia la sfida con 7 orb nella sua coda.
- Ogni volta che un giocatore perde tutti gli elementi nella sua coda viene
- eliminato.
- L'ultimo giocatore a rimanere in sfida viene proclamato vincitore.
- La durata del match é maggiore, 180 secondi, in modo da aumentare la probabilit
-á che il match finisca perché tre dei quattro giocatori sono stati eliminati.
- Al termine dei 180 secondi il giocatore con la coda piú lunga vince.
- Questa limitazione di tempo serve sia per fornire un upperbound alla modalitá
- e seguire la filosofia di gioco, e sia per impedire che i giocatori si
- sottraggano allo scontro aspettando che siano gli altri avversari ad eliminarsi
- a vicenda.
- Questa modalitá favorisce uno stile di gioco vario, offensivo affinché
- gli avversari possano essere eliminati e difensivo per evitare di perdere
- orb.
- Anche in questo caso gli orb possono essere collezionati e salvare i giocatori
- dalla sconfitta e ció rende la loro raccolta di fondamentale importanza.
- Dato che il numero di orb rimane costante durante la partita, la sfida
- diventa via via sempre piú difficile con un numero decrescente di giocatori,
- in quanto gli orb vengono mediamente redistribuiti tra meno navi con piú
- vite.
- Questo favorisce incontri uno-contro-uno.
+La modalitá multigiocatore locale é gestita tramite splitscreen in modo
+ da garantire punti di vista indipendenti.
+ É inoltre possibile giocare partite miste 
+\emph on
+splitscreen online 
+\emph default
+in qualsiasi configurazione supportata.
+ Al fine di arrivare al numero di quattro partecipanti per sfida, tutti
+ i posti liberi sono riempiti da veicoli governati da delle semplici IA.
 \end_layout
 
 \begin_layout Subsection
@@ -2772,7 +2825,88 @@ Veicoli
 \end_layout
 
 \begin_layout Standard
-Speed, acceleration, steering, offense, defense.
+All'interno del gioco sono presenti 
+\emph on
+sei 
+\emph default
+veicoli caratterizzati da aspetto e stile di guida diversi.
+\end_layout
+
+\begin_layout Standard
+I parametri che influenzano le prestazioni del veicolo sono espressi da
+ un valore numerico compreso tra 1 e 5:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Velocitá Rappresenta la massima velocitá raggiungibile dal veicolo.
+ Questo parametro influisce sul potenziale 
+\emph on
+offensivo 
+\emph default
+del veicolo in quanto determinerá impatti dalla forza maggiore, in grado
+ di causare il distacco di un maggior numero di 
+\emph on
+orb
+\emph default
+ dagli avversari.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Accelerazione Identifica la massima variazione di velocitá in funzione del
+ tempo.
+ Questo parametro influisce sul potenziale 
+\emph on
+difensivo 
+\emph default
+del veicolo in quanto permetterá al veicolo di reagire piú velocemente all'input
+ utente, evitando l'impatto con veicoli avversari.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Sterzo Rappresenta la massima velocitá angolare.
+ Questo parametro influisce sulla 
+\emph on
+manovrabilitá 
+\emph default
+del veicolo, utile per raccogliere gli elementi di gioco e aumentare la
+ precisione degli impatti.
+\end_layout
+
+\begin_layout Standard
+I sei veicoli a disposizione sono i seguenti:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Flare Velocitá, Accelerazione, Steering
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Flash Velocitá, Accelerazione, Steering
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Glow Velocitá, Accelerazione, Steering
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Radiance Velocitá, Accelerazione, Steering
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Shine Velocitá, Accelerazione, Steering
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Sparkle Velocitá, Accelerazione, Steering
 \end_layout
 
 \begin_layout Subsection
@@ -2780,11 +2914,68 @@ Level design
 \end_layout
 
 \begin_layout Standard
-Flat, sphere, torus
+Il gioco comprende tre livelli differenti, caratterizzati ciascuno da forma
+ e dimensione differente.
+ Ogni livello é inoltre caratterizzato da un diverso campo gravitazionale.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+Stadium 
+\emph default
+Questo livello é un'arena circolare piana, caratterizzata da una gravitá
+ verso il basso.
+ Questo livello é il piú semplice in quanto garantisce piena visibilitá
+ degli avversari e di tutti gli elementi di gioco.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+GeoSphere 
+\emph default
+Questo livello é a forma sferica in cui i veicoli corrono all'interno della
+ superficie.
+ Queso livello ha difficoltá media in quanto la curvatura della superficie
+ riduce la visibilitá.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+Torus 
+\emph default
+Livello a forma toroidale dall'elevata difficoltá.
+ La visibilitá é ridotta e l'elevata curvatura della superficie richiede
+ un grado di abilitá piú elevato per controllare il veicolo.
 \end_layout
 
 \begin_layout Subsection
 Powerups
+\end_layout
+
+\begin_layout Standard
+Esistono inoltre rari elementi di gioco speciali detti 
+\emph on
+core 
+\emph default
+che, una volta raccolti, garantiscono al veicolo del giocatore un potenziamento
+ o un'arma casuale.
+ A differenza degli 
+\emph on
+orb
+\emph default
+, questi elementi scompaiono una volta collezionati e vengono rigenerati
+ nello stesso punto dopo un breve periodo di tempo.
+ 
+\end_layout
+
+\begin_layout Standard
+I potenziamenti non sono cumulabili e vengono consumati una volta utilizzati.
 \end_layout
 
 \begin_layout Standard
