@@ -2547,17 +2547,13 @@ fino ad un massimo di otto giocatori.
 \end_layout
 
 \begin_layout Subsection
-Modalitá di gioco
+OrbTail
 \end_layout
 
 \begin_layout Standard
 OrbTail é un videogioco in cui quattro giocatori si sfidano all'interno
- di un'arena al fine di fare piú punti possibile collezionando oggetti speciali
- e 
-\emph on
-potenziamenti
-\emph default
-.
+ di un'arena al fine di fare piú punti possibile collezionando elementi
+ di gioco.
  Le meccaniche di base sono volutamente semplici, adatte al vasto numero
  di piattaforme supportate e bilanciate in modo che nessuna di queste possa
  essere avvantaggiata durante le sessioni 
@@ -2587,6 +2583,68 @@ sono inizialmente distribuiti lungo la superficie dell'arena e costituiscono
 risorsa limitata 
 \emph default
 il cui numero é fissato a 28.
+\end_layout
+
+\begin_layout Standard
+Le varie modalitá di gioco sono fruibili in 
+\emph on
+singleplayer
+\emph default
+, 
+\emph on
+multiplayer online 
+\emph default
+e
+\emph on
+ multiplayer locale 
+\emph default
+tramite 
+\emph on
+splitscreen
+\emph default
+.
+ Il gioco permette ai giocatori di giocare indipendentemente dalla piattaforma
+ utilizzata, in qualsiasi configurazione.
+ Il processo di creazione di una partita 
+\emph on
+online 
+\emph default
+prevede una fase di 
+\emph on
+matchmaking
+\emph default
+ che termina quando tutti i giocatori dichiarano esplicitamente di essere
+ 
+\emph on
+pronti.
+ 
+\end_layout
+
+\begin_layout Standard
+Nelle modalitá a giocatore singolo oppure in quelle online dove il numero
+ di partecipanti dovesse essere inferiore a quattro, i veicoli avversari
+ rimanenti vengono controllati da un'
+\emph on
+intelligenza artificiale.
+ 
+\emph default
+Questi veicoli sono
+\emph on
+ 
+\emph default
+in grado di eseguire semplici compiti quali collezionare gli 
+\emph on
+orb 
+\emph default
+e i 
+\emph on
+potenziamenti 
+\emph default
+in gioco, scontrarsi con gli avversari ed esplorare l'ambiente.
+\end_layout
+
+\begin_layout Subsubsection
+Modalitá di gioco
 \end_layout
 
 \begin_layout Standard
@@ -2694,7 +2752,7 @@ paritá
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Veicoli
 \end_layout
 
@@ -2704,19 +2762,7 @@ Il gioco presenta
 sei 
 \emph default
 veicoli caratterizzati da un aspetto estetico unico e stili di guida diversi.
- I veicoli possono solamente 
-\emph on
-accelerare
-\emph default
-, 
-\emph on
-frenare
-\emph default
- o 
-\emph on
-sterzare
-\emph default
-; i parametri che ne influenzano le prestazioni sono tre:
+ I parametri che ne influenzano le prestazioni sono tre:
 \end_layout
 
 \begin_layout Description
@@ -3311,7 +3357,7 @@ Manovrabilitá
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Level design
 \end_layout
 
@@ -3369,7 +3415,7 @@ interna
 te traiettorie e distanze.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Potenziamenti
 \end_layout
 
@@ -3488,53 +3534,13 @@ Scudo
 Il veicolo del giocatore é immune da tutte le armi nemiche per 7 secondi.
 \end_layout
 
-\begin_layout Subsection
-Multigiocatore
-\end_layout
-
-\begin_layout Standard
-Le modalitá di gioco qui descritte sono fruibili in 
-\emph on
-single-player,
-\emph default
- 
-\emph on
-multiplayer locale
-\emph default
- e 
-\emph on
-multiplayer online.
- 
-\emph default
-La modalitá multigiocatore locale é gestita tramite splitscreen in modo
- da garantire punti di vista indipendenti.
- É inoltre possibile giocare partite miste 
-\emph on
-splitscreen online 
-\emph default
-in qualsiasi configurazione supportata.
- Al fine di arrivare al numero di quattro partecipanti per sfida, tutti
- i posti liberi sono riempiti da veicoli governati da delle semplici IA.
-\end_layout
-
-\begin_layout Standard
-offline, splitscreen, online, multipiattaforma.
-\end_layout
-
-\begin_layout Subsection
-Intelligenza artificiale.
-\end_layout
-
-\begin_layout Standard
-strategie di base.
-\end_layout
-
-\begin_layout Subsection
-Interazione utente
+\begin_layout Subsubsection
+Esperienza utente
 \end_layout
 
 \begin_layout Standard
 tastiera, pad, touch.
+ 
 \end_layout
 
 \begin_layout Standard

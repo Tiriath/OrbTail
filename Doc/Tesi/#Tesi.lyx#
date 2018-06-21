@@ -2547,7 +2547,7 @@ fino ad un massimo di otto giocatori.
 \end_layout
 
 \begin_layout Subsection
-Modalitá di gioco
+OrbTail
 \end_layout
 
 \begin_layout Standard
@@ -2587,6 +2587,66 @@ sono inizialmente distribuiti lungo la superficie dell'arena e costituiscono
 risorsa limitata 
 \emph default
 il cui numero é fissato a 28.
+\end_layout
+
+\begin_layout Standard
+Le varie modalitá di gioco sono fruibili in 
+\emph on
+singleplayer
+\emph default
+, 
+\emph on
+multiplayer online 
+\emph default
+e
+\emph on
+ multiplayer locale 
+\emph default
+tramite 
+\emph on
+splitscreen
+\emph default
+.
+ Il gioco permette ai giocatori di giocare indipendentemente dalla piattaforma
+ utilizzata, in qualsiasi configurazione.
+ Il processo di creazione
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Al fine di arrivare al numero di quattro partecipanti per sfida, tutti i
+ posti liberi sono riempiti da veicoli governati da delle semplici IA.
+\end_layout
+
+\begin_layout Standard
+offline, splitscreen, online, multipiattaforma.
+ IA
+\end_layout
+
+\begin_layout Standard
+I veicoli possono solamente 
+\emph on
+accelerare
+\emph default
+, 
+\emph on
+frenare
+\emph default
+ o 
+\emph on
+sterzare
+\emph default
+;
+\end_layout
+
+\begin_layout Subsubsection
+Modalitá di gioco
 \end_layout
 
 \begin_layout Standard
@@ -2694,7 +2754,7 @@ paritá
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Veicoli
 \end_layout
 
@@ -2704,19 +2764,7 @@ Il gioco presenta
 sei 
 \emph default
 veicoli caratterizzati da un aspetto estetico unico e stili di guida diversi.
- I veicoli possono solamente 
-\emph on
-accelerare
-\emph default
-, 
-\emph on
-frenare
-\emph default
- o 
-\emph on
-sterzare
-\emph default
-; i parametri che ne influenzano le prestazioni sono tre:
+ I parametri che ne influenzano le prestazioni sono tre:
 \end_layout
 
 \begin_layout Description
@@ -3311,7 +3359,7 @@ Manovrabilitá
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Level design
 \end_layout
 
@@ -3369,7 +3417,7 @@ interna
 te traiettorie e distanze.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Potenziamenti
 \end_layout
 
@@ -3382,7 +3430,7 @@ elementi di gioco detti
 \emph on
 core
 \emph default
-, che, una volta raccolti, garantiscono al veicolo del giocatore un 
+ che, una volta raccolti, garantiscono al veicolo del giocatore un 
 \emph on
 potenziamento 
 \emph default
@@ -3405,9 +3453,9 @@ questi elementi scompaiono una volta collezionati e vengono rigenerati nello
 \end_layout
 
 \begin_layout Standard
-Lo scopo dei potenziamenti é quello di 
+I potenziamenti influiscono sull'
 \emph on
-rompere l'equilibrio 
+equilibrio 
 \emph default
 della partita, introducendo piú varietá e stategia all'interno delle sessioni
  di gioco.
@@ -3428,7 +3476,7 @@ consumati
 \end_layout
 
 \begin_layout Description
-Turbo Imprime una forza costate che spinge il veicolo in avanti per 3 secondi.
+Turbo Imprime una forza costante che spinge il veicolo in avanti per 3 secondi.
 \end_layout
 
 \begin_layout Description
@@ -3452,17 +3500,16 @@ orb.
 
 \begin_layout Description
 Missile Lancia un missile a ricerca verso l'avversario piú vicino.
- Il missile esplode a contatto, staccando 2 
+ Il missile esplode a contatto oppure automaticamente dopo 5 secondi: i
+ veicoli coinvolti nell'esplosione perdono 2 
 \emph on
-orb 
+orb
 \emph default
-dalla coda del veicolo.
- Il missile esplode automaticamente dopo 5 secondi se non riesce a raggiungere
- il bersaglio.
+.
 \end_layout
 
 \begin_layout Description
-Invincibilitá Il veicolo non puó perdere 
+Invincibilitá Il veicolo del giocatore non puó perdere 
 \emph on
 orb 
 \emph default
@@ -3470,17 +3517,15 @@ per 2 secondi.
 \end_layout
 
 \begin_layout Description
-Sovraccarico Aumenta la velocita del veicolo per 7 secondi.
+Sovraccarico Raddoppia la velocitá massima del veicolo per 7 secondi.
 \end_layout
 
 \begin_layout Description
-Proiettile Lancia un proiettile in linea retta che esplode a contatto, staccando
- 4 
+Proiettile Lancia un proiettile in linea retta che esplode a contatto oppure
+ automaticamente dopo 7 secondi.
+ I veicoli coinvolti nell'esplosione perdono 4 
 \emph on
-orb 
-\emph default
-dalla coda dell'avversario.
- Il proiettile esplode automaticamente dopo 7 secondi.
+orb.
 \end_layout
 
 \begin_layout Description
@@ -3488,56 +3533,16 @@ dalla coda dell'avversario.
 \series bold
 Scudo 
 \series default
-Garantisce l'immunitá da tutte le armi nemiche per 7 secondi.
+Il veicolo del giocatore é immune da tutte le armi nemiche per 7 secondi.
 \end_layout
 
-\begin_layout Subsection
-Multigiocatore
-\end_layout
-
-\begin_layout Standard
-Le modalitá di gioco qui descritte sono fruibili in 
-\emph on
-single-player,
-\emph default
- 
-\emph on
-multiplayer locale
-\emph default
- e 
-\emph on
-multiplayer online.
- 
-\emph default
-La modalitá multigiocatore locale é gestita tramite splitscreen in modo
- da garantire punti di vista indipendenti.
- É inoltre possibile giocare partite miste 
-\emph on
-splitscreen online 
-\emph default
-in qualsiasi configurazione supportata.
- Al fine di arrivare al numero di quattro partecipanti per sfida, tutti
- i posti liberi sono riempiti da veicoli governati da delle semplici IA.
-\end_layout
-
-\begin_layout Standard
-offline, splitscreen, online, multipiattaforma.
-\end_layout
-
-\begin_layout Subsection
-Intelligenza artificiale.
-\end_layout
-
-\begin_layout Standard
-strategie di base.
-\end_layout
-
-\begin_layout Subsection
-Interazione utente
+\begin_layout Subsubsection
+Esperienza utente
 \end_layout
 
 \begin_layout Standard
 tastiera, pad, touch.
+ 
 \end_layout
 
 \begin_layout Standard
