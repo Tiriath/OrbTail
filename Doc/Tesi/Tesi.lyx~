@@ -3346,8 +3346,8 @@ Planetarium Arena dalla forma sferica, caratterizzata da una forza di gravitá
 superficie interna
 \emph default
  della stessa.
- Quest'arena richiede un livello di abilitá piú elevato in quanto la curvatura
- nasconderá gran parte degli elementi di gioco.
+ Quest'arena richiede un livello di abilitá piú elevato in quanto la sua
+ curvatura nasconderá gran parte degli elementi di gioco.
 \end_layout
 
 \begin_layout Description
@@ -3370,32 +3370,122 @@ te traiettorie e distanze.
 \end_layout
 
 \begin_layout Subsection
-Powerups
+Potenziamenti
 \end_layout
 
 \begin_layout Standard
-Esistono inoltre rari elementi di gioco speciali detti 
+All'interno di ciascuna arena sono distribuiti degli 
+\emph on
+speciali 
+\emph default
+elementi di gioco detti 
+\emph on
+core
+\emph default
+ che, una volta raccolti, garantiscono al veicolo del giocatore un 
+\emph on
+potenziamento 
+\emph default
+o un'
+\emph on
+arma 
+\emph default
+casuale.
+ Il numero di 
 \emph on
 core 
 \emph default
-che, una volta raccolti, garantiscono al veicolo del giocatore un potenziamento
- o un'arma casuale.
+per livello é fissato a 4.
  A differenza degli 
+\emph on
+orb, 
+\emph default
+questi elementi scompaiono una volta collezionati e vengono rigenerati nello
+ stesso punto dopo un breve periodo di tempo.
+\end_layout
+
+\begin_layout Standard
+I potenziamenti influiscono sull'
+\emph on
+equilibrio 
+\emph default
+della partita, introducendo piú varietá e stategia all'interno delle sessioni
+ di gioco.
+ Per evitare eventuali abusi, i potenziamenti 
+\emph on
+rimpiazzano
+\emph default
+ quelli esistenti, 
+\emph on
+non sono cumulabili
+\emph default
+ e vengono 
+\emph on
+consumati
+\emph default
+ una volta utilizzati.
+ Di seguito é riportata una lista esaustiva dei potenziamenti disponibili:
+\end_layout
+
+\begin_layout Description
+Turbo Imprime una forza costante che spinge il veicolo in avanti per 3 secondi.
+\end_layout
+
+\begin_layout Description
+Gravitá Attrae tutti gli 
+\emph on
+orb 
+\emph default
+nel raggio di 3 metri per 7 secondi.
+\end_layout
+
+\begin_layout Description
+Dirottamento Il veicolo lascia cadere un elemento di gioco visivamente identico
+ ad un 
+\emph on
+orb.
+
+\emph default
+ Gli avversari che raccolgono questo elemento perdono il controllo del proprio
+ veicolo per 2 secondi.
+\end_layout
+
+\begin_layout Description
+Missile Lancia un missile a ricerca verso l'avversario piú vicino.
+ Il missile esplode a contatto oppure automaticamente dopo 5 secondi: i
+ veicoli coinvolti nell'esplosione perdono 2 
 \emph on
 orb
 \emph default
-, questi elementi scompaiono una volta collezionati e vengono rigenerati
- nello stesso punto dopo un breve periodo di tempo.
- 
+.
 \end_layout
 
-\begin_layout Standard
-I potenziamenti non sono cumulabili e vengono consumati una volta utilizzati.
+\begin_layout Description
+Invincibilitá Il veicolo del giocatore non puó perdere 
+\emph on
+orb 
+\emph default
+per 2 secondi.
 \end_layout
 
-\begin_layout Standard
-I powerup sono pensati per rompere le simmetrie all'interno del gioco..
- Uso dei powerup, descrizione scopo.
+\begin_layout Description
+Sovraccarico Aumenta la velocitá massima del veicolo per 7 secondi.
+\end_layout
+
+\begin_layout Description
+Proiettile Lancia un proiettile in linea retta che esplode a contatto oppure
+ automaticamente dopo 7 secondi.
+ I veicoli coinvolti nell'esplosione perdono 4 
+\emph on
+orb.
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Scudo 
+\series default
+Il veicolo del giocatore é immune da tutte le armi nemiche per 7 secondi.
 \end_layout
 
 \begin_layout Subsection
