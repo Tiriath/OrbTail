@@ -2553,7 +2553,11 @@ Modalitá di gioco
 \begin_layout Standard
 OrbTail é un videogioco in cui quattro giocatori si sfidano all'interno
  di un'arena al fine di fare piú punti possibile collezionando oggetti speciali
- e potenziamenti.
+ e 
+\emph on
+potenziamenti
+\emph default
+.
  Le meccaniche di base sono volutamente semplici, adatte al vasto numero
  di piattaforme supportate e bilanciate in modo che nessuna di queste possa
  essere avvantaggiata durante le sessioni 
@@ -2582,7 +2586,7 @@ sono inizialmente distribuiti lungo la superficie dell'arena e costituiscono
 \emph on
 risorsa limitata 
 \emph default
-il cui numero é fissato a 28 (mediamente 7 orb per giocatore).
+il cui numero é fissato a 28.
 \end_layout
 
 \begin_layout Standard
@@ -2595,7 +2599,7 @@ modalitá di gioco accomunate dalle medesime meccaniche di base ma con condizion
 \end_layout
 
 \begin_layout Description
-Arcade L'obiettivo é fare piú punti possibili entro un tempo limite di 120
+Arcade L'obiettivo é fare piú punti possibile entro un tempo limite di 120
  secondi.
  Ogni 
 \emph on
@@ -2650,94 +2654,44 @@ paritá
 \emph on
 orb, 
 \emph default
-mentre quelli in svantaggio saranno portati ad azioni piú spericolate sperendo
+mentre quelli in svantaggio saranno portati ad azioni piú spericolate, sperando
  di ribaltare l'esito della partita.
 \end_layout
 
 \begin_layout Description
-Elimination Modalitá in cui i giocatori che dovessero ritrovarsi senza elementi
- nella coda vengono eliminati.
- L'ultimo giocatore a rimanere in partita é dichiarato vincitore.
- All'inizio della partita gli orb presenti nel livello vengono uniformemente
+Elimination Modalitá ad eliminazione in cui vince l'ultimo giocatore rimasto
+ in gara.
+ All'inizio della partita gli orb presenti nel livello vengono equamente
  ripartiti fra tutti i giocatori, formandone la 
 \emph on
 coda 
 \emph default
 iniziale.
- Questa modalitá é caratterizzata da un livello di difficoltá crescente,
- in quanto l'eliminazione di alcuni partecipanti permette ai rimanenti di
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Nell'ultima modalitá 
-\begin_inset Quotes fld
-\end_inset
-
-
+ Un giocatore rimane in partita fintanto che la sua coda contiene almeno
+ un elemento, altrimenti viene 
 \emph on
-elimination
-\emph default
-
-\begin_inset Quotes frd
-\end_inset
-
- ogni giocatore inizia la sfida con 7
-\emph on
- orb
+eliminato
 \emph default
 .
- Un giocatore che dovesse perdere l'ultimo orb nella sua coda viene eliminato
- istantaneamente.
- L'ultimo giocatore a rimanere in sfida viene proclamato vincitore.
- La durata del match é maggiore rispetto alle altre due modalitá in moodo
- da aumentare la probabilitá che il match finisca a causa dell'eliminazione
- dei giocatori stessi e non per 
+ Questa modalitá é caratterizzata da un livello di difficoltá crescente
+ in quanto l'eliminazione dei partecipanti permette ai rimanenti di spartirsi
+ ulteriori 
 \emph on
-timeout
+orb
 \emph default
-.
- Allo scadere dei 180 secondi il giocatore con la coda piú lunga vince.
- Questa regola impone un limite superiore alla durata del match e promuove
- lo scontro aperto tra giocatori.
- L'introduzione della regola di 
-\emph on
-eliminazione 
-\emph default
-rende la collezione degli orb di fondamentale importanza.
- Questa modalitá é caratterizzata da una difficoltá crescente in quanto
- una volta che i giocatori vengono eliminati i suoi 
-\emph on
-orb 
-\emph default
-potranno essere collezionati dagli altri giocatori che avranno quindi piú
- vite a disposizione.
+, aumentando le possibilitá di sopravvivenza.
  I giocatori eliminati possono assistere al resto del match attraverso un'opport
 una modalitá 
 \emph on
 spettatore 
 \emph default
-che li consente di inquadrare una qualsiasi trai veicoli rimanenti.
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
+che consente loro di inquadrare i veicoli rimanenti.
+ La modalitá ha durata massima di 180 secondi, scaduti i quali la partita
+ termina in 
+\emph on
+paritá
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -2745,88 +2699,507 @@ Veicoli
 \end_layout
 
 \begin_layout Standard
-All'interno del gioco sono presenti 
+Il gioco offre 
 \emph on
 sei 
 \emph default
-veicoli caratterizzati da aspetto e stile di guida diversi.
+veicoli caratterizzati da un aspetto estetico unico e stili di guida diversi.
+ I parametri che influenzano le prestazioni di ciascun veicolo sono tre:
 \end_layout
 
-\begin_layout Standard
-I parametri che influenzano le prestazioni del veicolo sono espressi da
- un valore numerico compreso tra 1 e 5:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Description
 Velocitá Rappresenta la massima velocitá raggiungibile dal veicolo.
- Questo parametro influisce sul potenziale 
+ Un valore elevato di 
 \emph on
-offensivo 
+velocitá 
 \emph default
-del veicolo in quanto determinerá impatti dalla forza maggiore, in grado
- di causare il distacco di un maggior numero di 
+consente di sottrarre piú 
 \emph on
-orb
+orb 
 \emph default
- dagli avversari.
+agli avversari, raggiungere piú velocemente obbietivi di gioco e allontanarsi
+ rapidamente dai veicoli avversari vanificando ogni tentativo offensivo.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Accelerazione Identifica la massima variazione di velocitá in funzione del
- tempo.
- Questo parametro influisce sul potenziale 
+\begin_layout Description
+Reattivitá Rappresenta la massima accelerazione del veicolo.
+ Una 
 \emph on
-difensivo 
+reattivitá 
 \emph default
-del veicolo in quanto permetterá al veicolo di reagire piú velocemente all'input
- utente, evitando l'impatto con veicoli avversari.
+maggiore consente al veicolo di raggiungere velocitá piú elevate sulle brevi
+ distanze, causando danni maggiori in ambienti ristretti e minimizzando
+ le circostanze in cui il veicolo dovesse trovarsi fermo e quindi facilmente
+ bersagliabile.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Sterzo Rappresenta la massima velocitá angolare.
- Questo parametro influisce sulla 
+\begin_layout Description
+Manovrabilitá Rappresenta la massima velocitá di curvatura.
+ Veicoli caratterizzati da elevata 
 \emph on
 manovrabilitá 
 \emph default
-del veicolo, utile per raccogliere gli elementi di gioco e aumentare la
- precisione degli impatti.
+sono facilitati nel cambio di direzione, garantendo una migliore efficienza
+ durante il collezionamento di 
+\emph on
+orb 
+\emph default
+e 
+\emph on
+potenziamenti
+\emph default
+ e consentendo una maggiore precisione durante gli scontri o le schivate.
 \end_layout
 
 \begin_layout Standard
-I sei veicoli a disposizione sono i seguenti:
+Di seguito sono riportati i parametri per ciascun veicolo.
+ I parametri sono stati configurati in maniera euristica al fine di adattarsi
+ a diversi stili di gioco e bilanciati in modo da non avvantaggiare nessun
+ veicolo.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Flare Velocitá, Accelerazione, Steering
+\begin_layout Description
+Flare Veicolo caratterizzato da uno stile di guida 
+\emph on
+bilanciato
+\emph default
+, adatto per i giocatori novizi.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Flash Velocitá, Accelerazione, Steering
+\begin_layout Description
+
+\series bold
+Flash 
+\series default
+Veicolo dotato di un elevato 
+\emph on
+potenziale offensivo 
+\emph default
+sulla lunga distanza.
+ Adatto a giocatori esperti.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Glow Velocitá, Accelerazione, Steering
+\begin_layout Description
+
+\series bold
+Glow 
+\series default
+Veicolo ottimizzato per il collezionamento di 
+\emph on
+orb 
+\emph default
+e 
+\emph on
+potenziamenti
+\emph default
+.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Radiance Velocitá, Accelerazione, Steering
+\begin_layout Description
+Radiance Veicolo pensato per la 
+\emph on
+mischia
+\emph default
+.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Shine Velocitá, Accelerazione, Steering
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="5">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Veicolo
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Sparkle Velocitá, Accelerazione, Steering
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+R
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+M
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Stile di guida
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Flare
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+70%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+70%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+70%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+Bilanciato
+\emph default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Flash
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Elevato 
+\emph on
+potenziale offensivo 
+\emph default
+sulla lunga distanza.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Glow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ottimizzato per la collezione di 
+\emph on
+orb 
+\emph default
+e 
+\emph on
+potenziamenti
+\emph default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Radiance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Veicolo ottimizzato per la 
+\emph on
+mischia
+\emph default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Shine
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+70%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Veicolo 
+\emph on
+bilanciato
+\emph default
+, con un 
+\emph on
+potenziale offensivo 
+\emph default
+piú elevato.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Sparkle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Veicolo dall'elevato potenziale 
+\emph on
+difensivo
+\emph default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

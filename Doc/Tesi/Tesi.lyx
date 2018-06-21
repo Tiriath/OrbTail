@@ -2553,7 +2553,11 @@ Modalitá di gioco
 \begin_layout Standard
 OrbTail é un videogioco in cui quattro giocatori si sfidano all'interno
  di un'arena al fine di fare piú punti possibile collezionando oggetti speciali
- e potenziamenti.
+ e 
+\emph on
+potenziamenti
+\emph default
+.
  Le meccaniche di base sono volutamente semplici, adatte al vasto numero
  di piattaforme supportate e bilanciate in modo che nessuna di queste possa
  essere avvantaggiata durante le sessioni 
@@ -2595,7 +2599,7 @@ modalitá di gioco accomunate dalle medesime meccaniche di base ma con condizion
 \end_layout
 
 \begin_layout Description
-Arcade L'obiettivo é fare piú punti possibili entro un tempo limite di 120
+Arcade L'obiettivo é fare piú punti possibile entro un tempo limite di 120
  secondi.
  Ogni 
 \emph on
@@ -2695,88 +2699,604 @@ Veicoli
 \end_layout
 
 \begin_layout Standard
-All'interno del gioco sono presenti 
+Il gioco offre 
 \emph on
 sei 
 \emph default
-veicoli caratterizzati da aspetto e stile di guida diversi.
+veicoli caratterizzati da un aspetto estetico unico e stili di guida diversi.
+ I parametri che influenzano le prestazioni di ciascun veicolo sono tre:
 \end_layout
 
-\begin_layout Standard
-I parametri che influenzano le prestazioni del veicolo sono espressi da
- un valore numerico compreso tra 1 e 5:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Description
 Velocitá Rappresenta la massima velocitá raggiungibile dal veicolo.
- Questo parametro influisce sul potenziale 
+ Un valore elevato di 
 \emph on
-offensivo 
+velocitá 
 \emph default
-del veicolo in quanto determinerá impatti dalla forza maggiore, in grado
- di causare il distacco di un maggior numero di 
+consente di sottrarre piú 
 \emph on
-orb
+orb 
 \emph default
- dagli avversari.
+agli avversari, raggiungere piú velocemente obiettivi di gioco e allontanarsi
+ rapidamente dai veicoli avversari vanificando tentativi offensivi.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Accelerazione Identifica la massima variazione di velocitá in funzione del
- tempo.
- Questo parametro influisce sul potenziale 
+\begin_layout Description
+Reattivitá Rappresenta la massima accelerazione del veicolo.
+ Una 
 \emph on
-difensivo 
+reattivitá 
 \emph default
-del veicolo in quanto permetterá al veicolo di reagire piú velocemente all'input
- utente, evitando l'impatto con veicoli avversari.
+maggiore consente al veicolo di raggiungere velocitá piú elevate sulle brevi
+ distanze, causando danni maggiori in ambienti ristretti e minimizzando
+ le circostanze in cui il veicolo si trova fermo e quindi facilmente bersagliabi
+le.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Sterzo Rappresenta la massima velocitá angolare.
- Questo parametro influisce sulla 
+\begin_layout Description
+Manovrabilitá Rappresenta la massima velocitá di curvatura.
+ Veicoli caratterizzati da elevata 
 \emph on
 manovrabilitá 
 \emph default
-del veicolo, utile per raccogliere gli elementi di gioco e aumentare la
- precisione degli impatti.
+sono facilitati nel cambio di direzione, garantendo una migliore efficienza
+ durante il collezionamento di 
+\emph on
+orb 
+\emph default
+e 
+\emph on
+potenziamenti
+\emph default
+ e consentendo una maggiore precisione durante gli scontri o le schivate.
 \end_layout
 
 \begin_layout Standard
-I sei veicoli a disposizione sono i seguenti:
+Di seguito sono riportate le configurazioni per ciascun veicolo.
+ I parametri sono stati configurati in maniera 
+\emph on
+euristica
+\emph default
+ al fine di adattarsi a diversi stili di gioco e bilanciati in modo da non
+ avvantaggiare nessun veicolo.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Flare Velocitá, Accelerazione, Steering
+\begin_layout Description
+Flare Veicolo caratterizzato da uno stile di guida 
+\emph on
+bilanciato
+\emph default
+, adatto per i giocatori novizi.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Flash Velocitá, Accelerazione, Steering
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Velocitá
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Glow Velocitá, Accelerazione, Steering
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7/10
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Radiance Velocitá, Accelerazione, Steering
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Reattivitá
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Shine Velocitá, Accelerazione, Steering
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7/10
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-Sparkle Velocitá, Accelerazione, Steering
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Manovrabilitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Flash 
+\series default
+Veicolo dotato di un elevato 
+\emph on
+potenziale offensivo 
+\emph default
+sulla lunga distanza.
+ Adatto a giocatori esperti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Velocitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Reattivitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Manovrabilitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Glow 
+\series default
+Veicolo ottimizzato per il collezionamento di 
+\emph on
+orb 
+\emph default
+e 
+\emph on
+potenziamenti
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Velocitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Reattivitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Manovrabilitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Radiance Veicolo pensato per la 
+\emph on
+mischia
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Velocitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Reattivitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Manovrabilitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Shine Veicolo bilanciato, sacrifica parte della manovrabilitá per un piú
+ elevato
+\emph on
+ potenziale offensivo
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Velocitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Reattivitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Manovrabilitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Sparkle Veicolo dall'elevato potenziale 
+\emph on
+difensivo, 
+\emph default
+adatto per 
+\emph on
+schivate.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Velocitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Reattivitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Manovrabilitá
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8/10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
