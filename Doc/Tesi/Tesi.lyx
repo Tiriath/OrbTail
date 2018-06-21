@@ -1484,89 +1484,17 @@ Design
 \end_layout
 
 \begin_layout Standard
-Orbtail é un gioco competitivo con elementi 
+Questo capitolo é dedicato al design di OrbTail, partendo dai titoli esistenti
+ che hanno ispirato il gioco e proseguendo con le meccaniche di base, le
+ modalitá di gioco, i livelli e la descrizione dettagliata di tutti gli
+ elementi di gioco.
+ I contenuti si concentreranno principalmente sugli aspetti 
 \emph on
-racing 
+concettuali
 \emph default
-in cui quattro partecipanti si sfidano all'interno di un'arena.
- Il prodotto offre diverse modalitá di gioco a tempo caratterizzate da condizion
-i di vittoria differenti e molteplici arene con un diverso grado di difficoltá.
- Il titolo é stato sviluppato per le principali piattaforme 
-\emph on
-desktop 
-\emph default
-e 
-\emph on
-mobile
-\emph default
- quali Windows, OSX, Android e iOS e consente agli utenti di giocare tra
- loro indipendentemente dalla piattaforma utilizzata.
- Il gioco é fruibile in modalitá 
-\emph on
-single-player 
-\emph default
-o 
-\emph on
-multiplayer locale 
-\emph default
-e, qualora fosse disponibile una connessione internet, in modalitá 
-\emph on
-multiplayer online
-\emph default
- o 
-\emph on
-mista
-\emph default
- locale
-\backslash
-online
-\emph on
-.
- 
-\emph default
-Le modalitá 
-\emph on
-multiplayer locali 
-\emph default
-sono disponibili per le sole piattaforme 
-\emph on
-desktop 
-\emph default
-essendo queste le uniche in grado di supportare piú periferiche di input
- contemporaneamente.
-\end_layout
-
-\begin_layout Standard
-In Orbtail ciascun partecipante controlla un veicolo a scelta tra diverse
- varianti, ciascuna delle quali caratterizzata da un diverso stile di guida,
- al fine di collezionare elementi distribuiti casualmente all'interno dell'arena.
- Gli elementi raccolti formano una coda piú o meno lunga dietro al veicolo
- e il loro scopo é determinato dalla modalitá di gioco.
- É inoltre possibile 
-\emph on
-perdere 
-\emph default
-questi elementi a seguito di collisioni con i veicoli degli altri partecipanti
- in numero proporzionale alla forza d'impatto.
-\end_layout
-
-\begin_layout Standard
-Pur essendo disponibile per tutte le maggiori piattaforme, il design di
- Orbtail é assimilabile ad un'esperienza mobile in quanto caratterizzato
- da 
-\emph on
-match
-\emph default
- dalla durata ridotta e meccaniche molto semplici che lo rendono piú adatto
- ad un pubblico di 
-\emph on
-casual gamer.
-\end_layout
-
-\begin_layout Standard
-Nei capitoli seguenti verranno analizzati i titoli che presentano similaritá
- a livello di gameplay nonché le meccaniche di base e la descrizione in
- dettaglio delle modalitá di gioco, dei veicoli e delle arene.
+ del gioco, in maniera agnostica rispetto alla direzione artistica e dalle
+ soluzioni tecnologiche che verranno adottate (sebbene ne verranno considerate
+ le eventuali limitazioni).
 \end_layout
 
 \begin_layout Subsection
@@ -1583,7 +1511,7 @@ concept
 di gioco.
  I titoli sono stati selezionati tra diverse piattaforme in modo da individuare
  un sottoinsieme di caratteristiche desiderate e facilmente adattabili alla
- grande diversitá di dispositivi per cui verrá sviluppato il titolo.
+ grande diversitá di dispositivi per cui verrá sviluppato OrbTail.
  La data di pubblicazione dei titoli scelti copre inoltre un orizzonte temporale
  molto vasto: l'intento é quello di conuigare tra loro caratteristiche dei
  giochi recenti con vecchi paradigmi di gameplay da rivisitare in chiave
@@ -1664,7 +1592,7 @@ casse
 speciali che, raccolte, garantiscono al giocatore un potenziamento casuale,
  tanto piú potente quanto piú svantaggiata la sua posizione nella gara corrente.
  Questi oggetti collezionabili comprendono un ricco assortimento di armi
- usate per intralciare gli avversari, barriere difensive e bonus temporaneai
+ usate per intralciare gli avversari, barriere difensive e bonus temporanei
  alla velocitá del veicolo.
  Speciali frutti 
 \begin_inset Quotes fld
@@ -1734,8 +1662,8 @@ avventura
 \begin_inset Quotes frd
 \end_inset
 
- il giocatore seleziona uno dei personaggi a disposizione, gareggiando sui
- sedici circuiti diversi in gioco, al fine di collezionare 
+ il giocatore seleziona uno dei personaggi a disposizione, gareggiando su
+ sedici circuiti diversi, al fine di collezionare 
 \emph on
 trofei
 \emph default
@@ -1782,8 +1710,7 @@ sala giochi
 \begin_inset Quotes frd
 \end_inset
 
- il giocatore puó gareggiare su uno qualisiasi dei cicuiti disponibili o
- organizzare 
+ il giocatore puó gareggiare su circuito a scelta o organizzare 
 \emph on
 campionati
 \emph default
@@ -2551,14 +2478,27 @@ OrbTail
 \end_layout
 
 \begin_layout Standard
-OrbTail é un videogioco in cui quattro giocatori si sfidano all'interno
- di un'arena al fine di fare piú punti possibile collezionando elementi
- di gioco.
- Le meccaniche di base sono volutamente semplici, adatte al vasto numero
- di piattaforme supportate e bilanciate in modo che nessuna di queste possa
- essere avvantaggiata durante le sessioni 
+OrbTail é un gioco competitivo con elementi 
 \emph on
-crossplatform play.
+racing 
+\emph default
+in cui quattro partecipanti si sfidano all'interno di un'arena.
+ Il titolo offre diverse modalitá di gioco a tempo caratterizzate da condizioni
+ di vittoria differenti e molteplici arene con un diverso grado di difficoltá.
+ Il titolo é stato sviluppato per le principali piattaforme 
+\emph on
+desktop 
+\emph default
+e 
+\emph on
+mobile
+\emph default
+ quali Windows, OSX, Android e iOS e consente agli utenti di giocare tra
+ loro indipendentemente dalla piattaforma utilizzata in modalitá 
+\emph on
+cross-platform play
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -2568,17 +2508,20 @@ Ogni giocatore controlla un veicolo in grado di muoversi agilmente nell'arena,
 orb 
 \emph default
 che si agganciano ad esso formando una lunga coda.
- Lo scontro tra due o piú veicoli determina il distacco di 
+ A seguito di uno scontro tra due o piú veicoli, alcuni degli 
 \emph on
 orb 
 \emph default
-in misura proporzionale alla forza d'impatto.
- Questi oggetti
+presenti nelle rispettive code verranno staccati in misura proporzionale
+ alla forza d'impatto.
+ Questi elementi sono inizialmente distribuiti lungo la superfcie dell'arena
+ e la loro acquisizione costituisce la meccanica principale attorno alla
+ quale ruotano le varie modalitá di gioco descritte nei capitoli successivi.
+ Gli 
 \emph on
- 
+orb 
 \emph default
-sono inizialmente distribuiti lungo la superficie dell'arena e costituiscono
- una 
+costituiscono una 
 \emph on
 risorsa limitata 
 \emph default
@@ -2586,26 +2529,90 @@ il cui numero é fissato a 28.
 \end_layout
 
 \begin_layout Standard
-Le varie modalitá di gioco sono fruibili in 
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Al fine di rendere l'esperienza videoludica fruibile in tutte le condizioni,
+ tutte le modalitá di gioco disponi
+\end_layout
+
+\begin_layout Standard
+Il gioco é fruibile in modalitá 
 \emph on
 singleplayer
 \emph default
 , 
 \emph on
-multiplayer online 
+multiplayer locale 
 \emph default
-e
+e, qualora fosse disponibile una connessione internet, in modalitá 
 \emph on
- multiplayer locale 
+multiplayer online
 \emph default
-tramite 
+ o 
 \emph on
-splitscreen
+mista
 \emph default
+ locale
+\backslash
+online
+\emph on
 .
- Il gioco permette ai giocatori di giocare indipendentemente dalla piattaforma
- utilizzata, in qualsiasi configurazione.
- Il processo di creazione di una partita 
+ 
+\emph default
+Le modalitá 
+\emph on
+multiplayer locali 
+\emph default
+sono disponibili per le sole piattaforme 
+\emph on
+desktop 
+\emph default
+essendo queste le uniche in grado di supportare piú periferiche di input
+ contemporaneamente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le meccaniche di base sono volutamente semplici, adatte al vasto numero
+ di piattaforme supportate e bilanciate in modo che nessuna di queste possa
+ essere avvantaggiata durante le sessioni 
+\emph on
+cross-platform play.
+\end_layout
+
+\begin_layout Standard
+Pur essendo disponibile per tutte le maggiori piattaforme, il design di
+ Orbtail é assimilabile ad un'esperienza mobile in quanto caratterizzato
+ da 
+\emph on
+match
+\emph default
+ dalla durata ridotta e meccaniche molto semplici che lo rendono piú adatto
+ ad un pubblico di 
+\emph on
+casual gamer.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il processo di creazione di una partita 
 \emph on
 online 
 \emph default
@@ -2754,6 +2761,12 @@ paritá
 
 \begin_layout Subsubsection
 Veicoli
+\end_layout
+
+\begin_layout Standard
+I giocatori hanno a disposizione diversi veicoli, ciascuno di quali caratterizza
+to da un diverso stile di guida e adatto , adatti a diverse strategie o
+ tipologia di giocatori.
 \end_layout
 
 \begin_layout Standard
@@ -3654,7 +3667,7 @@ Direzione artistica
 \end_layout
 
 \begin_layout Standard
-3D
+3D, Reference, Art Bible
 \end_layout
 
 \begin_layout Standard
