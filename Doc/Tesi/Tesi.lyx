@@ -3535,12 +3535,111 @@ Il veicolo del giocatore é immune da tutte le armi nemiche per 7 secondi.
 \end_layout
 
 \begin_layout Subsubsection
-Esperienza utente
+Interazione utente
 \end_layout
 
 \begin_layout Standard
-tastiera, pad, touch.
+Al fine di garantire una migliore compatibilitá con tutte le piattaforme
+ supportate, il gioco presenta un numero ridotto di controlli.
+ Per le piattaforme 
+\emph on
+mobile 
+\emph default
+il controllo del veicolo é affidato all'
+\emph on
+accelerometro, 
+\emph default
+in questo modo non é necessario appoggiare le mani sullo schermo, riducendo
+ il campo visivo.
+ L'unico momento in cui é previsto l'uso del 
+\emph on
+touch 
+\emph default
+é quando il giocatore attiva i potenziamenti.
+\end_layout
+
+\begin_layout Standard
+Su piattaforme mobile il controllo del veicolo é gestito tramite 
+\emph on
+tastiera 
+\emph default
+oppure, per supportare piú giocatori in locali, é possibile utilizzare fino
+ a quattro 
+\emph on
+pad 
+\emph default
+contemporaneamente.
+\end_layout
+
+\begin_layout Standard
+L'interazione all'interno del menú é invece affidata al 
+\emph on
+touch 
+\emph default
+sui dispositivi mobili oppure al 
+\emph on
+mouse 
+\emph default
+sulle piattaforme 
+\emph on
+desktop.
  
+\end_layout
+
+\begin_layout Subsubsection
+Interfaccia utente
+\end_layout
+
+\begin_layout Standard
+All'inizio di ogni partita é prevista una rapida schermata di 
+\emph on
+tutorial 
+\emph default
+che spiega le regole della modalitá di gioco attuale.
+ La partita inizia una volta che tutti i giocatori hanno chiuso la schermata.
+\end_layout
+
+\begin_layout Standard
+Il gioco é garatterizzato da un'interfaccia utente minimale.
+ All'interno di una sessione di gioco saranno solamente visibili i punteggi
+ attuali dei vari giocatori durante la modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+arcade
+\begin_inset Quotes frd
+\end_inset
+
+ oppure la lunghezza della coda per le modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+longest tail
+\begin_inset Quotes frd
+\end_inset
+
+ ed 
+\begin_inset Quotes fld
+\end_inset
+
+elimination
+\begin_inset Quotes frd
+\end_inset
+
+ e il timer di gara.
+ Un'elemento grafico apposito permette di visualizzare il potenziamento
+ attivo (se presente).
+ Un altro elemento é usato per uscire dalla partita.
+\end_layout
+
+\begin_layout Standard
+Al fine di aiutare il giocatore ad orientarsi meglio, é prevista la presenza
+ di un elemento a schermo che funge da 
+\emph on
+bussola
+\emph default
+: il suo scopo é quello di indicare la posizione tridimensionale degli altri
+ veicoli rispetto al veicolo del giocatore.
 \end_layout
 
 \begin_layout Standard
