@@ -3568,7 +3568,7 @@ interna
 \end_layout
 
 \begin_layout Standard
-Durante lo sviluppo sono state valutate inoltre topolgie 
+Durante lo sviluppo sono state inoltre valutate topolgie 
 \emph on
 convesse 
 \emph default
@@ -3587,7 +3587,8 @@ concava
 , il raggio di curvatura risultava tale da ridurre drasticamente il numero
  di elementi di gioco a schermo e rendere ancora piú complicato individuare
  avversari ed oggetti.
- Per qu
+ A seguito di queste considerazioni é stato deciso di evitare l'aggiunta
+ di suddette topologie.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3595,15 +3596,12 @@ Potenziamenti
 \end_layout
 
 \begin_layout Standard
-All'interno di ciascuna arena sono distribuiti degli 
+All'interno delle arene sono distribuiti degli speciali elementi di gioco
+ detti 
 \emph on
-speciali 
+core 
 \emph default
-elementi di gioco detti 
-\emph on
-core
-\emph default
- che, una volta raccolti, garantiscono al veicolo del giocatore un 
+che, una volta raccolti, garantiscono al giocatore un 
 \emph on
 potenziamento 
 \emph default
@@ -3611,53 +3609,154 @@ o un'
 \emph on
 arma 
 \emph default
-casuale.
- Il numero di 
-\emph on
-core 
-\emph default
-per livello é fissato a 4.
- A differenza degli 
-\emph on
-orb, 
-\emph default
-questi elementi scompaiono una volta collezionati e vengono rigenerati nello
- stesso punto dopo un breve periodo di tempo.
-\end_layout
-
-\begin_layout Standard
-I potenziamenti influiscono sull'
+casuale attivabile a comando.
+ Questi elementi di gioco sono stati introdotti al fine di smuovere l'
 \emph on
 equilibrio 
 \emph default
-della partita, introducendo piú varietá e stategia all'interno delle sessioni
- di gioco.
- Per evitare eventuali abusi, i potenziamenti 
+della partita, introducendo una maggiore profonditá e varietá al 
 \emph on
-rimpiazzano
+gameplay.
+ 
 \emph default
- quelli esistenti, 
+Il 
+\emph on
+sapiente 
+\emph default
+uso di questi potenziamenti al momento giusto puó ribaltare completamente
+ le sorti di una partita o consolidare la propria posizione di vantaggio.
+ Per evitare eventuali abusi i potenziamenti 
 \emph on
 non sono cumulabili
 \emph default
  e vengono 
 \emph on
-consumati
+consumati 
 \emph default
- una volta utilizzati.
- Di seguito é riportata una lista esaustiva dei potenziamenti disponibili:
+una volta utilizzati.
 \end_layout
 
-\begin_layout Description
-Turbo Imprime una forza costante che spinge il veicolo in avanti per 3 secondi.
-\end_layout
-
-\begin_layout Description
-Gravitá Attrae tutti gli 
+\begin_layout Standard
+Nel 
+\emph on
+design originale 
+\emph default
+questi potenziamenti erano ottenibili raccogliendo degli 
 \emph on
 orb 
 \emph default
-nel raggio di 3 metri per 7 secondi.
+che venivano 
+\begin_inset Quotes fld
+\end_inset
+
+imbevuti
+\begin_inset Quotes frd
+\end_inset
+
+ casualmente una volta ogni 
+\emph on
+dieci 
+\emph default
+secondi e iniziavano a brillare vistosamente.
+ Durante le iterazioni ci si é resi conto che sfruttare gli 
+\emph on
+orb 
+\emph default
+stessi per fornire potenziamenti impediva ai giocatori di opporsi agli avversari
+ in posizione di estremo vantaggio ed in generale rendeva molto difficile
+ ottenerne di nuovi: basta considerare che durante la partita il numero
+ di 
+\emph on
+orb 
+\emph default
+non collezionati é sempre molto basso (e quindi nel caso generico non ne
+ venivano 
+\begin_inset Quotes fld
+\end_inset
+
+imbevuti
+\begin_inset Quotes frd
+\end_inset
+
+ abbastanza).
+ Per questo motivo é stato deciso di introdurre un elemento di gioco collezionab
+ile apposito, il 
+\emph on
+core
+\emph default
+, il cui numero per arena é fissato a 
+\emph on
+quattro
+\emph default
+.
+ A differenza degli 
+\emph on
+orb
+\emph default
+, questi elementi scompaiono una volta collezionati e vengono rigenerati
+ nello stesso punto dopo un breve periodo di 
+\emph on
+cinque secondi
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Di seguito sono riportati i potenziamenti ottenibili attraverso i 
+\emph on
+core.
+\end_layout
+
+\begin_layout Description
+Turbo Una volta attivato, questo potenziamento imprime una forza costante
+ che spinge il veicolo in avanti per 
+\emph on
+tre
+\emph default
+ secondi a grande velocitá.
+ Questo potenziamento é pensato per essere utilizzato in ambito 
+\emph on
+offensivo 
+\emph default
+per aumentare il numero di 
+\emph on
+orb 
+\emph default
+staccati o 
+\emph on
+difensivo
+\emph default
+, quando é necessario distanziare gli avversari rapidamente.
+\end_layout
+
+\begin_layout Description
+Gravitá Una volta attivato, permette al veicolo di attrarre a se tutti gli
+ 
+\emph on
+orb 
+\emph default
+nel raggio di 
+\emph on
+tre
+\emph default
+ metri per 
+\emph on
+sette
+\emph default
+ secondi.
+ Grazie a questo effetto é possibile raccogliere un gran numero di 
+\emph on
+orb 
+\emph default
+in poco tempo e ció rende questo potenziamento uno dei piú apprezzati e
+ versatili.
 \end_layout
 
 \begin_layout Description
@@ -3665,40 +3764,102 @@ Dirottamento Il veicolo lascia cadere un elemento di gioco visivamente identico
  ad un 
 \emph on
 orb.
-
+ 
 \emph default
- Gli avversari che raccolgono questo elemento perdono il controllo del proprio
- veicolo per 2 secondi.
+Gli avversari che tentano di raccogliere questo oggetto perdono il controllo
+ del proprio veicolo per 
+\emph on
+due
+\emph default
+ secondi.
+ L'uso di questo potere é principalmente difensivo e permette di neutralizzare
+ gli avversari temporaneamente per allontanarsene.
 \end_layout
 
 \begin_layout Description
 Missile Lancia un missile a ricerca verso l'avversario piú vicino.
  Il missile esplode a contatto oppure automaticamente dopo 5 secondi: i
- veicoli coinvolti nell'esplosione perdono 2 
+ veicoli coinvolti nell'esplosione perdono 
+\emph on
+due
+\emph default
+ 
 \emph on
 orb
 \emph default
 .
+ Quest'arma ha effetti particolarmente devastanti nella modalitá 
+\emph on
+elimination 
+\emph default
+o nelle fasi finali di 
+\emph on
+longest tail
+\emph default
+ in quanto consente di ribaltare le sorti della partita.
 \end_layout
 
 \begin_layout Description
-Invincibilitá Il veicolo del giocatore non puó perdere 
+Invincibilitá Una volta attivato, il veicolo del giocatore non puó perdere
+ 
 \emph on
 orb 
 \emph default
-per 2 secondi.
+per 
+\emph on
+due
+\emph default
+ secondi.
+ Sebbene rappresenti il potere col piú alto potenziale 
+\emph on
+difensivo
+\emph default
+, in grado di proteggere i veicolo da armi avversarie o scontri, la sua
+ breve durata richiede un'adeguata temporizzazione per ottenerne il massimo
+ effetto.
 \end_layout
 
 \begin_layout Description
-Sovraccarico Raddoppia la velocitá massima del veicolo per 7 secondi.
+Sovraccarico Raddoppia la velocitá massima del veicolo per 
+\emph on
+sette
+\emph default
+ secondi.
+ A differenza del 
+\begin_inset Quotes fld
+\end_inset
+
+turbo
+\begin_inset Quotes frd
+\end_inset
+
+, garantisce una manovrabilitá maggiore al costo di un aumento di velocitá
+ inferiore.
 \end_layout
 
 \begin_layout Description
-Proiettile Lancia un proiettile in linea retta che esplode a contatto oppure
- automaticamente dopo 7 secondi.
+Proiettile Il veicolo spara un proiettile in linea retta che esplode a contatto
+ oppure automaticamente dopo 
+\emph on
+sette
+\emph default
+ secondi.
  I veicoli coinvolti nell'esplosione perdono 4 
 \emph on
 orb.
+ 
+\emph default
+Quest'arma risulta particolarmente efficace sulle brevi distanze dove vi
+ é una piú elevata probabilitá di colpire gli avversari.
+ Il gran numero di 
+\emph on
+orb 
+\emph default
+staccati consente di ridurre il vantaggio degli avversari oppure di 
+\emph on
+neutralizzarli 
+\emph default
+definitivamente qualora dovessero averne in numero esiguo.
 \end_layout
 
 \begin_layout Description
@@ -3706,7 +3867,40 @@ orb.
 \series bold
 Scudo 
 \series default
-Il veicolo del giocatore é immune da tutte le armi nemiche per 7 secondi.
+Il veicolo del giocatore é immune da tutte le armi nemiche per 
+\emph on
+sette
+\emph default
+ secondi.
+ A differenza dell'
+\begin_inset Quotes fld
+\end_inset
+
+invincibilitá
+\begin_inset Quotes frd
+\end_inset
+
+, questo potere garantisce una protezione piú estesa da tutte le armi avversarie.
+\end_layout
+
+\begin_layout Standard
+Nella versione originale erano previsti alcuni poteri che avevano dagli
+ effetti 
+\emph on
+negativi 
+\emph default
+sul veicolo del giocatore.
+ L'intento era quello di introdurre un fattore 
+\emph on
+casuale 
+\emph default
+grazie al quale il veicolo si accingeva a raccogliere il potenziamento 
+\emph on
+scommetteva 
+\emph default
+sull'esito della raccolta.
+ Nella versione finale queste meccaniche sono state rimosse al fine di promuover
+e la raccolt
 \end_layout
 
 \begin_layout Subsubsection
