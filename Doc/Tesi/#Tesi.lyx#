@@ -2502,18 +2502,18 @@ cross-platform play
 \end_layout
 
 \begin_layout Standard
-In OrbTail ogni giocatore controlla un veicolo in grado di muoversi agilmente
- in un'arena, collezionando elementi di gioco sferici detti 
+Ogni giocatore controlla un veicolo in grado di muoversi agilmente nell'arena,
+ collezionando elementi di gioco sferici detti 
 \emph on
 orb 
 \emph default
 che si agganciano ad esso formando una lunga coda.
  É possibile utilizzare il proprio veicolo per scontrarsi contro quelli
- avversari al fine di sottrarre 
+ avversari al fine di staccare 
 \emph on
-orb
+orb 
 \emph default
- in misura proporzionale alla direzione e alla forza d'impatto.
+dalla loro coda in misura proporzionale alla direzione e alla forza d'impatto.
  Questi elementi sono inizialmente distribuiti lungo la superfcie dell'arena
  e la loro acquisizione costituisce la meccanica principale attorno alla
  quale ruotano le varie modalitá di gioco descritte nei capitoli successivi.
@@ -2602,25 +2602,12 @@ ne sono esclusi sia per ragioni di performance e sia perché queste piattaforme
 \end_layout
 
 \begin_layout Standard
-Tutte le modalitá di gioco sono state concepite considerando un numero di
- partecipanti fisso pari a 
+Il gioco é pensato e bilanciato considerando un numero di partecipanti fisso
+ pari a 
 \emph on
 quattro
 \emph default
- e bilanciate di conseguenza: qualora il numero di giocatori dovesse essere
- inferiore, i veicoli rimanenti verranno scelti e controllati da un'opportuna
- 
-\emph on
-intelligenza artificiale.
- 
-\emph default
-Questi veicoli sono in grado di eseguire semplici compiti quali collezionare
- gli elementi di gioco, esplorare l'ambiente e scontrarsi con gli avversari.
- Per ragioni tecniche il livello di difficoltá dell'
-\emph on
-intelligenza artificiale 
-\emph default
-é unico e non é possibile configurarlo.
+: qualora il numero di giocatori dovesse es
 \end_layout
 
 \begin_layout Standard
@@ -2657,6 +2644,43 @@ in cerca di un'esperienza a giocatore singolo, quanto ad un gruppo di amici
 party-game 
 \emph default
 rapido e competitivo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nelle modalitá a giocatore singolo oppure in quelle online dove il numero
+ di partecipanti dovesse essere inferiore a quattro, i veicoli avversari
+ rimanenti vengono controllati da un'
+\emph on
+intelligenza artificiale.
+ 
+\emph default
+Questi veicoli sono
+\emph on
+ 
+\emph default
+in grado di eseguire semplici compiti quali collezionare gli 
+\emph on
+orb 
+\emph default
+e i 
+\emph on
+potenziamenti 
+\emph default
+in gioco, scontrarsi con gli avversari ed esplorare l'ambiente.
 \end_layout
 
 \begin_layout Subsubsection

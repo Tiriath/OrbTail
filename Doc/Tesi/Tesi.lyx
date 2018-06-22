@@ -2502,18 +2502,18 @@ cross-platform play
 \end_layout
 
 \begin_layout Standard
-Ogni giocatore controlla un veicolo in grado di muoversi agilmente nell'arena,
- collezionando elementi di gioco sferici detti 
+In OrbTail ogni giocatore controlla un veicolo in grado di muoversi agilmente
+ in un'arena, collezionando elementi di gioco sferici detti 
 \emph on
 orb 
 \emph default
 che si agganciano ad esso formando una lunga coda.
- A seguito di uno scontro tra due o piú veicoli, alcuni degli 
+ É possibile utilizzare il proprio veicolo per scontrarsi contro quelli
+ avversari al fine di sottrarre 
 \emph on
-orb 
+orb
 \emph default
-presenti nelle rispettive code verranno staccati in misura proporzionale
- alla forza d'impatto.
+ in misura proporzionale alla direzione e alla forza d'impatto.
  Questi elementi sono inizialmente distribuiti lungo la superfcie dell'arena
  e la loro acquisizione costituisce la meccanica principale attorno alla
  quale ruotano le varie modalitá di gioco descritte nei capitoli successivi.
@@ -2521,11 +2521,26 @@ presenti nelle rispettive code verranno staccati in misura proporzionale
 \emph on
 orb 
 \emph default
-costituiscono una 
+rappresentano la 
 \emph on
 risorsa limitata 
 \emph default
-il cui numero é fissato a 28.
+su cui si concentra 
+\emph on
+l'elemento di sfida
+\emph default
+ trai vari giocatori.
+ A seguito di valutazioni empiriche é stato deciso che il numero di 
+\emph on
+orb 
+\emph default
+per arena é pari a 
+\emph on
+ventotto
+\emph default
+: tale quantitativo garantisce un buon bilanciamento tra fasi di scontro
+ e fasi di raccolta.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2536,44 +2551,47 @@ il cui numero é fissato a 28.
 \end_layout
 
 \begin_layout Standard
-Al fine di rendere l'esperienza videoludica fruibile in tutte le condizioni,
- tutte le modalitá di gioco disponi
-\end_layout
-
-\begin_layout Standard
-Il gioco é fruibile in modalitá 
+Per garantire la massima fruzione del videogioco in varie casistiche, tutte
+ le modalitá di gioco ed arene sono disponibili in configurazione a 
 \emph on
-singleplayer
+giocatore singolo
 \emph default
 , 
 \emph on
-multiplayer locale 
+multigiocatore locale 
 \emph default
-e, qualora fosse disponibile una connessione internet, in modalitá 
+e, qualora dovesse essere disponbile una connessione ad Internet, 
 \emph on
-multiplayer online
+multigiocatore online
 \emph default
- o 
-\emph on
-mista
-\emph default
- locale
-\backslash
-online
-\emph on
 .
- 
-\emph default
-Le modalitá 
+ É inoltre possibile giocare in 
 \emph on
-multiplayer locali 
+modalitá online mista 
 \emph default
-sono disponibili per le sole piattaforme 
+in cui piú giocatori condividono una stessa postazione e giocano con altri
+ giocatori su altri dispositivi.
+ La configurazione 
+\emph on
+multigiocatore locale 
+\emph default
+é gestita tramite 
+\emph on
+splitscreen
+\emph default
+ con numero di partecipanti compreso tra due a quattro.
+ Questa configurazione é disponibile per le sole piattaforme 
 \emph on
 desktop 
 \emph default
 essendo queste le uniche in grado di supportare piú periferiche di input
  contemporaneamente.
+ I dispositivi 
+\emph on
+mobile 
+\emph default
+ne sono esclusi sia per ragioni di performance e sia perché queste piattaforme
+ sono solitamente pensate per essere utilizzate da un unico utente.
 \end_layout
 
 \begin_layout Standard
@@ -2584,70 +2602,61 @@ essendo queste le uniche in grado di supportare piú periferiche di input
 \end_layout
 
 \begin_layout Standard
-Le meccaniche di base sono volutamente semplici, adatte al vasto numero
- di piattaforme supportate e bilanciate in modo che nessuna di queste possa
- essere avvantaggiata durante le sessioni 
+Tutte le modalitá di gioco sono state concepite considerando un numero di
+ partecipanti fisso pari a 
 \emph on
-cross-platform play.
-\end_layout
-
-\begin_layout Standard
-Pur essendo disponibile per tutte le maggiori piattaforme, il design di
- Orbtail é assimilabile ad un'esperienza mobile in quanto caratterizzato
- da 
-\emph on
-match
+quattro
 \emph default
- dalla durata ridotta e meccaniche molto semplici che lo rendono piú adatto
- ad un pubblico di 
-\emph on
-casual gamer.
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Il processo di creazione di una partita 
-\emph on
-online 
-\emph default
-prevede una fase di 
-\emph on
-matchmaking
-\emph default
- che termina quando tutti i giocatori dichiarano esplicitamente di essere
+ e bilanciate di conseguenza: qualora il numero di giocatori dovesse essere
+ inferiore, i veicoli rimanenti verranno scelti e controllati da un'opportuna
  
-\emph on
-pronti.
- 
-\end_layout
-
-\begin_layout Standard
-Nelle modalitá a giocatore singolo oppure in quelle online dove il numero
- di partecipanti dovesse essere inferiore a quattro, i veicoli avversari
- rimanenti vengono controllati da un'
 \emph on
 intelligenza artificiale.
  
 \emph default
-Questi veicoli sono
+Questi veicoli sono in grado di eseguire semplici compiti quali collezionare
+ gli elementi di gioco, esplorare l'ambiente e scontrarsi con gli avversari.
+ Per ragioni tecniche il livello di difficoltá dell'
 \emph on
- 
+intelligenza artificiale 
 \emph default
-in grado di eseguire semplici compiti quali collezionare gli 
+é unico e non é possibile configurarlo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le meccaniche di base sono pensate per essere semplici, al fine di adattarsi
+ ad un vasto pubblico di giocatori su un gran numero di piattaforme differenti
+ e bilanciate in modo da non avvantaggiare nessuna di queste durante le
+ sessioni 
 \emph on
-orb 
+cross-platform play
 \emph default
-e i 
+.
+ La durata ridotta delle sessioni di gioco, solitamente inferiore ai 
 \emph on
-potenziamenti 
+tre minuti
 \emph default
-in gioco, scontrarsi con gli avversari ed esplorare l'ambiente.
+, unita al gran numero di configurazioni disponibili, garantisce una 
+\emph on
+versatilitá 
+\emph default
+del prodotto unica: il gioco é tanto adatto al 
+\emph on
+casual gamer 
+\emph default
+in cerca di un'esperienza a giocatore singolo, quanto ad un gruppo di amici
+ in cerca di un 
+\emph on
+party-game 
+\emph default
+rapido e competitivo.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2655,12 +2664,8 @@ Modalitá di gioco
 \end_layout
 
 \begin_layout Standard
-Il titolo offre 
-\emph on
-tre 
-\emph default
-modalitá di gioco accomunate dalle medesime meccaniche di base ma con condizioni
- di vittoria differenti:
+Il titolo offre diverse modalitá di gioco accomunate dalle medesime meccaniche
+ di base ma con condizioni di vittoria differenti.
 \end_layout
 
 \begin_layout Description
@@ -3596,6 +3601,26 @@ mouse
 sulle piattaforme 
 \emph on
 desktop.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Flusso di gioco
+\end_layout
+
+\begin_layout Standard
+Il processo di creazione di una partita 
+\emph on
+online 
+\emph default
+prevede una fase di 
+\emph on
+matchmaking
+\emph default
+ che termina quando tutti i giocatori dichiarano esplicitamente di essere
+ 
+\emph on
+pronti.
  
 \end_layout
 
