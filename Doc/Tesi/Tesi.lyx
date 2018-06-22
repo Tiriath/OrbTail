@@ -2669,37 +2669,51 @@ Il titolo offre diverse modalitá di gioco accomunate dalle medesime meccaniche
 \end_layout
 
 \begin_layout Description
-Arcade L'obiettivo é fare piú punti possibile entro un tempo limite di 120
- secondi.
+Arcade In questa modalitá l'obiettivo é quello di fare piú punti possibile
+ entro un tempo limite prestabilito di 
+\emph on
+centoventi secondi
+\emph default
+.
  Ogni 
 \emph on
-orb 
+orb
 \emph default
-raccolto aumenta il punteggio del giocatore di 10 punti.
- Questa modalitá é pensata per favorire scontri trai veicoli in modo che
- vi siano sempre 
+ collezionato aumenta di 
+\emph on
+dieci 
+\emph default
+il punteggio del giocatore.
+ Questa modalitá di gioco é pensata per favorire scontri trai veicoli dei
+ partecipanti ed é caratterizzata da un 
+\emph on
+ritmo 
+\emph default
+frenetico per l'intera durata della sfida.
+ Il numero limitato di 
 \emph on
 orb 
 \emph default
-disponibili da collezionare.
- Il numero limitato di questi elementi
+porta i giocatori allo scontro continuo in modo che ve ne sia sempre un
+ discreto numero da collezionare al fine di garantire un flusso costante
+ di punti.
+ In questa modalitá gli scontri trai veicoli possono risultare tanto positivi
+ per l'attaccante quanto per il difensore: una volta collezionati tutti
+ gli 
 \emph on
- 
+orb 
 \emph default
-consente di bilanciare le probabilitá di vittoria di ciacun partecipante
- in quanto, una volta raccolti tutti gli 
+a disposizione, l'unico modo per fare piú punti é liberarne di nuovi, anche
+ a discapito dei propri.
+ Questa meccanica consente di mantenere un elevato grado di sfida in quanto,
+ al termine di ciascuno scontro, ogni giocatore dovrá fare del suo meglio
+ per raccogliere gli 
 \emph on
-orb, 
+orb 
 \emph default
-l'unico modo per fare ulteriori punti
-\emph on
- 
-\emph default
-sará quello di perdere i propri
-\emph on
- orb 
-\emph default
-e ricollezionarli prima che gli avversari possano fare altrettanto.
+staccati prima che gli avversari possano fare altrettanto.
+ Nelle fasi finali i giocatori dovranno inoltre essere piú cauti, valutando
+ gli esiti di ciascun scontro ed evitandone di inutili in caso di vantaggio.
 \end_layout
 
 \begin_layout Description
@@ -2707,32 +2721,80 @@ Longest
 \begin_inset space ~
 \end_inset
 
-Tail Modalitá a tempo in cui il giocatore con la 
+Tail In questa modalitá l'obiettivo é quello di terminare la partita col
+ maggior numero di 
 \emph on
-coda 
+orb 
 \emph default
-piú lunga al termine dei 120 secondi é proclamato vincitore.
- Qualora non dovesse essere possibile determinare un vincitore unico, la
- partita termina in 
+attaccati alla propria coda.
+ Qualora non dovesse essere possibile determinare un vincitore unico al
+ termine dei 
 \emph on
-paritá
+centoventi secondi
 \emph default
-.
- In questa modalitá la maggior parte dell'azione é concentrata nelle fasi
- finali della partita in quanto i giocatori in vantaggio saranno portati
- ad essere piú cauti, cercando di evitare di perdere i propri 
+, la partita termina in 
 \emph on
-orb, 
+paritá.
+ 
 \emph default
-mentre quelli in svantaggio saranno portati ad azioni piú spericolate, sperando
- di ribaltare l'esito della partita.
+Questa modalitá é caratterizzata da un 
+\emph on
+ritmo
+\emph default
+ crescente che culmina in una fase finale particolarmente 
+\emph on
+frenetica 
+\emph default
+ed 
+\emph on
+imprevedibile.
+ 
+\emph default
+L'esito della partita determinato solo dalle condizioni finali di gioco,
+ favorisce la nascita di 
+\emph on
+alleanze implicite 
+\emph default
+e 
+\emph on
+mutevoli 
+\emph default
+trai partecipanti e finalizzate ad intralciare il giocatore attualmente
+ in vantaggio ed impedire che questi vinca.
+ Secondo questa dinamica di gioco, il giocatore con la coda piú lunga sará
+ portato a 
+\emph on
+fuggire 
+\emph default
+dagli avversari, evitando di perdere il vantaggio, laddove tutti gli altri
+ saranno portati a intraprendere azioni piú spericolate, sperando di ribaltare
+ l'esito della partita.
+ Questi due 
+\emph on
+ruoli 
+\emph default
+cambiano rapidamente nel tempo, specialmente nelle fasi finali in cui sará
+ richiesta un'elevata 
+\emph on
+concentrazione
+\emph default
+ e 
+\emph on
+reattivitá.
 \end_layout
 
 \begin_layout Description
-Elimination Modalitá ad eliminazione in cui vince l'ultimo giocatore rimasto
- in gara.
- All'inizio della partita gli orb presenti nel livello vengono equamente
- ripartiti fra tutti i giocatori, formandone la 
+Eliminazione L'obiettivo di questa modalitá é
+\emph on
+ eliminare 
+\emph default
+tutti gli altri partecipanti prima che questi possano fare altrettanto.
+ All'inizio della partita gli 
+\emph on
+orb
+\emph default
+ presenti nel livello vengono equamente ripartiti fra tutti i giocatori,
+ formandone la 
 \emph on
 coda 
 \emph default
@@ -2743,25 +2805,44 @@ iniziale.
 eliminato
 \emph default
 .
- Questa modalitá é caratterizzata da un livello di difficoltá crescente
- in quanto l'eliminazione dei partecipanti permette ai rimanenti di spartirsi
- ulteriori 
+ Questa modalitá é caratterizzata da un elevato grado di 
+\emph on
+competizione
+\emph default
+ e un livello di difficoltá che cresce al diminuire del numero di partecipanti
+ in gara.
+ Ogni volta che un giocatore viene eliminato, i veicoli rimanenti si spartiranno
+ i suoi 
+\emph on
+orb, 
+\emph default
+aumentando le loro possibilitá di sopravvivenza.
+ Come per la precedente modalitá, i partecipanti saranno portati a concentrare
+ i propri sforzi per eliminare il giocatore col maggior numero di 
 \emph on
 orb
 \emph default
-, aumentando le possibilitá di sopravvivenza.
- I giocatori eliminati possono assistere al resto del match attraverso un'opport
-una modalitá 
+ e ció consente di bilanciare il 
 \emph on
-spettatore 
+gameplay
 \emph default
-che consente loro di inquadrare i veicoli rimanenti.
- La modalitá ha durata massima di 180 secondi, scaduti i quali la partita
- termina in 
+ in presenza di giocatori particolarmente forti.
+ I giocatori eliminati possono assistere al resto della sfida attraverso
+ un'opprtuna modalitá 
 \emph on
-paritá
+spettatore
 \emph default
-.
+ che consente loro di inquadrare i partecipanti ancora in vita.
+ Questa modalitá ha inoltre un tempo limite di 
+\emph on
+centottanta secondi
+\emph default
+, scaduti i quali la partita termina in paritá.
+ Questo limite temporale é necessario per incentivare lo scontro trai partecipan
+ti rimanenti, impedendo che la partita si protragga indefinitamente.
+ La durata é piú elevata rispetto alle modalitá precedenti in quanto si
+ vuole aumentare la probabilitá che la partita finisca a causa dell'eliminazione
+ dei partecipanti invece che per esaurimento del tempo di gara.
 \end_layout
 
 \begin_layout Subsubsection
