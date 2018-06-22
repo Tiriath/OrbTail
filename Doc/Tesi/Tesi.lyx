@@ -3442,42 +3442,113 @@ Level design
 \begin_layout Standard
 Il titolo offre 
 \emph on
-tre
+tre 
 \emph default
- livelli differenziati per aspetto, dimensioni e 
+livelli totali, caratterizzati da diverso aspetto e 
 \emph on
 topologia
 \emph default
 .
- I veicoli possono muoversi solamente percorrendo la superficie dell'arena
- ma non possono mai attraversarla in altre direzioni.
- I livello sono pensati per avere una dimensione ragionevolmente piccola
- e numero limitato di ostacoli in modo da favorire gli scontri trai vari
- giocatori.
-\end_layout
-
-\begin_layout Description
-Stadium Il livello é costituito da un'arena circolare piana in cui i veicoli
- non possono superarne i bordi.
- Questo livello é il piú semplice in quanto garantisce piena visibilitá
- degli avversari ed elementi di gioco.
-\end_layout
-
-\begin_layout Description
-Planetarium Arena dalla forma sferica, caratterizzata da una forza di gravitá
- radiale che spinge i veicoli e gli elementi di gioco sulla 
+ Le arene si sviluppano in solidi tridimensionali: i veicoli possono muoversi
+ solamente lungo loro superficie ma non possono mai passarvi attraverso
+ o volare al loro interno.
+ Sebbene le arene si differenziano per dimensione, l'ambiente di gioco rimane
+ sempre ragionevolmente limitato.
+ Le motivazioni di questa scelta di design sono molteplici.
+ In primo luogo la durata limitata delle partite richiede che i giocatori
+ debbano interagire tra di loro piú frequentemente possibile nel breve tempo
+ a disposizione, si vuole evitare quindi il dover attraversare grandi distanze
+ prima di potersi scontrare.
+ In secondo luogo si vogliono evitare strategie particolarmente 
 \emph on
-superficie interna
+elusive 
 \emph default
- della stessa.
- Quest'arena richiede un livello di abilitá piú elevato in quanto la sua
- curvatura nasconderá gran parte degli elementi di gioco.
+in cui un giocatore continua a fuggire dagli avversari senza che questi
+ possano raggiungerlo o 
+\emph on
+accerchiarlo.
+ 
+\emph default
+Questa proprietá é fondamentale per garantire un grado di sfida adeguato
+ nelle modalitá 
+\emph on
+longest tail 
+\emph default
+ed 
+\emph on
+elimination
+\emph default
+.
+ Nel 
+\emph on
+concept 
+\emph default
+originale del gioco era prevista la presenza di elementi attivi ed ostacoli
+ all'interno dei livelli: sebbene questa funzionalitá avrebbe certamente
+ arricchito l'esperienza di gioco, ció avrebbe richiesto lo sviluppo di
+ un'
+\emph on
+intelligenza artificiale 
+\emph default
+piú sofisticata.
+ Questa motivazione, unita ai tempi di sviluppo ridotti ha portato alla
+ rimozione dei suddetti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Di seguito sono riportate le descrizioni delle arene disponibili.
 \end_layout
 
 \begin_layout Description
-Torus Arena caratterizzata da una topologia e campo gravitazionale 
+Stadium Il livello é costituito da un'arena 
 \emph on
-toroidali, 
+emisferica
+\emph default
+ in cui i veicoli possono correre sulla sua base ma non possono superarne
+ i bordi.
+ Questo livello é caratterzzato da una topologia 
+\emph on
+piana 
+\emph default
+e pertanto tutti gli elementi di gioco sono sempre ben visibili.
+ Questa arena é adatta per i nuovi giocatori oppure per gli utenti che preferisc
+ono concentrarsi sull'azione di gioco evitando la difficoltá introdotta
+ da topologie diverse.
+\end_layout
+
+\begin_layout Description
+Planetarium Questa arena é ricavata all'interno di una 
+\emph on
+sfera
+\emph default
+ ed é caratterizzata da una forza di gravitá radiale che spinge i veicoli
+ e tutti gli elementi di gioco sulla 
+\emph on
+superficie interna 
+\emph default
+della stessa.
+ La topologia di questa arena richiede un livello di abilitá maggiore da
+ parte dei partecipanti, in quanto la curvatura limita la visibilitá degli
+ elementi di gioco.
+ La grande estensione superficiale del livello rende inoltre piú complicato
+ individuare la posizione degli avversari e capirne le traiettorie.
+\end_layout
+
+\begin_layout Description
+Torus Arena caratterizzata da una topologia 
+\emph on
+toroidale 
+\emph default
+e campo gravitazionale ad anello
+\emph on
+ 
 \emph default
 in cui gli elementi di gioco sono distribuiti lungo la 
 \emph on
@@ -3488,9 +3559,36 @@ superficie
 interna
 \emph default
 .
- Questo livello rappresenta il massimo grado di sfida per via della topologia
- particolarmente complicata che rende particolarmente arduo valutare correttamen
-te traiettorie e distanze.
+ Questo livello costituisce il massimo grado di sfida offerto dal gioco.
+ La topologia complicata rende particolarmente arduo valutare correttamente
+ le distanze degli oggetti e prevedere le traiettorie degli avversari.
+ La guida dei veicoli all'interno di quest'arena richiede inoltre un piú
+ elevato grado di precisione in quanto non é sempre semplice individuare
+ il percorso migliore per raggiungere un determinato obiettivo.
+\end_layout
+
+\begin_layout Standard
+Durante lo sviluppo sono state inoltre valutate topolgie 
+\emph on
+convesse 
+\emph default
+(come ad esempio la superficie esterna di una 
+\emph on
+sfera 
+\emph default
+o di un 
+\emph on
+toro
+\emph default
+), tuttavia a paritá di dimensione con la controparte 
+\emph on
+concava
+\emph default
+, il raggio di curvatura risultava tale da ridurre drasticamente il numero
+ di elementi di gioco a schermo e rendere ancora piú complicato individuare
+ avversari ed oggetti.
+ A seguito di queste considerazioni é stato deciso di evitare l'aggiunta
+ di suddette topologie.
 \end_layout
 
 \begin_layout Subsubsection
