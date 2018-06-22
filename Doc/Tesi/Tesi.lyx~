@@ -2540,7 +2540,21 @@ ventotto
 \emph default
 : tale quantitativo garantisce un buon bilanciamento tra fasi di scontro
  e fasi di raccolta.
- 
+ All'interno dell'arena sono inoltre distribuiti degli elementi di gioco
+ rari, detti 
+\emph on
+core,
+\emph default
+ che garantiscono al giocatore un potenziamento casuale temporaneo.
+ Lo scopo di questi potenziamenti é quello di aggiungere 
+\emph on
+profonditá 
+\emph default
+al 
+\emph on
+gameplay 
+\emph default
+e scuotere i normali equilibri di gioco.
 \end_layout
 
 \begin_layout Standard
@@ -2666,6 +2680,11 @@ Modalitá di gioco
 \begin_layout Standard
 Il titolo offre diverse modalitá di gioco accomunate dalle medesime meccaniche
  di base ma con condizioni di vittoria differenti.
+ Le modalitá di gioco sono rimaste largamente immutate rispetto al 
+\emph on
+concept 
+\emph default
+originale del 2014.
 \end_layout
 
 \begin_layout Description
@@ -2842,11 +2861,7 @@ centottanta secondi
 ti rimanenti, impedendo che la partita si protragga indefinitamente.
  La durata é piú elevata rispetto alle modalitá precedenti in quanto si
  vuole aumentare la probabilitá che la partita finisca a causa dell'eliminazione
- dei partecipanti invece che per 
-\emph on
-timeout
-\emph default
-.
+ dei partecipanti invece che per esaurimento del tempo di gara.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2854,90 +2869,170 @@ Veicoli
 \end_layout
 
 \begin_layout Standard
-I giocatori hanno a disposizione diversi veicoli, ciascuno di quali caratterizza
-to da un diverso stile di guida e adatto , adatti a diverse strategie o
- tipologia di giocatori.
-\end_layout
-
-\begin_layout Standard
-Il gioco presenta 
+Il giocatore ha a disposizione 
 \emph on
 sei 
 \emph default
-veicoli caratterizzati da un aspetto estetico unico e stili di guida diversi.
- I parametri che ne influenzano le prestazioni sono tre:
+veicoli caratterizzati da aspetto e stili di guida diversi.
+ I veicoli possono 
+\emph on
+accelerare, frenare 
+\emph default
+e 
+\emph on
+sterzare
+\emph default
+; l'uso prolungato del freno consente al veicolo di 
+\emph on
+accelerare 
+\emph default
+in 
+\emph on
+retromarcia
+\emph default
+.
+ I diversi stili di guida consentono ai veicoli di adattarsi a diverse tipologie
+ di giocatori o strategie e sono determinati da tre 
+\emph on
+parametri
+\emph default
+ fondamentali:
 \end_layout
 
 \begin_layout Description
-Velocitá Rappresenta la massima velocitá raggiungibile dal veicolo.
+Velocitá Rappresenta la massima velocitá raggiungibile dal veicolo, influenzando
+ne il 
+\emph on
+potenziale offensivo, difensivo 
+\emph default
+e 
+\emph on
+tattico
+\emph default
+.
  Un valore elevato di 
 \emph on
 velocitá 
 \emph default
-consente di sottrarre piú 
+consente di staccare piú 
 \emph on
 orb 
 \emph default
-agli avversari, raggiungere piú velocemente obiettivi di gioco e allontanarsi
- rapidamente dai veicoli avversari vanificando tentativi offensivi.
+dagli avversari a seguito di uno scontro, raggiungere piú velocemente obettivi
+ di gioco e allontanarsi rapidamente dai veicoli avversari vanificando eventuali
+ tentativi offensivi.
 \end_layout
 
 \begin_layout Description
-Reattivitá Rappresenta la massima accelerazione del veicolo.
- Una 
+Accelerazione Rappresenta la massima accelerazione del veicolo.
+ Un valore piú elevato consente al veicolo di raggiungere velocitá maggiori
+ sulle brevi distanze, causando danni maggiori in ambienti ristretti e minimizza
+ndo le circostanze in cui il veicolo si trova fermo e quindi facilmente
+ bersagliabile.
+ Questo parametro ha valenza principalmente 
 \emph on
-reattivitá 
+tattica 
 \emph default
-maggiore consente al veicolo di raggiungere velocitá piú elevate sulle brevi
- distanze, causando danni maggiori in ambienti ristretti e minimizzando
- le circostanze in cui il veicolo si trova fermo e quindi facilmente bersagliabi
-le.
+e, piú limitatamente, 
+\emph on
+offensiva
+\emph default
+.
 \end_layout
 
 \begin_layout Description
-Manovrabilitá Rappresenta la massima velocitá di curvatura.
+Manovrabilitá Rappresenta la massima velocitá a cui il veicolo puó sterzare.
  Veicoli caratterizzati da elevata 
 \emph on
 manovrabilitá 
 \emph default
-sono facilitati nel cambio di direzione, garantendo una migliore efficienza
- durante il collezionamento di 
+sono facilitati nel cambio di direzione e pertanto sono piú efficienti durante
+ le fasi di raccolta di elementi di gioco quali 
 \emph on
-orb 
+orb
 \emph default
-e 
-\emph on
-potenziamenti
-\emph default
- e consentendo una maggiore precisione durante gli scontri o le schivate.
+.
+ La possibilitá di cambiare rapidamente traiettoria consente inoltre una
+ maggiore precisione durante gli scontri o le schivate.
 \end_layout
 
 \begin_layout Standard
-Di seguito sono riportate le configurazioni per ciascun veicolo.
+Il design originale di OrbTail prevedeva due parametri aggiuntivi, 
+\emph on
+attacco 
+\emph default
+e 
+\emph on
+difesa, 
+\emph default
+i quali influivano direttamente sull'esito degli scontri e il numero di
+ 
+\emph on
+orb 
+\emph default
+staccati.
+ Dopo varie iterazioni é stato deciso di rimuovere questi due parametri
+ in quanto il loro contributo risultava impercettibile durante le sessioni
+ e perché l'interazione con il parametro 
+\emph on
+velocitá 
+\emph default
+rendeva difficile differenziare e bilanciare i vari veicoli.
+ Questi due parametri sono utilizzati internamente per determinare l'esito
+ degli scontri trai veicoli ma sono configurati allo stesso modo su ogni
+ veicolo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Di seguito sono riportate le descrizioni dettagliate di tutti i veicoli
+ disponibili.
  I parametri sono stati configurati in maniera 
 \emph on
 euristica
 \emph default
- al fine di adattarsi a diversi stili di gioco e bilanciati in modo da non
- avvantaggiare nessun veicolo.
-\end_layout
+ al fine di esaltare diversi stili di gioco e bilanciati in modo da non
+ avvantaggiare nessun veicolo (Tab.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:VehicleParam"
 
-\begin_layout Description
-Flare Veicolo caratterizzato da uno stile di guida 
-\emph on
-bilanciato
-\emph default
-, adatto per i giocatori novizi.
-\end_layout
+\end_inset
 
-\begin_layout Standard
+)
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
+<lyxtabular version="3" rows="7" columns="4">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Veicolo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2948,40 +3043,18 @@ Velocitá
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
-Reattivitá
+Accelerazione
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2992,11 +3065,242 @@ Manovrabilitá
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-7/10
+
+\series bold
+Flare
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+•••••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+•••••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+•••••••
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Flash
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••••••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+•••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Glow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••••••••
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Radiance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••••••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Shine
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+•••••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Sparkle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••••••
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+••••••••
 \end_layout
 
 \end_inset
@@ -3007,6 +3311,38 @@ Manovrabilitá
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:VehicleParam"
+
+\end_inset
+
+Parametri dei veicoli
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Flare Caratterizzato da uno stile di guida 
+\emph on
+bilanciato
+\emph default
+, questo veicolo é pensato per adattarsi ad ogni tipo di strategia.
+ Indicato per i nuovi giocatori.
 \end_layout
 
 \begin_layout Description
@@ -3014,91 +3350,21 @@ Manovrabilitá
 \series bold
 Flash 
 \series default
-Veicolo dotato di un elevato 
+Dotato di un'
+\emph on
+elevata
+\emph default
+ 
+\emph on
+velocitá
+\emph default
+, questo veicolo esprime tutto il suo 
 \emph on
 potenziale offensivo 
 \emph default
-sulla lunga distanza.
- Adatto a giocatori esperti.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top">
-<column alignment="left" valignment="top">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Velocitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-10/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Reattivitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Manovrabilitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
+sulla lunga distanza sacrificando gran parte della manovrabilitá.
+ Particolarmente adatto per i giocatori piú esperti che prediligono strategie
+ ad alto rischio ed alto guadagno.
 \end_layout
 
 \begin_layout Description
@@ -3106,181 +3372,33 @@ Manovrabilitá
 \series bold
 Glow 
 \series default
-Veicolo ottimizzato per il collezionamento di 
+Questo veicolo é dotato di un'elevata mobilitá e ció lo rende particolarmente
+ adatto per collezionare 
 \emph on
 orb 
 \emph default
 e 
 \emph on
-potenziamenti
+core.
+ 
 \emph default
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top">
-<column alignment="left" valignment="top">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Velocitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Reattivitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Manovrabilitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-10/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
+La bassa velocitá é compensata dalla facilitá di accesso ai potenziamenti
+ e ció lo rende adatto ai giocatori che prediligono uno stile di gioco piú
+ strategico.
 \end_layout
 
 \begin_layout Description
-Radiance Veicolo pensato per la 
+Radiance L'elevata accelerazione e velocitá di questo veicolo lo rendono
+ particolarmente efficace in 
 \emph on
-mischia
+mischia.
+
 \emph default
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top">
-<column alignment="left" valignment="top">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Velocitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Reattivitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-10/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Manovrabilitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
+ Adatto
+\emph on
+ 
+\emph default
+per strategie aggressive sulle medie e brevi distanze.
 \end_layout
 
 \begin_layout Description
@@ -3290,174 +3408,24 @@ Shine Veicolo bilanciato, sacrifica parte della manovrabilitá per un piú
  potenziale offensivo
 \emph default
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top">
-<column alignment="left" valignment="top">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Velocitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-8/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Reattivitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Manovrabilitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
+ Adatto a giocatori intermedi.
 \end_layout
 
 \begin_layout Description
-Sparkle Veicolo dall'elevato potenziale 
+Sparkle Veicolo ottimizzato per la 
 \emph on
-difensivo, 
+mobilitá
 \emph default
-adatto per 
+ e caratterizzato dall'elevato potenziale 
 \emph on
-schivate.
-\end_layout
+difensivo.
 
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top">
-<column alignment="left" valignment="top">
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Velocitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Reattivitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-8/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Manovrabilitá
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-8/10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
+\emph default
+ Consente di 
+\emph on
+schivare 
+\emph default
+molto facilmente gli avversari.
 \end_layout
 
 \begin_layout Subsubsection
