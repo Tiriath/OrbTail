@@ -3890,17 +3890,16 @@ Nella versione originale erano previsti alcuni poteri che avevano dagli
 negativi 
 \emph default
 sul veicolo del giocatore.
- L'intento era quello di introdurre un fattore 
+ L'intento era quello di introdurre una meccanica simile ad una 
 \emph on
-casuale 
+scommessa
 \emph default
-grazie al quale il veicolo si accingeva a raccogliere il potenziamento 
-\emph on
-scommetteva 
-\emph default
-sull'esito della raccolta.
+, secondo la quale il giocatore che collezionava un potenziamento non era
+ sempre sicuro di ottenerne un beneficio.
  Nella versione finale queste meccaniche sono state rimosse al fine di promuover
-e ancor di piú l'uso di potenziamenti ed armi.
+e ancor di piú l'uso di potenziamenti ed armi e di ridurre il fattore 
+\emph on
+fortuna.
 \end_layout
 
 \begin_layout Subsubsection
