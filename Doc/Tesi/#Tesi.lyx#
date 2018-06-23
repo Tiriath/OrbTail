@@ -1615,7 +1615,7 @@ reference "fig:CTR"
 
 \end_inset
 
-) e due multigiocatore locale in splitscreen 
+) e due multigiocatore locale in splitscreen.
 \begin_inset Float figure
 wide false
 sideways false
@@ -1653,8 +1653,7 @@ Crash Team Racing
 
 \end_inset
 
-.
- Nella modalitá 
+Nella modalitá 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1676,7 +1675,7 @@ ed altri oggetti necessari per poter proseguire con la trama.
 \emph on
 mondi
 \emph default
-, ciascuno contenente quattro tracciati, al termine del quale viene richiesto
+, ciascuno contenente quattro tracciati, al termine dei quali viene richiesto
  di fronteggiare un 
 \emph on
 boss 
@@ -2131,7 +2130,7 @@ Dropshot
 \begin_layout Standard
 Il gioco presenta inoltre una modalitá 
 \emph on
-competitiva 
+competitiva online 
 \emph default
 basata sulle regole principali le cui 
 \emph on
@@ -2142,7 +2141,8 @@ hanno durata pari ad alcuni mesi.
 \emph on
 categorie, 
 \emph default
-in funzione del proprio livello di abilitá, suddivise a loro volta in quattro
+in funzione del proprio livello di abilitá, e suddivise a loro volta in
+ quattro
 \emph on
  divisioni
 \emph default
@@ -2457,13 +2457,20 @@ multiplayer
 \emph on
 locale 
 \emph default
-cooperativa a visuale condivisa, caratterizzata dalla presenza di arene
+cooperativa a visuale condivisa, caratterizzata dalla sola presenza di arene
  bidimensionali e un numero di giocatori compreso tra due e quattro, ed
  una 
 \emph on
 online competitiva 
 \emph default
 fino ad un massimo di otto giocatori.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -2533,7 +2540,10 @@ ventotto
 \emph default
 : tale quantitativo garantisce un buon bilanciamento tra fasi di scontro
  e fasi di raccolta.
- All'interno dell'arena sono inoltre distribuiti degli elementi di gioco
+\end_layout
+
+\begin_layout Standard
+All'interno dell'arena sono inoltre distribuiti degli elementi di gioco
  rari, detti 
 \emph on
 core,
@@ -2598,7 +2608,7 @@ essendo queste le uniche in grado di supportare piú periferiche di input
 mobile 
 \emph default
 ne sono esclusi sia per ragioni di performance e sia perché queste piattaforme
- sono solitamente pensate per essere utilizzate da un unico utente.
+ sono solitamente ottimizzate per l'interazione da parte di un unico utente.
 \end_layout
 
 \begin_layout Standard
@@ -2632,18 +2642,25 @@ intelligenza artificiale
 \emph on
 intelligenza artificiale 
 \emph default
-era solo disponibile nella modalitá a giocatore singolo: era pertanto possibile
+era disponibile nella sola modalitá a giocatore singolo: era pertanto possibile
  giocare sessioni 
 \emph on
 online 
 \emph default
 con un numero inferiore di giocatori.
- Al fine di garantire una piú alta consistenza tra le modalitá a giocatore
- singolo e quelle multigiocatore, é stato deciso di popolare tramite 
+ Questa limitazione é stata 
 \emph on
-intelligenze artificiali 
+rimossa 
 \emph default
-anche le sessioni online.
+al fine di garantire una piú elevata consistenza tra le esperienze 
+\emph on
+singleplayer 
+\emph default
+e
+\emph on
+ multiplayer 
+\emph default
+e, allo stesso tempo, aumentare la difficoltá delle sessioni online.
 \end_layout
 
 \begin_layout Standard
@@ -2988,8 +3005,8 @@ velocitá
 \emph default
 rendeva difficile differenziare e bilanciare i vari veicoli.
  Questi due parametri sono utilizzati internamente per determinare l'esito
- degli scontri trai veicoli ma sono configurati allo stesso modo su ogni
- veicolo.
+ degli scontri trai veicoli ma sono configurati allo stesso modo su ciascuno
+ di essi.
 \end_layout
 
 \begin_layout Standard
@@ -3444,6 +3461,32 @@ schivare
 tentativi offensivi da parte degli avversari.
 \end_layout
 
+\begin_layout Standard
+Al fine di facilitare il riconoscimento dei partecipanti in gara, ciascun
+ veicolo prevede quattro differenti 
+\emph on
+livree, 
+\emph default
+caratterizzate da un aspetto e colore diverso.
+ La livrea associata al veicolo viene automaticamente selezionata dal sistema
+ in funzione dell'indice del giocatore all'interno della partita: il primo
+ giocatore avrá una 
+\emph on
+livrea rossa
+\emph default
+, il secondo una 
+\emph on
+blu
+\emph default
+ e gli altri due rispettivamente una 
+\emph on
+livrea verde 
+\emph default
+e una 
+\emph on
+gialla.
+\end_layout
+
 \begin_layout Subsubsection
 Level design
 \end_layout
@@ -3522,7 +3565,7 @@ emisferica
 \emph default
  in cui i veicoli possono correre sulla sua base ma non possono superarne
  i bordi.
- Questo livello é caratterzzato da una topologia 
+ Questo livello é caratterizzato da una topologia 
 \emph on
 piana 
 \emph default
@@ -3806,6 +3849,8 @@ o nelle fasi finali di
 longest tail
 \emph default
  in quanto consente di ribaltare le sorti della partita.
+ Il raggio di curvatura limitato di quest'arma consente ai giocatori piú
+ abili di schivare il missile, in attesa che questi esploda automaticamente.
 \end_layout
 
 \begin_layout Description
@@ -3906,9 +3951,8 @@ scommessa
 , secondo la quale il giocatore che collezionava un potenziamento non era
  sempre sicuro di ottenerne un beneficio.
  Nella versione finale queste meccaniche sono state rimosse al fine di promuover
-e ancor di piú l'uso di potenziamenti ed armi e di ridurre il fattore 
-\emph on
-fortuna.
+e ancor di piú l'uso di potenziamenti ed in generale perché risultavano
+ ingiustificatamente punitive.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4033,12 +4077,130 @@ mouse
 \end_layout
 
 \begin_layout Subsubsection
+Interfaccia utente
+\end_layout
+
+\begin_layout Standard
+L'interfaccia utente é pensata per essere poco intrusiva: gli elementi dell'
+\emph on
+HUD 
+\emph default
+sono ridotti al minimo e consentono di avere sempre una buona visione del
+ campo di gioco, ció é particolarmente importante sui dispositivi 
+\emph on
+mobile 
+\emph default
+caratterizzati solitamente da schermi dalle dimensioni ridotte.
+\end_layout
+
+\begin_layout Standard
+I menu all'interno del gioco sono caratterizzati da elementi sempre ben
+ visibili, sono escluse pertanto liste a scorrimento o menú con un gran
+ numero di voci.
+ Questa tipologia di menú é necessaria per facilitare l'interazione tramite
+ 
+\emph on
+touchscreen
+\emph default
+.
+ Laddove ci si aspetta che l'utente faccia piú scelte (ad esempio modalitá
+ di gioco, arena e veicolo), le singole scelte sono suddivise su piú pagine.
+\end_layout
+
+\begin_layout Standard
+La 
+\emph on
+HUD 
+\emph default
+all'interno di ogni sessione consiste di un 
+\emph on
+timer di gara 
+\emph default
+che mostra il tempo rimanente prima della conclusione del match e altri
+ 
+\emph on
+quattro 
+\emph default
+elementi colorati finalizzati a mostrare il punteggio o la lunghezza della
+ coda di ciascun partecipante a seconda della modalitá di gioco.
+ Un elemento grafico apposito consente di visualizzare il 
+\emph on
+potenziamento 
+\emph default
+o l'
+\emph on
+arma 
+\emph default
+a disposizione del partecipante.
+ Un tasto consentirá al giocatore di abbandonare la partita e ritornare
+ al menú principale.
+ Per evitare pressioni accidentali sará necessario interagire due volte
+ in rapida successione al fine di confermare l'azione.
+\end_layout
+
+\begin_layout Standard
+Il gioco prevede infine un elemento tridimensionale finalizzato ad aiutare
+ il giocatore ad orientarsi meglio.
+ Questo elemento ha funzione di 
+\emph on
+bussola 
+\emph default
+e consente di visualizzare la direzione relativa dei veicoli avversari rispetto
+ a quella del giocatore.
+\end_layout
+
+\begin_layout Subsubsection
 Flusso di gioco
 \end_layout
 
 \begin_layout Standard
-Il flusso di gioco é pensato per portare l'utente rapidamente in partita,
- riducendo al minimo il numero di interazioni necessarie.
+Il flusso di gioco é pensato per portare rapidamente l'utente in partita,
+ riducendo al minimo il numero di interazioni necessarie (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailFlow"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/orbtail_flow.jpg
+	lyxscale 20
+	height 9cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailFlow"
+
+\end_inset
+
+Flusso di gioco
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
  Il flusso prevede la selezione della 
 \emph on
 modalitá di gioco, 
@@ -4112,75 +4274,33 @@ intelligenze artificiali
 \emph default
 finché il numero di partecipanti non diventa esattamente 
 \emph on
-quattro.
- 
+quattro
 \emph default
-Un breve conto alla rovescia porterá i giocatori in gara.
-\end_layout
-
-\begin_layout Standard
-Al termine della sfida, il sistema consente al giocatore di ritornare al
- menú principale.
-\end_layout
-
-\begin_layout Standard
-Di seguito é riportato uno scherma riassuntivo del flusso di gioco:
-\end_layout
-
-\begin_layout Subsubsection
-Interfaccia utente
-\end_layout
-
-\begin_layout Standard
-All'inizio di ogni partita é prevista una rapida schermata di 
+.
+ Un breve conto alla rovescia porterá i giocatori in gara.
+ All'inizio di ogni partita é prevista una schermata di 
 \emph on
 tutorial 
 \emph default
-che spiega le regole della modalitá di gioco attuale.
- La partita inizia una volta che tutti i giocatori hanno chiuso la schermata.
-\end_layout
-
-\begin_layout Standard
-Il gioco é garatterizzato da un'interfaccia utente minimale.
- All'interno di una sessione di gioco saranno solamente visibili i punteggi
- attuali dei vari giocatori durante la modalitá 
-\begin_inset Quotes fld
-\end_inset
-
-arcade
-\begin_inset Quotes frd
-\end_inset
-
- oppure la lunghezza della coda per le modalitá 
-\begin_inset Quotes fld
-\end_inset
-
-longest tail
-\begin_inset Quotes frd
-\end_inset
-
- ed 
-\begin_inset Quotes fld
-\end_inset
-
-elimination
-\begin_inset Quotes frd
-\end_inset
-
- e il timer di gara.
- Un'elemento grafico apposito permette di visualizzare il potenziamento
- attivo (se presente).
- Un altro elemento é usato per uscire dalla partita.
-\end_layout
-
-\begin_layout Standard
-Al fine di aiutare il giocatore ad orientarsi meglio, é prevista la presenza
- di un elemento a schermo che funge da 
+che spiega le regole della modalitá di gioco selezionata ed i potenziamenti
+ disponibili.
+ Questa schermata ha la duplice funzione di 
 \emph on
-bussola
+tutorial 
 \emph default
-: il suo scopo é quello di indicare la posizione tridimensionale degli altri
- veicoli rispetto al veicolo del giocatore.
+e di punto di sincronizzazione, in attesa che tutti gli altri giocatori
+ online abbiano caricato il livello.
+ La partita inizia una volta che tutti i giocatori hanno congedato la schermata.
+ 
+\end_layout
+
+\begin_layout Standard
+Gli utenti possono tornare al menú principale una volta terminata la partita
+ oppure 
+\emph on
+abbandonarla 
+\emph default
+in qualsiasi momento.
 \end_layout
 
 \begin_layout Standard
