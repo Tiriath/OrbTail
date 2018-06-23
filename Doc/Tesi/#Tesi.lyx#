@@ -2466,13 +2466,6 @@ online competitiva
 fino ad un massimo di otto giocatori.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 OrbTail
 \end_layout
@@ -3890,17 +3883,16 @@ Nella versione originale erano previsti alcuni poteri che avevano dagli
 negativi 
 \emph default
 sul veicolo del giocatore.
- L'intento era quello di introdurre un fattore 
+ L'intento era quello di introdurre una meccanica simile ad una 
 \emph on
-casuale 
+scommessa
 \emph default
-grazie al quale il veicolo si accingeva a raccogliere il potenziamento 
-\emph on
-scommetteva 
-\emph default
-sull'esito della raccolta.
+, secondo la quale il giocatore che collezionava un potenziamento non era
+ sempre sicuro di ottenerne un beneficio.
  Nella versione finale queste meccaniche sono state rimosse al fine di promuover
-e la raccolt
+e ancor di piú l'uso di potenziamenti ed armi e di ridurre il fattore 
+\emph on
+fortuna.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3908,51 +3900,103 @@ Interazione utente
 \end_layout
 
 \begin_layout Standard
-Al fine di garantire una migliore compatibilitá con tutte le piattaforme
- supportate, il gioco presenta un numero ridotto di controlli.
- Per le piattaforme 
+OrbTail é caratterizzato da un numero molto limitato di controlli ed azioni
+ che l'utente puó effettuare e ció lo rende facilmente fruibile su tutte
+ le piattaforme su cui é disponibile.
+\end_layout
+
+\begin_layout Standard
+Per le piattaforme 
 \emph on
 mobile 
 \emph default
-il controllo del veicolo é affidato all'
+l'interazione utente all'interno del menú é affidata al 
 \emph on
-accelerometro, 
+touch, 
 \emph default
-in questo modo non é necessario appoggiare le mani sullo schermo, riducendo
- il campo visivo.
- L'unico momento in cui é previsto l'uso del 
+a differenza della gara vera e propria in cui, per evitare che l'utente
+ possa coprire gran parte dello schermo con le proprie mani, i controlli
+ sono affidati all'
 \emph on
-touch 
+accelerometro
 \emph default
-é quando il giocatore attiva i potenziamenti.
+.
+ L'inclinazione del dispositivo consente al veicolo di 
+\emph on
+accelerare 
+\emph default
+oppure di andare in 
+\emph on
+retromarcia
+\emph default
+.
+ Piegando il dispositivo a destra o sinistra é inoltre possibile 
+\emph on
+sterzare
+\emph default
+ in misura tanto maggiore quanto piú grande l'angolo d'inclinazione.
+ L'attivazione dei potenziamenti e delle armi é invece affidata ad un semplice
+ 
+\emph on
+tocco
+\emph default
+ dello schermo in qualsiasi punto.
 \end_layout
 
 \begin_layout Standard
-Su piattaforme mobile il controllo del veicolo é gestito tramite 
+La versione 
 \emph on
-tastiera 
+desktop
 \emph default
-oppure, per supportare piú giocatori in locali, é possibile utilizzare fino
- a quattro 
+, a differenza di quella 
+\emph on
+mobile
+\emph default
+, deve inoltre essere interagibile da piú partecipanti contemporaneamente
+ pertanto vi é il supporto per 
+\emph on
+tastiera, mouse 
+\emph default
+e fino a 
+\emph on
+quattro pad
+\emph default
+.
+ Tramite tastiera é sufficiente usare le 
+\emph on
+frecce direzionali 
+\emph default
+per muovere il veicolo e la 
+\emph on
+barra spaziatrice 
+\emph default
+per attivare i poteri.
+ Questi tasti sono liberamente configurabili da parte dell'utente.
+ L'interazione tramite 
 \emph on
 pad 
 \emph default
-contemporaneamente.
-\end_layout
-
-\begin_layout Standard
-L'interazione all'interno del menú é invece affidata al 
+prevede l'uso dei 
 \emph on
-touch 
+grilletti 
 \emph default
-sui dispositivi mobili oppure al 
+posteriori per accelerare
 \emph on
-mouse 
+, 
 \emph default
-sulle piattaforme 
+frenare
 \emph on
-desktop.
  
+\emph default
+o attivare la retromarcia, lo 
+\emph on
+stick sinistro 
+\emph default
+per sterzare e un 
+\emph on
+tasto 
+\emph default
+apposito per attivare
 \end_layout
 
 \begin_layout Subsubsection
