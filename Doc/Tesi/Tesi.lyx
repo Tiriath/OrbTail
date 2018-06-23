@@ -2628,6 +2628,29 @@ Questi veicoli sono in grado di eseguire semplici compiti quali collezionare
 intelligenza artificiale 
 \emph default
 é unico e non é possibile configurarlo.
+ Nel design originale di gioco l'
+\emph on
+intelligenza artificiale 
+\emph default
+era solo disponibile nella modalitá a giocatore singolo: era pertanto possibile
+ giocare sessioni 
+\emph on
+online 
+\emph default
+con un numero inferiore di giocatori.
+ Questa limitazione é stata 
+\emph on
+rilassata 
+\emph default
+al fine di garantire una piú elevata consistenza tra le esperienze 
+\emph on
+singleplayer 
+\emph default
+e
+\emph on
+ multiplayer 
+\emph default
+e, allo stesso tempo, aumentare la difficoltá delle sessioni online.
 \end_layout
 
 \begin_layout Standard
@@ -4021,19 +4044,136 @@ Flusso di gioco
 \end_layout
 
 \begin_layout Standard
-Il processo di creazione di una partita 
+Il flusso di gioco é pensato per portare l'utente rapidamente in partita,
+ riducendo al minimo il numero di interazioni necessarie (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailFlow"
+
+\end_inset
+
+).
+ Il flusso prevede la selezione della 
 \emph on
-online 
+modalitá di gioco, 
 \emph default
-prevede una fase di 
+dell'
+\emph on
+arena 
+\emph default
+e del 
+\emph on
+veicolo, 
+\emph default
+dopodiché l'utente sará portato in un'apposita schermata di 
 \emph on
 matchmaking
 \emph default
- che termina quando tutti i giocatori dichiarano esplicitamente di essere
- 
+ in cui il sistema provvederá a creare la 
 \emph on
-pronti.
- 
+lobby
+\emph default
+.
+ La selezione della modalitá di gioco e dell'arena é 
+\emph on
+opzionale
+\emph default
+: qualora l'utente non dovesse esprimere alcuna preferenza, il sistema provveder
+á automaticamente a riempire una delle 
+\emph on
+lobby 
+\emph default
+esistenti.
+ Durante la selezione del veicolo sará possibile aggiungere piú giocatori
+ locali alla partita (attraverso un opportuno tasto sul 
+\emph on
+pad
+\emph default
+) ed unirsi ad una 
+\emph on
+lobby 
+\emph default
+in gruppo.
+ Qualora non dovesse esserci nessuna 
+\emph on
+lobby 
+\emph default
+disponibile, il sistema provvederá a crearne una nuova a cui altri utenti
+ online potranno liberamente accedervi.
+ Questo processo non é necessario per la modalitá a 
+\emph on
+giocatore singolo
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Affinché la partita possa iniziare, 
+\emph on
+tutti
+\emph default
+ i giocatori in 
+\emph on
+lobby 
+\emph default
+devono esplicitamente dichiarare di essere 
+\emph on
+pronti
+\emph default
+: il sistema provvederá ad aggiungere 
+\emph on
+intelligenze artificiali 
+\emph default
+finché il numero di partecipanti non diventa esattamente 
+\emph on
+quattro
+\emph default
+.
+ Un breve conto alla rovescia porterá i giocatori in gara.
+ Gli utenti possono tornare al menú principale una volta terminata la partita
+ oppure 
+\emph on
+abbandonarla 
+\emph default
+in qualsiasi momento.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/orbtail_flow.jpg
+	lyxscale 20
+	height 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailFlow"
+
+\end_inset
+
+Flusso di gioco
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection

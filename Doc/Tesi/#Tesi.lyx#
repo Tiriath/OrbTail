@@ -2628,6 +2628,22 @@ Questi veicoli sono in grado di eseguire semplici compiti quali collezionare
 intelligenza artificiale 
 \emph default
 é unico e non é possibile configurarlo.
+ Nel design originale di gioco l'
+\emph on
+intelligenza artificiale 
+\emph default
+era solo disponibile nella modalitá a giocatore singolo: era pertanto possibile
+ giocare sessioni 
+\emph on
+online 
+\emph default
+con un numero inferiore di giocatori.
+ Al fine di garantire una piú alta consistenza tra le modalitá a giocatore
+ singolo e quelle multigiocatore, é stato deciso di popolare tramite 
+\emph on
+intelligenze artificiali 
+\emph default
+anche le sessioni online.
 \end_layout
 
 \begin_layout Standard
@@ -3902,7 +3918,7 @@ Interazione utente
 \begin_layout Standard
 OrbTail é caratterizzato da un numero molto limitato di controlli ed azioni
  che l'utente puó effettuare e ció lo rende facilmente fruibile su tutte
- le piattaforme su cui é disponibile.
+ le piattaforme supportate.
 \end_layout
 
 \begin_layout Standard
@@ -3952,17 +3968,21 @@ desktop
 \emph on
 mobile
 \emph default
-, deve inoltre essere interagibile da piú partecipanti contemporaneamente
- pertanto vi é il supporto per 
+, deve essere inoltre interagibile da piú partecipanti contemporaneamente
+ ed é pertanto previsto il supporto per 
 \emph on
-tastiera, mouse 
+tastiere, mouse 
 \emph default
 e fino a 
 \emph on
 quattro pad
 \emph default
 .
- Tramite tastiera é sufficiente usare le 
+ Tramite 
+\emph on
+tastiera
+\emph default
+ é sufficiente usare le 
 \emph on
 frecce direzionali 
 \emph default
@@ -3970,7 +3990,7 @@ per muovere il veicolo e la
 \emph on
 barra spaziatrice 
 \emph default
-per attivare i poteri.
+per attivare i potenziamenti.
  Questi tasti sono liberamente configurabili da parte dell'utente.
  L'interazione tramite 
 \emph on
@@ -3996,7 +4016,20 @@ per sterzare e un
 \emph on
 tasto 
 \emph default
-apposito per attivare
+apposito per attivare i potenziamenti.
+ L'assenza di gradi di libertá da parte della tastiera impedisce all'utente
+ di poter guidare con precisione il veicolo e ció rende il titolo piú adatto
+ all'interazione tramite 
+\emph on
+pad
+\emph default
+.
+ É inoltre possibile interagire con tutti gli elementi dell'interfaccia
+ grafica (in menú e in gara) attraverso il 
+\emph on
+mouse
+\emph default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4004,19 +4037,94 @@ Flusso di gioco
 \end_layout
 
 \begin_layout Standard
-Il processo di creazione di una partita 
+Il flusso di gioco é pensato per portare l'utente rapidamente in partita,
+ riducendo al minimo il numero di interazioni necessarie.
+ Il flusso prevede la selezione della 
 \emph on
-online 
+modalitá di gioco, 
 \emph default
-prevede una fase di 
+dell'
+\emph on
+arena 
+\emph default
+e del 
+\emph on
+veicolo, 
+\emph default
+dopodiché l'utente sará portato in un'apposita schermata di 
 \emph on
 matchmaking
 \emph default
- che termina quando tutti i giocatori dichiarano esplicitamente di essere
- 
+ in cui il sistema provvederá a creare la 
 \emph on
-pronti.
+lobby
+\emph default
+.
+ La selezione della modalitá di gioco e dell'arena é 
+\emph on
+opzionale
+\emph default
+: qualora l'utente non dovesse esprimere alcuna preferenza, il sistema provveder
+á automaticamente a riempire una delle 
+\emph on
+lobby 
+\emph default
+esistenti.
+ Durante la selezione del veicolo sará possibile aggiungere piú giocatori
+ locali alla partita (attraverso un opportuno tasto sul 
+\emph on
+pad
+\emph default
+) ed unirsi ad una 
+\emph on
+lobby 
+\emph default
+in gruppo.
+ Qualora non dovesse esserci nessuna 
+\emph on
+lobby 
+\emph default
+disponibile, il sistema provvederá a crearne una nuova a cui altri utenti
+ online potranno liberamente accedervi.
+ Questo processo non é necessario per la modalitá a 
+\emph on
+giocatore singolo
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Affinché la partita possa iniziare, 
+\emph on
+tutti
+\emph default
+ i giocatori in 
+\emph on
+lobby 
+\emph default
+devono esplicitamente dichiarare di essere 
+\emph on
+pronti
+\emph default
+: il sistema provvederá ad aggiungere 
+\emph on
+intelligenze artificiali 
+\emph default
+finché il numero di partecipanti non diventa esattamente 
+\emph on
+quattro.
  
+\emph default
+Un breve conto alla rovescia porterá i giocatori in gara.
+\end_layout
+
+\begin_layout Standard
+Al termine della sfida, il sistema consente al giocatore di ritornare al
+ menú principale.
+\end_layout
+
+\begin_layout Standard
+Di seguito é riportato uno scherma riassuntivo del flusso di gioco:
 \end_layout
 
 \begin_layout Subsubsection
