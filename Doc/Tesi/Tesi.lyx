@@ -4,13 +4,52 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass book
+\begin_preamble
+% pacchetti aggiuntivi
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage{epsfig}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage{cite}
+\usepackage[normalem]{ulem}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{algpseudocode}
+
+% questa è uno sporca soluzione per gestire il fatto che le versioni
+% LTS di Ubuntu/Kubuntu hanno un pacchetto "geometry" vecchio
+\include{geometry.sty}
+
+% sistema il numero pagina nelle prime pagine dei capitoli
+\fancypagestyle{plain}{
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[OC]{\begin{flushright}\thepage\end{flushright}}
+}
+
+% header "carini" per la tesi
+\fancyhead{}
+\fancyhead[LE]{\slshape \nouppercase \leftmark}
+\fancyhead[RO]{\slshape \nouppercase \rightmark}
+\fancyfoot[EC]{\begin{flushleft}\thepage\end{flushleft}}
+\fancyfoot[OC]{\begin{flushright}\thepage\end{flushright}}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{14pt}
+\end_preamble
+\options openright
 \use_default_options true
 \maintain_unincluded_children false
 \language italian
-\language_package default
+\language_package babel
 \inputencoding auto
-\fontencoding global
+\fontencoding T1
 \font_roman "lmodern" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -28,9 +67,18 @@
 \index_command default
 \paperfontsize 12
 \spacing single
-\use_hyperref false
-\papersize default
-\use_geometry false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
@@ -54,6 +102,10 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 4cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3.5cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -72,8 +124,49 @@
 \begin_body
 
 \begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frontmatter
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{empty}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newgeometry{margin=3cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand input
+filename "frontespizio/frontespizio.lyx"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+restoregeometry
+\end_layout
 
 \end_inset
 
@@ -81,43 +174,56 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+\begin_inset Newpage cleardoublepage
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
+\begin_layout Chapter*
 Ringraziamenti
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
 Sommario
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
 In questo elaborato di tesi si descrive il processo di sviluppo di Orbtail,
  un gioco multipiattaforma a piú partecipanti che coniuga elementi tipici
  di 
@@ -193,14 +299,119 @@ Il capitolo finale é dedicato alle conclusioni nonché ad eventuali sviluppi
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{roman}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\begin_inset FloatList table
+
+\end_inset
+
+
+\begin_inset FloatList algorithm
+
+\end_inset
+
+
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+mainmatter
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+sectionmark}[1]{
+\backslash
+markright{
+\backslash
+thesection.
+\backslash
+ #1}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+chaptermark}[1]{
+\backslash
+markboth{
+\backslash
+thechapter.
+\backslash
+ #1}{}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
 Introduzione
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Introduzione"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -370,14 +581,7 @@ un giocatore saltuario, non particolarmente interessato alla cultura dei
 .
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
+\begin_layout Section
 Piattaforme
 \end_layout
 
@@ -595,7 +799,7 @@ hands on throttle and stick
 e utente.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Processo di sviluppo
 \end_layout
 
@@ -730,7 +934,7 @@ IA
  o rimozione di feature particolarmente onerose.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Multigiocatore
 \end_layout
 
@@ -1449,15 +1653,15 @@ mobile
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
+\begin_layout Chapter
+Design
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Design"
+
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Design
 \end_layout
 
 \begin_layout Standard
@@ -1474,7 +1678,7 @@ concettuali
  le eventuali limitazioni).
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Titoli sul mercato
 \end_layout
 
@@ -1495,7 +1699,7 @@ di gioco.
  moderna.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Crash Team Racing
 \end_layout
 
@@ -1777,7 +1981,7 @@ intelligenza artificiale
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Rocket League
 \end_layout
 
@@ -2132,7 +2336,7 @@ categoria
 d'appartenenza.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Geometry Wars 3: Dimensions Evolved
 \end_layout
 
@@ -2463,14 +2667,7 @@ online competitiva
 fino ad un massimo di otto giocatori.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
+\begin_layout Section
 OrbTail
 \end_layout
 
@@ -2697,7 +2894,7 @@ party-game
 rapido e competitivo.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Modalitá di gioco
 \end_layout
 
@@ -2888,7 +3085,7 @@ ti rimanenti, impedendo che la partita si protragga indefinitamente.
  dei partecipanti invece che per esaurimento del tempo di gara.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Veicoli
 \end_layout
 
@@ -3033,19 +3230,77 @@ reference "tab:VehicleParam"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:VehicleParam"
+
+\end_inset
+
+Parametri dei veicoli
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
-<features tabularvalignment="middle">
+<lyxtabular version="3" rows="8" columns="4">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
-<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="0pt">
 <row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Parametro
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3056,7 +3311,7 @@ Veicolo
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3067,7 +3322,7 @@ Velocitá
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3078,7 +3333,7 @@ Accelerazione
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3337,24 +3592,6 @@ Sparkle
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:VehicleParam"
-
-\end_inset
-
-Parametri dei veicoli
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
 .
@@ -3485,8 +3722,8 @@ e una
 gialla.
 \end_layout
 
-\begin_layout Subsubsection
-Level design
+\begin_layout Subsection
+Livelli
 \end_layout
 
 \begin_layout Standard
@@ -3641,7 +3878,7 @@ concava
  di suddette topologie.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Potenziamenti
 \end_layout
 
@@ -3953,7 +4190,7 @@ e ancor di piú l'uso di potenziamenti ed in generale perché risultavano
  ingiustificatamente punitive.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Interazione utente
 \end_layout
 
@@ -4074,7 +4311,7 @@ mouse
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Interfaccia utente
 \end_layout
 
@@ -4167,7 +4404,7 @@ e consente di visualizzare la direzione relativa dei veicoli avversari rispetto
  a quella del giocatore.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Flusso di gioco
 \end_layout
 
@@ -4351,45 +4588,38 @@ abbandonarla
 in qualsiasi momento.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
+\begin_layout Chapter
+Direzione artistica
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Direzione-artistica"
+
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Direzione artistica
 \end_layout
 
 \begin_layout Standard
 3D, Reference, Art Bible
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
+\begin_layout Chapter
 Sviluppo
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Sviluppo"
 
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Chapter*
 Conclusioni
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Conclusioni"
 
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 

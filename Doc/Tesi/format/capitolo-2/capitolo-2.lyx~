@@ -5,56 +5,19 @@
 \save_transient_properties true
 \origin unavailable
 \textclass book
-\begin_preamble
-% pacchetti aggiuntivi
-\usepackage{tabularx}
-\usepackage{setspace}
-\usepackage{amsthm}
-\usepackage{rotating}
-\usepackage{caption}
-\usepackage{epsfig}
-\usepackage{indentfirst}
-\usepackage{fancyhdr}
-\usepackage{url}
-\usepackage{cite}
-\usepackage[normalem]{ulem}
-\usepackage[table]{xcolor}
-\usepackage{booktabs}
-\usepackage{algpseudocode}
-
-% questa è uno sporca soluzione per gestire il fatto che le versioni
-% LTS di Ubuntu/Kubuntu hanno un pacchetto "geometry" vecchio
-\include{geometry.sty}
-
-% sistema il numero pagina nelle prime pagine dei capitoli
-\fancypagestyle{plain}{
-\fancyhead{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-\fancyfoot[OC]{\begin{flushright}\thepage\end{flushright}}
-}
-
-% header "carini" per la tesi
-\fancyhead{}
-\fancyhead[LE]{\slshape \nouppercase \leftmark}
-\fancyhead[RO]{\slshape \nouppercase \rightmark}
-\fancyfoot[EC]{\begin{flushleft}\thepage\end{flushleft}}
-\fancyfoot[OC]{\begin{flushright}\thepage\end{flushright}}
-\renewcommand{\headrulewidth}{0.4pt}
-\setlength{\headheight}{14pt}
-\end_preamble
 \options openright
-\use_default_options true
+\use_default_options false
+\master ../tesi.lyx
 \maintain_unincluded_children false
 \language italian
-\language_package babel
+\language_package default
 \inputencoding auto
 \fontencoding T1
-\font_roman "lmodern" "default"
+\font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
-\font_default_family rmdefault
+\font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
@@ -65,27 +28,18 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 12
+\paperfontsize 11
 \spacing single
-\use_hyperref true
-\pdf_bookmarks true
-\pdf_bookmarksnumbered false
-\pdf_bookmarksopen false
-\pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
-\pdf_pdfborder false
-\pdf_colorlinks false
-\pdf_backref false
-\pdf_pdfusetitle true
+\use_hyperref false
 \papersize a4paper
-\use_geometry true
-\use_package amsmath 1
-\use_package amssymb 1
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
 \use_package cancel 1
 \use_package esint 1
-\use_package mathdots 1
+\use_package mathdots 0
 \use_package mathtools 1
-\use_package mhchem 1
+\use_package mhchem 0
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
@@ -97,23 +51,19 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 1
-\index Index
+\use_refstyle 0
+\index Indice
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 4cm
-\topmargin 3cm
-\rightmargin 3cm
-\bottommargin 3.5cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
 \quotes_language french
 \papercolumns 1
-\papersides 1
-\paperpagestyle default
+\papersides 2
+\paperpagestyle fancy
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -122,1547 +72,6 @@
 \end_header
 
 \begin_body
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-frontmatter
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-pagestyle{empty}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-newgeometry{margin=3cm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand input
-filename "frontespizio/frontespizio.lyx"
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-restoregeometry
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter*
-Ringraziamenti
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter*
-Sommario
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-In questo elaborato di tesi si descrive il processo di sviluppo di Orbtail,
- un gioco multipiattaforma a piú partecipanti che coniuga elementi tipici
- di 
-\emph on
-giochi di guida
-\emph default
- e
-\emph on
- ad arena
-\emph default
- e diverse modalitá di gioco in un'esperianza rapida e competitiva.
- Il prodotto, nato nel 2013 come progetto per il corso di 
-\emph on
-Videogame Design and Programming
-\emph default
-, é stato rielaborato ed esteso, andando ad aggiornare l'intero comparto
- tecnico, il design originale e la direzione artistica.
- Il pregio principale di OrbTail risiede nella sua capacitá di poter essere
- giocato da piú giocatori contemporaneamente, online o meno, in una qualsiasi
- combinazione di piattaforme e
-\backslash
-o numero di giocatori locali.
- Questo documento ne descrive il processo produttivo, a partire dall'idea
- di base
-\emph on
- 
-\emph default
-fino alle varie scelte tecniche, facendo numerosi paralleli con la versione
- originale al fine di individuare carenze e spunti per migliorie.
-\end_layout
-
-\begin_layout Standard
-Questa tesi é strutturata in capitoli.
-\end_layout
-
-\begin_layout Standard
-Nel primo capitolo viene dato un contesto al progetto, fornendo una panoramica
- generale ed andando ad analizzare i requisiti dello sviluppo multipiattaforma
- e di varie modalitá multigiocatore.
-\end_layout
-
-\begin_layout Standard
-Nel secondo capitolo vengono delineate le meccaniche del gioco e definiti
- i requisiti di ciasun livelli
-\emph on
-.
- 
-\emph default
-Vengono inoltre analizzati alcuni titoli concorrenti al fine di individare
- meccaniche simili ed analizzarne i vari aspetti e criticitá.
-\end_layout
-
-\begin_layout Standard
-Nel capitolo successivo verrá inquadrata la direzione artistica del progetto
- usando diversi titoli esistenti come riferimento.
- Viene inoltre analizzata la produzione delle varie risorse
-\emph on
- 
-\emph default
-utilizzate all'interno del gioco considerando i requisiti tecnici e di design.
-\end_layout
-
-\begin_layout Standard
-Il quarto capitolo verte sulle scelte tecnologiche, a partire dalla scelta
- del motore grafico, delle piattaforme e dell'architettura del gioco.
- Ogni scelta verrá contestualizzata rispetto a varie alternative e opportunament
-e giustificata, considerando necessariamente i requisiti di design.
-\end_layout
-
-\begin_layout Standard
-Il capitolo finale é dedicato alle conclusioni nonché ad eventuali sviluppi
- futuri.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-pagenumbering{roman}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-setcounter{page}{1}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-pagestyle{fancy}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
-
-
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\begin_inset FloatList table
-
-\end_inset
-
-
-\begin_inset FloatList algorithm
-
-\end_inset
-
-
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-mainmatter
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-sectionmark}[1]{
-\backslash
-markright{
-\backslash
-thesection.
-\backslash
- #1}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-chaptermark}[1]{
-\backslash
-markboth{
-\backslash
-thechapter.
-\backslash
- #1}{}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter
-Introduzione
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:Introduzione"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-I videogiochi rappresentano una delle forme di intrattenimento moderne piú
- affermate e diffuse.
- A differenza di quanto avviene con i mezzi classici quali 
-\emph on
-film
-\emph default
- e 
-\emph on
-libri
-\emph default
-, l'utente ha pieno controllo dell'esperienza: alcuni giochi richiedono
- concentrazione, altri una buona dose di coordinazione e reattivitá, altri
- ancora pazienza e pianificazione.
- Sebbene vi siano videogiochi che si concentrano principalmente sulla componente
- a giocatore
-\emph on
- 
-\emph default
-singolo, i giochi, intesi anche nel senso classico del termine, nascono
- come mezzo di 
-\emph on
-condivisione 
-\emph default
-dell'esperienza con altri partecipanti.
-\end_layout
-
-\begin_layout Standard
-In questa tesi si descrive il processo di sviluppo di OrbTail
-\emph on
-, 
-\emph default
-un videogioco
-\emph on
- 
-\emph default
-multigiocatore
-\emph on
- 
-\emph default
-con elementi tipici dei giochi di guida
-\emph on
- 
-\emph default
-disponibile per dispositivi 
-\emph on
-mobile
-\emph default
- e 
-\emph on
-desktop
-\emph default
- quali Android, iOS, Windows e OSX.
- Il gioco prevede tre modalitá di gioco differenti e consente fino a quattro
- giocatori di sfidarsi online in modalitá 
-\emph on
-cross-platform play
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Il termine 
-\size normal
-\emph on
-cross-platform play
-\emph default
- identifica una modalitá di gioco online in cui giocatori possono giocare
- tra loro indipendentemente dalla piattaforma utilizzata.
- 
-\end_layout
-
-\end_inset
-
- su una delle tre arene disponibili.
- Vi é inoltre la possibilitá di condividere uno stesso dispositivo 
-\emph on
-desktop
-\emph default
- tra due o piú giocatori locali mediante un'apposita modalitá 
-\emph on
-splitscreen
-\emph default
- 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Il termine 
-\size normal
-\emph on
-splitscreen 
-\emph default
-identifica una modalitá di gioco in cui lo schermo viene suddiviso in piú
- quadranti in modo da consentire a piú giocatori di usare uno stesso dispositivo
- contemporaneamente.
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-La necessitá di supportare piú piattaforme, impedendo che ciascuna di esse
- potesse risultare avvantaggiata rispetto alle altre durante le sessioni
- 
-\emph on
-cross-platform play
-\emph default
-, ha portato allo sviluppo di un 
-\emph on
-gameplay 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Il 
-\emph on
-gameplay 
-\emph default
-(in italiano traducibile come 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-esperienza utente
-\begin_inset Quotes erd
-\end_inset
-
-) 
-\emph default
-comprende gli elementi di gioco quali storia, regole, obiettivi, progressioni,
- interazione utente, ecc.
-\end_layout
-
-\end_inset
-
- 
-\emph default
-essenziale ed immediato.
- La durata limitata delle sessioni, unita ad una curva d'apprendimento semplice,
- rende il prodotto particolarmente adatto ad un pubblico di 
-\emph on
-casual gamer
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Si definisce 
-\size normal
-\emph on
-casual gamer 
-\emph default
-un giocatore saltuario, non particolarmente interessato alla cultura dei
- videogiochi e, solitamente, alla tecnologia in generale.
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Section
-Piattaforme
-\end_layout
-
-\begin_layout Standard
-L'esperienza videoludica ha il grande vantaggio di poter essere studiata
- per soddisfare utenze dai gusti profondamente diversi su un vasto numero
- di piattaforme.
- Ad oggi esistono decine di tipologie di dispositivi di intrattenimento
- differenziati per costo, performance e modalitá d'interazione.
-\end_layout
-
-\begin_layout Standard
-Le piattaforme 
-\emph on
-mobile
-\emph default
-, pur essendo nate solo di recente, si sono subito affermate come una delle
- principali piattaforme da gioco.
- Il successo senza precedenti di 
-\emph on
-smartphone 
-\emph default
-e 
-\emph on
-tablet 
-\emph default
-ha consentito all'industria mobile di generare un volume d'affari pari a
- quello di 
-\emph on
-pc 
-\emph default
-e 
-\emph on
-console 
-\emph default
-combinati
-\emph on
- 
-\emph default
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "GameStatistics"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Pur non godendo delle stesse performance e manifestando un ciclo di vita
- piú breve rispetto alle controparti classiche, i dispositivi mobile godono
- di una piú vasta diffusione e si rivolgono ad un pubblico decisamente piú
- ampio.
-\end_layout
-
-\begin_layout Standard
-L'interazione primaria affidata all'
-\emph on
-input
-\emph default
- 
-\emph on
-touch
-\emph default
- é affiancata da un grande numero di sensori accessori quali 
-\emph on
-GPS, accelerometri, giroscopi, bussole 
-\emph default
-e
-\emph on
- videocamere.
- 
-\emph default
-Recenti sviluppi tecnologici quali 
-\emph on
-realtá aumentata 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-La realtá aumentata consiste nell'arricchire il mondo circostante attraverso
- contenuti di tipo visivo, aptico o uditivo generati da un elaboratore.
- 
-\end_layout
-
-\end_inset
-
- 
-\emph default
-e 
-\emph on
-realtá virtuale
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-La realtá virtuale consiste nel simulare un ambiente tridimensionale tramite
- un elaboratore e lasciare che l'utente vi interagisca attraverso periferiche
- di input specializzate quali visori, cuffie e pad.
-\end_layout
-
-\end_inset
-
-, unito all'uso sapiente di queste nuove modalitá d'interazione, ha permesso
- la nascita di nuovi paradigmi di 
-\emph on
-gameplay 
-\emph default
-rimasti finora inesplorati.
-\end_layout
-
-\begin_layout Standard
-I 
-\emph on
-pc 
-\emph default
-e le 
-\emph on
-console 
-\emph default
-sono le piattaforme storiche su cui sono nati e diffusi i videogame.
- Accomunate da paradigmi d'interazione e performance paragonabili, queste
- due famiglie di dispositivi sono nate per scopi diversi.
- Laddove le 
-\emph on
-console
-\emph default
- sono pensate per essere un dispositivo d'intrattenimento 
-\emph on
-dedicato
-\emph default
-, che fa della 
-\emph on
-facilitá d'uso 
-\emph default
-il suo cavallo di battaglia, i 
-\emph on
-p
-\emph default
-c hanno una natura piú generica e garantiscono performance e flessibilitá
- maggiori al costo di una richiesta piú elevata di competenza da parte dell'uten
-za.
- 
-\end_layout
-
-\begin_layout Standard
-Il ciclo di vita e il costo delle due piattaforme é inoltre molto diverso.
- Le 
-\emph on
-console 
-\emph default
-sono dei 
-\emph on
-sistemi embedded 
-\emph default
-precostruiti e limitatamente aggiornabili; il loro ciclo di vita é generalmente
- superiore al quinquennio e sono caratterizzati da un costo relativamente
- basso.
- I 
-\emph on
-pc
-\emph default
-, d'altro canto
-\emph on
-, 
-\emph default
-possono essere assemblati scegliendo i componenti che meglio si adattano
- alle esigenze dell'utente ed aggiornati quando ritenuto necessario.
- Il costo di un 
-\emph on
-pc 
-\emph default
-é generalmente molto piú alto rispetto a quello di una console, anche a
- paritá di specifiche tecniche.
-\end_layout
-
-\begin_layout Standard
-L'ampio parco di periferiche di input supportate, dalle piú comuni quali
- tastiere, mouse e gamepad a quelle piú specializzate quali volanti, pedaliere
- e 
-\emph on
-HOTAS 
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-L'
-\emph on
-HOTAS
-\emph default
- (acronimo di 
-\begin_inset Quotes fld
-\end_inset
-
-
-\emph on
-hands on throttle and stick
-\emph default
-
-\begin_inset Quotes frd
-\end_inset
-
-), usato solitamente per giocare a simulatori di volo, consiste di un joystick
- a 4 o piú assi e una leva d'accelerazione.
-\end_layout
-
-\end_inset
-
-, rendono queste piattaforme adatte a qualsiasi tipologia di gioco ed interazion
-e utente.
-\end_layout
-
-\begin_layout Section
-Processo di sviluppo
-\end_layout
-
-\begin_layout Standard
-Il processo di sviluppo di un videogioco cambia radicalmente in funzione
- della piattaforma e dell'utenza a cui viene destinato il prodotto.
- Un design di successo deve essere in grado di sfruttare le peculiaritá
- di ciascun dispositivo e considerarne le limitazioni tecniche, senza pregiudica
-re l'esperienza utente.
-\end_layout
-
-\begin_layout Standard
-Lo sviluppo risulta solitamente tanto piú avvantaggiato quanto minori sono
- le limitazioni delle piattaforma o varietá di specifiche tra dispositivi.
- La presenza di dispositivi 
-\emph on
-identici
-\emph default
- tra 
-\emph on
-console
-\emph default
- appartenenti ad uno stesso ecosistema garantisce un'elevata consistenza
- dell'esperienza utente e consente interventi di ottimizzazione ad una granulari
-tá molto fine.
- Laddove questo processo é solitamente molto 
-\emph on
-efficiente
-\emph default
- su console, lo stesso non puó essere detto per piattaforme 
-\emph on
-mobile 
-\emph default
-e 
-\emph on
-desktop 
-\emph default
-per via dell'elevata varietá di specifiche tecniche o combinazioni di componenti.
- I 
-\emph on
-pc 
-\emph default
-risultano avvantaggiati per via delle elevate performance e assenza di grosse
- limitazioni e ció consente loro di mantenere un elevata fedeltá e fruibilitá
- del contenuto.
- Lo sviluppo su dispositivi quali 
-\emph on
-smartphone 
-\emph default
-e 
-\emph on
-tablet
-\emph default
-, d'altro canto, deve scontrarsi con la presenza di dispositivi con capacitá
- profondamente diverse e comparti tecnici non sempre in equilibrio tra loro
- (non é raro assistere a dispositivi che associano elevate risoluzioni a
- performance mediocri).
- In questo caso é richiesto uno sforzo maggiore affinché l'applicazione
- scali in funzione del dispositivo per garantire una buona esperienza utente.
-\end_layout
-
-\begin_layout Standard
-Sebbene esistono titoli sviluppati in 
-\emph on
-esclusiva 
-\emph default
-per alcune piattaforme, la necessitá di aumentare il bacino d'utenza, e
- di conseguenza i ricavi, solitamente richiede che un prodotto venga distribuito
- su piú ecosistemi.
- Un tempo processo lungo ed oneroso per via delle marcate differenze tra
- le architetture e carenza di strumenti di sviluppo, ad oggi lo sviluppo
- multipiattaforma risulta molto avvantaggiato.
- Il rilascio di motori grafici di terze parti
-\emph on
-,
-\emph default
- unito alla convergeza delle piattaforme verso architetture simili, permette
- agli sviluppatori di lavorare ad un livello di astrazione piú elevato evitando
- di creare supporti di basso livello specifici per dispositivo.
-\end_layout
-
-\begin_layout Standard
-Laddove sviluppare un videogioco per piattaforme simili quali potrebbero
- essere 
-\emph on
-pc 
-\emph default
-e 
-\emph on
-console 
-\emph default
-oppure 
-\emph on
-smartphone 
-\emph default
-e 
-\emph on
-tablet
-\emph default
-, costituisce piú un problema implementativo che non a livello di gameplay,
- sviluppare per piattaforme profondamente diverse richiede importanti consideraz
-ioni a livello di 
-\emph on
-design
-\emph default
- e produzione delle risorse grafiche e non.
- In primo luogo il differente grado di apprezzamento dell'utenza delle varie
- piattaforme puó precludere il successo a certe tipologie di gioco di nicchia
- (quali potrebbero essere simulatori o strategici) e favorire i design che
- si rivolgono al grande pubblico.
- Le differenti modalitá d'interazione potrebbero inoltre richiedere la rivisitaz
-ione dell'interfaccia grafica e l'eventuale eliminazione degli input disponibili
- solo su certe tipologie di dispositivi.
- Il comparto tecnico deve inoltre consentire al prodotto di poter scalare
- in funzione delle performance a disposizione.
- Possibili interventi consistono nella riduzione del dettaglio delle 
-\emph on
-texture
-\emph default
- o della complessitá poligonale, riduzione o rimozione dell'effettistica,
- limitazione degli oggetti a schermo.
- Ove ció non fosse possibile o insufficiente potrebbe essere necessario
- rivisitare il 
-\emph on
-gameplay 
-\emph default
-attraverso la riduzione di giocatori o avversari, semplificazione della
- 
-\emph on
-IA
-\emph default
- o rimozione di feature particolarmente onerose.
-\end_layout
-
-\begin_layout Section
-Multigiocatore
-\end_layout
-
-\begin_layout Standard
-L'interazione sociale come mezzo per aumentare il coinvolgimento videoludico
- é il motivo principale per cui i videogiochi multigiocatore hanno da sempre
- riscosso un grande successo.
- Sebbene esistono infinite variazioni sul tema, le modalitá multigiocatore
- possono essere classificate in due famiglie: 
-\emph on
-cooperative 
-\emph default
-e 
-\emph on
-competitive.
- 
-\emph default
-Alla prima categoria appartengono quelle modalitá in cui due o piú giocatori
- 
-\emph on
-collaborano 
-\emph default
-tra loro al fine di raggiungere un obiettivo comune.
- In queste modalitá l'elemento di sfida é rappresentato dal gioco stesso
- e governato da 
-\emph on
-intelligenze artificiali 
-\emph default
-piú o meno sofisticate.
- Nelle modalitá 
-\emph on
-competitive
-\emph default
- l'elemento di sfida é invece rappresentato dai giocatori stessi: gli utenti
- sono portati a confrontarsi gli uni con gli altri al fine di raggiungere
- un obiettivo impedendo al contempo che gli altri giocatori possano fare
- altrettanto.
- Il livello di sfida offerto da alcuni titoli é tale per cui, pur di eccellere,
- alcuni giocatori hanno deciso di farne una carriera, sottoponendosi costantemen
-te a veri e propri allenamenti.
- Questo fenomeno ha di recente portato alla nascita di competizioni a livello
- agonistico, organizzate e regolamentate da entitá terze, in cui i partecipanti
- non sono semplici giocatori ma veri e propri atleti.
- Queste competizioni prendono il nome di 
-\emph on
-e-sports 
-\emph default
-(sport elettronici).
-\end_layout
-
-\begin_layout Standard
-Le modalitá multigiocatore hanno accompagnato lo sviluppo dei videogiochi
- fin dagli albori, in un'epoca in cui la diffusione di Internet era molto
- limitata.
- Le realizzazioni piú semplici consistono nello sfruttare uno stesso dispositivo
- col quale tutti i giocatori possono interagirvi.
- La presenza fisica di tutti i partecipanti coinvolti favorisce un'interazione
- sociale piú immediata e rende queste modalitá di gioco particolarmente
- adatte ai 
-\emph on
-party-game
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-I 
-\emph on
-party-game 
-\emph default
-sono l'equivalente videoludico dei giochi di societá.
-\end_layout
-
-\end_inset
-
-
-\emph default
-.
- Le implementazioni piú semplici consistono nell'utilizzare una visuale
- condivisa tra tutti i partecipanti (Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Overcooked"
-
-\end_inset
-
-)
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename img/mp_overcooked.jpg
-	lyxscale 20
-	height 7cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Overcooked"
-
-\end_inset
-
-Overcooked - Party game a visuale condivisa
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- oppure, laddove l'interazione in contemporanea non fosse necessaria, sfruttare
- la meccanica dei 
-\emph on
-turni
-\emph default
- affinché ciascun giocatore goda di un punto di vista unico sul mondo di
- gioco (Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:HoMM3"
-
-\end_inset
-
-) 
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename img/mp_hommiii.jpg
-	lyxscale 20
-	height 7cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:HoMM3"
-
-\end_inset
-
-Heroes of Might & Magic - Multigiocatore locale a turni
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
-  Un'implementazione piú sofisticata, nota col termine 
-\emph on
-split-screen,
-\emph default
- consiste nel suddividere lo schermo in quadranti, solitamente da due a
- quattro, e mostrare in ciascuno di essi il punto di vista di uno dei giocatori
- in maniera indipendente (Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:MarioKarts"
-
-\end_inset
-
-) 
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename img/mp_ss_mario_karts.jpg
-	lyxscale 20
-	height 7cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:MarioKarts"
-
-\end_inset
-
-Mario Karts - Multigiocatore in split-screen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
- L'elevato impatto sulle performance, tale da rendere necessarie ottimizzazioni
- particolarmente aggressive, unita al ridotto bacino d'utenza cui queste
- modalitá si rivolgono, ha di recente portato ad un calo di titoli che offrono
- questo tipo di esperienza.
-\end_layout
-
-\begin_layout Standard
-La rapida diffusione di Internet, unita ai suoi sviluppi degli ultimi decenni,
- ha consentito la nascita di nuove modalitá multigiocatore 
-\emph on
-online
-\emph default
-.
- Rispetto all'approccio classico, un multigiocatore online permette agli
- utenti di usare il proprio dispositivo per accedere a sessioni di gioco
- con un numero di partecipanti che varia tra la decina e il migliaio, indipenden
-temente dalla distanza fisica che li separa.
- Il rinnovato successo dei giochi multigiocatore ha consentito la nascita
- di nuovi generi, dai 
-\emph on
-MOBA
-\emph default
- in cui due squadre dal numero ristretto di giocatori si sfidano all'interno
- di un'arena (Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Battlerite"
-
-\end_inset
-
-) 
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename img/mp_battlerite.jpg
-	lyxscale 20
-	height 7cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Battlerite"
-
-\end_inset
-
-Battlerite - MOBA: Multiplayer online battle arena.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-, agli 
-\emph on
-MMO
-\emph default
- i cui mondi persistenti vantano migliaia di giocatori attivi contemporaneamente
-(Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:EVE"
-
-\end_inset
-
-) 
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename img/mmo_eveonline.jpg
-	lyxscale 20
-	height 7cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:EVE"
-
-\end_inset
-
-EVE Online - MMO: Massive multiplayer online game
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-, passando per i piú recenti 
-\emph on
-Battle Royale 
-\emph default
-caratterizzati da centinaia di giocatori che lottano per la sopravvivenza
- (Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:PUBG"
-
-\end_inset
-
-).
- 
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename img/br_pubg.jpg
-	lyxscale 20
-	height 7cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:PUBG"
-
-\end_inset
-
-PlayerUnknown's Battleground - Battle royale
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Le implementazioni piú comuni sono ricoducibili a due diverse 
-\emph on
-architetture
-\emph default
-, in funzione del ruolo che i diversi dispositivi hanno all'interno della
- sessione di gioco.
- Nell'architettura 
-\emph on
-client-server
-\emph default
- i dispositivi dei giocatori, detti client
-\emph on
-, 
-\emph default
-sono connessi ad un dispositivo centrale, detto 
-\emph on
-server, 
-\emph default
-il cui ruolo consiste nel coordinare tutti i partecipanti, gestire l'evoluzione
- della partita, propagare lo stato condiviso di gioco ed eventualmente validare
- le azioni dei singoli giocatori per evitare 
-\emph on
-cheat 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Il 
-\emph on
-cheat
-\emph default
-, in italiano 
-\begin_inset Quotes fld
-\end_inset
-
-imbrogliare
-\begin_inset Quotes frd
-\end_inset
-
-,
-\emph on
- 
-\emph default
-rappresenta una qualsiasi tecnica atta a sovvertire le regole di gioco affinché
- un giocatore ne ottenga un beneficio immeritato.
-\end_layout
-
-\end_inset
-
-
-\emph default
-.
- I 
-\emph on
-client 
-\emph default
-comunicano esclusivamente col 
-\emph on
-server
-\emph default
- limitandosi a dichiarare le azioni effettuate dall'utente.
- Il ruolo di 
-\emph on
-server 
-\emph default
-puó essere ricoperto sia da una macchina esterna che non prende parte alla
- partita detta 
-\emph on
-server dedicato,
-\emph default
- oppure direttamente da uno dei dispositivi dei giocatori, detto 
-\emph on
-host
-\emph default
-.
- L'approccio con 
-\emph on
-server dedicato
-\emph default
- permette di sfruttare macchine remote caratterizzate dalla elevate performance
- al fine di gestire efficientemente un numero anche elevato di giocatori.
- Il secondo di questi, invece, consente di evitare i costi associati alla
- gestione o noleggio del server al costo di una minore scalabilitá.
- L'esperienza multigiocatore con questo tipo di approccio é inoltre soggetta
- a fattori difficilmente prevedibili quali prestazioni del dispositivo che
- fa da 
-\emph on
-host
-\emph default
-, qualitá della connessione verso i 
-\emph on
-client
-\emph default
- e la possibilitá di disconnessione del 
-\emph on
-server 
-\emph default
-durante una partita che potrebbe richiede il 
-\emph on
-trasferimento 
-\emph default
-del ruolo di server ad uno degli altri dispositivi (processo noto col termine
- 
-\emph on
-host migration
-\emph default
-).
-\end_layout
-
-\begin_layout Standard
-Nelle architetture 
-\emph on
-peer-to-peer
-\emph default
-, a differenza di quanto avviene con l'approccio 
-\emph on
-client-server
-\emph default
-, lo stato di gioco é condiviso su tutti i dispositivi e gestito in maniera
- distribuita.
- Sebbene questa architettura impedisce che il carico computazionale si concentri
- su un unico dispositivo, evitando inoltre i costi associati a macchine
- server esterne, la condivisione dell'
-\emph on
-autoritá 
-\emph default
-sullo stato di gioco favorisce il proliferare del fenomeno del 
-\emph on
-cheating
-\emph default
-, oltre che a complicare la sincronizzazione trai vari dispositivi e la
- risoluzione di eventuali discrepanze nello stato di gioco.
-\end_layout
-
-\begin_layout Standard
-Per far fronte al numero crescente di giocatori all'interno di ciascuna
- sessione di gioco, le implementazioni piú moderne si basano su un approccio
- 
-\emph on
-misto client-server 
-\emph default
-in cui parte della computazione viene delegata ai vari client che, pertanto,
- possiedono un certo grado di autoritá sulla partita.
-\end_layout
-
-\begin_layout Standard
-Sebbene esistano numerosi paradigmi consolidati per la gestione dei giochi
- multigiocatore, la quasi totalitá delle implementazioni 
-\emph on
-segmentano
-\emph default
- il bacino d'utenza in funzione della piattaforma d'appartenenza.
- Questo approccio semplifica enormemente la gestione dei servizi online
- accessori, specifici per piattaforma e molto diversi tra loro, evitando
- i costi associati alla gestione dell'
-\emph on
-interoperabilitá 
-\emph default
-tra di essi, tuttavia impedisce che giocatori su piattaforme diverse possano
- giocare gli uni contro gli altri.
- Esistono alcuni esempi di giochi multipiattaforma che consentono a giocatori
- su 
-\emph on
-smartphone 
-\emph default
-e 
-\emph on
-tablet 
-\emph default
-di interagire ed influenzare partite in corso su altre piattaforme (quali
- 
-\emph on
-pc 
-\emph default
-e 
-\emph on
-console
-\emph default
-), tuttavia essi rappresentano una nicchia ristretta che non ha mai riscosso
- un vero e proprio successo per via dei ruoli particolarmente asimmetrici
- e gameplay profondamente diversi trai vari dispositivi (Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:BF4"
-
-\end_inset
-
-).
- 
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/mp_bf4.jpg
-	lyxscale 20
-	height 7cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-PC - First person shooter.
- Il 
-\emph on
-soldati
-\emph default
- prendono controllo di punti strategici facendo guadagnare risorse al 
-\emph on
-comandante
-\emph default
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/mp_bf4_commander.jpg
-	lyxscale 20
-	height 7cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Mobile - Strategico.
- Il 
-\emph on
-comandante 
-\emph default
-gestisce la conquista dispiegando soldati e risorse, lanciando attacchi
- missilistici e proteggendo i propri soldati dagli avversari.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:BF4"
-
-\end_inset
-
-Battlefield 4 - Multigiocatore con interoperabilitá pc
-\backslash
-mobile
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter
-Design
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:Design"
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Standard
 Questo capitolo é dedicato al design di OrbTail, partendo dai titoli esistenti
@@ -1805,7 +214,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/sp_ctr.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/sp_ctr.jpg
 	lyxscale 20
 	height 7cm
 
@@ -1818,13 +227,23 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Crash Team Racing
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:CTR"
 
 \end_inset
 
-Crash Team Racing
+Crash Team Racing - Gara a giocatore singolo.
 \end_layout
 
 \end_inset
@@ -1916,7 +335,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/mp_ctr_battle.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_ctr_battle.jpg
 	lyxscale 20
 	height 7cm
 
@@ -1929,6 +348,16 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Crash Team Racing - Modalitá battaglia
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:CTRBattle"
@@ -1943,7 +372,7 @@ battaglia
 \begin_inset Quotes frd
 \end_inset
 
-
+ tra due giocatori in splitscreen.
 \end_layout
 
 \end_inset
@@ -2060,7 +489,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/mp_rocketleague_custom.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_rocketleague_custom.jpg
 	lyxscale 20
 	height 7cm
 
@@ -2073,6 +502,16 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Rocket League - Personalizzazione del veicolo
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:RocketLeagueCustom"
@@ -2204,7 +643,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/mp_rocketleague.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_rocketleague.jpg
 	lyxscale 20
 	height 7cm
 
@@ -2421,7 +860,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/sp_geometrywars3_sphere.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/sp_geometrywars3_sphere.jpg
 	lyxscale 20
 	height 7cm
 
@@ -2434,13 +873,23 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Geometry Wars - Arena sferica
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:GW3Sphere"
 
 \end_inset
 
-Geometry Wars 3: Dimensions Evolved - Arena sferica
+Geometry Wars 3: Dimensions Evolved - Arena sferica.
 \end_layout
 
 \end_inset
@@ -2548,12 +997,12 @@ reference "fig:GW3Funnel"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/sp_geometrywars3_funnel.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/sp_geometrywars3_funnel.jpg
 	lyxscale 20
 	height 7cm
 
@@ -2566,13 +1015,25 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Geometry Wars - Arena ad imbuto.
+ 
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:GW3Funnel"
 
 \end_inset
 
-Geometry Wars 3: Dimensions Evolved - Arena 
+Geometry Wars 3: Dimensions Evolved - Arena ad imbuto.
+ 
 \end_layout
 
 \end_inset
@@ -3230,7 +1691,25 @@ reference "tab:VehicleParam"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:VehicleParam"
+
+\end_inset
+
+Parametri dei veicoli
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -3568,24 +2047,6 @@ Sparkle
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:VehicleParam"
-
-\end_inset
-
-Parametri dei veicoli
-\end_layout
 
 \end_inset
 
@@ -4426,7 +2887,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/orbtail_flow.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/orbtail_flow.jpg
 	lyxscale 20
 	width 14cm
 
@@ -4586,54 +3047,6 @@ Gli utenti possono tornare al menú principale una volta terminata la partita
 abbandonarla 
 \emph default
 in qualsiasi momento.
-\end_layout
-
-\begin_layout Chapter
-Direzione artistica
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:Direzione-artistica"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-3D, Reference, Art Bible
-\end_layout
-
-\begin_layout Chapter
-Sviluppo
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:Sviluppo"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter*
-Conclusioni
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:Conclusioni"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1"
-key "GameStatistics"
-
-\end_inset
-
-http://www.theesa.com/wp-content/uploads/2018/05/EF2018_FINAL.pdf
 \end_layout
 
 \end_body

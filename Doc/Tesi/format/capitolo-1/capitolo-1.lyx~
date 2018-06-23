@@ -1,0 +1,1318 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\options openright
+\use_default_options false
+\master ../tesi.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Indice
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+I videogiochi rappresentano una delle forme di intrattenimento moderne piú
+ affermate e diffuse.
+ A differenza di quanto avviene con i mezzi classici quali 
+\emph on
+film
+\emph default
+ e 
+\emph on
+libri
+\emph default
+, l'utente ha pieno controllo dell'esperienza: alcuni giochi richiedono
+ concentrazione, altri una buona dose di coordinazione e reattivitá, altri
+ ancora pazienza e pianificazione.
+ Sebbene vi siano videogiochi che si concentrano principalmente sulla componente
+ a giocatore
+\emph on
+ 
+\emph default
+singolo, i giochi, intesi anche nel senso classico del termine, nascono
+ come mezzo di 
+\emph on
+condivisione 
+\emph default
+dell'esperienza con altri partecipanti.
+\end_layout
+
+\begin_layout Standard
+In questa tesi si descrive il processo di sviluppo di OrbTail
+\emph on
+, 
+\emph default
+un videogioco
+\emph on
+ 
+\emph default
+multigiocatore
+\emph on
+ 
+\emph default
+con elementi tipici dei giochi di guida
+\emph on
+ 
+\emph default
+disponibile per dispositivi 
+\emph on
+mobile
+\emph default
+ e 
+\emph on
+desktop
+\emph default
+ quali Android, iOS, Windows e OSX.
+ Il gioco prevede tre modalitá di gioco differenti e consente fino a quattro
+ giocatori di sfidarsi online in modalitá 
+\emph on
+cross-platform play
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Il termine 
+\size normal
+\emph on
+cross-platform play
+\emph default
+ identifica una modalitá di gioco online in cui giocatori possono giocare
+ tra loro indipendentemente dalla piattaforma utilizzata.
+ 
+\end_layout
+
+\end_inset
+
+ su una delle tre arene disponibili.
+ Vi é inoltre la possibilitá di condividere uno stesso dispositivo 
+\emph on
+desktop
+\emph default
+ tra due o piú giocatori locali mediante un'apposita modalitá 
+\emph on
+splitscreen
+\emph default
+ 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Il termine 
+\size normal
+\emph on
+splitscreen 
+\emph default
+identifica una modalitá di gioco in cui lo schermo viene suddiviso in piú
+ quadranti in modo da consentire a piú giocatori di usare uno stesso dispositivo
+ contemporaneamente.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La necessitá di supportare piú piattaforme, impedendo che ciascuna di esse
+ potesse risultare avvantaggiata rispetto alle altre durante le sessioni
+ 
+\emph on
+cross-platform play
+\emph default
+, ha portato allo sviluppo di un 
+\emph on
+gameplay 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Il 
+\emph on
+gameplay 
+\emph default
+(in italiano traducibile come 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+esperienza utente
+\begin_inset Quotes erd
+\end_inset
+
+) 
+\emph default
+comprende gli elementi di gioco quali storia, regole, obiettivi, progressioni,
+ interazione utente, ecc.
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+essenziale ed immediato.
+ La durata limitata delle sessioni, unita ad una curva d'apprendimento semplice,
+ rende il prodotto particolarmente adatto ad un pubblico di 
+\emph on
+casual gamer
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Si definisce 
+\size normal
+\emph on
+casual gamer 
+\emph default
+un giocatore saltuario, non particolarmente interessato alla cultura dei
+ videogiochi e, solitamente, alla tecnologia in generale.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Piattaforme
+\end_layout
+
+\begin_layout Standard
+L'esperienza videoludica ha il grande vantaggio di poter essere studiata
+ per soddisfare utenze dai gusti profondamente diversi su un vasto numero
+ di piattaforme.
+ Ad oggi esistono decine di tipologie di dispositivi di intrattenimento
+ differenziati per costo, performance e modalitá d'interazione.
+\end_layout
+
+\begin_layout Standard
+Le piattaforme 
+\emph on
+mobile
+\emph default
+, pur essendo nate solo di recente, si sono subito affermate come una delle
+ principali piattaforme da gioco.
+ Il successo senza precedenti di 
+\emph on
+smartphone 
+\emph default
+e 
+\emph on
+tablet 
+\emph default
+ha consentito all'industria mobile di generare un volume d'affari pari a
+ quello di 
+\emph on
+pc 
+\emph default
+e 
+\emph on
+console 
+\emph default
+combinati
+\emph on
+ 
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GameStatistics"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pur non godendo delle stesse performance e manifestando un ciclo di vita
+ piú breve rispetto alle controparti classiche, i dispositivi mobile godono
+ di una piú vasta diffusione e si rivolgono ad un pubblico decisamente piú
+ ampio.
+\end_layout
+
+\begin_layout Standard
+L'interazione primaria affidata all'
+\emph on
+input
+\emph default
+ 
+\emph on
+touch
+\emph default
+ é affiancata da un grande numero di sensori accessori quali 
+\emph on
+GPS, accelerometri, giroscopi, bussole 
+\emph default
+e
+\emph on
+ videocamere.
+ 
+\emph default
+Recenti sviluppi tecnologici quali 
+\emph on
+realtá aumentata 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La realtá aumentata consiste nell'arricchire il mondo circostante attraverso
+ contenuti di tipo visivo, aptico o uditivo generati da un elaboratore.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+e 
+\emph on
+realtá virtuale
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La realtá virtuale consiste nel simulare un ambiente tridimensionale tramite
+ un elaboratore e lasciare che l'utente vi interagisca attraverso periferiche
+ di input specializzate quali visori, cuffie e pad.
+\end_layout
+
+\end_inset
+
+, unito all'uso sapiente di queste nuove modalitá d'interazione, ha permesso
+ la nascita di nuovi paradigmi di 
+\emph on
+gameplay 
+\emph default
+rimasti finora inesplorati.
+\end_layout
+
+\begin_layout Standard
+I 
+\emph on
+pc 
+\emph default
+e le 
+\emph on
+console 
+\emph default
+sono le piattaforme storiche su cui sono nati e diffusi i videogame.
+ Accomunate da paradigmi d'interazione e performance paragonabili, queste
+ due famiglie di dispositivi sono nate per scopi diversi.
+ Laddove le 
+\emph on
+console
+\emph default
+ sono pensate per essere un dispositivo d'intrattenimento 
+\emph on
+dedicato
+\emph default
+, che fa della 
+\emph on
+facilitá d'uso 
+\emph default
+il suo cavallo di battaglia, i 
+\emph on
+p
+\emph default
+c hanno una natura piú generica e garantiscono performance e flessibilitá
+ maggiori al costo di una richiesta piú elevata di competenza da parte dell'uten
+za.
+ 
+\end_layout
+
+\begin_layout Standard
+Il ciclo di vita e il costo delle due piattaforme é inoltre molto diverso.
+ Le 
+\emph on
+console 
+\emph default
+sono dei 
+\emph on
+sistemi embedded 
+\emph default
+precostruiti e limitatamente aggiornabili; il loro ciclo di vita é generalmente
+ superiore al quinquennio e sono caratterizzati da un costo relativamente
+ basso.
+ I 
+\emph on
+pc
+\emph default
+, d'altro canto
+\emph on
+, 
+\emph default
+possono essere assemblati scegliendo i componenti che meglio si adattano
+ alle esigenze dell'utente ed aggiornati quando ritenuto necessario.
+ Il costo di un 
+\emph on
+pc 
+\emph default
+é generalmente molto piú alto rispetto a quello di una console, anche a
+ paritá di specifiche tecniche.
+\end_layout
+
+\begin_layout Standard
+L'ampio parco di periferiche di input supportate, dalle piú comuni quali
+ tastiere, mouse e gamepad a quelle piú specializzate quali volanti, pedaliere
+ e 
+\emph on
+HOTAS 
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+L'
+\emph on
+HOTAS
+\emph default
+ (acronimo di 
+\begin_inset Quotes fld
+\end_inset
+
+
+\emph on
+hands on throttle and stick
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+), usato solitamente per giocare a simulatori di volo, consiste di un joystick
+ a 4 o piú assi e una leva d'accelerazione.
+\end_layout
+
+\end_inset
+
+, rendono queste piattaforme adatte a qualsiasi tipologia di gioco ed interazion
+e utente.
+\end_layout
+
+\begin_layout Section
+Processo di sviluppo
+\end_layout
+
+\begin_layout Standard
+Il processo di sviluppo di un videogioco cambia radicalmente in funzione
+ della piattaforma e dell'utenza a cui viene destinato il prodotto.
+ Un design di successo deve essere in grado di sfruttare le peculiaritá
+ di ciascun dispositivo e considerarne le limitazioni tecniche, senza pregiudica
+re l'esperienza utente.
+\end_layout
+
+\begin_layout Standard
+Lo sviluppo risulta solitamente tanto piú avvantaggiato quanto minori sono
+ le limitazioni delle piattaforma o varietá di specifiche tra dispositivi.
+ La presenza di dispositivi 
+\emph on
+identici
+\emph default
+ tra 
+\emph on
+console
+\emph default
+ appartenenti ad uno stesso ecosistema garantisce un'elevata consistenza
+ dell'esperienza utente e consente interventi di ottimizzazione ad una granulari
+tá molto fine.
+ Laddove questo processo é solitamente molto 
+\emph on
+efficiente
+\emph default
+ su console, lo stesso non puó essere detto per piattaforme 
+\emph on
+mobile 
+\emph default
+e 
+\emph on
+desktop 
+\emph default
+per via dell'elevata varietá di specifiche tecniche o combinazioni di componenti.
+ I 
+\emph on
+pc 
+\emph default
+risultano avvantaggiati per via delle elevate performance e assenza di grosse
+ limitazioni e ció consente loro di mantenere un elevata fedeltá e fruibilitá
+ del contenuto.
+ Lo sviluppo su dispositivi quali 
+\emph on
+smartphone 
+\emph default
+e 
+\emph on
+tablet
+\emph default
+, d'altro canto, deve scontrarsi con la presenza di dispositivi con capacitá
+ profondamente diverse e comparti tecnici non sempre in equilibrio tra loro
+ (non é raro assistere a dispositivi che associano elevate risoluzioni a
+ performance mediocri).
+ In questo caso é richiesto uno sforzo maggiore affinché l'applicazione
+ scali in funzione del dispositivo per garantire una buona esperienza utente.
+\end_layout
+
+\begin_layout Standard
+Sebbene esistono titoli sviluppati in 
+\emph on
+esclusiva 
+\emph default
+per alcune piattaforme, la necessitá di aumentare il bacino d'utenza, e
+ di conseguenza i ricavi, solitamente richiede che un prodotto venga distribuito
+ su piú ecosistemi.
+ Un tempo processo lungo ed oneroso per via delle marcate differenze tra
+ le architetture e carenza di strumenti di sviluppo, ad oggi lo sviluppo
+ multipiattaforma risulta molto avvantaggiato.
+ Il rilascio di motori grafici di terze parti
+\emph on
+,
+\emph default
+ unito alla convergeza delle piattaforme verso architetture simili, permette
+ agli sviluppatori di lavorare ad un livello di astrazione piú elevato evitando
+ di creare supporti di basso livello specifici per dispositivo.
+\end_layout
+
+\begin_layout Standard
+Laddove sviluppare un videogioco per piattaforme simili quali potrebbero
+ essere 
+\emph on
+pc 
+\emph default
+e 
+\emph on
+console 
+\emph default
+oppure 
+\emph on
+smartphone 
+\emph default
+e 
+\emph on
+tablet
+\emph default
+, costituisce piú un problema implementativo che non a livello di gameplay,
+ sviluppare per piattaforme profondamente diverse richiede importanti consideraz
+ioni a livello di 
+\emph on
+design
+\emph default
+ e produzione delle risorse grafiche e non.
+ In primo luogo il differente grado di apprezzamento dell'utenza delle varie
+ piattaforme puó precludere il successo a certe tipologie di gioco di nicchia
+ (quali potrebbero essere simulatori o strategici) e favorire i design che
+ si rivolgono al grande pubblico.
+ Le differenti modalitá d'interazione potrebbero inoltre richiedere la rivisitaz
+ione dell'interfaccia grafica e l'eventuale eliminazione degli input disponibili
+ solo su certe tipologie di dispositivi.
+ Il comparto tecnico deve inoltre consentire al prodotto di poter scalare
+ in funzione delle performance a disposizione.
+ Possibili interventi consistono nella riduzione del dettaglio delle 
+\emph on
+texture
+\emph default
+ o della complessitá poligonale, riduzione o rimozione dell'effettistica,
+ limitazione degli oggetti a schermo.
+ Ove ció non fosse possibile o insufficiente potrebbe essere necessario
+ rivisitare il 
+\emph on
+gameplay 
+\emph default
+attraverso la riduzione di giocatori o avversari, semplificazione della
+ 
+\emph on
+IA
+\emph default
+ o rimozione di feature particolarmente onerose.
+\end_layout
+
+\begin_layout Section
+Multigiocatore
+\end_layout
+
+\begin_layout Standard
+L'interazione sociale come mezzo per aumentare il coinvolgimento videoludico
+ é il motivo principale per cui i videogiochi multigiocatore hanno da sempre
+ riscosso un grande successo.
+ Sebbene esistono infinite variazioni sul tema, le modalitá multigiocatore
+ possono essere classificate in due famiglie: 
+\emph on
+cooperative 
+\emph default
+e 
+\emph on
+competitive.
+ 
+\emph default
+Alla prima categoria appartengono quelle modalitá in cui due o piú giocatori
+ 
+\emph on
+collaborano 
+\emph default
+tra loro al fine di raggiungere un obiettivo comune.
+ In queste modalitá l'elemento di sfida é rappresentato dal gioco stesso
+ e governato da 
+\emph on
+intelligenze artificiali 
+\emph default
+piú o meno sofisticate.
+ Nelle modalitá 
+\emph on
+competitive
+\emph default
+ l'elemento di sfida é invece rappresentato dai giocatori stessi: gli utenti
+ sono portati a confrontarsi gli uni con gli altri al fine di raggiungere
+ un obiettivo impedendo al contempo che gli altri giocatori possano fare
+ altrettanto.
+ Il livello di sfida offerto da alcuni titoli é tale per cui, pur di eccellere,
+ alcuni giocatori hanno deciso di farne una carriera, sottoponendosi costantemen
+te a veri e propri allenamenti.
+ Questo fenomeno ha di recente portato alla nascita di competizioni a livello
+ agonistico, organizzate e regolamentate da entitá terze, in cui i partecipanti
+ non sono semplici giocatori ma veri e propri atleti.
+ Queste competizioni prendono il nome di 
+\emph on
+e-sports 
+\emph default
+(sport elettronici).
+\end_layout
+
+\begin_layout Standard
+Le modalitá multigiocatore hanno accompagnato lo sviluppo dei videogiochi
+ fin dagli albori, in un'epoca in cui la diffusione di Internet era molto
+ limitata.
+ Le realizzazioni piú semplici consistono nello sfruttare uno stesso dispositivo
+ col quale tutti i giocatori possono interagirvi.
+ La presenza fisica di tutti i partecipanti coinvolti favorisce un'interazione
+ sociale piú immediata e rende queste modalitá di gioco particolarmente
+ adatte ai 
+\emph on
+party-game
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I 
+\emph on
+party-game 
+\emph default
+sono l'equivalente videoludico dei giochi di societá.
+\end_layout
+
+\end_inset
+
+
+\emph default
+.
+ Le implementazioni piú semplici consistono nell'utilizzare una visuale
+ condivisa tra tutti i partecipanti (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Overcooked"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_overcooked.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Overcooked"
+
+\end_inset
+
+Overcooked - Party game a visuale condivisa
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ oppure, laddove l'interazione in contemporanea non fosse necessaria, sfruttare
+ la meccanica dei 
+\emph on
+turni
+\emph default
+ affinché ciascun giocatore goda di un punto di vista unico sul mondo di
+ gioco (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:HoMM3"
+
+\end_inset
+
+) 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_hommiii.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Heroes of Might & Magic
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:HoMM3"
+
+\end_inset
+
+Heroes of Might & Magic - Multigiocatore locale a turni
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+  Un'implementazione piú sofisticata, nota col termine 
+\emph on
+split-screen,
+\emph default
+ consiste nel suddividere lo schermo in quadranti, solitamente da due a
+ quattro, e mostrare in ciascuno di essi il punto di vista di uno dei giocatori
+ in maniera indipendente (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MarioKarts"
+
+\end_inset
+
+) 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_ss_mario_karts.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MarioKarts"
+
+\end_inset
+
+Mario Karts - Multigiocatore in split-screen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ L'elevato impatto sulle performance, tale da rendere necessarie ottimizzazioni
+ particolarmente aggressive, unita al ridotto bacino d'utenza cui queste
+ modalitá si rivolgono, ha di recente portato ad un calo di titoli che offrono
+ questo tipo di esperienza.
+\end_layout
+
+\begin_layout Standard
+La rapida diffusione di Internet, unita ai suoi sviluppi degli ultimi decenni,
+ ha consentito la nascita di nuove modalitá multigiocatore 
+\emph on
+online
+\emph default
+.
+ Rispetto all'approccio classico, un multigiocatore online permette agli
+ utenti di usare il proprio dispositivo per accedere a sessioni di gioco
+ con un numero di partecipanti che varia tra la decina e il migliaio, indipenden
+temente dalla distanza fisica che li separa.
+ Il rinnovato successo dei giochi multigiocatore ha consentito la nascita
+ di nuovi generi, dai 
+\emph on
+MOBA
+\emph default
+ in cui due squadre dal numero ristretto di giocatori si sfidano all'interno
+ di un'arena (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Battlerite"
+
+\end_inset
+
+) 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_battlerite.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Battlerite"
+
+\end_inset
+
+Battlerite - MOBA: Multiplayer online battle arena.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, agli 
+\emph on
+MMO
+\emph default
+ i cui mondi persistenti vantano migliaia di giocatori attivi contemporaneamente
+(Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EVE"
+
+\end_inset
+
+) 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mmo_eveonline.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:EVE"
+
+\end_inset
+
+EVE Online - MMO: Massive multiplayer online game
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, passando per i piú recenti 
+\emph on
+Battle Royale 
+\emph default
+caratterizzati da centinaia di giocatori che lottano per la sopravvivenza
+ (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PUBG"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/br_pubg.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PUBG"
+
+\end_inset
+
+PlayerUnknown's Battleground - Battle royale
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le implementazioni piú comuni sono ricoducibili a due diverse 
+\emph on
+architetture
+\emph default
+, in funzione del ruolo che i diversi dispositivi hanno all'interno della
+ sessione di gioco.
+ Nell'architettura 
+\emph on
+client-server
+\emph default
+ i dispositivi dei giocatori, detti client
+\emph on
+, 
+\emph default
+sono connessi ad un dispositivo centrale, detto 
+\emph on
+server, 
+\emph default
+il cui ruolo consiste nel coordinare tutti i partecipanti, gestire l'evoluzione
+ della partita, propagare lo stato condiviso di gioco ed eventualmente validare
+ le azioni dei singoli giocatori per evitare 
+\emph on
+cheat 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Il 
+\emph on
+cheat
+\emph default
+, in italiano 
+\begin_inset Quotes fld
+\end_inset
+
+imbrogliare
+\begin_inset Quotes frd
+\end_inset
+
+,
+\emph on
+ 
+\emph default
+rappresenta una qualsiasi tecnica atta a sovvertire le regole di gioco affinché
+ un giocatore ne ottenga un beneficio immeritato.
+\end_layout
+
+\end_inset
+
+
+\emph default
+.
+ I 
+\emph on
+client 
+\emph default
+comunicano esclusivamente col 
+\emph on
+server
+\emph default
+ limitandosi a dichiarare le azioni effettuate dall'utente.
+ Il ruolo di 
+\emph on
+server 
+\emph default
+puó essere ricoperto sia da una macchina esterna che non prende parte alla
+ partita detta 
+\emph on
+server dedicato,
+\emph default
+ oppure direttamente da uno dei dispositivi dei giocatori, detto 
+\emph on
+host
+\emph default
+.
+ L'approccio con 
+\emph on
+server dedicato
+\emph default
+ permette di sfruttare macchine remote caratterizzate dalla elevate performance
+ al fine di gestire efficientemente un numero anche elevato di giocatori.
+ Il secondo di questi, invece, consente di evitare i costi associati alla
+ gestione o noleggio del server al costo di una minore scalabilitá.
+ L'esperienza multigiocatore con questo tipo di approccio é inoltre soggetta
+ a fattori difficilmente prevedibili quali prestazioni del dispositivo che
+ fa da 
+\emph on
+host
+\emph default
+, qualitá della connessione verso i 
+\emph on
+client
+\emph default
+ e la possibilitá di disconnessione del 
+\emph on
+server 
+\emph default
+durante una partita che potrebbe richiede il 
+\emph on
+trasferimento 
+\emph default
+del ruolo di server ad uno degli altri dispositivi (processo noto col termine
+ 
+\emph on
+host migration
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+Nelle architetture 
+\emph on
+peer-to-peer
+\emph default
+, a differenza di quanto avviene con l'approccio 
+\emph on
+client-server
+\emph default
+, lo stato di gioco é condiviso su tutti i dispositivi e gestito in maniera
+ distribuita.
+ Sebbene questa architettura impedisce che il carico computazionale si concentri
+ su un unico dispositivo, evitando inoltre i costi associati a macchine
+ server esterne, la condivisione dell'
+\emph on
+autoritá 
+\emph default
+sullo stato di gioco favorisce il proliferare del fenomeno del 
+\emph on
+cheating
+\emph default
+, oltre che a complicare la sincronizzazione trai vari dispositivi e la
+ risoluzione di eventuali discrepanze nello stato di gioco.
+\end_layout
+
+\begin_layout Standard
+Per far fronte al numero crescente di giocatori all'interno di ciascuna
+ sessione di gioco, le implementazioni piú moderne si basano su un approccio
+ 
+\emph on
+misto client-server 
+\emph default
+in cui parte della computazione viene delegata ai vari client che, pertanto,
+ possiedono un certo grado di autoritá sulla partita.
+\end_layout
+
+\begin_layout Standard
+Sebbene esistano numerosi paradigmi consolidati per la gestione dei giochi
+ multigiocatore, la quasi totalitá delle implementazioni 
+\emph on
+segmentano
+\emph default
+ il bacino d'utenza in funzione della piattaforma d'appartenenza.
+ Questo approccio semplifica enormemente la gestione dei servizi online
+ accessori, specifici per piattaforma e molto diversi tra loro, evitando
+ i costi associati alla gestione dell'
+\emph on
+interoperabilitá 
+\emph default
+tra di essi, tuttavia impedisce che giocatori su piattaforme diverse possano
+ giocare gli uni contro gli altri.
+ Esistono alcuni esempi di giochi multipiattaforma che consentono a giocatori
+ su 
+\emph on
+smartphone 
+\emph default
+e 
+\emph on
+tablet 
+\emph default
+di interagire ed influenzare partite in corso su altre piattaforme (quali
+ 
+\emph on
+pc 
+\emph default
+e 
+\emph on
+console
+\emph default
+), tuttavia essi rappresentano una nicchia ristretta che non ha mai riscosso
+ un vero e proprio successo per via dei ruoli particolarmente asimmetrici
+ e gameplay profondamente diversi trai vari dispositivi (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BF4"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_bf4.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PC - First person shooter.
+ Il 
+\emph on
+soldati
+\emph default
+ prendono controllo di punti strategici facendo guadagnare risorse al 
+\emph on
+comandante
+\emph default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_bf4_commander.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mobile - Strategico.
+ Il 
+\emph on
+comandante 
+\emph default
+gestisce la conquista dispiegando soldati e risorse, lanciando attacchi
+ missilistici e proteggendo i propri soldati dagli avversari.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BF4"
+
+\end_inset
+
+Battlefield 4 - Interoperabilitá pc
+\backslash
+mobile
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
