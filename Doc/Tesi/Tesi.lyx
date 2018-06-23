@@ -119,26 +119,31 @@ Sommario
 
 \begin_layout Standard
 In questo elaborato di tesi si descrive il processo di sviluppo di Orbtail,
- un gioco multiplayer multipiattaforma che coniuga elementi 
+ un gioco multipiattaforma a piú partecipanti che coniuga elementi tipici
+ di 
 \emph on
-racing
+giochi di guida
 \emph default
- ed 
+ e
 \emph on
-arena
+ ad arena
 \emph default
- e diverse modalitá di gioco in un gameplay rapido e competitivo.
- Il prodotto, nato nel 2013 come progetto per il corso di Videogame Design
- and Programming, é stato rielaborato ed esteso, andando ad aggiornare l'intero
- comparto tecnico, il design originale e la direzione artistica.
- Il pregio principale di Orbtail risiede nella sua capacitá di poter essere
- giocato da piú giocatori contemporaneamente, online o offline, in una qualsiasi
+ e diverse modalitá di gioco in un'esperianza rapida e competitiva.
+ Il prodotto, nato nel 2013 come progetto per il corso di 
+\emph on
+Videogame Design and Programming
+\emph default
+, é stato rielaborato ed esteso, andando ad aggiornare l'intero comparto
+ tecnico, il design originale e la direzione artistica.
+ Il pregio principale di OrbTail risiede nella sua capacitá di poter essere
+ giocato da piú giocatori contemporaneamente, online o meno, in una qualsiasi
  combinazione di piattaforme e
 \backslash
 o numero di giocatori locali.
- Questo documento ne descrive il processo produttivo, a partire dal 
+ Questo documento ne descrive il processo produttivo, a partire dall'idea
+ di base
 \emph on
-concept 
+ 
 \emph default
 fino alle varie scelte tecniche, facendo numerosi paralleli con la versione
  originale al fine di individuare carenze e spunti per migliorie.
@@ -156,9 +161,9 @@ Nel primo capitolo viene dato un contesto al progetto, fornendo una panoramica
 
 \begin_layout Standard
 Nel secondo capitolo vengono delineate le meccaniche del gioco e definiti
- i requisiti di 
+ i requisiti di ciasun livelli
 \emph on
-level design.
+.
  
 \emph default
 Vengono inoltre analizzati alcuni titoli concorrenti al fine di individare
@@ -168,16 +173,16 @@ Vengono inoltre analizzati alcuni titoli concorrenti al fine di individare
 \begin_layout Standard
 Nel capitolo successivo verrá inquadrata la direzione artistica del progetto
  usando diversi titoli esistenti come riferimento.
- Viene inoltre analizzata la produzione dei vari 
+ Viene inoltre analizzata la produzione delle varie risorse
 \emph on
-asset 
+ 
 \emph default
-utilizzati all'interno del gioco considerando i requisiti tecnici e di design.
+utilizzate all'interno del gioco considerando i requisiti tecnici e di design.
 \end_layout
 
 \begin_layout Standard
 Il quarto capitolo verte sulle scelte tecnologiche, a partire dalla scelta
- dell'engine, delle piattaforme e dell'architettura del gioco.
+ del motore grafico, delle piattaforme e dell'architettura del gioco.
  Ogni scelta verrá contestualizzata rispetto a varie alternative e opportunament
 e giustificata, considerando necessariamente i requisiti di design.
 \end_layout
@@ -199,7 +204,7 @@ Introduzione
 \end_layout
 
 \begin_layout Standard
-I videogame rappresentano una delle forme di intrattenimento moderne piú
+I videogiochi rappresentano una delle forme di intrattenimento moderne piú
  affermate e diffuse.
  A differenza di quanto avviene con i mezzi classici quali 
 \emph on
@@ -213,12 +218,12 @@ libri
  concentrazione, altri una buona dose di coordinazione e reattivitá, altri
  ancora pazienza e pianificazione.
  Sebbene vi siano videogiochi che si concentrano principalmente sulla componente
- 
+ a giocatore
 \emph on
-single-player
+ 
 \emph default
-, i giochi, intesi anche nel senso classico del termine, nascono come mezzo
- di 
+singolo, i giochi, intesi anche nel senso classico del termine, nascono
+ come mezzo di 
 \emph on
 condivisione 
 \emph default
@@ -226,20 +231,31 @@ dell'esperienza con altri partecipanti.
 \end_layout
 
 \begin_layout Standard
-In questa tesi si descrive il processo di sviluppo di 
+In questa tesi si descrive il processo di sviluppo di OrbTail
 \emph on
-Orbtail, 
+, 
 \emph default
 un videogioco
 \emph on
- multiplayer 
+ 
 \emph default
-con elementi 
+multigiocatore
 \emph on
-racing 
+ 
 \emph default
-disponibile per dispositivi mobile e desktop quali Android, iOS, Windows
- e OSX.
+con elementi tipici dei giochi di guida
+\emph on
+ 
+\emph default
+disponibile per dispositivi 
+\emph on
+mobile
+\emph default
+ e 
+\emph on
+desktop
+\emph default
+ quali Android, iOS, Windows e OSX.
  Il gioco prevede tre modalitá di gioco differenti e consente fino a quattro
  giocatori di sfidarsi online in modalitá 
 \emph on
@@ -263,7 +279,10 @@ cross-platform play
 \end_inset
 
  su una delle tre arene disponibili.
- Vi é inoltre la possibilitá di condividere uno stesso dispositivo desktop
+ Vi é inoltre la possibilitá di condividere uno stesso dispositivo 
+\emph on
+desktop
+\emph default
  tra due o piú giocatori locali mediante un'apposita modalitá 
 \emph on
 splitscreen
@@ -376,7 +395,7 @@ Le piattaforme
 mobile
 \emph default
 , pur essendo nate solo di recente, si sono subito affermate come una delle
- principali piattaforme da gaming.
+ principali piattaforme da gioco.
  Il successo senza precedenti di 
 \emph on
 smartphone 
@@ -435,25 +454,13 @@ e
 \emph default
 Recenti sviluppi tecnologici quali 
 \emph on
-augmented reality
+realtá aumentata 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-La 
-\emph on
-augmented reality 
-\emph default
-(in italiano 
-\begin_inset Quotes fld
-\end_inset
-
-realtá aumentata
-\begin_inset Quotes frd
-\end_inset
-
-), consiste nell'arricchire il mondo circostante attraverso contenuti di
- tipo visivo, aptico o uditivo generati da un elaboratore.
+La realtá aumentata consiste nell'arricchire il mondo circostante attraverso
+ contenuti di tipo visivo, aptico o uditivo generati da un elaboratore.
  
 \end_layout
 
@@ -463,28 +470,16 @@ realtá aumentata
 \emph default
 e 
 \emph on
-virtual reality
+realtá virtuale
 \emph default
 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-La 
-\emph on
-virtual reality 
-\emph default
-(in italiano 
-\begin_inset Quotes fld
-\end_inset
-
-realtá virtuale
-\begin_inset Quotes frd
-\end_inset
-
-) consiste nel simulare un ambiente tridimensionale tramite un elaboratore
- e lasciare che l'utente vi interagisca attraverso periferiche di input
- specializzate quali visori, cuffie e controller.
+La realtá virtuale consiste nel simulare un ambiente tridimensionale tramite
+ un elaboratore e lasciare che l'utente vi interagisca attraverso periferiche
+ di input specializzate quali visori, cuffie e pad.
 \end_layout
 
 \end_inset
@@ -671,22 +666,11 @@ per alcune piattaforme, la necessitá di aumentare il bacino d'utenza, e
  di conseguenza i ricavi, solitamente richiede che un prodotto venga distribuito
  su piú ecosistemi.
  Un tempo processo lungo ed oneroso per via delle marcate differenze tra
- le architetture e carenza di 
+ le architetture e carenza di strumenti di sviluppo, ad oggi lo sviluppo
+ multipiattaforma risulta molto avvantaggiato.
+ Il rilascio di motori grafici di terze parti
 \emph on
-tool
-\emph default
-, ad oggi lo sviluppo 
-\emph on
-cross-platform
-\emph default
- risulta molto avvantaggiato.
- Il rilascio di 
-\emph on
-engine
-\emph default
- 
-\emph on
-third-party,
+,
 \emph default
  unito alla convergeza delle piattaforme verso architetture simili, permette
  agli sviluppatori di lavorare ad un livello di astrazione piú elevato evitando
@@ -717,19 +701,11 @@ ioni a livello di
 \emph on
 design
 \emph default
- e produzione 
-\emph on
-asset
-\emph default
-.
+ e produzione delle risorse grafiche e non.
  In primo luogo il differente grado di apprezzamento dell'utenza delle varie
  piattaforme puó precludere il successo a certe tipologie di gioco di nicchia
  (quali potrebbero essere simulatori o strategici) e favorire i design che
- si rivolgono un pubblico piú 
-\emph on
-mainstream
-\emph default
-.
+ si rivolgono al grande pubblico.
  Le differenti modalitá d'interazione potrebbero inoltre richiedere la rivisitaz
 ione dell'interfaccia grafica e l'eventuale eliminazione degli input disponibili
  solo su certe tipologie di dispositivi.
@@ -755,14 +731,14 @@ IA
 \end_layout
 
 \begin_layout Subsection
-Multiplayer
+Multigiocatore
 \end_layout
 
 \begin_layout Standard
 L'interazione sociale come mezzo per aumentare il coinvolgimento videoludico
- é il motivo principale per cui i videogiochi multiplayer hanno da sempre
+ é il motivo principale per cui i videogiochi multigiocatore hanno da sempre
  riscosso un grande successo.
- Sebbene esistono infinite variazioni sul tema, le modalitá di gioco multiplayer
+ Sebbene esistono infinite variazioni sul tema, le modalitá multigiocatore
  possono essere classificate in due famiglie: 
 \emph on
 cooperative 
@@ -806,8 +782,9 @@ e-sports
 \end_layout
 
 \begin_layout Standard
-Le modalitá multiplayer hanno accompagnato lo sviluppo dei videogiochi fin
- dagli albori, in un'epoca in cui la diffusione di Internet era molto limitata.
+Le modalitá multigiocatore hanno accompagnato lo sviluppo dei videogiochi
+ fin dagli albori, in un'epoca in cui la diffusione di Internet era molto
+ limitata.
  Le realizzazioni piú semplici consistono nello sfruttare uno stesso dispositivo
  col quale tutti i giocatori possono interagirvi.
  La presenza fisica di tutti i partecipanti coinvolti favorisce un'interazione
@@ -920,7 +897,7 @@ name "fig:HoMM3"
 
 \end_inset
 
-Heroes of Might & Magic - Multiplayer locale a turni
+Heroes of Might & Magic - Multigiocatore locale a turni
 \end_layout
 
 \end_inset
@@ -973,7 +950,7 @@ name "fig:MarioKarts"
 
 \end_inset
 
-Mario Karts - Multiplayer in split-screen
+Mario Karts - Multigiocatore in split-screen
 \end_layout
 
 \end_inset
@@ -997,16 +974,16 @@ La rapida diffusione di Internet, unita ai suoi sviluppi degli ultimi decenni,
 online
 \emph default
 .
- Rispetto all'approccio classico, un multiplayer online permette agli utenti
- di usare il proprio dispositivo per accedere a sessioni di gioco con un
- numero di partecipanti che varia tra la decina e il migliaio, indipendentemente
- dalla distanza fisica che li separa.
- Il rinnovato successo dei giochi multiplayer ha consentito la nascita di
- nuovi generi, dai 
+ Rispetto all'approccio classico, un multigiocatore online permette agli
+ utenti di usare il proprio dispositivo per accedere a sessioni di gioco
+ con un numero di partecipanti che varia tra la decina e il migliaio, indipenden
+temente dalla distanza fisica che li separa.
+ Il rinnovato successo dei giochi multigiocatore ha consentito la nascita
+ di nuovi generi, dai 
 \emph on
 MOBA
 \emph default
- in cui due team dal numero ristretto di giocatori si sfidano all'interno
+ in cui due squadre dal numero ristretto di giocatori si sfidano all'interno
  di un'arena (Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1043,7 +1020,7 @@ name "fig:Battlerite"
 
 \end_inset
 
-Battlerite - Multiplayer online battle arena.
+Battlerite - MOBA: Multiplayer online battle arena.
 \end_layout
 
 \end_inset
@@ -1094,7 +1071,7 @@ name "fig:EVE"
 
 \end_inset
 
-EVE Online - Massive multiplayer online game
+EVE Online - MMO: Massive multiplayer online game
 \end_layout
 
 \end_inset
@@ -1307,7 +1284,7 @@ in cui parte della computazione viene delegata ai vari client che, pertanto,
 
 \begin_layout Standard
 Sebbene esistano numerosi paradigmi consolidati per la gestione dei giochi
- multiplayer, la quasi totalitá delle implementazioni 
+ multigiocatore, la quasi totalitá delle implementazioni 
 \emph on
 segmentano
 \emph default
@@ -1453,7 +1430,7 @@ name "fig:BF4"
 
 \end_inset
 
-Battlefield 4 - Multiplayer con interoperabilitá pc
+Battlefield 4 - Multigiocatore con interoperabilitá pc
 \backslash
 mobile
 \end_layout
@@ -1506,7 +1483,7 @@ In questo capitolo vengono presentati alcuni titoli esistenti al fine di
  analizzarne le meccaniche di base e trovare spunti interessanti da integrare
  all'interno del 
 \emph on
-concept 
+design 
 \emph default
 di gioco.
  I titoli sono stati selezionati tra diverse piattaforme in modo da individuare
@@ -1544,7 +1521,7 @@ PlayStation
 Crash Bandicoot.
  
 \emph default
-Il gioco ruota attorno alle vicende di un team di piloti di 
+Il gioco ruota attorno alle vicende di una squadra di piloti di 
 \emph on
 kart 
 \emph default
@@ -1716,8 +1693,8 @@ campionati
  formati da quattro tracciati.
  In questa modalitá é prevista la presenza di otto partecipanti e l'intero
  arsenale di armi e potenziamenti.
- Quest'ultima modalitá é anche fruibile in formato multiplayer locale con
- numero di giocatori compreso tra due e quattro.
+ Quest'ultima modalitá é anche fruibile in formato multigiocatore locale
+ con numero di giocatori compreso tra due e quattro.
  L'ultima modalitá 
 \begin_inset Quotes fld
 \end_inset
@@ -1795,9 +1772,9 @@ reference "fig:CTRBattle"
 \emph on
 intelligenza artificiale
 \emph default
- ed é pertanto preclusa dall'esperienza 
+ ed é pertanto preclusa dall'esperienza a giocatore singolo
 \emph on
-singleplayer.
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1836,10 +1813,10 @@ sportivo
 \emph default
 e quello 
 \emph on
-racing
+corsa
 \emph default
-, in un gameplay inedito in cui due team formati da potenti veicoli si sfidano
- ad una partita di 
+, in un gameplay inedito in cui due squadre formati da potenti veicoli si
+ sfidano ad una partita di 
 \emph on
 calcio 
 \emph default
@@ -2006,7 +1983,7 @@ calcio
 \begin_inset Quotes frd
 \end_inset
 
-) prevede la sfida tra due team di dimensione variabile tra uno e quattro
+) prevede la sfida tra due squadre di dimensione variabile tra uno e quattro
  giocatori (Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2055,9 +2032,10 @@ Rocket League
 .
  I partecipanti usano i propri veicoli per colpire una grossa palla al fine
  di spingerla nella porta avversaria ed ottenere punti.
- Allo scadere del tempo il team col maggior numero di punti é dichiarato
+ Allo scadere del tempo la squadra col maggior numero di punti é dichiarato
  vincitore.
- In caso di paritá il primo team a segnare oltre lo scadere del tempo vince.
+ In caso di paritá la prima squadra a segnare oltre lo scadere del tempo
+ vince.
  Ogni giocatore ha inoltre un proprio punteggio personale che puó essere
  incrementato tirando la palla in porta, segnando, effettuando salvataggi,
  distruggendo i veicoli avversari e cosí via.
@@ -2090,9 +2068,9 @@ Hoops
 
  
 \emph default
-ispirata al 
+ispirata alla 
 \emph on
-basket 
+pallacanestro 
 \emph default
 in cui la porta é sostituita con un 
 \emph on
@@ -2123,7 +2101,7 @@ Dropshot
  stravolge le regole del gioco, rimuovendo completamente le porte.
  In questa modalitá il pavimento é suddiviso in piastrelle esagonali che,
  colpite dalla palla due volte in successione, crollano lasciando una voragine
- nel pavimento che funge da porta per il team a cui appartiene la mezzeria
+ nel pavimento che funge da porta per la squadra a cui appartiene la mezzeria
  di campo.
 \end_layout
 
@@ -2146,8 +2124,8 @@ in funzione del proprio livello di abilitá, e suddivise a loro volta in
 \emph on
  divisioni
 \emph default
-; i risultati del team consentono allo stesso di cambiare di divisione all'inter
-no della 
+; i risultati della squadra consentono allo stesso di cambiare di divisione
+ all'interno della 
 \emph on
 categoria 
 \emph default
@@ -2165,7 +2143,30 @@ Geometry Wars 3: Dimensions Evolved
 \emph default
 é un gioco 
 \emph on
-shoot 'em up 
+shoot 'em up
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I videogiochi 
+\emph on
+shoot 'em up
+\emph default
+, letteralmente 
+\begin_inset Quotes fld
+\end_inset
+
+spara a tutti
+\begin_inset Quotes frd
+\end_inset
+
+, sono caratterizzati da meccaniche in cui il giocatore deve sparare continuamen
+te a qualche obiettivo di gioco.
+\end_layout
+
+\end_inset
+
+ 
 \emph default
 sviluppato da 
 \emph on
@@ -2200,7 +2201,7 @@ avventura
 \begin_inset Quotes frd
 \end_inset
 
- ed un'ambiente di gioco totalmente 3D (Fig.
+ ed un'ambiente di gioco totalmente tridimensionale (Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:GW3Sphere"
@@ -2395,11 +2396,7 @@ Il gioco prevede
 \emph on
 dodici 
 \emph default
-modalitá di gioco 
-\emph on
-single-player
-\emph default
- organizzate in una modalitá 
+modalitá di gioco a giocatore singolo organizzate in una modalitá 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2451,7 +2448,7 @@ salute
 .
  Sono inoltre disponibili due modalitá 
 \emph on
-multiplayer
+multigiocatore
 \emph default
 : una 
 \emph on
@@ -2478,9 +2475,13 @@ OrbTail
 \end_layout
 
 \begin_layout Standard
-OrbTail é un gioco competitivo con elementi 
+OrbTail é un gioco competitivo con elementi tipici dei 
 \emph on
-racing 
+giochi di
+\emph default
+ 
+\emph on
+corsa 
 \emph default
 in cui quattro partecipanti si sfidano all'interno di un'arena.
  Il titolo offre diverse modalitá di gioco a tempo caratterizzate da condizioni
@@ -2652,13 +2653,10 @@ con un numero inferiore di giocatori.
 \emph on
 rimossa 
 \emph default
-al fine di garantire una piú elevata consistenza tra le esperienze 
+al fine di garantire una piú elevata consistenza tra le esperienze a giocatore
+ singolo e multigiocatore
 \emph on
-singleplayer 
-\emph default
-e
-\emph on
- multiplayer 
+ 
 \emph default
 e, allo stesso tempo, aumentare la difficoltá delle sessioni online.
 \end_layout
@@ -2706,9 +2704,9 @@ Modalitá di gioco
 \begin_layout Standard
 Il titolo offre diverse modalitá di gioco accomunate dalle medesime meccaniche
  di base ma con condizioni di vittoria differenti.
- Le modalitá di gioco sono rimaste largamente immutate rispetto al 
+ Le modalitá di gioco sono rimaste largamente immutate rispetto all'idea
 \emph on
-concept 
+ 
 \emph default
 originale del 2014.
 \end_layout
@@ -3528,12 +3526,12 @@ longest tail
 \emph default
 ed 
 \emph on
-elimination
+eliminazione
 \emph default
 .
  Nel 
 \emph on
-concept 
+documento di design 
 \emph default
 originale del gioco era prevista la presenza di elementi attivi ed ostacoli
  all'interno dei livelli: sebbene questa funzionalitá avrebbe certamente
@@ -3842,7 +3840,7 @@ orb
 .
  Quest'arma ha effetti particolarmente devastanti nella modalitá 
 \emph on
-elimination 
+eliminazione 
 \emph default
 o nelle fasi finali di 
 \emph on
@@ -4052,9 +4050,9 @@ frenare
 \emph on
  
 \emph default
-o attivare la retromarcia, lo 
+o attivare la retromarcia, la 
 \emph on
-stick sinistro 
+leva sinistra 
 \emph default
 per sterzare e un 
 \emph on
@@ -4084,6 +4082,26 @@ Interfaccia utente
 L'interfaccia utente é pensata per essere poco intrusiva: gli elementi dell'
 \emph on
 HUD 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+HUD é un acronimo che sta per 
+\emph on
+head-up display 
+\emph default
+(letteralmente 
+\emph on
+display a testa alta
+\emph default
+).
+ Questo termine identifica l'interfaccia grafica in sovraimpressione durante
+ le partite.
+\end_layout
+
+\end_inset
+
+ 
 \emph default
 sono ridotti al minimo e consentono di avere sempre una buona visione del
  campo di gioco, ció é particolarmente importante sui dispositivi 
@@ -4114,9 +4132,9 @@ HUD
 \emph default
 all'interno di ogni sessione consiste di un 
 \emph on
-timer di gara 
+cronometro 
 \emph default
-che mostra il tempo rimanente prima della conclusione del match e altri
+che mostra il tempo rimanente prima della conclusione della partita e altri
  
 \emph on
 quattro 
@@ -4216,11 +4234,49 @@ veicolo,
 dopodiché l'utente sará portato in un'apposita schermata di 
 \emph on
 matchmaking
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Col termine 
+\emph on
+matchmaking 
+\emph default
+si intende un particolare servizio offerto dai videogiochi usato per individuare
+ partite online e automaticamente assegnare il giocatore ad una di esse.
+\end_layout
+
+\end_inset
+
+
 \emph default
  in cui il sistema provvederá a creare la 
 \emph on
 lobby
 \emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Il termine 
+\emph on
+lobby 
+\emph default
+identifica una 
+\emph on
+stanza virtuale
+\emph default
+ all'interno di una sessione online.
+ Ogni 
+\emph on
+lobby 
+\emph default
+é associata ad una particolare partita in corso o in fase di creazione.
+\end_layout
+
+\end_inset
+
 .
  La selezione della modalitá di gioco e dell'arena é 
 \emph on
@@ -4278,18 +4334,10 @@ quattro
 \emph default
 .
  Un breve conto alla rovescia porterá i giocatori in gara.
- All'inizio di ogni partita é prevista una schermata di 
-\emph on
-tutorial 
-\emph default
-che spiega le regole della modalitá di gioco selezionata ed i potenziamenti
- disponibili.
- Questa schermata ha la duplice funzione di 
-\emph on
-tutorial 
-\emph default
-e di punto di sincronizzazione, in attesa che tutti gli altri giocatori
- online abbiano caricato il livello.
+ All'inizio di ogni partita é prevista una schermata contenente le regole
+ della modalitá di gioco selezionata ed i potenziamenti disponibili.
+ Questa schermata funge anche da punto di sincronizzazione, in attesa che
+ tutti gli altri giocatori online abbiano caricato il livello.
  La partita inizia una volta che tutti i giocatori hanno congedato la schermata.
  
 \end_layout
