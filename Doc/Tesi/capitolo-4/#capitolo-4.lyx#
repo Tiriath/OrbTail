@@ -107,10 +107,11 @@ motore grafico
 \emph default
 .
  Fin dalla versione originale era chiaro che sviluppare senza usare motori
- grafici di terze parti avrebbe aumentato esponenzialmente il tempo di sviluppo.
- Sebbene oggi ve ne sia un gran numero a disposizione, in grado di coprire
- la maggior parte delle esigenze, durante lo sviluppo della prima versione
- le scelte erano ben piú limitate.
+ grafici di terze parti avrebbe aumentato esponenzialmente il tempi di sviluppo,
+ rendendo di fatto impossibile supportare tutte le piattaforme desiderate.
+ Sebbene oggi vi sia un gran numero di motori grafici gratuiti in grado
+ di soddisfare la maggior parte delle esigenze, durante lo sviluppo della
+ prima versione di OrbTail le scelte erano ben piú limitate.
  Le due tecnologie principali erano rappresentate da Unity 4.3 e UDK e, sebbene
  quest'ultimo garantiva un'ottima resa visiva, lo strumento risultava instabile,
  poco documentato e particolarmente macchinoso.
@@ -130,32 +131,15 @@ mente piú lente che caratterizzano questo motore grafico, la mancanza di
 \emph on
 matchmaking 
 \emph default
-e, soprattutto, non era chiaro
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Per la nuova versione é stato deciso di effettuare un porting del gioco
- alla versione Unity 2017.3 al fine di ridurre i tempi di sviluppo.
- Inizialmente era stata anche valutato il motore grafico Unreal Engine 4,
- tuttavia, sebbene la revisione dell'architettura avrebbe comunque richiesto
- la riscrittura di gran parte del codice, la iterazioni del nuovo motore
- sono incredibilmente piú lente rispetto ad Unity e pertanto ne é stata
- abbandonata l'idea.
-\end_layout
-
-\begin_layout Standard
-Una volta determinate le tecnologie impiegate ci si é concentrati sullo
- sviluppo vero e proprio del gioco, partendo da una fase prototipale, conclusa
- durante il corso per il quale OrbTail era stato sviluppato originariamente,
- e via via procedendo per iterazioni successive in cui sono state implementate
- nuove funzionalitá.
+e, soprattutto, delle criticitá riguardanti lo sviluppo su piattaforme 
+\emph on
+mobile
+\emph default
+ (specie in termini di performance ed ottimizzazione).
+ Per questa nuova versione del titolo é stato pertanto deciso di aggiornare
+ il motore grafico, passando da Unity 4.13 alla versione 2017.3, cercando
+ di partire da una base quanto piú stabile possibile e proseguendo per iterazion
+i successive.
 \end_layout
 
 \begin_layout Section
@@ -163,7 +147,67 @@ Unity
 \end_layout
 
 \begin_layout Standard
-Unity
+Unity é un motore grafico che consente di sviluppare giochi multipiattaforma
+ su tutte le piattaforme 
+\emph on
+mobile
+\emph default
+, 
+\emph on
+console 
+\emph default
+e 
+\emph on
+desktop.
+
+\emph default
+ La presenza di una versione gratuita unita ad un elevato grado di intuitivitá
+ ne ha garantito rapidamente l'aumento in popolaritá da parte dei team 
+\emph on
+indipendenti.
+ 
+\emph default
+Questo motore é caratterizzato da paradigmi molto chiari di sviluppo, il
+ che lo rende tanto adatto agli sviluppatori alle prime armi quanto ai piú
+ esperti.
+ Il paradigma principale é rappresentato dal modello 
+\emph on
+entity-component,
+\emph default
+ dove le funzionalitá sono implementate all'interno di componenti indipendenti
+ e le entity fungono da contenitori per suddetti componenti.
+\end_layout
+
+\begin_layout Standard
+La limitazione maggiore di Unity risiede nel fatto che é un motore 
+\emph on
+closed-source
+\emph default
+, in cui l'intero sottosistema non é accessibile se non pagando una quota
+ a Unity Technologies.
+ Questo rende particolarmente difficile determinare la causa di alcuni bug
+ ed in generale non é sempre molto chiaro l'ordine di esecuzione dei vari
+ sottosistemi.
+ Di recente queste limitazioni sono state mitigate da quanto l'azienda ha
+ deciso di rilasciare il codice C# pubblico (@https://bitbucket.org/account/user/
+Unity-Technologies/projects/PROJ), tuttavia permangono le problematiche
+ dovute a bug all'interno del core che, se individuati, richiedono 
+\emph on
+workaround
+\emph default
+.
+ Il motore consente lo sviluppo di script tramite codice C# e shader personalizz
+ati tramite il linguaggio CG.
+ La mancanza di codice nativo, ad eccezione del core, rende le iterazioni
+ di sviluppo incredibilmente veloci.
+\end_layout
+
+\begin_layout Standard
+Durante lo sviluppo di OrbTail sono state usate prevalentemente le funzionalitá
+ di base 3D e del motore fisico.
+ L'uso di poche funzionalitá di base ha permesso di evitare tutte le problematic
+he legate ai sistemi piú specifici (quali gestione del 2D, nav mesh e cosí
+ via).
 \end_layout
 
 \begin_layout Subsection
@@ -171,7 +215,15 @@ Plugin
 \end_layout
 
 \begin_layout Standard
-iTween
+OrbTail utilizza un solo plugin esterno iTween il quale é usato principalmente
+ per aggiungere animazioni agli elementi dell'interfaccia grafica e, molto
+ piú limitatamente, ad alcuni oggetti 3D.
+ Il plugin fornisce diverse tipologie di animazioni, facilmente richiamabili
+ attraverso opportune funzioni, ed é in grado di cambiare colore, scala
+ e opacitá ad elementi in funzione del tempo.
+ Il plugin é in grado di modificare anche altri parametri quali posizione,
+ rotazione ed in generale qualsiasi proprietá degli oggetti, tuttavia non
+ sono state necessarie per lo sviluppo del gioco.
 \end_layout
 
 \begin_layout Section
