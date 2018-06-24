@@ -147,8 +147,12 @@ Unity
 \end_layout
 
 \begin_layout Standard
-Unity é un motore grafico che consente di sviluppare giochi multipiattaforma
- su tutte le piattaforme 
+Unity é un motore grafico sviluppato da 
+\emph on
+Unity Technologies
+\emph default
+ che consente di sviluppare giochi multipiattaforma su tutte le pattaforme
+ 
 \emph on
 mobile
 \emph default
@@ -158,95 +162,311 @@ console
 \emph default
 e 
 \emph on
-desktop.
-
-\emph default
- La presenza di una versione gratuita unita ad un elevato grado di intuitivitá
- ne ha garantito rapidamente l'aumento in popolaritá da parte dei team 
-\emph on
-indipendenti.
- 
-\emph default
-Questo motore é caratterizzato da paradigmi molto chiari di sviluppo, il
- che lo rende tanto adatto agli sviluppatori alle prime armi quanto ai piú
- esperti.
- Il paradigma principale é rappresentato dal modello 
-\emph on
-entity-component,
-\emph default
- dove le funzionalitá sono implementate all'interno di componenti indipendenti
- e le entity fungono da contenitori per suddetti componenti.
-\end_layout
-
-\begin_layout Standard
-La limitazione maggiore di Unity risiede nel fatto che é un motore 
-\emph on
-closed-source
-\emph default
-, in cui l'intero sottosistema non é accessibile se non pagando una quota
- a Unity Technologies.
- Questo rende particolarmente difficile determinare la causa di alcuni bug
- ed in generale non é sempre molto chiaro l'ordine di esecuzione dei vari
- sottosistemi.
- Di recente queste limitazioni sono state mitigate da quanto l'azienda ha
- deciso di rilasciare il codice C# pubblico (@https://bitbucket.org/account/user/
-Unity-Technologies/projects/PROJ), tuttavia permangono le problematiche
- dovute a bug all'interno del core che, se individuati, richiedono 
-\emph on
-workaround
+desktop
 \emph default
 .
- Il motore consente lo sviluppo di script tramite codice C# e shader personalizz
-ati tramite il linguaggio CG.
- La mancanza di codice nativo, ad eccezione del core, rende le iterazioni
- di sviluppo incredibilmente veloci.
+ La presenza di una versione gratuita unita ad un elevato grado di intuitivitá
+ ne ha garantito la rapida affermazione da parte di sviluppatori 
+\emph on
+indipendenti
+\emph default
+ e non.
+ Questo motore é caratterizzato da paradigmi di sviluppo molto chiari, il
+ che lo rende tanto adatto agli sviluppatori alla prime armi quanto ai piú
+ esperti.
+ Il 
+\emph on
+pattern architetturale
+\emph default
+ principale, rappresentato dal
+\emph on
+l'entity-component
+\emph default
+, consiste nell'implementare funzionalitá autoconclusive all'interno di
+ 
+\emph on
+componenti 
+\emph default
+indipendenti ed usare i 
+\emph on
+game object 
+\emph default
+(termine usato da Unity per descrivere le 
+\emph on
+entitá
+\emph default
+)
+\emph on
+ 
+\emph default
+come aggregatori di quest'ultimi al fine di modellare comportamenti piú
+ complessi.
+ Questo paradigma é stato migliorato nella versione del motore del 2018,
+ introducendo il concetto di 
+\emph on
+system
+\emph default
+.
+ Secondo questa variante, i componenti espongono solo dei dati e le logiche
+ sono implementate all'interno dei sistemi, garantendo un disaccoppiamento
+ ancora piú forte tra le varie componenti del gioco.
+ Unity consente di implementare le logiche di gioco tramite script 
+\emph on
+C# 
+\emph default
+o 
+\emph on
+Javascript 
+\emph default
+e 
+\emph on
+shader 
+\emph default
+personalizzati tramite il linguaggio CG.
+ L'assenza completa di codice nativo, ad eccezione del 
+\emph on
+core
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Il 
+\emph on
+core 
+\emph default
+di un motore grafico é il modulo software di piú basso livello.
+ Esso si occupa di astrarre le funzionalitá specifiche di ciascuna piattaforma
+ e di dettare il flusso di esecuzione di tutti gli altri sottosistemi, quali
+ il renderer, il motore fisico, la logica di gioco e la gestione della memoria.
+\end_layout
+
+\end_inset
+
+
+\emph default
+, rende le iterazioni di sviluppo incredibilmente veloci in quanto non esiste
+ un processo apposito di compilazione.
 \end_layout
 
 \begin_layout Standard
-Durante lo sviluppo di OrbTail sono state usate prevalentemente le funzionalitá
- di base 3D, del motore fisico e della gestione delle scene.
- L'uso di poche funzionalitá di base ha permesso di evitare tutte le problematic
-he legate ai sistemi piú specifici e talvolta instabili (quali gestione
- del 2D, nav mesh e cosí via).
+La limitazione maggiore di questo engine risiede nel fatto che il suo 
+\emph on
+core 
+\emph default
+é completamente 
+\emph on
+closed-source 
+\emph default
+(a meno di non pagare per ottenerne l'accesso) e ció impedisce agli sviluppatori
+ di poterne analizzare il flusso di esecuzione, rendendo particolarmente
+ difficile il processo di 
+\emph on
+debugging.
+ 
+\emph default
+Questa limitazione é stata mitigata durante il primo trimestre del 2018,
+ quando Unity Technologies ne ha reso pubblico il codice sorgente C# su
+ 
+\emph on
+bitbucket
+\begin_inset CommandInset citation
+LatexCommand cite
+key "UnityCSharp"
+
+\end_inset
+
+.
+ 
+\emph default
+Nonostante il rilascio del codice sia un notevole passo avanti, permane
+ ancora l'impossibilitá di modificare il codice del motore per adattarlo
+ meglio alle proprie esigenze e ció richiede talvolta l'impiego di soluzioni
+ temporanee o alternative.
 \end_layout
 
 \begin_layout Standard
-Il motore offre inoltre un pratico strumento che permette di aggiornare
- un progetto vecchio ad una nuova versione.
- Il suo utilizzo si é rivelato molto intuitivo e privo di problematiche:
- facendo un porting automatico del gioco dalla versione del 2013, il gioco
- ha preservato tutte le funzionalitá originali (comprese quelle di networking
- e crossplatform play) manifestando problematiche minori dovute all'uso
- di API ormai obsolete.
- L'aggiornamento di queste API ha consentito di ottenere una versione aggiornata
- stabile nel giro di pochi giorni e ció ha influito molto positivamente
- sullo sviluppo delle fasi successive.
+Per lo sviluppo di OrbTail sono state usate prevalentemente funzionalitá
+ di base legate al 3D, al motore fisico, alla gestione delle scene e delle
+ funzionalitá di rete.
+ L'uso di funzionalitá generiche ha permesso di evitare tutte le problematiche
+ legate ai sistemi piú specifici, quali gestione del 2D e delle 
+\emph on
+nav mesh 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Le 
+\emph on
+nav-mesh 
+\emph default
+(in italiano 
+\begin_inset Quotes fld
+\end_inset
+
+mesh di navigazione
+\begin_inset Quotes frd
+\end_inset
+
+) sono delle superfici poligonali solitamente usate dal sistema di 
+\emph on
+intelligenza artificiale 
+\emph default
+per determinare il percorso ottimo (o subottimo) tra due punti nello spazio.
+\end_layout
+
+\end_inset
+
+, 
+\emph default
+le quali si sono talvolta dimostrate inaffidabili, limitate o afflitte da
+ bug nascosti.
+ L'intero codice sorgente del gioco é stato sviluppato in C#, utilizzando
+ il paradigma 
+\emph on
+entity-component
+\emph default
+.
+ L'integrazione del pattern 
+\emph on
+entity-component-system 
+\emph default
+é stata evitata in quanto questi risultava ancora in fase sperimentale e
+ per via del fatto che lo sviluppo del gioco era giá in fase avanzata e
+ si voleva evitare di correre 
+\emph on
+rischi
+\emph default
+ inutili.
+ L'architettura di gioco sfrutta inoltre molti oggetti 
+\emph on
+manager
+\emph default
+ al fine di scambiare informazioni tra piú livelli e per fornire un unico
+ punto d'accesso ai vari sottosistemi.
+ Un manager é un'
+\emph on
+entitá
+\emph default
+ di gioco che funge da 
+\emph on
+singleton
+\emph default
+ accessibile da tutti gli altri sottosistemi al fine di leggerne o modificarne
+ lo stato.
+ 
+\end_layout
+
+\begin_layout Standard
+L'uso dell'apposito strumento di aggiornamento di versione fornito dal motore
+ si é rivelato di notevole importanza, in quanto ha permesso fin da subito
+ di ottenere un prodotto stabile a partire dalla versione originale del
+ 2013.
+ Al termine del processo di 
+\emph on
+porting 
+\emph default
+automatico, il gioco ha preservato 
+\emph on
+tutte 
+\emph default
+le funzionalitá, comprese quelle legate alla rete, al 
+\emph on
+matchmaking
+\emph default
+ e al 
+\emph on
+cross-platform play 
+\emph default
+manifestando problematiche minori dovuto all'uso di 
+\emph on
+API 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Col termine
+\emph on
+ API, 
+\emph default
+acronimo di 
+\emph on
+application programming interface, 
+\emph default
+ci si riferisce a tutte quelle funzionalitá di un sistema rese disponibili
+ agli sviluppatori tramite opportune 
+\emph on
+procedure
+\emph default
+.
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+obsolete (principalmente in ambito 
+\emph on
+UI 
+\emph default
+e di gestione dei livelli).
+ Una volta ottenuta una versione stabile, sono state infine aggiornate tutte
+ le funzionalitá superate sostituendole con le nuove varianti messe a disposizio
+ne del motore.
+ Al termine di questa fase ci si é concentrati sull'aggiornamento dell'architett
+ura del gioco e sull'implementazione delle nuove funzionalitá.
 \end_layout
 
 \begin_layout Subsection
-Plugin
+Plug-in
 \end_layout
 
 \begin_layout Standard
-OrbTail utilizza un solo plugin esterno iTween il quale é usato principalmente
- per aggiungere animazioni agli elementi dell'interfaccia grafica e, molto
- piú limitatamente, ad alcuni oggetti 3D.
- Il plugin fornisce diverse tipologie di animazioni, facilmente richiamabili
- attraverso opportune funzioni, ed é in grado di cambiare colore, scala
- e opacitá ad elementi in funzione del tempo usando il sistema di 
+Unity mette a disposizione un gran quantitativo di 
+\emph on
+plug-in 
+\emph default
+esterni al fine di aumentare la resa dei giochi, semplificare il processo
+ di sviluppo o aggiungere nuove funzionalitá.
+ Per lo sviluppo di OrbTail é stato deciso di utilizzarne uno solo
+\emph on
+ 
+\emph default
+dal nome 
+\emph on
+iTween
+\begin_inset CommandInset citation
+LatexCommand cite
+key "iTween"
+
+\end_inset
+
+.
+ 
+\emph default
+Questo plug-in gratuito é usato per gestire in maniera semplice ed automatica
+ il processo di 
+\emph on
+tweening
+\emph default
+, ovvero l'interpolazione automatica di valori in un certo periodo di tempo
+ attraverso il sistema di 
 \emph on
 coroutine 
 \emph default
-di Unity e C#.
- Il plugin é in grado di modificare anche altri parametri quali posizione,
- rotazione ed in generale qualsiasi proprietá degli oggetti, tuttavia non
- sono state necessarie per lo sviluppo del gioco.
- Il motivo principale per cui é stato scelto questo plugin é dovuto alla
- sua estrema facilitá di utilizzo e il fatto che si presenta come un unico
- file monolitico che puó essere integrato nel progetto e non richiede alcuna
- forma di configurazione.
- Questo plugin é presente fin dalla versione originale di OrbTail ed é stato
- aggiornato anche'esso all'ultima versione disponibile.
+di C#.
+ Il plug-in é stato utilizzato principalmente per aggiungere animazioni
+ agli elementi dell'interfaccia grafica ed in misura molto minore per gli
+ elementi di gioco 3D.
+ L'uso di questo sistema ha permesso di risparmiare un notevole quantitativo
+ di tempo, garantendo una resa visiva molto buona.
+ Quest'ultimo si presenta come un unico file monolitico che puó essere integrato
+ nel progetto e non richiede alcuna forma di configurazione.
+ Nella fase di 
+\emph on
+porting 
+\emph default
+é stato necessario aggiornare il plug-in alla versione piú recente.
 \end_layout
 
 \begin_layout Section
