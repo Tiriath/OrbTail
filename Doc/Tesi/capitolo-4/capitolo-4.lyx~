@@ -428,11 +428,11 @@ plug-in
 \emph default
 esterni al fine di aumentare la resa dei giochi, semplificare il processo
  di sviluppo o aggiungere nuove funzionalitá.
- Per lo sviluppo di OrbTail é stato deciso di utilizzare un unico 
+ Per lo sviluppo di OrbTail é stato deciso di utilizzarne uno solo
 \emph on
-plug-in 
+ 
 \emph default
-gratuito dal nome 
+dal nome 
 \emph on
 iTween
 \begin_inset CommandInset citation
@@ -444,8 +444,8 @@ key "iTween"
 .
  
 \emph default
-Questo plug-in é usato per gestire in maniera semplice ed automatica il
- processo di 
+Questo plug-in gratuito é usato per gestire in maniera semplice ed automatica
+ il processo di 
 \emph on
 tweening
 \emph default
@@ -474,7 +474,118 @@ Meccaniche di base
 \end_layout
 
 \begin_layout Standard
-Livello di prototipo, implementazione delle meccaniche di base
+La prima fase implementativa di OrbTail si é concentrata sulla definizione
+ dell'architettura generale del gioco ed in particolar modo sulle meccaniche
+ di base del gioco.
+ Queste meccaniche sono condivise tra tutte le modalitá di gioco e su tutti
+ i livelli, quindi sono state progettate per essere indipendenti da quest'ultime.
+ All'interno delle meccaniche di base troviamo la gestione del sistema di
+ controllo del movimento, degli scontri, dei potenziamenti, degli oggetti
+ collezionabili e la gestione della gravitá.
+ Queste meccaniche sono state inizialmente sviluppate per la modalitá a
+ giocatore singolo e poi aggiornate per supportare il sistema di networking.
+\end_layout
+
+\begin_layout Subsection
+Sistema di controllo
+\end_layout
+
+\begin_layout Standard
+La prima meccanica fondamentale riguarda il sistema di controllo del veicolo.
+\end_layout
+
+\begin_layout Subsection
+Gestione della gravitá
+\end_layout
+
+\begin_layout Standard
+I livelli offerti dal gioco sono caratterizzati da una diversa topologia
+ che rende impossibile usare la gravitá automatica del motore grafico.
+ Durante le fasi prototipali ci si affidava al raycast in modo da individuare
+ un punto sulla superficie da usare come ancora per gli oggetti all'interno
+ dell'arena, tuttavia questo approccio manifestava un gran numero di bug,
+ dovuti principalmente al fatto che non era chiaro, data la posizione e
+ l'orientamento del veicolo, stabilire in quale direzione doveva essere
+ effettuato il raycast, rendendo ambiguo il risultato in caso di rollio
+ del veicolo o, peggio ancora, a seguito di esplosioni che possono cambiare
+ molto rapidamente la direzione del veicolo.
+\end_layout
+
+\begin_layout Standard
+Il secondo approccio tentato invece consiste nel fornire una descrizione
+ analitica del campo gravitazionale per ciascuna topologia supportata.
+ Questo approccio si é rivelato fin da subito vincente: per le forme piú
+ semplici una semplice descrizione della funzione di gravitá é sufficiente
+ per risolvere qualsiasi tipo di ambiguitá, indipendentemente dall'orientamento
+ dell'oggetto.
+ La gestione della gravitá é affidata a due componenti speciali: una classe
+ base GravityField, da cui derivano ConstantGravityField, RadialGravityField
+ e ToroidalGravityField associati all'arena ed un FloatingObject che, assegnato
+ agli oggetti di gioco permette loro di fluttuare sull'arena (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailGravity"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/dev_gravity.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Gestione della gravitá.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailGravity"
+
+\end_inset
+
+UML Gestione della gravitá.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Tramite questo componenti é possibile definire intensitá e direzione della
+ forza di gravitá, la distanza a cui gli oggetti fluttuano rispetto alla
+ superficie e vari parametri di molleggiamento.
+ Il raycast rimane comunque necessario per impedire che gli oggetti possano
+ compenetrare con l'arena e per individuare il punto di hover(?).
+ Sul punto di hovering la gravitá si comporta come una molla e ció garantisce
+ un buon effetto di rimbalzo (?).
 \end_layout
 
 \begin_layout Section
