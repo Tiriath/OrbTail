@@ -74,7 +74,148 @@
 \begin_body
 
 \begin_layout Standard
+Per la realizzazione di OrbTail ci si é serviti di un metodo di sviluppo
+ a fasi.
+ La fase preliminare si é concentrata sulla definizione delle tecnologie
+ da impiegare per la fase implementativa.
+ Un'attenta analisi di quest'ultime é di cruciale importanza al fine di
+ minimizzare l'impatto dovuto alla scoperta di limitazioni nelle fasi piú
+ avanzate di progetto.
+ Una delle prime scelte riguarda la scelta del 
+\emph on
+controllo di versione
+\emph default
+, ovvero quel sistema che permette di mantenere traccia di tutte le modifiche
+ apportate al progetto, consentire a piú sviluppatori di lavorare indipendenteme
+nte senza intralciare il lavoro degli altri ed eventualmente regredire alcune
+ funzionalitá del titolo a versioni ritenute piú stabili.
+ Sebbene esistano diversi strumenti adatti allo scopo, considerata il numero
+ limitato di elementi nel team originale, é stato deciso di sfruttare 
+\emph on
+git 
+\emph default
+usando 
+\emph on
+sourcetree 
+\emph default
+come client.
+ La versione originale del progetto é stata 
+\emph on
+duplicata 
+\emph default
+all'interno di una nuova 
+\emph on
+repository
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La 
+\emph on
+repository 
+\emph default
+é l'archivio online contenente i dati sul progetto e lo storico dei file
+ in esso.
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+e il suo sviluppo é proseguito per una strada separata, questo perché a
+ seguito di questo lavoro di tesi l'intera
+\emph on
+ codebase 
+\emph default
+é stata riscritta e la maggior parte dei contributi degli autori originali
+ perduti.
+\end_layout
+
+\begin_layout Standard
+La seconda scelta tecnologica, la piú importante, riguarda la scelta del
+ motore grafico da usare.
+ Fin dalla prima versione del gioco é stato chiaro che sviluppare senza
+ l'ausilio di motori grafici di terze parti avrebbe aumentato esponenzialmente
+ il tempo di sviluppo.
+ Sebbene oggi esistono molti engine di terze parti in grado di soddisfare
+ la stragrande maggioranza delle esigenze degli sviluppatori, durante lo
+ sviluppo della versione originale del gioco, le scelte erano ben piú limitate.
+ Tra le due tecnologie principali del 2013 vi erano Unity 4.3 e UDK.
+ Sebbene quest'ultimo garantiva degli ottimi risultati visivi, lo strumento
+ era instabile e particolarmente macchinoso.
+ Unity 4.3, d'altro canto, era immediato nell'utilizzo e garantiva un'ottima
+ scalabilitá sul gran numero di piattaforme su cui si doveva sviluppare.
+ Per la nuova versione é stato deciso di effettuare un porting del gioco
+ alla versione Unity 2017.3 al fine di ridurre i tempi di sviluppo.
+ Inizialmente era stata anche valutato il motore grafico Unreal Engine 4,
+ tuttavia, sebbene la revisione dell'architettura avrebbe comunque richiesto
+ la riscrittura di gran parte del codice, la iterazioni del nuovo motore
+ sono incredibilmente piú lente rispetto ad Unity e pertanto ne é stata
+ abbandonata l'idea.
+\end_layout
+
+\begin_layout Standard
+Una volta determinate le tecnologie impiegate ci si é concentrati sullo
+ sviluppo vero e proprio del gioco, partendo da una fase prototipale, conclusa
+ durante il corso per il quale OrbTail era stato sviluppato originariamente,
+ e via via procedendo per iterazioni successive in cui sono state implementate
+ nuove funzionalitá.
+\end_layout
+
+\begin_layout Section
 Unity
+\end_layout
+
+\begin_layout Standard
+Unity
+\end_layout
+
+\begin_layout Subsection
+Plugin
+\end_layout
+
+\begin_layout Standard
+iTween
+\end_layout
+
+\begin_layout Section
+Meccaniche di base
+\end_layout
+
+\begin_layout Standard
+Livello di prototipo, implementazione delle meccaniche di base
+\end_layout
+
+\begin_layout Section
+Networking
+\end_layout
+
+\begin_layout Section
+Arene
+\end_layout
+
+\begin_layout Section
+Modalitá di gioco
+\end_layout
+
+\begin_layout Section
+Intelligenza artificiale
+\end_layout
+
+\begin_layout Section
+Potenziamenti
+\end_layout
+
+\begin_layout Section
+Splitscreen
+\end_layout
+
+\begin_layout Section
+Gestione degli input
+\end_layout
+
+\begin_layout Section
+Menú
 \end_layout
 
 \end_body

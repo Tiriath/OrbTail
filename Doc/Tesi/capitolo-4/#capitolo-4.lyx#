@@ -74,10 +74,6 @@
 \begin_body
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 Per la realizzazione di OrbTail ci si é serviti di un metodo di sviluppo
  a fasi.
  La fase preliminare si é concentrata sulla definizione delle tecnologie
@@ -164,6 +160,10 @@ Una volta determinate le tecnologie impiegate ci si é concentrati sullo
  durante il corso per il quale OrbTail era stato sviluppato originariamente,
  e via via procedendo per iterazioni successive in cui sono state implementate
  nuove funzionalitá.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Section
