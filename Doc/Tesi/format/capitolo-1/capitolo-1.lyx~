@@ -73,173 +73,6 @@
 
 \begin_body
 
-\begin_layout Standard
-I videogiochi rappresentano una delle forme di intrattenimento moderne piú
- affermate e diffuse.
- A differenza di quanto avviene con i mezzi classici quali 
-\emph on
-film
-\emph default
- e 
-\emph on
-libri
-\emph default
-, l'utente ha pieno controllo dell'esperienza: alcuni giochi richiedono
- concentrazione, altri una buona dose di coordinazione e reattivitá, altri
- ancora pazienza e pianificazione.
- Sebbene vi siano videogiochi che si concentrano principalmente sulla componente
- a giocatore
-\emph on
- 
-\emph default
-singolo, i giochi, intesi anche nel senso classico del termine, nascono
- come mezzo di 
-\emph on
-condivisione 
-\emph default
-dell'esperienza con altri partecipanti.
-\end_layout
-
-\begin_layout Standard
-In questa tesi si descrive il processo di sviluppo di OrbTail
-\emph on
-, 
-\emph default
-un videogioco
-\emph on
- 
-\emph default
-multigiocatore
-\emph on
- 
-\emph default
-con elementi tipici dei giochi di guida
-\emph on
- 
-\emph default
-disponibile per dispositivi 
-\emph on
-mobile
-\emph default
- e 
-\emph on
-desktop
-\emph default
- quali Android, iOS, Windows e OSX.
- Il gioco prevede tre modalitá di gioco differenti e consente fino a quattro
- giocatori di sfidarsi online in modalitá 
-\emph on
-cross-platform play
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Il termine 
-\size normal
-\emph on
-cross-platform play
-\emph default
- identifica una modalitá di gioco online in cui giocatori possono giocare
- tra loro indipendentemente dalla piattaforma utilizzata.
- 
-\end_layout
-
-\end_inset
-
- su una delle tre arene disponibili.
- Vi é inoltre la possibilitá di condividere uno stesso dispositivo 
-\emph on
-desktop
-\emph default
- tra due o piú giocatori locali mediante un'apposita modalitá 
-\emph on
-splitscreen
-\emph default
- 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Il termine 
-\size normal
-\emph on
-splitscreen 
-\emph default
-identifica una modalitá di gioco in cui lo schermo viene suddiviso in piú
- quadranti in modo da consentire a piú giocatori di usare uno stesso dispositivo
- contemporaneamente.
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-La necessitá di supportare piú piattaforme, impedendo che ciascuna di esse
- potesse risultare avvantaggiata rispetto alle altre durante le sessioni
- 
-\emph on
-cross-platform play
-\emph default
-, ha portato allo sviluppo di un 
-\emph on
-gameplay 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Il 
-\emph on
-gameplay 
-\emph default
-(in italiano traducibile come 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-esperienza utente
-\begin_inset Quotes erd
-\end_inset
-
-) 
-\emph default
-comprende gli elementi di gioco quali storia, regole, obiettivi, progressioni,
- interazione utente, ecc.
-\end_layout
-
-\end_inset
-
- 
-\emph default
-essenziale ed immediato.
- La durata limitata delle sessioni, unita ad una curva d'apprendimento semplice,
- rende il prodotto particolarmente adatto ad un pubblico di 
-\emph on
-casual gamer
-\emph default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Si definisce 
-\size normal
-\emph on
-casual gamer 
-\emph default
-un giocatore saltuario, non particolarmente interessato alla cultura dei
- videogiochi e, solitamente, alla tecnologia in generale.
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Section
 Piattaforme
 \end_layout
@@ -679,8 +512,23 @@ reference "fig:Overcooked"
 
 \end_inset
 
-)
+) oppure, laddove l'interazione in contemporanea non fosse necessaria, sfruttare
+ la meccanica dei 
+\emph on
+turni
+\emph default
+ affinché ciascun giocatore goda di un punto di vista unico sul mondo di
+ gioco (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:HoMM3"
+
+\end_inset
+
+).
+ 
 \begin_inset Float figure
+placement !h
 wide false
 sideways false
 status collapsed
@@ -702,6 +550,16 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Overcooked
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Overcooked"
@@ -718,24 +576,12 @@ Overcooked - Party game a visuale condivisa
 
 \end_inset
 
- oppure, laddove l'interazione in contemporanea non fosse necessaria, sfruttare
- la meccanica dei 
-\emph on
-turni
-\emph default
- affinché ciascun giocatore goda di un punto di vista unico sul mondo di
- gioco (Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:HoMM3"
-
-\end_inset
-
-) 
+ 
 \begin_inset Float figure
+placement !h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -780,8 +626,7 @@ Heroes of Might & Magic - Multigiocatore locale a turni
 
 \end_inset
 
-.
-  Un'implementazione piú sofisticata, nota col termine 
+ Un'implementazione piú sofisticata, nota col termine 
 \emph on
 split-screen,
 \emph default
@@ -794,8 +639,10 @@ reference "fig:MarioKarts"
 
 \end_inset
 
-) 
+).
+ 
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status collapsed
@@ -817,6 +664,16 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Mario Karts
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:MarioKarts"
@@ -833,7 +690,6 @@ Mario Karts - Multigiocatore in split-screen
 
 \end_inset
 
-.
  L'elevato impatto sulle performance, tale da rendere necessarie ottimizzazioni
  particolarmente aggressive, unita al ridotto bacino d'utenza cui queste
  modalitá si rivolgono, ha di recente portato ad un calo di titoli che offrono
@@ -864,8 +720,33 @@ reference "fig:Battlerite"
 
 \end_inset
 
-) 
+), agli 
+\emph on
+MMO
+\emph default
+ i cui mondi persistenti vantano migliaia di giocatori attivi contemporaneamente
+(Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EVE"
+
+\end_inset
+
+), passando per i piú recenti 
+\emph on
+Battle Royale 
+\emph default
+caratterizzati da centinaia di giocatori che lottano per la sopravvivenza
+ (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PUBG"
+
+\end_inset
+
+).
 \begin_inset Float figure
+placement !h
 wide false
 sideways false
 status collapsed
@@ -887,6 +768,16 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Battlerite
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Battlerite"
@@ -903,20 +794,9 @@ Battlerite - MOBA: Multiplayer online battle arena.
 
 \end_inset
 
-, agli 
-\emph on
-MMO
-\emph default
- i cui mondi persistenti vantano migliaia di giocatori attivi contemporaneamente
-(Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:EVE"
-
-\end_inset
-
-) 
+ 
 \begin_inset Float figure
+placement !h
 wide false
 sideways false
 status collapsed
@@ -938,6 +818,16 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+EVE Online
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:EVE"
@@ -954,21 +844,9 @@ EVE Online - MMO: Massive multiplayer online game
 
 \end_inset
 
-, passando per i piú recenti 
-\emph on
-Battle Royale 
-\emph default
-caratterizzati da centinaia di giocatori che lottano per la sopravvivenza
- (Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:PUBG"
 
-\end_inset
-
-).
- 
 \begin_inset Float figure
+placement !h
 wide false
 sideways false
 status collapsed
@@ -990,6 +868,16 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+PlayerUnknown's Battleground
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:PUBG"
@@ -1198,8 +1086,8 @@ reference "fig:BF4"
 \end_inset
 
 ).
- 
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status collapsed
@@ -1293,13 +1181,23 @@ gestisce la conquista dispiegando soldati e risorse, lanciando attacchi
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Battlefield 4
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:BF4"
 
 \end_inset
 
-Battlefield 4 - Interoperabilitá pc
+Battlefield 4 - Multigiocatore online con interoperabilitá pc
 \backslash
 mobile
 \end_layout

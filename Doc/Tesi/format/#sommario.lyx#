@@ -105,10 +105,19 @@ La prima inquadra l’area dove si svolge il lavoro, eventualmente un'altra
 \end_layout
 
 \begin_layout Standard
-Lo sviluppo di videogiochi multigiocatore in grado di adattarsi a piú piattaform
-e costituisce una sfida complessa, richiedendo opportune considerazioni
- in termini di design ed architettura del software.
+I videogiochi rappresentano una delle forme di intrattenimento moderne piú
+ affermate e diffuse.
+ Sebbene vi siano videogiochi che si concentrano principalmente sulla componente
+ a giocatore
+\emph on
  
+\emph default
+singolo, i giochi, intesi anche nel senso classico del termine, nascono
+ come mezzo di 
+\emph on
+condivisione 
+\emph default
+dell'esperienza con altri partecipanti.
 \begin_inset Note Note
 status open
 
@@ -137,7 +146,7 @@ Lo scopo della tesi è \SpecialChar ldots
 \end_layout
 
 \begin_layout Standard
-In questo elaborato di tesi si descrive il processo di sviluppo di OrbTail,
+In questo elaborato di tesi si descrive il processo di sviluppo di Orbtail,
  un gioco multipiattaforma a piú partecipanti che coniuga elementi tipici
  di 
 \emph on
@@ -174,11 +183,16 @@ La terza frase riassume brevemente l’attività svolta, i risultati ottenuti
 \end_layout
 
 \begin_layout Standard
-In questo documento sono riportate le fasi di sviluppo del prodotto e le
- criticitá affrontate per garantire un'elevata consistenza dell'esperienza
- utente su piattaforme profondamente diverse.
- Vengono inoltre presentati numerosi paralleli con la versione originale
- del gioco, al fine di individuare carenze e spunti per migliorie.
+Questo documento riporta le fasi di sviluppo del videogioco, a partire dall'idea
+ di base
+\emph on
+ 
+\emph default
+fino alle varie scelte tecniche, facendo numerosi paralleli con la versione
+ originale al fine di individuare carenze e spunti per migliorie.
+ Vengono inoltre descritte le criticitá affrontate durante lo sviluppo delle
+ modalitá multigiocatore e i requisiti necessari per rendere consistente
+ l'esperienza utente su piattaforme profondamente diverse.
 \end_layout
 
 \end_body

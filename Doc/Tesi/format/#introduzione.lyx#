@@ -90,11 +90,8 @@ L’introduzione deve essere atomica, quindi non deve contenere né sottosezioni
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
 \emph on
+
 \begin_inset Note Note
 status open
 
@@ -123,6 +120,70 @@ lo scopo della tesi è \SpecialChar ldots
  La prima parte deve essere circa una facciata e mezza o due.
 \end_layout
 
+\end_inset
+
+
+\emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+Breve descrizione del lavoro
+\end_layout
+
+\begin_layout Plain Layout
+La seconda parte deve essere una esplosione della prima e deve quindi mostrare
+ in maniera pi` esplicita l’area dove si svolge il lavoro, le fonti u bibliograf
+iche pi` importanti su cui si fonda il lavoro in maniera sintetica u (una
+ pagina) evidenziando i lavori in letteratura che presentano attinenza con
+ il lavoro affrontato in modo da mostrare da dove e perché è sorta la tematica
+ di studio.
+ Poi si mostrano esplicitamente le realizzazioni, le direttive future di
+ ricerca, quali sono i problemi aperti e quali quelli affrontati e si ripete
+ lo scopo della tesi.
+ Questa parte deve essere piena di citazioni bibliografiche e deve essere
+ lunga circa 4 facciate.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+Struttura della tesi
+\end_layout
+
+\begin_layout Plain Layout
+La terza parte contiene la descrizione della struttura della tesi ed è organizza
+ta nel modo seguente.
+ 
+\begin_inset Quotes fld
+\end_inset
+
+La tesi è strutturata nel modo seguente
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Nella sezione due si mostra\SpecialChar ldots
+, nella sezione tre si illustra\SpecialChar ldots
+ .
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
 \end_inset
 
 
@@ -181,11 +242,8 @@ mobile
 desktop
 \emph default
  quali Android, iOS, Windows e OSX.
- Il pregio principale di OrbTail risiede nella sua capacitá di poter essere
- giocato da piú giocatori contemporaneamente, online o meno, secondo una
- qualsiasi combinazione di piattaforme e
-\backslash
-o numero di giocatori locali attraverso un'opportuna modalitá 
+ Il gioco prevede tre modalitá di gioco differenti e consente fino a quattro
+ giocatori di sfidarsi online in modalitá 
 \emph on
 cross-platform play
 \emph default
@@ -206,7 +264,7 @@ cross-platform play
 
 \end_inset
 
- .
+ su una delle tre arene disponibili.
  Vi é inoltre la possibilitá di condividere uno stesso dispositivo 
 \emph on
 desktop
@@ -233,9 +291,6 @@ identifica una modalitá di gioco in cui lo schermo viene suddiviso in piú
 \end_inset
 
 .
- Il gioco offre tre modalitá di gioco differenti ed altrettante arene e
- consente ai giocatori di controllare sei veicoli caratterizzati da aspetto
- e stili di guida diversi.
 \end_layout
 
 \begin_layout Standard
@@ -302,61 +357,46 @@ un giocatore saltuario, non particolarmente interessato alla cultura dei
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\emph on
-Breve descrizione del lavoro
-\end_layout
-
-\begin_layout Plain Layout
-La seconda parte deve essere una esplosione della prima e deve quindi mostrare
- in maniera pi` esplicita l’area dove si svolge il lavoro, le fonti u bibliograf
-iche pi` importanti su cui si fonda il lavoro in maniera sintetica u (una
- pagina) evidenziando i lavori in letteratura che presentano attinenza con
- il lavoro affrontato in modo da mostrare da dove e perché è sorta la tematica
- di studio.
- Poi si mostrano esplicitamente le realizzazioni, le direttive future di
- ricerca, quali sono i problemi aperti e quali quelli affrontati e si ripete
- lo scopo della tesi.
- Questa parte deve essere piena di citazioni bibliografiche e deve essere
- lunga circa 4 facciate.
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
+In questo elaborato di tesi si descrive il processo di sviluppo di Orbtail,
+ un gioco multipiattaforma a piú partecipanti che coniuga elementi tipici
+ di 
 \emph on
-Struttura della tesi
-\end_layout
-
-\begin_layout Plain Layout
-La terza parte contiene la descrizione della struttura della tesi ed è organizza
-ta nel modo seguente.
+giochi di guida
+\emph default
+ e
+\emph on
+ ad arena
+\emph default
+ e diverse modalitá di gioco in un'esperianza rapida e competitiva.
+ Il prodotto, nato nel 2013 come progetto per il corso di 
+\emph on
+Videogame Design and Programming
+\emph default
+, é stato rielaborato ed esteso, andando ad aggiornare l'intero comparto
+ tecnico, il design originale e la direzione artistica.
+ Il pregio principale di OrbTail risiede nella sua capacitá di poter essere
+ giocato da piú giocatori contemporaneamente, online o meno, in una qualsiasi
+ combinazione di piattaforme e
+\backslash
+o numero di giocatori locali.
+ Questo documento ne descrive il processo produttivo, a partire dall'idea
+ di base
+\emph on
  
-\begin_inset Quotes fld
-\end_inset
-
-La tesi è strutturata nel modo seguente
-\begin_inset Quotes frd
-\end_inset
-
-.
- Nella sezione due si mostra\SpecialChar ldots
-, nella sezione tre si illustra\SpecialChar ldots
- .
+\emph default
+fino alle varie scelte tecniche, facendo numerosi paralleli con la versione
+ originale al fine di individuare carenze e spunti per migliorie.
 \end_layout
 
+\begin_layout Standard
+\begin_inset space ~
 \end_inset
 
 
@@ -368,18 +408,18 @@ Questa tesi é strutturata in capitoli.
 
 \begin_layout Standard
 Nel primo capitolo viene dato un contesto al progetto, fornendo una panoramica
- delle piattaforme disponibili ed andando ad analizzare i requisiti dello
- sviluppo multipiattaforma e delle modalitá multigiocatore.
+ generale ed andando ad analizzare i requisiti dello sviluppo multipiattaforma
+ e di varie modalitá multigiocatore.
 \end_layout
 
 \begin_layout Standard
 Nel secondo capitolo vengono delineate le meccaniche del gioco e definiti
- i requisiti di ciasun livello
+ i requisiti di ciasun livelli
 \emph on
 .
  
 \emph default
-Vengono inoltre analizzati alcuni titoli esistenti al fine di individare
+Vengono inoltre analizzati alcuni titoli concorrenti al fine di individare
  meccaniche simili ed analizzarne i vari aspetti e criticitá.
 \end_layout
 

@@ -66,6 +66,8 @@
 \paperfontsize 12
 \spacing onehalf
 \use_hyperref true
+\pdf_title "OrbTail"
+\pdf_author "Raffaele Daniele Facendola"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
@@ -430,11 +432,6 @@ LatexCommand tableofcontents
 \end_inset
 
 
-\begin_inset FloatList algorithm
-
-\end_inset
-
-
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -526,10 +523,10 @@ filename "introduzione.lyx"
 \end_layout
 
 \begin_layout Chapter
-Primo capitolo
+Contesto
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:primo-capitolo"
+name "chap:Contesto"
 
 \end_inset
 
@@ -550,7 +547,7 @@ filename "capitolo-1/capitolo-1.lyx"
 Design
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:secondo-capitolo"
+name "chap:Design"
 
 \end_inset
 
@@ -571,7 +568,7 @@ filename "capitolo-2/capitolo-2.lyx"
 Direzione artistica
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:terzo-capitolo"
+name "chap:Direzione-artistica"
 
 \end_inset
 
@@ -592,7 +589,7 @@ filename "capitolo-3/capitolo-3.lyx"
 Sviluppo
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:quarto-capitolo"
+name "chap:Sviluppo"
 
 \end_inset
 

@@ -239,6 +239,35 @@ identifica una modalitá di gioco in cui lo schermo viene suddiviso in piú
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+Breve descrizione del lavoro
+\end_layout
+
+\begin_layout Plain Layout
+La seconda parte deve essere una esplosione della prima e deve quindi mostrare
+ in maniera pi` esplicita l’area dove si svolge il lavoro, le fonti u bibliograf
+iche pi` importanti su cui si fonda il lavoro in maniera sintetica u (una
+ pagina) evidenziando i lavori in letteratura che presentano attinenza con
+ il lavoro affrontato in modo da mostrare da dove e perché è sorta la tematica
+ di studio.
+ Poi si mostrano esplicitamente le realizzazioni, le direttive future di
+ ricerca, quali sono i problemi aperti e quali quelli affrontati e si ripete
+ lo scopo della tesi.
+ Questa parte deve essere piena di citazioni bibliografiche e deve essere
+ lunga circa 4 facciate.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 La necessitá di supportare piú piattaforme, impedendo che ciascuna di esse
  potesse risultare avvantaggiata rispetto alle altre durante le sessioni
  
@@ -299,35 +328,6 @@ un giocatore saltuario, non particolarmente interessato alla cultura dei
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\emph on
-Breve descrizione del lavoro
-\end_layout
-
-\begin_layout Plain Layout
-La seconda parte deve essere una esplosione della prima e deve quindi mostrare
- in maniera pi` esplicita l’area dove si svolge il lavoro, le fonti u bibliograf
-iche pi` importanti su cui si fonda il lavoro in maniera sintetica u (una
- pagina) evidenziando i lavori in letteratura che presentano attinenza con
- il lavoro affrontato in modo da mostrare da dove e perché è sorta la tematica
- di studio.
- Poi si mostrano esplicitamente le realizzazioni, le direttive future di
- ricerca, quali sono i problemi aperti e quali quelli affrontati e si ripete
- lo scopo della tesi.
- Questa parte deve essere piena di citazioni bibliografiche e deve essere
- lunga circa 4 facciate.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
