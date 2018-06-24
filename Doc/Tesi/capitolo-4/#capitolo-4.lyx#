@@ -77,75 +77,71 @@
 Per la realizzazione di OrbTail ci si é serviti di un metodo di sviluppo
  a fasi.
  La fase preliminare si é concentrata sulla definizione delle tecnologie
- da impiegare per la fase implementativa.
- Un'attenta analisi di quest'ultime é di cruciale importanza al fine di
- minimizzare l'impatto dovuto alla scoperta di limitazioni nelle fasi piú
- avanzate di progetto.
- Una delle prime scelte riguarda la scelta del 
+ impiegate: l'attenta scelta di quest'ultime é di cruciale importanza per
+ minimizzare l'impatto sul processo produttivo in caso di criticitá o limitazion
+i, specie nelle fasi piú avanzate del progetto.
+ Per permettere a piú sviluppatori di lavorare sul progetto in contemporanea,
+ mantenere lo storico dei file di progetto e controllare lo sviluppo delle
+ varie funzionalitá ci si é affidati a 
 \emph on
-controllo di versione
+git
 \emph default
-, ovvero quel sistema che permette di mantenere traccia di tutte le modifiche
- apportate al progetto, consentire a piú sviluppatori di lavorare indipendenteme
-nte senza intralciare il lavoro degli altri ed eventualmente regredire alcune
- funzionalitá del titolo a versioni ritenute piú stabili.
- Sebbene esistano diversi strumenti adatti allo scopo, considerata il numero
- limitato di elementi nel team originale, é stato deciso di sfruttare 
+, un software per il 
 \emph on
-git 
+controllo di versione 
 \emph default
-usando 
-\emph on
-sourcetree 
-\emph default
-come client.
- La versione originale del progetto é stata 
-\emph on
-duplicata 
-\emph default
-all'interno di una nuova 
-\emph on
-repository
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-La 
+distribuito.
+ Per via degli interventi molto estesi che hanno visto la riscrittura quasi
+ completa dei contributi originali, la 
 \emph on
 repository 
 \emph default
-é l'archivio online contenente i dati sul progetto e lo storico dei file
- in esso.
-\end_layout
-
-\end_inset
-
- 
-\emph default
-e il suo sviluppo é proseguito per una strada separata, questo perché a
- seguito di questo lavoro di tesi l'intera
-\emph on
- codebase 
-\emph default
-é stata riscritta e la maggior parte dei contributi degli autori originali
- perduti.
+del gioco risalente al 2013 é stata duplicata e il processo di sviluppo
+ descritto in questo lavoro di tesi é proseguito su quest'ultima.
 \end_layout
 
 \begin_layout Standard
-La seconda scelta tecnologica, la piú importante, riguarda la scelta del
- motore grafico da usare.
- Fin dalla prima versione del gioco é stato chiaro che sviluppare senza
- l'ausilio di motori grafici di terze parti avrebbe aumentato esponenzialmente
- il tempo di sviluppo.
- Sebbene oggi esistono molti engine di terze parti in grado di soddisfare
- la stragrande maggioranza delle esigenze degli sviluppatori, durante lo
- sviluppo della versione originale del gioco, le scelte erano ben piú limitate.
- Tra le due tecnologie principali del 2013 vi erano Unity 4.3 e UDK.
- Sebbene quest'ultimo garantiva degli ottimi risultati visivi, lo strumento
- era instabile e particolarmente macchinoso.
- Unity 4.3, d'altro canto, era immediato nell'utilizzo e garantiva un'ottima
- scalabilitá sul gran numero di piattaforme su cui si doveva sviluppare.
- Per la nuova versione é stato deciso di effettuare un porting del gioco
+Un altro aspetto fondamentale riguarda la scelta del 
+\emph on
+motore grafico
+\emph default
+.
+ Fin dalla versione originale era chiaro che sviluppare senza usare motori
+ grafici di terze parti avrebbe aumentato esponenzialmente il tempo di sviluppo.
+ Sebbene oggi ve ne sia un gran numero a disposizione, in grado di coprire
+ la maggior parte delle esigenze, durante lo sviluppo della prima versione
+ le scelte erano ben piú limitate.
+ Le due tecnologie principali erano rappresentate da Unity 4.3 e UDK e, sebbene
+ quest'ultimo garantiva un'ottima resa visiva, lo strumento risultava instabile,
+ poco documentato e particolarmente macchinoso.
+ Unity, d'altro canto, é sembrato fin da subito adatto agli scopi del progetto,
+ specie per quanto riguarda il supporto dei dispositivi 
+\emph on
+mobile
+\emph default
+, ed in generale molto intuitivo.
+ Considerando che per questo lavoro di tesi ci si aspettava la riscrittura
+ della maggior parte del codice, é stata inoltre avanzata l'ipotesi di un
+ cambio motore grafico a favore di Unreal Engine 4.
+ Sebbene quest'ultimo avrebbe garantito un'eccellente resa grafica, l'idea
+ é stata rapidamente accantonata per via delle iterazioni di sviluppo incredibil
+mente piú lente che caratterizzano questo motore grafico, la mancanza di
+ servizi di 
+\emph on
+matchmaking 
+\emph default
+e, soprattutto, non era chiaro
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per la nuova versione é stato deciso di effettuare un porting del gioco
  alla versione Unity 2017.3 al fine di ridurre i tempi di sviluppo.
  Inizialmente era stata anche valutato il motore grafico Unreal Engine 4,
  tuttavia, sebbene la revisione dell'architettura avrebbe comunque richiesto
@@ -160,10 +156,6 @@ Una volta determinate le tecnologie impiegate ci si é concentrati sullo
  durante il corso per il quale OrbTail era stato sviluppato originariamente,
  e via via procedendo per iterazioni successive in cui sono state implementate
  nuove funzionalitá.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Section
