@@ -6,7 +6,7 @@
 \origin unavailable
 \textclass book
 \use_default_options false
-\master ../Tesi.lyx
+\master ../tesi.lyx
 \maintain_unincluded_children false
 \language italian
 \language_package default
@@ -313,11 +313,11 @@ status collapsed
 
 \end_inset
 
-Sfide nello sviluppo cross-piattaforma
+OrbTail
 \begin_inset Newline newline
 \end_inset
 
-Il caso studio di OrbTail.
+Titolo Tesi
 \begin_inset ERT
 status collapsed
 

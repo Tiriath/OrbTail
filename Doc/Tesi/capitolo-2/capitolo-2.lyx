@@ -214,7 +214,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/sp_ctr.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/sp_ctr.jpg
 	lyxscale 20
 	height 7cm
 
@@ -335,7 +335,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_ctr_battle.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_ctr_battle.jpg
 	lyxscale 20
 	height 7cm
 
@@ -489,7 +489,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_rocketleague_custom.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_rocketleague_custom.jpg
 	lyxscale 20
 	height 7cm
 
@@ -643,7 +643,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_rocketleague.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_rocketleague.jpg
 	lyxscale 20
 	height 7cm
 
@@ -860,7 +860,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/sp_geometrywars3_sphere.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/sp_geometrywars3_sphere.jpg
 	lyxscale 20
 	height 7cm
 
@@ -997,12 +997,12 @@ reference "fig:GW3Funnel"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/sp_geometrywars3_funnel.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/sp_geometrywars3_funnel.jpg
 	lyxscale 20
 	height 7cm
 
@@ -1016,7 +1016,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Geometry Wars - Arena ad imbuto.
@@ -1689,6 +1689,7 @@ reference "tab:VehicleParam"
 
 )
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status collapsed
@@ -2887,7 +2888,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/orbtail_flow.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/orbtail_flow.jpg
 	lyxscale 20
 	width 14cm
 
