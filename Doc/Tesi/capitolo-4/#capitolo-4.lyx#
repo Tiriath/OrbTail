@@ -494,7 +494,7 @@ Gestione della gravitá
 I livelli offerti dal gioco sono caratterizzati da topologie profondamente
  diverse, il che rende impossibile utilizzare la gravitá automatica fornita
  dal motore fisico di Unity per far fluttuare gli oggetti su di essi.
- Durante la prima iterazione ci si é affidati al sistema di 
+ Durante la prima iterazione ci si è affidati al sistema di 
 \emph on
 raycasting 
 \begin_inset Foot
@@ -515,7 +515,7 @@ i.
  
 \emph default
 al fine di individuare un punto sulla superficie del livello da usare come
- base per il calcolo, tuttavia ci si é presto accorti che il sistema era
+ base per il calcolo, tuttavia ci si è presto accorti che il sistema era
  affetto da gravi difetti.
  Sebbene l'uso del 
 \emph on
@@ -680,7 +680,7 @@ con costante
 \end_inset
 
 .
- Un controllore analogo é utilizzato per gestire l'azione di sterzo e la
+ Un controllore analogo è utilizzato per gestire l'azione di sterzo e la
  velocitá angolare risultate.
  Per questa particolare implementazione le azioni 
 \emph on
@@ -709,7 +709,7 @@ La velocitá desiderata
 \begin_inset Formula $r(t)$
 \end_inset
 
- é determinata dal valore massimo di 
+ è determinata dal valore massimo di 
 \emph on
 velocitá 
 \emph default
@@ -726,7 +726,7 @@ del veicolo
 \begin_inset Formula $K_{e}$
 \end_inset
 
- é invece proporzionale al suo parametro di 
+ è invece proporzionale al suo parametro di 
 \emph on
 accelerazione
 \emph default
@@ -772,7 +772,7 @@ Gestione dei collezionabili
 \end_layout
 
 \begin_layout Standard
-La gestione della collezione degli elementi di gioco é affidata a tre componenti
+La gestione della collezione degli elementi di gioco è affidata a tre componenti
  fondamentali.
  Il primo di questi, il 
 \emph on
@@ -801,47 +801,34 @@ che si preoccupa di gestire le logiche di base della coda, quali aggiungere
 \emph on
 orb
 \emph default
- é gestito attraverso un 
+ è gestito attraverso un 
 \emph on
 vincolo fisico 
 \emph default
-di tipo molla, con una lunghezza massima tale per cui gli 
+di tipo molla, con una lunghezza massima tale per cui questi possano muoversi
+ liberamente senza peró allontanarsi da quello che li precede nella coda.
+ Una volta rimossi dalla coda, il vincolo fisico viene rimosso e l'
 \emph on
 orb 
 \emph default
-possono liberamente muoversi ma non possono allontanarsi dall'orb che li
- precede
+viene proiettato in una direzione casuale al fine di allontanarlo dal veicolo.
+ Il 
 \emph on
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Il collegamento tra il nuovo orb collezionato e l'ultimo elemento della
- code é gestito attraverso un 
-\emph on
-vincolo fisico 
+game object 
 \emph default
-di tipo molla, con una lunghezza massima tale per cui gli oggetti possono
- liberamente muoversi nello spazio ma non possono allontanarsi per piú di
- una distanza molto breve.
- Una volta che ogni 
+che rappresenta ciascun 
 \emph on
 orb 
 \emph default
-viene rimosso dalla coda, il vincolo fisico viene rimosso e all'elemento
- viene applicata una forza in una direzione casuale al fine di allontanarlo
- dal precedente proprietario.
- Gli orb sono game object a parte che usano il componente FloatingObject
- per svolazzare sull'arena e un componente speciale l'OrbController per
- gestire il concatenamento con gli altri orb quando all'interno della coda
- di un veicolo.
+usa il componente 
+\emph on
+FloatingObject 
+\emph default
+al fine di fluttuare sull'arena e un altro componente, l'
+\emph on
+OrbController
+\emph default
+, al fine di gestire i vincoli fisici di cui sopra.
 \end_layout
 
 \begin_layout Subsection
@@ -849,8 +836,57 @@ Gestione degli scontri.
 \end_layout
 
 \begin_layout Standard
-FightController.
- Formula usata per il calcolo degli scontri.
+Il sistema di gestione degli scontri trai veicoli è implementato all'interno
+ di un componente apposito 
+\emph on
+FightController 
+\emph default
+definito per ciascun veicolo.
+ Lo scopo di questo componente è quello di rilevare impatti con altri veicoli
+ al fine di rimuovere 
+\emph on
+orb 
+\emph default
+dalla coda del proprio veicolo.
+ Al fine di non avvantaggiare nessun veicolo, la forma del collisore di
+ ciascuno di essi é modellata attraverso un volume di collisione sferico
+ abbastanza grande da includere la 
+\emph on
+mesh 
+\emph default
+del veicolo.
+ Questa dimensione é mantenuta costante per tutti i veicoli.
+\end_layout
+
+\begin_layout Standard
+Gli eventi di collisione sono generati sempre simmetricamente nei due compoenti
+ dei veicoli e ció consente a ciascun controller di occuparsi solo dei propri
+ 
+\emph on
+orb 
+\emph default
+persi, lasciando che sia il controller dell'avversario a gestire la perdita
+ dei suoi orb.
+ Durante uno scontro il sistema valuta la direzione relativa d'impatto e
+ quella dei veicoli.
+ Scontri frontali tra due veicoli devono causare lo stesso numero di danni
+ ad entrambe le navi, laddove scontri laterali penalizzano il veicolo in
+ direzione perpendicolare alla direzione d'impatto.
+ Il sistema internamente usa due parametri, uno di offesa e uno di difesa.
+ Il primo aumenta permette di scalare la forza di impatto, il secondo invece
+ viene usato come divisore al fine di individuare il numero di orb staccati
+ a seguito di un impatto secondo la formula
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+o_{d}=
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
