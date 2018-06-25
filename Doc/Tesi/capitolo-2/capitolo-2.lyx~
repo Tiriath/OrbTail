@@ -74,7 +74,7 @@
 \begin_body
 
 \begin_layout Standard
-Questo capitolo é dedicato al design di OrbTail, partendo dai titoli esistenti
+Questo capitolo è dedicato al design di OrbTail, partendo dai titoli esistenti
  che hanno ispirato il gioco e proseguendo con le meccaniche di base, le
  modalitá di gioco, i livelli e la descrizione dettagliata di tutti gli
  elementi di gioco.
@@ -103,7 +103,7 @@ di gioco.
  un sottoinsieme di caratteristiche desiderate e facilmente adattabili alla
  grande diversitá di dispositivi per cui verrá sviluppato OrbTail.
  La data di pubblicazione dei titoli scelti copre inoltre un orizzonte temporale
- molto vasto: l'intento é quello di conuigare tra loro caratteristiche dei
+ molto vasto: l'intento è quello di conuigare tra loro caratteristiche dei
  giochi recenti con vecchi paradigmi di gameplay da rivisitare in chiave
  moderna.
 \end_layout
@@ -129,7 +129,7 @@ nel 1999 per
 \emph on
 PlayStation
 \emph default
-, é un videogioco di guida tratto dalla fortunata serie platform 
+, è un videogioco di guida tratto dalla fortunata serie platform 
 \emph on
 Crash Bandicoot.
  
@@ -299,7 +299,7 @@ sfida a tempo
 
 , il giocatore corre da solo al fine di registrare il miglior tempo su tutti
  i tracciati disponibili.
- Questa modalitá é caratterizzata dall'assenza di avversari e potenziamenti
+ Questa modalitá è caratterizzata dall'assenza di avversari e potenziamenti
  di alcun genere.
  Nella modalitá 
 \begin_inset Quotes fld
@@ -314,9 +314,9 @@ sala giochi
 campionati
 \emph default
  formati da quattro tracciati.
- In questa modalitá é prevista la presenza di otto partecipanti e l'intero
+ In questa modalitá è prevista la presenza di otto partecipanti e l'intero
  arsenale di armi e potenziamenti.
- Quest'ultima modalitá é anche fruibile in formato multigiocatore locale
+ Quest'ultima modalitá è anche fruibile in formato multigiocatore locale
  con numero di giocatori compreso tra due e quattro.
  L'ultima modalitá 
 \begin_inset Quotes fld
@@ -399,13 +399,13 @@ reference "fig:CTRBattle"
  la sfida con un numero predefinito di vite che vengono decrementate ogni
  volta che il kart viene colpito da un'arma.
  Quando il numero di vite scende a zero il giocatore viene eliminato: l'ultimo
- rimasto in partita é proclamato vincitore.
- Questa modalitá é caratterizzata dall'assenza di partecipanti governati
+ rimasto in partita è proclamato vincitore.
+ Questa modalitá è caratterizzata dall'assenza di partecipanti governati
  dall'
 \emph on
 intelligenza artificiale
 \emph default
- ed é pertanto preclusa dall'esperienza a giocatore singolo
+ ed è pertanto preclusa dall'esperienza a giocatore singolo
 \emph on
 .
 \end_layout
@@ -419,7 +419,7 @@ Rocket League
 \emph on
 Rocket League 
 \emph default
-é un gioco multipiattaforma sviluppato e pubblicato da 
+è un gioco multipiattaforma sviluppato e pubblicato da 
 \emph on
 Psyonix 
 \emph default
@@ -534,7 +534,7 @@ Rocket League - Personalizzazione del veicolo
  agli avversari.
  Un potente razzo posteriore consente di aumentare drasticamente la propria
  velocitá, planare o spiccare il volo per brevi periodi.
- É inoltre possibile usare il proprio veicolo come un ariete contro i veicoli
+ è inoltre possibile usare il proprio veicolo come un ariete contro i veicoli
  avversari in modo da farli esplodere e rimuoverli dalla partita per pochi
  secondi.
 \end_layout
@@ -544,7 +544,7 @@ Ogni
 \emph on
 stadio
 \emph default
- é caratterizzato da uno stile diverso.
+ è caratterizzato da uno stile diverso.
  La presenza di zone speciali all'interno di essi consente ai veicoli di
  ottenere un'accelerazione aggiuntiva quando attraversate; particolari oggetti
  distribuiti nello stadio consentono al veicolo di recuperare parte dell'energia
@@ -675,7 +675,7 @@ Rocket League
 .
  I partecipanti usano i propri veicoli per colpire una grossa palla al fine
  di spingerla nella porta avversaria ed ottenere punti.
- Allo scadere del tempo la squadra col maggior numero di punti é dichiarato
+ Allo scadere del tempo la squadra col maggior numero di punti è dichiarato
  vincitore.
  In caso di paritá la prima squadra a segnare oltre lo scadere del tempo
  vince.
@@ -695,7 +695,7 @@ Snowday
 \emph on
 hockey su ghiaccio
 \emph default
- in cui la palla é sostituita da un 
+ in cui la palla è sostituita da un 
 \emph on
 disco
 \emph default
@@ -715,7 +715,7 @@ ispirata alla
 \emph on
 pallacanestro 
 \emph default
-in cui la porta é sostituita con un 
+in cui la porta è sostituita con un 
 \emph on
 canestro 
 \emph default
@@ -742,7 +742,7 @@ Dropshot
 \end_inset
 
  stravolge le regole del gioco, rimuovendo completamente le porte.
- In questa modalitá il pavimento é suddiviso in piastrelle esagonali che,
+ In questa modalitá il pavimento è suddiviso in piastrelle esagonali che,
  colpite dalla palla due volte in successione, crollano lasciando una voragine
  nel pavimento che funge da porta per la squadra a cui appartiene la mezzeria
  di campo.
@@ -784,7 +784,7 @@ Geometry Wars 3: Dimensions Evolved
 \emph on
 Geometry Wars 3: Dimensions Evolved 
 \emph default
-é un gioco 
+è un gioco 
 \emph on
 shoot 'em up
 \begin_inset Foot
@@ -836,7 +836,7 @@ console
 \emph on
 Geometry Wars 
 \emph default
-é il primo gioco della serie ad introdurre una modalitá 
+è il primo gioco della serie ad introdurre una modalitá 
 \begin_inset Quotes fld
 \end_inset
 
@@ -925,7 +925,7 @@ e
 super 
 \emph default
 abilitá, ciascuno caratterizzato da diversi stili di gioco ed effetti.
- Durante le partite é inoltre possibile collezionare 
+ Durante le partite è inoltre possibile collezionare 
 \emph on
 super stati
 \emph default
@@ -950,7 +950,7 @@ ottenibili abbattendo le navi avversarie.
 \emph on
 geom 
 \emph default
-é una delle meccaniche fondamentali del gioco in quanto consente al giocatore
+è una delle meccaniche fondamentali del gioco in quanto consente al giocatore
  di aumentare il proprio punteggio di svariati ordini di grandezza.
  Al raggiungimento di certe soglie di punti, il giocatore viene inoltre
  premiato con 
@@ -1051,7 +1051,7 @@ ondate
 in punti specifici di ciascuna mappa e sono caratterizzati da diversi schemi
  di movimento e strategie: alcuni tendono ad essere piú aggressivi, altri
  piú rapidi, altri ancora prediligono una strategia piú elusiva.
- La successione delle ondate in ciascun livello é prestabilita ed é pertanto
+ La successione delle ondate in ciascun livello è prestabilita ed è pertanto
  possibile ricordarla a memoria al fine di massimizzare il punteggio a fine
  gara.
 \end_layout
@@ -1133,7 +1133,7 @@ OrbTail
 \end_layout
 
 \begin_layout Standard
-OrbTail é un gioco competitivo con elementi tipici dei 
+OrbTail è un gioco competitivo con elementi tipici dei 
 \emph on
 giochi di
 \emph default
@@ -1144,7 +1144,7 @@ corsa
 in cui quattro partecipanti si sfidano all'interno di un'arena.
  Il titolo offre diverse modalitá di gioco a tempo caratterizzate da condizioni
  di vittoria differenti e molteplici arene con un diverso grado di difficoltá.
- Il titolo é stato sviluppato per le principali piattaforme 
+ Il titolo è stato sviluppato per le principali piattaforme 
 \emph on
 desktop 
 \emph default
@@ -1167,7 +1167,7 @@ In OrbTail ogni giocatore controlla un veicolo in grado di muoversi agilmente
 orb 
 \emph default
 che si agganciano ad esso formando una lunga coda.
- É possibile utilizzare il proprio veicolo per scontrarsi contro quelli
+ è possibile utilizzare il proprio veicolo per scontrarsi contro quelli
  avversari al fine di sottrarre 
 \emph on
 orb
@@ -1189,11 +1189,11 @@ su cui si concentra
 l'elemento di sfida
 \emph default
  trai vari giocatori.
- A seguito di valutazioni empiriche é stato deciso che il numero di 
+ A seguito di valutazioni empiriche è stato deciso che il numero di 
 \emph on
 orb 
 \emph default
-per arena é pari a 
+per arena è pari a 
 \emph on
 ventotto
 \emph default
@@ -1208,7 +1208,7 @@ All'interno dell'arena sono inoltre distribuiti degli elementi di gioco
 core,
 \emph default
  che garantiscono al giocatore un potenziamento casuale temporaneo.
- Lo scopo di questi potenziamenti é quello di aggiungere 
+ Lo scopo di questi potenziamenti è quello di aggiungere 
 \emph on
 profonditá 
 \emph default
@@ -1241,7 +1241,7 @@ e, qualora dovesse essere disponbile una connessione ad Internet,
 multigiocatore online
 \emph default
 .
- É inoltre possibile giocare in 
+ è inoltre possibile giocare in 
 \emph on
 modalitá online mista 
 \emph default
@@ -1251,12 +1251,12 @@ in cui piú giocatori condividono una stessa postazione e giocano con altri
 \emph on
 multigiocatore locale 
 \emph default
-é gestita tramite 
+è gestita tramite 
 \emph on
 splitscreen
 \emph default
  con numero di partecipanti compreso tra due a quattro.
- Questa configurazione é disponibile per le sole piattaforme 
+ Questa configurazione è disponibile per le sole piattaforme 
 \emph on
 desktop 
 \emph default
@@ -1296,7 +1296,7 @@ Questi veicoli sono in grado di eseguire semplici compiti quali collezionare
 \emph on
 intelligenza artificiale 
 \emph default
-é unico e non é possibile configurarlo.
+è unico e non è possibile configurarlo.
  Nel design originale di gioco l'
 \emph on
 intelligenza artificiale 
@@ -1307,7 +1307,7 @@ era disponibile nella sola modalitá a giocatore singolo: era pertanto possibile
 online 
 \emph default
 con un numero inferiore di giocatori.
- Questa limitazione é stata 
+ Questa limitazione è stata 
 \emph on
 rimossa 
 \emph default
@@ -1343,7 +1343,7 @@ tre minuti
 \emph on
 versatilitá 
 \emph default
-del prodotto unica: il gioco é tanto adatto al 
+del prodotto unica: il gioco è tanto adatto al 
 \emph on
 casual gamer 
 \emph default
@@ -1370,7 +1370,7 @@ originale del 2014.
 \end_layout
 
 \begin_layout Description
-Arcade In questa modalitá l'obiettivo é quello di fare piú punti possibile
+Arcade In questa modalitá l'obiettivo è quello di fare piú punti possibile
  entro un tempo limite prestabilito di 
 \emph on
 centoventi secondi
@@ -1385,8 +1385,8 @@ orb
 dieci 
 \emph default
 il punteggio del giocatore.
- Questa modalitá di gioco é pensata per favorire scontri trai veicoli dei
- partecipanti ed é caratterizzata da un 
+ Questa modalitá di gioco è pensata per favorire scontri trai veicoli dei
+ partecipanti ed è caratterizzata da un 
 \emph on
 ritmo 
 \emph default
@@ -1404,7 +1404,7 @@ porta i giocatori allo scontro continuo in modo che ve ne sia sempre un
 \emph on
 orb 
 \emph default
-a disposizione, l'unico modo per fare piú punti é liberarne di nuovi, anche
+a disposizione, l'unico modo per fare piú punti è liberarne di nuovi, anche
  a discapito dei propri.
  Questa meccanica consente di mantenere un elevato grado di sfida in quanto,
  al termine di ciascuno scontro, ogni giocatore dovrá fare del suo meglio
@@ -1422,7 +1422,7 @@ Longest
 \begin_inset space ~
 \end_inset
 
-Tail In questa modalitá l'obiettivo é quello di terminare la partita col
+Tail In questa modalitá l'obiettivo è quello di terminare la partita col
  maggior numero di 
 \emph on
 orb 
@@ -1438,7 +1438,7 @@ centoventi secondi
 paritá.
  
 \emph default
-Questa modalitá é caratterizzata da un 
+Questa modalitá è caratterizzata da un 
 \emph on
 ritmo
 \emph default
@@ -1485,7 +1485,7 @@ reattivitá.
 \end_layout
 
 \begin_layout Description
-Eliminazione L'obiettivo di questa modalitá é
+Eliminazione L'obiettivo di questa modalitá è
 \emph on
  eliminare 
 \emph default
@@ -1506,7 +1506,7 @@ iniziale.
 eliminato
 \emph default
 .
- Questa modalitá é caratterizzata da un elevato grado di 
+ Questa modalitá è caratterizzata da un elevato grado di 
 \emph on
 competizione
 \emph default
@@ -1539,9 +1539,9 @@ spettatore
 centottanta secondi
 \emph default
 , scaduti i quali la partita termina in paritá.
- Questo limite temporale é necessario per incentivare lo scontro trai partecipan
+ Questo limite temporale è necessario per incentivare lo scontro trai partecipan
 ti rimanenti, impedendo che la partita si protragga indefinitamente.
- La durata é piú elevata rispetto alle modalitá precedenti in quanto si
+ La durata è piú elevata rispetto alle modalitá precedenti in quanto si
  vuole aumentare la probabilitá che la partita finisca a causa dell'eliminazione
  dei partecipanti invece che per esaurimento del tempo di gara.
 \end_layout
@@ -1653,7 +1653,7 @@ i quali influivano direttamente sull'esito degli scontri e il numero di
 orb 
 \emph default
 staccati.
- Dopo varie iterazioni é stato deciso di rimuovere questi due parametri
+ Dopo varie iterazioni è stato deciso di rimuovere questi due parametri
  in quanto il loro contributo risultava impercettibile durante le sessioni
  e perché l'interazione con il parametro 
 \emph on
@@ -2064,7 +2064,7 @@ Flare Caratterizzato da uno stile di guida
 \emph on
 bilanciato
 \emph default
-, questo veicolo é pensato per adattarsi ad ogni tipo di strategia.
+, questo veicolo è pensato per adattarsi ad ogni tipo di strategia.
  Indicato per i nuovi giocatori.
 \end_layout
 
@@ -2095,7 +2095,7 @@ sulla lunga distanza sacrificando gran parte della manovrabilitá.
 \series bold
 Glow 
 \series default
-Questo veicolo é dotato di un'elevata mobilitá e ció lo rende particolarmente
+Questo veicolo è dotato di un'elevata mobilitá e ció lo rende particolarmente
  adatto per collezionare 
 \emph on
 orb 
@@ -2105,7 +2105,7 @@ e
 core.
  
 \emph default
-La bassa velocitá é compensata dalla facilitá di accesso ai potenziamenti
+La bassa velocitá è compensata dalla facilitá di accesso ai potenziamenti
  e ció lo rende adatto ai giocatori che prediligono uno stile di gioco piú
  strategico.
 \end_layout
@@ -2218,7 +2218,7 @@ in cui un giocatore continua a fuggire dagli avversari senza che questi
 accerchiarlo.
  
 \emph default
-Questa proprietá é fondamentale per garantire un grado di sfida adeguato
+Questa proprietá è fondamentale per garantire un grado di sfida adeguato
  nelle modalitá 
 \emph on
 longest tail 
@@ -2256,28 +2256,28 @@ Di seguito sono riportate le descrizioni delle arene disponibili.
 \end_layout
 
 \begin_layout Description
-Stadium Il livello é costituito da un'arena 
+Stadium Il livello è costituito da un'arena 
 \emph on
 emisferica
 \emph default
  in cui i veicoli possono correre sulla sua base ma non possono superarne
  i bordi.
- Questo livello é caratterizzato da una topologia 
+ Questo livello è caratterizzato da una topologia 
 \emph on
 piana 
 \emph default
 e pertanto tutti gli elementi di gioco sono sempre ben visibili.
- Questa arena é adatta per i nuovi giocatori oppure per gli utenti che preferisc
+ Questa arena è adatta per i nuovi giocatori oppure per gli utenti che preferisc
 ono concentrarsi sull'azione di gioco evitando la difficoltá introdotta
  da topologie diverse.
 \end_layout
 
 \begin_layout Description
-Planetarium Questa arena é ricavata all'interno di una 
+Planetarium Questa arena è ricavata all'interno di una 
 \emph on
 sfera
 \emph default
- ed é caratterizzata da una forza di gravitá radiale che spinge i veicoli
+ ed è caratterizzata da una forza di gravitá radiale che spinge i veicoli
  e tutti gli elementi di gioco sulla 
 \emph on
 superficie interna 
@@ -2312,7 +2312,7 @@ interna
  La topologia complicata rende particolarmente arduo valutare correttamente
  le distanze degli oggetti e prevedere le traiettorie degli avversari.
  La guida dei veicoli all'interno di quest'arena richiede inoltre un piú
- elevato grado di precisione in quanto non é sempre semplice individuare
+ elevato grado di precisione in quanto non è sempre semplice individuare
  il percorso migliore per raggiungere un determinato obiettivo.
 \end_layout
 
@@ -2336,7 +2336,7 @@ concava
 , il raggio di curvatura risultava tale da ridurre drasticamente il numero
  di elementi di gioco a schermo e rendere ancora piú complicato individuare
  avversari ed oggetti.
- A seguito di queste considerazioni é stato deciso di evitare l'aggiunta
+ A seguito di queste considerazioni è stato deciso di evitare l'aggiunta
  di suddette topologie.
 \end_layout
 
@@ -2407,7 +2407,7 @@ imbevuti
 dieci 
 \emph default
 secondi e iniziavano a brillare vistosamente.
- Durante le iterazioni ci si é resi conto che sfruttare gli 
+ Durante le iterazioni ci si è resi conto che sfruttare gli 
 \emph on
 orb 
 \emph default
@@ -2418,7 +2418,7 @@ stessi per fornire potenziamenti impediva ai giocatori di opporsi agli avversari
 \emph on
 orb 
 \emph default
-non collezionati é sempre molto basso (e quindi nel caso generico non ne
+non collezionati è sempre molto basso (e quindi nel caso generico non ne
  venivano 
 \begin_inset Quotes fld
 \end_inset
@@ -2428,12 +2428,12 @@ imbevuti
 \end_inset
 
  abbastanza).
- Per questo motivo é stato deciso di introdurre un elemento di gioco collezionab
+ Per questo motivo è stato deciso di introdurre un elemento di gioco collezionab
 ile apposito, il 
 \emph on
 core
 \emph default
-, il cui numero per arena é fissato a 
+, il cui numero per arena è fissato a 
 \emph on
 quattro
 \emph default
@@ -2470,7 +2470,7 @@ Turbo Una volta attivato, questo potenziamento imprime una forza costante
 tre
 \emph default
  secondi a grande velocitá.
- Questo potenziamento é pensato per essere utilizzato in ambito 
+ Questo potenziamento è pensato per essere utilizzato in ambito 
 \emph on
 offensivo 
 \emph default
@@ -2482,7 +2482,7 @@ staccati o
 \emph on
 difensivo
 \emph default
-, quando é necessario distanziare gli avversari rapidamente.
+, quando è necessario distanziare gli avversari rapidamente.
 \end_layout
 
 \begin_layout Description
@@ -2500,7 +2500,7 @@ tre
 sette
 \emph default
  secondi.
- Grazie a questo effetto é possibile raccogliere un gran numero di 
+ Grazie a questo effetto è possibile raccogliere un gran numero di 
 \emph on
 orb 
 \emph default
@@ -2521,7 +2521,7 @@ Gli avversari che tentano di raccogliere questo oggetto perdono il controllo
 due
 \emph default
  secondi.
- L'uso di questo potere é principalmente difensivo e permette di neutralizzare
+ L'uso di questo potere è principalmente difensivo e permette di neutralizzare
  gli avversari temporaneamente per allontanarsene.
 \end_layout
 
@@ -2601,7 +2601,7 @@ orb.
  
 \emph default
 Quest'arma risulta particolarmente efficace sulle brevi distanze dove vi
- é una piú elevata probabilitá di colpire gli avversari.
+ è una piú elevata probabilitá di colpire gli avversari.
  Il gran numero di 
 \emph on
 orb 
@@ -2618,7 +2618,7 @@ definitivamente qualora dovessero averne in numero esiguo.
 \series bold
 Scudo 
 \series default
-Il veicolo del giocatore é immune da tutte le armi nemiche per 
+Il veicolo del giocatore è immune da tutte le armi nemiche per 
 \emph on
 sette
 \emph default
@@ -2657,7 +2657,7 @@ Interazione utente
 \end_layout
 
 \begin_layout Standard
-OrbTail é caratterizzato da un numero molto limitato di controlli ed azioni
+OrbTail è caratterizzato da un numero molto limitato di controlli ed azioni
  che l'utente puó effettuare e ció lo rende facilmente fruibile su tutte
  le piattaforme supportate.
 \end_layout
@@ -2667,7 +2667,7 @@ Per le piattaforme
 \emph on
 mobile 
 \emph default
-l'interazione utente all'interno del menú é affidata al 
+l'interazione utente all'interno del menú è affidata al 
 \emph on
 touch, 
 \emph default
@@ -2687,12 +2687,12 @@ oppure di andare in
 retromarcia
 \emph default
 .
- Piegando il dispositivo a destra o sinistra é inoltre possibile 
+ Piegando il dispositivo a destra o sinistra è inoltre possibile 
 \emph on
 sterzare
 \emph default
  in misura tanto maggiore quanto piú grande l'angolo d'inclinazione.
- L'attivazione dei potenziamenti e delle armi é invece affidata ad un semplice
+ L'attivazione dei potenziamenti e delle armi è invece affidata ad un semplice
  
 \emph on
 tocco
@@ -2710,7 +2710,7 @@ desktop
 mobile
 \emph default
 , deve essere inoltre interagibile da piú partecipanti contemporaneamente
- ed é pertanto previsto il supporto per 
+ ed è pertanto previsto il supporto per 
 \emph on
 tastiere, mouse 
 \emph default
@@ -2723,7 +2723,7 @@ quattro pad
 \emph on
 tastiera
 \emph default
- é sufficiente usare le 
+ è sufficiente usare le 
 \emph on
 frecce direzionali 
 \emph default
@@ -2765,7 +2765,7 @@ apposito per attivare i potenziamenti.
 pad
 \emph default
 .
- É inoltre possibile interagire con tutti gli elementi dell'interfaccia
+ è inoltre possibile interagire con tutti gli elementi dell'interfaccia
  grafica (in menú e in gara) attraverso il 
 \emph on
 mouse
@@ -2778,14 +2778,14 @@ Interfaccia utente
 \end_layout
 
 \begin_layout Standard
-L'interfaccia utente é pensata per essere poco intrusiva: gli elementi dell'
+L'interfaccia utente è pensata per essere poco intrusiva: gli elementi dell'
 \emph on
 HUD 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-HUD é un acronimo che sta per 
+HUD è un acronimo che sta per 
 \emph on
 head-up display 
 \emph default
@@ -2803,7 +2803,7 @@ display a testa alta
  
 \emph default
 sono ridotti al minimo e consentono di avere sempre una buona visione del
- campo di gioco, ció é particolarmente importante sui dispositivi 
+ campo di gioco, ció è particolarmente importante sui dispositivi 
 \emph on
 mobile 
 \emph default
@@ -2814,7 +2814,7 @@ caratterizzati solitamente da schermi dalle dimensioni ridotte.
 I menu all'interno del gioco sono caratterizzati da elementi sempre ben
  visibili, sono escluse pertanto liste a scorrimento o menú con un gran
  numero di voci.
- Questa tipologia di menú é necessaria per facilitare l'interazione tramite
+ Questa tipologia di menú è necessaria per facilitare l'interazione tramite
  
 \emph on
 touchscreen
@@ -2871,7 +2871,7 @@ Flusso di gioco
 \end_layout
 
 \begin_layout Standard
-Il flusso di gioco é pensato per portare rapidamente l'utente in partita,
+Il flusso di gioco è pensato per portare rapidamente l'utente in partita,
  riducendo al minimo il numero di interazioni necessarie (Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2971,13 +2971,13 @@ stanza virtuale
 \emph on
 lobby 
 \emph default
-é associata ad una particolare partita in corso o in fase di creazione.
+è associata ad una particolare partita in corso o in fase di creazione.
 \end_layout
 
 \end_inset
 
 .
- La selezione della modalitá di gioco e dell'arena é 
+ La selezione della modalitá di gioco e dell'arena è 
 \emph on
 opzionale
 \emph default
@@ -3003,7 +3003,7 @@ lobby
 \emph default
 disponibile, il sistema provvederá a crearne una nuova a cui altri utenti
  online potranno liberamente accedervi.
- Questo processo non é necessario per la modalitá a 
+ Questo processo non è necessario per la modalitá a 
 \emph on
 giocatore singolo
 \emph default
@@ -3033,7 +3033,7 @@ quattro
 \emph default
 .
  Un breve conto alla rovescia porterá i giocatori in gara.
- All'inizio di ogni partita é prevista una schermata contenente le regole
+ All'inizio di ogni partita è prevista una schermata contenente le regole
  della modalitá di gioco selezionata ed i potenziamenti disponibili.
  Questa schermata funge anche da punto di sincronizzazione, in attesa che
  tutti gli altri giocatori online abbiano caricato il livello.

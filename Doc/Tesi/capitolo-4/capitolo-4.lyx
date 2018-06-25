@@ -497,6 +497,22 @@ I livelli offerti dal gioco sono caratterizzati da topologie profondamente
  Durante la prima iterazione ci si é affidati al sistema di 
 \emph on
 raycasting 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Il 
+\emph on
+raycasting 
+\emph default
+è una tecnica che consente di determinare le intersezioni tra un raggio
+ descritto da un punto inziale ed una direzione ed una o piú superfici poligonal
+i.
+\end_layout
+
+\end_inset
+
+ 
 \emph default
 al fine di individuare un punto sulla superficie del livello da usare come
  base per il calcolo, tuttavia ci si é presto accorti che il sistema era
@@ -621,24 +637,134 @@ Sistema di controllo
 \end_layout
 
 \begin_layout Standard
-La prima meccanica fondamentale riguarda il sistema di controllo del veicolo,
- le cui logiche sono implementate nel MovementController.
- Nella sua implementazione piú semplice il sistema si comporta come un sistema
- di controllo ad inseguimento, rispetto all'input dell'utente e le velocitá
- attuali della nave.
- Il sistema agisce direttamente sul corpo rigido del veicolo, andando ad
- applicare forze in fase di accelerazione e momenti angolari durante le
- sterzate.
- Il parametro di velocitá e di manovrabilitá influiscono direttamente sull'inten
-sitá della forza e del momento angolare rispettivamente.
- L'accelerazione invece usa il termine 
+Il sistema di controllo di ciascun veicolo si occupa di gestire il movimento
+ di quest'ultimo all'interno dell'arena considerando la direzione della
+ forza di gravitá e l'input dell'utente.
+\end_layout
+
+\begin_layout Standard
+Il componente 
+\emph on
+MovementController
+\emph default
+ determina la velocitá lineare e quella angolare del veicolo in ogni istante
+ e applica opportune forze al 
+\emph on
+corpo rigido 
+\emph default
+di quest'ultimo per causarne il movimento fisico.
+ La gestione del movimento non è simulata in maniera fisicamente accurata,
+ bensí è affidata ad un semplice controllore 
+\emph on
+PID.
+ 
+\emph default
+Il sistema adoperato consente di controllare la velocitá da applicare 
+\begin_inset Formula $u(t)$
+\end_inset
+
+ in funzione di quella attuale del veicolo 
+\begin_inset Formula $y(t)$
+\end_inset
+
+ e di quella desiderata 
+\begin_inset Formula $r(t)$
+\end_inset
+
+ usando la sola azione di controllo 
 \emph on
 proporzionale 
 \emph default
-del sistema di controllo.
- La direzione di accelerazione è ricavata in funzione della tangente del
- campo di gravitá e della rotazione del veicolo, questo impedisce a quest'ultimo
- di percorrere superfici curve passandovici attraverso.
+con costante 
+\begin_inset Formula $K_{p}$
+\end_inset
+
+.
+ Un controllore analogo é utilizzato per gestire l'azione di sterzo e la
+ velocitá angolare risultate.
+ Per questa particolare implementazione le azioni 
+\emph on
+integrali 
+\emph default
+e 
+\emph on
+derivative 
+\emph default
+non sono state ritenute necessarie:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u(t)=K_{p}(r(t)-y(t))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La velocitá desiderata 
+\begin_inset Formula $r(t)$
+\end_inset
+
+ é determinata dal valore massimo di 
+\emph on
+velocitá 
+\emph default
+del veicolo 
+\begin_inset Formula $r_{max}>0$
+\end_inset
+
+ e dall'input dell'utente 
+\begin_inset Formula $r_{in}\in[-1;+1]$
+\end_inset
+
+.
+ Il termine proporzionale 
+\begin_inset Formula $K_{e}$
+\end_inset
+
+ é invece proporzionale al suo parametro di 
+\emph on
+accelerazione
+\emph default
+.
+ L'azione di sterzo segue un principio identico ma ha costanti che dipendono
+ dalla 
+\emph on
+manovrabilitá 
+\emph default
+del veicolo (vedi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Veicoli"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+r(t)=r_{max}\cdot r_{in}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La direzione di accelerazione è ricavata tramite il componente 
+\emph on
+FloatingObject
+\emph default
+ in funzione della tangente del campo di gravitá e della rotazione del veicolo,
+ e ció impedisce che quest'ultimo possa percorrere la superficie del livello
+ passandovici attraverso.
 \end_layout
 
 \begin_layout Subsection
@@ -659,15 +785,20 @@ OrbController.
 \end_layout
 
 \begin_layout Section
+Networking
+\end_layout
+
+\begin_layout Section
 Modalitá di gioco
+\end_layout
+
+\begin_layout Standard
+Descrizione del flusso di gioco, dello stato della gara e delle condizioni
+ di vittoria.
 \end_layout
 
 \begin_layout Section
 Potenziamenti
-\end_layout
-
-\begin_layout Section
-Networking
 \end_layout
 
 \begin_layout Section

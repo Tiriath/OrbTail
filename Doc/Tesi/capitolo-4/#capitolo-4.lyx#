@@ -638,28 +638,29 @@ Sistema di controllo
 
 \begin_layout Standard
 Il sistema di controllo di ciascun veicolo si occupa di gestire il movimento
- di quest'ultimo all'interno dell'arena considerando la direzione della
- forza di gravitá e l'input dell'utente.
+ del veicolo all'interno dell'arena considerando la direzione della forza
+ di gravitá e dell'input dell'utente.
 \end_layout
 
 \begin_layout Standard
-Il componente 
+Il componente che si occupa della gestione del movimento, il 
 \emph on
 MovementController
 \emph default
- determina la velocitá lineare e quella angolare del veicolo in ogni istante
+, determina la velocitá lineare e quella angolare del veicolo in ogni istante
  e applica opportune forze al 
 \emph on
 corpo rigido 
 \emph default
-di quest'ultimo per causarne il movimento fisico.
+di quest'ultimo per causarne il movimento.
  La gestione del movimento non è simulata in maniera fisicamente accurata,
- bensí è affidata ad un semplice controllore 
+ bensí é affidata ad un semplice controllore 
 \emph on
 PID.
  
 \emph default
-Il sistema adoperato consente di controllare la velocitá da applicare 
+Il controllore adoperato consente di controllare la velocitá da applicare
+ 
 \begin_inset Formula $u(t)$
 \end_inset
 
@@ -680,8 +681,8 @@ con costante
 \end_inset
 
 .
- Un controllore analogo é utilizzato per gestire l'azione di sterzo e la
- velocitá angolare risultate.
+ Questo controllore é utilizzato in maniera analoga per gestire l'azione
+ di sterzo e la conseguente velocitá angolare risultate.
  Per questa particolare implementazione le azioni 
 \emph on
 integrali 
@@ -705,15 +706,16 @@ u(t)=K_{p}(r(t)-y(t))
 \end_layout
 
 \begin_layout Standard
-La velocitá desiderata 
+La velocitá desiderata del veicolo (ed in maniera analoga l'azione di sterzo)
+ 
 \begin_inset Formula $r(t)$
 \end_inset
 
- é determinata dal valore massimo di 
+ sono determinati dal valore massimo di 
 \emph on
-velocitá 
+velocitá
 \emph default
-del veicolo 
+ del veicolo 
 \begin_inset Formula $r_{max}>0$
 \end_inset
 
@@ -726,24 +728,11 @@ del veicolo
 \begin_inset Formula $K_{e}$
 \end_inset
 
- é invece proporzionale al suo parametro di 
+ é invece usato per modellare l'
 \emph on
 accelerazione
 \emph default
-.
- L'azione di sterzo segue un principio identico ma ha costanti che dipendono
- dalla 
-\emph on
-manovrabilitá 
-\emph default
-del veicolo (vedi 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Veicoli"
-
-\end_inset
-
-).
+ del veicolo.
 \end_layout
 
 \begin_layout Standard
@@ -763,8 +752,8 @@ La direzione di accelerazione è ricavata tramite il componente
 FloatingObject
 \emph default
  in funzione della tangente del campo di gravitá e della rotazione del veicolo,
- e ció impedisce che quest'ultimo possa percorrere la superficie del livello
- passandovici attraverso.
+ questo impedisce a quest'ultimo di percorrere superfici curve passandovici
+ attraverso.
 \end_layout
 
 \begin_layout Subsection
