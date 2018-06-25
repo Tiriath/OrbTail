@@ -833,52 +833,115 @@ Gestione degli impatti
 \end_layout
 
 \begin_layout Standard
-Il sistema di gestione degli scontri trai veicoli è implementato all'interno
- di un componente apposito 
+Il sistema di gestione degli scontri tra veicoli é implementato attraverso
+ un componente 
 \emph on
-FightController 
+FightController, 
 \emph default
-definito per ciascun veicolo.
- Lo scopo di questo componente è quello di rilevare impatti con altri veicoli
- al fine di rimuovere 
+il cui scopo é quello di rilevare gli impatti e notificare il componente
+ 
+\emph on
+Ship 
+\emph default
+del numero di 
 \emph on
 orb 
 \emph default
-dalla coda del proprio veicolo.
- Al fine di non avvantaggiare nessun veicolo, la forma del collisore di
- ciascuno di essi é modellata attraverso un volume di collisione sferico
- abbastanza grande da includere la 
+persi come conseguenza.
+ Le collisioni tra veicoli sono gestite direttamente dal motore fisico di
+ Unity.
+ Nella versione originale ciascuno di essi aveva uno o piú 
 \emph on
-mesh 
+collisori fisici 
 \emph default
-del veicolo.
- Questa dimensione é mantenuta costante per tutti i veicoli.
+che approssimavano piú o meno precisamente la loro topologia, tuttavia questo
+ approccio causava comportamenti inaspettati durante la risoluzione delle
+ collisioni quali veicoli che si incastravano tra loro oppure la generazione
+ di impulsi fisici di entitá molto elevata che causavano la perdita di tutti
+ gli 
+\emph on
+orb
+\emph default
+ disponibili.
+ Al fine di non avvantaggiare nessun veicolo ed evitare queste problematiche,
+ nell'ultima versione ci si é affidati all'uso di un 
+\emph on
+collisore sferico 
+\emph default
+unico che approssima la superficie del veicolo racchiudendone il modello
+ grafico.
+ La forma e la dimensione del collisore é identica per tutti i veicoli e
+ ció garantisce un'elevata consistenza durante la risoluzione degli scontri.
+ Una volta rilevata una collisione durante quest'ultimi, il motore fisico
+ genera una coppia di eventi, uno per ogni componente coinvolto nell'impatto.
+ Ciascun 
+\emph on
+FightController 
+\emph default
+reagisce a questi eventi, determinando il numero di 
+\emph on
+orb 
+\emph default
+persi a causa dello scontro e lasciando al 
+\emph on
+FightController 
+\emph default
+del veicolo avversario il compito di staccare 
+\emph on
+orb 
+\emph default
+dal proprio.
 \end_layout
 
 \begin_layout Standard
-Gli eventi di collisione sono generati sempre simmetricamente nei due compoenti
- dei veicoli e ció consente a ciascun controller di occuparsi solo dei propri
+Il numero di 
+\emph on
+orb 
+\emph default
+persi durante uno scontro dipende dalla direzione d'impatto e l'orientamento
+ dei veicoli coinvolti: uno scontro frontale deve causare un distacco di
  
 \emph on
 orb 
 \emph default
-persi, lasciando che sia il controller dell'avversario a gestire la perdita
- dei suoi orb.
- Durante uno scontro il sistema valuta la direzione relativa d'impatto e
- quella dei veicoli.
- Scontri frontali tra due veicoli devono causare lo stesso numero di danni
- ad entrambe le navi, laddove scontri laterali penalizzano il veicolo in
- direzione perpendicolare alla direzione d'impatto.
- Il sistema internamente usa due parametri, uno di offesa e uno di difesa.
- Il primo aumenta permette di scalare la forza di impatto, il secondo invece
- viene usato come divisore al fine di individuare il numero di orb staccati
- a seguito di un impatto secondo la formula
+da parte di entrambi i veicoli, laddove colpire un veicolo su una fiancata
+ non deve penalizzare in alcun modo l'aggressore.
+\end_layout
+
+\begin_layout Standard
+Sia 
+\begin_inset Formula $p$
+\end_inset
+
+ la posizione del veicolo sui cui viene generato l'evento di collisione,
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ la direzione di quest'ultimo, 
+\begin_inset Formula $c$
+\end_inset
+
+ il punto di impatto trai veicoli convolti e 
+\begin_inset Formula $v_{rel}$
+\end_inset
+
+ la velocitá relativa del veicolo rispetto all'avversario, la formula usata
+ per determinare il numero di 
+\emph on
+danni 
+\emph default
+inflitti 
+\begin_inset Formula $d$
+\end_inset
+
+ é la seguente:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-o_{d}=\overrightarrow{max(i}\cdot\overrightarrow{f},0)\cdot|v_{rel}|\cdot offence\cdot defence^{-1}
+i_{d}=\frac{c-p}{|c-p|}
 \]
 
 \end_inset
@@ -887,19 +950,81 @@ o_{d}=\overrightarrow{max(i}\cdot\overrightarrow{f},0)\cdot|v_{rel}|\cdot offenc
 \end_layout
 
 \begin_layout Standard
-Una volta determinato l'esito di uno scontro il 
+\begin_inset Formula 
+\[
+i_{s}=\max(0,i_{d}\cdot f)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d=|v_{rel}|\cdot i_{s}\cdot off
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il termine 
+\begin_inset Formula $i_{d}$
+\end_inset
+
+ rappresenta la 
 \emph on
-FightController 
+direzione relativa di impatto
 \emph default
-provvede a segnalare al componente 
-\emph on
-Ship 
-\emph default
-sul veicolo il numero di 
+, 
+\begin_inset Formula $i_{s}$
+\end_inset
+
+ é invece un fattore di scala che impedisce ai veicoli di causare danni
+ al di fuori di un cono frontale.
+ Il numero di 
 \emph on
 orb 
 \emph default
-da staccare.
+persi dal veicolo a seguito dell'impatto 
+\begin_inset Formula $o_{imp}$
+\end_inset
+
+ é calcolato come segue:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+o_{imp}=\lfloor d\cdot def^{-1}\rfloor
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I termini 
+\begin_inset Formula $off$
+\end_inset
+
+ e 
+\begin_inset Formula $def$
+\end_inset
+
+ sono due parametri che identificano il potere offensivo e quello difensivo
+ di ciascun veicolo.
+ Un tempo differenziati per veicolo, questi parametri sono oggi usati per
+ rimappare il valore del danno causato e ricavare il numero di 
+\emph on
+orb 
+\emph default
+perduti e sono uguali per tutti.
 \end_layout
 
 \begin_layout Section
