@@ -537,7 +537,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_overcooked.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_overcooked.jpg
 	lyxscale 20
 	height 7cm
 
@@ -587,7 +587,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_hommiii.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_hommiii.jpg
 	lyxscale 20
 	height 7cm
 
@@ -651,7 +651,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_ss_mario_karts.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_ss_mario_karts.jpg
 	lyxscale 20
 	height 7cm
 
@@ -755,7 +755,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_battlerite.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_battlerite.jpg
 	lyxscale 20
 	height 7cm
 
@@ -805,7 +805,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mmo_eveonline.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mmo_eveonline.jpg
 	lyxscale 20
 	height 7cm
 
@@ -855,7 +855,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/br_pubg.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/br_pubg.jpg
 	lyxscale 20
 	height 7cm
 
@@ -1090,7 +1090,7 @@ reference "fig:BF4"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Float figure
@@ -1101,7 +1101,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_bf4.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_bf4.jpg
 	lyxscale 20
 	height 7cm
 
@@ -1145,7 +1145,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/format/img/mp_bf4_commander.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_bf4_commander.jpg
 	lyxscale 20
 	height 7cm
 
