@@ -487,7 +487,7 @@ itettura generale del gioco ed in particolar modo delle meccaniche di base.
 \end_layout
 
 \begin_layout Subsection
-Gestione dei livelli
+Gestione della gravitá
 \end_layout
 
 \begin_layout Standard
@@ -772,55 +772,63 @@ Gestione dei collezionabili
 \end_layout
 
 \begin_layout Standard
-In OrbTail ogni veicolo é in grado di collezionare oggetti quali 
-\emph on
-orb 
-\emph default
-e 
-\emph on
-core 
-\emph default
-semplicemente passandovici accanto.
- Il sistema che permette al veicolo di collezionare questi elementi é basato
- su tre semplici componenti.
+La gestione della collezione degli elementi di gioco é affidata a tre componenti
+ fondamentali.
  Il primo di questi, il 
 \emph on
 ProximityHandler
 \emph default
-, rappresenta una bolla di 
+, rappresenta un 
 \emph on
-quattro
+volume di collisione sferico 
 \emph default
- unitá attorno a ciascun veicolo: ogni volta che questa bolla collide con
- uno degli elementi di gioco supportati, un secondo componente chiamato
- 
+attorno al veicolo il quale lancia un'opportuno evento quando un 
+\emph on
+orb 
+\emph default
+vi compenetra.
+ Questo componente fa parte del 
+\emph on
+game object 
+\emph default
+che rappresenta il veicolo, assieme ad un ulteriore componente 
 \emph on
 Ship 
 \emph default
-determina se questi é un 
+che si preoccupa di gestire le logiche di base della coda, quali aggiungere
+ o rimuoverne elementi.
+ Il collegamento tra diversi 
 \emph on
-orb 
+orb
 \emph default
-ed in caso positivo lo aggiunge alla coda.
- Il collegamento tra il nuovo orb collezionato e l'ultimo elemento della
- code é gestito attraverso un 
+ é gestito attraverso un 
 \emph on
 vincolo fisico 
 \emph default
-di tipo molla, con una lunghezza massima tale per cui gli oggetti possono
- liberamente muoversi nello spazio ma non possono allontanarsi per piú di
- una distanza molto breve.
- Una volta che ogni 
+di tipo molla, con una lunghezza massima tale per cui questi possano muoversi
+ liberamente senza peró allontanarsi da quello che li precede nella coda.
+ Una volta rimossi dalla coda, il vincolo fisico viene rimosso e l'
 \emph on
 orb 
 \emph default
-viene rimosso dalla coda, il vincolo fisico viene rimosso e all'elemento
- viene applicata una forza in una direzione casuale al fine di allontanarlo
- dal precedente proprietario.
- Gli orb sono game object a parte che usano il componente FloatingObject
- per svolazzare sull'arena e un componente speciale l'OrbController per
- gestire il concatenamento con gli altri orb quando all'interno della coda
- di un veicolo.
+viene proiettato in una direzione casuale al fine di allontanarlo dal veicolo.
+ Il 
+\emph on
+game object 
+\emph default
+che rappresenta ciascun 
+\emph on
+orb 
+\emph default
+usa il componente 
+\emph on
+FloatingObject 
+\emph default
+al fine di fluttuare sull'arena e un altro componente, l'
+\emph on
+OrbController
+\emph default
+, al fine di gestire i vincoli fisici di cui sopra.
 \end_layout
 
 \begin_layout Subsection
