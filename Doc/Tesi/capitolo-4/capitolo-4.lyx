@@ -74,15 +74,15 @@
 \begin_body
 
 \begin_layout Standard
-Per la realizzazione di OrbTail ci si é serviti di un metodo di sviluppo
+Per la realizzazione di OrbTail ci si è serviti di un metodo di sviluppo
  a fasi.
- La fase preliminare si é concentrata sulla definizione delle tecnologie
- impiegate: l'attenta scelta di quest'ultime é di cruciale importanza per
+ La fase preliminare si è concentrata sulla definizione delle tecnologie
+ impiegate: l'attenta scelta di quest'ultime è di cruciale importanza per
  minimizzare l'impatto sul processo produttivo in caso di criticitá o limitazion
 i, specie nelle fasi piú avanzate del progetto.
  Per permettere a piú sviluppatori di lavorare sul progetto in contemporanea,
  mantenere lo storico dei file di progetto e controllare lo sviluppo delle
- varie funzionalitá ci si é affidati a 
+ varie funzionalitá ci si è affidati a 
 \emph on
 git
 \emph default
@@ -96,8 +96,8 @@ distribuito.
 \emph on
 repository 
 \emph default
-del gioco risalente al 2013 é stata duplicata e il processo di sviluppo
- descritto in questo lavoro di tesi é proseguito su quest'ultima.
+del gioco risalente al 2013 è stata duplicata e il processo di sviluppo
+ descritto in questo lavoro di tesi è proseguito su quest'ultima.
 \end_layout
 
 \begin_layout Standard
@@ -115,17 +115,17 @@ motore grafico
  Le due tecnologie principali erano rappresentate da Unity 4.3 e UDK e, sebbene
  quest'ultimo garantiva un'ottima resa visiva, lo strumento risultava instabile,
  poco documentato e particolarmente macchinoso.
- Unity, d'altro canto, é sembrato fin da subito adatto agli scopi del progetto,
+ Unity, d'altro canto, è sembrato fin da subito adatto agli scopi del progetto,
  specie per quanto riguarda il supporto dei dispositivi 
 \emph on
 mobile
 \emph default
 , ed in generale molto intuitivo.
  Considerando che per questo lavoro di tesi ci si aspettava la riscrittura
- della maggior parte del codice, é stata inoltre avanzata l'ipotesi di un
+ della maggior parte del codice, è stata inoltre avanzata l'ipotesi di un
  cambio motore grafico a favore di Unreal Engine 4.
  Sebbene quest'ultimo avrebbe garantito un'eccellente resa grafica, l'idea
- é stata rapidamente accantonata per via delle iterazioni di sviluppo incredibil
+ è stata rapidamente accantonata per via delle iterazioni di sviluppo incredibil
 mente piú lente che caratterizzano questo motore grafico, la mancanza di
  servizi di 
 \emph on
@@ -136,7 +136,7 @@ e, soprattutto, delle criticitá riguardanti lo sviluppo su piattaforme
 mobile
 \emph default
  (specie in termini di performance ed ottimizzazione).
- Per questa nuova versione del titolo é stato pertanto deciso di aggiornare
+ Per questa nuova versione del titolo è stato pertanto deciso di aggiornare
  il motore grafico, passando da Unity 4.13 alla versione 2017.3, cercando
  di partire da una base quanto piú stabile possibile e proseguendo per iterazion
 i successive.
@@ -147,7 +147,7 @@ Unity
 \end_layout
 
 \begin_layout Standard
-Unity é un motore grafico sviluppato da 
+Unity è un motore grafico sviluppato da 
 \emph on
 Unity Technologies
 \emph default
@@ -171,7 +171,7 @@ desktop
 indipendenti
 \emph default
  e non.
- Questo motore é caratterizzato da paradigmi di sviluppo molto chiari, il
+ Questo motore è caratterizzato da paradigmi di sviluppo molto chiari, il
  che lo rende tanto adatto agli sviluppatori alla prime armi quanto ai piú
  esperti.
  Il 
@@ -201,7 +201,7 @@ entitá
 \emph default
 come aggregatori di quest'ultimi al fine di modellare comportamenti piú
  complessi.
- Questo paradigma é stato migliorato nella versione del motore del 2018,
+ Questo paradigma è stato migliorato nella versione del motore del 2018,
  introducendo il concetto di 
 \emph on
 system
@@ -234,7 +234,7 @@ Il
 \emph on
 core 
 \emph default
-di un motore grafico é il modulo software di piú basso livello.
+di un motore grafico è il modulo software di piú basso livello.
  Esso si occupa di astrarre le funzionalitá specifiche di ciascuna piattaforma
  e di dettare il flusso di esecuzione di tutti gli altri sottosistemi, quali
  il renderer, il motore fisico, la logica di gioco e la gestione della memoria.
@@ -253,7 +253,7 @@ La limitazione maggiore di questo engine risiede nel fatto che il suo
 \emph on
 core 
 \emph default
-é completamente 
+è completamente 
 \emph on
 closed-source 
 \emph default
@@ -264,7 +264,7 @@ closed-source
 debugging.
  
 \emph default
-Questa limitazione é stata mitigata durante il primo trimestre del 2018,
+Questa limitazione è stata mitigata durante il primo trimestre del 2018,
  quando Unity Technologies ne ha reso pubblico il codice sorgente C# su
  
 \emph on
@@ -321,7 +321,7 @@ per determinare il percorso ottimo (o subottimo) tra due punti nello spazio.
 \emph default
 le quali si sono talvolta dimostrate inaffidabili, limitate o afflitte da
  bug nascosti.
- L'intero codice sorgente del gioco é stato sviluppato in C#, utilizzando
+ L'intero codice sorgente del gioco è stato sviluppato in C#, utilizzando
  il paradigma 
 \emph on
 entity-component
@@ -331,7 +331,7 @@ entity-component
 \emph on
 entity-component-system 
 \emph default
-é stata evitata in quanto questi risultava ancora in fase sperimentale e
+è stata evitata in quanto questi risultava ancora in fase sperimentale e
  per via del fatto che lo sviluppo del gioco era giá in fase avanzata e
  si voleva evitare di correre 
 \emph on
@@ -344,7 +344,7 @@ manager
 \emph default
  al fine di scambiare informazioni tra piú livelli e per fornire un unico
  punto d'accesso ai vari sottosistemi.
- Un manager é un'
+ Un manager è un'
 \emph on
 entitá
 \emph default
@@ -359,7 +359,7 @@ singleton
 
 \begin_layout Standard
 L'uso dell'apposito strumento di aggiornamento di versione fornito dal motore
- si é rivelato di notevole importanza, in quanto ha permesso fin da subito
+ si è rivelato di notevole importanza, in quanto ha permesso fin da subito
  di ottenere un prodotto stabile a partire dalla versione originale del
  2013.
  Al termine del processo di 
@@ -413,7 +413,7 @@ e di gestione dei livelli).
  Una volta ottenuta una versione stabile, sono state infine aggiornate tutte
  le funzionalitá superate sostituendole con le nuove varianti messe a disposizio
 ne del motore.
- Al termine di questa fase ci si é concentrati sull'aggiornamento dell'architett
+ Al termine di questa fase ci si è concentrati sull'aggiornamento dell'architett
 ura del gioco e sull'implementazione delle nuove funzionalitá.
 \end_layout
 
@@ -428,7 +428,7 @@ plug-in
 \emph default
 esterni al fine di aumentare la resa dei giochi, semplificare il processo
  di sviluppo o aggiungere nuove funzionalitá.
- Per lo sviluppo di OrbTail é stato deciso di utilizzarne uno solo
+ Per lo sviluppo di OrbTail è stato deciso di utilizzarne uno solo
 \emph on
  
 \emph default
@@ -444,7 +444,7 @@ key "iTween"
 .
  
 \emph default
-Questo plug-in gratuito é usato per gestire in maniera semplice ed automatica
+Questo plug-in gratuito è usato per gestire in maniera semplice ed automatica
  il processo di 
 \emph on
 tweening
@@ -455,7 +455,7 @@ tweening
 coroutine 
 \emph default
 di C#.
- Il plug-in é stato utilizzato principalmente per aggiungere animazioni
+ Il plug-in è stato utilizzato principalmente per aggiungere animazioni
  agli elementi dell'interfaccia grafica ed in misura molto minore per gli
  elementi di gioco 3D.
  L'uso di questo sistema ha permesso di risparmiare un notevole quantitativo
@@ -466,7 +466,7 @@ di C#.
 \emph on
 porting 
 \emph default
-é stato necessario aggiornare il plug-in alla versione piú recente.
+è stato necessario aggiornare il plug-in alla versione piú recente.
 \end_layout
 
 \begin_layout Section
@@ -474,46 +474,85 @@ Meccaniche di base
 \end_layout
 
 \begin_layout Standard
-La prima fase implementativa di OrbTail si é concentrata sulla definizione
- dell'architettura generale del gioco ed in particolar modo sulle meccaniche
- di base del gioco.
- Queste meccaniche sono condivise tra tutte le modalitá di gioco e su tutti
- i livelli, quindi sono state progettate per essere indipendenti da quest'ultime.
- All'interno delle meccaniche di base troviamo la gestione del sistema di
- controllo del movimento, degli scontri, degli oggetti collezionabili e
- la gestione della gravitá.
- Queste meccaniche sono state inizialmente sviluppate per la modalitá a
- giocatore singolo e poi aggiornate per supportare il sistema di networking.
+La prima fase dello sviluppo di OrbTail si concentra sulla definizione dell'arch
+itettura generale del gioco ed in particolar modo delle meccaniche di base.
+ Quest'ultime sono condivise tra tutte le modalitá e livelli e pertanto
+ sono state pensate per essere completamente indipendenti da essi.
+ Tra le meccaniche di base troviamo la gestione della gravitá, del sistema
+ di controllo dei veicoli, della gestione degli scontri e degli oggetti
+ collezionabili.
+ Tutte le funzionalitá qui descritte sono state sviluppate in una mappa
+ di test apposita, con risorse grafiche temporanee e gestione degli input
+ molto basilare.
 \end_layout
 
 \begin_layout Subsection
-Gestione della gravitá e delle arene
+Gestione dei livelli
 \end_layout
 
 \begin_layout Standard
-I livelli offerti dal gioco sono caratterizzati da una diversa topologia
- che rende impossibile usare la gravitá automatica del motore grafico.
- Durante le fasi prototipali ci si affidava al raycast in modo da individuare
- un punto sulla superficie da usare come ancora per gli oggetti all'interno
- dell'arena, tuttavia questo approccio manifestava un gran numero di bug,
- dovuti principalmente al fatto che non era chiaro, data la posizione e
- l'orientamento del veicolo, stabilire in quale direzione doveva essere
- effettuato il raycast, rendendo ambiguo il risultato in caso di rollio
- del veicolo o, peggio ancora, a seguito di esplosioni che possono cambiare
- molto rapidamente la direzione del veicolo.
+I livelli offerti dal gioco sono caratterizzati da topologie profondamente
+ diverse, il che rende impossibile utilizzare la gravitá automatica fornita
+ dal motore fisico di Unity per far fluttuare gli oggetti su di essi.
+ Durante la prima iterazione ci si é affidati al sistema di 
+\emph on
+raycasting 
+\emph default
+al fine di individuare un punto sulla superficie del livello da usare come
+ base per il calcolo, tuttavia ci si é presto accorti che il sistema era
+ affetto da gravi difetti.
+ Sebbene l'uso del 
+\emph on
+raycast 
+\emph default
+permette di scrivere un codice di gestione unico che si adatta a tutte le
+ topologie, determinare la direzione del raggio usando solo l'orientamento
+ dell'oggetto puó generare risultati ambigui o imprevedibili.
+ Queste problematiche sono esacerbate da rapidi cambi di direzione a seguito
+ di esplosioni o durante il normale 
+\emph on
+rollio 
+\emph default
+degli oggetti lungo la superficie del livello.
+ Per risolvere questa ambiguitá ci si è affidati ad una descrizione 
+\emph on
+analitica 
+\emph default
+della forza di gravitá per ciascuna delle topologie supportate.
+ Il 
+\emph on
+campo gravitazionale
+\emph default
+ cosí descritto consente di ottenere una direzione non ambigua in cui effettuare
+ il 
+\emph on
+raycasting
+\emph default
+ per ogni punto dello spazio.
+ Una volta individuato il punto sulla superficie, una semplice simulazione
+ di un 
+\emph on
+moto oscillatorio smorzato 
+\emph default
+permette di modellare lo stazionamento degli oggetti sull'arena.
 \end_layout
 
 \begin_layout Standard
-Il secondo approccio tentato invece consiste nel fornire una descrizione
- analitica del campo gravitazionale per ciascuna topologia supportata.
- Questo approccio si é rivelato fin da subito vincente: per le forme piú
- semplici una semplice descrizione della funzione di gravitá é sufficiente
- per risolvere qualsiasi tipo di ambiguitá, indipendentemente dall'orientamento
- dell'oggetto.
- La gestione della gravitá é affidata a due componenti speciali: una classe
- base GravityField, da cui derivano ConstantGravityField, RadialGravityField
- e ToroidalGravityField associati all'arena ed un FloatingObject che, assegnato
- agli oggetti di gioco permette loro di fluttuare sull'arena (Fig.
+La soluzione adottata prevede l'uso di due elementi principali: un componente
+ base 
+\emph on
+GravityField, 
+\emph default
+da cui derivano le diverse descrizioni dei campi di gravitá supportati,
+\emph on
+ 
+\emph default
+e il 
+\emph on
+FloatingObject 
+\emph default
+che, assegnato agli oggetti di gioco, consente loro di fluttuare sull'arena.
+ (Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:OrbTailGravity"
@@ -521,7 +560,6 @@ reference "fig:OrbTailGravity"
 \end_inset
 
 ).
- 
 \begin_inset Float figure
 placement !h
 wide false
@@ -571,13 +609,11 @@ UML Gestione della gravitá.
 
 \end_inset
 
- Tramite questo componenti é possibile definire intensitá e direzione della
- forza di gravitá, la distanza a cui gli oggetti fluttuano rispetto alla
- superficie e vari parametri di molleggiamento.
- Il raycast rimane comunque necessario per impedire che gli oggetti possano
- compenetrare con l'arena e per individuare il punto di hover(?).
- Sul punto di hovering la gravitá si comporta come una molla e ció garantisce
- un buon effetto di rimbalzo (?).
+ Il primo di questi viene assegnato all'arena e consente di configurare
+ sia l'intensitá della gravitá e sia la distanza di stazionamento degli
+ oggetti rispetto alla superficie per impedire che questi possano compenetravi.
+ Il secondo si occupa di simulare lo stazionamento dell'oggetto a partire
+ dalla direzione della forza di gravitá.
 \end_layout
 
 \begin_layout Subsection
@@ -600,7 +636,7 @@ sitá della forza e del momento angolare rispettivamente.
 proporzionale 
 \emph default
 del sistema di controllo.
- La direzione di accelerazione é ricavata in funzione della tangente del
+ La direzione di accelerazione è ricavata in funzione della tangente del
  campo di gravitá e della rotazione del veicolo, questo impedisce a quest'ultimo
  di percorrere superfici curve passandovici attraverso.
 \end_layout
