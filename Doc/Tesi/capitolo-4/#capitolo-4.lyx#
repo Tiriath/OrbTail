@@ -638,29 +638,28 @@ Sistema di controllo
 
 \begin_layout Standard
 Il sistema di controllo di ciascun veicolo si occupa di gestire il movimento
- del veicolo all'interno dell'arena considerando la direzione della forza
- di gravitá e dell'input dell'utente.
+ di quest'ultimo all'interno dell'arena considerando la direzione della
+ forza di gravitá e l'input dell'utente.
 \end_layout
 
 \begin_layout Standard
-Il componente che si occupa della gestione del movimento, il 
+Il componente 
 \emph on
 MovementController
 \emph default
-, determina la velocitá lineare e quella angolare del veicolo in ogni istante
+ determina la velocitá lineare e quella angolare del veicolo in ogni istante
  e applica opportune forze al 
 \emph on
 corpo rigido 
 \emph default
-di quest'ultimo per causarne il movimento.
+di quest'ultimo per causarne il movimento fisico.
  La gestione del movimento non è simulata in maniera fisicamente accurata,
- bensí é affidata ad un semplice controllore 
+ bensí è affidata ad un semplice controllore 
 \emph on
 PID.
  
 \emph default
-Il controllore adoperato consente di controllare la velocitá da applicare
- 
+Il sistema adoperato consente di controllare la velocitá da applicare 
 \begin_inset Formula $u(t)$
 \end_inset
 
@@ -681,8 +680,8 @@ con costante
 \end_inset
 
 .
- Questo controllore é utilizzato in maniera analoga per gestire l'azione
- di sterzo e la conseguente velocitá angolare risultate.
+ Un controllore analogo é utilizzato per gestire l'azione di sterzo e la
+ velocitá angolare risultate.
  Per questa particolare implementazione le azioni 
 \emph on
 integrali 
@@ -706,16 +705,15 @@ u(t)=K_{p}(r(t)-y(t))
 \end_layout
 
 \begin_layout Standard
-La velocitá desiderata del veicolo (ed in maniera analoga l'azione di sterzo)
- 
+La velocitá desiderata 
 \begin_inset Formula $r(t)$
 \end_inset
 
- sono determinati dal valore massimo di 
+ é determinata dal valore massimo di 
 \emph on
-velocitá
+velocitá 
 \emph default
- del veicolo 
+del veicolo 
 \begin_inset Formula $r_{max}>0$
 \end_inset
 
@@ -728,11 +726,24 @@ velocitá
 \begin_inset Formula $K_{e}$
 \end_inset
 
- é invece usato per modellare l'
+ é invece proporzionale al suo parametro di 
 \emph on
 accelerazione
 \emph default
- del veicolo.
+.
+ L'azione di sterzo segue un principio identico ma ha costanti che dipendono
+ dalla 
+\emph on
+manovrabilitá 
+\emph default
+del veicolo (vedi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Veicoli"
+
+\end_inset
+
+):
 \end_layout
 
 \begin_layout Standard
@@ -752,17 +763,8 @@ La direzione di accelerazione è ricavata tramite il componente
 FloatingObject
 \emph default
  in funzione della tangente del campo di gravitá e della rotazione del veicolo,
- questo impedisce a quest'ultimo di percorrere superfici curve passandovici
- attraverso.
-\end_layout
-
-\begin_layout Subsection
-Sistema di scontro
-\end_layout
-
-\begin_layout Standard
-FightController.
- Formula usata per il calcolo degli scontri.
+ e ció impedisce che quest'ultimo possa percorrere la superficie del livello
+ passandovici attraverso.
 \end_layout
 
 \begin_layout Subsection
@@ -770,7 +772,51 @@ Gestione dei collezionabili
 \end_layout
 
 \begin_layout Standard
-OrbController.
+In OrbTail ogni veicolo é in grado di collezionare oggetti quali 
+\emph on
+orb 
+\emph default
+e 
+\emph on
+core 
+\emph default
+semplicemente passandovici accanto.
+ Il sistema che permette al veicolo di collezionare questi elementi é basato
+ su tre semplici componenti.
+ Il primo di questi, il 
+\emph on
+ProximityHandler
+\emph default
+, rappresenta una bolla di 
+\emph on
+quattro
+\emph default
+ unitá attorno a ciascun veicolo: ogni volta che questa bolla collide con
+ uno degli elementi di gioco supportati, un secondo componente chiamato
+ 
+\emph on
+Ship 
+\emph default
+determina se questi é un 
+\emph on
+orb 
+\emph default
+ed in caso positivo lo aggiunge alla coda.
+ Il collegamento tra il nuovo orb collezionato e l'ultimo elemento della
+ code é gestito attraverso un 
+\emph on
+vincolo fisico 
+\emph default
+di tipo molla, con una lunghezza massima
+\end_layout
+
+\begin_layout Subsection
+Gestione degli scontri.
+\end_layout
+
+\begin_layout Standard
+FightController.
+ Formula usata per il calcolo degli scontri.
 \end_layout
 
 \begin_layout Section
