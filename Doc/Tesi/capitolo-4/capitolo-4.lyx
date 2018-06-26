@@ -135,7 +135,7 @@ e, soprattutto, delle criticitá riguardanti lo sviluppo su piattaforme
 \emph on
 mobile
 \emph default
- (specie in termini di performance ed ottimizzazione).
+ (specie in termini di prestazioni ed ottimizzazioni).
  Per questa nuova versione del titolo è stato pertanto deciso di aggiornare
  il motore grafico, passando da Unity 4.13 alla versione 2017.3, cercando
  di partire da una base quanto piú stabile possibile e proseguendo per iterazion
@@ -988,13 +988,13 @@ direzione relativa di impatto
  al di fuori di un cono frontale.
  Il numero di 
 \emph on
-orb 
+orb
 \emph default
-persi dal veicolo a seguito dell'impatto 
+ 
 \begin_inset Formula $o_{imp}$
 \end_inset
 
- é calcolato come segue:
+ persi dal veicolo a seguito dell'impatto é calcolato come segue:
 \end_layout
 
 \begin_layout Standard
@@ -1028,21 +1028,163 @@ perduti e sono uguali per tutti.
 \end_layout
 
 \begin_layout Section
-Networking
+Architettura di rete
 \end_layout
 
 \begin_layout Standard
-Descrizione dell'architettura di rete, della replicazione dei componenti
- e dello stato di gara.
-\end_layout
-
-\begin_layout Section
-Modalitá di gioco
+L'intera architettura di OrbTail é pensata per gestire in maniera indipendente
+ client e server, partite multiplayer e single player.
 \end_layout
 
 \begin_layout Standard
-Descrizione del flusso di gioco, dello stato della gara e delle condizioni
- di vittoria.
+Il sistema di rete di networking di orbtail si basa su un'architettura client
+ sever, in cui uno dei dispositivi dei giocatori é usato come host per la
+ partita.
+ Questa scelta permette di risparmiare i costi dovuti alla gestione di un
+ server esterno ed in ogni caso costituisce una soluzione piú che adeguata
+ per un numero molto limitato di giocatori in partita.
+\end_layout
+
+\begin_layout Standard
+Il sistema di rete é gestito attraverso dei componenti messi a disposizione
+ dal motore grafico e si basa sui servizi di rete di unity.
+ Questi servizi esterni sono usati per effettuare il matchmaking automatico
+ delle partite tra piú giocatori.
+ Logicamente ci sono due fasi di gioco che coinvolgono l'online, la fase
+ di lobby e quella di gara.
+ La classe principale é costituita dal LobbyManager, il quale, derivato
+ dalla classe di Unity base NetworkLobbyManager consente di gestire in maniera
+ automatizzata la riceca delle lobby di gioco, il matchmaking con altri
+ giocatori e la gestione della connesioni alle lobby.
+ L'intero sistema di lobby di Unity si basa sulla dicotomia Game Player
+ e Lobby Player.
+ Il primo é un game object che rappresenta la volontá del giocatore all'interno
+ della lobby.
+ Questo oggetto é replicato su tutti i client che partecipano alla partita
+ e consente di mandare comandi al server.
+ Il GamePlayer é un oggetto che invece rappresenta la volontá del giocatore
+ in fase di gioco effettivo.
+ La gestione della rete di Unity si basa sul concetto di server autoritativo,
+ dove il server riceve i comandi dai giocatori e determina lo stato di gioco.
+ La sincronizzazione degli elementi di gioco é basata su due meccanismi,
+ la replicazione e le chiamate remote.
+ Il primo meccanismo consente a due oggetti su istanze di gioco diverse
+ di sincronizzare lo stato in maniera costante.
+ Unity si preoccupa di propagare tutte le modifiche che vengono eseguite
+ sul server su tutti i client.
+ La propagazione di queste informazioni non puó avvenire in senso opposto.
+ Il secondo meccanismo, RPC (remote procedure call) consente di chiamare
+ un metodo su un'istanza remota di gioco.
+ Esistono due varianti, le prime sono i comandi e servono per inviare un'azione
+ dal client al server, le seconde sono le clientRpc e vengono inviate dal
+ server su tutte le copie client.
+ Il paradigma fondamentale consiste nell'inviare comandi dal client al server,
+ attenere che questo ne verifichi la validitá ed aggiorni lo stato di gioco
+ e quindi replicare lo stato di gioco su tutti i client come conseguenza
+ per sincronizzarli tra loro.
+ Il sistema di replicazione viene invece usato per sincronizzare valori
+ che variano rapidamente nel tempo e che generalmente non hanno bisogno
+ di chiamate esplicite, come ad esempio la posizione e la rotazione di ciascun
+ veicolo.
+ 
+\end_layout
+
+\begin_layout Standard
+Network spawnare per spawnare gli oggetti replicati sulla rete, non é possibile
+ replicare oggetti giá posati in scena.
+\end_layout
+
+\begin_layout Subsection
+Gestione della lobby
+\end_layout
+
+\begin_layout Standard
+Il giocatore che possiede la lobby crea la configurazione di gioco.
+ La configurazione viene serializzata tramite una stringa che codifica tutti
+ gli aspetti salienti ed é usata come nome della partita.
+ Limitazioni delle informazioni extra per ogni match.
+ Se chi ha creato il match non ha specificato una modalitá o un livello,
+ ne viene configurato uno a caso.
+\end_layout
+
+\begin_layout Standard
+Una volta in lobby l'applicazione si basa sui servizi di matchmaking di
+ unity al fine di individuare una partita con i criteri specificati dai
+ giocatori (quali arena e modalitá), se viene individuata una partita coi
+ criteri prestabiliti il giocatore ne prende parte, altrimenti viene creata
+ una nuova lobby online a cui altri giocatori possono accedervi.
+ Una volta connesso ad una lobby, il sistema provvede a generare un LobbyPlayer
+ per il giocatore ed eventualmente replicarne una copia su tutti gli altri
+ i client attualmente in partita.
+ Il lobbyplayer contiene le informazioni relative al giocatore, quale ad
+ esempio il suo indice all'interno della partita e il veicolo scelto.
+ In questa fase il lobby player puó dichiarare al server di essere pronto.
+ Una volta che il server determina che tutti i giocatori in partita sono
+ pronti, il resto degli slot di partita sono riempiti da intelligenze artificial
+i e tutti i client sono istruiti di caricare il livello corretto.
+ In questa fase é previsto che i giocatori possano abbandonare la partita
+ nella lobby, il server se ne accorge e li rimuove, liberando un posto libero
+ per altri giocatori.
+\end_layout
+
+\begin_layout Subsection
+Gestione della partita
+\end_layout
+
+\begin_layout Standard
+Timer gestiti componenti particolari che hanno uno stato sincronizzato ma
+ possono avanzare indipendentemente, permette di avere un countdown credibile
+ anche in presenza di lag.
+\end_layout
+
+\begin_layout Standard
+I game mode tengono traccia dei punteggi dei giocatori, nella modalitá longest
+ tail ed elimination il punteggio é dato dalla lunghezza della coda.
+ L'elimination game mode si mette in ascolto dell'evento di distruzione
+ del giocatore e ne abilitá la modalitá spettatore e attacca gli orb a tutti
+ i veicoli in fase di inizio partita.
+\end_layout
+
+\begin_layout Standard
+Gestione scontri gestita sul server, il FightController sul client non fa
+ assolutamente nulla.
+ Il MovementController legge gli input solo sul client.
+ Il client ha autoritá sulla posizione dei propri oggetti.
+ Lo Ship usa le chiamate ClientRPC per attaccare e staccare gli orb da tutti
+ i veicoli dei giocatori.
+\end_layout
+
+\begin_layout Standard
+Una volta inziata la partita il gestore della lobby si preoccupa di rimpiazzare
+ il vecchio LobbyPlayer con il GamePlayer, un game object che rappresenta
+ effettivamente il veicolo utilizzato dal giocatore.
+ Una volta in partita e necessario aspettare che tutti i giocatori nella
+ partita siano pronti, questa fase di attesa é subdolamente mascherata dalla
+ somministrazione di un tutorial che puó essere congedato.
+ La gestione degli eventi di gioco importanti quali il collezionamento o
+ la perdita di orb oppure l'acquisizione o l'uso di poteri é gestita direttament
+e dal server e i client ne subiscono passivamente gli esiti.
+\end_layout
+
+\begin_layout Standard
+I game mode servono per gestire le diverse condizioni di vittoria, e contengono
+ tutte le informazioni riguardanti la partita (quanto dura il match, la
+ durata del countdown, e altre configurazioni specifiche).
+ Gestire le logiche condivise tra le varie modalitá, tipo gli stati e consente
+ id essere esteso con le regole specifiche dei game modi concreti.
+ Il game mode viene creato e configurato dal giocatore che possiede la partita
+ durante la lobby e mantenuto in vita durante la fase di gara.
+\end_layout
+
+\begin_layout Standard
+Ciascuna partita é suddivisa in diverse fasi, fase di sincronizzazione (in
+ cui si vede il tutorial), fase di countdown in cui i partecipanti attendono
+ che la partita inizi, la fase di gioco caratterizzata da un timer e la
+ fase finale che é triggerata da condizioni in funzione del game mode.
+ Lo stato del game mode é sincronizzato tra tutti i client e la sua modifica
+ scatena eventi locali su ogni client in modo che tutti gli oggetti interessati
+ come ad esempio la HUD possano reagire (creando la HUD, aggiornando i contatori
+ e cosí via).
 \end_layout
 
 \begin_layout Section
