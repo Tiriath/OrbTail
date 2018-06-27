@@ -1137,7 +1137,7 @@ reference "fig:NetArchitecture"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1315,79 +1315,220 @@ Gestione della lobby
 \end_layout
 
 \begin_layout Standard
-Per gestione della lobby s'intende tutto ció che avviene prima che il server
- dia il via ad una partita.
- La 
+Una 
 \emph on
-lobby
+lobby 
 \emph default
- rappresenta una 
+é una 
 \emph on
 stanza virtuale 
 \emph default
-in cui vari giocatori possono entrarvi.
-\end_layout
-
-\begin_layout Standard
-Logicamente ci sono due fasi di gioco che coinvolgono l'online, la fase
- di lobby e quella di gara.
- L'intero sistema di lobby di Unity si basa sulla dicotomia Game Player
- e Lobby Player.
- Il primo é un game object che rappresenta la volontá del giocatore all'interno
- della lobby.
- Questo oggetto é replicato su tutti i client che partecipano alla partita
- e consente di mandare comandi al server.
- Il GamePlayer é un oggetto che invece rappresenta la volontá del giocatore
- in fase di gioco effettivo.
- 
-\end_layout
-
-\begin_layout Standard
-Ciascuna partita viene ora considerata come fosse un 
+a cui altri utenti online possono connettersi.
+ Quest'ultima contiene le informazioni di configurazione della partita prima
+ del suo avvio quali la modalitá di gioco e l'arena selezionata.
+ Le 
 \emph on
-match online.
+lobby
+\emph default
+ sono gestite attraverso un 
+\emph on
+singleton 
+\emph default
+derivato dalla classe di Unity 
+\emph on
+NetworkLobbyManager
+\emph default
+, la quale astrae tutte le logiche di creazione o ricerca di una partita,
+ connessione e disconnesione degli utenti e sincronizzazione della configurazion
+e di gioco.
+ Ogni giocatore connesso ad una 
+\emph on
+lobby 
+\emph default
+é associato ad un oggetto di tipo 
+\emph on
+LobbyPlayer
+\emph default
+, il quale viene usato sia per inviare comandi al 
+\emph on
+server 
+\emph default
+e sia per rappresentare i dati del giocatore, quali il suo indice nella
+ partita, il veicolo scelto e le informazioni riguardanti la connessione.
 \end_layout
 
 \begin_layout Standard
-Questi servizi esterni sono usati per effettuare il matchmaking automatico
- delle partite tra piú giocatori.
+Una volta che l'utente ha deciso la configurazione della partita, il 
+\emph on
+Lobby Manager
+\emph default
+ usa i servizi di 
+\emph on
+matchmaking 
+\emph default
+di Unity al fine di individuare 
+\emph on
+lobby 
+\emph default
+esistenti con configurazione compatibile.
+ Questo servizio indicizza tutte le 
+\emph on
+lobby 
+\emph default
+pubbliche, esponendo varie informazioni quali i loro nomi, il numero massimo
+ di giocatori, il numero di utenti attualmente connessi e tutte le informazioni
+ necessarie per connettersi ad essa.
+ Sebbene il sistema consente di associare a ciascuna 
+\emph on
+lobby 
+\emph default
+delle 
+\emph on
+metainformazioni 
+\emph default
+(come ad esempio la modalitá di gioco), un 
+\emph on
+bug 
+\emph default
+di Unity impedisce a quest'informazione di essere replicata correttamente,
+ impedendone completamente il suo utilizzo.
+ Per ovviare a questo inconveniente é stato deciso di usare il nome della
+ 
+\emph on
+lobby 
+\emph default
+per 
+\emph on
+codificare 
+\emph default
+le metainformazioni necessarie in formato CSV.
+ La lista di 
+\emph on
+lobby 
+\emph default
+cosí ottenuta viene filtrata a seconda della configurazione dell'utente
+ ed il sistema provvede a connettersi ad una qualsiasi tra quelle rimaste.
+ Se il tentativo di connessione fallisce (come potrebbe capitare se, nel
+ frattempo, la partita in quella lobby é giá iniziata) vengono effettuati
+ tentativi di connessione addizionali sulle altre lobby fino ad un numero
+ massimo configurabile.
+ Se non é stato possibile individuare una 
+\emph on
+lobby 
+\emph default
+compatibile, il sistema provvede a crearne una nuova e a registrarla pubblicamen
+te al servizio di 
+\emph on
+matchmaking 
+\emph default
+affinché altri giocatori possano connettersi.
+ Nel caso di partite a giocatore singolo le fasi di ricerca delle 
+\emph on
+lobby 
+\emph default
+e di registrazione al servizio di 
+\emph on
+matchmaking 
+\emph default
+vengono ignorate ma la 
+\emph on
+lobby 
+\emph default
+viene comunque creata.
  
 \end_layout
 
 \begin_layout Standard
-La classe principale é costituita dal LobbyManager, il quale, derivato dalla
- classe di Unity base NetworkLobbyManager consente di gestire in maniera
- automatizzata la riceca delle lobby di gioco, il matchmaking con altri
- giocatori e la gestione della connesioni alle lobby.
+Ogni volta che un giocatore entra in una 
+\emph on
+lobby
+\emph default
+, il 
+\emph on
+LobbyManager 
+\emph default
+crea un oggetto di tipo 
+\emph on
+LobbyPlayer 
+\emph default
+che lo rappresenta, replicando tutte le informazioni salienti agli altri
+ giocatori in partita (quali l'indice del giocatore nella partita ed il
+ veicolo scelto).
+ Un utente puó abbandonare una 
+\emph on
+lobby 
+\emph default
+in qualsiasi momento.
 \end_layout
 
 \begin_layout Standard
-Il giocatore che possiede la lobby crea la configurazione di gioco.
- La configurazione viene serializzata tramite una stringa che codifica tutti
- gli aspetti salienti ed é usata come nome della partita.
- Limitazioni delle informazioni extra per ogni match.
- Se chi ha creato il match non ha specificato una modalitá o un livello,
- ne viene configurato uno a caso.
+Per procedere con l'avvio della partita, gli utenti connessi devono esplicitamen
+te inviare un 
+\emph on
+comando 
+\emph default
+al server, dichiarando di essere 
+\begin_inset Quotes fld
+\end_inset
+
+pronti
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Quando l'ultimo di questi 
+\emph on
+comandi 
+\emph default
+viene ricevuto, il server 
+\emph on
+blocca 
+\emph default
+la partita pubblica (se presente) rimuovendola dal servizio di 
+\emph on
+matchmaking
+\emph default
+, impedendo ad altri giocatori di potersi connettere.
+ A questo punto il 
+\emph on
+server 
+\emph default
+genera 
+\emph on
+LobbyPlayer 
+\emph default
+addizionali finché il numero di partecipanti non diventa esattamente 
+\emph on
+quattro:
+\emph default
+ questi giocatori sono configurati per essere comandati dal sistema di 
+\emph on
+intelligenza artificiale
+\emph default
+.
+ Dopo un breve conto alla rovescia, un'opportuna 
+\emph on
+client RPC
+\emph default
+ notifica i vari client dell'inizio della partita, iniziando il caricamento
+ del livello corretto su tutti i dispositivi.
 \end_layout
 
 \begin_layout Standard
-Una volta in lobby l'applicazione si basa sui servizi di matchmaking di
- unity al fine di individuare una partita con i criteri specificati dai
- giocatori (quali arena e modalitá), se viene individuata una partita coi
- criteri prestabiliti il giocatore ne prende parte, altrimenti viene creata
- una nuova lobby online a cui altri giocatori possono accedervi.
- Una volta connesso ad una lobby, il sistema provvede a generare un LobbyPlayer
- per il giocatore ed eventualmente replicarne una copia su tutti gli altri
- i client attualmente in partita.
- Il lobbyplayer contiene le informazioni relative al giocatore, quale ad
- esempio il suo indice all'interno della partita e il veicolo scelto.
- In questa fase il lobby player puó dichiarare al server di essere pronto.
- Una volta che il server determina che tutti i giocatori in partita sono
- pronti, il resto degli slot di partita sono riempiti da intelligenze artificial
-i e tutti i client sono istruiti di caricare il livello corretto.
- In questa fase é previsto che i giocatori possano abbandonare la partita
- nella lobby, il server se ne accorge e li rimuove, liberando un posto libero
- per altri giocatori.
+Nella versione originale di OrbTail il sistema di creazione delle 
+\emph on
+lobby 
+\emph default
+era esplicito: l'utente poteva decidere se creare un nuovo match oppure
+ se partecipare ad uno esistente.
+ Questo tipo d'interazione é stato rivisto perché giudicato obsoleto: nel
+ caso in cui non vi fosse nessuna 
+\emph on
+lobby 
+\emph default
+disponibile, l'utente era costretto a ritornare al menú principale per crearne
+ una e ció aumentava ingiustificatamente il numero di interazioni necessarie
+ per entrare in partita.
 \end_layout
 
 \begin_layout Subsection
