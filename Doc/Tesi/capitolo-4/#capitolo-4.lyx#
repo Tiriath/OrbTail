@@ -1032,30 +1032,252 @@ Architettura di rete
 \end_layout
 
 \begin_layout Standard
-L'intera architettura di OrbTail é pensata per gestire in maniera indipendente
- client e server, partite multiplayer e single player.
+Nella versione originale di OrbTail l'architettura di gioco si basava su
+ classi apposite che discriminavano le modalitá multigiocatore online delle
+ modalitá a giocatore singolo, gestendo di volta in volta i casi speciali.
+ In questa nuova iterazione il sistema é stato semplificato e generalizzato,
+ al fine di gestire in maniera uniforme tutte le modalitá e configurazioni
+ di gioco.
+
+\emph on
+ 
+\emph default
+L'architettura di rete di OrbTail é di tipo 
+\emph on
+client-server
+\emph default
+ e uno dei dispositivi dei giocatori é usato come 
+\emph on
+host 
+\emph default
+per la partita.
+ Dato il basso numero di giocatori coinvolti, questa soluzione é ottimale
+ perché garantisce un buona esperienza 
+\emph on
+online 
+\emph default
+evitando i costi associati ad un server dedicato.
+ Il 
+\emph on
+server 
+\emph default
+si occupa di gestire tutti gli elementi di gioco quali 
+\emph on
+orb 
+\emph default
+e 
+\emph on
+core
+\emph default
+ e i veicoli gestiti dalla 
+\emph on
+IA, 
+\emph default
+laddove ogni 
+\emph on
+client 
+\emph default
+gestirá uno o piú veicoli associati ai giocatori locali (in caso di 
+\emph on
+multigiocatore splitscreen).
+ 
+\emph default
+Sebbene il dispositivo 
+\emph on
+host 
+\emph default
+sia contemporaneamente 
+\emph on
+server 
+\emph default
+e 
+\emph on
+client
+\emph default
+, le due parti sono gestite in maniera indipendente.
+ L'
+\emph on
+host 
+\emph default
+in funzione di 
+\emph on
+client 
+\emph default
+richiede in ogni caso una connessione al 
+\emph on
+server 
+\emph default
+al fine di inviare comandi e riceverne aggiornamenti
+\emph on
+: 
+\emph default
+il sistema di rete di Unity provvederá a simulare le richieste di rete sulla
+ stessa applicazione in maniera trasparante.
 \end_layout
 
 \begin_layout Standard
-Il sistema di rete di networking di orbtail si basa su un'architettura client
- sever, in cui uno dei dispositivi dei giocatori é usato come host per la
- partita.
- Questa scelta permette di risparmiare i costi dovuti alla gestione di un
- server esterno ed in ogni caso costituisce una soluzione piú che adeguata
- per un numero molto limitato di giocatori in partita.
+La sincronizzazione degli stati di gioco avviene secondo due meccanismi
+ forniti da quest'ultimo: la 
+\emph on
+replicazione
+\emph default
+ e le 
+\emph on
+chiamate remote
+\emph default
+.
+ Il primo di questi consente al server di propagare il valore di uno stato
+ di gioco su tutti gli oggetti client costantemente.
+ Questo metodo é particolarmente adatto per valori che cambiano molto rapidament
+e di cui peró non é necessario che vi sia una forte corrispondenza tra la
+ versione sul 
+\emph on
+server 
+\emph default
+e quella sul 
+\emph on
+client,
+\emph default
+ quali ad esempio la posizione dei veicoli ed il punteggio dei giocatori.
+ Il 
+\emph on
+server
+\emph default
+ ha sempre 
+\emph on
+autoritá
+\emph default
+ sui valori sincronizzati in questo modo e pertanto non é possibile utilizzare
+ questo meccanismo nel senso opposto al fine di inviare dati dal 
+\emph on
+client 
+\emph default
+al 
+\emph on
+server.
 \end_layout
 
 \begin_layout Standard
-Il sistema di rete é gestito attraverso dei componenti messi a disposizione
- dal motore grafico e si basa sui servizi di rete di unity.
- Questi servizi esterni sono usati per effettuare il matchmaking automatico
- delle partite tra piú giocatori.
- Logicamente ci sono due fasi di gioco che coinvolgono l'online, la fase
+Il secondo meccanismo, noto col termine
+\emph on
+ 
+\emph default
+
+\begin_inset Quotes fld
+\end_inset
+
+remote procedure call
+\begin_inset Quotes frd
+\end_inset
+
+ (
+\emph on
+RPC
+\emph default
+)
+\emph on
+, 
+\emph default
+consente di chiamare un metodo di un oggetto su un'istanza remota di gioco.
+ Unity ne fornisce due varianti, la prima é rappresentata dai 
+\emph on
+comandi
+\emph default
+ i quali sono usati per inviare un'azione dal 
+\emph on
+client
+\emph default
+ al 
+\emph on
+server
+\emph default
+, la seconda é rappresentata dalle 
+\emph on
+client RPC 
+\emph default
+le quali vengono inviate dal server e propagate su 
+\emph on
+tutti 
+\emph default
+i client.
+ Questo metodo é adatto per eventi di sincronizzazione che avvengono di
+ rado ma per i quali vi deve essere l'assoluta certezza che i 
+\emph on
+client 
+\emph default
+ne vengano notificati, come ad esempio gli eventi che determinano l'inizio
+ o la fine di una partita.
+\end_layout
+
+\begin_layout Standard
+Il paradigma fondamentale su cui si basa Unity consiste nell'inviare 
+\emph on
+comandi 
+\emph default
+dal client al server, attendere che questo ne verifichi la validitá aggiornando
+ lo stato di gioco di conseguenza e quindi propagare quest'ultimo tramite
+ 
+\emph on
+replicazione 
+\emph default
+oppure tramite 
+\emph on
+client RPC
+\emph default
+.
+ Secondo questa paradigma, ignorando i tempi necessari per inviare i messaggi
+ sulla rete, tutti i 
+\emph on
+client
+\emph default
+ osservano sempre lo stesso stato di gioco.
+\end_layout
+
+\begin_layout Standard
+Ad ogni giocatore connesso ad una partita viene associato un particolare
+ 
+\emph on
+game object 
+\emph default
+che ne contiene i dati identificativi e ne rappresenta la volontá.
+ Per ragioni di sicurezza é possibile inviare 
+\emph on
+comandi 
+\emph default
+al server solo attraverso di esso e solo se il giocatore locale ne ha l'
+\emph on
+autoritá
+\emph default
+, ovvero se il 
+\emph on
+game object 
+\emph default
+in questione rappresenta la sua identitá e non quella di un altro giocatore.
+\end_layout
+
+\begin_layout Standard
+La gestione di un match é suddivisa in due macro-fasi: la prima rappresenta
+ la fase di configurazione della partita prima che questa venga avviata
+ e la seconda rappresenta la partita effettiva.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Logicamente ci sono due fasi di gioco che coinvolgono l'online, la fase
  di lobby e quella di gara.
- La classe principale é costituita dal LobbyManager, il quale, derivato
- dalla classe di Unity base NetworkLobbyManager consente di gestire in maniera
- automatizzata la riceca delle lobby di gioco, il matchmaking con altri
- giocatori e la gestione della connesioni alle lobby.
  L'intero sistema di lobby di Unity si basa sulla dicotomia Game Player
  e Lobby Player.
  Il primo é un game object che rappresenta la volontá del giocatore all'interno
@@ -1064,28 +1286,6 @@ Il sistema di rete é gestito attraverso dei componenti messi a disposizione
  e consente di mandare comandi al server.
  Il GamePlayer é un oggetto che invece rappresenta la volontá del giocatore
  in fase di gioco effettivo.
- La gestione della rete di Unity si basa sul concetto di server autoritativo,
- dove il server riceve i comandi dai giocatori e determina lo stato di gioco.
- La sincronizzazione degli elementi di gioco é basata su due meccanismi,
- la replicazione e le chiamate remote.
- Il primo meccanismo consente a due oggetti su istanze di gioco diverse
- di sincronizzare lo stato in maniera costante.
- Unity si preoccupa di propagare tutte le modifiche che vengono eseguite
- sul server su tutti i client.
- La propagazione di queste informazioni non puó avvenire in senso opposto.
- Il secondo meccanismo, RPC (remote procedure call) consente di chiamare
- un metodo su un'istanza remota di gioco.
- Esistono due varianti, le prime sono i comandi e servono per inviare un'azione
- dal client al server, le seconde sono le clientRpc e vengono inviate dal
- server su tutte le copie client.
- Il paradigma fondamentale consiste nell'inviare comandi dal client al server,
- attenere che questo ne verifichi la validitá ed aggiorni lo stato di gioco
- e quindi replicare lo stato di gioco su tutti i client come conseguenza
- per sincronizzarli tra loro.
- Il sistema di replicazione viene invece usato per sincronizzare valori
- che variano rapidamente nel tempo e che generalmente non hanno bisogno
- di chiamate esplicite, come ad esempio la posizione e la rotazione di ciascun
- veicolo.
  
 \end_layout
 
@@ -1094,7 +1294,31 @@ Gestione della lobby
 \end_layout
 
 \begin_layout Standard
+Ciascuna partita viene ora considerata come fosse un 
+\emph on
+match online.
+\end_layout
+
+\begin_layout Standard
+Questi servizi esterni sono usati per effettuare il matchmaking automatico
+ delle partite tra piú giocatori.
+ 
+\end_layout
+
+\begin_layout Standard
+La classe principale é costituita dal LobbyManager, il quale, derivato dalla
+ classe di Unity base NetworkLobbyManager consente di gestire in maniera
+ automatizzata la riceca delle lobby di gioco, il matchmaking con altri
+ giocatori e la gestione della connesioni alle lobby.
+\end_layout
+
+\begin_layout Standard
 Il giocatore che possiede la lobby crea la configurazione di gioco.
+ La configurazione viene serializzata tramite una stringa che codifica tutti
+ gli aspetti salienti ed é usata come nome della partita.
+ Limitazioni delle informazioni extra per ogni match.
+ Se chi ha creato il match non ha specificato una modalitá o un livello,
+ ne viene configurato uno a caso.
 \end_layout
 
 \begin_layout Standard
@@ -1122,6 +1346,34 @@ Gestione della partita
 \end_layout
 
 \begin_layout Standard
+Network spawnare per spawnare gli oggetti replicati sulla rete, non é possibile
+ replicare oggetti giá posati in scena.
+\end_layout
+
+\begin_layout Standard
+Timer gestiti componenti particolari che hanno uno stato sincronizzato ma
+ possono avanzare indipendentemente, permette di avere un countdown credibile
+ anche in presenza di lag.
+\end_layout
+
+\begin_layout Standard
+I game mode tengono traccia dei punteggi dei giocatori, nella modalitá longest
+ tail ed elimination il punteggio é dato dalla lunghezza della coda.
+ L'elimination game mode si mette in ascolto dell'evento di distruzione
+ del giocatore e ne abilitá la modalitá spettatore e attacca gli orb a tutti
+ i veicoli in fase di inizio partita.
+\end_layout
+
+\begin_layout Standard
+Gestione scontri gestita sul server, il FightController sul client non fa
+ assolutamente nulla.
+ Il MovementController legge gli input solo sul client.
+ Il client ha autoritá sulla posizione dei propri oggetti.
+ Lo Ship usa le chiamate ClientRPC per attaccare e staccare gli orb da tutti
+ i veicoli dei giocatori.
+\end_layout
+
+\begin_layout Standard
 Una volta inziata la partita il gestore della lobby si preoccupa di rimpiazzare
  il vecchio LobbyPlayer con il GamePlayer, un game object che rappresenta
  effettivamente il veicolo utilizzato dal giocatore.
@@ -1138,7 +1390,7 @@ I game mode servono per gestire le diverse condizioni di vittoria, e contengono
  tutte le informazioni riguardanti la partita (quanto dura il match, la
  durata del countdown, e altre configurazioni specifiche).
  Gestire le logiche condivise tra le varie modalitá, tipo gli stati e consente
- id essere seteso con le regole specifiche dei game modi concreti.
+ id essere esteso con le regole specifiche dei game modi concreti.
  Il game mode viene creato e configurato dal giocatore che possiede la partita
  durante la lobby e mantenuto in vita durante la fase di gara.
 \end_layout
