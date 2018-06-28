@@ -1456,7 +1456,26 @@ per
 \emph on
 codificare 
 \emph default
-le metainformazioni necessarie in formato CSV.
+le metainformazioni necessarie in formato CSV
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Il formato CSV (
+\begin_inset Quotes fld
+\end_inset
+
+comma-separated values
+\begin_inset Quotes frd
+\end_inset
+
+) codifica tutti i campi di una struttura in un'unica stringa in cui due
+ campi consecutivi sono separati da un punto-e-virgola.
+\end_layout
+
+\end_inset
+
+.
  La lista di 
 \emph on
 lobby 
@@ -1590,9 +1609,8 @@ disponibile, l'utente era costretto a ritornare al menú principale per crearne
  Per questa iterazione era stato valutato un sistema che avrebbe permesso
  al giocatore di entrare in partita e lasciare che il sistema decidesse
  se avviare una partita online o offline (a seconda se vi fosse una connessione
- Internet o meno), tuttavia controllare lo stato della connessione comportava
- lunghe attese e, per ragioni di tempo e mancanza di una soluzione giudicata
- soddisfacente, questa funzionalitá è stata rimandata a sviluppi futuri.
+ Internet o meno), tuttavia, a causa di tempi di sviluppo ridotti, questa
+ funzionalitá è stata rimandata a sviluppi futuri.
 \end_layout
 
 \begin_layout Subsection
@@ -1677,7 +1695,7 @@ collezionato, il numero di
 orb 
 \emph default
 iniziali e cosí via.
- Lo stato di gioco è replicato internamente dalla classe e notificato attraverso
+ Lo stato di gioco è replicato internamente alla classe e notificato attraverso
  eventi al quale 
 \emph on
 osservatori
@@ -1726,10 +1744,10 @@ client RPC.
 \emph default
  Gli stati di gioco 
 \emph on
-non critici
+non critici,
 \emph default
- quali tempo rimanente e punteggi sono invece sia calcolati sul server e
- 
+ quali tempo rimanente e punteggi, sono invece sia calcolati sul server
+ e 
 \emph on
 replicati
 \emph default
@@ -1738,8 +1756,12 @@ replicati
 client 
 \emph default
 in locale.
- Questa strategia consente a quest'ultimi di osservare sempre una situazione
- verosimile anche in presenza di perdita temporanea della connettivitá
+ Questa strategia consente a 
+\emph on
+client
+\emph default
+ di osservare sempre una situazione verosimile anche in caso di perdita
+ temporanea della connettivitá
 \emph on
 .
 \end_layout
@@ -1921,10 +1943,23 @@ spettatore
 \emph default
 , controllando una camera che puó inquadrare i veicoli dei giocatori rimasti
  in partita e ciclando tra di essi fino a fine partita.
+ In questo stato, l'oggetto usato dal giocatore per inviare comandi al 
+\emph on
+server 
+\emph default
+viene rimpiazzato con il 
+\emph on
+controllore della camera
+\emph default
+ 
+\emph on
+spettatore
+\emph default
+ e il veicolo viene distrutto.
  Al termine del tempo massimo di partita, o quando tutti i giocatori sono
  stati eliminati, il sistema si porta nella fase finale in cui viene dichiarato
  il vincitore a seconda di condizioni specifiche della modalitá di gioco.
- In questa fase è possibile controllare l'esito della partita e abbandonarla,
+ In questa fase è possibile consultare l'esito della partita e abbandonarla,
  ritornando al al menú principale.
  L'abbandono di una partita causa la distruzione completa di tutti gli oggetti
  coinvolti, quali la 
@@ -2004,7 +2039,8 @@ e i
 \emph on
 core 
 \emph default
-in quanto le loro posizioni sono configurate manualmente su tutte le piste.
+in quanto era necessario che le loro posizioni fossero configurabili manualmente
+ su tutte le arene.
 \end_layout
 
 \begin_layout Section
