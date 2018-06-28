@@ -888,12 +888,12 @@ Gestione degli impatti
 \end_layout
 
 \begin_layout Standard
-Il sistema di gestione degli scontri tra veicoli è implementato attraverso
+Il sistema di gestione degli scontri tra veicoli é implementato attraverso
  un componente 
 \emph on
 FightController, 
 \emph default
-il cui scopo è quello di rilevare gli impatti e notificare il componente
+il cui scopo é quello di rilevare gli impatti e notificare il componente
  
 \emph on
 Ship 
@@ -919,13 +919,13 @@ orb
 \emph default
  disponibili.
  Al fine di non avvantaggiare nessun veicolo ed evitare queste problematiche,
- nell'ultima versione ci si è affidati all'uso di un 
+ nell'ultima versione ci si é affidati all'uso di un 
 \emph on
 collisore sferico 
 \emph default
 unico che approssima la superficie del veicolo racchiudendone il modello
  grafico.
- La forma e la dimensione del collisore è identica per tutti i veicoli e
+ La forma e la dimensione del collisore é identica per tutti i veicoli e
  ció garantisce un'elevata consistenza durante la risoluzione degli scontri.
  Una volta rilevata una collisione durante quest'ultimi, il motore fisico
  genera una coppia di eventi, uno per ogni componente coinvolto nell'impatto.
@@ -990,7 +990,7 @@ inflitti
 \begin_inset Formula $d$
 \end_inset
 
- è la seguente:
+ é la seguente:
 \end_layout
 
 \begin_layout Standard
@@ -1039,7 +1039,7 @@ direzione relativa di impatto
 \begin_inset Formula $i_{s}$
 \end_inset
 
- è invece un fattore di scala che impedisce ai veicoli di causare danni
+ é invece un fattore di scala che impedisce ai veicoli di causare danni
  al di fuori di un cono frontale.
  Il numero di 
 \emph on
@@ -1049,7 +1049,7 @@ orb
 \begin_inset Formula $o_{imp}$
 \end_inset
 
- persi dal veicolo a seguito dell'impatto è calcolato come segue:
+ persi dal veicolo a seguito dell'impatto é calcolato come segue:
 \end_layout
 
 \begin_layout Standard
@@ -1090,24 +1090,24 @@ Architettura di rete
 Nella versione originale di OrbTail l'architettura di gioco si basava su
  classi apposite che discriminavano le modalitá multigiocatore online delle
  modalitá a giocatore singolo, gestendo di volta in volta i casi speciali.
- In questa nuova iterazione il sistema è stato semplificato e generalizzato,
+ In questa nuova iterazione il sistema é stato semplificato e generalizzato,
  al fine di gestire in maniera uniforme tutte le modalitá e configurazioni
  supportate.
 
 \emph on
  
 \emph default
-L'architettura di rete di OrbTail è di tipo 
+L'architettura di rete di OrbTail é di tipo 
 \emph on
 client-server
 \emph default
- e uno dei dispositivi dei giocatori è usato come 
+ e uno dei dispositivi dei giocatori é usato come 
 \emph on
 host 
 \emph default
 per la partita.
- Dato il basso numero di giocatori coinvolti, questa soluzione è ottimale
- perchè garantisce un buona esperienza 
+ Dato il basso numero di giocatori coinvolti, questa soluzione é ottimale
+ perché garantisce un buona esperienza 
 \emph on
 online 
 \emph default
@@ -1239,8 +1239,8 @@ Architettura di rete di OrbTail
 .
  Il primo di questi consente al server di propagare il valore di uno stato
  di gioco su tutti gli oggetti client costantemente.
- Questo metodo è particolarmente adatto per valori che cambiano molto rapidament
-e di cui peró non è necessario che vi sia una forte corrispondenza tra la
+ Questo metodo é particolarmente adatto per valori che cambiano molto rapidament
+e di cui peró non é necessario che vi sia una forte corrispondenza tra la
  versione sul 
 \emph on
 server 
@@ -1258,7 +1258,7 @@ server
 \emph on
 autoritá
 \emph default
- sui valori sincronizzati in questo modo e pertanto non è possibile utilizzare
+ sui valori sincronizzati in questo modo e pertanto non é possibile utilizzare
  questo meccanismo nel senso opposto al fine di inviare dati dal 
 \emph on
 client 
@@ -1290,7 +1290,7 @@ RPC
 , 
 \emph default
 consente di chiamare un metodo di un oggetto su un'istanza remota di gioco.
- Unity ne fornisce due varianti, la prima è rappresentata dai 
+ Unity ne fornisce due varianti, la prima é rappresentata dai 
 \emph on
 comandi
 \emph default
@@ -1302,7 +1302,7 @@ client
 \emph on
 server
 \emph default
-, la seconda è rappresentata dalle 
+, la seconda é rappresentata dalle 
 \emph on
 client RPC 
 \emph default
@@ -1311,7 +1311,7 @@ le quali vengono inviate dal server e propagate su
 tutti 
 \emph default
 i client.
- Questo metodo è adatto per eventi di sincronizzazione che avvengono di
+ Questo metodo é adatto per eventi di sincronizzazione che avvengono di
  rado ma per i quali vi deve essere l'assoluta certezza che i 
 \emph on
 client 
@@ -1350,7 +1350,7 @@ Ad ogni giocatore connesso ad una partita viene associato un particolare
 game object 
 \emph default
 che ne contiene i dati identificativi e ne rappresenta la volontá.
- Per ragioni di sicurezza è possibile inviare 
+ Per ragioni di sicurezza é possibile inviare 
 \emph on
 comandi 
 \emph default
@@ -1374,7 +1374,7 @@ Una
 \emph on
 lobby 
 \emph default
-è una 
+é una 
 \emph on
 stanza virtuale 
 \emph default
@@ -1400,7 +1400,7 @@ e di gioco.
 \emph on
 lobby 
 \emph default
-è associato ad un oggetto di tipo 
+é associato ad un oggetto di tipo 
 \emph on
 LobbyPlayer
 \emph default
@@ -1447,7 +1447,7 @@ bug
 \emph default
 di Unity impedisce a quest'informazione di essere replicata correttamente,
  impedendone completamente il suo utilizzo.
- Per ovviare a questo inconveniente è stato deciso di usare il nome della
+ Per ovviare a questo inconveniente é stato deciso di usare il nome della
  
 \emph on
 lobby 
@@ -1464,10 +1464,10 @@ lobby
 cosí ottenuta viene filtrata a seconda della configurazione dell'utente
  ed il sistema provvede a connettersi ad una qualsiasi tra quelle rimaste.
  Se il tentativo di connessione fallisce (come potrebbe capitare se, nel
- frattempo, la partita in quella lobby è giá iniziata) vengono effettuati
+ frattempo, la partita in quella lobby é giá iniziata) vengono effettuati
  tentativi di connessione addizionali sulle altre lobby fino ad un numero
  massimo configurabile.
- Se non è stato possibile individuare una 
+ Se non é stato possibile individuare una 
 \emph on
 lobby 
 \emph default
@@ -1476,7 +1476,7 @@ te al servizio di
 \emph on
 matchmaking 
 \emph default
-affinchè altri giocatori possano connettersi.
+affinché altri giocatori possano connettersi.
  Nel caso di partite a giocatore singolo le fasi di ricerca delle 
 \emph on
 lobby 
@@ -1552,7 +1552,7 @@ genera
 \emph on
 LobbyPlayer 
 \emph default
-addizionali finchè il numero di partecipanti non diventa esattamente 
+addizionali finché il numero di partecipanti non diventa esattamente 
 \emph on
 quattro:
 \emph default
@@ -1576,7 +1576,7 @@ lobby
 \emph default
 era esplicito: l'utente poteva decidere se creare un nuovo match oppure
  se partecipare ad uno esistente.
- Questo tipo d'interazione è stato rivisto perchè giudicato obsoleto: nel
+ Questo tipo d'interazione é stato rivisto perché giudicato obsoleto: nel
  caso in cui non vi fosse nessuna 
 \emph on
 lobby 
@@ -1592,7 +1592,7 @@ disponibile, l'utente era costretto a ritornare al menú principale per crearne
  se avviare una partita online o offline (a seconda se vi fosse una connessione
  Internet o meno), tuttavia controllare lo stato della connessione comportava
  lunghe attese e, per ragioni di tempo e mancanza di una soluzione giudicata
- soddisfacente, questa funzionalitá è stata rimandata a sviluppi futuri.
+ soddisfacente, questa funzionalitá é stata rimandata a sviluppi futuri.
 \end_layout
 
 \begin_layout Subsection
@@ -1600,15 +1600,12 @@ Gestione della partita
 \end_layout
 
 \begin_layout Standard
-La gestione dello stato di gioco è affidata ad un oggetto 
+La gestione dello stato di gioco é affidata ad un 
 \emph on
-GameMode
+manager BaseGameMode
 \emph default
- il cui tipo, derivato dalla classe 
-\emph on
-BaseGameMode
-\emph default
-, dipende dalla modalitá di gioco selezionata (Fig.
+ e ad una di tre possibili derivate, una per ogni modalitá di gioco supportata
+ (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1665,32 +1662,25 @@ Modalitá di gioco
 \end_inset
 
 .
- Questo oggetto descrive le regole di gioco e le condizioni di vittoria,
- gestendo al contempo il flusso di gara.
- Tra i suoi parametri di configurazione troviamo la durata massima della
- partita, il numero di punti guadagnati per 
-\emph on
-orb 
-\emph default
-collezionato, il numero di 
+ Quasto oggetto si occupa di gestire il flusso di gara e di verificare le
+ condizioni di vittoria.
+ Al suo interno é inoltre contenuta la configurazione delle regole di gioco
+ quali la durata effettiva della partita, il numero di punti guadagnati,
+ il numero di 
 \emph on
 orb 
 \emph default
 iniziali e cosí via.
- Lo stato di gioco è replicato internamente dalla classe e notificato attraverso
+ Lo stato di gioco é replicato internamente dalla classe e notificato attraverso
  eventi al quale 
 \emph on
 osservatori
 \emph default
 , quali HUD e i veicoli, possono registrarsi e reagire.
- La classe base 
-\emph on
-BaseGameMode
-\emph default
- contiene tutte le logiche condivise tra le varie modalitá, mentre le sue
- derivate ne possono estendere il comportamento implementando logiche specifiche
-, come ad esempio il calcolo dei punti e la gestione dell'eliminazione dei
- partecipanti.
+ La classe base contiene tutte le logiche condivise tra le varie modalitá
+ mentre le sue derivate ne possono estendere il comportamento implementando
+ logiche specifiche, riguardanti principalmente il calcolo dei punti e l'elimina
+zione dei partecipanti.
  Questo oggetto viene creato dal 
 \emph on
 server 
@@ -1699,7 +1689,7 @@ in fase di creazione della
 \emph on
 lobby
 \emph default
- e replicato su tutti i client e rimane in vita per tutta la durata della
+ e replicato su tutti i client, rimanendo in vita per tutta la durata della
  partita.
  La gestione degli eventi di gioco quali l'acquisizione o la perdita di
  
@@ -1708,9 +1698,9 @@ orb
 \emph default
 e 
 \emph on
-potenziamenti, 
+potenziamenti 
 \emph default
-è gestita direttamente dal 
+é gestita direttamente dal 
 \emph on
 server
 \emph default
@@ -1745,7 +1735,7 @@ in locale.
 \end_layout
 
 \begin_layout Standard
-Ciascuna partita è strutturata in 
+Ciascuna partita é strutturata in 
 \emph on
 quattro 
 \emph default
@@ -1810,14 +1800,14 @@ Flusso di gara
 \emph on
 server 
 \emph default
-mette i giocatori in attesa, fintanto che tutti partecipanti abbiano caricato
- la mappa.
- Ogni volta che un dispositivo ha caricato la mappa corretta, il 
+si assicura che tutti giocatori abbiano caricato la mappa, sincronizzando
+ lo stato tra tutti i partecipanti.
+ Ogni volta che un dispositivo ha caricato la mappa corretta il 
 \emph on
 server
 \emph default
- provvede a creare il suo veicolo e a replicarlo: in questo istante il controllo
- del giocatore viene 
+ provvede a creare il veicolo opportuno e a replicarlo su tutti i dispositivi.
+ In questo istante il controllo del giocatore viene 
 \emph on
 trasferito 
 \emph default
@@ -1825,7 +1815,7 @@ dal
 \emph on
 LobbyPlayer 
 \emph default
-al veicolo, in modo che quest'ultimo possa essere usato per inviare 
+al veicolo, in modo che sia quest'ultimo ad inviare 
 \emph on
 comandi 
 \emph default
@@ -1833,23 +1823,23 @@ al
 \emph on
 server
 \emph default
- durante la partita.
+.
  L'oggetto 
 \emph on
 LobbyPlayer 
 \emph default
-viene preservato in modo da poter contenere informazioni associate al giocatore,
- quali ad esempio il suo 
+viene comunque preservato al fine di contenere informazioni associate al
+ giocatore e non al veicolo (quale ad esempio il 
 \emph on
-punteggio.
-
+punteggio
 \emph default
- Sull'istanza locale di gioco, l'oggetto 
+).
+ Sull'istanza locale di gioco l'oggetto 
 \emph on
 BaseGameMode 
 \emph default
-determina la creazione di tutti gli oggetti necessari al giocatore che non
- devono essere replicati, quali ad esempio il 
+determina la creazione di tutte gli oggetti necessari al giocatore e che
+ non devono essere replicate, quali as esempio il 
 \emph on
 controllore della camera
 \emph default
@@ -1858,10 +1848,9 @@ controllore della camera
 HUD
 \emph default
 .
- Durante questa breve fase di sincronizzazione, il gioco mostra una breve
- guida che descrive le regole di gioco e tutti i potenziamenti disponibili.
- Questo stratagemma consente sia di ridurre il tempo di attesa percepito
- e sia di informare l'utente delle regole specifiche di gioco.
+ Durante questa breve fase di sincronizzazione, il gioco provvede a mostrare
+ un breve tutorial che descrive le regole di gioco e tutti i potenziamenti
+ disponibili.
  Una volta che tutti i partecipanti hanno congedato questa schermata, il
  
 \emph on
@@ -1872,7 +1861,7 @@ procede con la fase successiva di
 conto alla rovescia
 \emph default
 , lasciando che gli utenti si possano preparare alla sfida.
- La fase successiva è quella di gioco e dura fintanto che il cronometro
+ La fase successiva é quella di gioco e dura fintanto che il cronometro
  di gara non scende a 
 \emph on
 zero
@@ -1923,89 +1912,49 @@ spettatore
  in partita e ciclando tra di essi fino a fine partita.
  Al termine del tempo massimo di partita, o quando tutti i giocatori sono
  stati eliminati, il sistema si porta nella fase finale in cui viene dichiarato
- il vincitore a seconda di condizioni specifiche della modalitá di gioco.
- In questa fase è possibile controllare l'esito della partita e abbandonarla,
+ il vincitore a seconda di condizioni specifiche per modalitá.
+ In questa fase é possibile controllare l'esito della partita e abbandonarla,
  ritornando al al menú principale.
- L'abbandono di una partita causa la distruzione completa di tutti gli oggetti
- coinvolti, quali la 
-\emph on
-lobby
-\emph default
-, i 
-\emph on
-veicoli
-\emph default
-, il 
-\emph on
-GameMode 
-\emph default
-e il 
-\emph on
-LobbyManager
-\emph default
-.
 \end_layout
 
 \begin_layout Standard
-In questa nuova iterazione, la gestione delle modalitá online ed offline
- é stata uniformata in modo da seguire lo stesso flusso e basarsi sulle
- stesse classi, evitando gestioni specifiche.
- Secondo quest'ottica le modalitá 
+In questa nuova iterazione, le modalitá online ed offline seguono lo stesso
+ identico flusso.
+ In quest'ultimo caso le chiamate di rete vengono simulate direttamente
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In questa nuova versione le modalitá online ed offline seguono lo stesso
+ flusso.
+ In quest'ultimo caso le chiamate di rete vengono simulate direttamente
+ da Unity in maniera totalmente trasparente.
+ Un 
 \emph on
-offline 
+drawback 
 \emph default
-sono gestite come fossero delle partite 
-\emph on
-online 
-\emph default
-in cui vi sono solo giocatori locali e veicoli gestiti dalla 
-\emph on
-IA
-\emph default
-.
- Una limitazione di questo approccio è data dal fatto che in modalitá 
-\emph on
-online
-\emph default
- il motore non supporta la replicazione di oggetti giá posizionati in scena
- e si é pertanto costretti a crearli dinamicamente.
- Per ovviare a questa limitazione è stato creato un 
-\emph on
-game object 
-\emph default
-apposito, detto 
+di questa nuova gestione é costituita dal fatto che Unity non supporta la
+ replicazione di oggetti giá posizionati in scena.
+ Per ovviare a questo problema sono stati creati dei game object appositi,
+ detti 
 \emph on
 NetworkSpawner
 \emph default
-, il quale puó essere posizionato direttamente in scena e configurato con
- un riferimento ad un'altro 
-\emph on
-game object
-\emph default
-.
- Durante la creazione del 
+, i quali possono essere posizionati direttamente in scena e dichiarare
+ l'oggetto da generare.
+ Questo oggetto sul 
 \emph on
 server 
 \emph default
-questo 
-\emph on
-script
-\emph default
- si attiva, causando la generazione del 
-\emph on
-game object 
-\emph default
-replicato su tutti i client.
- Questo oggetto è stato usato principalmente per gestire gli 
-\emph on
-orb 
-\emph default
-e i 
-\emph on
-core 
-\emph default
-in quanto era necessario che le loro posizioni fossero configurabili manualmente
- su tutte le arene.
+scatena la generazione networked dell'oggetto, spawnando una copia sincronizzata
+ su tutti i client.
+ Sui client questo oggetto é inerte.
 \end_layout
 
 \begin_layout Section
