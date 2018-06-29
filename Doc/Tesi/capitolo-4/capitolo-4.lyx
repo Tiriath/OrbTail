@@ -2045,12 +2045,214 @@ in quanto era necessario che le loro posizioni fossero configurabili manualmente
 \end_layout
 
 \begin_layout Section
-Potenziamenti
+Armi e potenziamenti
 \end_layout
 
 \begin_layout Standard
-Gestione dei potenziamenti con riguardo per la parte online e di sincronizzazion
-e.
+La gestione delle armi e dei potenziamenti dei veicoli é affidata a 
+\emph on
+cinque 
+\emph default
+componenti diversi, alcuni dei quali sono associati al veicolo come il 
+\emph on
+PowerController
+\emph default
+, altri ai 
+\emph on
+core
+\emph default
+ come il 
+\emph on
+PowerUpCollectable 
+\emph default
+ed altri a 
+\emph on
+game object 
+\emph default
+aggiuntivi utilizzati per sincronizzare lo stato dei potenziamenti sulla
+ rete (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PowerUps"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/power.jpg
+	lyxscale 20
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Gestione armi e potenziamenti
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PowerUps"
+
+\end_inset
+
+Gestione armi e potenziamenti
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Il 
+\emph on
+PowerController 
+\emph default
+é un componente che si occupa di 
+\emph on
+collezionare 
+\emph default
+i 
+\emph on
+core 
+\emph default
+distribuiti sull'arena, in maniera analoga a quanto avviene per gli 
+\emph on
+orb
+\emph default
+.
+ Ogni 
+\emph on
+core 
+\emph default
+usa un componente speciale, il 
+\emph on
+PowerUpCollectable
+\emph default
+, al fine di generare un potere casuale da associare al veicolo.
+ Questo componente si occupa inoltre di gestire la parte estetica del 
+\emph on
+core 
+\emph default
+e delle logiche di attivazione e disattivazione temporizzate.
+ I poteri sono modellati attraverso un componente 
+\emph on
+PowerUp
+\emph default
+ che ne contiene varie informazioni di base quali il numero massimo di utilizzi,
+ il tempo minimo tra due utilizzi consecutivi ed un riferimento ad un componente
+ apposito che ne modella l'effetto una volta attivato: il 
+\emph on
+PowerUpEffect
+\emph default
+.
+ Questo componente é associato ad un oggetto sincronizzato sulla rete che
+ viene creato in fase di attivazione del 
+\emph on
+PowerUp
+\emph default
+ e contiene le informazioni di base sull'effetto, quali la sua durata, il
+ veicolo che lo 
+\emph on
+possiede
+\emph default
+ e il veicolo 
+\emph on
+bersaglio 
+\emph default
+(se presente).
+ Questa classe é estesa attraverso opportune derivate, una per ogni potenziament
+o o arma supportata.
+ L'oggetto associato al 
+\emph on
+PowerUpEffect 
+\emph default
+contiene tutte le logiche associate al potenziamento e il suo aspetto.
+ Questo oggetto é 
+\emph on
+gerarchicamente
+\emph default
+ 
+\emph on
+dipendente 
+\emph default
+dal veicolo per poteri che devono 
+\begin_inset Quotes fld
+\end_inset
+
+seguire
+\begin_inset Quotes frd
+\end_inset
+
+ graficamente gli spostamenti, quali ad esempio le barriere, oppure puó
+ muoversi liberamente come nel caso di missili e proiettili.
+ I potenziamenti vengono attivati attraverso un 
+\emph on
+comando 
+\emph default
+lanciato dal 
+\emph on
+PowerController 
+\emph default
+al 
+\emph on
+server
+\emph default
+ e quindi replicato su tutti i client.
+ Una categoria particolare di 
+\emph on
+PowerUpEffect 
+\emph default
+é costituita dai 
+\emph on
+PowerUpDrop
+\emph default
+, speciali potenziamenti che, attivati, generano un oggetto di gioco all'interno
+ dell'arena.
+ Questi oggetti assegnano un effetto negativo (derivato dal componente 
+\emph on
+PowerUpEffect
+\emph default
+) ai veicoli che lo collezionano.
+ Questi speciali effetti consentono di modellare potenziamenti quali 
+\emph on
+trappole 
+\emph default
+e 
+\emph on
+mine
+\emph default
+.
+ L'uso di questa architettura permette di gestire in maniera molto efficiente
+ un gran numero di potenziamenti.
+ La configurazione di quest'ultimi avviene direttamente in editor e garantisce
+ dei tempi d'iterazione molto rapidi durante il loro bilanciamento.
 \end_layout
 
 \begin_layout Section

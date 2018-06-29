@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1254</x>
+      <y>275</y>
+      <w>154</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+lw=4
+Ship
+&lt;&lt;gameobject&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1518</x>
+      <y>275</y>
+      <w>154</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+PowerController
+&lt;&lt;component&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1397</x>
+      <y>286</y>
+      <w>143</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1782</x>
+      <y>407</y>
+      <w>154</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+PowerUpCollectable
+&lt;&lt;component&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1782</x>
+      <y>275</y>
+      <w>154</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+lw=4
+Core
+&lt;&lt;gameobject&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1848</x>
+      <y>330</y>
+      <w>33</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1661</x>
+      <y>286</y>
+      <w>143</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+colleziona</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1518</x>
+      <y>407</y>
+      <w>154</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+lw=4
+PowerUp
+&lt;&lt;gameobject&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1661</x>
+      <y>418</y>
+      <w>143</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+genera</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1584</x>
+      <y>330</y>
+      <w>33</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1452</x>
+      <y>308</y>
+      <w>88</w>
+      <h>286</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+attiva</panel_attributes>
+    <additional_attributes>60.0;240.0;10.0;240.0;10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1661</x>
+      <y>550</y>
+      <w>143</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+genera</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1254</x>
+      <y>671</y>
+      <w>154</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+PowerUpEffect
+&lt;&lt;component&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1518</x>
+      <y>671</y>
+      <w>154</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+lw=4
+PowerUpEffect
+&lt;&lt;gameobject&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1518</x>
+      <y>539</y>
+      <w>154</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+PowerUp
+&lt;&lt;component&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1584</x>
+      <y>462</y>
+      <w>33</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1397</x>
+      <y>693</y>
+      <w>143</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1782</x>
+      <y>671</y>
+      <w>154</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+PowerUpDrop
+&lt;&lt;component&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1320</x>
+      <y>726</y>
+      <w>561</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;490.0;50.0;490.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1661</x>
+      <y>682</y>
+      <w>143</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+genera</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1782</x>
+      <y>539</y>
+      <w>154</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+lw=4
+PowerUpDrop
+&lt;&lt;gameobject&gt;&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1848</x>
+      <y>594</y>
+      <w>33</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1584</x>
+      <y>594</y>
+      <w>77</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+genera</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1320</x>
+      <y>330</y>
+      <w>88</w>
+      <h>363</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+influenza</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1584</x>
+      <y>220</y>
+      <w>484</w>
+      <h>374</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+colleziona</panel_attributes>
+    <additional_attributes>320.0;320.0;360.0;320.0;360.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+</diagram>
