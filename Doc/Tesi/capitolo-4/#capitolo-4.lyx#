@@ -1781,7 +1781,14 @@ in questione rappresenta la sua identitá e non quella di un altro giocatore.
 \end_layout
 
 \begin_layout Subsection
-Gestione della lobby
+Gestione della lobby 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:GestioneLobby"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2518,81 +2525,314 @@ Multigiocatore locale
 \end_layout
 
 \begin_layout Standard
-Come per l'architettura di rete, il sistema che si occupa di gestire le
- partite multigiocatore in locale é pensato per trattare tutte le modalitá
- di gioco in maniera uniforme: le modalitá con un singolo giocatore locale
- vengono sempre viste come un caso speciale della gestione multigiocatore
- in cui il numero di giocatori locali é 1.
- Il sistema di basa su componenti che vengono usati nella lobby per rappresentar
-e la selezione dei giocatori locali 
+Questa nuova iterazione di OrbTail introduce un nuovo sistema in grado di
+ gestire in maniera uniforme partite con un numero di giocatori locali compreso
+ tra 
 \emph on
-PlayerConfiguration, 
+uno 
 \emph default
-i quali contengono l'id
+e 
 \emph on
- 
+quattro
 \emph default
-del giocatore locale, la sua identitá (se umano o AI) e il veicolo selezionato.
- Nella schermata di selezione dei veicoli i giocatori locali possono usare
- un tasto opportuno sul 
+.
+ La modalitá a giocatore singolo o multiplayer online vengono gestite attraverso
+ lo stesso sistema e non richiedono pertanto una gestione specifica.
+ In fase di selezione del veicolo, il gioco consente ai giocatori di aggiungersi
+ alla partita mediante la pressione di un tasto sul 
 \emph on
-pad 
+pad
 \emph default
-al fine di entrare in partita.
- Entrambi i giocatori devono confermare la scelta della propria nave al
- fine di procedere con la normale gestione della lobby.
- Una volta in partita, quando l'oggetto che si occupa di gestire la modalitá
- di gioco crea i 
+ e selezionare un proprio veicolo.
+ Ciascuna selezione é contenuta all'interno di un componente di tipo 
+\emph on
+PlayerConfiguration
+\emph default
+, il quale contiene l'indice del giocatore 
+\emph on
+locale
+\emph default
+, il veicolo selezionato e l'identitá del giocatore (umano o comandato dall'
+\emph on
+intelligenza artificiale
+\emph default
+).
+ In fase di creazione della 
+\emph on
+lobby 
+\emph default
+il 
+\emph on
+Lobby Manager 
+\emph default
+controlla il numero di 
+\emph on
+Player Configuration 
+\emph default
+presenti e crea un 
+\emph on
+Lobby Player 
+\emph default
+per ciascuno di essi.
+ Questo meccanismo é inoltre utilizzato per l'aggiunta delle 
+\emph on
+intelligenze artificiali
+\emph default
+ se necessario (vedi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:GestioneLobby"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Durante l'inizializzazione della partita, il 
+\emph on
+BaseGameMode
+\emph default
+ crea i 
 \emph on
 controllori delle camere 
 \emph default
-per ciascuno dei giocatori, la camera controlla l'indice del giocatore locale
- e lo confronta col numero totale di giocatori locali umani in partita.
- Nel caso di giocatore singolo o modalitá 
+per ciascuno dei giocatori umani, associando ad essi il 
 \emph on
-online 
+Lobby Player 
 \emph default
-questi due numeri coincidono, quindi la camera userá tutto lo spazio a disposizi
-one sullo schermo per rappresentare la scena.
- La porzione di schermo su cui viene mostrato il gioco é gestita direttamente
- dal componente 
+corretto.
+ Il controllo della camera di ciascun giocatore é gestito dal componente
+ 
+\emph on
+Follow Camera
+\emph default
+ il quale si aggancia al veicolo e si occupa di spostare la camera virtuale
+ e il componente di Unity 
 \emph on
 Camera 
 \emph default
-di Unity tramite la proprietá 
+che si occupa di gestire il 
 \emph on
-rect
+rendering
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In computer grafica, il 
+\emph on
+rendering 
 \emph default
-.
- Se i giocatori sono due, il sistema provvede a suddividere lo schermo verticalm
-ente.
- Se i giocatori sono quattro lo schermo verrá suddiviso in 
+é il processo di generazione un'immagine a partire da una rappresentazione
+ matematica di una scena tridimensionale.
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+del gioco.
+ In fase di associazione del 
+\emph on
+Lobby Player 
+\emph default
+alla 
+\emph on
+Follow Camera
+\emph default
+, quest'ultimo confronta l'indice del giocatore locale col numero totale
+ di giocatori locali in partita e configura il 
+\emph on
+viewport
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In computer grafica, il 
+\emph on
+viewport 
+\emph default
+della camera rappresenta la porzione di schermo su cui viene renderizzata
+ la scena inquadrata da quest'ultima.
+ Solitamente il 
+\emph on
+viewport 
+\emph default
+copre l'intero schermo, tuttavia é possibile specificare una porzione piú
+ piccola al fine di renderizzare i punti di vista di piú camere da usare
+ per le modalitá splitscreen.
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+della 
+\emph on
+Camera 
+\emph default
+di conseguenza.
+ Nel caso in cui vi sia un solo giocatore, il sistema assegna l'intero schermo;
+ con piú giocatori il sistema provvede a dividere lo schermo verticalmente
+ (se vi sono esattamente 
+\emph on
+due 
+\emph default
+giocatori locali) o in quadranti (con 
 \emph on
 quattro 
 \emph default
-quadranti, uno per ogni giocatore.
- Nel caso di tre giocatori era stato valutato se suddividere lo schermo
- in quadranti e lasciare uno di questi vuoto, tuttavia l'effetto non era
- piacevole e pertanto é stato deciso di suddividere in maniera asimmetrica
- lo schermo, lasciando che il primo giocatore usi metá dello schermo e gli
- altri due si spartiscono l'altra metá.
- L'introduzione della modalitá 
+giocatori).
+ La gestione di un numero di giocatori locali pari a 
+\emph on
+tre 
+\emph default
+fa invece eccezione.
+ Originariamente era stato valutato di suddividere lo schermo in quadranti
+ e lasciare uno di questi vuoto, tuttavia l'effetto non risultava piacevole
+ e pertanto é stato deciso di suddividere in maniera asimmetrica lo schermo,
+ assegnando una metá al primo giocatore e lasciando che gli altri due si
+ spartissero l'altra metá.
+\end_layout
+
+\begin_layout Standard
+L'intrudizione della modalitá 
 \emph on
 splitscreen
 \emph default
- non presente nella versione di OrbTail ha inoltre richiesto una rivisitazione
- della gestione dell'interfaccia grafica.
- OrbTail non usa il sistema di interfaccia utente ma si basa su pannelli
- 3D che seguono il veicolo, questo permette di ottenere un'interfaccia mobile
- dotata di un certo grado d'inerzia.
- Siccome duplicare le informazioni di gioco comuni quali tempo rimanente
- e punteggi attuali causava un inguistificato consumo di spazio senza una
- effettiva utilitá, é stato deciso di separare l'interfaccia grafica in
- due, una dedicata a mostrare le informazioni di gioco e condivisa tra tutti
- i giocatori locali e una propria per ciascun veicolo, la quale viene mostrara
- in ciascun quadrante.
- I pannelli dell'interfaccia grafica sono normali oggetti 3D, pertanto é
- stato necessario nascondere quest'ultimi dal punto 
+, non presente nella versione originale di OrbTail, ha inoltre richiesto
+ la rivisitazione della gestione dell'interfaccia grafica.
+ In primo luogo l'interfaccia grafica di base é stata divisa in due: una
+ dedicata per le informazioni di gioco quali il 
+\emph on
+cronometro di gara
+\emph default
+ e i 
+\emph on
+punteggi, 
+\emph default
+disegnata a tutto schermo,
+\emph on
+ 
+\emph default
+e una dedicata alla visualizzazione delle informazioni di ciascun giocatore
+ locale, quali ad esempio il 
+\emph on
+potenziamento 
+\emph default
+attivo, disegnata nel quadrante opportuno.
+\end_layout
+
+\begin_layout Standard
+Il gioco non usa il sistema di interfaccia utente messo a disposizione di
+ Unity ma si basa su un sistema di pannelli tridimensionali che seguono
+ il veicolo al fine di ottenere un'interfaccia mobile dotata di un certo
+ grado di libertá ed inerzia, gestiti attraverso il componente 
+\emph on
+HUD Handler
+\emph default
+.
+ Questi pannelli utilizzano componenti come il 
+\emph on
+Text Mesh, 
+\emph default
+che consente di generare del testo tridimensionale nello spazio, e lo 
+\emph on
+Sprite Renderer
+\emph default
+, il quale permette di mostrare immagini.
+ L'introduzione di piú punti di vista costituiti dalle diverse camere, ha
+ introdotto una problematica prima inesistente: ogni giocatore puó vedere
+ la rappresentazione tridimensionale della 
+\emph on
+HUD 
+\emph default
+di ogni altro giocatore in prossimitá del veicolo di quest'ultimo.
+ Per ovviare a questo inconveniente ci si é affidati al sistema di 
+\emph on
+layer 
+\emph default
+di Unity.
+ Un 
+\emph on
+layer 
+\emph default
+non é altro che un nome simbolico che puó essere associato ad uno o piú
+ oggetti di gioco e consente a quest'ultimi di essere 
+\emph on
+nascosti 
+\emph default
+dal rendering di determinate telecamere.
+ Ogni 
+\emph on
+Camera 
+\emph default
+puó essere configurata per renderizzare solo gli oggetti appartenenti a
+ determinati 
+\emph on
+layer
+\emph default
+.
+ L'
+\emph on
+HUD 
+\emph default
+di ogni giocatore é assegnata ad uno di 
+\emph on
+quattro 
+\emph default
+layer, a seconda del giocatore che possiede l'
+\emph on
+HUD.
+ 
+\emph default
+La camera di ciascun giocatore é configurata per renderizzare solo l'HUD
+ del giocatore opportuno e nascondere tutte le altre.
+\end_layout
+
+\begin_layout Standard
+Durante lo sviluppo delle modalitá splitscreen ci si é imbattuti in una
+ grave limitazione di Unity, ovvero la mancanza di supporto per 
+\emph on
+Audio Listener 
+\emph default
+multipli.
+ Questi componenti sono usati per modellare la posizione dell'ascoltatore,
+ al fine di determinare la resa degli effetti sonori spaziali, quali esplosioni
+ e rombo di motori.
+ Sebbene esistano diversi plugin a pagamento che possono essere usati per
+ ovviare a questo inconveniente, é stato deciso di non usarne nessuno, sia
+ per mancanza di tempo e sia perché le meccaniche di gioco non si basano
+ sul corretto uso dell'audio.
+ Come soluzione temporanea sono stati disabilitati gli 
+\emph on
+Audio Listener 
+\emph default
+dei giocatori
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una grave limitazione di Unity nella gestione dello splitscreen locale é
+ dovuta alla mancanza si supporto per 
+\emph on
+audiolistener 
+\emph default
+multipli.
+ Questi componenti vengono usati dal motore al fine di determinare la resa
+ degli effetti sonori spaziali, che dipendono sia da dove viene generato
+ il suono e sia dove si trova l'ascoltatore.
+ Sebbene esistano diversi plugin che possono essere usati per ovviare al
+ problema, le meccaniche di gioco non si basano minimamente sull'uso dell'audio,
+ pertanto come soluzione temporea é stato deciso di disabilitare l'audiolistener
+ su tutti i giocatori eccetto che il primo e lasciare l'integrazione di
+ un sistema piú raffinato per versioni future del progetto.
 \end_layout
 
 \end_body
