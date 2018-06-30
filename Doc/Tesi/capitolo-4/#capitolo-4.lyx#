@@ -1282,21 +1282,60 @@ Gestione degli input
 \end_layout
 
 \begin_layout Standard
-Per supportare un gran numero di piattaforme e periferiche é stata sviluppata
- un'architettura che usa un componente 
+L'architettura alla base del sistema di input consente di gestire l'interazione
+ utente su diversi dispositivi e usando periferiche diverse.
+ Il sistema si basa su un componente 
 \emph on
-InputProxy 
+InputProxy
 \emph default
-al fine di astrarre i dettagli del sistema di input.
- Questo componente si interfaccia con oggetti che descrivono il sistema
- di input di una particolare piattaforma e il suo stato é usato sia dal
+ che astrae tutte le azioni eseguibili dall'utente o dall'
+\emph on
+intelligenza artificiale.
  
+\emph default
+Queste azioni comprendono l'
+\emph on
+accelerazione
+\emph default
+, l'
+\emph on
+azione di sterzo, 
+\emph default
+l'
+\emph on
+attivazione dei potenziamenti
+\emph default
+ e tutti gli input necessari per navigare nel menú.
+ Questo componente é una 
+\emph on
+façade
+\emph default
+ usata sia dal 
 \emph on
 MovementController 
 \emph default
 che dal 
 \emph on
-PowerController
+PowerController, 
+\emph default
+la quale, a sua volta, si interfaccia a sua volta con oggetti che descrivono
+ il sistema di input della particolare piattaforma su cui viene eseguita
+ l'applicazione.
+ Questi oggetti implementano un'interfaccia generica 
+\emph on
+IInputBroker 
+\emph default
+e comprendono il gestore degli input sulle piattaforme desktop 
+\emph on
+DesktopInputBroker, 
+\emph default
+mobile 
+\emph on
+MobileInputBroker 
+\emph default
+e il componente che si occupa di gestire l'intelligenza artificiale 
+\emph on
+PlayerAI
 \emph default
  (Fig.
  
@@ -1355,66 +1394,102 @@ Gestione degli input
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Il componente 
-\emph on
-InputProxy 
-\emph default
-é una 
-\emph on
-façade 
-\emph default
-che espone le azioni disponibili per il controllo del veicolo, quali 
-\emph on
-accelerazione
-\emph default
-, 
-\emph on
-azione di sterzo 
-\emph default
-e 
-\emph on
-attivazione poteri
-\emph default
-.
- Le azioni sono esposte attraverso un'interfaccia 
-\emph on
-IInputBroker
-\emph default
-, la quale é implementata dal gestore degli input su piattaforme desktop
- 
-\emph on
-DesktopInputBroker
-\emph default
-, il gestore degli input su piattaforme mobile 
-\emph on
-MobileInputBroker 
-\emph default
-ed inoltre é implementata dal componente che gestisce l'
-\emph on
-intelligenza artificiale 
-\emph default
-il 
-\emph on
-PlayerAI
-\emph default
-.
  Il 
 \emph on
 MobileInputBroker 
 \emph default
-si occupa di leggere lo stato dell'accelerometro del dispositivo al fine
- di segnalare le azioni di accelerazione e di sterzo, e lo stato del touchscreen
- per l'azione di utilizzo dei potenziamenti.
- Durante l'inizializzazione questo componente 
+si occupa di leggere lo stato dell'accelerometro del dispositivo 
+\emph on
+mobile 
+\emph default
+al fine di registrare le azioni di 
+\emph on
+accelerazione 
+\emph default
+e di 
+\emph on
+sterzo
+\emph default
+ e lo stato del touchscreen per l'utilizzo dei potenziamenti.
+ Durante l'inizializzazione di orni partita, questo componente 
 \emph on
 calibra 
 \emph default
-l'input relativo all'accelerometro in modo che si adatti alla posizione
- attuale del dispositivo.
- L'oggetto 
+l'input relativo all'accelerometro in modo che si adatti all'inclinazione
+ attuale: la posizione attuale viene usata come punto di riferimento per
+ calcolare tutte le altre inclinazioni del dispositivo.
+ Il 
+\emph on
+DesktopInputBroker
+\emph default
+, invece, si affida a sua volta ad un oggetto 
+\emph on
+InputManager 
+\emph default
+al fine di astrarre le azioni utente dalle periferiche utilizzate, quali
+ 
+\emph on
+tastiere
+\emph default
+ e 
+\emph on
+pad
+\emph default
+.
+ L'applicazione prevede un 
+\emph on
+InputManager 
+\emph default
+per ciascun utente locale
+\emph on
+.
+ 
+\emph default
+Le azioni sono gestite direttamente dal sistema di input di Unity, tuttavia
+ é stato necessario aggiungere un livello di astrazione aggiuntivo in quanto
+ giudicato inadeguato per le esigenze del progetto.
+ Il sistema di input di Unity consente di registrare piú azioni alle quali
+ sono associati in maniera esclusiva fino a due tasti oppure degli assi
+ (come ad esempio gli 
+\emph on
+stick 
+\emph default
+dei 
+\emph on
+pad 
+\emph default
+o i 
+\emph on
+grilletti 
+\emph default
+posteriori), rendendo impossibile associare ad una singola azione piú periferich
+e contemporaneamente.
+ É inoltre impossibile rimappare delle azioni esistenti su 
+\emph on
+pad 
+\emph default
+diversi, pertanto é necessario registrare un'azione per ogni 
+\emph on
+pad 
+\emph default
+supportato.
+ Per ovviare a queste limitazioni sono state create diverse azioni, sia
+ per la tastiera e sia per i 
+\emph on
+quattro 
+\emph default
+pad supportati.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'oggetto 
 \emph on
 DesktopInputBroker
 \emph default
@@ -1461,7 +1536,8 @@ gamepad
 \end_layout
 
 \begin_layout Standard
-Le azioni disponibili 
+Le azioni disponibili sono in totale 10: Steer, Throttle, PowerUp, Join,
+ Confirm, Horizontal, Vertical e Cancel.
 \end_layout
 
 \begin_layout Section
