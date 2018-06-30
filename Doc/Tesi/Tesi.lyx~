@@ -432,11 +432,6 @@ LatexCommand tableofcontents
 \end_inset
 
 
-\begin_inset FloatList algorithm
-
-\end_inset
-
-
 \begin_inset Newpage clearpage
 \end_inset
 

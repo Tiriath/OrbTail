@@ -63,7 +63,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 12
+\paperfontsize 11
 \spacing onehalf
 \use_hyperref true
 \pdf_title "OrbTail"
