@@ -479,8 +479,8 @@ itettura generale del gioco ed in particolar modo delle meccaniche di base.
  Quest'ultime sono condivise tra tutte le modalitá e livelli e pertanto
  sono state pensate per essere completamente indipendenti da essi.
  Tra le meccaniche di base troviamo la gestione della gravitá, del sistema
- di controllo dei veicoli, della gestione degli oggetti collezionabili e
- degli impatti 
+ di controllo dei veicoli, degli oggetti collezionabilim degli impatti e
+ dei potenziamenti 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:VehicleComponents"
@@ -513,7 +513,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-Componenti dei veicoli
+Struttura dei veicoli
 \end_layout
 
 \end_inset
@@ -525,7 +525,7 @@ name "fig:VehicleComponents"
 
 \end_inset
 
-Componenti dei veicoli
+Struttura dei veicoli
 \end_layout
 
 \end_inset
@@ -535,10 +535,8 @@ Componenti dei veicoli
 
 \end_inset
 
-..
- Tutte le funzionalitá qui descritte sono state sviluppate in una mappa
- di test apposita, con risorse grafiche temporanee e gestione degli input
- molto basilare.
+.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1082,6 +1080,390 @@ orb
 perduti e sono uguali per tutti.
 \end_layout
 
+\begin_layout Subsection
+Armi e potenziamenti
+\end_layout
+
+\begin_layout Standard
+La gestione delle armi e dei potenziamenti dei veicoli é affidata a 
+\emph on
+cinque 
+\emph default
+componenti diversi, alcuni dei quali sono associati al veicolo come il 
+\emph on
+PowerController
+\emph default
+, altri ai 
+\emph on
+core
+\emph default
+ come il 
+\emph on
+PowerUpCollectable 
+\emph default
+ed altri a 
+\emph on
+game object 
+\emph default
+che rappresentano gli effetti di tali potenziamenti (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PowerUps"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/power.jpg
+	lyxscale 20
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Gestione dei potenziamenti
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PowerUps"
+
+\end_inset
+
+Gestione dei potenziamenti
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Il 
+\emph on
+PowerController 
+\emph default
+é un componente che si occupa di 
+\emph on
+collezionare 
+\emph default
+i 
+\emph on
+core 
+\emph default
+distribuiti sull'arena, in maniera analoga a quanto avviene per gli 
+\emph on
+orb
+\emph default
+.
+ Ogni 
+\emph on
+core 
+\emph default
+usa un componente speciale, il 
+\emph on
+PowerUpCollectable
+\emph default
+, al fine di generare un potere casuale da associare al veicolo.
+ Questo componente si occupa inoltre di gestire la parte estetica del 
+\emph on
+core 
+\emph default
+e delle logiche di attivazione e disattivazione temporizzate.
+ I poteri sono modellati attraverso un componente 
+\emph on
+PowerUp
+\emph default
+ che ne contiene varie informazioni di base quali il numero massimo di utilizzi,
+ il tempo minimo tra due utilizzi consecutivi ed un riferimento ad un componente
+ apposito che ne modella l'effetto una volta attivato: il 
+\emph on
+PowerUpEffect
+\emph default
+.
+ Questo componente é associato ad un oggetto che viene creato in fase di
+ attivazione del 
+\emph on
+PowerUp
+\emph default
+ e contiene le informazioni di base sull'effetto, quali la sua durata, il
+ veicolo che lo 
+\emph on
+possiede
+\emph default
+ e il veicolo 
+\emph on
+bersaglio 
+\emph default
+(se presente).
+ Questa classe é estesa attraverso opportune derivate, una per ogni potenziament
+o o arma supportata.
+ L'oggetto associato al 
+\emph on
+PowerUpEffect 
+\emph default
+contiene tutte le logiche associate al potenziamento e il suo aspetto.
+ Questo oggetto é 
+\emph on
+gerarchicamente
+\emph default
+ 
+\emph on
+dipendente 
+\emph default
+dal veicolo per poteri che devono 
+\begin_inset Quotes fld
+\end_inset
+
+seguire
+\begin_inset Quotes frd
+\end_inset
+
+ graficamente gli spostamenti, quali ad esempio le barriere, oppure puó
+ muoversi liberamente come nel caso di missili e proiettili.
+ Una categoria particolare di 
+\emph on
+PowerUpEffect 
+\emph default
+é costituita dai 
+\emph on
+PowerUpDrop
+\emph default
+, speciali potenziamenti che, attivati, generano un oggetto di gioco all'interno
+ dell'arena.
+ Questi oggetti assegnano un effetto negativo (derivato dal componente 
+\emph on
+PowerUpEffect
+\emph default
+) ai veicoli che lo collezionano.
+ Questi speciali effetti consentono di modellare potenziamenti quali 
+\emph on
+trappole 
+\emph default
+e 
+\emph on
+mine
+\emph default
+.
+ L'uso di questa architettura permette di gestire in maniera molto efficiente
+ un gran numero di potenziamenti.
+ La configurazione di quest'ultimi avviene direttamente in editor e garantisce
+ dei tempi d'iterazione molto rapidi durante il loro bilanciamento.
+\end_layout
+
+\begin_layout Subsection
+Gestione degli input
+\end_layout
+
+\begin_layout Standard
+Per supportare un gran numero di piattaforme e periferiche é stata sviluppata
+ un'architettura che usa un componente 
+\emph on
+InputProxy 
+\emph default
+al fine di astrarre i dettagli del sistema di input.
+ Questo componente si interfaccia con oggetti che descrivono il sistema
+ di input di una particolare piattaforma e il suo stato é usato sia dal
+ 
+\emph on
+MovementController 
+\emph default
+che dal 
+\emph on
+PowerController
+\emph default
+ (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Input"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/input.jpg
+	lyxscale 20
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Gestione degli input
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Input"
+
+\end_inset
+
+Gestione degli input
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Il componente 
+\emph on
+InputProxy 
+\emph default
+é una 
+\emph on
+façade 
+\emph default
+che espone le azioni disponibili per il controllo del veicolo, quali 
+\emph on
+accelerazione
+\emph default
+, 
+\emph on
+azione di sterzo 
+\emph default
+e 
+\emph on
+attivazione poteri
+\emph default
+.
+ Le azioni sono esposte attraverso un'interfaccia 
+\emph on
+IInputBroker
+\emph default
+, la quale é implementata dal gestore degli input su piattaforme desktop
+ 
+\emph on
+DesktopInputBroker
+\emph default
+, il gestore degli input su piattaforme mobile 
+\emph on
+MobileInputBroker 
+\emph default
+ed inoltre é implementata dal componente che gestisce l'
+\emph on
+intelligenza artificiale 
+\emph default
+il 
+\emph on
+PlayerAI
+\emph default
+.
+ Il 
+\emph on
+MobileInputBroker 
+\emph default
+si occupa di leggere lo stato dell'accelerometro del dispositivo al fine
+ di segnalare le azioni di accelerazione e di sterzo, e lo stato del touchscreen
+ per l'azione di utilizzo dei potenziamenti.
+ Durante l'inizializzazione questo componente 
+\emph on
+calibra 
+\emph default
+l'input relativo all'accelerometro in modo che si adatti alla posizione
+ attuale del dispositivo.
+ L'oggetto 
+\emph on
+DesktopInputBroker
+\emph default
+ usa a sua volta un oggetto di tipo 
+\emph on
+InputManager 
+\emph default
+al fine di astrarre le azioni utente dalle periferiche utilizzate.
+ L'applicazione prevede un 
+\emph on
+InputManager 
+\emph default
+per ciascun utente locale.
+ Le azioni sono gestite direttamente tramite il sistema di input di Unity.
+ Questo ulteriore livello di astrazione si é rivelato necessario in quanto
+ il sistema nativo di input é stato giudicato inadeguato: per ogni azione
+ non é possibile selezionare piú di due tasti ed inoltre non é possibile
+ assegnare contemporaneamente tasti (necessari alla tastiera) ed assi (necessari
+ ai game pad).
+ Inoltre non é possibile rimappare azioni esistenti su altri pad ed é stato
+ pertanto necessario duplicare le 
+\emph on
+dieci 
+\emph default
+azioni di base che puó effettuare l'utente in modo da supportare una tastiera
+ e quattro pad diversi, per un totale di 
+\emph on
+cinquanta 
+\emph default
+azioni.
+ L'oggetto 
+\emph on
+InputManager 
+\emph default
+si occupa di usare l'indice dell'utente al fine di leggere le azioni opportune.
+ Il primo giocatore inoltre é l'unico a poter usare la tastiera o il pad.
+ Nella versione originale di OrbTail non era previsto la gestione degli
+ input tramite 
+\emph on
+gamepad
+\emph default
+, tuttavia la giocabilitá su desktop ne risentiva parecchio per via della
+ mancanza di precisione durante gli spostamenti.
+\end_layout
+
+\begin_layout Standard
+Le azioni disponibili 
+\end_layout
+
 \begin_layout Section
 Architettura di rete
 \end_layout
@@ -1214,7 +1596,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-Architettura di rete di OrbTail
+Architettura di rete
 \end_layout
 
 \end_inset
@@ -1226,7 +1608,7 @@ name "fig:NetArchitecture"
 
 \end_inset
 
-Architettura di rete di OrbTail
+Architettura di rete
 \end_layout
 
 \end_inset
@@ -1905,7 +2287,7 @@ zero
 server 
 \emph default
 si occupa di gestire gli scontri trai veicoli e la collezione di oggetti
- e potenziamenti.
+ e potenziamenti e l'attivazione di quest'ultimi.
  Gli eventi associati a queste gestioni sono propagati attraverso delle
  
 \emph on
@@ -2045,231 +2427,42 @@ in quanto era necessario che le loro posizioni fossero configurabili manualmente
 \end_layout
 
 \begin_layout Section
-Armi e potenziamenti
-\end_layout
-
-\begin_layout Standard
-La gestione delle armi e dei potenziamenti dei veicoli é affidata a 
-\emph on
-cinque 
-\emph default
-componenti diversi, alcuni dei quali sono associati al veicolo come il 
-\emph on
-PowerController
-\emph default
-, altri ai core come il 
-\emph on
-PowerUpCollectable 
-\emph default
-ed altri a 
-\emph on
-game object 
-\emph default
-aggiuntivi utilizzati per sincronizzare lo stato dei potenziamenti sulla
- rete (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:PowerUps"
-
-\end_inset
-
-)
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/power.jpg
-	lyxscale 20
-	width 14cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Gestione armi e potenziamenti
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:PowerUps"
-
-\end_inset
-
-Gestione armi e potenziamenti
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Il 
-\emph on
-PowerController 
-\emph default
-é un componente che si occupa di 
-\emph on
-collezionare 
-\emph default
-i 
-\emph on
-core 
-\emph default
-distribuiti sull'arena, in maniera analoga a quanto avviene con la collezione
- degli 
-\emph on
-orb
-\emph default
-.
- Ogni 
-\emph on
-core 
-\emph default
-usa un componente speciale, il 
-\emph on
-PowerUpCollectable
-\emph default
-, al fine di generare un potere casuale da associare al veicolo.
- Questo componente si occupa inoltre di gestire la parte estetica del 
-\emph on
-core 
-\emph default
-e delle logiche di attivazione e disattivazione temporizzate.
- I poteri sono modellati attraverso un componente di 
-\emph on
-PowerUp
-\emph default
- che ne contiene varie informazioni di base quali il numero massimo di utilizzi,
- il tempo minimo tra due utilizzi consecutivi ed un riferimento ad un componente
- apposito che ne modella l'effetto una volta attivato: il 
-\emph on
-PowerUpEffect
-\emph default
-.
- Questo componente é associato ad un oggetto di gioco sincronizzato sulla
- rete e contiene le informazioni di base sull'effetto, quali la durata,
- il veicolo che lo 
-\emph on
-possiede
-\emph default
- e il veicolo 
-\emph on
-bersaglio 
-\emph default
-(se presente).
- Questa classe é estesa attraverso opportune derivate, una per ogni potenziament
-o o arma supportata.
- L'oggetto associato al 
-\emph on
-PowerUpEffect 
-\emph default
-contiene tutte le logiche associate al potenziamento e il suo aspetto.
- Solitamente questo viene 
-\emph on
-i
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Un powerup é un oggetto che rappresenta un potere che il giocatore puó attivare.
- Una volta attivato un oggetto 
-\emph on
-networked 
-\emph default
-derivato da 
-\emph on
-PowerUpEffect 
-\emph default
-viene istanziato.
- Questa é la classe di base di tutti i potenziamenti e le armi ed é derivata
- da tutti i potenziamenti disponibili.
- Una categoria particolare di potenziamenti é costituita dai potenziamenti
- 
-\emph on
-droppabili
-\emph default
-, ovvero quelli che una volta attivati generano un'oggetto nell'arena che
- puó essere collezionato dagli avversari.
- Quando questo oggetto di tipo 
-\emph on
-PowerUpDrop 
-\emph default
-viene collezionato, assegna un effetto di tipo 
-\emph on
-PowerUpEffect 
-\emph default
-al veicolo avversario.
- Questo effetto é solitamente negativo.
- La gestione dei poteri é separata usando molti game object replicati sulla
- rete al fine di sincronizzare i poteri disponibili da ciascun giocatore
- e gli effetti attivi su ciascun veicolo.
- I poteri vengono attivati attraverso un'opportuno 
-\emph on
-comando 
-\emph default
-inviato dal veicolo del giocatore locale al 
-\emph on
-server, 
-\emph default
-il quale verifica se il giocatore possiede effettivamente il potenziamento
- e genera un 
-\emph on
-PowerUpEffect
-\emph default
- su tutti i client.
- Solitamente il 
-\emph on
-game object 
-\emph default
-associato all'effetto del potere ne gestisce anche la parte grafica (come
- ad esempio le barriere attorno ai veicoli oppure i modelli dei proiettili
- e dei missili).
- 
-\end_layout
-
-\begin_layout Section
 Intelligenza artificiale
 \end_layout
 
-\begin_layout Section
-Splitscreen
+\begin_layout Standard
+L'intelligenza artificiale in gioco é gestita attraverso un singolo componente
+ 
+\emph on
+PlayerAI
+\emph default
+ che, attivato su un qualsiasi veicolo, ne gestisce direttamente gli input,
+ quali accelerazione ed azione di sterzo.
+ Questo componente é generato automaticamente durante l'inizializzazione
+ del componente 
+\emph on
+Ship
+\emph default
+ se il giocatore associato ad esso é governato dalla 
+\emph on
+AI
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Uso di checkpoint per navigare la mappa.
+ Strategia patrolling, raggiunge un checkpoint a caso.
+ Strategia collect, raggiunge un orb.
+ Strategia attack (si allontana e carica il target).
 \end_layout
 
 \begin_layout Section
-Gestione degli input
+Multigiocatore locale
 \end_layout
 
-\begin_layout Section
-Menú
+\begin_layout Standard
+Gestione multigiocatore e splitscreen.
 \end_layout
 
 \end_body
