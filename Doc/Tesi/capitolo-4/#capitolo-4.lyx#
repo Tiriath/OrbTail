@@ -1283,12 +1283,25 @@ Gestione degli input
 
 \begin_layout Standard
 L'architettura alla base del sistema di input consente di gestire l'interazione
- utente su diversi dispositivi e usando periferiche diverse.
- Il sistema si basa su un componente 
+ utente in maniera completamente trasparente rispetto alle periferiche utilizzat
+e e alla piattaforma su cui è eseguito il gioco.
+ In questa nuova iterazione di OrbTail é stato deciso di integrare il supporto
+ ai 
 \emph on
-InputProxy
+gamepad
 \emph default
- che astrae tutte le azioni eseguibili dall'utente o dall'
+ al fine di migliorare la fruibilitá del gioco e la precisione delle azioni
+ utente sulle piattaforme 
+\emph on
+desktop
+\emph default
+.
+ Il nuovo sistema si basa su un componente 
+\emph on
+InputProxy,
+\emph default
+ di cui ogni veicolo ne possiede un'istanza, il quale astrae tutte le azioni
+ eseguibili dall'utente o dall'
 \emph on
 intelligenza artificiale.
  
@@ -1318,9 +1331,8 @@ che dal
 \emph on
 PowerController, 
 \emph default
-la quale, a sua volta, si interfaccia a sua volta con oggetti che descrivono
- il sistema di input della particolare piattaforma su cui viene eseguita
- l'applicazione.
+la quale si interfaccia a sua volta con oggetti che descrivono il sistema
+ di input della particolare piattaforma su cui viene eseguita l'applicazione.
  Questi oggetti implementano un'interfaccia generica 
 \emph on
 IInputBroker 
@@ -1411,13 +1423,13 @@ e di
 sterzo
 \emph default
  e lo stato del touchscreen per l'utilizzo dei potenziamenti.
- Durante l'inizializzazione di orni partita, questo componente 
+ Durante l'inizializzazione di ogni partita, questo componente 
 \emph on
 calibra 
 \emph default
 l'input relativo all'accelerometro in modo che si adatti all'inclinazione
- attuale: la posizione attuale viene usata come punto di riferimento per
- calcolare tutte le altre inclinazioni del dispositivo.
+ attuale del dispositivo: questa posizione viene usata come punto di riferimento
+ per calcolare tutte le altre inclinazioni e di conseguenza le azioni utente.
  Il 
 \emph on
 DesktopInputBroker
@@ -1447,7 +1459,7 @@ per ciascun utente locale
 \emph default
 Le azioni sono gestite direttamente dal sistema di input di Unity, tuttavia
  é stato necessario aggiungere un livello di astrazione aggiuntivo in quanto
- giudicato inadeguato per le esigenze del progetto.
+ quest'ultimo é stato giudicato inadeguato per le esigenze del progetto.
  Il sistema di input di Unity consente di registrare piú azioni alle quali
  sono associati in maniera esclusiva fino a due tasti oppure degli assi
  (come ad esempio gli 
@@ -1468,76 +1480,21 @@ e contemporaneamente.
 \emph on
 pad 
 \emph default
-diversi, pertanto é necessario registrare un'azione per ogni 
-\emph on
-pad 
-\emph default
-supportato.
- Per ovviare a queste limitazioni sono state create diverse azioni, sia
- per la tastiera e sia per i 
+diversi, pertanto é stato necessario duplicare le azioni per ciascuno dei
+ 
 \emph on
 quattro 
 \emph default
 pad supportati.
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-L'oggetto 
-\emph on
-DesktopInputBroker
-\emph default
- usa a sua volta un oggetto di tipo 
-\emph on
-InputManager 
-\emph default
-al fine di astrarre le azioni utente dalle periferiche utilizzate.
- L'applicazione prevede un 
-\emph on
-InputManager 
-\emph default
-per ciascun utente locale.
- Le azioni sono gestite direttamente tramite il sistema di input di Unity.
- Questo ulteriore livello di astrazione si é rivelato necessario in quanto
- il sistema nativo di input é stato giudicato inadeguato: per ogni azione
- non é possibile selezionare piú di due tasti ed inoltre non é possibile
- assegnare contemporaneamente tasti (necessari alla tastiera) ed assi (necessari
- ai game pad).
- Inoltre non é possibile rimappare azioni esistenti su altri pad ed é stato
- pertanto necessario duplicare le 
-\emph on
-dieci 
-\emph default
-azioni di base che puó effettuare l'utente in modo da supportare una tastiera
- e quattro pad diversi, per un totale di 
-\emph on
-cinquanta 
-\emph default
-azioni.
  L'oggetto 
 \emph on
 InputManager 
 \emph default
-si occupa di usare l'indice dell'utente al fine di leggere le azioni opportune.
- Il primo giocatore inoltre é l'unico a poter usare la tastiera o il pad.
- Nella versione originale di OrbTail non era previsto la gestione degli
- input tramite 
-\emph on
-gamepad
-\emph default
-, tuttavia la giocabilitá su desktop ne risentiva parecchio per via della
- mancanza di precisione durante gli spostamenti.
-\end_layout
-
-\begin_layout Standard
-Le azioni disponibili sono in totale 10: Steer, Throttle, PowerUp, Join,
- Confirm, Horizontal, Vertical e Cancel.
+consente di usare l'indice dell'utente al fine di indicizzare le azioni
+ opportune tra quelle registrate al sistema nativo di Unity.
+ Il primo giocatore é inoltre l'unico a poter usare indipendentemente la
+ tastiera o il pad.
+ 
 \end_layout
 
 \begin_layout Section
@@ -2527,6 +2484,29 @@ AI
 \end_layout
 
 \begin_layout Standard
+Il sistema di 
+\emph on
+intelligenza artificiale 
+\emph default
+di OrbTail é molto semplice e si basa su tre strategie diverse che vengono
+ attivate ciclicamente per un tempo massimo casuale.
+ Il sistema si basa sul raggiungimento di un oggetto di gioco il quale,
+ a seconda della strategia attualmente attiva, corrisponde ad un 
+\emph on
+orb
+\emph default
+, un 
+\emph on
+core
+\emph default
+, un 
+\emph on
+veicolo avversario
+\emph default
+ o un punto sull'arena.
+\end_layout
+
+\begin_layout Standard
 Uso di checkpoint per navigare la mappa.
  Strategia patrolling, raggiunge un checkpoint a caso.
  Strategia collect, raggiunge un orb.
@@ -2538,7 +2518,81 @@ Multigiocatore locale
 \end_layout
 
 \begin_layout Standard
-Gestione multigiocatore e splitscreen.
+Come per l'architettura di rete, il sistema che si occupa di gestire le
+ partite multigiocatore in locale é pensato per trattare tutte le modalitá
+ di gioco in maniera uniforme: le modalitá con un singolo giocatore locale
+ vengono sempre viste come un caso speciale della gestione multigiocatore
+ in cui il numero di giocatori locali é 1.
+ Il sistema di basa su componenti che vengono usati nella lobby per rappresentar
+e la selezione dei giocatori locali 
+\emph on
+PlayerConfiguration, 
+\emph default
+i quali contengono l'id
+\emph on
+ 
+\emph default
+del giocatore locale, la sua identitá (se umano o AI) e il veicolo selezionato.
+ Nella schermata di selezione dei veicoli i giocatori locali possono usare
+ un tasto opportuno sul 
+\emph on
+pad 
+\emph default
+al fine di entrare in partita.
+ Entrambi i giocatori devono confermare la scelta della propria nave al
+ fine di procedere con la normale gestione della lobby.
+ Una volta in partita, quando l'oggetto che si occupa di gestire la modalitá
+ di gioco crea i 
+\emph on
+controllori delle camere 
+\emph default
+per ciascuno dei giocatori, la camera controlla l'indice del giocatore locale
+ e lo confronta col numero totale di giocatori locali umani in partita.
+ Nel caso di giocatore singolo o modalitá 
+\emph on
+online 
+\emph default
+questi due numeri coincidono, quindi la camera userá tutto lo spazio a disposizi
+one sullo schermo per rappresentare la scena.
+ La porzione di schermo su cui viene mostrato il gioco é gestita direttamente
+ dal componente 
+\emph on
+Camera 
+\emph default
+di Unity tramite la proprietá 
+\emph on
+rect
+\emph default
+.
+ Se i giocatori sono due, il sistema provvede a suddividere lo schermo verticalm
+ente.
+ Se i giocatori sono quattro lo schermo verrá suddiviso in 
+\emph on
+quattro 
+\emph default
+quadranti, uno per ogni giocatore.
+ Nel caso di tre giocatori era stato valutato se suddividere lo schermo
+ in quadranti e lasciare uno di questi vuoto, tuttavia l'effetto non era
+ piacevole e pertanto é stato deciso di suddividere in maniera asimmetrica
+ lo schermo, lasciando che il primo giocatore usi metá dello schermo e gli
+ altri due si spartiscono l'altra metá.
+ L'introduzione della modalitá 
+\emph on
+splitscreen
+\emph default
+ non presente nella versione di OrbTail ha inoltre richiesto una rivisitazione
+ della gestione dell'interfaccia grafica.
+ OrbTail non usa il sistema di interfaccia utente ma si basa su pannelli
+ 3D che seguono il veicolo, questo permette di ottenere un'interfaccia mobile
+ dotata di un certo grado d'inerzia.
+ Siccome duplicare le informazioni di gioco comuni quali tempo rimanente
+ e punteggi attuali causava un inguistificato consumo di spazio senza una
+ effettiva utilitá, é stato deciso di separare l'interfaccia grafica in
+ due, una dedicata a mostrare le informazioni di gioco e condivisa tra tutti
+ i giocatori locali e una propria per ciascun veicolo, la quale viene mostrara
+ in ciascun quadrante.
+ I pannelli dell'interfaccia grafica sono normali oggetti 3D, pertanto é
+ stato necessario nascondere quest'ultimi dal punto 
 \end_layout
 
 \end_body
