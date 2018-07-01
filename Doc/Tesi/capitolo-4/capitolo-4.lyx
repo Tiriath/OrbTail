@@ -479,8 +479,9 @@ itettura generale del gioco ed in particolar modo delle meccaniche di base.
  Quest'ultime sono condivise tra tutte le modalitá e livelli e pertanto
  sono state pensate per essere completamente indipendenti da essi.
  Tra le meccaniche di base troviamo la gestione della gravitá, del sistema
- di controllo dei veicoli, degli oggetti collezionabilim degli impatti e
- dei potenziamenti 
+ di controllo dei veicoli, degli oggetti collezionabili, degli scontri e
+ dei potenziamenti (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:VehicleComponents"
@@ -568,11 +569,11 @@ i.
  
 \emph default
 al fine di individuare un punto sulla superficie del livello da usare come
- base per il calcolo, tuttavia ci si è presto accorti che il sistema era
- affetto da gravi difetti.
- Sebbene l'uso del 
+ base per il calcolo della gravitá, usando l'asse longitudinale di ciascun
+ oggetto come direzione.
+ Sebbene l'uso di questa tecnica
 \emph on
-raycast 
+ 
 \emph default
 permette di scrivere un codice di gestione unico che si adatta a tutte le
  topologie, determinare la direzione del raggio usando solo l'orientamento
@@ -610,7 +611,7 @@ permette di modellare lo stazionamento degli oggetti sull'arena.
 La soluzione adottata prevede l'uso di due elementi principali: un componente
  base 
 \emph on
-GravityField, 
+Gravity Field, 
 \emph default
 da cui derivano le diverse descrizioni dei campi di gravitá supportati,
 \emph on
@@ -618,7 +619,7 @@ da cui derivano le diverse descrizioni dei campi di gravitá supportati,
 \emph default
 e il 
 \emph on
-FloatingObject 
+Floating Object 
 \emph default
 che, assegnato agli oggetti di gioco, consente loro di fluttuare sull'arena
  (Fig.
@@ -691,14 +692,11 @@ Sistema di controllo
 
 \begin_layout Standard
 Il sistema di controllo di ciascun veicolo si occupa di gestire il movimento
- di quest'ultimo all'interno dell'arena considerando la direzione della
- forza di gravitá e l'input dell'utente.
-\end_layout
-
-\begin_layout Standard
-Il componente 
+ di quest'ultimo all'interno dell'arena a partire dalla direzione della
+ forza di gravitá e dall'input dell'utente.
+ Il componente 
 \emph on
-MovementController
+Movement Controller
 \emph default
  determina la velocitá lineare e quella angolare del veicolo in ogni istante
  e applica opportune forze al 
@@ -810,7 +808,7 @@ r(t)=r_{max}\cdot r_{in}
 \begin_layout Standard
 La direzione di accelerazione è ricavata tramite il componente 
 \emph on
-FloatingObject
+Floating Object
 \emph default
  in funzione della tangente del campo di gravitá e della rotazione del veicolo,
  e ció impedisce che quest'ultimo possa percorrere la superficie del livello
@@ -823,10 +821,66 @@ Gestione dei collezionabili
 
 \begin_layout Standard
 La gestione della collezione degli elementi di gioco è affidata a tre componenti
- fondamentali.
+ fondamentali (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailOrb"
+
+\end_inset
+
+).
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/orb.jpg
+	lyxscale 20
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Gestione dei collezionabili.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailOrb"
+
+\end_inset
+
+Gestione dei collezionabili.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
  Il primo di questi, il 
 \emph on
-ProximityHandler
+Proximity Handler
 \emph default
 , rappresenta un 
 \emph on
@@ -872,24 +926,24 @@ orb
 \emph default
 usa il componente 
 \emph on
-FloatingObject 
+Floating Object 
 \emph default
 al fine di fluttuare sull'arena e un altro componente, l'
 \emph on
-OrbController
+Orb Controller
 \emph default
 , al fine di gestire i vincoli fisici di cui sopra.
 \end_layout
 
 \begin_layout Subsection
-Gestione degli impatti
+Gestione degli scontri
 \end_layout
 
 \begin_layout Standard
 Il sistema di gestione degli scontri tra veicoli è implementato attraverso
  un componente 
 \emph on
-FightController, 
+Fight Controller, 
 \emph default
 il cui scopo è quello di rilevare gli impatti e notificare il componente
  
@@ -929,7 +983,7 @@ unico che approssima la superficie del veicolo racchiudendone il modello
  genera una coppia di eventi, uno per ogni componente coinvolto nell'impatto.
  Ciascun 
 \emph on
-FightController 
+Fight Controller 
 \emph default
 reagisce a questi eventi, determinando il numero di 
 \emph on
@@ -937,21 +991,18 @@ orb
 \emph default
 persi a causa dello scontro e lasciando al 
 \emph on
-FightController 
+Fight Controller 
 \emph default
 del veicolo avversario il compito di staccare 
 \emph on
 orb 
 \emph default
 dal proprio.
-\end_layout
-
-\begin_layout Standard
-Il numero di 
+ Il numero di 
 \emph on
 orb 
 \emph default
-persi durante uno scontro dipende dalla direzione d'impatto e l'orientamento
+persi durante uno scontro dipende dalla direzione d'impatto e dall'orientamento
  dei veicoli coinvolti: uno scontro frontale deve causare un distacco di
  
 \emph on
@@ -959,24 +1010,21 @@ orb
 \emph default
 da parte di entrambi i veicoli, laddove colpire un veicolo su una fiancata
  non deve penalizzare in alcun modo l'aggressore.
-\end_layout
-
-\begin_layout Standard
-Sia 
-\begin_inset Formula $p$
+ Sia 
+\begin_inset Formula $\overrightarrow{p}$
 \end_inset
 
  la posizione del veicolo sui cui viene generato l'evento di collisione,
  
-\begin_inset Formula $f$
+\begin_inset Formula $\overrightarrow{f}$
 \end_inset
 
  la direzione di quest'ultimo, 
-\begin_inset Formula $c$
+\begin_inset Formula $\overrightarrow{c}$
 \end_inset
 
  il punto di impatto trai veicoli convolti e 
-\begin_inset Formula $v_{rel}$
+\begin_inset Formula $\overrightarrow{v_{rel}}$
 \end_inset
 
  la velocitá relativa del veicolo rispetto all'avversario, la formula usata
@@ -994,7 +1042,7 @@ inflitti
 \begin_layout Standard
 \begin_inset Formula 
 \[
-i_{d}=\frac{c-p}{|c-p|}
+\overrightarrow{i_{d}}=\frac{\overrightarrow{c}-\overrightarrow{p}}{|\overrightarrow{c}-\overrightarrow{p}|}
 \]
 
 \end_inset
@@ -1005,7 +1053,7 @@ i_{d}=\frac{c-p}{|c-p|}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-i_{s}=\max(0,i_{d}\cdot f)
+i_{s}=\max(0,\overrightarrow{i_{d}}\cdot\overrightarrow{f})
 \]
 
 \end_inset
@@ -1016,7 +1064,7 @@ i_{s}=\max(0,i_{d}\cdot f)
 \begin_layout Standard
 \begin_inset Formula 
 \[
-d=|v_{rel}|\cdot i_{s}\cdot off
+d=|\overrightarrow{v_{rel}}|\cdot i_{s}\cdot off
 \]
 
 \end_inset
@@ -1026,7 +1074,7 @@ d=|v_{rel}|\cdot i_{s}\cdot off
 
 \begin_layout Standard
 Il termine 
-\begin_inset Formula $i_{d}$
+\begin_inset Formula $\overrightarrow{i_{d}}$
 \end_inset
 
  rappresenta la 
@@ -1091,7 +1139,7 @@ cinque
 \emph default
 componenti diversi, alcuni dei quali sono associati al veicolo come il 
 \emph on
-PowerController
+Power Controller
 \emph default
 , altri ai 
 \emph on
@@ -1099,7 +1147,7 @@ core
 \emph default
  come il 
 \emph on
-PowerUpCollectable 
+Power-Up Collectable 
 \emph default
 ed altri a 
 \emph on
@@ -1167,7 +1215,7 @@ Gestione dei potenziamenti
 \begin_layout Standard
 Il 
 \emph on
-PowerController 
+Power Controller 
 \emph default
 è un componente che si occupa di 
 \emph on
@@ -1188,7 +1236,7 @@ core
 \emph default
 usa un componente speciale, il 
 \emph on
-PowerUpCollectable
+Power-Up Collectable
 \emph default
 , al fine di generare un potere casuale da associare al veicolo.
  Questo componente si occupa inoltre di gestire la parte estetica del 
@@ -1198,19 +1246,19 @@ core
 e delle logiche di attivazione e disattivazione temporizzate.
  I poteri sono modellati attraverso un componente 
 \emph on
-PowerUp
+Power-Up
 \emph default
  che ne contiene varie informazioni di base quali il numero massimo di utilizzi,
  il tempo minimo tra due utilizzi consecutivi ed un riferimento ad un componente
  apposito che ne modella l'effetto una volta attivato: il 
 \emph on
-PowerUpEffect
+Power-Up Effect
 \emph default
 .
  Questo componente è associato ad un oggetto che viene creato in fase di
  attivazione del 
 \emph on
-PowerUp
+Power-Up
 \emph default
  e contiene le informazioni di base sull'effetto, quali la sua durata, il
  veicolo che lo 
@@ -1226,7 +1274,7 @@ bersaglio
 o o arma supportata.
  L'oggetto associato al 
 \emph on
-PowerUpEffect 
+Power-Up Effect 
 \emph default
 contiene tutte le logiche associate al potenziamento e il suo aspetto.
  Questo oggetto è 
@@ -1249,17 +1297,17 @@ seguire
  muoversi liberamente come nel caso di missili e proiettili.
  Una categoria particolare di 
 \emph on
-PowerUpEffect 
+Power-Up Effect 
 \emph default
 è costituita dai 
 \emph on
-PowerUpDrop
+Power-Up Drop
 \emph default
 , speciali potenziamenti che, attivati, generano un oggetto di gioco all'interno
  dell'arena.
  Questi oggetti assegnano un effetto negativo (derivato dal componente 
 \emph on
-PowerUpEffect
+Power-Up Effect
 \emph default
 ) ai veicoli che lo collezionano.
  Questi speciali effetti consentono di modellare potenziamenti quali 
@@ -1278,7 +1326,14 @@ mine
 \end_layout
 
 \begin_layout Subsection
-Gestione degli input
+Gestione degli input 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Gestione-degli-input"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1298,7 +1353,7 @@ desktop
 .
  Il nuovo sistema si basa su un componente 
 \emph on
-InputProxy,
+Input Proxy,
 \emph default
  di cui ogni veicolo ne possiede un'istanza, il quale astrae tutte le azioni
  eseguibili dall'utente o dall'
@@ -1325,25 +1380,25 @@ façade
 \emph default
  usata sia dal 
 \emph on
-MovementController 
+Movement Controller 
 \emph default
 che dal 
 \emph on
-PowerController, 
+Power Controller, 
 \emph default
 la quale si interfaccia a sua volta con oggetti che descrivono il sistema
  di input della particolare piattaforma su cui viene eseguita l'applicazione.
  Questi oggetti implementano un'interfaccia generica 
 \emph on
-IInputBroker 
+IInput Broker 
 \emph default
 e comprendono il gestore degli input sulle piattaforme desktop 
 \emph on
-DesktopInputBroker, 
+Desktop Input Broker, 
 \emph default
 mobile 
 \emph on
-MobileInputBroker 
+Mobile Input Broker 
 \emph default
 e il componente che si occupa di gestire l'intelligenza artificiale 
 \emph on
@@ -1408,7 +1463,7 @@ Gestione degli input
 .
  Il 
 \emph on
-MobileInputBroker 
+Mobile Input Broker 
 \emph default
 si occupa di leggere lo stato dell'accelerometro del dispositivo 
 \emph on
@@ -1432,11 +1487,11 @@ l'input relativo all'accelerometro in modo che si adatti all'inclinazione
  per calcolare tutte le altre inclinazioni e di conseguenza le azioni utente.
  Il 
 \emph on
-DesktopInputBroker
+Desktop Input Broker
 \emph default
 , invece, si affida a sua volta ad un oggetto 
 \emph on
-InputManager 
+Input Manager 
 \emph default
 al fine di astrarre le azioni utente dalle periferiche utilizzate, quali
  
@@ -1450,7 +1505,7 @@ pad
 .
  L'applicazione prevede un 
 \emph on
-InputManager 
+Input Manager 
 \emph default
 per ciascun utente locale
 \emph on
@@ -1476,7 +1531,7 @@ grilletti
 \emph default
 posteriori), rendendo impossibile associare ad una singola azione piú periferich
 e contemporaneamente.
- è inoltre impossibile rimappare delle azioni esistenti su 
+ È inoltre impossibile rimappare delle azioni esistenti su 
 \emph on
 pad 
 \emph default
@@ -1488,7 +1543,7 @@ quattro
 pad supportati.
  L'oggetto 
 \emph on
-InputManager 
+Input Manager 
 \emph default
 consente di usare l'indice dell'utente al fine di indicizzare le azioni
  opportune tra quelle registrate al sistema nativo di Unity.
@@ -1582,7 +1637,7 @@ al fine di inviare comandi e riceverne aggiornamenti
 : 
 \emph default
 il sistema di rete di Unity provvederá a simulare le richieste di rete sulla
- stessa applicazione in maniera trasparante.
+ stessa applicazione in maniera trasparente.
 \end_layout
 
 \begin_layout Standard
@@ -1813,7 +1868,7 @@ singleton
 \emph default
 derivato dalla classe di Unity 
 \emph on
-NetworkLobbyManager
+Network Lobby Manager
 \emph default
 , la quale astrae tutte le logiche di creazione o ricerca di una partita,
  connessione e disconnesione degli utenti e sincronizzazione della configurazion
@@ -1824,7 +1879,7 @@ lobby
 \emph default
 è associato ad un oggetto di tipo 
 \emph on
-LobbyPlayer
+Lobby Player
 \emph default
 , il quale viene usato sia per inviare comandi al 
 \emph on
@@ -1945,7 +2000,7 @@ LobbyManager
 \emph default
 crea un oggetto di tipo 
 \emph on
-LobbyPlayer 
+Lobby Player 
 \emph default
 che lo rappresenta, replicando tutte le informazioni salienti agli altri
  giocatori in partita (quali l'indice del giocatore nella partita ed il
@@ -1991,7 +2046,7 @@ server
 \emph default
 genera 
 \emph on
-LobbyPlayer 
+Lobby Player 
 \emph default
 addizionali finchè il numero di partecipanti non diventa esattamente 
 \emph on
@@ -2032,7 +2087,7 @@ disponibile, l'utente era costretto a ritornare al menú principale per crearne
  al giocatore di entrare in partita e lasciare che il sistema decidesse
  se avviare una partita online o offline (a seconda se vi fosse una connessione
  Internet o meno), tuttavia, a causa di tempi di sviluppo ridotti, questa
- funzionalitá è stata rimandata a sviluppi futuri.
+ funzionalitá è stata rimandata ad iterazioni future.
 \end_layout
 
 \begin_layout Subsection
@@ -2042,11 +2097,11 @@ Gestione della partita
 \begin_layout Standard
 La gestione dello stato di gioco è affidata ad un oggetto 
 \emph on
-GameMode
+Game Mode
 \emph default
  il cui tipo, derivato dalla classe 
 \emph on
-BaseGameMode
+Base Game Mode
 \emph default
 , dipende dalla modalitá di gioco selezionata (Fig.
  
@@ -2125,7 +2180,7 @@ osservatori
 , quali HUD e i veicoli, possono registrarsi e reagire.
  La classe base 
 \emph on
-BaseGameMode
+Base Game Mode
 \emph default
  contiene tutte le logiche condivise tra le varie modalitá, mentre le sue
  derivate ne possono estendere il comportamento implementando logiche specifiche
@@ -2267,7 +2322,7 @@ trasferito
 \emph default
 dal 
 \emph on
-LobbyPlayer 
+Lobby Player 
 \emph default
 al veicolo, in modo che quest'ultimo possa essere usato per inviare 
 \emph on
@@ -2280,7 +2335,7 @@ server
  durante la partita.
  L'oggetto 
 \emph on
-LobbyPlayer 
+Lobby Player 
 \emph default
 viene preservato in modo da poter contenere informazioni associate al giocatore,
  quali ad esempio il suo 
@@ -2290,7 +2345,7 @@ punteggio.
 \emph default
  Sull'istanza locale di gioco, l'oggetto 
 \emph on
-BaseGameMode 
+Base Game Mode 
 \emph default
 determina la creazione di tutti gli oggetti necessari al giocatore che non
  devono essere replicati, quali ad esempio il 
@@ -2394,11 +2449,11 @@ veicoli
 \emph default
 , il 
 \emph on
-GameMode 
+Game Mode 
 \emph default
 e il 
 \emph on
-LobbyManager
+Lobby Manager
 \emph default
 .
 \end_layout
@@ -2433,7 +2488,7 @@ game object
 \emph default
 apposito, detto 
 \emph on
-NetworkSpawner
+Network Spawner
 \emph default
 , il quale puó essere posizionato direttamente in scena e configurato con
  un riferimento ad un'altro 
@@ -2471,13 +2526,31 @@ Intelligenza artificiale
 \end_layout
 
 \begin_layout Standard
-L'intelligenza artificiale in gioco è gestita attraverso un singolo componente
- 
+L'
 \emph on
-PlayerAI
+intelligenza artificiale
+\emph default
+ di gioco è gestita attraverso un singolo componente 
+\emph on
+Player AI
 \emph default
  che, attivato su un qualsiasi veicolo, ne gestisce direttamente gli input,
- quali accelerazione ed azione di sterzo.
+ quali 
+\emph on
+accelerazione
+\emph default
+ ed 
+\emph on
+azione di sterzo
+\emph default
+ (vedi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Gestione-degli-input"
+
+\end_inset
+
+).
  Questo componente è generato automaticamente durante l'inizializzazione
  del componente 
 \emph on
@@ -2485,7 +2558,7 @@ Ship
 \emph default
  se il giocatore associato ad esso è governato dalla 
 \emph on
-AI
+IA
 \emph default
 .
 \end_layout
@@ -2493,12 +2566,77 @@ AI
 \begin_layout Standard
 Il sistema di 
 \emph on
-intelligenza artificiale 
+intelligenza artificiale
 \emph default
-di OrbTail è molto semplice e si basa su tre strategie diverse che vengono
- attivate ciclicamente per un tempo massimo casuale.
- Il sistema si basa sul raggiungimento di un oggetto di gioco il quale,
- a seconda della strategia attualmente attiva, corrisponde ad un 
+ è molto semplice e si basa su 
+\emph on
+tre
+\emph default
+ strategie diverse che vengono attivate in funzione di eventi di gioco particola
+ri (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:AI"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/ai.jpg
+	lyxscale 20
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Intelligenza artificiale - Strategie
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:AI"
+
+\end_inset
+
+Strategie adottate dall'intelligenza artificiale
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Nella forma piú semplice, ciascuna strategia si basa sul raggiungimento
+ di un 
+\emph on
+game object 
+\emph default
+bersaglio il quale, a seconda della strategia attualmente attiva, corrisponde
+ ad un 
 \emph on
 orb
 \emph default
@@ -2508,16 +2646,257 @@ core
 \emph default
 , un 
 \emph on
-veicolo avversario
+veicolo avversario 
 \emph default
- o un punto sull'arena.
+oppure un 
+\emph on
+punto di controllo
+\emph default
+.
+ Una volta determinato l'oggetto da raggiungere, il sistema usa la direzione
+ relativa 
+\begin_inset Formula $\overrightarrow{d_{rel}}$
+\end_inset
+
+ di quest'ultimo rispetto al veicolo per calcolare i valori di 
+\emph on
+accelerazione 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ 
+\emph default
+e di 
+\emph on
+azione di sterzo
+\emph default
+ 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Standard
-Uso di checkpoint per navigare la mappa.
- Strategia patrolling, raggiunge un checkpoint a caso.
- Strategia collect, raggiunge un orb.
- Strategia attack (si allontana e carica il target).
+\begin_inset Formula 
+\[
+\overrightarrow{d_{rel}}=\overrightarrow{p_{b}}-\overrightarrow{p_{v}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+s_{i}=\overrightarrow{u}\cdot(\overrightarrow{f}\times\overrightarrow{d_{rel}})\cdot K_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a_{i}=1-|s_{i}|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+dove 
+\begin_inset Formula $\overrightarrow{u}$
+\end_inset
+
+ e 
+\begin_inset Formula $\overrightarrow{f}$
+\end_inset
+
+ sono i versori che rappresentano rispettivamente la direzione longitudinale
+ e quella sagittale del veicolo, 
+\begin_inset Formula $\overrightarrow{p_{b}}$
+\end_inset
+
+ e 
+\begin_inset Formula $\overrightarrow{p_{v}}$
+\end_inset
+
+ sono invece la posizione dell'oggetto bersaglio e quella del veicolo stesso.
+ Il calcolo dell'
+\emph on
+azione di sterzo 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+
+\emph default
+ permette al veicolo di sterzare in maniera proporzionale alla sua differenza
+ angolare rispetto al suo obiettivo.
+ 
+\begin_inset Formula $K_{s}$
+\end_inset
+
+ è un fattore moltiplicativo che permette di accentuare o diminuire questa
+ azione ed è liberamente configurabile.
+ L'azione di 
+\emph on
+accelerazione 
+\emph default
+è calcolata sulla base del valore di 
+\emph on
+sterzo 
+\emph default
+e, sebbene impedisce che il veicolo comandato dalla 
+\emph on
+IA 
+\emph default
+possa accelerare e sterzare al massimo in un dato istante, garantisce un
+ controllo maggiore e una strategia piú consistente, impedendo allo stesso
+ tempo che il veicolo possa collidere con ostacoli durante un cambio di
+ direzione.
+\end_layout
+
+\begin_layout Standard
+La strategia fondamentale
+\emph on
+ 
+\emph default
+è quella dedicata all'
+\emph on
+esplorazione
+\emph default
+ e consente al veicolo di muoversi liberamente nell'arena al fine di individuare
+ oggetti da collezionare o veicoli da aggredire.
+ Questa strategia si basa sul raggiungimento di particolari 
+\emph on
+punti di controllo 
+\emph default
+invisibili posizionati nell'arena, selezionati in maniera 
+\emph on
+casuale
+\emph default
+.
+ L'intelligenza artificiale usa un componente aggiuntivo, l'
+\emph on
+AI Field-of-View
+\emph default
+, che ne modella il suo campo visivo.
+ Ogni volta che un oggetto entra all'interno del campo visivo, il sistema
+ ne determina la sua 
+\emph on
+utilitá
+\emph default
+ e stabilisce se raccoglierlo (in caso di 
+\emph on
+orb 
+\emph default
+o 
+\emph on
+core
+\emph default
+) o aggredirlo (in caso di un 
+\emph on
+veicolo avversario
+\emph default
+), attivando una strategia opportuna.
+ Questi oggetti possono causare un cambio di strategia solo se il veicolo
+ è in fase 
+\emph on
+esplorativa
+\emph default
+.
+ Se l'oggetto bersaglio dovesse finire fuori dal campo visivo dell'intelligenza
+ artificiale, il sistema annulla qualsiasi strategia in corso, riabilitando
+ quella dedicata all'
+\emph on
+esplorazione
+\emph default
+ dell'arena
+\emph on
+.
+ 
+\emph default
+La strategia di collezione degli oggetti è molto semplice, in quanto consiste
+ semplicemente nel calcolare un valore di input tale da permettere il raggiungim
+ento dell'oggetto nel minor tempo possibile.
+ La strategia 
+\emph on
+offensiva 
+\emph default
+invece si sviluppa in due fasi.
+ Nella prima viene determinata l'
+\emph on
+utilitá 
+\emph default
+del veicolo da aggredire, ignorando tutti quelli con un numero di 
+\emph on
+orb 
+\emph default
+esiguo.
+ Una volta che un 
+\emph on
+veicolo
+\emph default
+ viene selezionato come bersaglio
+\emph on
+, 
+\emph default
+l'
+\emph on
+AI 
+\emph default
+cerca di collidervi alla massima velocitá (in maniera analoga a quanto avviene
+ durante la collezione degli oggetti) e, ad impatto avvenuto, determina
+ se vi è ancora necessitá di proseguire l'attacco (valutando nuovamente
+ il numero di 
+\emph on
+orb 
+\emph default
+posseduti).
+ In caso positivo, l'
+\emph on
+AI 
+\emph default
+cerca di allontanarsi dal veicolo avversario per un certo periodo di tempo
+ selezionato in un intervallo casuale di pochi secondi, dopodichè procede
+ nuovamente con la fase di 
+\emph on
+attacco
+\emph default
+.
+ In caso negativo, l'
+\emph on
+AI 
+\emph default
+si porta in fase 
+\emph on
+esplorativa.
+ 
+\emph default
+Per impedire che un'
+\emph on
+AI 
+\emph default
+possa accanirsi contro un veicolo avversario, l'intera strategia 
+\emph on
+aggressiva 
+\emph default
+è temporizzata e viene disabilitata dopo un tempo casuale, portando l'
+\emph on
+AI 
+\emph default
+nuovamente in fase 
+\emph on
+esplorativa
+\emph default
+.
 \end_layout
 
 \begin_layout Section
@@ -2658,7 +3037,7 @@ Gestione multigiocatore locale
 \begin_layout Standard
 Durante l'inizializzazione della partita, il 
 \emph on
-BaseGameMode
+Base Game Mode
 \emph default
  crea i 
 \emph on
@@ -2744,7 +3123,8 @@ della
 \emph on
 Camera 
 \emph default
-di conseguenza 
+di conseguenza (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Camera"
@@ -2854,7 +3234,7 @@ attivo, disegnata nel quadrante opportuno.
 Il gioco non usa il sistema di interfaccia utente messo a disposizione da
  Unity ma si basa su un sistema di pannelli tridimensionali che seguono
  il veicolo.
- Questa gestione é affidata al componente 
+ Questa gestione è affidata al componente 
 \emph on
 HUD Handler 
 \emph default
