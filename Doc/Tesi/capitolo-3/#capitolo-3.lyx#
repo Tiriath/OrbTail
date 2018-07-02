@@ -82,8 +82,8 @@ In questo capitolo si descrive la direzione artistica seguita dal progetto,
  Le scelte qui presentate considerano i requisiti di design precedentemente
  illustrati, senza perdere di vista le limitazioni tecniche e temporali
  a cui sottostare.
- In generale si é cercato di individuare uno stile semplice, che potesse
- risultare estremamente consistente su tutte le piattaforme supportate.
+ In generale si é cercato di individuare uno stile semplice e pulito, che
+ potesse risultare estremamente consistente su tutte le piattaforme supportate.
 \end_layout
 
 \begin_layout Section
@@ -144,7 +144,7 @@ e
 \emph on
 potenziamenti 
 \emph default
-al fine di sconfiggere gli avversari e tagliare il traguardo prima che questi
+al fine di ostacolare gli avversari e tagliare il traguardo prima che questi
  possano fare altrettanto.
  I tracciati percorribili sono caratterizzati da ampie carreggiate, curve
  paraboliche, salti e topologie sinuose.
@@ -152,13 +152,67 @@ al fine di sconfiggere gli avversari e tagliare il traguardo prima che questi
  attraversano cittá futuristiche caratterizzate da tinte neutre ma arricchite
  da cartelloni pubblicitari al neon, segnaletica luminosa e dettagli in
  materiali traslucidi, i quali vengono risaltati ancor di piú nelle modalitá
- notturne.
- Non mancano inoltre ambienti naturali in cui gareggiare quali montagne,
- canyon e deserti o circuiti volanti immersi nelle nubi.
+ notturne (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:WipeoutTrack"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/wipeout_track.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Standard
-Il gioco offre un gran numero di 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Crash Team Racing
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:WipeoutTrack"
+
+\end_inset
+
+Wipeout Omega Collection - Ambientazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Non mancano inoltre ambienti naturali in cui gareggiare quali montagne,
+ canyon e deserti o circuiti volanti immersi nelle nubi.
+ Il gioco offre un gran numero di 
 \emph on
 navi, 
 \emph default
@@ -167,17 +221,145 @@ riccamente personalizzabili attraverso
 livree 
 \emph default
 ed altri dettagli meccanici.
- Le navi sono caratterizzate da forme affusolate ed aerodinamiche, materiali
- metallici in cui risalta l'abitacolo di vetro e dettagli che ricordano
- vagamente veicoli da guerra.
+ Le 
+\emph on
+navi
+\emph default
+ sono caratterizzate da forme affusolate ed aerodinamiche, materiali metallici
+ in cui risalta l'abitacolo di vetro e dettagli che ricordano vagamente
+ veicoli da guerra (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:WipeoutShip"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/wipeout_ship.png
+	lyxscale 20
+	height 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Crash Team Racing
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:WipeoutShip"
+
+\end_inset
+
+Wipeout Omega Collection - Esempio di nave
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Star Fox
+Star Fox 64 3D
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Star Fox 64 3D 
+\emph default
+é uno 
+\emph on
+sparatutto a scorrimento
+\emph default
+ del 2011 sviluppato da 
+\emph on
+Nintendo 
+\emph default
+per 
+\emph on
+Nintendo 3DS
+\emph default
+.
+ 
 \end_layout
 
 \begin_layout Subsection
-Tron
+TRON RUN/r
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+TRON RUN/r 
+\emph default
+é un videogioco sviluppato da 
+\emph on
+Sanzaru Games 
+\emph default
+e pubblicato da 
+\emph on
+Disney Interactive 
+\emph default
+nel 2015 su 
+\emph on
+PlayStation4, XBoxOne 
+\emph default
+e 
+\emph on
+Windows.
+
+\emph default
+ Il gioco é un'
+\emph on
+avventura dinamica 
+\emph default
+incentrata sulle 
+\emph on
+corse
+\emph default
+ all'interno del mondo virtuale di TRON.
+ Il gioco prevede varie modalitá di gioco che consentono all'utente di correre
+ a piedi o usando una motocicletta.
+ L'ambientazione di gioco varia leggermente a seconda se l'avatar sta correndo
+ a piedi o usando la propria lightcycle.
+ Nel primo caso l'ambiente é costituito da un'ambiente che ricorda vagamente
+ una cittá virtuale, piena di piattaforme sospese ed ostacoli che si materializz
+ano mentre il giocatore vi si avvicina.
+ La seconda modalitá invece prevede un ampio tracciato che attraversa un
+ mondo virtuale.
+ Entrambi gli ambienti sono caratterizzati da elementi di gioco molto scuri
+ a cui fanno forte contrasto illuminazioni al neon che ne evidenziano le
+ caratteristiche fisiche.
 \end_layout
 
 \begin_layout Section

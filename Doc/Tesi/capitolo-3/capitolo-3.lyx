@@ -241,7 +241,7 @@ reference "fig:WipeoutShip"
 placement !h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -289,11 +289,191 @@ Wipeout Omega Collection - Esempio di nave
 \end_layout
 
 \begin_layout Subsection
-Star Fox
+TRON RUN/r
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+TRON RUN/r 
+\emph default
+é un videogioco sviluppato da 
+\emph on
+Sanzaru Games 
+\emph default
+e pubblicato da 
+\emph on
+Disney Interactive 
+\emph default
+nel 2015 su 
+\emph on
+PlayStation4, XBoxOne 
+\emph default
+e 
+\emph on
+Windows.
+
+\emph default
+ Il gioco é un'
+\emph on
+avventura dinamica 
+\emph default
+incentrata sulle 
+\emph on
+corse
+\emph default
+ all'interno del mondo virtuale di TRON.
+ Il gioco prevede varie modalitá di gioco che consentono all'utente di correre
+ a piedi o usando una motocicletta.
+ L'ambientazione di gioco varia leggermente a seconda se l'avatar sta correndo
+ a piedi o usando la propria lightcycle.
+ Nel primo caso l'ambiente ricorda vagamente le fattezze di una cittá virtuale,
+ piena di piattaforme sospese ed ostacoli che si materializzano mentre il
+ giocatore vi si avvicina (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:TronRun"
+
+\end_inset
+
+)
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/tronrun_feet.png
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Crash Team Racing
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:TronRun"
+
+\end_inset
+
+TRON RUN/r - Corsa a piedi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ La seconda modalitá invece prevede un ampio tracciato che attraversa un
+ mondo virtuale (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:TronRunLightcycle"
+
+\end_inset
+
+)
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/tronrun_lightcycle.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Crash Team Racing
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:TronRunLightcycle"
+
+\end_inset
+
+TRON RUN/r - Light Cycle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Entrambi gli ambienti sono caratterizzati da elementi di gioco molto scuri
+ a cui fanno forte contrasto illuminazioni al neon che ne evidenziano le
+ caratteristiche fisiche.
 \end_layout
 
 \begin_layout Subsection
-Tron
+Star Fox 64 3D
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Star Fox 64 3D 
+\emph default
+é uno 
+\emph on
+sparatutto a scorrimento
+\emph default
+ del 2011 sviluppato da 
+\emph on
+Nintendo 
+\emph default
+per 
+\emph on
+Nintendo 3DS
+\emph default
+.
+ 
 \end_layout
 
 \begin_layout Section
