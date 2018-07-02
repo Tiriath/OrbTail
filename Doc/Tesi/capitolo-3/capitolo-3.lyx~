@@ -188,7 +188,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Crash Team Racing
+Wipeout Omega Collection - Ambientazione
 \end_layout
 
 \end_inset
@@ -260,10 +260,10 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Crash Team Racing
+Wipeout Omega Collection - Esempio di nave
 \end_layout
 
 \end_inset
@@ -286,31 +286,6 @@ Wipeout Omega Collection - Esempio di nave
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Star Fox 64 3D
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Star Fox 64 3D 
-\emph default
-é uno 
-\emph on
-sparatutto a scorrimento
-\emph default
- del 2011 sviluppato da 
-\emph on
-Nintendo 
-\emph default
-per 
-\emph on
-Nintendo 3DS
-\emph default
-.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -343,22 +318,34 @@ Windows.
 \emph on
 avventura dinamica 
 \emph default
-incentrata sulle 
+focalizzata sulle 
 \emph on
 corse
 \emph default
- all'interno del mondo virtuale di TRON.
- Il gioco prevede varie modalitá di gioco che consentono all'utente di correre
- a piedi o usando una motocicletta.
- L'ambientazione di gioco varia leggermente a seconda se l'avatar sta correndo
- a piedi o usando la propria lightcycle.
- Nel primo caso l'ambiente ricorda vagamente le fattezze di una cittá virtuale,
- piena di piattaforme sospese ed ostacoli che si materializzano mentre il
- giocatore vi si avvicina (Fig.
+ all'interno del mondo virtuale di TRON, siano esse 
+\emph on
+podistiche 
+\emph default
+oppure tramite l'uso di una motocicletta virtuale detta 
+\emph on
+Light Cycle
+\emph default
+.
+
+\emph on
+ 
+\emph default
+Le ambientazioni presentate sono tre.
+ La prima é costituita dalla cittá virtuale di 
+\emph on
+Tron City, 
+\emph default
+caratterizzata da lunghe strade immerse in elementi geometrici che ricordano
+ vagamente edifici, ponti o tunnel (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:TronRun"
+reference "fig:TronCity"
 
 \end_inset
 
@@ -386,10 +373,10 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Crash Team Racing
+TRON RUN/r - Tron City
 \end_layout
 
 \end_inset
@@ -397,11 +384,11 @@ Crash Team Racing
 
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:TronRun"
+name "fig:TronCity"
 
 \end_inset
 
-TRON RUN/r - Corsa a piedi
+TRON RUN/r - Tron City
 \end_layout
 
 \end_inset
@@ -412,12 +399,31 @@ TRON RUN/r - Corsa a piedi
 \end_inset
 
 .
- La seconda modalitá invece prevede un ampio tracciato che attraversa un
- mondo virtuale (Fig.
+ I percorsi presentano un gran numero di ostacoli e piattaforme sospese
+ che si materializzano mentre il giocatore vi si avvicina.
+ L'ambiente é caratterizzato dalla massicia presenza di effetti di luce
+ al neon che fanno da contrasto a geometrie riflettenti e cieli tetri.
+ La seconda ambientazione é nota col termine 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+Whiteout
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\emph default
+ed é costituita da un lungo tracciato percorribile tramite la propria 
+\emph on
+Light Cycle 
+\emph default
+(Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:TronRunLightcycle"
+reference "fig:TronWhiteout"
 
 \end_inset
 
@@ -445,10 +451,10 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Crash Team Racing
+TRON RUN/r - Whiteout
 \end_layout
 
 \end_inset
@@ -456,11 +462,11 @@ Crash Team Racing
 
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:TronRunLightcycle"
+name "fig:TronWhiteout"
 
 \end_inset
 
-TRON RUN/r - Light Cycle
+TRON RUN/r - Whiteout
 \end_layout
 
 \end_inset
@@ -471,9 +477,55 @@ TRON RUN/r - Light Cycle
 \end_inset
 
 .
- Entrambi gli ambienti sono caratterizzati da elementi di gioco molto scuri
- a cui fanno forte contrasto illuminazioni al neon che ne evidenziano le
- caratteristiche fisiche.
+
+\emph on
+ 
+\emph default
+Il tracciato si sviluppa in maniera sinuosa in un 
+\emph on
+ambiente asettico 
+\emph default
+caratterizzato da tonalitá neutre molto chiare che quasi soffocano gli onniprese
+nti effetti al neon.
+ La terza ambientazione, nota col nome 
+\begin_inset Quotes fld
+\end_inset
+
+
+\emph on
+Outlands
+\begin_inset Quotes frd
+\end_inset
+
+, 
+\emph default
+unisce gli elementi delle altre due in una cittá virtuale in decadenza,
+ caratterizzata da ampi ambienti immersi in elementi dalle tonalitá cupe.
+\end_layout
+
+\begin_layout Subsection
+Star Fox 64 3D
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Star Fox 64 3D 
+\emph default
+é uno 
+\emph on
+sparatutto a scorrimento
+\emph default
+ del 2011 sviluppato da 
+\emph on
+Nintendo 
+\emph default
+per 
+\emph on
+Nintendo 3DS
+\emph default
+.
+ 
 \end_layout
 
 \begin_layout Section

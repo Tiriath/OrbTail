@@ -188,7 +188,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Crash Team Racing
+Wipeout Omega Collection - Ambientazione
 \end_layout
 
 \end_inset
@@ -260,10 +260,10 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Crash Team Racing
+Wipeout Omega Collection - Esempio di nave
 \end_layout
 
 \end_inset
@@ -286,31 +286,6 @@ Wipeout Omega Collection - Esempio di nave
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Star Fox 64 3D
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Star Fox 64 3D 
-\emph default
-é uno 
-\emph on
-sparatutto a scorrimento
-\emph default
- del 2011 sviluppato da 
-\emph on
-Nintendo 
-\emph default
-per 
-\emph on
-Nintendo 3DS
-\emph default
-.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -343,23 +318,199 @@ Windows.
 \emph on
 avventura dinamica 
 \emph default
-incentrata sulle 
+focalizzata sulle 
 \emph on
 corse
 \emph default
- all'interno del mondo virtuale di TRON.
- Il gioco prevede varie modalitá di gioco che consentono all'utente di correre
- a piedi o usando una motocicletta.
- L'ambientazione di gioco varia leggermente a seconda se l'avatar sta correndo
- a piedi o usando la propria lightcycle.
- Nel primo caso l'ambiente é costituito da un'ambiente che ricorda vagamente
- una cittá virtuale, piena di piattaforme sospese ed ostacoli che si materializz
-ano mentre il giocatore vi si avvicina.
- La seconda modalitá invece prevede un ampio tracciato che attraversa un
- mondo virtuale.
- Entrambi gli ambienti sono caratterizzati da elementi di gioco molto scuri
- a cui fanno forte contrasto illuminazioni al neon che ne evidenziano le
- caratteristiche fisiche.
+ all'interno del mondo virtuale di TRON, siano esse 
+\emph on
+podistiche 
+\emph default
+oppure tramite l'uso di una motocicletta virtuale detta 
+\emph on
+Light Cycle
+\emph default
+.
+
+\emph on
+ 
+\emph default
+Le ambientazioni presentate sono tre.
+ La prima é costituita dalla cittá virtuale di 
+\emph on
+Tron City, 
+\emph default
+caratterizzata da lunghe strade immerse in elementi geometrici che ricordano
+ vagamente edifici, ponti o tunnel (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:TronCity"
+
+\end_inset
+
+)
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/tronrun_feet.png
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+TRON RUN/r - Tron City
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:TronCity"
+
+\end_inset
+
+TRON RUN/r - Tron City
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ I percorsi presentano un gran numero di ostacoli e piattaforme sospese
+ che si materializzano mentre il giocatore vi si avvicina.
+ L'ambiente é caratterizzato dalla massicia presenza di effetti di luce
+ al neon che fanno da contrasto a geometrie riflettenti e cieli tetri.
+ La seconda ambientazione é nota col termine 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+Whiteout
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\emph default
+ed é costituita da un lungo tracciato percorribile tramite la propria 
+\emph on
+Light Cycle 
+\emph default
+(Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:TronWhiteout"
+
+\end_inset
+
+)
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/tronrun_lightcycle.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+TRON RUN/r - Whiteout
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:TronWhiteout"
+
+\end_inset
+
+TRON RUN/r - Whiteout
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+
+\emph on
+ 
+\emph default
+Il tracciato si sviluppa in maniera sinuosa in un 
+\emph on
+ambiente asettico 
+\emph default
+caratterizzato da tonalitá neutre molto chiare che quasi
+\end_layout
+
+\begin_layout Subsection
+Star Fox 64 3D
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Star Fox 64 3D 
+\emph default
+é uno 
+\emph on
+sparatutto a scorrimento
+\emph default
+ del 2011 sviluppato da 
+\emph on
+Nintendo 
+\emph default
+per 
+\emph on
+Nintendo 3DS
+\emph default
+.
+ 
 \end_layout
 
 \begin_layout Section
