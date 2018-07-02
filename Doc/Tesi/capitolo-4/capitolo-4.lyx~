@@ -478,7 +478,7 @@ La prima fase dello sviluppo di OrbTail si concentra sulla definizione dell'arch
 itettura generale del gioco ed in particolar modo delle meccaniche di base.
  Quest'ultime sono condivise tra tutte le modalitá e livelli e pertanto
  sono state pensate per essere completamente indipendenti da essi.
- Tra le meccaniche di base troviamo la gestione della gravitá, del sistema
+ Tra le meccaniche di base troviamo la gestione della gravità, del sistema
  di controllo dei veicoli, degli oggetti collezionabili, degli scontri e
  dei potenziamenti (Fig.
  
@@ -546,7 +546,7 @@ Gestione della gravitá
 
 \begin_layout Standard
 I livelli offerti dal gioco sono caratterizzati da topologie profondamente
- diverse, il che rende impossibile utilizzare la gravitá automatica fornita
+ diverse, il che rende impossibile utilizzare la gravità automatica fornita
  dal motore fisico di Unity per far fluttuare gli oggetti su di essi.
  Durante la prima iterazione ci si è affidati al sistema di 
 \emph on
@@ -2115,12 +2115,12 @@ reference "fig:GameModes"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/game_modes.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/game_modes.png
 	lyxscale 20
 	width 12cm
 
@@ -3123,7 +3123,8 @@ della
 \emph on
 Camera 
 \emph default
-di conseguenza 
+di conseguenza (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Camera"

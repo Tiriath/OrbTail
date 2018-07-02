@@ -74,7 +74,251 @@
 \begin_body
 
 \begin_layout Standard
-3D, Reference, Art Bible
+In questo capitolo si descrive la direzione artistica seguita dal progetto,
+ usando videogiochi esistenti come punto di riferimento per l'ambientazione
+ e per la resa visiva.
+ Viene inoltre dettagliato il design dei vari elementi di gioco quali arene
+ e veicoli e dell'interfaccia di gioco nel suo complesso.
+ Le scelte qui presentate considerano i requisiti di design precedentemente
+ illustrati, senza perdere di vista le limitazioni tecniche e temporali
+ a cui sottostare.
+ In generale si é cercato di individuare uno stile semplice e pulito, che
+ potesse risultare estremamente consistente su tutte le piattaforme supportate.
+\end_layout
+
+\begin_layout Section
+Titoli esistenti
+\end_layout
+
+\begin_layout Standard
+In questo capitolo vengono illustrati alcuni titoli esistenti al fine di
+ individuare una possibile direzione stilistica da seguire durante lo sviluppo
+ di OrbTail.
+ I videogiochi presentati sono stati selezionati tra diverse piattaforme
+ e, sebbene manifestano meccaniche di gioco completamente diverse, sono
+ accomunati da uno stile molto simile.
+ Per ciascuno di essi vengono esaltate principalmente le caratteristiche
+ visive e di ambientazione, ignorando completamente tutte le altre.
+\end_layout
+
+\begin_layout Subsection
+Wipeout Omega Collection
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Wipeout Omega Collection 
+\emph default
+é un videogioco di 
+\emph on
+corse futuristiche 
+\emph default
+sviluppato da 
+\emph on
+XDev, Clever Beans 
+\emph default
+e 
+\emph on
+EPOS Game Studios 
+\emph default
+nel 2017 disponibile per 
+\emph on
+PlayStation4.
+ 
+\emph default
+Il gioco é ambientato in un futuro verosimile in cui ciascun giocatore guida
+ 
+\emph on
+navi 
+\emph default
+ad 
+\emph on
+anti-gravitá 
+\emph default
+in grado di usare diverse 
+\emph on
+armi 
+\emph default
+e 
+\emph on
+potenziamenti 
+\emph default
+al fine di ostacolare gli avversari e tagliare il traguardo prima che questi
+ possano fare altrettanto.
+ I tracciati percorribili sono caratterizzati da ampie carreggiate, curve
+ paraboliche, salti e topologie sinuose.
+ L'ambientazione del gioco é varia ma predilige il contesto urbano: i tracciati
+ attraversano cittá futuristiche caratterizzate da tinte neutre ma arricchite
+ da cartelloni pubblicitari al neon, segnaletica luminosa e dettagli in
+ materiali traslucidi, i quali vengono risaltati ancor di piú nelle modalitá
+ notturne (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:WipeoutTrack"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/wipeout_track.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Crash Team Racing
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:WipeoutTrack"
+
+\end_inset
+
+Wipeout Omega Collection - Ambientazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Non mancano inoltre ambienti naturali in cui gareggiare quali montagne,
+ canyon e deserti o circuiti volanti immersi nelle nubi.
+ Il gioco offre un gran numero di 
+\emph on
+navi, 
+\emph default
+riccamente personalizzabili attraverso 
+\emph on
+livree 
+\emph default
+ed altri dettagli meccanici.
+ Le 
+\emph on
+navi
+\emph default
+ sono caratterizzate da forme affusolate ed aerodinamiche, materiali metallici
+ in cui risalta l'abitacolo di vetro e dettagli che ricordano vagamente
+ veicoli da guerra (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:WipeoutShip"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/wipeout_ship.png
+	lyxscale 20
+	height 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Crash Team Racing
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:WipeoutShip"
+
+\end_inset
+
+Wipeout Omega Collection - Esempio di nave
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Star Fox
+\end_layout
+
+\begin_layout Subsection
+Tron
+\end_layout
+
+\begin_layout Section
+OrbTail: comparto artistico
+\end_layout
+
+\begin_layout Standard
+Il concept originale di OrbTail prevedeva un gioco 2D con camera dall'alto
+ e grafica geometrica al neon.
+ Nel corso dello sviluppo questo concetto si é evoluto, passando al 3D al
+ fine di dare maggiori possibilitá allo sviluppo delle forme delle arene.
+ OrbTail é ambientato in un universo fantascientifico.
+ 
+\end_layout
+
+\begin_layout Subsection
+Design dei livelli
+\end_layout
+
+\begin_layout Subsection
+Design dei veicoli
+\end_layout
+
+\begin_layout Subsection
+Design dell'esperienza utente
 \end_layout
 
 \end_body

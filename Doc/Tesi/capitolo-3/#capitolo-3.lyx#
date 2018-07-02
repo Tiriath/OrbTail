@@ -1,0 +1,209 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\options openright
+\use_default_options false
+\master ../tesi.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Indice
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+In questo capitolo si descrive la direzione artistica seguita dal progetto,
+ usando videogiochi esistenti come punto di riferimento per l'ambientazione
+ e per la resa visiva.
+ Viene inoltre dettagliato il design dei vari elementi di gioco quali arene
+ e veicoli e dell'interfaccia di gioco nel suo complesso.
+ Le scelte qui presentate considerano i requisiti di design precedentemente
+ illustrati, senza perdere di vista le limitazioni tecniche e temporali
+ a cui sottostare.
+ In generale si é cercato di individuare uno stile semplice, che potesse
+ risultare estremamente consistente su tutte le piattaforme supportate.
+\end_layout
+
+\begin_layout Section
+Titoli esistenti
+\end_layout
+
+\begin_layout Standard
+In questo capitolo vengono illustrati alcuni titoli esistenti al fine di
+ individuare una possibile direzione stilistica da seguire durante lo sviluppo
+ di OrbTail.
+ I videogiochi presentati sono stati selezionati tra diverse piattaforme
+ e, sebbene manifestano meccaniche di gioco completamente diverse, sono
+ accomunati da uno stile molto simile.
+ Per ciascuno di essi vengono esaltate principalmente le caratteristiche
+ visive e di ambientazione, ignorando completamente tutte le altre.
+\end_layout
+
+\begin_layout Subsection
+Wipeout Omega Collection
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Wipeout Omega Collection 
+\emph default
+é un videogioco di 
+\emph on
+corse futuristiche 
+\emph default
+sviluppato da 
+\emph on
+XDev, Clever Beans 
+\emph default
+e 
+\emph on
+EPOS Game Studios 
+\emph default
+nel 2017 disponibile per 
+\emph on
+PlayStation4.
+ 
+\emph default
+Il gioco é ambientato in un futuro verosimile in cui ciascun giocatore guida
+ 
+\emph on
+navi 
+\emph default
+ad 
+\emph on
+anti-gravitá 
+\emph default
+in grado di usare diverse 
+\emph on
+armi 
+\emph default
+e 
+\emph on
+potenziamenti 
+\emph default
+al fine di sconfiggere gli avversari e tagliare il traguardo prima che questi
+ possano fare altrettanto.
+ I tracciati percorribili sono caratterizzati da ampie carreggiate, curve
+ paraboliche, salti e topologie sinuose.
+ L'ambientazione del gioco é varia ma predilige il contesto urbano: i tracciati
+ attraversano cittá futuristiche caratterizzate da tinte neutre ma arricchite
+ da cartelloni pubblicitari al neon, segnaletica luminosa e dettagli in
+ materiali traslucidi, i quali vengono risaltati ancor di piú nelle modalitá
+ notturne.
+ Non mancano inoltre ambienti naturali in cui gareggiare quali montagne,
+ canyon e deserti o circuiti volanti immersi nelle nubi.
+\end_layout
+
+\begin_layout Standard
+Il gioco offre un gran numero di 
+\emph on
+navi, 
+\emph default
+riccamente personalizzabili attraverso 
+\emph on
+livree 
+\emph default
+ed altri dettagli meccanici.
+ Le navi sono caratterizzate da forme affusolate ed aerodinamiche, materiali
+ metallici in cui risalta l'abitacolo di vetro e dettagli che ricordano
+ vagamente veicoli da guerra.
+\end_layout
+
+\begin_layout Subsection
+Star Fox
+\end_layout
+
+\begin_layout Subsection
+Tron
+\end_layout
+
+\begin_layout Section
+OrbTail: comparto artistico
+\end_layout
+
+\begin_layout Standard
+Il concept originale di OrbTail prevedeva un gioco 2D con camera dall'alto
+ e grafica geometrica al neon.
+ Nel corso dello sviluppo questo concetto si é evoluto, passando al 3D al
+ fine di dare maggiori possibilitá allo sviluppo delle forme delle arene.
+ OrbTail é ambientato in un universo fantascientifico.
+ 
+\end_layout
+
+\begin_layout Subsection
+Design dei livelli
+\end_layout
+
+\begin_layout Subsection
+Design dei veicoli
+\end_layout
+
+\begin_layout Subsection
+Design dell'esperienza utente
+\end_layout
+
+\end_body
+\end_document

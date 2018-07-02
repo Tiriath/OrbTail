@@ -1548,6 +1548,13 @@ ti rimanenti, impedendo che la partita si protragga indefinitamente.
 
 \begin_layout Subsection
 Veicoli
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Veicoli"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2277,7 +2284,7 @@ Planetarium Questa arena è ricavata all'interno di una
 \emph on
 sfera
 \emph default
- ed è caratterizzata da una forza di gravitá radiale che spinge i veicoli
+ ed è caratterizzata da una forza di gravità radiale che spinge i veicoli
  e tutti gli elementi di gioco sulla 
 \emph on
 superficie interna 
@@ -2486,7 +2493,7 @@ difensivo
 \end_layout
 
 \begin_layout Description
-Gravitá Una volta attivato, permette al veicolo di attrarre a se tutti gli
+Gravità Una volta attivato, permette al veicolo di attrarre a se tutti gli
  
 \emph on
 orb 
