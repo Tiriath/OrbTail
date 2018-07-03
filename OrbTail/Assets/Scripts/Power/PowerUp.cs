@@ -42,6 +42,11 @@ public class PowerUp : NetworkBehaviour
     public GameObject owner;
 
     /// <summary>
+    /// Power-up icon.
+    /// </summary>
+    public Sprite icon;
+
+    /// <summary>
     /// The ship owning this powerup.
     /// </summary>
     public Ship Owner { get; private set; }

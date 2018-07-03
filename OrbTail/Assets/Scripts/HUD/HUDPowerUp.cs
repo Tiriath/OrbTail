@@ -7,7 +7,7 @@ public class HUDPowerUp : HUDElement
 {
     public void Awake ()
     {
-        renderer_component = GetComponent<Renderer>();
+        renderer_component = GetComponent<SpriteRenderer>();
 
         renderer_component.enabled = false;
     }
@@ -54,6 +54,8 @@ public class HUDPowerUp : HUDElement
 
         if (power != null)
         {
+            renderer_component.sprite = power.icon;
+
             renderer_component.enabled = true;
 
             // #TODO Change the power icon.
@@ -95,5 +97,5 @@ public class HUDPowerUp : HUDElement
     /// <summary>
     /// Renderer component.
     /// </summary>
-    private Renderer renderer_component;
+    private SpriteRenderer renderer_component;
 }
