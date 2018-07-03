@@ -6,8 +6,9 @@
         _Diffuse("Diffuse (RGB)", 2D) = "white" {}
         _PBR("PBR (Roughness, Metalness, Emissivity)", 2D) = "white" {}
         _Normal("Normal", 2D) = "white" {}
-        _Glossiness("Smoothness", Range(0,1)) = 0.5
-        _Metallic("Metallic", Range(0,1)) = 0.0
+        _Roughness("Roughness", Range(0,1)) = 1.0
+        _Metalness("Metalness", Range(0,1)) = 1.0
+        _Emissivity("Emissivity", Range(0,10)) = 2.0
     }
     SubShader
     {
@@ -30,8 +31,9 @@
 
         fixed4 _Color;
 
-        half _Glossiness;
-        half _Metallic;
+        half _Roughness;
+        half _Metalness;
+        half _Emissivity;
 
         void surf(Input IN, inout SurfaceOutputStandard o)
         {
@@ -39,9 +41,9 @@
             fixed4 pbr = tex2D(_PBR, IN.uv_Diffuse);
 
             o.Albedo = diffuse.rgb;
-            o.Smoothness = 1.0f - pbr.r;
-            o.Metallic = pbr.g;
-            o.Emission = _Color * pbr.b;
+            o.Smoothness = 1.0f - pbr.r * _Roughness;
+            o.Metallic = pbr.g * _Metalness;
+            o.Emission = _Color * pbr.b * _Emissivity;
 
             o.Alpha = diffuse.a;
         }
