@@ -34,6 +34,11 @@ public class Ship : NetworkBehaviour
     public bool is_ready = false;
 
     /// <summary>
+    /// Livery to use, one for each possible player index value.
+    /// </summary>
+    public TextureField[] liveries;
+
+    /// <summary>
     /// Get the lobby player associated to this ship.
     /// </summary>
     public LobbyPlayer LobbyPlayer { get; private set; }
@@ -227,22 +232,17 @@ public class Ship : NetworkBehaviour
     /// </summary>
     private void RefreshColor()
     {
-        //The material is shared to reduce the draw calls.
+        var material = GetComponentInChildren<MeshRenderer>().material;
 
-        Material material = null;
+        material.SetColor("_Color", LobbyPlayer.Color);
 
-        foreach (var renderer in GetComponentsInChildren<MeshRenderer>())
+        if(liveries.Length > LobbyPlayer.player_index)
         {
-            if (renderer.gameObject.tag.Equals(Tags.ShipDetail))
-            {
-                if (material == null)
-                {
-                    material = renderer.material;
-                    material.color = LobbyPlayer.Color;
-                }
+            string livery_path = liveries[LobbyPlayer.player_index];
 
-                renderer.material = material;
-            }
+            var livery_texture = Resources.Load<Texture>(livery_path);
+
+            material.SetTexture("_Diffuse", livery_texture);
         }
     }
 
