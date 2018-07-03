@@ -160,10 +160,9 @@ public class Ship : NetworkBehaviour
 
         if (orb_material == null)
         {
-            orb_material = new Material(orb_controller.DefaultMaterial)
-            {
-                color = LobbyPlayer.Color
-            };
+            orb_material = new Material(orb_controller.DefaultMaterial);
+
+            orb_material.SetColor("_Albedo", LobbyPlayer.Color);
         }
 
         // Either link to the last orb or to the ship itself.
