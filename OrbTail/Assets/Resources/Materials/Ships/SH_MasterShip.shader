@@ -41,7 +41,6 @@
             o.Smoothness = 1.0f - pbr.r * _Roughness;
             o.Metallic = pbr.g * _Metalness;
             o.Emission = _Color * pbr.b * _Emissivity;
-
             o.Alpha = diffuse.a;
         }
         ENDCG
