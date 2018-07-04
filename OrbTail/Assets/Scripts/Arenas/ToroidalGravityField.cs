@@ -34,7 +34,14 @@ public class ToroidalGravityField : GravityField
 
         var direction = attract ? (circle_center - position) : (position - circle_center);
 
-        return direction.normalized;
+        direction.Normalize();
+
+        if (direction.sqrMagnitude <= 0.0f)
+        {
+            direction = UnityEngine.Random.insideUnitSphere;            // When an object sits exactly on the torus main ring just wiggle a tiny bit to move it inside an unstable position.
+        }
+
+        return direction;
     }
 
 }
