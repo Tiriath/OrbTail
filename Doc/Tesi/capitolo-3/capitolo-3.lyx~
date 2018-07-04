@@ -511,12 +511,16 @@ OrbTail: comparto artistico
 \end_layout
 
 \begin_layout Standard
-Il concept originale di OrbTail prevedeva un gioco 2D con camera dall'alto
- e grafica geometrica al neon.
- Nel corso dello sviluppo questo concetto si é evoluto, passando al 3D al
- fine di dare maggiori possibilitá allo sviluppo delle forme delle arene.
- OrbTail é ambientato in un universo fantascientifico.
- 
+Nel concept originale, OrbTail era un gioco 2D con camera dall'alto e grafica
+ minimale al neon.
+ Durante il processo di sviluppo questa idea si é evoluta per adeguarsi
+ meglio al design, passando ad una grafica completamente 3D e telecamera
+ ad inseguimento.
+ Questa scelta ha consentito di caratterizzare in modo piú profondo le diverse
+ arene e i veicoli contenuti in essa.
+ Il comparto artistico, un tempo minimale e soggetto a notevoli inconsistenze
+ di stile é stato completamente rivisto, partendo dalla resa visiva delle
+ arene fino ai modelli dei veicoli pilotabili e l'effettistica di gioco.
 \end_layout
 
 \begin_layout Subsection
@@ -524,7 +528,58 @@ Design dei livelli
 \end_layout
 
 \begin_layout Standard
-(Fig.
+I livelli sono caratterizzati da uno stile molto particolare, in cui effetti
+ 
+\emph on
+futuristici
+\emph default
+ al 
+\emph on
+neon 
+\emph default
+si mescolano a elementi 
+\emph on
+cyberpunk 
+\emph default
+quali 
+\emph on
+gabbie
+\emph default
+, 
+\emph on
+pavimenti in metallo 
+\emph default
+ed elementi architettonici vagamente 
+\emph on
+alieni
+\emph default
+.
+ I dettagli all'interno di ciascuna arena sono puramente estetici e servono
+ solo per rinforzare la direzione artistica.
+ Gli ambienti sono volutamente scuri in modo da mettere in risalto, tramite
+ effetti di luce, particolari elementi di gioco quali 
+\emph on
+orb 
+\emph default
+e 
+\emph on
+core 
+\emph default
+oppure dettagli utili per fare orientare il giocatore al loro interno.
+ L'arena 
+\begin_inset Quotes fld
+\end_inset
+
+
+\emph on
+Stadium
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+ caratterizzata da una forma emisferica, in cui le dinamiche di gioco si
+ sviluppano all'interno della base circolare (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -582,11 +637,29 @@ OrbTail - Stadium
 
 \end_inset
 
+ Il livello presenta un pavimento costituito da pannelli metallici fluttuanti,
+ circondati da elementi alieni a forma di colonna caratterizzati da striature
+ luminose azzurre.
+ L'arena é racchiusa all'interno di una gabbia metallica oltre la quale
+ si puó osservare il cielo stellato.
+ La seconda arena, 
+\begin_inset Quotes fld
+\end_inset
 
-\end_layout
 
-\begin_layout Standard
-(Fig.
+\emph on
+Planetarium
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+, presenta una geometria sferica ed é caratterizzata da uno stile particolarment
+e 
+\emph on
+convoluto
+\emph default
+, specie da un punto di vista interno all'arena stessa (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -644,11 +717,36 @@ OrbTail - Planetarium
 
 \end_inset
 
+ L'arena , dalle notevoli dimensioni, é completamente racchiusa un una sfera
+ costituita da pannelli 
+\emph on
+tassellati 
+\emph default
+in metallo
+\emph on
+ 
+\emph default
+e rinforzata da una spessa gabbia anch'essa metallica.
+ Il pavimento é arricchito tramite striature luminose azzurre.
+ L'elemento grafico principale é costituito da una grossa colonna che collega
+ i due poli dell'arena, caratterizzata da uno stile architettonico vagamente
+ antico ma decisamente 
+\emph on
+extraterrestre
+\emph default
+ il cui scopo é ignoto.
+ Questo elemento é l'unico in gioco a costituire un ostacolo per i veicoli
+ dei giocatori ed é pertanto possibile usarlo in maniera strategica per
+ ripararsi da aggressioni avversarie.
+ L'ultima arena, 
+\begin_inset Quotes fld
+\end_inset
 
-\end_layout
+Torus
+\begin_inset Quotes frd
+\end_inset
 
-\begin_layout Standard
-(Fig.
+, é l'arena topologicamente piú semplice (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -706,7 +804,17 @@ OrbTail - Torus
 
 \end_inset
 
-
+.
+ Vista dall'esterno ricorda vagamente un acceleratore di particelle in cui
+ le pareti sono energizzate da un flusso energetico di colore 
+\emph on
+arancio
+\emph default
+.
+ I solchi sulle pareti aiutano il giocatore a determinare la curvatura dell'aren
+a in ogni punto.
+ L'assenza di ulteriori elementi grafici si é rivelata necessaria per ridurre
+ lo sforzo sensoriale richiesto per orientarsi all'interno di questo livello.
 \end_layout
 
 \begin_layout Subsection
@@ -838,7 +946,7 @@ OrbTail - Esempio di livrea
 \end_layout
 
 \begin_layout Subsection
-Design dell'esperienza utente
+Effettistica
 \end_layout
 
 \end_body
