@@ -22,29 +22,14 @@ public class GUILobbyPlayer : MonoBehaviour
     public float not_ready_scale = 0.5f;
 
     /// <summary>
-    /// Alpha of the element when the player is ready.
-    /// </summary>
-    public float ready_alpha = 1.0f;
-
-    /// <summary>
-    /// Alpha of the element when the player is not ready.
-    /// </summary>
-    public float not_ready_alpha = 0.75f;
-
-    /// <summary>
     /// Time needed to tween the element.
     /// </summary>
     public float tween_time = 0.2f;
 
     /// <summary>
-    /// Default ship icon.
+    /// Ships this element can display.
     /// </summary>
-    public Sprite default_icon;
-
-    /// <summary>
-    /// Associate each ship to its icon.
-    /// </summary>
-    public ShipIcon[] ship_icons;
+    public ShipBinding[] ships;
 
     public void Start ()
     {
@@ -105,16 +90,23 @@ public class GUILobbyPlayer : MonoBehaviour
     {
         Debug.Assert(lobby_player == bound_lobby_player);
 
-        var ship_icons = this.ship_icons.Where(ship_icon => ship_icon.ship.name == lobby_player.player_ship).ToArray();
+        var player_ship = this.ships.Where(ship => ship.GameShip.name == lobby_player.player_ship).ToArray();
 
-        var ship_sprite = ship_icons.Length > 0 ? ship_icons[0].sprite : default_icon;
+        Destroy(ship);
 
-        GetComponent<SpriteRenderer>().sprite = ship_sprite;
+        if (player_ship.Length > 0)
+        {
+            ship = GameObject.Instantiate(player_ship[0].MenuShip, transform);
+
+            ship.transform.localPosition = Vector3.zero;
+
+            ship.GetComponent<ShipVFX>().SetLivery(lobby_player.Color, lobby_player.player_index);
+        }
     }
 
     /// <summary>
     /// Called whenever the the player ready status changes.
-    /// </summary>
+    /// </summary
     private void OnPlayerReadyChanged(LobbyPlayer lobby_player)
     {
         Debug.Assert(lobby_player == bound_lobby_player);
@@ -122,8 +114,6 @@ public class GUILobbyPlayer : MonoBehaviour
         var target_scale = lobby_player.readyToBegin ? ready_scale : not_ready_scale;
 
         iTween.ScaleTo(gameObject, original_scale * target_scale, tween_time);
-
-        iTween.FadeTo(gameObject, lobby_player.readyToBegin ? ready_alpha : not_ready_alpha, tween_time);
     }
 
     /// <summary>
@@ -140,6 +130,10 @@ public class GUILobbyPlayer : MonoBehaviour
             bound_lobby_player = null;
 
             iTween.ScaleTo(gameObject, Vector3.zero, tween_time);
+
+            Destroy(ship);
+
+            ship = null;
         }
     }
 
@@ -152,21 +146,26 @@ public class GUILobbyPlayer : MonoBehaviour
     /// Original element scale.
     /// </summary>
     private Vector3 original_scale;
+
+    /// <summary>
+    /// Ship instance used to show the ship selected by this player.
+    /// </summary>
+    private GameObject ship = null;
 }
 
 /// <summary>
-/// Associate a ship to its icon.
+/// Binds a game ship to its visual representation inside the matchmaking.
 /// </summary>
 [System.Serializable]
-public class ShipIcon
+public class ShipBinding
 {
     /// <summary>
-    /// Ship this icon refers to.
+    /// Game ship selected by the player.
     /// </summary>
-    public GameObject ship;
+    public GameObject GameShip;
 
     /// <summary>
-    /// Actual sprite to display.
+    /// Menu ship to show.
     /// </summary>
-    public Sprite sprite;
+    public GameObject MenuShip;
 }
