@@ -131,7 +131,7 @@ struct HUDCompassNeedle
     /// </summary>
     public void Update(float length, float alpha_direction)
     {
-        if(target)
+        if(target && owner)
         {
             var direction = (target.transform.position - owner.transform.position).normalized;      // In world space.
 
