@@ -506,31 +506,6 @@ unisce gli elementi delle altre due in una cittá virtuale in decadenza,
  caratterizzata da ampi ambienti immersi in elementi dalle tonalitá cupe.
 \end_layout
 
-\begin_layout Subsection
-Star Fox 64 3D
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Star Fox 64 3D 
-\emph default
-é uno 
-\emph on
-sparatutto a scorrimento
-\emph default
- del 2011 sviluppato da 
-\emph on
-Nintendo 
-\emph default
-per 
-\emph on
-Nintendo 3DS
-\emph default
-.
- 
-\end_layout
-
 \begin_layout Section
 OrbTail: comparto artistico
 \end_layout
@@ -548,8 +523,318 @@ Il concept originale di OrbTail prevedeva un gioco 2D con camera dall'alto
 Design dei livelli
 \end_layout
 
+\begin_layout Standard
+(Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailLevelStadium"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailStadium.png
+	lyxscale 20
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+OrbTail - Stadium
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailLevelStadium"
+
+\end_inset
+
+OrbTail - Stadium
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailPlanetarium"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailPlanetarium.png
+	lyxscale 20
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+OrbTail - Planetarium
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailPlanetarium"
+
+\end_inset
+
+OrbTail - Planetarium
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailTorus"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailTorus.png
+	lyxscale 20
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+OrbTail - Torus
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailTorus"
+
+\end_inset
+
+OrbTail - Torus
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Design dei veicoli
+\end_layout
+
+\begin_layout Standard
+(Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailShipDesign"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailShips.png
+	lyxscale 20
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+OrbTail - Design dei veicoli
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailShipDesign"
+
+\end_inset
+
+OrbTail - Design dei veicoli
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailLivery"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailLivery.png
+	lyxscale 20
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+OrbTail - Esempio di livrea
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailLivery"
+
+\end_inset
+
+OrbTail - Esempio di livrea
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
