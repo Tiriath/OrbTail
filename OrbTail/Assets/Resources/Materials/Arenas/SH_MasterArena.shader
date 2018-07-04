@@ -9,6 +9,7 @@
         _Roughness("Roughness", Range(0,1)) = 1.0
         _Metalness("Metalness", Range(0,1)) = 1.0
         _Emissivity("Emissivity", Range(0,10)) = 2.0
+        _Tiling("Tiling", Range(0,10)) = 1.0
     }
     SubShader
     {
@@ -34,12 +35,13 @@
         half _Roughness;
         half _Metalness;
         half _Emissivity;
+        half _Tiling;
 
         void surf(Input IN, inout SurfaceOutputStandard o)
         {
-            fixed4 diffuse = tex2D(_Diffuse, IN.uv_Diffuse);
-            fixed3 normal = UnpackNormal(tex2D(_Normal, IN.uv_Diffuse));
-            fixed4 pbr = tex2D(_PBR, IN.uv_Diffuse);
+            fixed4 diffuse = tex2D(_Diffuse, IN.uv_Diffuse * _Tiling);
+            fixed3 normal = UnpackNormal(tex2D(_Normal, IN.uv_Diffuse * _Tiling));
+            fixed4 pbr = tex2D(_PBR, IN.uv_Diffuse * _Tiling);
 
             o.Albedo = diffuse.rgb;
             o.Smoothness = 1.0f - pbr.r * _Roughness;
