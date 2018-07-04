@@ -401,8 +401,11 @@ TRON RUN/r - Tron City
 .
  I percorsi presentano un gran numero di ostacoli e piattaforme sospese
  che si materializzano mentre il giocatore vi si avvicina.
- L'ambiente é caratterizzato dalla massicia presenza di effetti di luce
- al neon che fanno da contrasto a geometrie riflettenti e cieli tetri.
+ L'ambiente é caratterizzato dalla massicia presenza di effetti di 
+\emph on
+luce al neon
+\emph default
+ che fanno da contrasto a geometrie riflettenti e cieli tetri.
  La seconda ambientazione é nota col termine 
 \emph on
 
