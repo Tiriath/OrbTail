@@ -235,8 +235,9 @@ public class Ship : NetworkBehaviour
         var material = GetComponentInChildren<MeshRenderer>().material;
 
         material.SetColor("_Color", LobbyPlayer.Color);
+        material.SetFloat("_Desaturate", 0.0f);
 
-        if(liveries.Length > LobbyPlayer.player_index)
+        if (liveries.Length > LobbyPlayer.player_index)
         {
             string livery_path = liveries[LobbyPlayer.player_index];
 
