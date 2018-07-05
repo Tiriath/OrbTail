@@ -518,6 +518,101 @@ Nel concept originale, OrbTail era un gioco 2D con camera dall'alto e grafica
  Il comparto artistico, un tempo minimale e soggetto a notevoli inconsistenze
  di stile é stato completamente rivisto, partendo dalla resa visiva delle
  arene fino ai modelli dei veicoli pilotabili e l'effettistica di gioco.
+ Lo stile scelto per OrbTail é caratterizzato da elementi fortemente futuristici
+, in cui elementi di metallo fanno contrasto a luci pulsanti.
+ Al fine di ottenere una resa visiva di livello piú elevato é stato deciso
+ di fare un uso estensivo di tecniche di 
+\emph on
+post-processing
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In
+\emph on
+ computer grafica, 
+\emph default
+il processo di 
+\emph on
+post-processing 
+\emph default
+consiste nel manipolare un'immagine mediante appositi 
+\emph on
+filtri
+\emph default
+, al fine di migliorarne la resa visiva o il suo valore artistico.
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+e 
+\emph on
+shading physically-based
+\emph default
+.
+ Quest'ultimo consente di ottenere una resa grafica molto fedele alla realtá
+ e si basa su proprietá fisiche dei materiali, quali 
+\emph on
+metallicitá, albedo
+\emph default
+, 
+\emph on
+ruvidezza 
+\emph default
+ed 
+\emph on
+emissivitá
+\emph default
+.
+ Le risorse prodotte per OrbTail usano 
+\emph on
+due 
+\emph default
+o 
+\emph on
+tre
+\emph default
+ 
+\emph on
+texture 
+\emph default
+al fine di codificare le proprietá dei materiali.
+ La 
+\emph on
+texture 
+\emph default
+di 
+\emph on
+diffuse 
+\emph default
+rappresenta il colore dell'oggetto ed é usata per dare il contributo principale
+ in termini di colore percepito ed é usata per le livree dei veicoli o gli
+ elementi dell'arena.
+ Per ridurre il numero di 
+\emph on
+poligoni 
+\emph default
+degli elementi di scena ed aumentare di conseguenza le performance, é stato
+ deciso di usare la tecnica del 
+\emph on
+normal-mapping 
+\emph default
+al fine di aggiungere dettagli su scala medio-piccola a tutti gli elementi
+ delle arene.
+ I veicoli sono stati giudicati troppo piccoli per offrire dettagli ad una
+ scala ancora piú fine e, pertanto, sono esclusi da questa tecnica.
+ Le informazioni relative alle normali sono codificate tramite un'apposita
+ 
+\emph on
+texture.
+ 
+\emph default
+L'ultima texture codifica le informazioni necessarie al corretto uso del
+ 
+\emph on
+rendering physically-based (PBR)
 \end_layout
 
 \begin_layout Subsection
@@ -828,9 +923,13 @@ resa grafica
 \emph default
 .
  Un tempo caratterizzati da forme geometriche molto semplici e colori solidi,
- i veicoli sono stati reinterpretati in forma di 
+ essi sono stati reinterpretati in chiave vagamente sportiva
 \emph on
-hovercraft futuristici
+, 
+\emph default
+assumendo la forma di 
+\emph on
+astronavi futuristiche
 \emph default
 .
  Le geometrie sono caratterizzate da un 
@@ -902,7 +1001,7 @@ OrbTail - Design dei veicoli
  Le livree, sebbene molto minimali, sono arricchite tramite loghi e luci,
  in modo da far 
 \emph on
-spiccare visivamente 
+spiccare notevolmente 
 \emph default
 i veicoli rispetto all'ambiente circostante (Fig.
  
@@ -962,11 +1061,13 @@ OrbTail - Esempio di livrea
 
 \end_inset
 
- I colori brillanti e molto saturi, unici per ciascun giocatore, consentono
- agli utenti di identificare molto rapidamente gli avversari durante le
- gare.
- Il colore di ciascun veicolo é inoltre usato associare a ciascuno di essi
- gli elementi della 
+ Subdoli dettagli quali leggeri graffi ed ammaccature permettono a ciascuno
+ di essi di avere un aspetto pulito, senza tuttavia nascondere la brutalitá
+ degli scontri.
+ I colori delle livree, brillanti e molto saturi, consentono agli utenti
+ di identificare molto rapidamente gli avversari durante le gare.
+ Il colore di ciascun veicolo é inoltre usato per associare a ciascuno di
+ essi gli elementi della 
 \emph on
 HUD 
 \emph default
@@ -992,7 +1093,15 @@ personalitá
 \emph default
 e lo stile di guida: veicoli veloci sono caratterizzati da linee estremamente
  aerodinamiche, quelli dedicati all'esplorazione e alla raccolta presentano
- invece grossi motori
+ invece 
+\emph on
+grossi motori
+\emph default
+ e forme piú 
+\emph on
+massicce
+\emph default
+.
 \end_layout
 
 \end_body

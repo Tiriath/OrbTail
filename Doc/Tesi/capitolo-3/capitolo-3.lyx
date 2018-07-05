@@ -518,6 +518,166 @@ Nel concept originale, OrbTail era un gioco 2D con camera dall'alto e grafica
  Il comparto artistico, un tempo minimale e soggetto a notevoli inconsistenze
  di stile é stato completamente rivisto, partendo dalla resa visiva delle
  arene fino ai modelli dei veicoli pilotabili e l'effettistica di gioco.
+ Lo stile scelto per OrbTail é caratterizzato da elementi fortemente futuristici
+, in cui elementi 
+\emph on
+metallici
+\emph default
+ fanno contrasto ad 
+\emph on
+intense luci
+\emph default
+ pulsanti.
+ Al fine di ottenere una resa visiva di livello piú elevato é stato deciso
+ di fare un uso estensivo di tecniche di 
+\emph on
+post-processing
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In
+\emph on
+ computer grafica, 
+\emph default
+il processo di 
+\emph on
+post-processing 
+\emph default
+consiste nel manipolare un'immagine mediante appositi 
+\emph on
+filtri
+\emph default
+, al fine di migliorarne la resa visiva o il suo valore artistico.
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+e 
+\emph on
+rendering physically-based
+\emph default
+.
+ Quest'ultimo consente di ottenere una resa grafica molto fedele alla realtá
+ e si basa su proprietá fisiche dei materiali, quali 
+\emph on
+metallicitá, albedo
+\emph default
+, 
+\emph on
+ruvidezza 
+\emph default
+ed 
+\emph on
+emissivitá
+\emph default
+.
+ Le risorse prodotte per OrbTail usano 
+\emph on
+due 
+\emph default
+o 
+\emph on
+tre
+\emph default
+ 
+\emph on
+texture 
+\emph default
+al fine di codificare quest'ultime.
+ La 
+\emph on
+texture 
+\emph default
+di 
+\emph on
+diffuse 
+\emph default
+rappresenta il contributo principale in termini di colore percepito ed é
+ usata per le livree dei veicoli o gli elementi dell'arena.
+ Per ridurre il numero di 
+\emph on
+poligoni 
+\emph default
+degli elementi di scena ed aumentare di conseguenza le performance, é stato
+ deciso di usare la tecnica del 
+\emph on
+normal-mapping 
+\emph default
+al fine di aggiungere dettagli su scala medio-piccola a tutti gli elementi
+ delle arene.
+ I veicoli sono stati giudicati sufficientemente dettagliati e, pertanto,
+ sono stati esclusi da questa gestione.
+ Le informazioni relative alle normali sono codificate tramite un'apposita
+ 
+\emph on
+texture 
+\emph default
+(nota come 
+\emph on
+normal-map
+\emph default
+)
+\emph on
+.
+ 
+\emph default
+L'ultima texture contiene le informazioni necessarie al 
+\emph on
+rendering physically-based 
+\emph default
+(
+\emph on
+PBR
+\emph default
+): il primo canale contiene il valore di 
+\emph on
+ruvidezza 
+\emph default
+della superficie, dove 
+\emph on
+zero 
+\emph default
+rappresenta una superficie liscia ed 
+\emph on
+uno 
+\emph default
+una superficie molto ruvida, il secondo canale codifica la 
+\emph on
+metallicitá 
+\emph default
+dell'oggetto, ovvero quanto questo si comporta similmente ad un 
+\emph on
+metallo 
+\emph default
+(valori vicini ad 
+\emph on
+uno
+\emph default
+) o ad un 
+\emph on
+materiale dielettrico 
+\emph default
+(valori prossimi allo 
+\emph on
+zero
+\emph default
+).
+ L'ultimo canale é invece dedicato al valore di 
+\emph on
+emissivitá
+\emph default
+, ovvero quanta luce viene 
+\emph on
+emessa 
+\emph default
+dall'oggetto stesso.
+ Questo valore é monocromatico e viene modulato secondo un colore configurato
+ opportunamente dallo shader al fine di ottenere colori emissivi diversi.
+ Il valore di emissivitá é usato per aggiungere la maggior parte degli effetti
+ luminosi in scena e alcuni dettagli dei veicoli, quali motori e spie.
 \end_layout
 
 \begin_layout Subsection
@@ -801,7 +961,7 @@ OrbTail - Torus
 \end_inset
 
 Vista dall'esterno ricorda vagamente un acceleratore di particelle in cui
- le pareti sono energizzate da un flusso energetico di colore 
+ le pareti lasciano trasparire un flusso energetico di colore 
 \emph on
 arancio
 \emph default
@@ -967,8 +1127,8 @@ OrbTail - Esempio di livrea
 \end_inset
 
  Subdoli dettagli quali leggeri graffi ed ammaccature permettono a ciascuno
- di essi di avere un aspetto pulito, senza tuttavia nascondere la brutalitá
- degli scontri.
+ di essi di mantenere un aspetto pulito, senza tuttavia nascondere la brutalitá
+ degli scontri passati.
  I colori delle livree, brillanti e molto saturi, consentono agli utenti
  di identificare molto rapidamente gli avversari durante le gare.
  Il colore di ciascun veicolo é inoltre usato per associare a ciascuno di
