@@ -94,11 +94,8 @@ Titoli esistenti
 In questo capitolo vengono illustrati alcuni titoli esistenti al fine di
  individuare una possibile direzione stilistica da seguire durante lo sviluppo
  di OrbTail.
- I videogiochi presentati sono stati selezionati tra diverse piattaforme
- e, sebbene manifestano meccaniche di gioco completamente diverse, sono
- accomunati da uno stile molto simile.
  Per ciascuno di essi vengono esaltate principalmente le caratteristiche
- visive e di ambientazione, ignorando completamente tutte le altre.
+ visive e di ambientazione, ignorando le meccaniche di gioco.
 \end_layout
 
 \begin_layout Subsection
@@ -528,14 +525,13 @@ Design dei livelli
 \end_layout
 
 \begin_layout Standard
-I livelli sono caratterizzati da uno stile molto particolare, in cui effetti
+I livelli sono caratterizzati da uno stile molto particolare, in cui 
+\emph on
+effetti
+\emph default
  
 \emph on
-futuristici
-\emph default
- al 
-\emph on
-neon 
+di luce 
 \emph default
 si mescolano a elementi 
 \emph on
@@ -556,7 +552,7 @@ alieni
 .
  I dettagli all'interno di ciascuna arena sono puramente estetici e servono
  solo per rinforzare la direzione artistica.
- Gli ambienti sono volutamente scuri in modo da mettere in risalto, tramite
+ Gli ambienti sono volutamente cupi, in modo da mettere in risalto, tramite
  effetti di luce, particolari elementi di gioco quali 
 \emph on
 orb 
@@ -578,8 +574,8 @@ Stadium
 \begin_inset Quotes frd
 \end_inset
 
- caratterizzata da una forma emisferica, in cui le dinamiche di gioco si
- sviluppano all'interno della base circolare (Fig.
+ é caratterizzata da una forma emisferica, in cui le dinamiche di gioco
+ si sviluppano all'interno della base circolare (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -717,8 +713,8 @@ OrbTail - Planetarium
 
 \end_inset
 
- L'arena , dalle notevoli dimensioni, é completamente racchiusa un una sfera
- costituita da pannelli 
+ L'arena, dotata di notevoli dimensioni, é completamente racchiusa in una
+ sfera costituita da pannelli 
 \emph on
 tassellati 
 \emph default
@@ -737,7 +733,7 @@ extraterrestre
  il cui scopo é ignoto.
  Questo elemento é l'unico in gioco a costituire un ostacolo per i veicoli
  dei giocatori ed é pertanto possibile usarlo in maniera strategica per
- ripararsi da aggressioni avversarie.
+ ripararsi dagli avversari.
  L'ultima arena, 
 \begin_inset Quotes fld
 \end_inset
@@ -821,7 +817,35 @@ Design dei veicoli
 \end_layout
 
 \begin_layout Standard
-(Fig.
+In questa nuova iterazione, i veicoli pilotabili sono stati rivisti completament
+e, sia in termini di 
+\emph on
+geometria
+\emph default
+ che in termine di 
+\emph on
+resa grafica
+\emph default
+.
+ Un tempo caratterizzati da forme geometriche molto semplici e colori solidi,
+ essi sono stati reinterpretati in chiave vagamente sportiva
+\emph on
+, 
+\emph default
+assumendo la forma di 
+\emph on
+astronavi futuristiche
+\emph default
+.
+ Le geometrie sono caratterizzate da un 
+\emph on
+design 
+\emph default
+molto 
+\emph on
+verosimile
+\emph default
+, con linee morbide e dettagli tecnici (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -879,11 +903,12 @@ OrbTail - Design dei veicoli
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-(Fig.
+ Le livree, sebbene molto minimali, sono arricchite tramite loghi e luci,
+ in modo da far 
+\emph on
+spiccare notevolmente 
+\emph default
+i veicoli rispetto all'ambiente circostante (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -941,11 +966,47 @@ OrbTail - Esempio di livrea
 
 \end_inset
 
+ Subdoli dettagli quali leggeri graffi ed ammaccature permettono a ciascuno
+ di essi di avere un aspetto pulito, senza tuttavia nascondere la brutalitá
+ degli scontri.
+ I colori delle livree, brillanti e molto saturi, consentono agli utenti
+ di identificare molto rapidamente gli avversari durante le gare.
+ Il colore di ciascun veicolo é inoltre usato per associare a ciascuno di
+ essi gli elementi della 
+\emph on
+HUD 
+\emph default
+quali 
+\emph on
+punteggi
+\emph default
+ e 
+\emph on
+bussole 
+\emph default
+(vedi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:InterfacciaUtente"
 
-\end_layout
+\end_inset
 
-\begin_layout Subsection
-Effettistica
+).
+ Il design di ciascun veicolo sottolinea inoltre la sua 
+\emph on
+personalitá 
+\emph default
+e lo stile di guida: veicoli veloci sono caratterizzati da linee estremamente
+ aerodinamiche, quelli dedicati all'esplorazione e alla raccolta presentano
+ invece 
+\emph on
+grossi motori
+\emph default
+ e forme piú 
+\emph on
+massicce
+\emph default
+.
 \end_layout
 
 \end_body

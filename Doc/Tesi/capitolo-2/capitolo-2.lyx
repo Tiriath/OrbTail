@@ -2781,7 +2781,14 @@ mouse
 \end_layout
 
 \begin_layout Subsection
-Interfaccia utente
+Interfaccia utente 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:InterfacciaUtente"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2874,7 +2881,7 @@ e consente di visualizzare la direzione relativa dei veicoli avversari rispetto
 \end_layout
 
 \begin_layout Subsection
-Flusso di gioco
+Flusso di gioco 
 \end_layout
 
 \begin_layout Standard
