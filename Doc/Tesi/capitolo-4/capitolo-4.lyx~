@@ -541,7 +541,7 @@ Struttura dei veicoli
 \end_layout
 
 \begin_layout Subsection
-Gestione della gravitá
+Gestione della gravità
 \end_layout
 
 \begin_layout Standard
@@ -569,7 +569,7 @@ i.
  
 \emph default
 al fine di individuare un punto sulla superficie del livello da usare come
- base per il calcolo della gravitá, usando l'asse longitudinale di ciascun
+ base per il calcolo della gravità, usando l'asse longitudinale di ciascun
  oggetto come direzione.
  Sebbene l'uso di questa tecnica
 \emph on
@@ -588,7 +588,7 @@ degli oggetti lungo la superficie del livello.
 \emph on
 analitica 
 \emph default
-della forza di gravitá per ciascuna delle topologie supportate.
+della forza di gravità per ciascuna delle topologie supportate.
  Il 
 \emph on
 campo gravitazionale
@@ -613,7 +613,7 @@ La soluzione adottata prevede l'uso di due elementi principali: un componente
 \emph on
 Gravity Field, 
 \emph default
-da cui derivano le diverse descrizioni dei campi di gravitá supportati,
+da cui derivano le diverse descrizioni dei campi di gravità supportati,
 \emph on
  
 \emph default
@@ -657,7 +657,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-Gestione della gravitá.
+Gestione della gravità.
 \end_layout
 
 \end_inset
@@ -669,7 +669,7 @@ name "fig:OrbTailGravity"
 
 \end_inset
 
-Gestione della gravitá.
+Gestione della gravità.
 \end_layout
 
 \end_inset
@@ -680,10 +680,10 @@ Gestione della gravitá.
 \end_inset
 
  Il primo di questi viene assegnato all'arena e consente di configurare
- sia l'intensitá della gravitá e sia la distanza di stazionamento degli
+ sia l'intensitá della gravità e sia la distanza di stazionamento degli
  oggetti rispetto alla superficie per impedire che questi possano compenetravi.
  Il secondo si occupa di simulare lo stazionamento dell'oggetto a partire
- dalla direzione della forza di gravitá.
+ dalla direzione della forza di gravità.
 \end_layout
 
 \begin_layout Subsection
@@ -693,7 +693,7 @@ Sistema di controllo
 \begin_layout Standard
 Il sistema di controllo di ciascun veicolo si occupa di gestire il movimento
  di quest'ultimo all'interno dell'arena a partire dalla direzione della
- forza di gravitá e dall'input dell'utente.
+ forza di gravità e dall'input dell'utente.
  Il componente 
 \emph on
 Movement Controller
@@ -810,7 +810,7 @@ La direzione di accelerazione è ricavata tramite il componente
 \emph on
 Floating Object
 \emph default
- in funzione della tangente del campo di gravitá e della rotazione del veicolo,
+ in funzione della tangente del campo di gravità e della rotazione del veicolo,
  e ció impedisce che quest'ultimo possa percorrere la superficie del livello
  passandovici attraverso.
 \end_layout

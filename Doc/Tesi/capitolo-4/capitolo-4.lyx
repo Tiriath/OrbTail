@@ -3199,7 +3199,63 @@ fa invece eccezione.
  e lasciare uno di questi vuoto, tuttavia l'effetto non risultava piacevole
  e pertanto è stato deciso di suddividere in maniera asimmetrica lo schermo,
  assegnando una metá al primo giocatore e lasciando che gli altri due si
- spartissero l'altra metá.
+ spartissero l'altra metá (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailSplitScreen"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/splitscreen.PNG
+	lyxscale 20
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Splitscreen
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailSplitScreen"
+
+\end_inset
+
+Splitscreen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard

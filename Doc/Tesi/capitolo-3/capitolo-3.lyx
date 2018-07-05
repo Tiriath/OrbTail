@@ -82,7 +82,7 @@ In questo capitolo si descrive la direzione artistica seguita dal progetto,
  Le scelte qui presentate considerano i requisiti di design precedentemente
  illustrati, senza perdere di vista le limitazioni tecniche e temporali
  a cui sottostare.
- In generale si é cercato di individuare uno stile semplice e pulito, che
+ In generale si è cercato di individuare uno stile semplice e pulito, che
  potesse risultare estremamente consistente su tutte le piattaforme supportate.
 \end_layout
 
@@ -107,7 +107,7 @@ Wipeout Omega Collection
 \emph on
 Wipeout Omega Collection 
 \emph default
-é un videogioco di 
+è un videogioco di 
 \emph on
 corse futuristiche 
 \emph default
@@ -124,7 +124,7 @@ nel 2017 disponibile per
 PlayStation4.
  
 \emph default
-Il gioco é ambientato in un futuro verosimile in cui ciascun giocatore guida
+Il gioco è ambientato in un futuro verosimile in cui ciascun giocatore guida
  
 \emph on
 navi 
@@ -145,7 +145,7 @@ al fine di ostacolare gli avversari e tagliare il traguardo prima che questi
  possano fare altrettanto.
  I tracciati percorribili sono caratterizzati da ampie carreggiate, curve
  paraboliche, salti e topologie sinuose.
- L'ambientazione del gioco é varia ma predilige il contesto urbano: i tracciati
+ L'ambientazione del gioco è varia ma predilige il contesto urbano: i tracciati
  attraversano cittá futuristiche caratterizzate da tinte neutre ma arricchite
  da cartelloni pubblicitari al neon, segnaletica luminosa e dettagli in
  materiali traslucidi, i quali vengono risaltati ancor di piú nelle modalitá
@@ -294,7 +294,7 @@ TRON RUN/r
 \emph on
 TRON RUN/r 
 \emph default
-é un videogioco sviluppato da 
+è un videogioco sviluppato da 
 \emph on
 Sanzaru Games 
 \emph default
@@ -311,7 +311,7 @@ e
 Windows.
 
 \emph default
- Il gioco é un'
+ Il gioco è un'
 \emph on
 avventura dinamica 
 \emph default
@@ -333,7 +333,7 @@ Light Cycle
  
 \emph default
 Le ambientazioni presentate sono tre.
- La prima é costituita dalla cittá virtuale di 
+ La prima è costituita dalla cittá virtuale di 
 \emph on
 Tron City, 
 \emph default
@@ -398,12 +398,12 @@ TRON RUN/r - Tron City
 .
  I percorsi presentano un gran numero di ostacoli e piattaforme sospese
  che si materializzano mentre il giocatore vi si avvicina.
- L'ambiente é caratterizzato dalla massicia presenza di effetti di 
+ L'ambiente è caratterizzato dalla massicia presenza di effetti di 
 \emph on
 luce al neon
 \emph default
  che fanno da contrasto a geometrie riflettenti e cieli tetri.
- La seconda ambientazione é nota col termine 
+ La seconda ambientazione è nota col termine 
 \emph on
 
 \begin_inset Quotes fld
@@ -415,7 +415,7 @@ Whiteout
 
  
 \emph default
-ed é costituita da un lungo tracciato percorribile tramite la propria 
+ed è costituita da un lungo tracciato percorribile tramite la propria 
 \emph on
 Light Cycle 
 \emph default
@@ -510,15 +510,15 @@ OrbTail: comparto artistico
 \begin_layout Standard
 Nel concept originale, OrbTail era un gioco 2D con camera dall'alto e grafica
  minimale al neon.
- Durante il processo di sviluppo questa idea si é evoluta per adeguarsi
+ Durante il processo di sviluppo questa idea si è evoluta per adeguarsi
  meglio al design, passando ad una grafica completamente 3D e telecamera
  ad inseguimento.
  Questa scelta ha consentito di caratterizzare in modo piú profondo le diverse
  arene e i veicoli contenuti in essa.
  Il comparto artistico, un tempo minimale e soggetto a notevoli inconsistenze
- di stile é stato completamente rivisto, partendo dalla resa visiva delle
+ di stile è stato completamente rivisto, partendo dalla resa visiva delle
  arene fino ai modelli dei veicoli pilotabili e l'effettistica di gioco.
- Lo stile scelto per OrbTail é caratterizzato da elementi fortemente futuristici
+ Lo stile scelto per OrbTail è caratterizzato da elementi fortemente futuristici
 , in cui elementi 
 \emph on
 metallici
@@ -528,7 +528,7 @@ metallici
 intense luci
 \emph default
  pulsanti.
- Al fine di ottenere una resa visiva di livello piú elevato é stato deciso
+ Al fine di ottenere una resa visiva di livello piú elevato è stato deciso
  di fare un uso estensivo di tecniche di 
 \emph on
 post-processing
@@ -595,13 +595,13 @@ di
 \emph on
 diffuse 
 \emph default
-rappresenta il contributo principale in termini di colore percepito ed é
+rappresenta il contributo principale in termini di colore percepito ed è
  usata per le livree dei veicoli o gli elementi dell'arena.
  Per ridurre il numero di 
 \emph on
 poligoni 
 \emph default
-degli elementi di scena ed aumentare di conseguenza le performance, é stato
+degli elementi di scena ed aumentare di conseguenza le performance, è stato
  deciso di usare la tecnica del 
 \emph on
 normal-mapping 
@@ -665,7 +665,7 @@ materiale dielettrico
 zero
 \emph default
 ).
- L'ultimo canale é invece dedicato al valore di 
+ L'ultimo canale è invece dedicato al valore di 
 \emph on
 emissivitá
 \emph default
@@ -674,9 +674,9 @@ emissivitá
 emessa 
 \emph default
 dall'oggetto stesso.
- Questo valore é monocromatico e viene modulato secondo un colore configurato
+ Questo valore è monocromatico e viene modulato secondo un colore configurato
  opportunamente dallo shader al fine di ottenere colori emissivi diversi.
- Il valore di emissivitá é usato per aggiungere la maggior parte degli effetti
+ Il valore di emissivitá è usato per aggiungere la maggior parte degli effetti
  luminosi in scena e alcuni dettagli dei veicoli, quali motori e spie.
 \end_layout
 
@@ -734,7 +734,7 @@ Stadium
 \begin_inset Quotes frd
 \end_inset
 
- é caratterizzata da una forma emisferica, in cui le dinamiche di gioco
+ è caratterizzata da una forma emisferica, in cui le dinamiche di gioco
  si sviluppano all'interno della base circolare (Fig.
  
 \begin_inset CommandInset ref
@@ -796,7 +796,7 @@ OrbTail - Stadium
  Il livello presenta un pavimento costituito da pannelli metallici fluttuanti,
  circondati da elementi alieni a forma di colonna caratterizzati da striature
  luminose azzurre.
- L'arena é racchiusa all'interno di una gabbia metallica oltre la quale
+ L'arena è racchiusa all'interno di una gabbia metallica oltre la quale
  si puó osservare il cielo stellato.
  La seconda arena, 
 \begin_inset Quotes fld
@@ -810,7 +810,7 @@ Planetarium
 \begin_inset Quotes frd
 \end_inset
 
-, presenta una geometria sferica ed é caratterizzata da uno stile particolarment
+, presenta una geometria sferica ed è caratterizzata da uno stile particolarment
 e 
 \emph on
 convoluto
@@ -873,7 +873,7 @@ OrbTail - Planetarium
 
 \end_inset
 
- L'arena, dotata di notevoli dimensioni, é completamente racchiusa in una
+ L'arena, dotata di notevoli dimensioni, è completamente racchiusa in una
  sfera costituita da pannelli 
 \emph on
 tassellati 
@@ -883,16 +883,16 @@ in metallo
  
 \emph default
 e rinforzata da una spessa gabbia anch'essa metallica.
- Il pavimento é arricchito tramite striature luminose azzurre.
- L'elemento grafico principale é costituito da una grossa colonna che collega
+ Il pavimento è arricchito tramite striature luminose azzurre.
+ L'elemento grafico principale è costituito da una grossa colonna che collega
  i due poli dell'arena, caratterizzata da uno stile architettonico vagamente
  antico ma decisamente 
 \emph on
 extraterrestre
 \emph default
- il cui scopo é ignoto.
- Questo elemento é l'unico in gioco a costituire un ostacolo per i veicoli
- dei giocatori ed é pertanto possibile usarlo in maniera strategica per
+ il cui scopo è ignoto.
+ Questo elemento è l'unico in gioco a costituire un ostacolo per i veicoli
+ dei giocatori ed è pertanto possibile usarlo in maniera strategica per
  ripararsi dagli avversari.
  L'ultima arena, 
 \begin_inset Quotes fld
@@ -902,7 +902,7 @@ Torus
 \begin_inset Quotes frd
 \end_inset
 
-, é l'arena topologicamente piú semplice (Fig.
+, è l'arena topologicamente piú semplice (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -968,7 +968,7 @@ arancio
 .
  I solchi sulle pareti aiutano il giocatore a determinare la curvatura dell'aren
 a in ogni punto.
- L'assenza di ulteriori elementi grafici si é rivelata necessaria per ridurre
+ L'assenza di ulteriori elementi grafici si è rivelata necessaria per ridurre
  lo sforzo sensoriale richiesto per orientarsi all'interno di questo livello.
 \end_layout
 
@@ -1131,7 +1131,7 @@ OrbTail - Esempio di livrea
  degli scontri passati.
  I colori delle livree, brillanti e molto saturi, consentono agli utenti
  di identificare molto rapidamente gli avversari durante le gare.
- Il colore di ciascun veicolo é inoltre usato per associare a ciascuno di
+ Il colore di ciascun veicolo è inoltre usato per associare a ciascuno di
  essi gli elementi della 
 \emph on
 HUD 
