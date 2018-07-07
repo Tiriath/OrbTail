@@ -117,9 +117,6 @@ e alternative o piú facilmente implementabili.
  Lo scopo di questa tesi é stato quello di far tesoro di queste considerazioni
  al fine di ideare e sviluppare un videogioco che potesse essere fruito
  su un gran numero di piattaforme e in qualsiasi circostanza.
- Il risultato finale del processo di creazione di OrbTail ha portato alla
- nascita di un prodotto con un'elevata qualitá nelle tre macroaree di design,
- direzione artistica e programmazione.
  Il prodotto cosí sviluppato si presta inoltre ad un gran numero di possibili
  estensioni, sia dal punto di vista del design e della produzione artistica
  e sia migliorie tecniche.
@@ -188,13 +185,6 @@ e meno
 casuale
 \emph default
 .
- Le modalitá online invece gioverebbero in particolar modo di tecniche piú
- raffinate di 
-\emph on
-dead-reckoning
-\emph default
-, alternative a quelle fornite da Unity, al fine di garantire un'esperienza
- di gioco piú fluida e meno soggetta alle problematiche legate alla rete.
 \end_layout
 
 \end_body
