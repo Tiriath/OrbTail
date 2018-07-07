@@ -544,7 +544,21 @@ filename "capitolo-1/capitolo-1.lyx"
 \end_layout
 
 \begin_layout Chapter
-Design
+Analisi dei titoli esistenti 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "analisi-dei-competitor/analisi-dei-competitor.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Design di OrbTail
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:Design"

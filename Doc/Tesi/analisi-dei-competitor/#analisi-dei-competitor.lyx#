@@ -1,0 +1,1521 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\options openright
+\use_default_options false
+\master ../tesi.lyx
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Indice
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+In questo capitolo vengono presentati alcuni titoli esistenti al fine di
+ analizzarne le meccaniche di base e trovare spunti interessanti da integrare
+ all'interno del 
+\emph on
+design 
+\emph default
+di gioco.
+ Verranno inoltre analizzate le loro scelte stilistiche in modo da inviduare
+ una possibile direzione stilista da seguire durante lo sviluppo di OrbTail.
+ I titoli sono stati selezionati tra diverse piattaforme in modo da individuare
+ un sottoinsieme di caratteristiche desiderate e facilmente adattabili alla
+ grande diversitá di dispositivi per cui verrá sviluppato OrbTail.
+ La data di pubblicazione dei titoli scelti copre inoltre un orizzonte temporale
+ molto vasto: l'intento è quello di conuigare tra loro caratteristiche dei
+ giochi recenti con vecchi paradigmi di gameplay da rivisitare in chiave
+ moderna.
+\end_layout
+
+\begin_layout Section
+Crash Team Racing
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Crash Team Racing
+\emph default
+, sviluppato da 
+\emph on
+Naughty Dogs 
+\emph default
+e pubblicato da 
+\emph on
+Sony Computer Entertainment 
+\emph default
+nel 1999 per 
+\emph on
+PlayStation
+\emph default
+, è un videogioco di guida tratto dalla fortunata serie platform 
+\emph on
+Crash Bandicoot.
+ 
+\emph default
+Il gioco ruota attorno alle vicende di una squadra di piloti di 
+\emph on
+kart 
+\emph default
+intenti a difendere la Terra da un alieno, 
+\emph on
+Nitros Oxide
+\emph default
+, il quale vuole trasformare il pianeta in un parcheggio e rendere schiavi
+ i suoi abitanti.
+ 
+\end_layout
+
+\begin_layout Standard
+Nel gioco l'utente controlla uno tra quindici personaggi disponibili, contraddis
+tinti ciascuno da un proprio kart dalle caratteristiche uniche.
+ I veicoli sono in grado di accelerare, sterzare, frenare e 
+\emph on
+saltare
+\emph default
+; la meccanica del 
+\emph on
+power slide 
+\emph default
+garantisce inoltre un'accelerazione temporanea durante i 
+\emph on
+drift
+\emph default
+.
+ I veicoli sono caratterizzati da tre parametri fondamentali, 
+\emph on
+velocitá, accelerazione 
+\emph default
+e 
+\emph on
+manovrabilitá, 
+\emph default
+i quali influenzano lo stile di guida e la difficoltá del personaggio.
+\end_layout
+
+\begin_layout Standard
+All'interno di ogni circuito sono distribuite delle 
+\emph on
+casse 
+\emph default
+speciali che, raccolte, garantiscono al giocatore un potenziamento casuale,
+ tanto piú potente quanto piú svantaggiata la sua posizione nella gara corrente.
+ Questi oggetti collezionabili comprendono un ricco assortimento di armi
+ usate per intralciare gli avversari, barriere difensive e bonus temporanei
+ alla velocitá del veicolo.
+ Speciali frutti 
+\begin_inset Quotes fld
+\end_inset
+
+wumpa
+\begin_inset Quotes frd
+\end_inset
+
+ consentono ai veicoli di procedere piú velocemente e migliorare i suddetti
+ potenziamenti.
+\end_layout
+
+\begin_layout Standard
+Il gioco offre cinque modalitá di gioco, di cui tre a giocatore singolo
+ (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTR"
+
+\end_inset
+
+) e due multigiocatore locale in splitscreen.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/sp_ctr.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Crash Team Racing
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTR"
+
+\end_inset
+
+Crash Team Racing - Gara a giocatore singolo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Nella modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+avventura
+\begin_inset Quotes frd
+\end_inset
+
+ il giocatore seleziona uno dei personaggi a disposizione, gareggiando su
+ sedici circuiti diversi, al fine di collezionare 
+\emph on
+trofei
+\emph default
+, 
+\emph on
+reliquie 
+\emph default
+ed altri oggetti necessari per poter proseguire con la trama.
+ I circuiti sono suddivisi in diversi 
+\emph on
+mondi
+\emph default
+, ciascuno contenente quattro tracciati, al termine dei quali viene richiesto
+ di fronteggiare un 
+\emph on
+boss 
+\emph default
+in una gara testa a testa.
+ All'interno della modalitá avventura sono inoltre presenti diverse 
+\emph on
+sotto-modalitá 
+\emph default
+che cambiano leggermente le regole delle varie sfide: collezionare oggetti
+ nascosti all'interno del circuito entro la fine della gara, vincere piú
+ gare in successione o terminare la gara entro un tempo limite usando un
+ singolo potenziamento in grado di congelare il tempo per pochi secondi.
+ Nella modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+sfida a tempo
+\begin_inset Quotes frd
+\end_inset
+
+, il giocatore corre da solo al fine di registrare il miglior tempo su tutti
+ i tracciati disponibili.
+ Questa modalitá è caratterizzata dall'assenza di avversari e potenziamenti
+ di alcun genere.
+ Nella modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+sala giochi
+\begin_inset Quotes frd
+\end_inset
+
+ il giocatore puó gareggiare su circuito a scelta o organizzare 
+\emph on
+campionati
+\emph default
+ formati da quattro tracciati.
+ In questa modalitá è prevista la presenza di otto partecipanti e l'intero
+ arsenale di armi e potenziamenti.
+ Quest'ultima modalitá è anche fruibile in formato multigiocatore locale
+ con numero di giocatori compreso tra due e quattro.
+ L'ultima modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+battaglia
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_ctr_battle.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Crash Team Racing - Modalitá battaglia
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTRBattle"
+
+\end_inset
+
+Crash Team Racing - Modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+battaglia
+\begin_inset Quotes frd
+\end_inset
+
+ tra due giocatori in splitscreen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ stravolge le regole del gioco: i partecipanti si sfidano all'interno di
+ un'arena chiusa collezionando armi e potenziamenti al fine di colpire e
+ danneggiare gli avversari (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTRBattle"
+
+\end_inset
+
+).
+ Esistono diverse condizioni di vittoria configurabili: una richiede il
+ raggiungimento di un certo numero di punti guadagnabili colpendo gli avversari,
+ un'altra ha un tempo limite scaduto il quale il giocatore col punteggio
+ piú alto viene proclamato vincitore, nell'ultima ogni giocatore inizia
+ la sfida con un numero predefinito di vite che vengono decrementate ogni
+ volta che il kart viene colpito da un'arma.
+ Quando il numero di vite scende a zero il giocatore viene eliminato: l'ultimo
+ rimasto in partita è proclamato vincitore.
+ Questa modalitá è caratterizzata dall'assenza di partecipanti governati
+ dall'
+\emph on
+intelligenza artificiale
+\emph default
+ ed è pertanto preclusa dall'esperienza a giocatore singolo
+\emph on
+.
+\end_layout
+
+\begin_layout Section
+Rocket League
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Rocket League 
+\emph default
+è un gioco multipiattaforma sviluppato e pubblicato da 
+\emph on
+Psyonix 
+\emph default
+nel 2015 per 
+\emph on
+Windows 
+\emph default
+e 
+\emph on
+PlayStation 4
+\emph default
+ e successivamente rilasciato per 
+\emph on
+OSX, Linux 
+\emph default
+e 
+\emph on
+Nintendo Switch
+\emph default
+.
+ Il gioco combina due generi, quello 
+\emph on
+sportivo 
+\emph default
+e quello 
+\emph on
+corsa
+\emph default
+, in un gameplay inedito in cui due squadre formati da potenti veicoli si
+ sfidano ad una partita di 
+\emph on
+calcio 
+\emph default
+all'interno di uno 
+\emph on
+stadio.
+\end_layout
+
+\begin_layout Standard
+Ogni giocatore ha a disposizione decine di veicoli differenti, identici
+ nelle prestazioni e modelli di guida, ma riccamente personalizzabili tramite
+ 
+\emph on
+livree
+\emph default
+, 
+\emph on
+decalcomanie
+\emph default
+, 
+\emph on
+pneumatici, razzi 
+\emph default
+e molto altro ancora (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RocketLeagueCustom"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_rocketleague_custom.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Rocket League - Personalizzazione del veicolo
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RocketLeagueCustom"
+
+\end_inset
+
+Rocket League - Personalizzazione del veicolo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ I veicoli sono inoltre in grado di saltare e roteare in volo al fine di
+ colpire la palla, effettuare salvataggi o portarsi in vantaggio rispetto
+ agli avversari.
+ Un potente razzo posteriore consente di aumentare drasticamente la propria
+ velocitá, planare o spiccare il volo per brevi periodi.
+ è inoltre possibile usare il proprio veicolo come un ariete contro i veicoli
+ avversari in modo da farli esplodere e rimuoverli dalla partita per pochi
+ secondi.
+\end_layout
+
+\begin_layout Standard
+Ogni 
+\emph on
+stadio
+\emph default
+ è caratterizzato da uno stile diverso.
+ La presenza di zone speciali all'interno di essi consente ai veicoli di
+ ottenere un'accelerazione aggiuntiva quando attraversate; particolari oggetti
+ distribuiti nello stadio consentono al veicolo di recuperare parte dell'energia
+ necessaria per azionare i razzi posteriori.
+\end_layout
+
+\begin_layout Standard
+Il gioco offre diverse modalitá a 
+\emph on
+giocatore singolo
+\emph default
+ e 
+\emph on
+multigiocatore locale
+\emph default
+ tramite 
+\emph on
+splitscreen
+\emph default
+, 
+\emph on
+online
+\emph default
+ o 
+\emph on
+misto
+\emph default
+.
+ Le modalitá 
+\emph on
+online 
+\emph default
+sono inoltre fruibili nel formato 
+\emph on
+cross-platform play 
+\emph default
+tra 
+\emph on
+Windows 
+\emph default
+e 
+\emph on
+PlayStation 4 
+\emph default
+oppure tra 
+\emph on
+Windows, XBoxOne 
+\emph default
+e 
+\emph on
+Nintendo
+\emph default
+ 
+\emph on
+Switch
+\emph default
+.
+ La modalitá di gioco principale 
+\begin_inset Quotes fld
+\end_inset
+
+Carlcio
+\begin_inset Quotes frd
+\end_inset
+
+ (gioco di parole originato dalle parole 
+\begin_inset Quotes fld
+\end_inset
+
+car
+\begin_inset Quotes frd
+\end_inset
+
+ e 
+\begin_inset Quotes fld
+\end_inset
+
+calcio
+\begin_inset Quotes frd
+\end_inset
+
+) prevede la sfida tra due squadre di dimensione variabile tra uno e quattro
+ giocatori (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RocketLeague"
+
+\end_inset
+
+) 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_rocketleague.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RocketLeague"
+
+\end_inset
+
+Rocket League
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ I partecipanti usano i propri veicoli per colpire una grossa palla al fine
+ di spingerla nella porta avversaria ed ottenere punti.
+ Allo scadere del tempo la squadra col maggior numero di punti è dichiarato
+ vincitore.
+ In caso di paritá la prima squadra a segnare oltre lo scadere del tempo
+ vince.
+ Ogni giocatore ha inoltre un proprio punteggio personale che puó essere
+ incrementato tirando la palla in porta, segnando, effettuando salvataggi,
+ distruggendo i veicoli avversari e cosí via.
+ Aggiornamenti successivi del gioco hanno introdotto nuove modalitá di gioco
+ quali 
+\begin_inset Quotes fld
+\end_inset
+
+Snowday
+\begin_inset Quotes frd
+\end_inset
+
+ ispirata ad una partita di 
+\emph on
+hockey su ghiaccio
+\emph default
+ in cui la palla è sostituita da un 
+\emph on
+disco
+\emph default
+ caratterizzato da una fisica diversa
+\emph on
+, 
+\begin_inset Quotes fld
+\end_inset
+
+Hoops
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\emph default
+ispirata alla 
+\emph on
+pallacanestro 
+\emph default
+in cui la porta è sostituita con un 
+\emph on
+canestro 
+\emph default
+ed infine 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+Rissa
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\emph default
+in cui i giocatori possono usare diversi potenziamenti casuali al fine di
+ congelare la palla, agganciarla con una fune e cosí via.
+ L'ultima modalitá di gioco introdotta nel 2017 
+\begin_inset Quotes fld
+\end_inset
+
+Dropshot
+\begin_inset Quotes frd
+\end_inset
+
+ stravolge le regole del gioco, rimuovendo completamente le porte.
+ In questa modalitá il pavimento è suddiviso in piastrelle esagonali che,
+ colpite dalla palla due volte in successione, crollano lasciando una voragine
+ nel pavimento che funge da porta per la squadra a cui appartiene la mezzeria
+ di campo.
+\end_layout
+
+\begin_layout Standard
+Il gioco presenta inoltre una modalitá 
+\emph on
+competitiva online 
+\emph default
+basata sulle regole principali le cui 
+\emph on
+stagioni 
+\emph default
+hanno durata pari ad alcuni mesi.
+ I giocatori sono organizzati in 
+\emph on
+categorie, 
+\emph default
+in funzione del proprio livello di abilitá, e suddivise a loro volta in
+ quattro
+\emph on
+ divisioni
+\emph default
+; i risultati della squadra consentono allo stesso di cambiare di divisione
+ all'interno della 
+\emph on
+categoria 
+\emph default
+d'appartenenza.
+\end_layout
+
+\begin_layout Section
+Geometry Wars 3: Dimensions Evolved
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Geometry Wars 3: Dimensions Evolved 
+\emph default
+è un gioco 
+\emph on
+shoot 'em up
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I videogiochi 
+\emph on
+shoot 'em up
+\emph default
+, letteralmente 
+\begin_inset Quotes fld
+\end_inset
+
+spara a tutti
+\begin_inset Quotes frd
+\end_inset
+
+, sono caratterizzati da meccaniche in cui il giocatore deve sparare continuamen
+te a qualche obiettivo di gioco.
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+sviluppato da 
+\emph on
+Lucid Games 
+\emph default
+e pubblicato da 
+\emph on
+Sierra Entertainment 
+\emph default
+nel 2014 per tutte le maggiori piattaforme 
+\emph on
+desktop
+\emph default
+, 
+\emph on
+mobile 
+\emph default
+e 
+\emph on
+console
+\emph default
+.
+ Terzo capitolo della saga 
+\emph on
+Geometry Wars 
+\emph default
+è il primo gioco della serie ad introdurre una modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+avventura
+\begin_inset Quotes frd
+\end_inset
+
+ ed un'ambiente di gioco totalmente tridimensionale (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:GW3Sphere"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/sp_geometrywars3_sphere.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Geometry Wars - Arena sferica
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:GW3Sphere"
+
+\end_inset
+
+Geometry Wars 3: Dimensions Evolved - Arena sferica.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nel gioco l'utente controlla una piccola astronave in grado di muoversi
+ rapidamente e sparare in qualsiasi direzione al fine di evitare e distruggere
+ ondate di astronavi nemiche.
+ Il giocatore ha a disposizione un 
+\emph on
+drone
+\emph default
+ che lo accompagnerá in battaglia aumentandone la potenza di fuoco ed aiutandolo
+ a collezionare gli oggetti sparsi per la mappa e una 
+\emph on
+super
+\emph default
+ abilitá dagli effetti devastanti utilizzabile un numero limitato di volte.
+ Esistono diversi 
+\emph on
+droni 
+\emph default
+e 
+\emph on
+super 
+\emph default
+abilitá, ciascuno caratterizzato da diversi stili di gioco ed effetti.
+ Durante le partite è inoltre possibile collezionare 
+\emph on
+super stati
+\emph default
+, potenziamenti generati casualmente nel livello che forniscono 
+\emph on
+barriere, armi potenziate 
+\emph default
+e
+\emph on
+ magneti 
+\emph default
+per brevi periodi di tempo, e 
+\emph on
+geom
+\emph default
+, oggetti che fungono da 
+\emph on
+moltiplicatore di punteggio 
+\emph default
+ottenibili abbattendo le navi avversarie.
+ Collezionare 
+\emph on
+geom 
+\emph default
+è una delle meccaniche fondamentali del gioco in quanto consente al giocatore
+ di aumentare il proprio punteggio di svariati ordini di grandezza.
+ Al raggiungimento di certe soglie di punti, il giocatore viene inoltre
+ premiato con 
+\emph on
+vite extra 
+\emph default
+o potenti 
+\emph on
+bombe 
+\emph default
+in grado di distruggere tutte le astronavi nemiche.
+ 
+\end_layout
+
+\begin_layout Standard
+I livelli sono caratterizzati da diverse 
+\emph on
+topologie 
+\emph default
+e 
+\emph on
+dimensioni
+\emph default
+ e si sviluppano formando solidi tridimensionali quali 
+\emph on
+sfere, cubi 
+\emph default
+e 
+\emph on
+nastri
+\emph default
+ percorribili lungo la superficie
+\emph on
+ 
+\emph default
+(Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:GW3Funnel"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/sp_geometrywars3_funnel.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Geometry Wars - Arena ad imbuto.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:GW3Funnel"
+
+\end_inset
+
+Geometry Wars 3: Dimensions Evolved - Arena ad imbuto.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ I nemici vengono generati ad 
+\emph on
+ondate 
+\emph default
+in punti specifici di ciascuna mappa e sono caratterizzati da diversi schemi
+ di movimento e strategie: alcuni tendono ad essere piú aggressivi, altri
+ piú rapidi, altri ancora prediligono una strategia piú elusiva.
+ La successione delle ondate in ciascun livello è prestabilita ed è pertanto
+ possibile ricordarla a memoria al fine di massimizzare il punteggio a fine
+ gara.
+\end_layout
+
+\begin_layout Standard
+Il gioco prevede 
+\emph on
+dodici 
+\emph default
+modalitá di gioco a giocatore singolo organizzate in una modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+classica
+\begin_inset Quotes frd
+\end_inset
+
+ che comprende 
+\emph on
+sei 
+\emph default
+delle modalitá storiche della saga e giocabili su qualsiasi livello ed una
+ modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+avventura
+\begin_inset Quotes frd
+\end_inset
+
+ in cui il giocatore affronta 
+\emph on
+cinquanta livelli 
+\emph default
+diversi in sequenza, ciascuno dei quali caratterizzato da regole proprie.
+ Le modalitá di gioco consistono nel ottenere il maggior numero di punti
+ avendo a disposizione solo un numero limitato di vite ed oggetti speciali
+ oppure entro un tempo limite prestabilito.
+ Alcune modalitá inoltre introducono diverse regole, quali numero limitato
+ di munizioni, assenza di armi, presenza di nemici in grado di dividersi,
+ aree di gioco che diventano via via sempre piú ristrette, e cosí via.
+ Durante la modalitá 
+\begin_inset Quotes fld
+\end_inset
+
+avventura
+\begin_inset Quotes frd
+\end_inset
+
+ il giocatore sará costretto ad affrontare dei 
+\emph on
+boss, 
+\emph default
+potenti nemici in grado di sostenere molteplici danni e in grado di usare
+ speciali scudi per rigenerare la propria 
+\emph on
+salute
+\emph default
+.
+ Sono inoltre disponibili due modalitá 
+\emph on
+multigiocatore
+\emph default
+: una 
+\emph on
+locale 
+\emph default
+cooperativa a visuale condivisa, caratterizzata dalla sola presenza di arene
+ bidimensionali e un numero di giocatori compreso tra due e quattro, ed
+ una 
+\emph on
+online competitiva 
+\emph default
+fino ad un massimo di otto giocatori.
+\end_layout
+
+\begin_layout Section
+Wipeout Omega Collection
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Wipeout Omega Collection 
+\emph default
+è un videogioco di 
+\emph on
+corse futuristiche 
+\emph default
+sviluppato da 
+\emph on
+XDev, Clever Beans 
+\emph default
+e 
+\emph on
+EPOS Game Studios 
+\emph default
+nel 2017 disponibile per 
+\emph on
+PlayStation4.
+ 
+\emph default
+Il gioco è ambientato in un futuro verosimile in cui ciascun giocatore guida
+ 
+\emph on
+navi 
+\emph default
+ad 
+\emph on
+anti-gravitá 
+\emph default
+in grado di usare diverse 
+\emph on
+armi 
+\emph default
+e 
+\emph on
+potenziamenti 
+\emph default
+al fine di ostacolare gli avversari e tagliare il traguardo prima che questi
+ possano fare altrettanto.
+ I tracciati percorribili sono caratterizzati da ampie carreggiate, curve
+ paraboliche, salti e topologie sinuose.
+ L'ambientazione del gioco è varia ma predilige il contesto urbano: i tracciati
+ attraversano cittá futuristiche caratterizzate da tinte neutre ma arricchite
+ da cartelloni pubblicitari al neon, segnaletica luminosa e dettagli in
+ materiali traslucidi, i quali vengono risaltati ancor di piú nelle modalitá
+ notturne (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:WipeoutTrack"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/wipeout_track.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Wipeout Omega Collection - Ambientazione
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:WipeoutTrack"
+
+\end_inset
+
+Wipeout Omega Collection - Ambientazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Non mancano inoltre ambienti naturali in cui gareggiare quali montagne,
+ canyon e deserti o circuiti volanti immersi nelle nubi.
+ Il gioco offre un gran numero di 
+\emph on
+navi, 
+\emph default
+riccamente personalizzabili attraverso 
+\emph on
+livree 
+\emph default
+ed altri dettagli meccanici.
+ Le 
+\emph on
+navi
+\emph default
+ sono caratterizzate da forme affusolate ed aerodinamiche, materiali metallici
+ in cui risalta l'abitacolo di vetro e dettagli che ricordano vagamente
+ veicoli da guerra (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:WipeoutShip"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/wipeout_ship.png
+	lyxscale 20
+	height 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Wipeout Omega Collection - Esempio di nave
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:WipeoutShip"
+
+\end_inset
+
+Wipeout Omega Collection - Esempio di nave
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+TRON RUN/r
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+TRON RUN/r 
+\emph default
+è un videogioco sviluppato da 
+\emph on
+Sanzaru Games 
+\emph default
+e pubblicato da 
+\emph on
+Disney Interactive 
+\emph default
+nel 2015 su 
+\emph on
+PlayStation4, XBoxOne 
+\emph default
+e 
+\emph on
+Windows.
+
+\emph default
+ Il gioco è un'
+\emph on
+avventura dinamica 
+\emph default
+focalizzata sulle 
+\emph on
+corse
+\emph default
+ all'interno del mondo virtuale di TRON, siano esse 
+\emph on
+podistiche 
+\emph default
+oppure tramite l'uso di una motocicletta virtuale detta 
+\emph on
+Light Cycle
+\emph default
+.
+
+\emph on
+ 
+\emph default
+Le ambientazioni presentate sono tre.
+ La prima è costituita dalla cittá virtuale di 
+\emph on
+Tron City, 
+\emph default
+caratterizzata da lunghe strade immerse in elementi geometrici che ricordano
+ vagamente edifici, ponti o tunnel (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:TronCity"
+
+\end_inset
+
+)
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/tronrun_feet.png
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+TRON RUN/r - Tron City
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:TronCity"
+
+\end_inset
+
+TRON RUN/r - Tron City
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ I percorsi presentano un gran numero di ostacoli e piattaforme sospese
+ che si materializzano mentre il giocatore vi si avvicina.
+ L'ambiente è caratterizzato dalla massicia presenza di effetti di 
+\emph on
+luce al neon
+\emph default
+ che fanno da contrasto a geometrie riflettenti e cieli tetri.
+ La seconda ambientazione è nota col termine 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+Whiteout
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\emph default
+ed è costituita da un lungo tracciato percorribile tramite la propria 
+\emph on
+Light Cycle 
+\emph default
+(Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:TronWhiteout"
+
+\end_inset
+
+)
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/tronrun_lightcycle.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+TRON RUN/r - Whiteout
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:TronWhiteout"
+
+\end_inset
+
+TRON RUN/r - Whiteout
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+
+\emph on
+ 
+\emph default
+Il tracciato si sviluppa in maniera sinuosa in un 
+\emph on
+ambiente asettico 
+\emph default
+caratterizzato da tonalitá neutre molto chiare che quasi soffocano gli onniprese
+nti effetti al neon.
+ La terza ambientazione, nota col nome 
+\begin_inset Quotes fld
+\end_inset
+
+
+\emph on
+Outlands
+\begin_inset Quotes frd
+\end_inset
+
+, 
+\emph default
+unisce gli elementi delle altre due in una cittá virtuale in decadenza,
+ caratterizzata da ampi ambienti immersi in elementi dalle tonalitá cupe.
+\end_layout
+
+\end_body
+\end_document

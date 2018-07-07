@@ -63,7 +63,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 12
+\paperfontsize 11
 \spacing onehalf
 \use_hyperref true
 \pdf_title "OrbTail"
@@ -537,6 +537,20 @@ name "chap:Contesto"
 \begin_inset CommandInset include
 LatexCommand input
 filename "capitolo-1/capitolo-1.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Analisi dei titoli esistenti 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "analisi-dei-competitor/analisi-dei-competitor.lyx"
 
 \end_inset
 
