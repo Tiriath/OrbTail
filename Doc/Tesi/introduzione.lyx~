@@ -75,7 +75,7 @@
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 L’introduzione deve essere atomica, quindi non deve contenere né sottosezioni
@@ -96,7 +96,7 @@ L’introduzione deve essere atomica, quindi non deve contenere né sottosezioni
 
 \emph on
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -156,7 +156,7 @@ dell'esperienza con altri partecipanti.
 \end_layout
 
 \begin_layout Standard
-In questa tesi si descrive il processo di sviluppo di OrbTail
+In questa tesi si descrive il processo di design e sviluppo di OrbTail
 \emph on
 , 
 \emph default
@@ -207,7 +207,7 @@ cross-platform play
 \end_inset
 
  .
- Vi é inoltre la possibilitá di condividere uno stesso dispositivo 
+ Vi è inoltre la possibilitá di condividere uno stesso dispositivo 
 \emph on
 desktop
 \emph default
@@ -303,7 +303,7 @@ un giocatore saltuario, non particolarmente interessato alla cultura dei
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -332,7 +332,7 @@ iche pi` importanti su cui si fonda il lavoro in maniera sintetica u (una
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -363,7 +363,7 @@ La tesi è strutturata nel modo seguente
 \end_layout
 
 \begin_layout Standard
-Questa tesi é strutturata in capitoli.
+Questa tesi è strutturata in capitoli.
 \end_layout
 
 \begin_layout Standard
@@ -373,14 +373,19 @@ Nel primo capitolo viene dato un contesto al progetto, fornendo una panoramica
 \end_layout
 
 \begin_layout Standard
-Nel secondo capitolo vengono delineate le meccaniche del gioco e definiti
- i requisiti di ciasun livello
+Nel secondo capitolo vengono analizzati alcuni titoli esistenti, sviluppati
+ su piattaforme diverse su un ampio orizzonte temporale, al fine di individuare
+ spunti per le 
 \emph on
-.
- 
+meccaniche 
 \emph default
-Vengono inoltre analizzati alcuni titoli esistenti al fine di individare
- meccaniche simili ed analizzarne i vari aspetti e criticitá.
+di gioco e la direzione artistica del progetto.
+\end_layout
+
+\begin_layout Standard
+Nel terzo capitolo vengono delineato il design del gioco, partendo dalle
+ meccaniche di gioco di base e descrivendo le modalitá di gioco, i veicoli
+ e le loro caratteristiche e tutti gli elementi di gioco.
 \end_layout
 
 \begin_layout Standard
@@ -401,7 +406,7 @@ e giustificata, considerando necessariamente i requisiti di design.
 \end_layout
 
 \begin_layout Standard
-Il capitolo finale é dedicato alle conclusioni nonché ad eventuali sviluppi
+Il capitolo finale è dedicato alle conclusioni nonché ad eventuali sviluppi
  futuri.
 \end_layout
 

@@ -74,10 +74,10 @@
 \begin_body
 
 \begin_layout Standard
-In questo capitolo si descrive la direzione artistica seguita dal progetto,
+In questo capitolo si descrive la direzione artistica seguita dal OrbTail,
  andando a definire l'ambientazione e la resa visiva.
- Viene inoltre dettagliato il design dei vari elementi di gioco quali arene,
- veicoli e l'interfaccia utente nel suo complesso.
+ Viene inoltre dettagliato il design dei vari elementi di gioco quali arene
+ e veicoli.
  Le scelte qui presentate considerano i requisiti di design precedentemente
  illustrati, senza perdere di vista le limitazioni tecniche e temporali
  a cui sottostare.
@@ -85,21 +85,18 @@ In questo capitolo si descrive la direzione artistica seguita dal progetto,
  potesse risultare estremamente consistente su tutte le piattaforme supportate.
 \end_layout
 
-\begin_layout Section
-Scelte stilistiche
-\end_layout
-
 \begin_layout Standard
-Nel concept originale, OrbTail era un gioco 2D con camera dall'alto e grafica
+Nel 
+\emph on
+concept
+\emph default
+ originale, OrbTail era nato come gioco 2D con camera dall'alto e grafica
  minimale al neon.
  Durante il processo di sviluppo questa idea si è evoluta per adeguarsi
- meglio al design, passando ad una grafica completamente 3D e telecamera
- ad inseguimento.
+ meglio al design, passando ad una grafica completamente 3D, usando una
+ telecamera ad inseguimento.
  Questa scelta ha consentito di caratterizzare in modo piú profondo le diverse
  arene e i veicoli contenuti in essa.
- Il comparto artistico, un tempo minimale e soggetto a notevoli inconsistenze
- di stile è stato completamente rivisto, partendo dalla resa visiva delle
- arene fino ai modelli dei veicoli pilotabili e l'effettistica di gioco.
  Lo stile scelto per OrbTail è caratterizzato da elementi fortemente futuristici
 , in cui elementi 
 \emph on
@@ -110,7 +107,20 @@ metallici
 intense luci
 \emph default
  pulsanti.
- Al fine di ottenere una resa visiva di livello piú elevato è stato deciso
+ Nonostante la componente 
+\emph on
+fantascientifica 
+\emph default
+del gioco, l'intera ambientazione rimane comunque molto 
+\emph on
+verosimile
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Al fine di ottenere una resa visiva di livello piú elevato è stato deciso
  di fare un uso estensivo di tecniche di 
 \emph on
 post-processing
@@ -143,123 +153,14 @@ rendering physically-based
 \emph default
 .
  Quest'ultimo consente di ottenere una resa grafica molto fedele alla realtá
- e si basa su proprietá fisiche dei materiali, quali 
-\emph on
-metallicitá, albedo
-\emph default
-, 
-\emph on
-ruvidezza 
-\emph default
-ed 
-\emph on
-emissivitá
-\emph default
-.
- Le risorse prodotte per OrbTail usano 
-\emph on
-due 
-\emph default
-o 
-\emph on
-tre
-\emph default
- 
-\emph on
-texture 
-\emph default
-al fine di codificare quest'ultime.
- La 
-\emph on
-texture 
-\emph default
-di 
-\emph on
-diffuse 
-\emph default
-rappresenta il contributo principale in termini di colore percepito ed è
- usata per le livree dei veicoli o gli elementi dell'arena.
- Per ridurre il numero di 
-\emph on
-poligoni 
-\emph default
-degli elementi di scena ed aumentare di conseguenza le performance, è stato
- deciso di usare la tecnica del 
-\emph on
-normal-mapping 
-\emph default
-al fine di aggiungere dettagli su scala medio-piccola a tutti gli elementi
- delle arene.
- I veicoli sono stati giudicati sufficientemente dettagliati e, pertanto,
- sono stati esclusi da questa gestione.
- Le informazioni relative alle normali sono codificate tramite un'apposita
- 
-\emph on
-texture 
-\emph default
-(nota come 
-\emph on
-normal-map
-\emph default
-)
-\emph on
-.
- 
-\emph default
-L'ultima texture contiene le informazioni necessarie al 
-\emph on
-rendering physically-based 
-\emph default
-(
-\emph on
-PBR
-\emph default
-): il primo canale contiene il valore di 
-\emph on
-ruvidezza 
-\emph default
-della superficie, dove 
-\emph on
-zero 
-\emph default
-rappresenta una superficie liscia ed 
-\emph on
-uno 
-\emph default
-una superficie molto ruvida, il secondo canale codifica la 
+ in quanto si basa sulla descrizione delle proprietá fisiche dei materiali,
+ quali 
 \emph on
 metallicitá 
 \emph default
-dell'oggetto, ovvero quanto questo si comporta similmente ad un 
+e 
 \emph on
-metallo 
-\emph default
-(valori vicini ad 
-\emph on
-uno
-\emph default
-) o ad un 
-\emph on
-materiale dielettrico 
-\emph default
-(valori prossimi allo 
-\emph on
-zero
-\emph default
-).
- L'ultimo canale è invece dedicato al valore di 
-\emph on
-emissivitá
-\emph default
-, ovvero quanta luce viene 
-\emph on
-emessa 
-\emph default
-dall'oggetto stesso.
- Questo valore è monocromatico e viene modulato secondo un colore configurato
- opportunamente dallo shader al fine di ottenere colori emissivi diversi.
- Il valore di emissivitá è usato per aggiungere la maggior parte degli effetti
- luminosi in scena e alcuni dettagli dei veicoli, quali motori e spie.
+ruvidezza.
 \end_layout
 
 \begin_layout Section
@@ -460,11 +361,7 @@ OrbTail - Planetarium
 \emph on
 tassellati 
 \emph default
-in metallo
-\emph on
- 
-\emph default
-e rinforzata da una spessa gabbia anch'essa metallica.
+e rinforzata da una spessa gabbia metallica.
  Il pavimento è arricchito tramite striature luminose azzurre.
  L'elemento grafico principale è costituito da una grossa colonna che collega
  i due poli dell'arena, caratterizzata da uno stile architettonico vagamente
@@ -472,7 +369,7 @@ e rinforzata da una spessa gabbia anch'essa metallica.
 \emph on
 extraterrestre
 \emph default
- il cui scopo è ignoto.
+.
  Questo elemento è l'unico in gioco a costituire un ostacolo per i veicoli
  dei giocatori ed è pertanto possibile usarlo in maniera strategica per
  ripararsi dagli avversari.
@@ -484,7 +381,7 @@ Torus
 \begin_inset Quotes frd
 \end_inset
 
-, è l'arena topologicamente piú semplice (Fig.
+, è l'arena geometicamente piú semplice (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -542,8 +439,9 @@ OrbTail - Torus
 
 \end_inset
 
-Vista dall'esterno ricorda vagamente un acceleratore di particelle in cui
- le pareti lasciano trasparire un flusso energetico di colore 
+Vista dall'esterno, questo livello ricorda vagamente un acceleratore di
+ particelle in cui le pareti lasciano trasparire un flusso energetico di
+ colore 
 \emph on
 arancio
 \emph default
@@ -559,26 +457,16 @@ Design dei veicoli
 \end_layout
 
 \begin_layout Standard
-In questa nuova iterazione, i veicoli pilotabili sono stati rivisti completament
-e, sia in termini di 
+I veicoli presenti in gioco sono stati reinterpretati in chiave vagamente
+ 
 \emph on
-geometria
-\emph default
- che in termine di 
-\emph on
-resa grafica
-\emph default
-.
- Un tempo caratterizzati da forme geometriche molto semplici e colori solidi,
- essi sono stati reinterpretati in chiave vagamente sportiva
-\emph on
-, 
+sportiva, 
 \emph default
 assumendo la forma di 
 \emph on
-astronavi futuristiche
+navi futuristiche
 \emph default
-.
+ in grado di fluttuare sulle arene.
  Le geometrie sono caratterizzate da un 
 \emph on
 design 
@@ -587,7 +475,7 @@ molto
 \emph on
 verosimile
 \emph default
-, con linee morbide e dettagli tecnici (Fig.
+, con linee morbide e pochi dettagli tecnici (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -749,6 +637,142 @@ grossi motori
 massicce
 \emph default
 .
+\end_layout
+
+\begin_layout Section
+Produzione delle risorse grafiche
+\end_layout
+
+\begin_layout Standard
+Le risorse prodotte per OrbTail usano 
+\emph on
+due 
+\emph default
+o 
+\emph on
+tre
+\emph default
+ 
+\emph on
+texture 
+\emph default
+al fine di codificare le informazioni fisiche dei materiali degli oggetti.
+ La 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+diffuse-map
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\emph default
+é una texture che
+\emph on
+ 
+\emph default
+rappresenta il contributo principale in termini di colore percepito ed è
+ usata per determinare il colore delle livree dei veicoli o degli elementi
+ dell'arena.
+ Per ridurre il numero di 
+\emph on
+poligoni 
+\emph default
+degli elementi di scena ed aumentare di conseguenza le performance, è stato
+ deciso di usare la tecnica del 
+\emph on
+normal-mapping 
+\emph default
+al fine di aggiungere dettagli su scala medio-piccola a tutti gli elementi
+ delle arene.
+ I veicoli sono stati giudicati sufficientemente dettagliati e, pertanto,
+ sono stati esclusi da questa gestione.
+ Le informazioni relative alle normali sono codificate tramite un'apposita
+ 
+\emph on
+texture 
+\emph default
+nota come 
+\emph on
+
+\begin_inset Quotes fld
+\end_inset
+
+normal-map
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+
+\emph on
+.
+ 
+\emph default
+L'ultima 
+\emph on
+texture
+\emph default
+ contiene le informazioni necessarie al 
+\emph on
+rendering physically-based 
+\emph default
+(
+\emph on
+PBR
+\emph default
+): il primo canale contiene il valore di 
+\emph on
+ruvidezza 
+\emph default
+della superficie, dove 
+\emph on
+zero 
+\emph default
+rappresenta una superficie liscia ed 
+\emph on
+uno 
+\emph default
+una superficie molto ruvida, il secondo canale codifica la 
+\emph on
+metallicitá 
+\emph default
+dell'oggetto, ovvero quanto questo si comporta similmente ad un 
+\emph on
+metallo 
+\emph default
+(valori vicini ad 
+\emph on
+uno
+\emph default
+) o ad un 
+\emph on
+materiale dielettrico 
+\emph default
+(valori prossimi allo 
+\emph on
+zero
+\emph default
+).
+ L'ultimo canale è invece dedicato al valore di 
+\emph on
+emissivitá
+\emph default
+, ovvero quanta luce viene 
+\emph on
+emessa 
+\emph default
+dall'oggetto stesso.
+ Questo valore è monocromatico e viene modulato secondo un colore configurato
+ opportunamente dallo 
+\emph on
+shader
+\emph default
+ al fine di ottenere colori emissivi diversi.
+ Il valore di emissivitá è usato per aggiungere la maggior parte degli effetti
+ luminosi in scena e alcuni dettagli dei veicoli, quali motori e spie.
 \end_layout
 
 \end_body

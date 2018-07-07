@@ -86,6 +86,10 @@ concettuali
  le eventuali limitazioni).
 \end_layout
 
+\begin_layout Section
+Meccaniche di base
+\end_layout
+
 \begin_layout Standard
 OrbTail è un gioco competitivo con elementi tipici dei 
 \emph on
@@ -121,7 +125,7 @@ In OrbTail ogni giocatore controlla un veicolo in grado di muoversi agilmente
 orb 
 \emph default
 che si agganciano ad esso formando una lunga coda.
- è possibile utilizzare il proprio veicolo per scontrarsi contro quelli
+ È possibile utilizzare il proprio veicolo per scontrarsi contro quelli
  avversari al fine di sottrarre 
 \emph on
 orb
@@ -174,13 +178,6 @@ e scuotere i normali equilibri di gioco.
 \end_layout
 
 \begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Per garantire la massima fruzione del videogioco in varie casistiche, tutte
  le modalitá di gioco ed arene sono disponibili in configurazione a 
 \emph on
@@ -225,13 +222,6 @@ ne sono esclusi sia per ragioni di performance e sia perché queste piattaforme
 \end_layout
 
 \begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Tutte le modalitá di gioco sono state concepite considerando un numero di
  partecipanti fisso pari a 
 \emph on
@@ -261,7 +251,7 @@ era disponibile nella sola modalitá a giocatore singolo: era pertanto possibile
 online 
 \emph default
 con un numero inferiore di giocatori.
- Questa limitazione è stata 
+ Questa limitazione è stata infine 
 \emph on
 rimossa 
 \emph default
@@ -271,13 +261,6 @@ al fine di garantire una piú elevata consistenza tra le esperienze a giocatore
  
 \emph default
 e, allo stesso tempo, aumentare la difficoltá delle sessioni online.
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -315,12 +298,7 @@ Modalitá di gioco
 
 \begin_layout Standard
 Il titolo offre diverse modalitá di gioco accomunate dalle medesime meccaniche
- di base ma con condizioni di vittoria differenti.
- Le modalitá di gioco sono rimaste largamente immutate rispetto all'idea
-\emph on
- 
-\emph default
-originale del 2014.
+ di base ma caratterizzate da condizioni di vittoria differenti.
 \end_layout
 
 \begin_layout Description
@@ -350,8 +328,7 @@ frenetico per l'intera durata della sfida.
 orb 
 \emph default
 porta i giocatori allo scontro continuo in modo che ve ne sia sempre un
- discreto numero da collezionare al fine di garantire un flusso costante
- di punti.
+ discreto numero da collezionare e garantire un flusso costante di punti.
  In questa modalitá gli scontri trai veicoli possono risultare tanto positivi
  per l'attaccante quanto per il difensore: una volta collezionati tutti
  gli 
@@ -372,12 +349,8 @@ staccati prima che gli avversari possano fare altrettanto.
 \end_layout
 
 \begin_layout Description
-Longest
-\begin_inset space ~
-\end_inset
-
-Tail In questa modalitá l'obiettivo è quello di terminare la partita col
- maggior numero di 
+Coda-piú-lunga In questa modalitá l'obiettivo è quello di terminare la partita
+ col maggior numero di 
 \emph on
 orb 
 \emph default
@@ -466,8 +439,8 @@ competizione
 \emph default
  e un livello di difficoltá che cresce al diminuire del numero di partecipanti
  in gara.
- Ogni volta che un giocatore viene eliminato, i veicoli rimanenti si spartiranno
- i suoi 
+ Ogni volta che un giocatore viene eliminato, i veicoli rimanenti potranno
+ spartirsi i suoi 
 \emph on
 orb, 
 \emph default
@@ -487,7 +460,7 @@ gameplay
 \emph on
 spettatore
 \emph default
- che consente loro di inquadrare i partecipanti ancora in vita.
+ che consente loro di inquadrare i partecipanti ancora in gioco.
  Questa modalitá ha inoltre un tempo limite di 
 \emph on
 centottanta secondi
@@ -1162,6 +1135,11 @@ topologia
  Le arene si sviluppano in solidi tridimensionali: i veicoli possono muoversi
  solamente lungo loro superficie ma non possono mai passarvi attraverso
  o volare al loro interno.
+ Tutti gli elementi di gioco 
+\emph on
+fluttuano 
+\emph default
+al di sopra della superficie dell'arena ad una breve distanza.
  Sebbene le arene si differenziano per dimensione, l'ambiente di gioco rimane
  sempre ragionevolmente limitato.
  Le motivazioni di questa scelta di design sono molteplici.
@@ -1182,20 +1160,16 @@ accerchiarlo.
 Questa proprietá è fondamentale per garantire un grado di sfida adeguato
  nelle modalitá 
 \emph on
-longest tail 
+coda-piú-lunga 
 \emph default
 ed 
 \emph on
 eliminazione
 \emph default
 .
- Nel 
-\emph on
-documento di design 
-\emph default
-originale del gioco era prevista la presenza di elementi attivi ed ostacoli
- all'interno dei livelli: sebbene questa funzionalitá avrebbe certamente
- arricchito l'esperienza di gioco, ció avrebbe richiesto lo sviluppo di
+ Originariamente era inoltre prevista la presenza di elementi attivi ed
+ ostacoli all'interno dei livelli: sebbene questa funzionalitá avrebbe certament
+e arricchito l'esperienza di gioco, ció avrebbe richiesto lo sviluppo di
  un'
 \emph on
 intelligenza artificiale 
@@ -1221,8 +1195,8 @@ Stadium Il livello è costituito da un'arena
 \emph on
 emisferica
 \emph default
- in cui i veicoli possono correre sulla sua base ma non possono superarne
- i bordi.
+ in cui i veicoli possono correre sulla sua base circolare ma non possono
+ superarne i bordi.
  Questo livello è caratterizzato da una topologia 
 \emph on
 piana 
@@ -1347,9 +1321,9 @@ una volta utilizzati.
 \end_layout
 
 \begin_layout Standard
-Nel 
+In una prima iterazione,
 \emph on
-design originale 
+ 
 \emph default
 questi potenziamenti erano ottenibili raccogliendo degli 
 \emph on
@@ -1368,7 +1342,7 @@ imbevuti
 dieci 
 \emph default
 secondi e iniziavano a brillare vistosamente.
- Durante le iterazioni ci si è resi conto che sfruttare gli 
+ Durante lo sviluppo ci si è resi conto che sfruttare gli 
 \emph on
 orb 
 \emph default
@@ -1504,7 +1478,7 @@ eliminazione
 \emph default
 o nelle fasi finali di 
 \emph on
-longest tail
+coda-piú-lunga
 \emph default
  in quanto consente di ribaltare le sorti della partita.
  Il raggio di curvatura limitato di quest'arma consente ai giocatori piú
@@ -1596,8 +1570,11 @@ invincibilitá
 \end_layout
 
 \begin_layout Standard
-Nella versione originale erano previsti alcuni poteri che avevano dagli
- effetti 
+Nel 
+\emph on
+concept
+\emph default
+ originale erano previsti alcuni poteri che avevano dagli effetti 
 \emph on
 negativi 
 \emph default
@@ -1726,7 +1703,7 @@ apposito per attivare i potenziamenti.
 pad
 \emph default
 .
- è inoltre possibile interagire con tutti gli elementi dell'interfaccia
+ È inoltre possibile interagire con tutti gli elementi dell'interfaccia
  grafica (in menú e in gara) attraverso il 
 \emph on
 mouse
@@ -1779,7 +1756,7 @@ caratterizzati solitamente da schermi dalle dimensioni ridotte.
 \end_layout
 
 \begin_layout Standard
-I menu all'interno del gioco sono caratterizzati da elementi sempre ben
+I menú all'interno del gioco sono caratterizzati da elementi sempre ben
  visibili, sono escluse pertanto liste a scorrimento o menú con un gran
  numero di voci.
  Questa tipologia di menú è necessaria per facilitare l'interazione tramite
@@ -1831,7 +1808,53 @@ Il gioco prevede infine un elemento tridimensionale finalizzato ad aiutare
 bussola 
 \emph default
 e consente di visualizzare la direzione relativa dei veicoli avversari rispetto
- a quella del giocatore.
+ a quella del giocatore (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailCompass"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/compass.PNG
+	lyxscale 20
+	width 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailCompass"
+
+\end_inset
+
+Elemento dell'HUD con funzione di bussola
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -1841,6 +1864,7 @@ Flusso di gioco
 \begin_layout Standard
 Il flusso di gioco è pensato per portare rapidamente l'utente in partita,
  riducendo al minimo il numero di interazioni necessarie (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:OrbTailFlow"

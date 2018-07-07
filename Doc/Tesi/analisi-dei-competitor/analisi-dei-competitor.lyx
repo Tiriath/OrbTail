@@ -80,9 +80,10 @@ In questo capitolo vengono presentati alcuni titoli esistenti al fine di
 \emph on
 design 
 \emph default
-di gioco.
- Verranno inoltre analizzate le loro scelte stilistiche in modo da inviduare
- una possibile direzione artistica da seguire durante la produzione di OrbTail.
+di OrbTail.
+ Verranno inoltre analizzate le scelte stilistiche in modo da inviduare
+ una possibile direzione artistica da seguire durante la produzione del
+ videogioco.
  I titoli sono stati selezionati tra diverse piattaforme in modo da individuare
  un sottoinsieme di caratteristiche desiderate e facilmente adattabili alla
  grande diversitá di dispositivi per cui verrá sviluppato il prodotto.
@@ -183,6 +184,7 @@ wumpa
 \begin_layout Standard
 Il gioco offre cinque modalitá di gioco, di cui tre a giocatore singolo
  (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:CTR"
@@ -369,6 +371,7 @@ battaglia
  stravolge le regole del gioco: i partecipanti si sfidano all'interno di
  un'arena chiusa collezionando armi e potenziamenti al fine di colpire e
  danneggiare gli avversari (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:CTRBattle"
@@ -392,193 +395,6 @@ intelligenza artificiale
  ed è pertanto preclusa dall'esperienza a giocatore singolo
 \emph on
 .
-\end_layout
-
-\begin_layout Section
-Wipeout Omega Collection
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Wipeout Omega Collection 
-\emph default
-è un videogioco di 
-\emph on
-corse futuristiche 
-\emph default
-sviluppato da 
-\emph on
-XDev, Clever Beans 
-\emph default
-e 
-\emph on
-EPOS Game Studios 
-\emph default
-nel 2017 disponibile per 
-\emph on
-PlayStation4.
- 
-\emph default
-Il gioco è ambientato in un futuro verosimile in cui ciascun giocatore guida
- 
-\emph on
-navi 
-\emph default
-ad 
-\emph on
-anti-gravitá 
-\emph default
-in grado di usare diverse 
-\emph on
-armi 
-\emph default
-e 
-\emph on
-potenziamenti 
-\emph default
-al fine di ostacolare gli avversari e tagliare il traguardo prima che questi
- possano fare altrettanto.
- I tracciati percorribili sono caratterizzati da ampie carreggiate, curve
- paraboliche, salti e topologie sinuose.
- L'ambientazione del gioco è varia ma predilige il contesto urbano: i tracciati
- attraversano cittá futuristiche caratterizzate da tinte neutre ma arricchite
- da cartelloni pubblicitari al neon, segnaletica luminosa e dettagli in
- materiali traslucidi, i quali vengono risaltati ancor di piú nelle modalitá
- notturne (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:WipeoutTrack"
-
-\end_inset
-
-).
- 
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/wipeout_track.jpg
-	lyxscale 20
-	height 7cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Argument 1
-status collapsed
-
-\begin_layout Plain Layout
-Wipeout Omega Collection - Ambientazione
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:WipeoutTrack"
-
-\end_inset
-
-Wipeout Omega Collection - Ambientazione
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- Non mancano inoltre ambienti naturali in cui gareggiare quali montagne,
- canyon e deserti o circuiti volanti immersi nelle nubi.
- Il gioco offre un gran numero di 
-\emph on
-navi, 
-\emph default
-riccamente personalizzabili attraverso 
-\emph on
-livree 
-\emph default
-ed altri dettagli meccanici.
- Le 
-\emph on
-navi
-\emph default
- sono caratterizzate da forme affusolate ed aerodinamiche, materiali metallici
- in cui risalta l'abitacolo di vetro e dettagli che ricordano vagamente
- veicoli da guerra (Fig.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:WipeoutShip"
-
-\end_inset
-
-).
- 
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/wipeout_ship.png
-	lyxscale 20
-	height 4cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Wipeout Omega Collection - Esempio di nave
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:WipeoutShip"
-
-\end_inset
-
-Wipeout Omega Collection - Esempio di nave
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -645,6 +461,7 @@ decalcomanie
 pneumatici, razzi 
 \emph default
 e molto altro ancora (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:RocketLeagueCustom"
@@ -799,6 +616,7 @@ calcio
 
 ) prevede la sfida tra due squadre di dimensione variabile tra uno e quattro
  giocatori (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:RocketLeague"
@@ -1016,6 +834,7 @@ avventura
 \end_inset
 
  ed un'ambiente di gioco totalmente tridimensionale (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:GW3Sphere"
@@ -1158,6 +977,7 @@ nastri
  
 \emph default
 (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:GW3Funnel"
@@ -1297,6 +1117,193 @@ cooperativa a visuale condivisa, caratterizzata dalla sola presenza di arene
 online competitiva 
 \emph default
 fino ad un massimo di otto giocatori.
+\end_layout
+
+\begin_layout Section
+Wipeout Omega Collection
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Wipeout Omega Collection 
+\emph default
+è un videogioco di 
+\emph on
+corse futuristiche 
+\emph default
+sviluppato da 
+\emph on
+XDev, Clever Beans 
+\emph default
+e 
+\emph on
+EPOS Game Studios 
+\emph default
+nel 2017 disponibile per 
+\emph on
+PlayStation4.
+ 
+\emph default
+Il gioco è ambientato in un futuro verosimile in cui ciascun giocatore guida
+ 
+\emph on
+navi 
+\emph default
+ad 
+\emph on
+anti-gravitá 
+\emph default
+in grado di usare diverse 
+\emph on
+armi 
+\emph default
+e 
+\emph on
+potenziamenti 
+\emph default
+al fine di ostacolare gli avversari e tagliare il traguardo prima che questi
+ possano fare altrettanto.
+ I tracciati percorribili sono caratterizzati da ampie carreggiate, curve
+ paraboliche, salti e topologie sinuose.
+ L'ambientazione del gioco è varia ma predilige il contesto urbano: i tracciati
+ attraversano cittá futuristiche caratterizzate da tinte neutre ma arricchite
+ da cartelloni pubblicitari al neon, segnaletica luminosa e dettagli in
+ materiali traslucidi, i quali vengono risaltati ancor di piú nelle modalitá
+ notturne (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:WipeoutTrack"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/wipeout_track.jpg
+	lyxscale 20
+	height 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Wipeout Omega Collection - Ambientazione
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:WipeoutTrack"
+
+\end_inset
+
+Wipeout Omega Collection - Ambientazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Non mancano inoltre ambienti naturali in cui gareggiare quali montagne,
+ canyon e deserti o circuiti volanti immersi nelle nubi.
+ Il gioco offre un gran numero di 
+\emph on
+navi, 
+\emph default
+riccamente personalizzabili attraverso 
+\emph on
+livree 
+\emph default
+ed altri dettagli meccanici.
+ Le 
+\emph on
+navi
+\emph default
+ sono caratterizzate da forme affusolate ed aerodinamiche, materiali metallici
+ in cui risalta l'abitacolo di vetro e dettagli che ricordano vagamente
+ veicoli da guerra (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:WipeoutShip"
+
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/wipeout_ship.png
+	lyxscale 20
+	height 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Wipeout Omega Collection - Esempio di nave
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:WipeoutShip"
+
+\end_inset
+
+Wipeout Omega Collection - Esempio di nave
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

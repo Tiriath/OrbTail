@@ -86,7 +86,7 @@ Il sommario deve contenere 3 frasi tratte dall’introduzione.
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -105,12 +105,12 @@ La prima inquadra l’area dove si svolge il lavoro, eventualmente un'altra
 \end_layout
 
 \begin_layout Standard
-Lo sviluppo di videogiochi multigiocatore in grado di adattarsi a piú piattaform
-e costituisce una sfida complessa, richiedendo opportune considerazioni
+La creazione di videogiochi multigiocatore in grado di adattarsi a piú piattafor
+me costituisce una sfida complessa, richiedendo opportune considerazioni
  in termini di design ed architettura del software.
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -137,9 +137,9 @@ Lo scopo della tesi è \SpecialChar ldots
 \end_layout
 
 \begin_layout Standard
-In questo elaborato di tesi si descrive il processo di sviluppo di OrbTail,
- un gioco multipiattaforma a piú partecipanti che coniuga elementi tipici
- di 
+In questo elaborato di tesi si descrive il processo di design e sviluppo
+ di OrbTail, un gioco multipiattaforma a piú partecipanti che coniuga elementi
+ tipici di 
 \emph on
 giochi di guida
 \emph default
@@ -148,14 +148,14 @@ giochi di guida
  ad arena
 \emph default
  e diverse modalitá di gioco in un'esperianza rapida e competitiva.
- Il prodotto, nato nel 2013 come progetto per il corso di 
+ Il prodotto, nato come progetto per il corso di 
 \emph on
 Videogame Design and Programming
 \emph default
 , è stato rielaborato ed esteso, andando ad aggiornare l'intero comparto
- tecnico, il design originale e la direzione artistica.
+ tecnico, il design e la direzione artistica.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -174,11 +174,14 @@ La terza frase riassume brevemente l’attività svolta, i risultati ottenuti
 \end_layout
 
 \begin_layout Standard
-In questo documento sono riportate le fasi di sviluppo del prodotto e le
+In questo documento sono riportate le fasi di creazione del prodotto e le
  criticitá affrontate per garantire un'elevata consistenza dell'esperienza
  utente su piattaforme profondamente diverse.
- Vengono inoltre presentati numerosi paralleli con la versione originale
- del gioco, al fine di individuare carenze e spunti per migliorie.
+ Vengono inoltre presentati numerosi paralleli con il 
+\emph on
+concept
+\emph default
+ originale del gioco, al fine di individuare carenze e spunti per migliorie.
 \end_layout
 
 \end_body

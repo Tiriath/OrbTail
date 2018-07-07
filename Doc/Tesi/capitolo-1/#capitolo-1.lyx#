@@ -509,7 +509,6 @@ sono l'equivalente videoludico dei giochi di societá.
 .
  Le implementazioni piú semplici consistono nell'utilizzare una visuale
  condivisa tra tutti i partecipanti (Fig.
- 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Overcooked"
@@ -523,7 +522,6 @@ turni
 \emph default
  affinché ciascun giocatore possa godere di un punto di vista unico sul
  mondo di gioco (Fig.
- 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:HoMM3"
@@ -544,7 +542,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_overcooked.jpg
 	lyxscale 20
-	width 12cm
+	height 7cm
 
 \end_inset
 
@@ -594,7 +592,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_hommiii.jpg
 	lyxscale 20
-	width 12cm
+	height 7cm
 
 \end_inset
 
@@ -638,7 +636,6 @@ split-screen,
  consiste nel suddividere lo schermo in quadranti, solitamente da due a
  quattro, e mostrare in ciascuno di essi il punto di vista di uno dei giocatori
  in maniera indipendente (Fig.
- 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:MarioKarts"
@@ -659,7 +656,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_ss_mario_karts.jpg
 	lyxscale 20
-	width 12cm
+	height 7cm
 
 \end_inset
 
@@ -720,7 +717,6 @@ MOBA
 \emph default
  in cui due squadre dal numero ristretto di giocatori si sfidano all'interno
  di un'arena (Fig.
- 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Battlerite"
@@ -745,7 +741,6 @@ Battle Royale
 \emph default
 caratterizzati da centinaia di giocatori che lottano per la sopravvivenza
  (Fig.
- 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:PUBG"
@@ -765,7 +760,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_battlerite.jpg
 	lyxscale 20
-	width 12cm
+	height 7cm
 
 \end_inset
 
@@ -815,7 +810,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mmo_eveonline.jpg
 	lyxscale 20
-	width 12cm
+	height 7cm
 
 \end_inset
 
@@ -865,7 +860,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/br_pubg.jpg
 	lyxscale 20
-	width 12cm
+	height 7cm
 
 \end_inset
 
@@ -1087,7 +1082,6 @@ console
 ), tuttavia essi rappresentano una nicchia ristretta che non ha mai riscosso
  un vero e proprio successo per via dei ruoli particolarmente asimmetrici
  e gameplay profondamente diversi trai vari dispositivi (Fig.
- 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:BF4"
@@ -1099,10 +1093,9 @@ reference "fig:BF4"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1113,7 +1106,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_bf4.jpg
 	lyxscale 20
-	width 12cm
+	height 7cm
 
 \end_inset
 
@@ -1147,7 +1140,6 @@ comandante
 \end_layout
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1158,7 +1150,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_bf4_commander.jpg
 	lyxscale 20
-	width 12cm
+	height 7cm
 
 \end_inset
 

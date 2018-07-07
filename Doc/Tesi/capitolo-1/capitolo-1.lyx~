@@ -125,9 +125,12 @@ key "GameStatistics"
 
 \begin_layout Standard
 Pur non godendo delle stesse performance e manifestando un ciclo di vita
- piú breve rispetto alle controparti classiche, i dispositivi mobile godono
- di una piú vasta diffusione e si rivolgono ad un pubblico decisamente piú
- ampio.
+ piú breve rispetto alle controparti classiche, i dispositivi 
+\emph on
+mobile
+\emph default
+ godono di una piú vasta diffusione e si rivolgono ad un pubblico decisamente
+ piú ampio.
 \end_layout
 
 \begin_layout Standard
@@ -139,7 +142,7 @@ input
 \emph on
 touch
 \emph default
- é affiancata da un grande numero di sensori accessori quali 
+ è affiancata da un grande numero di sensori accessori quali 
 \emph on
 GPS, accelerometri, giroscopi, bussole 
 \emph default
@@ -223,7 +226,7 @@ za.
 \end_layout
 
 \begin_layout Standard
-Il ciclo di vita e il costo delle due piattaforme é inoltre molto diverso.
+Il ciclo di vita e il costo delle due piattaforme è inoltre molto diverso.
  Le 
 \emph on
 console 
@@ -232,7 +235,7 @@ sono dei
 \emph on
 sistemi embedded 
 \emph default
-precostruiti e limitatamente aggiornabili; il loro ciclo di vita é generalmente
+precostruiti e limitatamente aggiornabili; il loro ciclo di vita è generalmente
  superiore al quinquennio e sono caratterizzati da un costo relativamente
  basso.
  I 
@@ -249,7 +252,7 @@ possono essere assemblati scegliendo i componenti che meglio si adattano
 \emph on
 pc 
 \emph default
-é generalmente molto piú alto rispetto a quello di una console, anche a
+è generalmente molto piú alto rispetto a quello di una console, anche a
  paritá di specifiche tecniche.
 \end_layout
 
@@ -292,11 +295,11 @@ e utente.
 \end_layout
 
 \begin_layout Section
-Processo di sviluppo
+Processo produttivo
 \end_layout
 
 \begin_layout Standard
-Il processo di sviluppo di un videogioco cambia radicalmente in funzione
+Il processo produttivo di un videogioco cambia radicalmente in funzione
  della piattaforma e dell'utenza a cui viene destinato il prodotto.
  Un design di successo deve essere in grado di sfruttare le peculiaritá
  di ciascun dispositivo e considerarne le limitazioni tecniche, senza pregiudica
@@ -317,7 +320,7 @@ console
  appartenenti ad uno stesso ecosistema garantisce un'elevata consistenza
  dell'esperienza utente e consente interventi di ottimizzazione ad una granulari
 tá molto fine.
- Laddove questo processo é solitamente molto 
+ Laddove questo processo è solitamente molto 
 \emph on
 efficiente
 \emph default
@@ -347,9 +350,9 @@ tablet
 \emph default
 , d'altro canto, deve scontrarsi con la presenza di dispositivi con capacitá
  profondamente diverse e comparti tecnici non sempre in equilibrio tra loro
- (non é raro assistere a dispositivi che associano elevate risoluzioni a
+ (non è raro assistere a dispositivi che associano elevate risoluzioni a
  performance mediocri).
- In questo caso é richiesto uno sforzo maggiore affinché l'applicazione
+ In questo caso è richiesto uno sforzo maggiore affinché l'applicazione
  scali in funzione del dispositivo per garantire una buona esperienza utente.
 \end_layout
 
@@ -397,7 +400,7 @@ ioni a livello di
 \emph on
 design
 \emph default
- e produzione delle risorse grafiche e non.
+ e produzione delle risorse di gioco.
  In primo luogo il differente grado di apprezzamento dell'utenza delle varie
  piattaforme puó precludere il successo a certe tipologie di gioco di nicchia
  (quali potrebbero essere simulatori o strategici) e favorire i design che
@@ -432,7 +435,7 @@ Multigiocatore
 
 \begin_layout Standard
 L'interazione sociale come mezzo per aumentare il coinvolgimento videoludico
- é il motivo principale per cui i videogiochi multigiocatore hanno da sempre
+ è il motivo principale per cui i videogiochi multigiocatore hanno da sempre
  riscosso un grande successo.
  Sebbene esistono infinite variazioni sul tema, le modalitá multigiocatore
  possono essere classificate in due famiglie: 
@@ -450,7 +453,7 @@ Alla prima categoria appartengono quelle modalitá in cui due o piú giocatori
 collaborano 
 \emph default
 tra loro al fine di raggiungere un obiettivo comune.
- In queste modalitá l'elemento di sfida é rappresentato dal gioco stesso
+ In queste modalitá l'elemento di sfida è rappresentato dal gioco stesso
  e governato da 
 \emph on
 intelligenze artificiali 
@@ -460,11 +463,11 @@ piú o meno sofisticate.
 \emph on
 competitive
 \emph default
- l'elemento di sfida é invece rappresentato dai giocatori stessi: gli utenti
+ l'elemento di sfida è invece rappresentato dai giocatori stessi: gli utenti
  sono portati a confrontarsi gli uni con gli altri al fine di raggiungere
  un obiettivo impedendo al contempo che gli altri giocatori possano fare
  altrettanto.
- Il livello di sfida offerto da alcuni titoli é tale per cui, pur di eccellere,
+ Il livello di sfida offerto da alcuni titoli è tale per cui, pur di eccellere,
  alcuni giocatori hanno deciso di farne una carriera, sottoponendosi costantemen
 te a veri e propri allenamenti.
  Questo fenomeno ha di recente portato alla nascita di competizioni a livello
@@ -517,8 +520,8 @@ reference "fig:Overcooked"
 \emph on
 turni
 \emph default
- affinché ciascun giocatore goda di un punto di vista unico sul mondo di
- gioco (Fig.
+ affinché ciascun giocatore possa godere di un punto di vista unico sul
+ mondo di gioco (Fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:HoMM3"
@@ -539,7 +542,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_overcooked.jpg
 	lyxscale 20
-	height 7cm
+	width 12cm
 
 \end_inset
 
@@ -589,7 +592,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_hommiii.jpg
 	lyxscale 20
-	height 7cm
+	width 12cm
 
 \end_inset
 
@@ -653,7 +656,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_ss_mario_karts.jpg
 	lyxscale 20
-	height 7cm
+	width 12cm
 
 \end_inset
 
@@ -757,7 +760,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_battlerite.jpg
 	lyxscale 20
-	height 7cm
+	width 12cm
 
 \end_inset
 
@@ -807,7 +810,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mmo_eveonline.jpg
 	lyxscale 20
-	height 7cm
+	width 12cm
 
 \end_inset
 
@@ -857,7 +860,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/br_pubg.jpg
 	lyxscale 20
-	height 7cm
+	width 12cm
 
 \end_inset
 
@@ -981,7 +984,7 @@ server dedicato
  al fine di gestire efficientemente un numero anche elevato di giocatori.
  Il secondo di questi, invece, consente di evitare i costi associati alla
  gestione o noleggio del server al costo di una minore scalabilitá.
- L'esperienza multigiocatore con questo tipo di approccio é inoltre soggetta
+ L'esperienza multigiocatore con questo tipo di approccio è inoltre soggetta
  a fattori difficilmente prevedibili quali prestazioni del dispositivo che
  fa da 
 \emph on
@@ -1016,7 +1019,7 @@ peer-to-peer
 \emph on
 client-server
 \emph default
-, lo stato di gioco é condiviso su tutti i dispositivi e gestito in maniera
+, lo stato di gioco è condiviso su tutti i dispositivi e gestito in maniera
  distribuita.
  Sebbene questa architettura impedisce che il carico computazionale si concentri
  su un unico dispositivo, evitando inoltre i costi associati a macchine
@@ -1090,9 +1093,10 @@ reference "fig:BF4"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1103,7 +1107,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_bf4.jpg
 	lyxscale 20
-	height 7cm
+	width 12cm
 
 \end_inset
 
@@ -1137,6 +1141,7 @@ comandante
 \end_layout
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -1147,7 +1152,7 @@ status collapsed
 \begin_inset Graphics
 	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/mp_bf4_commander.jpg
 	lyxscale 20
-	height 7cm
+	width 12cm
 
 \end_inset
 

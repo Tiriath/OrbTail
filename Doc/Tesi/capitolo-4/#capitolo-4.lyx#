@@ -80,9 +80,8 @@ Per la realizzazione di OrbTail ci si è serviti di un metodo di sviluppo
  impiegate: l'attenta scelta di quest'ultime è di cruciale importanza per
  minimizzare l'impatto sul processo produttivo in caso di criticitá o limitazion
 i, specie nelle fasi piú avanzate del progetto.
- Per permettere a piú sviluppatori di lavorare sul progetto in contemporanea,
- mantenere lo storico dei file di progetto e controllare lo sviluppo delle
- varie funzionalitá ci si è affidati a 
+ Al fine di mantenere lo storico dei file di progetto e controllare lo sviluppo
+ delle varie funzionalitá ci si è affidati a 
 \emph on
 git
 \emph default
@@ -91,13 +90,7 @@ git
 controllo di versione 
 \emph default
 distribuito.
- Per via degli interventi molto estesi che hanno visto la riscrittura quasi
- completa dei contributi originali, la 
-\emph on
-repository 
-\emph default
-del gioco risalente al 2013 è stata duplicata e il processo di sviluppo
- descritto in questo lavoro di tesi è proseguito su quest'ultima.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -106,28 +99,23 @@ Un altro aspetto fondamentale riguarda la scelta del
 motore grafico
 \emph default
 .
- Fin dalla versione originale era chiaro che sviluppare senza usare motori
- grafici di terze parti avrebbe aumentato esponenzialmente il tempi di sviluppo,
+ Fin da subito ci si è resi conto che sviluppare senza usare motori grafici
+ di terze parti avrebbe aumentato esponenzialmente il tempi di sviluppo,
  rendendo di fatto impossibile supportare tutte le piattaforme desiderate.
- Sebbene oggi vi sia un gran numero di motori grafici gratuiti in grado
- di soddisfare la maggior parte delle esigenze, durante lo sviluppo della
- prima versione di OrbTail le scelte erano ben piú limitate.
- Le due tecnologie principali erano rappresentate da Unity 4.3 e UDK e, sebbene
- quest'ultimo garantiva un'ottima resa visiva, lo strumento risultava instabile,
- poco documentato e particolarmente macchinoso.
- Unity, d'altro canto, è sembrato fin da subito adatto agli scopi del progetto,
- specie per quanto riguarda il supporto dei dispositivi 
+ Sebbene ad oggi esistono diversi motori grafici gratuiti in grado di soddifare
+ la maggior parte delle esigenze, per lo sviluppo di OrbTail sono state
+ valutate due sole alternative: 
 \emph on
-mobile
+Unreal Engine 4
 \emph default
-, ed in generale molto intuitivo.
- Considerando che per questo lavoro di tesi ci si aspettava la riscrittura
- della maggior parte del codice, è stata inoltre avanzata l'ipotesi di un
- cambio motore grafico a favore di Unreal Engine 4.
- Sebbene quest'ultimo avrebbe garantito un'eccellente resa grafica, l'idea
- è stata rapidamente accantonata per via delle iterazioni di sviluppo incredibil
-mente piú lente che caratterizzano questo motore grafico, la mancanza di
- servizi di 
+ e 
+\emph on
+Unity 2017
+\emph default
+.
+ Sebbene il primo di questi avrebbe garantito una resa visiva eccellente,
+ il suo uso è stato rapidamente accantonato per via delle iterazioni di
+ sviluppo incredibilmente lente, la mancanza di servizi di 
 \emph on
 matchmaking 
 \emph default
@@ -135,11 +123,19 @@ e, soprattutto, delle criticitá riguardanti lo sviluppo su piattaforme
 \emph on
 mobile
 \emph default
- (specie in termini di prestazioni ed ottimizzazioni).
- Per questa nuova versione del titolo è stato pertanto deciso di aggiornare
- il motore grafico, passando da Unity 4.13 alla versione 2017.3, cercando
- di partire da una base quanto piú stabile possibile e proseguendo per iterazion
-i successive.
+ (specie in termini di prestazioni).
+ Unity, d'altro canto, è sembrato fin da subito adatto agli scopi del progetto,
+ specie per quanto riguarda il supporto dei dispositivi 
+\emph on
+mobile
+\emph default
+, ed in generale per la sua grande intuitivitá.
+ La presenza di un servizio di 
+\emph on
+matchmaking 
+\emph default
+integrato, in grado di gestire tutte le piattaforme contemporaneamente,
+ ne ha consolidato l'adozione.
 \end_layout
 
 \begin_layout Section
@@ -165,7 +161,7 @@ e
 desktop
 \emph default
 .
- La presenza di una versione gratuita unita ad un elevato grado di intuitivitá
+ La presenza di una versione gratuita, unita ad un elevato grado di intuitivitá,
  ne ha garantito la rapida affermazione da parte di sviluppatori 
 \emph on
 indipendenti
@@ -208,8 +204,12 @@ system
 \emph default
 .
  Secondo questa variante, i componenti espongono solo dei dati e le logiche
- sono implementate all'interno dei sistemi, garantendo un disaccoppiamento
- ancora piú forte tra le varie componenti del gioco.
+ sono implementate all'interno dei 
+\emph on
+sistemi
+\emph default
+, garantendo un disaccoppiamento ancora piú forte tra le varie componenti
+ del gioco.
  Unity consente di implementare le logiche di gioco tramite script 
 \emph on
 C# 
@@ -338,83 +338,6 @@ entity-component-system
 rischi
 \emph default
  inutili.
- L'architettura di gioco sfrutta inoltre molti oggetti 
-\emph on
-manager
-\emph default
- al fine di scambiare informazioni tra piú livelli e per fornire un unico
- punto d'accesso ai vari sottosistemi.
- Un manager è un'
-\emph on
-entitá
-\emph default
- di gioco che funge da 
-\emph on
-singleton
-\emph default
- accessibile da tutti gli altri sottosistemi al fine di leggerne o modificarne
- lo stato.
- 
-\end_layout
-
-\begin_layout Standard
-L'uso dell'apposito strumento di aggiornamento di versione fornito dal motore
- si è rivelato di notevole importanza, in quanto ha permesso fin da subito
- di ottenere un prodotto stabile a partire dalla versione originale del
- 2013.
- Al termine del processo di 
-\emph on
-porting 
-\emph default
-automatico, il gioco ha preservato 
-\emph on
-tutte 
-\emph default
-le funzionalitá, comprese quelle legate alla rete, al 
-\emph on
-matchmaking
-\emph default
- e al 
-\emph on
-cross-platform play 
-\emph default
-manifestando problematiche minori dovuto all'uso di 
-\emph on
-API 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Col termine
-\emph on
- API, 
-\emph default
-acronimo di 
-\emph on
-application programming interface, 
-\emph default
-ci si riferisce a tutte quelle funzionalitá di un sistema rese disponibili
- agli sviluppatori tramite opportune 
-\emph on
-procedure
-\emph default
-.
-\end_layout
-
-\end_inset
-
- 
-\emph default
-obsolete (principalmente in ambito 
-\emph on
-UI 
-\emph default
-e di gestione dei livelli).
- Una volta ottenuta una versione stabile, sono state infine aggiornate tutte
- le funzionalitá superate sostituendole con le nuove varianti messe a disposizio
-ne del motore.
- Al termine di questa fase ci si è concentrati sull'aggiornamento dell'architett
-ura del gioco e sull'implementazione delle nuove funzionalitá.
 \end_layout
 
 \begin_layout Subsection
@@ -462,11 +385,6 @@ di C#.
  di tempo, garantendo una resa visiva molto buona.
  Quest'ultimo si presenta come un unico file monolitico che puó essere integrato
  nel progetto e non richiede alcuna forma di configurazione.
- Nella fase di 
-\emph on
-porting 
-\emph default
-è stato necessario aggiornare il plug-in alla versione piú recente.
 \end_layout
 
 \begin_layout Section
@@ -478,9 +396,10 @@ La prima fase dello sviluppo di OrbTail si concentra sulla definizione dell'arch
 itettura generale del gioco ed in particolar modo delle meccaniche di base.
  Quest'ultime sono condivise tra tutte le modalitá e livelli e pertanto
  sono state pensate per essere completamente indipendenti da essi.
- Tra le meccaniche di base troviamo la gestione della gravitá, del sistema
- di controllo dei veicoli, degli oggetti collezionabilim degli impatti e
- dei potenziamenti 
+ Tra le meccaniche di base troviamo la gestione della gravità, del sistema
+ di controllo dei veicoli, degli oggetti collezionabili, degli scontri e
+ dei potenziamenti (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:VehicleComponents"
@@ -540,14 +459,14 @@ Struttura dei veicoli
 \end_layout
 
 \begin_layout Subsection
-Gestione della gravitá
+Gestione della gravità
 \end_layout
 
 \begin_layout Standard
 I livelli offerti dal gioco sono caratterizzati da topologie profondamente
- diverse, il che rende impossibile utilizzare la gravitá automatica fornita
+ diverse, il che rende impossibile utilizzare la gravità automatica fornita
  dal motore fisico di Unity per far fluttuare gli oggetti su di essi.
- Durante la prima iterazione ci si è affidati al sistema di 
+ Durante una prima iterazione ci si è affidati al sistema di 
 \emph on
 raycasting 
 \begin_inset Foot
@@ -568,11 +487,11 @@ i.
  
 \emph default
 al fine di individuare un punto sulla superficie del livello da usare come
- base per il calcolo, tuttavia ci si è presto accorti che il sistema era
- affetto da gravi difetti.
- Sebbene l'uso del 
+ base per il calcolo della gravità, usando l'asse longitudinale di ciascun
+ oggetto come direzione.
+ Sebbene l'uso di questa tecnica
 \emph on
-raycast 
+ 
 \emph default
 permette di scrivere un codice di gestione unico che si adatta a tutte le
  topologie, determinare la direzione del raggio usando solo l'orientamento
@@ -587,7 +506,7 @@ degli oggetti lungo la superficie del livello.
 \emph on
 analitica 
 \emph default
-della forza di gravitá per ciascuna delle topologie supportate.
+della forza di gravità per ciascuna delle topologie supportate.
  Il 
 \emph on
 campo gravitazionale
@@ -610,15 +529,15 @@ permette di modellare lo stazionamento degli oggetti sull'arena.
 La soluzione adottata prevede l'uso di due elementi principali: un componente
  base 
 \emph on
-GravityField, 
+Gravity Field, 
 \emph default
-da cui derivano le diverse descrizioni dei campi di gravitá supportati,
+da cui derivano le diverse descrizioni dei campi di gravità supportati,
 \emph on
  
 \emph default
 e il 
 \emph on
-FloatingObject 
+Floating Object 
 \emph default
 che, assegnato agli oggetti di gioco, consente loro di fluttuare sull'arena
  (Fig.
@@ -656,7 +575,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-Gestione della gravitá.
+Gestione della gravità.
 \end_layout
 
 \end_inset
@@ -668,7 +587,7 @@ name "fig:OrbTailGravity"
 
 \end_inset
 
-Gestione della gravitá.
+Gestione della gravità.
 \end_layout
 
 \end_inset
@@ -679,10 +598,10 @@ Gestione della gravitá.
 \end_inset
 
  Il primo di questi viene assegnato all'arena e consente di configurare
- sia l'intensitá della gravitá e sia la distanza di stazionamento degli
+ sia l'intensitá della gravità e sia la distanza di stazionamento degli
  oggetti rispetto alla superficie per impedire che questi possano compenetravi.
  Il secondo si occupa di simulare lo stazionamento dell'oggetto a partire
- dalla direzione della forza di gravitá.
+ dalla direzione della forza di gravità.
 \end_layout
 
 \begin_layout Subsection
@@ -691,14 +610,11 @@ Sistema di controllo
 
 \begin_layout Standard
 Il sistema di controllo di ciascun veicolo si occupa di gestire il movimento
- di quest'ultimo all'interno dell'arena considerando la direzione della
- forza di gravitá e l'input dell'utente.
-\end_layout
-
-\begin_layout Standard
-Il componente 
+ di quest'ultimo all'interno dell'arena a partire dalla direzione della
+ forza di gravità e dall'input dell'utente.
+ Il componente 
 \emph on
-MovementController
+Movement Controller
 \emph default
  determina la velocitá lineare e quella angolare del veicolo in ogni istante
  e applica opportune forze al 
@@ -810,9 +726,9 @@ r(t)=r_{max}\cdot r_{in}
 \begin_layout Standard
 La direzione di accelerazione è ricavata tramite il componente 
 \emph on
-FloatingObject
+Floating Object
 \emph default
- in funzione della tangente del campo di gravitá e della rotazione del veicolo,
+ in funzione della tangente del campo di gravità e della rotazione del veicolo,
  e ció impedisce che quest'ultimo possa percorrere la superficie del livello
  passandovici attraverso.
 \end_layout
@@ -823,10 +739,66 @@ Gestione dei collezionabili
 
 \begin_layout Standard
 La gestione della collezione degli elementi di gioco è affidata a tre componenti
- fondamentali.
+ fondamentali (Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailOrb"
+
+\end_inset
+
+).
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/orb.jpg
+	lyxscale 20
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Gestione dei collezionabili.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailOrb"
+
+\end_inset
+
+Gestione dei collezionabili.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
  Il primo di questi, il 
 \emph on
-ProximityHandler
+Proximity Handler
 \emph default
 , rappresenta un 
 \emph on
@@ -872,24 +844,24 @@ orb
 \emph default
 usa il componente 
 \emph on
-FloatingObject 
+Floating Object 
 \emph default
 al fine di fluttuare sull'arena e un altro componente, l'
 \emph on
-OrbController
+Orb Controller
 \emph default
 , al fine di gestire i vincoli fisici di cui sopra.
 \end_layout
 
 \begin_layout Subsection
-Gestione degli impatti
+Gestione degli scontri
 \end_layout
 
 \begin_layout Standard
 Il sistema di gestione degli scontri tra veicoli è implementato attraverso
  un componente 
 \emph on
-FightController, 
+Fight Controller, 
 \emph default
 il cui scopo è quello di rilevare gli impatti e notificare il componente
  
@@ -903,7 +875,7 @@ orb
 persi come conseguenza.
  Le collisioni tra veicoli sono gestite direttamente dal motore fisico di
  Unity.
- Nella versione originale ciascuno di essi aveva uno o piú 
+ In una prima versione ciascuno di essi aveva uno o piú 
 \emph on
 collisori fisici 
 \emph default
@@ -929,7 +901,7 @@ unico che approssima la superficie del veicolo racchiudendone il modello
  genera una coppia di eventi, uno per ogni componente coinvolto nell'impatto.
  Ciascun 
 \emph on
-FightController 
+Fight Controller 
 \emph default
 reagisce a questi eventi, determinando il numero di 
 \emph on
@@ -937,21 +909,18 @@ orb
 \emph default
 persi a causa dello scontro e lasciando al 
 \emph on
-FightController 
+Fight Controller 
 \emph default
 del veicolo avversario il compito di staccare 
 \emph on
 orb 
 \emph default
 dal proprio.
-\end_layout
-
-\begin_layout Standard
-Il numero di 
+ Il numero di 
 \emph on
 orb 
 \emph default
-persi durante uno scontro dipende dalla direzione d'impatto e l'orientamento
+persi durante uno scontro dipende dalla direzione d'impatto e dall'orientamento
  dei veicoli coinvolti: uno scontro frontale deve causare un distacco di
  
 \emph on
@@ -959,24 +928,21 @@ orb
 \emph default
 da parte di entrambi i veicoli, laddove colpire un veicolo su una fiancata
  non deve penalizzare in alcun modo l'aggressore.
-\end_layout
-
-\begin_layout Standard
-Sia 
-\begin_inset Formula $p$
+ Sia 
+\begin_inset Formula $\overrightarrow{p}$
 \end_inset
 
  la posizione del veicolo sui cui viene generato l'evento di collisione,
  
-\begin_inset Formula $f$
+\begin_inset Formula $\overrightarrow{f}$
 \end_inset
 
  la direzione di quest'ultimo, 
-\begin_inset Formula $c$
+\begin_inset Formula $\overrightarrow{c}$
 \end_inset
 
  il punto di impatto trai veicoli convolti e 
-\begin_inset Formula $v_{rel}$
+\begin_inset Formula $\overrightarrow{v_{rel}}$
 \end_inset
 
  la velocitá relativa del veicolo rispetto all'avversario, la formula usata
@@ -994,7 +960,7 @@ inflitti
 \begin_layout Standard
 \begin_inset Formula 
 \[
-i_{d}=\frac{c-p}{|c-p|}
+\overrightarrow{i_{d}}=\frac{\overrightarrow{c}-\overrightarrow{p}}{|\overrightarrow{c}-\overrightarrow{p}|}
 \]
 
 \end_inset
@@ -1005,7 +971,7 @@ i_{d}=\frac{c-p}{|c-p|}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-i_{s}=\max(0,i_{d}\cdot f)
+i_{s}=\max(0,\overrightarrow{i_{d}}\cdot\overrightarrow{f})
 \]
 
 \end_inset
@@ -1016,7 +982,7 @@ i_{s}=\max(0,i_{d}\cdot f)
 \begin_layout Standard
 \begin_inset Formula 
 \[
-d=|v_{rel}|\cdot i_{s}\cdot off
+d=|\overrightarrow{v_{rel}}|\cdot i_{s}\cdot off
 \]
 
 \end_inset
@@ -1026,7 +992,7 @@ d=|v_{rel}|\cdot i_{s}\cdot off
 
 \begin_layout Standard
 Il termine 
-\begin_inset Formula $i_{d}$
+\begin_inset Formula $\overrightarrow{i_{d}}$
 \end_inset
 
  rappresenta la 
@@ -1091,7 +1057,7 @@ cinque
 \emph default
 componenti diversi, alcuni dei quali sono associati al veicolo come il 
 \emph on
-PowerController
+Power Controller
 \emph default
 , altri ai 
 \emph on
@@ -1099,7 +1065,7 @@ core
 \emph default
  come il 
 \emph on
-PowerUpCollectable 
+Power-Up Collectable 
 \emph default
 ed altri a 
 \emph on
@@ -1167,7 +1133,7 @@ Gestione dei potenziamenti
 \begin_layout Standard
 Il 
 \emph on
-PowerController 
+Power Controller 
 \emph default
 è un componente che si occupa di 
 \emph on
@@ -1188,7 +1154,7 @@ core
 \emph default
 usa un componente speciale, il 
 \emph on
-PowerUpCollectable
+Power-Up Collectable
 \emph default
 , al fine di generare un potere casuale da associare al veicolo.
  Questo componente si occupa inoltre di gestire la parte estetica del 
@@ -1198,21 +1164,25 @@ core
 e delle logiche di attivazione e disattivazione temporizzate.
  I poteri sono modellati attraverso un componente 
 \emph on
-PowerUp
+Power-Up
 \emph default
  che ne contiene varie informazioni di base quali il numero massimo di utilizzi,
- il tempo minimo tra due utilizzi consecutivi ed un riferimento ad un componente
- apposito che ne modella l'effetto una volta attivato: il 
+ il tempo minimo tra due utilizzi consecutivi (detto 
 \emph on
-PowerUpEffect
+cooldown
+\emph default
+) ed un riferimento ad un componente apposito che ne modella l'effetto una
+ volta attivato: il 
+\emph on
+Power-Up Effect
 \emph default
 .
  Questo componente è associato ad un oggetto che viene creato in fase di
  attivazione del 
 \emph on
-PowerUp
+Power-Up
 \emph default
- e contiene le informazioni di base sull'effetto, quali la sua durata, il
+ e contiene le informazioni di base dell'effetto, quali la sua durata, il
  veicolo che lo 
 \emph on
 possiede
@@ -1226,9 +1196,9 @@ bersaglio
 o o arma supportata.
  L'oggetto associato al 
 \emph on
-PowerUpEffect 
+Power-Up Effect 
 \emph default
-contiene tutte le logiche associate al potenziamento e il suo aspetto.
+contiene tutte le logiche associate al potenziamento e il suo aspetto visivo.
  Questo oggetto è 
 \emph on
 gerarchicamente
@@ -1249,17 +1219,17 @@ seguire
  muoversi liberamente come nel caso di missili e proiettili.
  Una categoria particolare di 
 \emph on
-PowerUpEffect 
+Power-Up Effect 
 \emph default
 è costituita dai 
 \emph on
-PowerUpDrop
+Power-Up Drop
 \emph default
 , speciali potenziamenti che, attivati, generano un oggetto di gioco all'interno
  dell'arena.
  Questi oggetti assegnano un effetto negativo (derivato dal componente 
 \emph on
-PowerUpEffect
+Power-Up Effect
 \emph default
 ) ai veicoli che lo collezionano.
  Questi speciali effetti consentono di modellare potenziamenti quali 
@@ -1292,20 +1262,9 @@ name "subsec:Gestione-degli-input"
 L'architettura alla base del sistema di input consente di gestire l'interazione
  utente in maniera completamente trasparente rispetto alle periferiche utilizzat
 e e alla piattaforma su cui è eseguito il gioco.
- In questa nuova iterazione di OrbTail è stato deciso di integrare il supporto
- ai 
+ Il sistema si basa su un componente 
 \emph on
-gamepad
-\emph default
- al fine di migliorare la fruibilitá del gioco e la precisione delle azioni
- utente sulle piattaforme 
-\emph on
-desktop
-\emph default
-.
- Il nuovo sistema si basa su un componente 
-\emph on
-InputProxy,
+Input Proxy,
 \emph default
  di cui ogni veicolo ne possiede un'istanza, il quale astrae tutte le azioni
  eseguibili dall'utente o dall'
@@ -1332,25 +1291,25 @@ façade
 \emph default
  usata sia dal 
 \emph on
-MovementController 
+Movement Controller 
 \emph default
 che dal 
 \emph on
-PowerController, 
+Power Controller, 
 \emph default
 la quale si interfaccia a sua volta con oggetti che descrivono il sistema
  di input della particolare piattaforma su cui viene eseguita l'applicazione.
  Questi oggetti implementano un'interfaccia generica 
 \emph on
-IInputBroker 
+IInput Broker 
 \emph default
 e comprendono il gestore degli input sulle piattaforme desktop 
 \emph on
-DesktopInputBroker, 
+Desktop Input Broker, 
 \emph default
 mobile 
 \emph on
-MobileInputBroker 
+Mobile Input Broker 
 \emph default
 e il componente che si occupa di gestire l'intelligenza artificiale 
 \emph on
@@ -1415,7 +1374,7 @@ Gestione degli input
 .
  Il 
 \emph on
-MobileInputBroker 
+Mobile Input Broker 
 \emph default
 si occupa di leggere lo stato dell'accelerometro del dispositivo 
 \emph on
@@ -1439,11 +1398,11 @@ l'input relativo all'accelerometro in modo che si adatti all'inclinazione
  per calcolare tutte le altre inclinazioni e di conseguenza le azioni utente.
  Il 
 \emph on
-DesktopInputBroker
+Desktop Input Broker
 \emph default
 , invece, si affida a sua volta ad un oggetto 
 \emph on
-InputManager 
+Input Manager 
 \emph default
 al fine di astrarre le azioni utente dalle periferiche utilizzate, quali
  
@@ -1457,7 +1416,7 @@ pad
 .
  L'applicazione prevede un 
 \emph on
-InputManager 
+Input Manager 
 \emph default
 per ciascun utente locale
 \emph on
@@ -1483,7 +1442,7 @@ grilletti
 \emph default
 posteriori), rendendo impossibile associare ad una singola azione piú periferich
 e contemporaneamente.
- è inoltre impossibile rimappare delle azioni esistenti su 
+ È inoltre impossibile rimappare delle azioni esistenti su 
 \emph on
 pad 
 \emph default
@@ -1495,7 +1454,7 @@ quattro
 pad supportati.
  L'oggetto 
 \emph on
-InputManager 
+Input Manager 
 \emph default
 consente di usare l'indice dell'utente al fine di indicizzare le azioni
  opportune tra quelle registrate al sistema nativo di Unity.
@@ -1509,17 +1468,15 @@ Architettura di rete
 \end_layout
 
 \begin_layout Standard
-Nella versione originale di OrbTail l'architettura di gioco si basava su
- classi apposite che discriminavano le modalitá multigiocatore online delle
- modalitá a giocatore singolo, gestendo di volta in volta i casi speciali.
- In questa nuova iterazione il sistema è stato semplificato e generalizzato,
- al fine di gestire in maniera uniforme tutte le modalitá e configurazioni
- supportate.
-
+L'architettura di gioco di OrbTail é pensata per gestire in maniera uniforme
+ tutte le modalitá e configurazioni supportate, evitando di creare classi
+ apposite per gestire le modalitá a giocatore singolo, quelle multigiocatore
+ locale e quelle multigiocatore 
 \emph on
+online.
  
 \emph default
-L'architettura di rete di OrbTail è di tipo 
+L'architettura di rete è di tipo 
 \emph on
 client-server
 \emph default
@@ -1589,7 +1546,7 @@ al fine di inviare comandi e riceverne aggiornamenti
 : 
 \emph default
 il sistema di rete di Unity provvederá a simulare le richieste di rete sulla
- stessa applicazione in maniera trasparante.
+ stessa applicazione in maniera trasparente.
 \end_layout
 
 \begin_layout Standard
@@ -1820,7 +1777,7 @@ singleton
 \emph default
 derivato dalla classe di Unity 
 \emph on
-NetworkLobbyManager
+Network Lobby Manager
 \emph default
 , la quale astrae tutte le logiche di creazione o ricerca di una partita,
  connessione e disconnesione degli utenti e sincronizzazione della configurazion
@@ -1831,7 +1788,7 @@ lobby
 \emph default
 è associato ad un oggetto di tipo 
 \emph on
-LobbyPlayer
+Lobby Player
 \emph default
 , il quale viene usato sia per inviare comandi al 
 \emph on
@@ -1952,7 +1909,7 @@ LobbyManager
 \emph default
 crea un oggetto di tipo 
 \emph on
-LobbyPlayer 
+Lobby Player 
 \emph default
 che lo rappresenta, replicando tutte le informazioni salienti agli altri
  giocatori in partita (quali l'indice del giocatore nella partita ed il
@@ -1998,7 +1955,7 @@ server
 \emph default
 genera 
 \emph on
-LobbyPlayer 
+Lobby Player 
 \emph default
 addizionali finchè il numero di partecipanti non diventa esattamente 
 \emph on
@@ -2018,7 +1975,7 @@ client RPC
 \end_layout
 
 \begin_layout Standard
-Nella versione originale di OrbTail il sistema di creazione delle 
+In una prima versione il sistema di creazione delle 
 \emph on
 lobby 
 \emph default
@@ -2039,7 +1996,7 @@ disponibile, l'utente era costretto a ritornare al menú principale per crearne
  al giocatore di entrare in partita e lasciare che il sistema decidesse
  se avviare una partita online o offline (a seconda se vi fosse una connessione
  Internet o meno), tuttavia, a causa di tempi di sviluppo ridotti, questa
- funzionalitá è stata rimandata a sviluppi futuri.
+ funzionalitá è stata rimandata ad iterazioni future.
 \end_layout
 
 \begin_layout Subsection
@@ -2049,11 +2006,11 @@ Gestione della partita
 \begin_layout Standard
 La gestione dello stato di gioco è affidata ad un oggetto 
 \emph on
-GameMode
+Game Mode
 \emph default
  il cui tipo, derivato dalla classe 
 \emph on
-BaseGameMode
+Base Game Mode
 \emph default
 , dipende dalla modalitá di gioco selezionata (Fig.
  
@@ -2072,7 +2029,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/game_modes.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/game_modes.png
 	lyxscale 20
 	width 12cm
 
@@ -2132,7 +2089,7 @@ osservatori
 , quali HUD e i veicoli, possono registrarsi e reagire.
  La classe base 
 \emph on
-BaseGameMode
+Base Game Mode
 \emph default
  contiene tutte le logiche condivise tra le varie modalitá, mentre le sue
  derivate ne possono estendere il comportamento implementando logiche specifiche
@@ -2274,9 +2231,13 @@ trasferito
 \emph default
 dal 
 \emph on
-LobbyPlayer 
+Lobby Player 
 \emph default
-al veicolo, in modo che quest'ultimo possa essere usato per inviare 
+al 
+\emph on
+veicolo
+\emph default
+, in modo che quest'ultimo possa essere usato per inviare 
 \emph on
 comandi 
 \emph default
@@ -2287,7 +2248,7 @@ server
  durante la partita.
  L'oggetto 
 \emph on
-LobbyPlayer 
+Lobby Player 
 \emph default
 viene preservato in modo da poter contenere informazioni associate al giocatore,
  quali ad esempio il suo 
@@ -2297,7 +2258,7 @@ punteggio.
 \emph default
  Sull'istanza locale di gioco, l'oggetto 
 \emph on
-BaseGameMode 
+Base Game Mode 
 \emph default
 determina la creazione di tutti gli oggetti necessari al giocatore che non
  devono essere replicati, quali ad esempio il 
@@ -2322,7 +2283,7 @@ procede con la fase successiva di
 \emph on
 conto alla rovescia
 \emph default
-, lasciando che gli utenti si possano preparare alla sfida.
+, lasciando che gli utenti possano prepararsi alla sfida.
  La fase successiva è quella di gioco e dura fintanto che il cronometro
  di gara non scende a 
 \emph on
@@ -2401,19 +2362,19 @@ veicoli
 \emph default
 , il 
 \emph on
-GameMode 
+Game Mode 
 \emph default
 e il 
 \emph on
-LobbyManager
+Lobby Manager
 \emph default
 .
 \end_layout
 
 \begin_layout Standard
-In questa nuova iterazione, la gestione delle modalitá online ed offline
- è stata uniformata in modo da seguire lo stesso flusso e basarsi sulle
- stesse classi, evitando gestioni specifiche.
+La gestione delle modalitá online ed offline è stata uniformata in modo
+ da seguire lo stesso flusso e basarsi sulle stesse classi, evitando gestioni
+ specifiche.
  Secondo quest'ottica le modalitá 
 \emph on
 offline 
@@ -2440,7 +2401,7 @@ game object
 \emph default
 apposito, detto 
 \emph on
-NetworkSpawner
+Network Spawner
 \emph default
 , il quale puó essere posizionato direttamente in scena e configurato con
  un riferimento ad un'altro 
@@ -2484,7 +2445,7 @@ intelligenza artificiale
 \emph default
  di gioco è gestita attraverso un singolo componente 
 \emph on
-PlayerAI
+Player AI
 \emph default
  che, attivato su un qualsiasi veicolo, ne gestisce direttamente gli input,
  quali 
@@ -2510,7 +2471,7 @@ Ship
 \emph default
  se il giocatore associato ad esso è governato dalla 
 \emph on
-AI
+IA
 \emph default
 .
 \end_layout
@@ -2695,13 +2656,13 @@ azione di sterzo
 \begin_inset Formula $K_{s}$
 \end_inset
 
- é un fattore moltiplicativo che permette di accentuare o diminuire questa
- azione ed é liberamente configurabile.
+ è un fattore moltiplicativo che permette di accentuare o diminuire questa
+ azione ed è liberamente configurabile.
  L'azione di 
 \emph on
 accelerazione 
 \emph default
-é calcolata sulla base del valore di 
+è calcolata sulla base del valore di 
 \emph on
 sterzo 
 \emph default
@@ -2720,7 +2681,7 @@ La strategia fondamentale
 \emph on
  
 \emph default
-é quella dedicata all'
+è quella dedicata all'
 \emph on
 esplorazione
 \emph default
@@ -2730,7 +2691,7 @@ esplorazione
 \emph on
 punti di controllo 
 \emph default
-invisibili posizionati nell'arena, selezionati in maniera 
+invisibili posizionati nell'arena e selezionati in maniera 
 \emph on
 casuale
 \emph default
@@ -2739,7 +2700,7 @@ casuale
 \emph on
 AI Field-of-View
 \emph default
-, al fine di modellare il suo campo visivo.
+, che ne modella il suo campo visivo.
  Ogni volta che un oggetto entra all'interno del campo visivo, il sistema
  ne determina la sua 
 \emph on
@@ -2759,7 +2720,7 @@ veicolo avversario
 \emph default
 ), attivando una strategia opportuna.
  Questi oggetti possono causare un cambio di strategia solo se il veicolo
- é in fase 
+ è in fase 
 \emph on
 esplorativa
 \emph default
@@ -2775,9 +2736,9 @@ esplorazione
 .
  
 \emph default
-La strategia di collezione degli oggetti é molto semplice, in quanto consiste
- semplicemente nel calcolare un valore di input tale da permettere il raggiungim
-ento dell'oggetto nel minor tempo possibile.
+La strategia di collezione degli oggetti è molto semplice, in quanto consiste
+ nel calcolare un valore di input tale da permettere il raggiungimento dell'ogge
+tto nel minor tempo possibile.
  La strategia 
 \emph on
 offensiva 
@@ -2806,7 +2767,7 @@ AI
 \emph default
 cerca di collidervi alla massima velocitá (in maniera analoga a quanto avviene
  durante la collezione degli oggetti) e, ad impatto avvenuto, determina
- se vi é ancora necessitá di proseguire l'attacco (valutando nuovamente
+ se vi è ancora necessitá di proseguire l'attacco (valutando nuovamente
  il numero di 
 \emph on
 orb 
@@ -2817,7 +2778,7 @@ posseduti).
 AI 
 \emph default
 cerca di allontanarsi dal veicolo avversario per un certo periodo di tempo
- selezionato in un intervallo casuale di pochi secondi, dopodiché procede
+ selezionato in un intervallo casuale di pochi secondi, dopodichè procede
  nuovamente con la fase di 
 \emph on
 attacco
@@ -2840,8 +2801,7 @@ possa accanirsi contro un veicolo avversario, l'intera strategia
 \emph on
 aggressiva 
 \emph default
-é inoltre temporizzata e viene disabilitata dopo un tempo casuale, portando
- l'
+è temporizzata e viene disabilitata dopo un tempo casuale, portando l'
 \emph on
 AI 
 \emph default
@@ -2857,9 +2817,8 @@ Multigiocatore locale
 \end_layout
 
 \begin_layout Standard
-Questa nuova iterazione di OrbTail introduce un sistema in grado di gestire
- in maniera uniforme partite con un numero di giocatori locali compreso
- tra 
+OrbTail offre un sistema in grado di gestire in maniera uniforme partite
+ con un numero di giocatori locali compreso tra 
 \emph on
 uno 
 \emph default
@@ -2870,8 +2829,8 @@ quattro
 .
  Le modalitá a giocatore singolo o multigiocatore online vengono gestite
  attraverso lo stesso sistema e non richiedono pertanto supporti specifici.
- In fase di selezione del veicolo, il gioco consente ai giocatori di aggiungersi
- alla partita mediante la pressione di un tasto sul 
+ In fase di selezione del veicolo, il gioco consente ai partecipanti di
+ unirsi alla partita mediante la pressione di un tasto sul 
 \emph on
 pad
 \emph default
@@ -2990,7 +2949,7 @@ Gestione multigiocatore locale
 \begin_layout Standard
 Durante l'inizializzazione della partita, il 
 \emph on
-BaseGameMode
+Base Game Mode
 \emph default
  crea i 
 \emph on
@@ -3076,7 +3035,8 @@ della
 \emph on
 Camera 
 \emph default
-di conseguenza 
+di conseguenza (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Camera"
@@ -3151,7 +3111,63 @@ fa invece eccezione.
  e lasciare uno di questi vuoto, tuttavia l'effetto non risultava piacevole
  e pertanto è stato deciso di suddividere in maniera asimmetrica lo schermo,
  assegnando una metá al primo giocatore e lasciando che gli altri due si
- spartissero l'altra metá.
+ spartissero l'altra metá (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:OrbTailSplitScreen"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/splitscreen.PNG
+	lyxscale 20
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Splitscreen
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:OrbTailSplitScreen"
+
+\end_inset
+
+Splitscreen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -3159,9 +3175,7 @@ L'introduzione della modalitá
 \emph on
 splitscreen
 \emph default
-, non presente nella versione originale di OrbTail, ha inoltre richiesto
- la rivisitazione della gestione dell'interfaccia grafica.
- In primo luogo l'interfaccia grafica di base è stata divisa in due: una
+ ha inoltre richiesto la suddivisione dell'interfaccia grafica in due: una
  dedicata alle informazioni di gioco quali il 
 \emph on
 cronometro di gara
@@ -3202,8 +3216,8 @@ Sprite Renderer
 \emph default
 , il quale permette di mostrare immagini.
  L'introduzione di piú punti di vista costituiti dalle diverse camere, ha
- inoltre introdotto una problematica prima inesistente: ognuno puó vedere
- la rappresentazione tridimensionale della 
+ inoltre introdotto una problematica altrimenti inesistente: ognuno puó
+ vedere la rappresentazione tridimensionale della 
 \emph on
 HUD 
 \emph default
