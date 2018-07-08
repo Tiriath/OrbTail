@@ -95,7 +95,7 @@ concept
  Durante il processo di sviluppo questa idea si è evoluta per adeguarsi
  meglio al design, passando ad una grafica completamente 3D, usando una
  telecamera ad inseguimento.
- Questa scelta ha consentito di caratterizzare in modo piú profondo le diverse
+ Questa scelta ha consentito di caratterizzare in modo più profondo le diverse
  arene e i veicoli contenuti in essa.
  Lo stile scelto per OrbTail è caratterizzato da elementi fortemente futuristici
 , in cui elementi 
@@ -120,7 +120,7 @@ verosimile
 \end_layout
 
 \begin_layout Standard
-Al fine di ottenere una resa visiva di livello piú elevato è stato deciso
+Al fine di ottenere una resa visiva di livello più elevato è stato deciso
  di fare un uso estensivo di tecniche di 
 \emph on
 post-processing
@@ -152,11 +152,11 @@ e
 rendering physically-based
 \emph default
 .
- Quest'ultimo consente di ottenere una resa grafica molto fedele alla realtá
- in quanto si basa sulla descrizione delle proprietá fisiche dei materiali,
+ Quest'ultimo consente di ottenere una resa grafica molto fedele alla realtà
+ in quanto si basa sulla descrizione delle proprietà fisiche dei materiali,
  quali 
 \emph on
-metallicitá 
+metallicità 
 \emph default
 e 
 \emph on
@@ -280,7 +280,7 @@ OrbTail - Stadium
  circondati da elementi alieni a forma di colonna caratterizzati da striature
  luminose azzurre.
  L'arena è racchiusa all'interno di una gabbia metallica oltre la quale
- si puó osservare il cielo stellato.
+ si può osservare il cielo stellato.
  La seconda arena, 
 \begin_inset Quotes fld
 \end_inset
@@ -381,7 +381,7 @@ Torus
 \begin_inset Quotes frd
 \end_inset
 
-, è l'arena geometicamente piú semplice (Fig.
+, è l'arena geometricamente più semplice (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -597,7 +597,7 @@ OrbTail - Esempio di livrea
 \end_inset
 
  Subdoli dettagli quali leggeri graffi ed ammaccature permettono a ciascuno
- di essi di mantenere un aspetto pulito, senza tuttavia nascondere la brutalitá
+ di essi di mantenere un aspetto pulito, senza tuttavia nascondere la brutalità
  degli scontri passati.
  I colori delle livree, brillanti e molto saturi, consentono agli utenti
  di identificare molto rapidamente gli avversari durante le gare.
@@ -624,7 +624,7 @@ reference "subsec:InterfacciaUtente"
 ).
  Il design di ciascun veicolo sottolinea inoltre la sua 
 \emph on
-personalitá 
+personalità 
 \emph default
 e lo stile di guida: veicoli veloci sono caratterizzati da linee estremamente
  aerodinamiche, quelli dedicati all'esplorazione e alla raccolta presentano
@@ -632,7 +632,7 @@ e lo stile di guida: veicoli veloci sono caratterizzati da linee estremamente
 \emph on
 grossi motori
 \emph default
- e forme piú 
+ e forme più 
 \emph on
 massicce
 \emph default
@@ -669,7 +669,7 @@ diffuse-map
 
  
 \emph default
-é una texture che
+è una texture che
 \emph on
  
 \emph default
@@ -737,7 +737,7 @@ uno
 \emph default
 una superficie molto ruvida, il secondo canale codifica la 
 \emph on
-metallicitá 
+metallicità 
 \emph default
 dell'oggetto, ovvero quanto questo si comporta similmente ad un 
 \emph on
@@ -758,7 +758,7 @@ zero
 ).
  L'ultimo canale è invece dedicato al valore di 
 \emph on
-emissivitá
+emissività
 \emph default
 , ovvero quanta luce viene 
 \emph on
@@ -771,7 +771,7 @@ dall'oggetto stesso.
 shader
 \emph default
  al fine di ottenere colori emissivi diversi.
- Il valore di emissivitá è usato per aggiungere la maggior parte degli effetti
+ Il valore di emissività è usato per aggiungere la maggior parte degli effetti
  luminosi in scena e alcuni dettagli dei veicoli, quali motori e spie.
 \end_layout
 

@@ -81,14 +81,14 @@ In questo capitolo vengono presentati alcuni titoli esistenti al fine di
 design 
 \emph default
 di OrbTail.
- Verranno inoltre analizzate le scelte stilistiche in modo da inviduare
+ Verranno inoltre analizzate le scelte stilistiche in modo da individuare
  una possibile direzione artistica da seguire durante la produzione del
  videogioco.
  I titoli sono stati selezionati tra diverse piattaforme in modo da individuare
  un sottoinsieme di caratteristiche desiderate e facilmente adattabili alla
- grande diversitá di dispositivi per cui verrá sviluppato il prodotto.
+ grande diversità di dispositivi per cui verrà sviluppato il prodotto.
  La data di pubblicazione dei titoli scelti copre inoltre un orizzonte temporale
- molto vasto: l'intento è quello di conuigare tra loro caratteristiche dei
+ molto vasto: l'intento è quello di coniugare tra loro caratteristiche dei
  giochi recenti con vecchi paradigmi di gameplay da rivisitare in chiave
  moderna.
 \end_layout
@@ -150,13 +150,13 @@ drift
 .
  I veicoli sono caratterizzati da tre parametri fondamentali, 
 \emph on
-velocitá, accelerazione 
+velocità, accelerazione 
 \emph default
 e 
 \emph on
-manovrabilitá, 
+manovrabilità, 
 \emph default
-i quali influenzano lo stile di guida e la difficoltá del personaggio.
+i quali influenzano lo stile di guida e la difficoltà del personaggio.
 \end_layout
 
 \begin_layout Standard
@@ -165,10 +165,10 @@ All'interno di ogni circuito sono distribuite delle
 casse 
 \emph default
 speciali che, raccolte, garantiscono al giocatore un potenziamento casuale,
- tanto piú potente quanto piú svantaggiata la sua posizione nella gara corrente.
+ tanto più potente quanto più svantaggiata la sua posizione nella gara corrente.
  Questi oggetti collezionabili comprendono un ricco assortimento di armi
  usate per intralciare gli avversari, barriere difensive e bonus temporanei
- alla velocitá del veicolo.
+ alla velocità del veicolo.
  Speciali frutti 
 \begin_inset Quotes fld
 \end_inset
@@ -177,12 +177,12 @@ wumpa
 \begin_inset Quotes frd
 \end_inset
 
- consentono ai veicoli di procedere piú velocemente e migliorare i suddetti
+ consentono ai veicoli di procedere più velocemente e migliorare i suddetti
  potenziamenti.
 \end_layout
 
 \begin_layout Standard
-Il gioco offre cinque modalitá di gioco, di cui tre a giocatore singolo
+Il gioco offre cinque modalità di gioco, di cui tre a giocatore singolo
  (Fig.
  
 \begin_inset CommandInset ref
@@ -239,7 +239,7 @@ Crash Team Racing - Gara a giocatore singolo.
 
 \end_inset
 
-Nella modalitá 
+Nella modalità 
 \begin_inset Quotes fld
 \end_inset
 
@@ -267,15 +267,15 @@ mondi
 boss 
 \emph default
 in una gara testa a testa.
- All'interno della modalitá avventura sono inoltre presenti diverse 
+ All'interno della modalità avventura sono inoltre presenti diverse 
 \emph on
-sotto-modalitá 
+sotto-modalità 
 \emph default
 che cambiano leggermente le regole delle varie sfide: collezionare oggetti
- nascosti all'interno del circuito entro la fine della gara, vincere piú
+ nascosti all'interno del circuito entro la fine della gara, vincere più
  gare in successione o terminare la gara entro un tempo limite usando un
  singolo potenziamento in grado di congelare il tempo per pochi secondi.
- Nella modalitá 
+ Nella modalità 
 \begin_inset Quotes fld
 \end_inset
 
@@ -285,9 +285,9 @@ sfida a tempo
 
 , il giocatore corre da solo al fine di registrare il miglior tempo su tutti
  i tracciati disponibili.
- Questa modalitá è caratterizzata dall'assenza di avversari e potenziamenti
+ Questa modalità è caratterizzata dall'assenza di avversari e potenziamenti
  di alcun genere.
- Nella modalitá 
+ Nella modalità 
 \begin_inset Quotes fld
 \end_inset
 
@@ -295,16 +295,16 @@ sala giochi
 \begin_inset Quotes frd
 \end_inset
 
- il giocatore puó gareggiare su circuito a scelta o organizzare 
+ il giocatore può gareggiare su circuito a scelta o organizzare 
 \emph on
 campionati
 \emph default
  formati da quattro tracciati.
- In questa modalitá è prevista la presenza di otto partecipanti e l'intero
+ In questa modalità è prevista la presenza di otto partecipanti e l'intero
  arsenale di armi e potenziamenti.
- Quest'ultima modalitá è anche fruibile in formato multigiocatore locale
+ Quest'ultima modalità è anche fruibile in formato multigiocatore locale
  con numero di giocatori compreso tra due e quattro.
- L'ultima modalitá 
+ L'ultima modalità 
 \begin_inset Quotes fld
 \end_inset
 
@@ -338,7 +338,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-Crash Team Racing - Modalitá battaglia
+Crash Team Racing - Modalità battaglia
 \end_layout
 
 \end_inset
@@ -350,7 +350,7 @@ name "fig:CTRBattle"
 
 \end_inset
 
-Crash Team Racing - Modalitá 
+Crash Team Racing - Modalità 
 \begin_inset Quotes fld
 \end_inset
 
@@ -382,12 +382,12 @@ reference "fig:CTRBattle"
  Esistono diverse condizioni di vittoria configurabili: una richiede il
  raggiungimento di un certo numero di punti guadagnabili colpendo gli avversari,
  un'altra ha un tempo limite scaduto il quale il giocatore col punteggio
- piú alto viene proclamato vincitore, nell'ultima ogni giocatore inizia
+ più alto viene proclamato vincitore, nell'ultima ogni giocatore inizia
  la sfida con un numero predefinito di vite che vengono decrementate ogni
  volta che il kart viene colpito da un'arma.
  Quando il numero di vite scende a zero il giocatore viene eliminato: l'ultimo
  rimasto in partita è proclamato vincitore.
- Questa modalitá è caratterizzata dall'assenza di partecipanti governati
+ Questa modalità è caratterizzata dall'assenza di partecipanti governati
  dall'
 \emph on
 intelligenza artificiale
@@ -521,7 +521,7 @@ Rocket League - Personalizzazione del veicolo
  colpire la palla, effettuare salvataggi o portarsi in vantaggio rispetto
  agli avversari.
  Un potente razzo posteriore consente di aumentare drasticamente la propria
- velocitá, planare o spiccare il volo per brevi periodi.
+ velocità, planare o spiccare il volo per brevi periodi.
  è inoltre possibile usare il proprio veicolo come un ariete contro i veicoli
  avversari in modo da farli esplodere e rimuoverli dalla partita per pochi
  secondi.
@@ -540,7 +540,7 @@ stadio
 \end_layout
 
 \begin_layout Standard
-Il gioco offre diverse modalitá a 
+Il gioco offre diverse modalità a 
 \emph on
 giocatore singolo
 \emph default
@@ -561,7 +561,7 @@ online
 misto
 \emph default
 .
- Le modalitá 
+ Le modalità 
 \emph on
 online 
 \emph default
@@ -590,7 +590,7 @@ Nintendo
 Switch
 \emph default
 .
- La modalitá di gioco principale 
+ La modalità di gioco principale 
 \begin_inset Quotes fld
 \end_inset
 
@@ -666,12 +666,12 @@ Rocket League
  di spingerla nella porta avversaria ed ottenere punti.
  Allo scadere del tempo la squadra col maggior numero di punti è dichiarato
  vincitore.
- In caso di paritá la prima squadra a segnare oltre lo scadere del tempo
+ In caso di parità la prima squadra a segnare oltre lo scadere del tempo
  vince.
- Ogni giocatore ha inoltre un proprio punteggio personale che puó essere
+ Ogni giocatore ha inoltre un proprio punteggio personale che può essere
  incrementato tirando la palla in porta, segnando, effettuando salvataggi,
- distruggendo i veicoli avversari e cosí via.
- Aggiornamenti successivi del gioco hanno introdotto nuove modalitá di gioco
+ distruggendo i veicoli avversari e così via.
+ Aggiornamenti successivi del gioco hanno introdotto nuove modalità di gioco
  quali 
 \begin_inset Quotes fld
 \end_inset
@@ -721,8 +721,8 @@ Rissa
  
 \emph default
 in cui i giocatori possono usare diversi potenziamenti casuali al fine di
- congelare la palla, agganciarla con una fune e cosí via.
- L'ultima modalitá di gioco introdotta nel 2017 
+ congelare la palla, agganciarla con una fune e così via.
+ L'ultima modalità di gioco introdotta nel 2017 
 \begin_inset Quotes fld
 \end_inset
 
@@ -731,14 +731,14 @@ Dropshot
 \end_inset
 
  stravolge le regole del gioco, rimuovendo completamente le porte.
- In questa modalitá il pavimento è suddiviso in piastrelle esagonali che,
+ In questa modalità il pavimento è suddiviso in piastrelle esagonali che,
  colpite dalla palla due volte in successione, crollano lasciando una voragine
  nel pavimento che funge da porta per la squadra a cui appartiene la mezzeria
  di campo.
 \end_layout
 
 \begin_layout Standard
-Il gioco presenta inoltre una modalitá 
+Il gioco presenta inoltre una modalità 
 \emph on
 competitiva online 
 \emph default
@@ -751,7 +751,7 @@ hanno durata pari ad alcuni mesi.
 \emph on
 categorie, 
 \emph default
-in funzione del proprio livello di abilitá, e suddivise a loro volta in
+in funzione del proprio livello di abilità, e suddivise a loro volta in
  quattro
 \emph on
  divisioni
@@ -825,7 +825,7 @@ console
 \emph on
 Geometry Wars 
 \emph default
-è il primo gioco della serie ad introdurre una modalitá 
+è il primo gioco della serie ad introdurre una modalità 
 \begin_inset Quotes fld
 \end_inset
 
@@ -833,7 +833,7 @@ avventura
 \begin_inset Quotes frd
 \end_inset
 
- ed un'ambiente di gioco totalmente tridimensionale (Fig.
+ ed un ambiente di gioco totalmente tridimensionale (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -900,12 +900,12 @@ Nel gioco l'utente controlla una piccola astronave in grado di muoversi
 \emph on
 drone
 \emph default
- che lo accompagnerá in battaglia aumentandone la potenza di fuoco ed aiutandolo
+ che lo accompagnerà in battaglia aumentandone la potenza di fuoco ed aiutandolo
  a collezionare gli oggetti sparsi per la mappa e una 
 \emph on
 super
 \emph default
- abilitá dagli effetti devastanti utilizzabile un numero limitato di volte.
+ abilità dagli effetti devastanti utilizzabile un numero limitato di volte.
  Esistono diversi 
 \emph on
 droni 
@@ -914,7 +914,7 @@ e
 \emph on
 super 
 \emph default
-abilitá, ciascuno caratterizzato da diversi stili di gioco ed effetti.
+abilità, ciascuno caratterizzato da diversi stili di gioco ed effetti.
  Durante le partite è inoltre possibile collezionare 
 \emph on
 super stati
@@ -1040,8 +1040,8 @@ Geometry Wars 3: Dimensions Evolved - Arena ad imbuto.
 ondate 
 \emph default
 in punti specifici di ciascuna mappa e sono caratterizzati da diversi schemi
- di movimento e strategie: alcuni tendono ad essere piú aggressivi, altri
- piú rapidi, altri ancora prediligono una strategia piú elusiva.
+ di movimento e strategie: alcuni tendono ad essere più aggressivi, altri
+ più rapidi, altri ancora prediligono una strategia più elusiva.
  La successione delle ondate in ciascun livello è prestabilita ed è pertanto
  possibile ricordarla a memoria al fine di massimizzare il punteggio a fine
  gara.
@@ -1052,7 +1052,7 @@ Il gioco prevede
 \emph on
 dodici 
 \emph default
-modalitá di gioco a giocatore singolo organizzate in una modalitá 
+modalità di gioco a giocatore singolo organizzate in una modalità 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1064,8 +1064,8 @@ classica
 \emph on
 sei 
 \emph default
-delle modalitá storiche della saga e giocabili su qualsiasi livello ed una
- modalitá 
+delle modalità storiche della saga e giocabili su qualsiasi livello ed una
+ modalità 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1078,13 +1078,13 @@ avventura
 cinquanta livelli 
 \emph default
 diversi in sequenza, ciascuno dei quali caratterizzato da regole proprie.
- Le modalitá di gioco consistono nel ottenere il maggior numero di punti
+ Le modalità di gioco consistono nel ottenere il maggior numero di punti
  avendo a disposizione solo un numero limitato di vite ed oggetti speciali
  oppure entro un tempo limite prestabilito.
- Alcune modalitá inoltre introducono diverse regole, quali numero limitato
+ Alcune modalità inoltre introducono diverse regole, quali numero limitato
  di munizioni, assenza di armi, presenza di nemici in grado di dividersi,
- aree di gioco che diventano via via sempre piú ristrette, e cosí via.
- Durante la modalitá 
+ aree di gioco che diventano via via sempre più ristrette, e così via.
+ Durante la modalità 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1092,7 +1092,7 @@ avventura
 \begin_inset Quotes frd
 \end_inset
 
- il giocatore sará costretto ad affrontare dei 
+ il giocatore sarà costretto ad affrontare dei 
 \emph on
 boss, 
 \emph default
@@ -1102,7 +1102,7 @@ potenti nemici in grado di sostenere molteplici danni e in grado di usare
 salute
 \emph default
 .
- Sono inoltre disponibili due modalitá 
+ Sono inoltre disponibili due modalità 
 \emph on
 multigiocatore
 \emph default
@@ -1152,7 +1152,7 @@ navi
 \emph default
 ad 
 \emph on
-anti-gravitá 
+anti-gravità 
 \emph default
 in grado di usare diverse 
 \emph on
@@ -1167,9 +1167,9 @@ al fine di ostacolare gli avversari e tagliare il traguardo prima che questi
  I tracciati percorribili sono caratterizzati da ampie carreggiate, curve
  paraboliche, salti e topologie sinuose.
  L'ambientazione del gioco è varia ma predilige il contesto urbano: i tracciati
- attraversano cittá futuristiche caratterizzate da tinte neutre ma arricchite
+ attraversano città futuristiche caratterizzate da tinte neutre ma arricchite
  da cartelloni pubblicitari al neon, segnaletica luminosa e dettagli in
- materiali traslucidi, i quali vengono risaltati ancor di piú nelle modalitá
+ materiali traslucidi, i quali vengono risaltati ancor di più nelle modalità
  notturne (Fig.
  
 \begin_inset CommandInset ref
@@ -1354,7 +1354,7 @@ Light Cycle
  
 \emph default
 Le ambientazioni presentate sono tre.
- La prima è costituita dalla cittá virtuale di 
+ La prima è costituita dalla città virtuale di 
 \emph on
 Tron City, 
 \emph default
@@ -1419,7 +1419,7 @@ TRON RUN/r - Tron City
 .
  I percorsi presentano un gran numero di ostacoli e piattaforme sospese
  che si materializzano mentre il giocatore vi si avvicina.
- L'ambiente è caratterizzato dalla massicia presenza di effetti di 
+ L'ambiente è caratterizzato dalla massiccia presenza di effetti di 
 \emph on
 luce al neon
 \emph default
@@ -1506,7 +1506,7 @@ Il tracciato si sviluppa in maniera sinuosa in un
 \emph on
 ambiente asettico 
 \emph default
-caratterizzato da tonalitá neutre molto chiare che quasi soffocano gli onniprese
+caratterizzato da tonalità neutre molto chiare che quasi soffocano gli onniprese
 nti effetti al neon.
  La terza ambientazione, nota col nome 
 \begin_inset Quotes fld
@@ -1520,8 +1520,8 @@ Outlands
 
 , 
 \emph default
-unisce gli elementi delle altre due in una cittá virtuale in decadenza,
- caratterizzata da ampi ambienti immersi in elementi dalle tonalitá cupe.
+unisce gli elementi delle altre due in una città virtuale in decadenza,
+ caratterizzata da ampi ambienti immersi in elementi dalle tonalità cupe.
 \end_layout
 
 \end_body

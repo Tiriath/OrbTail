@@ -129,7 +129,7 @@ lo scopo della tesi è \SpecialChar ldots
 \end_layout
 
 \begin_layout Standard
-I videogiochi rappresentano una delle forme di intrattenimento moderne piú
+I videogiochi rappresentano una delle forme di intrattenimento moderne più
  affermate e diffuse.
  A differenza di quanto avviene con i mezzi classici quali 
 \emph on
@@ -140,7 +140,7 @@ film
 libri
 \emph default
 , l'utente ha pieno controllo dell'esperienza: alcuni giochi richiedono
- concentrazione, altri una buona dose di coordinazione e reattivitá, altri
+ concentrazione, altri una buona dose di coordinazione e reattività, altri
  ancora pazienza e pianificazione.
  Sebbene vi siano videogiochi che si concentrano principalmente sulla componente
  a giocatore
@@ -181,11 +181,11 @@ mobile
 desktop
 \emph default
  quali Android, iOS, Windows e OSX.
- Il pregio principale di OrbTail risiede nella sua capacitá di poter essere
- giocato da piú giocatori contemporaneamente, online o meno, secondo una
+ Il pregio principale di OrbTail risiede nella sua capacità di poter essere
+ giocato da più giocatori contemporaneamente, online o meno, secondo una
  qualsiasi combinazione di piattaforme e
 \backslash
-o numero di giocatori locali attraverso un'opportuna modalitá 
+o numero di giocatori locali attraverso un'opportuna modalità 
 \emph on
 cross-platform play
 \emph default
@@ -199,7 +199,7 @@ Il termine
 \emph on
 cross-platform play
 \emph default
- identifica una modalitá di gioco online in cui giocatori possono giocare
+ identifica una modalità di gioco online in cui giocatori possono giocare
  tra loro indipendentemente dalla piattaforma utilizzata.
  
 \end_layout
@@ -207,11 +207,11 @@ cross-platform play
 \end_inset
 
  .
- Vi è inoltre la possibilitá di condividere uno stesso dispositivo 
+ Vi è inoltre la possibilità di condividere uno stesso dispositivo 
 \emph on
 desktop
 \emph default
- tra due o piú giocatori locali mediante un'apposita modalitá 
+ tra due o più giocatori locali mediante un'apposita modalità 
 \emph on
 splitscreen
 \emph default
@@ -225,7 +225,7 @@ Il termine
 \emph on
 splitscreen 
 \emph default
-identifica una modalitá di gioco in cui lo schermo viene suddiviso in piú
+identifica una modalità di gioco in cui lo schermo viene suddiviso in piú
  quadranti in modo da consentire a piú giocatori di usare uno stesso dispositivo
  contemporaneamente.
 \end_layout
@@ -233,13 +233,13 @@ identifica una modalitá di gioco in cui lo schermo viene suddiviso in piú
 \end_inset
 
 .
- Il gioco offre tre modalitá di gioco differenti ed altrettante arene e
+ Il gioco offre tre modalità di gioco differenti ed altrettante arene e
  consente ai giocatori di controllare sei veicoli caratterizzati da aspetto
  e stili di guida diversi.
 \end_layout
 
 \begin_layout Standard
-La necessitá di supportare piú piattaforme, impedendo che ciascuna di esse
+La necessità di supportare più piattaforme, impedendo che ciascuna di esse
  potesse risultare avvantaggiata rispetto alle altre durante le sessioni
  
 \emph on
@@ -369,39 +369,38 @@ Questa tesi è strutturata in capitoli.
 \begin_layout Standard
 Nel primo capitolo viene dato un contesto al progetto, fornendo una panoramica
  delle piattaforme disponibili ed andando ad analizzare i requisiti dello
- sviluppo multipiattaforma e delle modalitá multigiocatore.
+ sviluppo multipiattaforma e delle modalità multigiocatore.
 \end_layout
 
 \begin_layout Standard
-Nel secondo capitolo vengono analizzati alcuni titoli esistenti, sviluppati
- su piattaforme diverse su un ampio orizzonte temporale, al fine di individuare
- spunti per le 
+Nel secondo capitolo vengono analizzati alcuni titoli esistenti, al fine
+ di individuare spunti per le 
 \emph on
 meccaniche 
 \emph default
-di gioco e la direzione artistica del progetto.
+di gioco e la direzione stilistica del progetto.
 \end_layout
 
 \begin_layout Standard
 Nel terzo capitolo vengono delineato il design del gioco, partendo dalle
- meccaniche di gioco di base e descrivendo le modalitá di gioco, i veicoli
- e le loro caratteristiche e tutti gli elementi di gioco.
+ meccaniche di base e descrivendo le varie modalità, i livelli, i veicoli
+ e le loro caratteristiche.
 \end_layout
 
 \begin_layout Standard
-Nel capitolo successivo verrá inquadrata la direzione artistica del progetto
- usando diversi titoli esistenti come riferimento.
- Viene inoltre analizzata la produzione delle varie risorse
+Nel capitolo successivo verrà inquadrata la direzione artistica del progetto,
+ quale l'ambientazione ed il design dei veicoli.
+ Vengono inoltre analizzati i requisiti delle risorse
 \emph on
  
 \emph default
-utilizzate all'interno del gioco considerando i requisiti tecnici e di design.
+grafiche prodotte considerando le limitazioni tecniche e di design.
 \end_layout
 
 \begin_layout Standard
-Il quarto capitolo verte sulle scelte tecnologiche, a partire dalla scelta
+Il quinto capitolo verte sulle scelte tecnologiche, a partire dalla scelta
  del motore grafico, delle piattaforme e dell'architettura del gioco.
- Ogni scelta verrá contestualizzata rispetto a varie alternative e opportunament
+ Ogni scelta verrà contestualizzata rispetto a varie alternative e opportunament
 e giustificata, considerando necessariamente i requisiti di design.
 \end_layout
 

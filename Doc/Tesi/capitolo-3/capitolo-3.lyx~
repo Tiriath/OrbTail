@@ -95,7 +95,7 @@ concept
  Durante il processo di sviluppo questa idea si è evoluta per adeguarsi
  meglio al design, passando ad una grafica completamente 3D, usando una
  telecamera ad inseguimento.
- Questa scelta ha consentito di caratterizzare in modo piú profondo le diverse
+ Questa scelta ha consentito di caratterizzare in modo più profondo le diverse
  arene e i veicoli contenuti in essa.
  Lo stile scelto per OrbTail è caratterizzato da elementi fortemente futuristici
 , in cui elementi 
@@ -120,7 +120,7 @@ verosimile
 \end_layout
 
 \begin_layout Standard
-Al fine di ottenere una resa visiva di livello piú elevato è stato deciso
+Al fine di ottenere una resa visiva di livello più elevato è stato deciso
  di fare un uso estensivo di tecniche di 
 \emph on
 post-processing
@@ -152,11 +152,11 @@ e
 rendering physically-based
 \emph default
 .
- Quest'ultimo consente di ottenere una resa grafica molto fedele alla realtá
- in quanto si basa sulla descrizione delle proprietá fisiche dei materiali,
+ Quest'ultimo consente di ottenere una resa grafica molto fedele alla realtà
+ in quanto si basa sulla descrizione delle proprietà fisiche dei materiali,
  quali 
 \emph on
-metallicitá 
+metallicità 
 \emph default
 e 
 \emph on
@@ -280,7 +280,7 @@ OrbTail - Stadium
  circondati da elementi alieni a forma di colonna caratterizzati da striature
  luminose azzurre.
  L'arena è racchiusa all'interno di una gabbia metallica oltre la quale
- si puó osservare il cielo stellato.
+ si può osservare il cielo stellato.
  La seconda arena, 
 \begin_inset Quotes fld
 \end_inset
@@ -381,7 +381,7 @@ Torus
 \begin_inset Quotes frd
 \end_inset
 
-, è l'arena geometicamente piú semplice (Fig.
+, è l'arena geometricamente più semplice (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -457,30 +457,16 @@ Design dei veicoli
 \end_layout
 
 \begin_layout Standard
-I veicoli presenti in gioco sono stati ?
-\end_layout
-
-\begin_layout Standard
-In questa nuova iterazione, i veicoli pilotabili sono stati rivisti completament
-e, sia in termini di 
+I veicoli presenti in gioco sono stati reinterpretati in chiave vagamente
+ 
 \emph on
-geometria
-\emph default
- che in termine di 
-\emph on
-resa grafica
-\emph default
-.
- Un tempo caratterizzati da forme geometriche molto semplici e colori solidi,
- essi sono stati reinterpretati in chiave vagamente sportiva
-\emph on
-, 
+sportiva, 
 \emph default
 assumendo la forma di 
 \emph on
-astronavi futuristiche
+navi futuristiche
 \emph default
-.
+ in grado di fluttuare sulle arene.
  Le geometrie sono caratterizzate da un 
 \emph on
 design 
@@ -489,7 +475,7 @@ molto
 \emph on
 verosimile
 \emph default
-, con linee morbide e dettagli tecnici (Fig.
+, con linee morbide e pochi dettagli tecnici (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -611,7 +597,7 @@ OrbTail - Esempio di livrea
 \end_inset
 
  Subdoli dettagli quali leggeri graffi ed ammaccature permettono a ciascuno
- di essi di mantenere un aspetto pulito, senza tuttavia nascondere la brutalitá
+ di essi di mantenere un aspetto pulito, senza tuttavia nascondere la brutalità
  degli scontri passati.
  I colori delle livree, brillanti e molto saturi, consentono agli utenti
  di identificare molto rapidamente gli avversari durante le gare.
@@ -638,7 +624,7 @@ reference "subsec:InterfacciaUtente"
 ).
  Il design di ciascun veicolo sottolinea inoltre la sua 
 \emph on
-personalitá 
+personalità 
 \emph default
 e lo stile di guida: veicoli veloci sono caratterizzati da linee estremamente
  aerodinamiche, quelli dedicati all'esplorazione e alla raccolta presentano
@@ -646,7 +632,7 @@ e lo stile di guida: veicoli veloci sono caratterizzati da linee estremamente
 \emph on
 grossi motori
 \emph default
- e forme piú 
+ e forme più 
 \emph on
 massicce
 \emph default
@@ -683,7 +669,7 @@ diffuse-map
 
  
 \emph default
-é una texture che
+è una texture che
 \emph on
  
 \emph default
@@ -751,7 +737,7 @@ uno
 \emph default
 una superficie molto ruvida, il secondo canale codifica la 
 \emph on
-metallicitá 
+metallicità 
 \emph default
 dell'oggetto, ovvero quanto questo si comporta similmente ad un 
 \emph on
@@ -770,11 +756,8 @@ materiale dielettrico
 zero
 \emph default
 ).
- L'ultimo canale è invece dedicato al valore di 
-\emph on
-emissivitá
-\emph default
-, ovvero quanta luce viene 
+ L'ultimo canale è invece dedicato al valore di emissività, ovvero quanta
+ luce viene 
 \emph on
 emessa 
 \emph default

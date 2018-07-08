@@ -75,7 +75,7 @@
 
 \begin_layout Standard
 Questo capitolo è dedicato al design di OrbTail, partendo dalla definizione
- delle meccaniche di base e delle modalitá di gioco, fino all'analisi dei
+ delle meccaniche di base e delle modalità di gioco, fino all'analisi dei
  livelli e la descrizione dettagliata di tutti gli elementi di gioco.
  I contenuti si concentreranno principalmente sugli aspetti 
 \emph on
@@ -100,8 +100,8 @@ giochi di
 corsa 
 \emph default
 in cui quattro partecipanti si sfidano all'interno di un'arena.
- Il titolo offre diverse modalitá di gioco a tempo caratterizzate da condizioni
- di vittoria differenti e molteplici arene con un diverso grado di difficoltá.
+ Il titolo offre diverse modalità di gioco a tempo caratterizzate da condizioni
+ di vittoria differenti e molteplici arene con un diverso grado di difficoltà.
  Il titolo è stato sviluppato per le principali piattaforme 
 \emph on
 desktop 
@@ -111,7 +111,7 @@ e
 mobile
 \emph default
  quali Windows, OSX, Android e iOS e consente agli utenti di giocare tra
- loro indipendentemente dalla piattaforma utilizzata in modalitá 
+ loro indipendentemente dalla piattaforma utilizzata in modalità 
 \emph on
 cross-platform play
 \emph default
@@ -131,9 +131,9 @@ che si agganciano ad esso formando una lunga coda.
 orb
 \emph default
  in misura proporzionale alla direzione e alla forza d'impatto.
- Questi elementi sono inizialmente distribuiti lungo la superfcie dell'arena
+ Questi elementi sono inizialmente distribuiti lungo la superficie dell'arena
  e la loro acquisizione costituisce la meccanica principale attorno alla
- quale ruotano le varie modalitá di gioco descritte nei capitoli successivi.
+ quale ruotano le varie modalità di gioco descritte nei capitoli successivi.
  Gli 
 \emph on
 orb 
@@ -168,7 +168,7 @@ core,
  che garantiscono al giocatore un potenziamento casuale temporaneo.
  Lo scopo di questi potenziamenti è quello di aggiungere 
 \emph on
-profonditá 
+profondità 
 \emph default
 al 
 \emph on
@@ -178,8 +178,8 @@ e scuotere i normali equilibri di gioco.
 \end_layout
 
 \begin_layout Standard
-Per garantire la massima fruzione del videogioco in varie casistiche, tutte
- le modalitá di gioco ed arene sono disponibili in configurazione a 
+Per garantire la massima fruizione del videogioco in varie casistiche, tutte
+ le modalità di gioco ed arene sono disponibili in configurazione a 
 \emph on
 giocatore singolo
 \emph default
@@ -187,16 +187,16 @@ giocatore singolo
 \emph on
 multigiocatore locale 
 \emph default
-e, qualora dovesse essere disponbile una connessione ad Internet, 
+e, qualora dovesse essere disponile una connessione ad Internet, 
 \emph on
 multigiocatore online
 \emph default
 .
  è inoltre possibile giocare in 
 \emph on
-modalitá online mista 
+modalità online mista 
 \emph default
-in cui piú giocatori condividono una stessa postazione e giocano con altri
+in cui più giocatori condividono una stessa postazione e giocano con altri
  giocatori su altri dispositivi.
  La configurazione 
 \emph on
@@ -211,7 +211,7 @@ splitscreen
 \emph on
 desktop 
 \emph default
-essendo queste le uniche in grado di supportare piú periferiche di input
+essendo queste le uniche in grado di supportare più periferiche di input
  contemporaneamente.
  I dispositivi 
 \emph on
@@ -222,7 +222,7 @@ ne sono esclusi sia per ragioni di performance e sia perché queste piattaforme
 \end_layout
 
 \begin_layout Standard
-Tutte le modalitá di gioco sono state concepite considerando un numero di
+Tutte le modalità di gioco sono state concepite considerando un numero di
  partecipanti fisso pari a 
 \emph on
 quattro
@@ -236,7 +236,7 @@ intelligenza artificiale.
 \emph default
 Questi veicoli sono in grado di eseguire semplici compiti quali collezionare
  gli elementi di gioco, esplorare l'ambiente e scontrarsi con gli avversari.
- Per ragioni tecniche il livello di difficoltá dell'
+ Per ragioni tecniche il livello di difficoltà dell'
 \emph on
 intelligenza artificiale 
 \emph default
@@ -245,7 +245,7 @@ intelligenza artificiale
 \emph on
 intelligenza artificiale 
 \emph default
-era disponibile nella sola modalitá a giocatore singolo: era pertanto possibile
+era disponibile nella sola modalità a giocatore singolo: era pertanto possibile
  giocare sessioni 
 \emph on
 online 
@@ -255,12 +255,12 @@ con un numero inferiore di giocatori.
 \emph on
 rimossa 
 \emph default
-al fine di garantire una piú elevata consistenza tra le esperienze a giocatore
+al fine di garantire una più elevata consistenza tra le esperienze a giocatore
  singolo e multigiocatore
 \emph on
  
 \emph default
-e, allo stesso tempo, aumentare la difficoltá delle sessioni online.
+e, allo stesso tempo, aumentare la difficoltà delle sessioni online.
 \end_layout
 
 \begin_layout Standard
@@ -278,7 +278,7 @@ tre minuti
 \emph default
 , unita al gran numero di configurazioni disponibili, garantisce una 
 \emph on
-versatilitá 
+versatilità 
 \emph default
 del prodotto unica: il gioco è tanto adatto al 
 \emph on
@@ -293,16 +293,16 @@ rapido e competitivo.
 \end_layout
 
 \begin_layout Section
-Modalitá di gioco
+Modalità di gioco
 \end_layout
 
 \begin_layout Standard
-Il titolo offre diverse modalitá di gioco accomunate dalle medesime meccaniche
+Il titolo offre diverse modalità di gioco accomunate dalle medesime meccaniche
  di base ma caratterizzate da condizioni di vittoria differenti.
 \end_layout
 
 \begin_layout Description
-Arcade In questa modalitá l'obiettivo è quello di fare piú punti possibile
+Arcade In questa modalità l'obiettivo è quello di fare più punti possibile
  entro un tempo limite prestabilito di 
 \emph on
 centoventi secondi
@@ -317,7 +317,7 @@ orb
 dieci 
 \emph default
 il punteggio del giocatore.
- Questa modalitá di gioco è pensata per favorire scontri trai veicoli dei
+ Questa modalità di gioco è pensata per favorire scontri trai veicoli dei
  partecipanti ed è caratterizzata da un 
 \emph on
 ritmo 
@@ -329,27 +329,27 @@ orb
 \emph default
 porta i giocatori allo scontro continuo in modo che ve ne sia sempre un
  discreto numero da collezionare e garantire un flusso costante di punti.
- In questa modalitá gli scontri trai veicoli possono risultare tanto positivi
+ In questa modalità gli scontri trai veicoli possono risultare tanto positivi
  per l'attaccante quanto per il difensore: una volta collezionati tutti
  gli 
 \emph on
 orb 
 \emph default
-a disposizione, l'unico modo per fare piú punti è liberarne di nuovi, anche
+a disposizione, l'unico modo per fare più punti è liberarne di nuovi, anche
  a discapito dei propri.
  Questa meccanica consente di mantenere un elevato grado di sfida in quanto,
- al termine di ciascuno scontro, ogni giocatore dovrá fare del suo meglio
+ al termine di ciascuno scontro, ogni giocatore dovrà fare del suo meglio
  per raccogliere gli 
 \emph on
 orb 
 \emph default
 staccati prima che gli avversari possano fare altrettanto.
- Nelle fasi finali i giocatori dovranno inoltre essere piú cauti, valutando
+ Nelle fasi finali i giocatori dovranno inoltre essere più cauti, valutando
  gli esiti di ciascun scontro ed evitandone di inutili in caso di vantaggio.
 \end_layout
 
 \begin_layout Description
-Coda-piú-lunga In questa modalitá l'obiettivo è quello di terminare la partita
+Coda-piú-lunga In questa modalità l'obiettivo è quello di terminare la partita
  col maggior numero di 
 \emph on
 orb 
@@ -365,7 +365,7 @@ centoventi secondi
 paritá.
  
 \emph default
-Questa modalitá è caratterizzata da un 
+Questa modalità è caratterizzata da un 
 \emph on
 ritmo
 \emph default
@@ -389,13 +389,13 @@ mutevoli
 \emph default
 trai partecipanti e finalizzate ad intralciare il giocatore attualmente
  in vantaggio ed impedire che questi vinca.
- Secondo questa dinamica di gioco, il giocatore con la coda piú lunga sará
+ Secondo questa dinamica di gioco, il giocatore con la coda più lunga sará
  portato a 
 \emph on
 fuggire 
 \emph default
 dagli avversari, evitando di perdere il vantaggio, laddove tutti gli altri
- saranno portati a intraprendere azioni piú spericolate, sperando di ribaltare
+ saranno portati a intraprendere azioni più spericolate, sperando di ribaltare
  l'esito della partita.
  Questi due 
 \emph on
@@ -412,7 +412,7 @@ reattivitá.
 \end_layout
 
 \begin_layout Description
-Eliminazione L'obiettivo di questa modalitá è
+Eliminazione L'obiettivo di questa modalità è
 \emph on
  eliminare 
 \emph default
@@ -433,11 +433,11 @@ iniziale.
 eliminato
 \emph default
 .
- Questa modalitá è caratterizzata da un elevato grado di 
+ Questa modalità è caratterizzata da un elevato grado di 
 \emph on
 competizione
 \emph default
- e un livello di difficoltá che cresce al diminuire del numero di partecipanti
+ e un livello di difficoltà che cresce al diminuire del numero di partecipanti
  in gara.
  Ogni volta che un giocatore viene eliminato, i veicoli rimanenti potranno
  spartirsi i suoi 
@@ -445,7 +445,7 @@ competizione
 orb, 
 \emph default
 aumentando le loro possibilitá di sopravvivenza.
- Come per la precedente modalitá, i partecipanti saranno portati a concentrare
+ Come per la precedente modalità, i partecipanti saranno portati a concentrare
  i propri sforzi per eliminare il giocatore col maggior numero di 
 \emph on
 orb
@@ -456,19 +456,19 @@ gameplay
 \emph default
  in presenza di giocatori particolarmente forti.
  I giocatori eliminati possono assistere al resto della sfida attraverso
- un'opprtuna modalitá 
+ un'opprtuna modalità 
 \emph on
 spettatore
 \emph default
  che consente loro di inquadrare i partecipanti ancora in gioco.
- Questa modalitá ha inoltre un tempo limite di 
+ Questa modalità ha inoltre un tempo limite di 
 \emph on
 centottanta secondi
 \emph default
 , scaduti i quali la partita termina in paritá.
  Questo limite temporale è necessario per incentivare lo scontro trai partecipan
 ti rimanenti, impedendo che la partita si protragga indefinitamente.
- La durata è piú elevata rispetto alle modalitá precedenti in quanto si
+ La durata è più elevata rispetto alle modalità precedenti in quanto si
  vuole aumentare la probabilitá che la partita finisca a causa dell'eliminazione
  dei partecipanti invece che per esaurimento del tempo di gara.
 \end_layout
@@ -530,18 +530,18 @@ tattico
 \emph on
 velocitá 
 \emph default
-consente di staccare piú 
+consente di staccare più 
 \emph on
 orb 
 \emph default
-dagli avversari a seguito di uno scontro, raggiungere piú velocemente obettivi
+dagli avversari a seguito di uno scontro, raggiungere più velocemente obettivi
  di gioco e allontanarsi rapidamente dai veicoli avversari vanificando eventuali
  tentativi offensivi.
 \end_layout
 
 \begin_layout Description
 Accelerazione Rappresenta la massima accelerazione del veicolo.
- Un valore piú elevato consente al veicolo di raggiungere velocitá maggiori
+ Un valore più elevato consente al veicolo di raggiungere velocitá maggiori
  sulle brevi distanze, causando danni maggiori in ambienti ristretti e minimizza
 ndo le circostanze in cui il veicolo si trova fermo e quindi facilmente
  bersagliabile.
@@ -549,7 +549,7 @@ ndo le circostanze in cui il veicolo si trova fermo e quindi facilmente
 \emph on
 tattica 
 \emph default
-e, piú limitatamente, 
+e, più limitatamente, 
 \emph on
 offensiva
 \emph default
@@ -562,7 +562,7 @@ Manovrabilitá Rappresenta la massima velocitá a cui il veicolo puó sterzare.
 \emph on
 manovrabilitá 
 \emph default
-sono facilitati nel cambio di direzione e pertanto sono piú efficienti durante
+sono facilitati nel cambio di direzione e pertanto sono più efficienti durante
  le fasi di raccolta di elementi di gioco quali 
 \emph on
 orb
@@ -1021,7 +1021,7 @@ velocitá
 potenziale offensivo 
 \emph default
 sulla lunga distanza sacrificando gran parte della manovrabilitá.
- Particolarmente adatto per i giocatori piú esperti che prediligono strategie
+ Particolarmente adatto per i giocatori più esperti che prediligono strategie
  ad alto rischio ed alto guadagno.
 \end_layout
 
@@ -1041,7 +1041,7 @@ core.
  
 \emph default
 La bassa velocitá è compensata dalla facilitá di accesso ai potenziamenti
- e ció lo rende adatto ai giocatori che prediligono uno stile di gioco piú
+ e ció lo rende adatto ai giocatori che prediligono uno stile di gioco più
  strategico.
 \end_layout
 
@@ -1067,7 +1067,7 @@ per strategie aggressive sulle medie e brevi distanze.
 \end_layout
 
 \begin_layout Description
-Shine Veicolo bilanciato, sacrifica parte della manovrabilitá per un piú
+Shine Veicolo bilanciato, sacrifica parte della manovrabilitá per un più
  elevato
 \emph on
  potenziale offensivo
@@ -1145,7 +1145,7 @@ al di sopra della superficie dell'arena ad una breve distanza.
  sempre ragionevolmente limitato.
  Le motivazioni di questa scelta di design sono molteplici.
  In primo luogo la durata limitata delle partite richiede che i giocatori
- debbano interagire tra di loro piú frequentemente possibile nel breve tempo
+ debbano interagire tra di loro più frequentemente possibile nel breve tempo
  a disposizione, si vuole evitare quindi il dover attraversare grandi distanze
  prima di potersi scontrare.
  In secondo luogo si vogliono evitare strategie particolarmente 
@@ -1159,7 +1159,7 @@ accerchiarlo.
  
 \emph default
 Questa proprietá è fondamentale per garantire un grado di sfida adeguato
- nelle modalitá 
+ nelle modalità 
 \emph on
 coda-piú-lunga 
 \emph default
@@ -1175,7 +1175,7 @@ e arricchito l'esperienza di gioco, ció avrebbe richiesto lo sviluppo di
 \emph on
 intelligenza artificiale 
 \emph default
-piú sofisticata.
+più sofisticata.
  Questa motivazione, unita ai tempi di sviluppo ridotti ha portato alla
  rimozione dei suddetti.
 \end_layout
@@ -1204,7 +1204,7 @@ piana
 \emph default
 e pertanto tutti gli elementi di gioco sono sempre ben visibili.
  Questa arena è adatta per i nuovi giocatori oppure per gli utenti che preferisc
-ono concentrarsi sull'azione di gioco evitando la difficoltá introdotta
+ono concentrarsi sull'azione di gioco evitando la difficoltà introdotta
  da topologie diverse.
 \end_layout
 
@@ -1222,7 +1222,7 @@ della stessa.
  La topologia di questa arena richiede un livello di abilitá maggiore da
  parte dei partecipanti, in quanto la curvatura limita la visibilitá degli
  elementi di gioco.
- La grande estensione superficiale del livello rende inoltre piú complicato
+ La grande estensione superficiale del livello rende inoltre più complicato
  individuare la posizione degli avversari e capirne le traiettorie.
 \end_layout
 
@@ -1247,7 +1247,7 @@ interna
  Questo livello costituisce il massimo grado di sfida offerto dal gioco.
  La topologia complicata rende particolarmente arduo valutare correttamente
  le distanze degli oggetti e prevedere le traiettorie degli avversari.
- La guida dei veicoli all'interno di quest'arena richiede inoltre un piú
+ La guida dei veicoli all'interno di quest'arena richiede inoltre un più
  elevato grado di precisione in quanto non è sempre semplice individuare
  il percorso migliore per raggiungere un determinato obiettivo.
 \end_layout
@@ -1270,7 +1270,7 @@ toro
 concava
 \emph default
 , il raggio di curvatura risultava tale da ridurre drasticamente il numero
- di elementi di gioco a schermo e rendere ancora piú complicato individuare
+ di elementi di gioco a schermo e rendere ancora più complicato individuare
  avversari ed oggetti.
  A seguito di queste considerazioni è stato deciso di evitare l'aggiunta
  di suddette topologie.
@@ -1440,7 +1440,7 @@ sette
 \emph on
 orb 
 \emph default
-in poco tempo e ció rende questo potenziamento uno dei piú apprezzati e
+in poco tempo e ció rende questo potenziamento uno dei più apprezzati e
  versatili.
 \end_layout
 
@@ -1462,7 +1462,7 @@ due
 \end_layout
 
 \begin_layout Description
-Missile Lancia un missile a ricerca verso l'avversario piú vicino.
+Missile Lancia un missile a ricerca verso l'avversario più vicino.
  Il missile esplode a contatto oppure automaticamente dopo 5 secondi: i
  veicoli coinvolti nell'esplosione perdono 
 \emph on
@@ -1473,7 +1473,7 @@ due
 orb
 \emph default
 .
- Quest'arma ha effetti particolarmente devastanti nella modalitá 
+ Quest'arma ha effetti particolarmente devastanti nella modalità 
 \emph on
 eliminazione 
 \emph default
@@ -1482,7 +1482,7 @@ o nelle fasi finali di
 coda-piú-lunga
 \emph default
  in quanto consente di ribaltare le sorti della partita.
- Il raggio di curvatura limitato di quest'arma consente ai giocatori piú
+ Il raggio di curvatura limitato di quest'arma consente ai giocatori più
  abili di schivare il missile, in attesa che questi esploda automaticamente.
 \end_layout
 
@@ -1497,7 +1497,7 @@ per
 due
 \emph default
  secondi.
- Sebbene rappresenti il potere col piú alto potenziale 
+ Sebbene rappresenti il potere col più alto potenziale 
 \emph on
 difensivo
 \emph default
@@ -1537,7 +1537,7 @@ orb.
  
 \emph default
 Quest'arma risulta particolarmente efficace sulle brevi distanze dove vi
- è una piú elevata probabilitá di colpire gli avversari.
+ è una più elevata probabilitá di colpire gli avversari.
  Il gran numero di 
 \emph on
 orb 
@@ -1567,7 +1567,7 @@ invincibilitá
 \begin_inset Quotes frd
 \end_inset
 
-, questo potere garantisce una protezione piú estesa da tutte le armi avversarie.
+, questo potere garantisce una protezione più estesa da tutte le armi avversarie.
 \end_layout
 
 \begin_layout Standard
@@ -1587,7 +1587,7 @@ scommessa
 , secondo la quale il giocatore che collezionava un potenziamento non era
  sempre sicuro di ottenerne un beneficio.
  Nella versione finale queste meccaniche sono state rimosse al fine di promuover
-e ancor di piú l'uso di potenziamenti ed in generale perché risultavano
+e ancor di più l'uso di potenziamenti ed in generale perché risultavano
  ingiustificatamente punitive.
 \end_layout
 
@@ -1630,7 +1630,7 @@ retromarcia
 \emph on
 sterzare
 \emph default
- in misura tanto maggiore quanto piú grande l'angolo d'inclinazione.
+ in misura tanto maggiore quanto più grande l'angolo d'inclinazione.
  L'attivazione dei potenziamenti e delle armi è invece affidata ad un semplice
  
 \emph on
@@ -1648,7 +1648,7 @@ desktop
 \emph on
 mobile
 \emph default
-, deve essere inoltre interagibile da piú partecipanti contemporaneamente
+, deve essere inoltre interagibile da più partecipanti contemporaneamente
  ed è pertanto previsto il supporto per 
 \emph on
 tastiere, mouse 
@@ -1698,7 +1698,7 @@ tasto
 \emph default
 apposito per attivare i potenziamenti.
  L'assenza di gradi di libertá da parte della tastiera impedisce all'utente
- di poter guidare con precisione il veicolo e ció rende il titolo piú adatto
+ di poter guidare con precisione il veicolo e ció rende il titolo più adatto
  all'interazione tramite 
 \emph on
 pad
@@ -1766,8 +1766,8 @@ I menú all'interno del gioco sono caratterizzati da elementi sempre ben
 touchscreen
 \emph default
 .
- Laddove ci si aspetta che l'utente faccia piú scelte (ad esempio modalitá
- di gioco, arena e veicolo), le singole scelte sono suddivise su piú pagine.
+ Laddove ci si aspetta che l'utente faccia più scelte (ad esempio modalità
+ di gioco, arena e veicolo), le singole scelte sono suddivise su più pagine.
 \end_layout
 
 \begin_layout Standard
@@ -1785,7 +1785,7 @@ che mostra il tempo rimanente prima della conclusione della partita e altri
 quattro 
 \emph default
 elementi colorati finalizzati a mostrare il punteggio o la lunghezza della
- coda di ciascun partecipante a seconda della modalitá di gioco.
+ coda di ciascun partecipante a seconda della modalità di gioco.
  Un elemento grafico apposito consente di visualizzare il 
 \emph on
 potenziamento 
@@ -1881,7 +1881,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/orbtail_flow.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailFlow.png
 	lyxscale 20
 	width 14cm
 
@@ -1913,7 +1913,7 @@ Flusso di gioco
 .
  Il flusso prevede la selezione della 
 \emph on
-modalitá di gioco, 
+modalità di gioco, 
 \emph default
 dell'
 \emph on
@@ -1970,7 +1970,7 @@ lobby
 \end_inset
 
 .
- La selezione della modalitá di gioco e dell'arena è 
+ La selezione della modalità di gioco e dell'arena è 
 \emph on
 opzionale
 \emph default
@@ -1980,7 +1980,7 @@ opzionale
 lobby 
 \emph default
 esistenti.
- Durante la selezione del veicolo sará possibile aggiungere piú giocatori
+ Durante la selezione del veicolo sará possibile aggiungere più giocatori
  locali alla partita (attraverso un opportuno tasto sul 
 \emph on
 pad
@@ -1996,7 +1996,7 @@ lobby
 \emph default
 disponibile, il sistema provvederá a crearne una nuova a cui altri utenti
  online potranno liberamente accedervi.
- Questo processo non è necessario per la modalitá a 
+ Questo processo non è necessario per la modalità a 
 \emph on
 giocatore singolo
 \emph default
@@ -2027,7 +2027,7 @@ quattro
 .
  Un breve conto alla rovescia porterá i giocatori in gara.
  All'inizio di ogni partita è prevista una schermata contenente le regole
- della modalitá di gioco selezionata ed i potenziamenti disponibili.
+ della modalità di gioco selezionata ed i potenziamenti disponibili.
  Questa schermata funge anche da punto di sincronizzazione, in attesa che
  tutti gli altri giocatori online abbiano caricato il livello.
  La partita inizia una volta che tutti i giocatori hanno congedato la schermata.

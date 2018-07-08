@@ -99,38 +99,38 @@ La creazione di un videogioco in grado di essere fruito consistentemente
  ecosistemi e soddisfare diverse tipologie di utente, è una sfida che accompagna
  tutte le fasi produttive, a partire dal concept fino alla sua messa in
  opera.
- La creazione di un videogioco che possa essere giocato da piú partecipanti,
+ La creazione di un videogioco che possa essere giocato da più partecipanti,
  siano essi nello stesso luogo o separati da grandi distanze e che consenta
- l'interoperabilitá fra ecosistemi differenti, è quanto di piú complesso
+ l'interoperabilità fra ecosistemi differenti, è quanto di più complesso
  possa offrire l'industria videoludica.
  Ogni meccanica ed interazione utente deve essere attentamente ponderata,
  al fine di risultare consistente su tutte le piattaforme supportate.
- Questo processo non è tuttavia lineare: limitazioni tecniche, unite a criticitá
+ Questo processo non è tuttavia lineare: limitazioni tecniche, unite a criticità
  non preventivate possono richiedere il dover ritornare sui propri passi,
- anche piú volte, al fine di individuare un nuovo insieme di meccaniche
+ anche più volte, al fine di individuare un nuovo insieme di meccaniche
  robuste ed efficaci.
 \end_layout
 
 \begin_layout Standard
 In questo lavoro di tesi è stato fatto tesoro delle considerazioni di cui
- sopra, al fine di creare un videogioco dall'elevata qualitá che potesse
- essere giocato da piú giocatori, indipendentemente dal dispositivo utilizzato.
+ sopra, al fine di creare un videogioco dall'elevata qualità che potesse
+ essere giocato da più giocatori, indipendentemente dal dispositivo utilizzato.
  Lo sviluppo di un'architettura software flessibile, in grado di gestire
  in maniera uniforme un gran numero di ecosistemi e casistiche di gioco,
  si è rivelato di cruciale importanza per mantenere sotto controllo il processo
  produttivo, evitandone l'esplosione combinatoria.
  Il risultato finale del processo di creazione di OrbTail ha portato alla
  nascita di un prodotto caratterizzato da meccaniche semplici ma efficaci,
- in grado di essere fruito tanto dai giocatori piú accaniti quanto da quelli
- piú saltuari.
+ in grado di essere fruito tanto dai giocatori più accaniti quanto da quelli
+ più saltuari.
 \end_layout
 
 \begin_layout Standard
 Sebbene il prodotto risulta completo dal punto di vista delle meccaniche
  di base, esso si presta molto facilmente ad un gran numero di estensioni
  e migliorie.
- Per aumentare la longevitá e la difficoltá di gioco è stata prevista la
- possibilitá di integrare nuove arene oppure fornire variazioni di quelle
+ Per aumentare la longevità e la difficoltà di gioco è stata prevista la
+ possibilità di integrare nuove arene oppure fornire variazioni di quelle
  esistenti, aggiungendo elementi 
 \emph on
 attivi 
@@ -139,7 +139,7 @@ all'interno delle stesse, quali ostacoli e trappole.
 \end_layout
 
 \begin_layout Standard
-Una modalitá di gioco molto interessante presente nel concept originale
+Una modalità di gioco molto interessante presente nel concept originale
  ma rimossa per mancanza di tempo, è nota col nome 
 \begin_inset Quotes fld
 \end_inset
@@ -153,7 +153,7 @@ blackout
 \end_inset
 
 .
- Questa modalitá prevedeva la presenza di arene completamente al buio in
+ Questa modalità prevedeva la presenza di arene completamente al buio in
  cui le sole fonti di luce sarebbero state costituite dagli 
 \emph on
 orb 
@@ -172,17 +172,17 @@ orb
 \emph on
 stealth 
 \emph default
-inedito all'interno del gioco, aumentandone la profonditá.
+inedito all'interno del gioco, aumentandone la profondità.
 \end_layout
 
 \begin_layout Standard
-L'introduzione di nuove arene e modaltá di gioco richiede necessariamente
+L'introduzione di nuove arene e modalità di gioco richiede necessariamente
  l'introduzione di un'
 \emph on
 intelligenza artificiale 
 \emph default
-piú sofisticata, in grado di evitare ostacoli e determinare obiettivi di
- gioco in funzione della modalitá di gioco correntemente attiva.
+più sofisticata, in grado di evitare ostacoli e determinare obiettivi di
+ gioco in funzione della modalità di gioco correntemente attiva.
  Attualmente le strategie sono generiche e, sebbene manifestano un buon
  comportamento in tutte le circostanze, non sempre garantiscono un livello
  di sfida all'altezza degli utenti.
@@ -193,8 +193,8 @@ Dal punto di vista dell'esperienza di gioco
 \emph on
 online 
 \emph default
-una miglioria piú che benvenuta è costituita dall'introduzione di algoritmi
- piú raffinati per risolvere il problema del 
+una miglioria più che benvenuta è costituita dall'introduzione di algoritmi
+ più raffinati per risolvere il problema del 
 \emph on
 dead-reckoning
 \emph default
@@ -204,12 +204,12 @@ latenza
 \emph default
 o mancanza temporanea della 
 \emph on
-connettivitá
+connettività
 \emph default
 .
- Unity mette a disposizione un sistema molto basilare che peró risulta in
- movimenti molto bruschi da parte di tutti gli oggetti di gioco e ció costituisc
-e il problema piú evidente di OrbTail nelle modalitá 
+ Unity mette a disposizione un sistema molto basilare che però risulta in
+ movimenti molto bruschi da parte di tutti gli oggetti di gioco e ciò costituisc
+e il problema più evidente di OrbTail nelle modalità 
 \emph on
 online
 \emph default
@@ -218,7 +218,7 @@ online
 
 \begin_layout Standard
 Infine, in un'ottica di monetizzazione del prodotto e per aumentarne la
- longevitá, è inoltre possibile prevedere l'introduzione di elementi a pagamento
+ longevità, è inoltre possibile prevedere l'introduzione di elementi a pagamento
  per personalizzare il proprio veicolo attraverso 
 \emph on
 livree 

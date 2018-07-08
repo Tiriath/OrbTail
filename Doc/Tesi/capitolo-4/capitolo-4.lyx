@@ -78,10 +78,10 @@ Per la realizzazione di OrbTail ci si è serviti di un metodo di sviluppo
  a fasi.
  La fase preliminare si è concentrata sulla definizione delle tecnologie
  impiegate: l'attenta scelta di quest'ultime è di cruciale importanza per
- minimizzare l'impatto sul processo produttivo in caso di criticitá o limitazion
-i, specie nelle fasi piú avanzate del progetto.
+ minimizzare l'impatto sul processo produttivo in caso di criticità o limitazion
+i, specie nelle fasi più avanzate del progetto.
  Al fine di mantenere lo storico dei file di progetto e controllare lo sviluppo
- delle varie funzionalitá ci si è affidati a 
+ delle varie funzionalità ci si è affidati a 
 \emph on
 git
 \emph default
@@ -102,7 +102,7 @@ motore grafico
  Fin da subito ci si è resi conto che sviluppare senza usare motori grafici
  di terze parti avrebbe aumentato esponenzialmente il tempi di sviluppo,
  rendendo di fatto impossibile supportare tutte le piattaforme desiderate.
- Sebbene ad oggi esistono diversi motori grafici gratuiti in grado di soddifare
+ Sebbene ad oggi esistono diversi motori grafici gratuiti in grado di soddisfare
  la maggior parte delle esigenze, per lo sviluppo di OrbTail sono state
  valutate due sole alternative: 
 \emph on
@@ -119,7 +119,7 @@ Unity 2017
 \emph on
 matchmaking 
 \emph default
-e, soprattutto, delle criticitá riguardanti lo sviluppo su piattaforme 
+e, soprattutto, delle criticità riguardanti lo sviluppo su piattaforme 
 \emph on
 mobile
 \emph default
@@ -129,7 +129,7 @@ mobile
 \emph on
 mobile
 \emph default
-, ed in generale per la sua grande intuitivitá.
+, ed in generale per la sua grande intuitività.
  La presenza di un servizio di 
 \emph on
 matchmaking 
@@ -147,7 +147,7 @@ Unity è un motore grafico sviluppato da
 \emph on
 Unity Technologies
 \emph default
- che consente di sviluppare giochi multipiattaforma su tutte le pattaforme
+ che consente di sviluppare giochi multipiattaforma su tutte le piattaforme
  
 \emph on
 mobile
@@ -168,24 +168,24 @@ key "UnityManual"
 \end_inset
 
 .
- La presenza di una versione gratuita, unita ad un elevato grado di intuitivitá,
+ La presenza di una versione gratuita, unita ad un elevato grado di intuitività,
  ne ha garantito la rapida affermazione da parte di sviluppatori 
 \emph on
 indipendenti
 \emph default
  e non.
  Questo motore è caratterizzato da paradigmi di sviluppo molto chiari, il
- che lo rende tanto adatto agli sviluppatori alla prime armi quanto ai piú
+ che lo rende tanto adatto agli sviluppatori alla prime armi quanto ai più
  esperti.
  Il 
 \emph on
 pattern architetturale
 \emph default
- principale, rappresentato dal
+ principale, rappresentato dall
 \emph on
-l'entity-component
+'entity-component
 \emph default
-, consiste nell'implementare funzionalitá autoconclusive all'interno di
+, consiste nell'implementare funzionalità autoconclusive all'interno di
  
 \emph on
 componenti 
@@ -196,13 +196,13 @@ game object
 \emph default
 (termine usato da Unity per descrivere le 
 \emph on
-entitá
+entità
 \emph default
 )
 \emph on
  
 \emph default
-come aggregatori di quest'ultimi al fine di modellare comportamenti piú
+come aggregatori di quest'ultimi al fine di modellare comportamenti più
  complessi.
  Questo paradigma è stato migliorato nella versione del motore del 2018,
  introducendo il concetto di 
@@ -215,7 +215,7 @@ system
 \emph on
 sistemi
 \emph default
-, garantendo un disaccoppiamento ancora piú forte tra le varie componenti
+, garantendo un disaccoppiamento ancora più forte tra le varie componenti
  del gioco.
  Unity consente di implementare le logiche di gioco tramite script 
 \emph on
@@ -241,8 +241,8 @@ Il
 \emph on
 core 
 \emph default
-di un motore grafico è il modulo software di piú basso livello.
- Esso si occupa di astrarre le funzionalitá specifiche di ciascuna piattaforma
+di un motore grafico è il modulo software di più basso livello.
+ Esso si occupa di astrarre le funzionalità specifiche di ciascuna piattaforma
  e di dettare il flusso di esecuzione di tutti gli altri sottosistemi, quali
  il renderer, il motore fisico, la logica di gioco e la gestione della memoria.
 \end_layout
@@ -256,7 +256,7 @@ di un motore grafico è il modulo software di piú basso livello.
 \end_layout
 
 \begin_layout Standard
-La limitazione maggiore di questo engine risiede nel fatto che il suo 
+La limitazione maggiore di questo motore risiede nel fatto che il suo 
 \emph on
 core 
 \emph default
@@ -264,7 +264,7 @@ core
 \emph on
 closed-source 
 \emph default
-(a meno di non pagare per ottenerne l'accesso) e ció impedisce agli sviluppatori
+(a meno di non pagare per ottenerne l'accesso) e ciò impedisce agli sviluppatori
  di poterne analizzare il flusso di esecuzione, rendendo particolarmente
  difficile il processo di 
 \emph on
@@ -286,17 +286,17 @@ key "UnityCSharp"
  
 \emph default
 Nonostante il rilascio del codice sia un notevole passo avanti, permane
- ancora l'impossibilitá di modificare il codice del motore per adattarlo
- meglio alle proprie esigenze e ció richiede talvolta l'impiego di soluzioni
+ ancora l'impossibilità di modificare il codice del motore per adattarlo
+ meglio alle proprie esigenze e ciò richiede talvolta l'impiego di soluzioni
  temporanee o alternative.
 \end_layout
 
 \begin_layout Standard
-Per lo sviluppo di OrbTail sono state usate prevalentemente funzionalitá
+Per lo sviluppo di OrbTail sono state usate prevalentemente funzionalità
  di base legate al 3D, al motore fisico, alla gestione delle scene e delle
- funzionalitá di rete.
- L'uso di funzionalitá generiche ha permesso di evitare tutte le problematiche
- legate ai sistemi piú specifici, quali gestione del 2D e delle 
+ funzionalità di rete.
+ L'uso di funzionalità generiche ha permesso di evitare tutte le problematiche
+ legate ai sistemi più specifici, quali gestione del 2D e delle 
 \emph on
 nav mesh 
 \begin_inset Foot
@@ -339,7 +339,7 @@ entity-component
 entity-component-system 
 \emph default
 è stata evitata in quanto questi risultava ancora in fase sperimentale e
- per via del fatto che lo sviluppo del gioco era giá in fase avanzata e
+ per via del fatto che lo sviluppo del gioco era già in fase avanzata e
  si voleva evitare di correre 
 \emph on
 rischi
@@ -357,7 +357,7 @@ Unity mette a disposizione un gran quantitativo di
 plug-in 
 \emph default
 esterni al fine di aumentare la resa dei giochi, semplificare il processo
- di sviluppo o aggiungere nuove funzionalitá.
+ di sviluppo o aggiungere nuove funzionalità.
  Per lo sviluppo di OrbTail è stato deciso di utilizzarne uno solo
 \emph on
  
@@ -390,7 +390,7 @@ di C#.
  elementi di gioco 3D.
  L'uso di questo sistema ha permesso di risparmiare un notevole quantitativo
  di tempo, garantendo una resa visiva molto buona.
- Quest'ultimo si presenta come un unico file monolitico che puó essere integrato
+ Quest'ultimo si presenta come un unico file monolitico che può essere integrato
  nel progetto e non richiede alcuna forma di configurazione.
 \end_layout
 
@@ -401,7 +401,7 @@ Meccaniche di base
 \begin_layout Standard
 La prima fase dello sviluppo di OrbTail si concentra sulla definizione dell'arch
 itettura generale del gioco ed in particolar modo delle meccaniche di base.
- Quest'ultime sono condivise tra tutte le modalitá e livelli e pertanto
+ Quest'ultime sono condivise tra tutte le modalità e livelli e pertanto
  sono state pensate per essere completamente indipendenti da essi.
  Tra le meccaniche di base troviamo la gestione della gravità, del sistema
  di controllo dei veicoli, degli oggetti collezionabili, degli scontri e
@@ -485,8 +485,8 @@ Il
 raycasting 
 \emph default
 è una tecnica che consente di determinare le intersezioni tra un raggio
- descritto da un punto inziale ed una direzione ed una o piú superfici poligonal
-i.
+ descritto da un punto iniziale ed una direzione ed una o più superfici
+ poligonali.
 \end_layout
 
 \end_inset
@@ -502,14 +502,14 @@ al fine di individuare un punto sulla superficie del livello da usare come
 \emph default
 permette di scrivere un codice di gestione unico che si adatta a tutte le
  topologie, determinare la direzione del raggio usando solo l'orientamento
- dell'oggetto puó generare risultati ambigui o imprevedibili.
+ dell'oggetto può generare risultati ambigui o imprevedibili.
  Queste problematiche sono esacerbate da rapidi cambi di direzione a seguito
  di esplosioni o durante il normale 
 \emph on
 rollio 
 \emph default
 degli oggetti lungo la superficie del livello.
- Per risolvere questa ambiguitá ci si è affidati ad una descrizione 
+ Per risolvere questa ambiguità ci si è affidati ad una descrizione 
 \emph on
 analitica 
 \emph default
@@ -518,7 +518,7 @@ della forza di gravità per ciascuna delle topologie supportate.
 \emph on
 campo gravitazionale
 \emph default
- cosí descritto consente di ottenere una direzione non ambigua in cui effettuare
+ così descritto consente di ottenere una direzione non ambigua in cui effettuare
  il 
 \emph on
 raycasting
@@ -605,7 +605,7 @@ Gestione della gravità.
 \end_inset
 
  Il primo di questi viene assegnato all'arena e consente di configurare
- sia l'intensitá della gravità e sia la distanza di stazionamento degli
+ sia l'intensità della gravità e sia la distanza di stazionamento degli
  oggetti rispetto alla superficie per impedire che questi possano compenetravi.
  Il secondo si occupa di simulare lo stazionamento dell'oggetto a partire
  dalla direzione della forza di gravità.
@@ -623,19 +623,19 @@ Il sistema di controllo di ciascun veicolo si occupa di gestire il movimento
 \emph on
 Movement Controller
 \emph default
- determina la velocitá lineare e quella angolare del veicolo in ogni istante
+ determina la velocità lineare e quella angolare del veicolo in ogni istante
  e applica opportune forze al 
 \emph on
 corpo rigido 
 \emph default
 di quest'ultimo per causarne il movimento fisico.
  La gestione del movimento non è simulata in maniera fisicamente accurata,
- bensí è affidata ad un semplice controllore 
+ bensì è affidata ad un semplice controllore 
 \emph on
 PID.
  
 \emph default
-Il sistema adoperato consente di controllare la velocitá da applicare 
+Il sistema adoperato consente di controllare la velocità da applicare 
 \begin_inset Formula $u(t)$
 \end_inset
 
@@ -657,7 +657,7 @@ con costante
 
 .
  Un controllore analogo è utilizzato per gestire l'azione di sterzo e la
- velocitá angolare risultate.
+ velocità angolare risultate.
  Per questa particolare implementazione le azioni 
 \emph on
 integrali 
@@ -678,13 +678,13 @@ u(t)=K_{p}(r(t)-y(t))
 \end_layout
 
 \begin_layout Standard
-La velocitá desiderata 
+La velocità desiderata 
 \begin_inset Formula $r(t)$
 \end_inset
 
  è determinata dal valore massimo di 
 \emph on
-velocitá 
+velocità 
 \emph default
 del veicolo 
 \begin_inset Formula $r_{max}>0$
@@ -707,7 +707,7 @@ accelerazione
  L'azione di sterzo segue un principio identico ma ha costanti che dipendono
  dalla 
 \emph on
-manovrabilitá 
+manovrabilità 
 \emph default
 del veicolo (vedi 
 \begin_inset CommandInset ref
@@ -736,7 +736,7 @@ La direzione di accelerazione è ricavata tramite il componente
 Floating Object
 \emph default
  in funzione della tangente del campo di gravità e della rotazione del veicolo,
- e ció impedisce che quest'ultimo possa percorrere la superficie del livello
+ e ciò impedisce che quest'ultimo possa percorrere la superficie del livello
  passandovici attraverso.
 \end_layout
 
@@ -811,7 +811,7 @@ Proximity Handler
 \emph on
 volume di collisione sferico 
 \emph default
-attorno al veicolo il quale lancia un'opportuno evento quando un 
+attorno al veicolo il quale lancia un opportuno evento quando un 
 \emph on
 orb 
 \emph default
@@ -835,7 +835,7 @@ orb
 vincolo fisico 
 \emph default
 di tipo molla, con una lunghezza massima tale per cui questi possano muoversi
- liberamente senza peró allontanarsi da quello che li precede nella coda.
+ liberamente senza però allontanarsi da quello che li precede nella coda.
  Una volta rimossi dalla coda, il vincolo fisico viene rimosso e l'
 \emph on
 orb 
@@ -882,14 +882,14 @@ orb
 persi come conseguenza.
  Le collisioni tra veicoli sono gestite direttamente dal motore fisico di
  Unity.
- In una prima versione ciascuno di essi aveva uno o piú 
+ In una prima versione ciascuno di essi aveva uno o più 
 \emph on
 collisori fisici 
 \emph default
-che approssimavano piú o meno precisamente la loro topologia, tuttavia questo
+che approssimavano più o meno precisamente la loro topologia, tuttavia questo
  approccio causava comportamenti inaspettati durante la risoluzione delle
  collisioni quali veicoli che si incastravano tra loro oppure la generazione
- di impulsi fisici di entitá molto elevata che causavano la perdita di tutti
+ di impulsi fisici di entità molto elevata che causavano la perdita di tutti
  gli 
 \emph on
 orb
@@ -903,7 +903,7 @@ collisore sferico
 unico che approssima la superficie del veicolo racchiudendone il modello
  grafico.
  La forma e la dimensione del collisore è identica per tutti i veicoli e
- ció garantisce un'elevata consistenza durante la risoluzione degli scontri.
+ ciò garantisce un'elevata consistenza durante la risoluzione degli scontri.
  Una volta rilevata una collisione durante quest'ultimi, il motore fisico
  genera una coppia di eventi, uno per ogni componente coinvolto nell'impatto.
  Ciascun 
@@ -948,11 +948,11 @@ da parte di entrambi i veicoli, laddove colpire un veicolo su una fiancata
 \begin_inset Formula $\overrightarrow{c}$
 \end_inset
 
- il punto di impatto trai veicoli convolti e 
+ il punto di impatto trai veicoli coinvolti e 
 \begin_inset Formula $\overrightarrow{v_{rel}}$
 \end_inset
 
- la velocitá relativa del veicolo rispetto all'avversario, la formula usata
+ la velocità relativa del veicolo rispetto all'avversario, la formula usata
  per determinare il numero di 
 \emph on
 danni 
@@ -1222,7 +1222,7 @@ seguire
 \begin_inset Quotes frd
 \end_inset
 
- graficamente gli spostamenti, quali ad esempio le barriere, oppure puó
+ graficamente gli spostamenti, quali ad esempio le barriere, oppure può
  muoversi liberamente come nel caso di missili e proiettili.
  Una categoria particolare di 
 \emph on
@@ -1291,7 +1291,7 @@ l'
 \emph on
 attivazione dei potenziamenti
 \emph default
- e tutti gli input necessari per navigare nel menú.
+ e tutti gli input necessari per navigare nel menù.
  Questo componente è una 
 \emph on
 façade
@@ -1433,7 +1433,7 @@ per ciascun utente locale
 Le azioni sono gestite direttamente dal sistema di input di Unity, tuttavia
  è stato necessario aggiungere un livello di astrazione aggiuntivo in quanto
  quest'ultimo è stato giudicato inadeguato per le esigenze del progetto.
- Il sistema di input di Unity consente di registrare piú azioni alle quali
+ Il sistema di input di Unity consente di registrare più azioni alle quali
  sono associati in maniera esclusiva fino a due tasti oppure degli assi
  (come ad esempio gli 
 \emph on
@@ -1447,7 +1447,7 @@ o i
 \emph on
 grilletti 
 \emph default
-posteriori), rendendo impossibile associare ad una singola azione piú periferich
+posteriori), rendendo impossibile associare ad una singola azione più periferich
 e contemporaneamente.
  È inoltre impossibile rimappare delle azioni esistenti su 
 \emph on
@@ -1475,9 +1475,9 @@ Architettura di rete
 \end_layout
 
 \begin_layout Standard
-L'architettura di gioco di OrbTail é pensata per gestire in maniera uniforme
- tutte le modalitá e configurazioni supportate, evitando di creare classi
- apposite per gestire le modalitá a giocatore singolo, quelle multigiocatore
+L'architettura di gioco di OrbTail è pensata per gestire in maniera uniforme
+ tutte le modalità e configurazioni supportate, evitando di creare classi
+ apposite per gestire le modalità a giocatore singolo, quelle multigiocatore
  locale e quelle multigiocatore 
 \emph on
 online.
@@ -1493,7 +1493,7 @@ host
 \emph default
 per la partita.
  Dato il basso numero di giocatori coinvolti, questa soluzione è ottimale
- perchè garantisce un buona esperienza 
+ perché garantisce un buona esperienza 
 \emph on
 online 
 \emph default
@@ -1518,7 +1518,7 @@ laddove ogni
 \emph on
 client 
 \emph default
-gestirá uno o piú veicoli associati ai giocatori locali (in caso di 
+gestirà uno o più veicoli associati ai giocatori locali (in caso di 
 \emph on
 multigiocatore splitscreen).
  
@@ -1552,7 +1552,7 @@ al fine di inviare comandi e riceverne aggiornamenti
 \emph on
 : 
 \emph default
-il sistema di rete di Unity provvederá a simulare le richieste di rete sulla
+il sistema di rete di Unity provvederà a simulare le richieste di rete sulla
  stessa applicazione in maniera trasparente.
 \end_layout
 
@@ -1626,7 +1626,7 @@ Architettura di rete
  Il primo di questi consente al server di propagare il valore di uno stato
  di gioco su tutti gli oggetti client costantemente.
  Questo metodo è particolarmente adatto per valori che cambiano molto rapidament
-e di cui peró non è necessario che vi sia una forte corrispondenza tra la
+e di cui però non è necessario che vi sia una forte corrispondenza tra la
  versione sul 
 \emph on
 server 
@@ -1642,7 +1642,7 @@ server
 \emph default
  ha sempre 
 \emph on
-autoritá
+autorità
 \emph default
  sui valori sincronizzati in questo modo e pertanto non è possibile utilizzare
  questo meccanismo nel senso opposto al fine di inviare dati dal 
@@ -1711,7 +1711,7 @@ Il paradigma fondamentale su cui si basa Unity consiste nell'inviare
 \emph on
 comandi 
 \emph default
-dal client al server, attendere che questo ne verifichi la validitá aggiornando
+dal client al server, attendere che questo ne verifichi la validità aggiornando
  lo stato di gioco e quindi propagare quest'ultimo tramite 
 \emph on
 replicazione 
@@ -1735,20 +1735,17 @@ Ad ogni giocatore connesso ad una partita viene associato un particolare
 \emph on
 game object 
 \emph default
-che ne contiene i dati identificativi e ne rappresenta la volontá.
+che ne contiene i dati identificativi e ne rappresenta la volontà.
  Per ragioni di sicurezza è possibile inviare 
 \emph on
 comandi 
 \emph default
-al server solo attraverso di esso e solo se il giocatore locale ne ha l'
-\emph on
-autoritá
-\emph default
+al server solo attraverso di esso e solo se il giocatore locale ne ha l'autorità
 , ovvero se il 
 \emph on
 game object 
 \emph default
-in questione rappresenta la sua identitá e non quella di un altro giocatore.
+in questione rappresenta la sua identità e non quella di un altro giocatore.
 \end_layout
 
 \begin_layout Subsection
@@ -1773,7 +1770,7 @@ stanza virtuale
 \emph default
 a cui altri utenti online possono connettersi.
  Quest'ultima contiene le informazioni di configurazione della partita prima
- del suo avvio quali la modalitá di gioco e l'arena selezionata.
+ del suo avvio quali la modalità di gioco e l'arena selezionata.
  Le 
 \emph on
 lobby
@@ -1787,8 +1784,8 @@ derivato dalla classe di Unity
 Network Lobby Manager
 \emph default
 , la quale astrae tutte le logiche di creazione o ricerca di una partita,
- connessione e disconnesione degli utenti e sincronizzazione della configurazion
-e di gioco.
+ connessione e disconnessione degli utenti e sincronizzazione della configurazio
+ne di gioco.
  Ogni giocatore connesso ad una 
 \emph on
 lobby 
@@ -1834,7 +1831,7 @@ delle
 \emph on
 metainformazioni 
 \emph default
-(come ad esempio la modalitá di gioco), un 
+(come ad esempio la modalità di gioco), un 
 \emph on
 bug 
 \emph default
@@ -1873,10 +1870,10 @@ comma-separated values
 \emph on
 lobby 
 \emph default
-cosí ottenuta viene filtrata a seconda della configurazione dell'utente
+così ottenuta viene filtrata a seconda della configurazione dell'utente
  ed il sistema provvede a connettersi ad una qualsiasi tra quelle rimaste.
  Se il tentativo di connessione fallisce (come potrebbe capitare se, nel
- frattempo, la partita in quella lobby è giá iniziata) vengono effettuati
+ frattempo, la partita in quella lobby è già iniziata) vengono effettuati
  tentativi di connessione addizionali sulle altre lobby fino ad un numero
  massimo configurabile.
  Se non è stato possibile individuare una 
@@ -1888,7 +1885,7 @@ te al servizio di
 \emph on
 matchmaking 
 \emph default
-affinchè altri giocatori possano connettersi.
+affinché altri giocatori possano connettersi.
  Nel caso di partite a giocatore singolo le fasi di ricerca delle 
 \emph on
 lobby 
@@ -1921,7 +1918,7 @@ Lobby Player
 che lo rappresenta, replicando tutte le informazioni salienti agli altri
  giocatori in partita (quali l'indice del giocatore nella partita ed il
  veicolo scelto).
- Un utente puó abbandonare una 
+ Un utente può abbandonare una 
 \emph on
 lobby 
 \emph default
@@ -1964,7 +1961,7 @@ genera
 \emph on
 Lobby Player 
 \emph default
-addizionali finchè il numero di partecipanti non diventa esattamente 
+addizionali finché il numero di partecipanti non diventa esattamente 
 \emph on
 quattro:
 \emph default
@@ -1988,22 +1985,22 @@ lobby
 \emph default
 era esplicito: l'utente poteva decidere se creare un nuovo match oppure
  se partecipare ad uno esistente.
- Questo tipo d'interazione è stato rivisto perchè giudicato obsoleto: nel
+ Questo tipo d'interazione è stato rivisto perché giudicato obsoleto: nel
  caso in cui non vi fosse nessuna 
 \emph on
 lobby 
 \emph default
-disponibile, l'utente era costretto a ritornare al menú principale per crearne
- una e ció aumentava ingiustificatamente il numero di interazioni necessarie
+disponibile, l'utente era costretto a ritornare al menù principale per crearne
+ una e ciò aumentava ingiustificatamente il numero di interazioni necessarie
  per entrare in partita.
- Sebbene i flussi di creazione di una paritita online ed offline sono identici,
- la selezione di una o dell'altra modalitá deve essere esplicitamente dichiarata
+ Sebbene i flussi di creazione di una partita online ed offline sono identici,
+ la selezione di una o dell'altra modalità deve essere esplicitamente dichiarata
  dal giocatore all'inizio del flusso di gioco.
  Per questa iterazione era stato valutato un sistema che avrebbe permesso
  al giocatore di entrare in partita e lasciare che il sistema decidesse
  se avviare una partita online o offline (a seconda se vi fosse una connessione
  Internet o meno), tuttavia, a causa di tempi di sviluppo ridotti, questa
- funzionalitá è stata rimandata ad iterazioni future.
+ funzionalità è stata rimandata ad iterazioni future.
 \end_layout
 
 \begin_layout Subsection
@@ -2019,7 +2016,7 @@ Game Mode
 \emph on
 Base Game Mode
 \emph default
-, dipende dalla modalitá di gioco selezionata (Fig.
+, dipende dalla modalità di gioco selezionata (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2053,7 +2050,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-Modalita di gioco
+Modalità di gioco
 \end_layout
 
 \end_inset
@@ -2065,7 +2062,7 @@ name "fig:GameModes"
 
 \end_inset
 
-Modalitá di gioco
+Modalità di gioco
 \end_layout
 
 \end_inset
@@ -2087,7 +2084,7 @@ collezionato, il numero di
 \emph on
 orb 
 \emph default
-iniziali e cosí via.
+iniziali e così via.
  Lo stato di gioco è replicato internamente alla classe e notificato attraverso
  eventi al quale 
 \emph on
@@ -2098,7 +2095,7 @@ osservatori
 \emph on
 Base Game Mode
 \emph default
- contiene tutte le logiche condivise tra le varie modalitá, mentre le sue
+ contiene tutte le logiche condivise tra le varie modalità, mentre le sue
  derivate ne possono estendere il comportamento implementando logiche specifiche
 , come ad esempio il calcolo dei punti e la gestione dell'eliminazione dei
  partecipanti.
@@ -2154,7 +2151,7 @@ in locale.
 client
 \emph default
  di osservare sempre una situazione verosimile anche in caso di perdita
- temporanea della connettivitá
+ temporanea della connettività
 \emph on
 .
 \end_layout
@@ -2314,17 +2311,14 @@ client RPC
 \emph on
 client 
 \emph default
-i quali ne esercitano l'
-\emph on
-autoritá
-\emph default
- determinandone la posizione e la gestione degli input.
+i quali ne esercitano l'autorità determinandone la posizione e la gestione
+ degli input.
  In questo caso il 
 \emph on
 server 
 \emph default
 viene usato semplicemente per propagare l'informazione agli altri dispositivi.
- La modalitá di gioco 
+ La modalità di gioco 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2338,7 +2332,7 @@ eliminazione
 \emph on
 spettatore
 \emph default
-, controllando una camera che puó inquadrare i veicoli dei giocatori rimasti
+, controllando una camera che può inquadrare i veicoli dei giocatori rimasti
  in partita e ciclando tra di essi fino a fine partita.
  In questo stato, l'oggetto usato dal giocatore per inviare comandi al 
 \emph on
@@ -2355,9 +2349,9 @@ spettatore
  e il veicolo viene distrutto.
  Al termine del tempo massimo di partita, o quando tutti i giocatori sono
  stati eliminati, il sistema si porta nella fase finale in cui viene dichiarato
- il vincitore a seconda di condizioni specifiche della modalitá di gioco.
+ il vincitore a seconda di condizioni specifiche della modalità di gioco.
  In questa fase è possibile consultare l'esito della partita e abbandonarla,
- ritornando al al menú principale.
+ ritornando al al menù principale.
  L'abbandono di una partita causa la distruzione completa di tutti gli oggetti
  coinvolti, quali la 
 \emph on
@@ -2379,10 +2373,10 @@ Lobby Manager
 \end_layout
 
 \begin_layout Standard
-La gestione delle modalitá online ed offline è stata uniformata in modo
+La gestione delle modalità online ed offline è stata uniformata in modo
  da seguire lo stesso flusso e basarsi sulle stesse classi, evitando gestioni
  specifiche.
- Secondo quest'ottica le modalitá 
+ Secondo quest'ottica le modalità 
 \emph on
 offline 
 \emph default
@@ -2396,11 +2390,11 @@ in cui il server è l'applicazione stessa ed in cui vi sono solo giocatori
 IA
 \emph default
 .
- Una limitazione di questo approccio è data dal fatto che in modalitá 
+ Una limitazione di questo approccio è data dal fatto che in modalità 
 \emph on
 online
 \emph default
- il motore non supporta la replicazione di oggetti giá posizionati in scena
+ il motore non supporta la replicazione di oggetti già posizionati in scena
  e si è pertanto costretti a crearli dinamicamente.
  Per ovviare a questa limitazione è stato creato un 
 \emph on
@@ -2410,8 +2404,8 @@ apposito, detto
 \emph on
 Network Spawner
 \emph default
-, il quale puó essere posizionato direttamente in scena e configurato con
- un riferimento ad un'altro 
+, il quale può essere posizionato direttamente in scena e configurato con
+ un riferimento ad un altro 
 \emph on
 game object
 \emph default
@@ -2550,7 +2544,7 @@ Strategie adottate dall'intelligenza artificiale
 \end_inset
 
 .
- Nella forma piú semplice, ciascuna strategia si basa sul raggiungimento
+ Nella forma più semplice, ciascuna strategia si basa sul raggiungimento
  di un 
 \emph on
 game object 
@@ -2678,7 +2672,7 @@ e, sebbene impedisce che il veicolo comandato dalla
 IA 
 \emph default
 possa accelerare e sterzare al massimo in un dato istante, garantisce un
- controllo maggiore e una strategia piú consistente, impedendo allo stesso
+ controllo maggiore e una strategia più consistente, impedendo allo stesso
  tempo che il veicolo possa collidere con ostacoli durante un cambio di
  direzione.
 \end_layout
@@ -2711,7 +2705,7 @@ AI Field-of-View
  Ogni volta che un oggetto entra all'interno del campo visivo, il sistema
  ne determina la sua 
 \emph on
-utilitá
+utilità
 \emph default
  e stabilisce se raccoglierlo (in caso di 
 \emph on
@@ -2751,9 +2745,9 @@ tto nel minor tempo possibile.
 offensiva 
 \emph default
 invece si sviluppa in due fasi.
- Nella prima viene determinata l'
+ Nella prima viene determinata l'utilità
 \emph on
-utilitá 
+ 
 \emph default
 del veicolo da aggredire, ignorando tutti quelli con un numero di 
 \emph on
@@ -2772,9 +2766,9 @@ l'
 \emph on
 AI 
 \emph default
-cerca di collidervi alla massima velocitá (in maniera analoga a quanto avviene
+cerca di collidervi alla massima velocità (in maniera analoga a quanto avviene
  durante la collezione degli oggetti) e, ad impatto avvenuto, determina
- se vi è ancora necessitá di proseguire l'attacco (valutando nuovamente
+ se vi è ancora necessità di proseguire l'attacco (valutando nuovamente
  il numero di 
 \emph on
 orb 
@@ -2785,7 +2779,7 @@ posseduti).
 AI 
 \emph default
 cerca di allontanarsi dal veicolo avversario per un certo periodo di tempo
- selezionato in un intervallo casuale di pochi secondi, dopodichè procede
+ selezionato in un intervallo casuale di pochi secondi, dopodiché procede
  nuovamente con la fase di 
 \emph on
 attacco
@@ -2802,7 +2796,7 @@ esplorativa.
 \emph default
 Per impedire che un'
 \emph on
-AI 
+IA 
 \emph default
 possa accanirsi contro un veicolo avversario, l'intera strategia 
 \emph on
@@ -2834,7 +2828,7 @@ e
 quattro
 \emph default
 .
- Le modalitá a giocatore singolo o multigiocatore online vengono gestite
+ Le modalità a giocatore singolo o multigiocatore online vengono gestite
  attraverso lo stesso sistema e non richiedono pertanto supporti specifici.
  In fase di selezione del veicolo, il gioco consente ai partecipanti di
  unirsi alla partita mediante la pressione di un tasto sul 
@@ -2854,7 +2848,7 @@ giocatore
 \emph on
 locale
 \emph default
-, il veicolo selezionato e l'identitá del giocatore (umano o comandato dall'
+, il veicolo selezionato e l'identità del giocatore (umano o comandato dall'
 \emph on
 intelligenza artificiale
 \emph default
@@ -3030,8 +3024,8 @@ della telecamera rappresenta la porzione di schermo su cui viene renderizzata
 \emph on
 viewport 
 \emph default
-copre l'intero schermo, tuttavia è possibile specificare una porzione piú
- piccola al fine di renderizzare i punti di vista di piú camere.
+copre l'intero schermo, tuttavia è possibile specificare una porzione più
+ piccola al fine di renderizzare i punti di vista di più camere.
 \end_layout
 
 \end_inset
@@ -3101,7 +3095,7 @@ Gestione telecamera
 
 .
  Nel caso in cui vi sia un solo giocatore, il sistema assegna l'intero schermo;
- con piú giocatori lo schermo viene diviso verticalmente (con 
+ con più giocatori lo schermo viene diviso verticalmente (con 
 \emph on
 due 
 \emph default
@@ -3118,8 +3112,8 @@ fa invece eccezione.
  Originariamente era stato valutato di suddividere lo schermo in quadranti
  e lasciare uno di questi vuoto, tuttavia l'effetto non risultava piacevole
  e pertanto è stato deciso di suddividere in maniera asimmetrica lo schermo,
- assegnando una metá al primo giocatore e lasciando che gli altri due si
- spartissero l'altra metá (Fig.
+ assegnando una metà al primo giocatore e lasciando che gli altri due si
+ spartissero l'altra metà (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3180,7 +3174,7 @@ Splitscreen
 \end_layout
 
 \begin_layout Standard
-L'introduzione della modalitá 
+L'introduzione della modalità 
 \emph on
 splitscreen
 \emph default
@@ -3214,7 +3208,7 @@ Il gioco non usa il sistema di interfaccia utente messo a disposizione da
 HUD Handler 
 \emph default
 e permette di ottenere un'interfaccia mobile dotata di un certo grado di
- libertá ed inerzia.
+ libertà ed inerzia.
  Questi pannelli utilizzano componenti come il 
 \emph on
 Text Mesh, 
@@ -3224,13 +3218,13 @@ che consente di generare del testo tridimensionale nello spazio, e lo
 Sprite Renderer
 \emph default
 , il quale permette di mostrare immagini.
- L'introduzione di piú punti di vista costituiti dalle diverse camere, ha
- inoltre introdotto una problematica altrimenti inesistente: ognuno puó
+ L'introduzione di più punti di vista costituiti dalle diverse camere, ha
+ inoltre introdotto una problematica altrimenti inesistente: ognuno può
  vedere la rappresentazione tridimensionale della 
 \emph on
 HUD 
 \emph default
-di ogni altro giocatore in prossimitá del veicolo di quest'ultimo.
+di ogni altro giocatore in prossimità del veicolo di quest'ultimo.
  Per ovviare a questo inconveniente ci si è affidati al sistema di 
 \emph on
 layer 
@@ -3240,7 +3234,7 @@ di Unity.
 \emph on
 layer 
 \emph default
-non è altro che un nome simbolico che puó essere associato ad uno o piú
+non è altro che un nome simbolico che può essere associato ad uno o più
  oggetti di gioco e consente a quest'ultimi di essere 
 \emph on
 nascosti 
@@ -3264,7 +3258,7 @@ La camera di ciascun giocatore è configurata per renderizzare solo l'HUD
 \end_layout
 
 \begin_layout Standard
-Durante lo sviluppo delle modalitá splitscreen, ci si è imbattuti in una
+Durante lo sviluppo delle modalità splitscreen, ci si è imbattuti in una
  grave limitazione di Unity, ovvero la mancanza di supporto per 
 \emph on
 Audio Listener 
@@ -3275,7 +3269,7 @@ re nello spazio, al fine di determinare la resa degli effetti sonori spaziali,
  quali esplosioni e il motore dei veicoli.
  Sebbene esistano diversi plugin a pagamento che possono essere usati per
  ovviare a questo inconveniente, è stato deciso di non usarne nessuno, sia
- per mancanza di tempo e sia perchè le meccaniche di gioco non si basano
+ per mancanza di tempo e sia perché le meccaniche di gioco non si basano
  sul corretto uso dell'audio.
  Come soluzione temporanea sono stati disabilitati gli 
 \emph on
