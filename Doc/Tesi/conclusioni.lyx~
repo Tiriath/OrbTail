@@ -75,7 +75,7 @@
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Si mostrano le prospettive future di ricerca nell’area dove si è svolto
@@ -91,107 +91,150 @@ Si mostrano le prospettive future di ricerca nell’area dove si è svolto
 \end_layout
 
 \begin_layout Standard
-La creazione di un gioco multipiattaforma costituisce ad oggi un presupposto
- per qualsiasi produzione moderna ma, non per questo, meno complicata.
- Il mercato si evolve, cosí come gli ecosistemi e l'utenza: trovare un'idea
- di gioco che possa risultare consistente su tutte le piattaforme ed in
- grado di soddisfare il pubblico é una sfida che accompagna tutte le fasi
- di creazione di un videogioco, a partire dal concept originale fino allo
- sviluppo.
- La presenza di modalitá multigiocatore introduce inoltre una serie di criticitá
- con cui ci si deve scontrare.
- L'intero processo produttivo deve tenere conto di questi requisiti e pertanto
- lo sviluppo di un'architettura software flessibile é di vitale importanza
- per poter gestire il gran numero di casi presenti.
- La creazione di un gioco che possa adattarsi ad un numero elevato di dispositiv
-i e che puó essere giocato fra piú partecipanti, siano essi nella stanza
- o separati da grandi distanze, é quanto di piú complesso possa offrire
- un design di gioco.
- Ogni singola meccanica ed interazione utente deve essere pensata per poter
- essere fruita in maniera consistente su piattaforme diverse e ció richiede
- un gran numero di iterazioni ed un'attenta analisi per evitare problematiche
- nelle fasi avanzate di sviluppo.
- Il processo non é tuttavia lineare: a volte limitazioni tecniche possono
- richiedere il dover ritornare sui propri passi al fine di individuare meccanich
-e alternative o piú facilmente implementabili.
- Lo scopo di questa tesi é stato quello di far tesoro di queste considerazioni
- al fine di ideare e sviluppare un videogioco che potesse essere fruito
- su un gran numero di piattaforme e in qualsiasi circostanza.
- Il prodotto cosí sviluppato si presta inoltre ad un gran numero di possibili
- estensioni, sia dal punto di vista del design e della produzione artistica
- e sia migliorie tecniche.
- Sebbene il gioco presenti giá tre arene, potrebbe risultare opportuno crearne
- di nuove oppure fornire versioni alternative delle arene esistenti, aggiungendo
- ostacoli all'interno degli stessi al fine di aumentare il livello di difficoltá.
- Un'altra possibile estensione riguarda l'introduzione di migliorie 
+La creazione di un videogioco in grado di essere fruito consistentemente
+ su un gran numero di piattaforme costituisce, ad oggi, un ostacolo con
+ il quale la maggior parte delle produzioni videoludiche si devono scontrare.
+ Sebbene le tecnologie a disposizione consentono di semplificare il compito
+ degli sviluppatori, trovare un'idea di gioco in grado di adattarsi ai vari
+ ecosistemi e soddisfare diverse tipologie di utente, è una sfida che accompagna
+ tutte le fasi produttive, a partire dal concept fino alla sua messa in
+ opera.
+ La creazione di un videogioco che possa essere giocato da piú partecipanti,
+ siano essi nello stesso luogo o separati da grandi distanze e che consenta
+ l'interoperabilitá fra ecosistemi differenti, è quanto di piú complesso
+ possa offrire l'industria videoludica.
+ Ogni meccanica ed interazione utente deve essere attentamente ponderata,
+ al fine di risultare consistente su tutte le piattaforme supportate.
+ Questo processo non è tuttavia lineare: limitazioni tecniche, unite a criticitá
+ non preventivate possono richiedere il dover ritornare sui propri passi,
+ anche piú volte, al fine di individuare un nuovo insieme di meccaniche
+ robuste ed efficaci.
+\end_layout
+
+\begin_layout Standard
+In questo lavoro di tesi è stato fatto tesoro delle considerazioni di cui
+ sopra, al fine di creare un videogioco dall'elevata qualitá che potesse
+ essere giocato da piú giocatori, indipendentemente dal dispositivo utilizzato.
+ Lo sviluppo di un'architettura software flessibile, in grado di gestire
+ in maniera uniforme un gran numero di ecosistemi e casistiche di gioco,
+ si è rivelato di cruciale importanza per mantenere sotto controllo il processo
+ produttivo, evitandone l'esplosione combinatoria.
+ Il risultato finale del processo di creazione di OrbTail ha portato alla
+ nascita di un prodotto caratterizzato da meccaniche semplici ma efficaci,
+ in grado di essere fruito tanto dai giocatori piú accaniti quanto da quelli
+ piú saltuari.
+\end_layout
+
+\begin_layout Standard
+Sebbene il prodotto risulta completo dal punto di vista delle meccaniche
+ di base, esso si presta molto facilmente ad un gran numero di estensioni
+ e migliorie.
+ Per aumentare la longevitá e la difficoltá di gioco è stata prevista la
+ possibilitá di integrare nuove arene oppure fornire variazioni di quelle
+ esistenti, aggiungendo elementi 
 \emph on
-estetiche 
+attivi 
 \emph default
-per personalizzare il proprio veicolo, attraverso speciali livree o oggetti.
- In un'ottica di monetizzazione del prodotto, questa idea potrebbe essere
- la piú fruttuosa: vendendo migliorie estetiche da un lato permette di aumentare
- la longevitá di gioco, dall'altra permette di monetizzare senza per questo
- incrinare l'equilibrio di gioco.
- Le meccaniche molto semplice si prestano inoltre all'introduzione di nuove
- modalitá di gioco e potenziamenti, molti dei quali presenti nel concept
- di gioco ma eventualmente abbandonati per motivo di tempi.
- Una modalitá molto interessante é nota come 
+all'interno delle stesse, quali ostacoli e trappole.
+\end_layout
+
+\begin_layout Standard
+Una modalitá di gioco molto interessante presente nel concept originale
+ ma rimossa per mancanza di tempo, è nota col nome 
 \begin_inset Quotes fld
 \end_inset
 
+
+\emph on
 blackout
+\emph default
+
 \begin_inset Quotes frd
 \end_inset
 
-, la quale sarebbe stata caratterizzata dalla presenza di arene al buio
- in cui le sole fonti di luce sarebbero stati gli 
+.
+ Questa modalitá prevedeva la presenza di arene completamente al buio in
+ cui le sole fonti di luce sarebbero state costituite dagli 
 \emph on
 orb 
 \emph default
-e i 
+e dai 
 \emph on
 core
 \emph default
 .
- Questa modalitá avrebbe reso difatti reso invisibile i veicoli avversari
- quando questi si ritrovano senza 
+ Secondo questa meccanica i veicoli senza alcun 
 \emph on
-orb 
+orb
 \emph default
-ció avrebbe aumentato notevolmente il fattore bilanciamento.
- L'introduzione di nuove arene, unite a nuove modalitá di gioco piú complicate
- necessita indubbiamente di un'
+ sarebbero stati a tutti gli effetti invisibili agli occhi dei giocatori
+ avversari, introducendo un elemento 
+\emph on
+stealth 
+\emph default
+inedito all'interno del gioco, aumentandone la profonditá.
+\end_layout
+
+\begin_layout Standard
+L'introduzione di nuove arene e modaltá di gioco richiede necessariamente
+ l'introduzione di un'
 \emph on
 intelligenza artificiale 
 \emph default
-piú sofisticata.
- Tra le migliorie possibili ci potrebbero essere l'introduzione della 
+piú sofisticata, in grado di evitare ostacoli e determinare obiettivi di
+ gioco in funzione della modalitá di gioco correntemente attiva.
+ Attualmente le strategie sono generiche e, sebbene garantiscono un buon
+ comportamento in tutte le circostanze, non sempre garantiscono un livello
+ di sfida all'altezza degli utenti.
+\end_layout
+
+\begin_layout Standard
+Dal punto di vista dell'esperienza di gioco 
 \emph on
-collision avoidance, 
+online 
 \emph default
-il quale rappresenta una sfida particolarmente complicata che richiederebbe
- necessariamente l'impiego di 
-\emph on
-nav-mesh
-\emph default
- e l'introduzione di strategie piú raffinate che considerano la posizione
- di vantaggio dei vari giocatori al fine di determinare obiettivi di gioco
- in maniera 
-\emph on
-informata 
-\emph default
-e meno 
-\emph on
-casuale
-\emph default
-.
- Le modalitá online invece gioverebbero in particolar modo di tecniche piú
- raffinate di 
+una miglioria piú che benvenuta è costituita dall'introduzione di algoritmi
+ piú raffinati per risolvere il problema del 
 \emph on
 dead-reckoning
 \emph default
-, alternative a quelle fornite da Unity, al fine di garantire un'esperienza
- di gioco piú fluida e meno soggetta alle problematiche legate alla rete.
+: simulare la posizione degli oggetti di gioco in presenza di forte 
+\emph on
+latenza 
+\emph default
+o mancanza temporanea della 
+\emph on
+connettivitá
+\emph default
+.
+ Unity mette a disposizione un sistema molto basilare che peró risulta in
+ movimenti molto bruschi da parte di tutti gli oggetti di gioco e ció costituisc
+e il problema piú evidente di OrbTail nelle modalitá 
+\emph on
+online
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Infine, in un'ottica di monetizzazione del prodotto e per aumentarne la
+ longevitá, è inoltre possibile prevedere l'introduzione di elementi a pagamento
+ per personalizzare il proprio veicolo attraverso 
+\emph on
+livree 
+\emph default
+speciali ed altri oggetti estetici.
+ Questo 
+\emph on
+modello di
+\emph default
+ 
+\emph on
+business
+\emph default
+ consentirebbe di mantenere il gioco costantemente aggiornato e supportato
+ tramite nuovi oggetti in grado di attrarre l'attenzione di alcuni utenti,
+ senza per questo incrinare l'equilibrio di gioco nei confronti degli altri.
 \end_layout
 
 \end_body
