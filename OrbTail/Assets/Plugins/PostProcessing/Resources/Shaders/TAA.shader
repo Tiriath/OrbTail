@@ -1,5 +1,5 @@
 Shader "Hidden/Post FX/Temporal Anti-aliasing"
-{
+{ 
     Properties
     {
         _MainTex("", 2D) = "black"

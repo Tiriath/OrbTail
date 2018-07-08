@@ -2,7 +2,7 @@
 #define __BLOOM__
 
 #include "Common.cginc"
-
+ 
 // Brightness function
 half Brightness(half3 c)
 {

@@ -20,7 +20,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-//
+// 
 Shader "Hidden/Post FX/Bloom"
 {
     Properties
@@ -35,7 +35,7 @@ Shader "Hidden/Post FX/Bloom"
         #pragma target 3.0
         #include "UnityCG.cginc"
         #include "Bloom.cginc"
-        #include "Common.cginc"
+        #include "Common.cginc" 
 
         sampler2D _BaseTex;
         float2 _BaseTex_TexelSize;

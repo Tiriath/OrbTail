@@ -1,5 +1,5 @@
 Shader "Hidden/Post FX/Uber Shader"
-{
+{ 
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
@@ -30,7 +30,7 @@ Shader "Hidden/Post FX/Uber Shader"
 
         #include "UnityCG.cginc"
         #include "Bloom.cginc"
-        #include "ColorGrading.cginc"
+        #include "ColorGrading.cginc" 
         #include "UberSecondPass.cginc"
 
         // Auto exposure / eye adaptation

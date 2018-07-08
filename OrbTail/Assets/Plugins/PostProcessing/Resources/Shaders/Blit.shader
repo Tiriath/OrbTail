@@ -9,13 +9,13 @@ Shader "Hidden/Post FX/Blit"
 
         #include "UnityCG.cginc"
         #include "Common.cginc"
-
+         
         struct Varyings
         {
             float2 uv : TEXCOORD0;
             float4 vertex : SV_POSITION;
         };
-
+     
         Varyings VertBlit(AttributesDefault v)
         {
             Varyings o;

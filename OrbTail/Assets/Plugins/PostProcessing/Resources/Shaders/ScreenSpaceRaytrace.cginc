@@ -6,7 +6,7 @@
 #define __SCREEN_SPACE_RAYTRACE__
 
 sampler2D_float _CameraDepthTexture;
-
+ 
 float distanceSquared(float2 A, float2 B)
 {
     A -= B;

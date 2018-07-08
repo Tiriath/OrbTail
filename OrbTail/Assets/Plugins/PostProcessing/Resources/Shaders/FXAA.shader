@@ -6,7 +6,7 @@ Shader "Hidden/Post FX/FXAA"
     }
 
     CGINCLUDE
-
+         
         #include "UnityCG.cginc"
         #include "Common.cginc"
         #include "UberSecondPass.cginc"
@@ -17,7 +17,7 @@ Shader "Hidden/Post FX/FXAA"
             #define FXAA_PS3 1
 
             // Shaves off 2 cycles from the shader
-            #define FXAA_EARLY_EXIT 0
+            #define FXAA_EARLY_EXIT 0 
         #elif defined(SHADER_API_XBOX360)
             #define FXAA_360 1
 

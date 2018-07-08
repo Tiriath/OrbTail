@@ -1,6 +1,6 @@
 #ifndef __MOTION_BLUR__
 #define __MOTION_BLUR__
-
+ 
 #include "UnityCG.cginc"
 #include "Common.cginc"
 

@@ -19,7 +19,7 @@ struct ParamsLogC
     half cut;
     half a, b, c, d, e, f;
 };
-
+ 
 static const ParamsLogC LogC =
 {
     0.011361, // cut

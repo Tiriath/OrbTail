@@ -2,7 +2,7 @@
 #define __TONEMAPPING__
 
 #include "ACES.cginc"
-
+ 
 // Set to 1 to use the full reference ACES tonemapper. This should only be used for research
 // purposes and it's quite heavy and generally overkill.
 #define TONEMAPPING_USE_FULL_ACES 0

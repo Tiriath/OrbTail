@@ -7,7 +7,7 @@ Shader "Hidden/Post FX/Depth Of Field"
 
     CGINCLUDE
         #pragma exclude_renderers d3d11_9x
-    ENDCG
+    ENDCG 
 
     // SubShader with SM 5.0 support
     // Gather intrinsics are used to reduce texture sample count.

@@ -1,5 +1,5 @@
 Shader "Hidden/Post FX/Lut Generator"
-{
+{ 
     CGINCLUDE
 
         #pragma target 3.0
@@ -7,7 +7,7 @@ Shader "Hidden/Post FX/Lut Generator"
 
         #include "UnityCG.cginc"
         #include "ACES.cginc"
-        #include "Common.cginc"
+        #include "Common.cginc" 
         #include "ColorGrading.cginc"
         #include "Tonemapping.cginc"
 

@@ -1,5 +1,5 @@
 #include "ColorGrading.cginc"
-
+ 
 // Grain
 half2 _Grain_Params1; // x: lum_contrib, y: intensity
 half4 _Grain_Params2; // x: xscale, h: yscale, z: xoffset, w: yoffset

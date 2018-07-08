@@ -12,7 +12,7 @@
 // No support for sampler2D_half on PS4 in 5.4
 #define sampler2D_half sampler2D_float
 #endif
-
+ 
 // -----------------------------------------------------------------------------
 // Uniforms
 

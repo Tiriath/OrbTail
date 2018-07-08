@@ -1,6 +1,6 @@
 // Upgrade NOTE: commented out 'float4x4 _WorldToCamera', a built-in variable
 // Upgrade NOTE: replaced '_WorldToCamera' with 'unity_WorldToCamera'
-
+ 
 #ifndef __AMBIENT_OCCLUSION__
 #define __AMBIENT_OCCLUSION__
 

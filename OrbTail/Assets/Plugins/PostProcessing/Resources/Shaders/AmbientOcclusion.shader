@@ -60,7 +60,7 @@ Shader "Hidden/Post FX/Ambient Occlusion"
         }
 
         // 4: Separable blur (horizontal pass) with G-Buffer
-        Pass
+        Pass 
         {
             CGPROGRAM
                 #pragma vertex VertMultitex

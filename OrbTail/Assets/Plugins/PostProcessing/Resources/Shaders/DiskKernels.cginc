@@ -10,7 +10,7 @@ static const float2 kDiskKernel[1] = { float2(0, 0) };
 #endif
 
 #if defined(KERNEL_SMALL)
-
+ 
 // rings = 2
 // points per ring = 5
 static const int kSampleCount = 16;

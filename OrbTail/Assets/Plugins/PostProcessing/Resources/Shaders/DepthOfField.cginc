@@ -10,7 +10,7 @@
     #define DOF_DECL_TEX2D(tex) sampler2D tex
     #define DOF_TEX2D(tex, coord) tex2D(tex, coord)
 #endif
-
+ 
 #include "Common.cginc"
 #include "DiskKernels.cginc"
 

@@ -18,5 +18,5 @@ float GetLuminanceFromHistogramBin(float bin, float2 scaleOffset)
 {
     return exp2((bin - scaleOffset.y) / scaleOffset.x);
 }
-
+ 
 #endif // __EYE_ADAPTATION__

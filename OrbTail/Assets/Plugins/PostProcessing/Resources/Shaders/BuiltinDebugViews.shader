@@ -18,7 +18,7 @@ Shader "Hidden/Post FX/Builtin Debug Views"
     #if SOURCE_GBUFFER
         sampler2D _CameraGBufferTexture2;
         float4 _CameraGBufferTexture2_ST;
-    #endif
+    #endif 
 
         // -----------------------------------------------------------------------------
         // Depth
