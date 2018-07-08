@@ -160,6 +160,13 @@ e
 \emph on
 desktop
 \emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "UnityManual"
+
+\end_inset
+
 .
  La presenza di una versione gratuita, unita ad un elevato grado di intuitivitá,
  ne ha garantito la rapida affermazione da parte di sviluppatori 
@@ -415,7 +422,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/ship.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailShip.png
 	lyxscale 20
 	width 14cm
 
@@ -558,7 +565,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/dev_gravity.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailGravity.png
 	lyxscale 20
 	height 7cm
 
@@ -757,7 +764,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/orb.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailOrbs.png
 	lyxscale 20
 	width 12cm
 
@@ -1088,7 +1095,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/power.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailPowerups.png
 	lyxscale 20
 	width 14cm
 
@@ -1332,7 +1339,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/input.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailInput.png
 	lyxscale 20
 	width 14cm
 
@@ -1576,7 +1583,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/dev_net.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailNetworking.png
 	lyxscale 20
 	width 14cm
 
@@ -2029,7 +2036,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/game_modes.png
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailGameModes.png
 	lyxscale 20
 	width 12cm
 
@@ -2174,7 +2181,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/net_flow.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailNetFlow.png
 	lyxscale 20
 	width 14cm
 
@@ -2503,7 +2510,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/ai.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailAI.png
 	lyxscale 20
 	width 14cm
 
@@ -2904,7 +2911,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/localmulti.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailLocalMultiplayer.png
 	lyxscale 20
 	width 9cm
 
@@ -3053,7 +3060,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/camera.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailCamera.png
 	lyxscale 20
 	width 12cm
 

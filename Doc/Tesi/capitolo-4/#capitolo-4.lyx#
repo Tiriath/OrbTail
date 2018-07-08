@@ -415,7 +415,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/ship.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailShip.png
 	lyxscale 20
 	width 14cm
 
@@ -558,7 +558,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/dev_gravity.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailGravity.png
 	lyxscale 20
 	height 7cm
 
@@ -757,7 +757,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/orb.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailOrbs.png
 	lyxscale 20
 	width 12cm
 
@@ -1088,7 +1088,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/power.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailPowerups.png
 	lyxscale 20
 	width 14cm
 
@@ -1332,7 +1332,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/input.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailInput.png
 	lyxscale 20
 	width 14cm
 
@@ -1576,7 +1576,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/dev_net.jpg
+	filename C:/Users/raffa/Documents/Repo/OrbTail/Doc/Tesi/img/OrbTailNetworking.png
 	lyxscale 20
 	width 14cm
 
@@ -2024,7 +2024,7 @@ reference "fig:GameModes"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3045,6 +3045,7 @@ reference "fig:Camera"
 
 )
 \begin_inset Float figure
+placement !h
 wide false
 sideways false
 status collapsed
@@ -3121,6 +3122,7 @@ reference "fig:OrbTailSplitScreen"
 
 )
 \begin_inset Float figure
+placement !h
 wide false
 sideways false
 status collapsed
@@ -3261,9 +3263,9 @@ Durante lo sviluppo delle modalitá splitscreen, ci si è imbattuti in una
 Audio Listener 
 \emph default
 multipli.
- Questi componenti sono usati per modellare la posizione dell'ascoltatore,
- al fine di determinare la resa degli effetti sonori spaziali, quali esplosioni
- e il motore dei veicoli.
+ Questi componenti sono usati per modellare la posizione virtuale dell'ascoltato
+re nello spazio, al fine di determinare la resa degli effetti sonori spaziali,
+ quali esplosioni e il motore dei veicoli.
  Sebbene esistano diversi plugin a pagamento che possono essere usati per
  ovviare a questo inconveniente, è stato deciso di non usarne nessuno, sia
  per mancanza di tempo e sia perchè le meccaniche di gioco non si basano

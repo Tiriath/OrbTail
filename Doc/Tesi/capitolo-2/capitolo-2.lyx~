@@ -615,6 +615,7 @@ euristica
 \emph default
  al fine di esaltare diversi stili di gioco e bilanciati in modo da non
  avvantaggiare nessun veicolo (Tab.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:VehicleParam"
