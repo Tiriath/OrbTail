@@ -102,6 +102,8 @@ public class Ship : NetworkBehaviour
     {
         GetComponentInChildren<ProximityHandler>().OnProximityEvent -= OnProximityEnter;
 
+        // Broadcast.
+
         if (ShipDestroyedEvent != null)
         {
             ShipDestroyedEvent(this);
@@ -136,6 +138,17 @@ public class Ship : NetworkBehaviour
         if(count > 0 && !GetComponent<Invincibility>())
         {
             RpcDetachOrb(count);
+        }
+    }
+
+    /// <summary>
+    /// Release all the attached orbs.
+    /// </summary>
+    public void ReleaseOrbs()
+    {
+        while(orbs.Count > 0)
+        {
+            orbs.Pop().Unlink();
         }
     }
 

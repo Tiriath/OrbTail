@@ -344,8 +344,12 @@ public abstract class BaseGameMode : NetworkBehaviour
         ship.ShipReadyEvent -= OnShipReady;
 
         ships.Remove(ship);
-        
-        if(game_state == GameState.kSetup)
+
+        // Release the orbs!
+
+        ship.ReleaseOrbs();
+
+        if (game_state == GameState.kSetup)
         {
             CheckCountdownConditions();
         }

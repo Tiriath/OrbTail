@@ -47,34 +47,34 @@ public class OrbController : NetworkBehaviour
     /// <param name="target">Object to attach this orb to.</param>
     /// <param name="material">Material to assign to the orb. May be left null.</param>
     public void Link(GameObject target, Material material = null)
-{
-    Unlink();
-
-    IsLinked = true;
-
-    SpringJoint joint = this.gameObject.AddComponent<SpringJoint>();
-
-    joint.connectedBody = target.GetComponent<Rigidbody>();
-    joint.damper = kSpringDamper;
-    joint.spring = kSpringStiffness;
-    joint.minDistance = kSpringMinLength;
-    joint.maxDistance = kSpringMaxLength;
-
-    if (target.tag == Tags.Ship)
     {
-        joint.minDistance += kShipDistance;
-        joint.maxDistance += kShipDistance;
-    }
+        Unlink();
 
-    joint.autoConfigureConnectedAnchor = false;
-    joint.anchor = Vector3.zero;
-    joint.connectedAnchor = Vector3.zero;
+        IsLinked = true;
 
-    if(material != null)
-    {
-        GetComponent<Renderer>().material = material;
+        SpringJoint joint = this.gameObject.AddComponent<SpringJoint>();
+
+        joint.connectedBody = target.GetComponent<Rigidbody>();
+        joint.damper = kSpringDamper;
+        joint.spring = kSpringStiffness;
+        joint.minDistance = kSpringMinLength;
+        joint.maxDistance = kSpringMaxLength;
+
+        if (target.tag == Tags.Ship)
+        {
+            joint.minDistance += kShipDistance;
+            joint.maxDistance += kShipDistance;
+        }
+
+        joint.autoConfigureConnectedAnchor = false;
+        joint.anchor = Vector3.zero;
+        joint.connectedAnchor = Vector3.zero;
+
+        if (material != null)
+        {
+            GetComponent<Renderer>().material = material;
+        }
     }
-}
 
     /// <summary>
     /// Unlink this orb from the current object.
