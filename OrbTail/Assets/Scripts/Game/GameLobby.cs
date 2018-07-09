@@ -493,6 +493,8 @@ public class GameLobby : NetworkLobbyManager
         if(timer)
         {
             timer.TimeOutEvent -= OnCountdown;
+
+            Destroy(timer.gameObject);
         }
 
         ServerChangeScene(game_configuration.arena);

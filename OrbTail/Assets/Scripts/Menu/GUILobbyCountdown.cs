@@ -38,6 +38,17 @@ public class GUILobbyCountdown : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void OnDestroy()
+    {
+        LobbyCountdown.LobbyCountdownStartedEvent -= OnLobbyCountdownStarted;
+
+        if(timer)
+        {
+            timer.TickEvent += OnLobbyCountdownTick;
+            timer.TimeOutEvent += OnLobbyCountdownTimeOut;
+        }
+    }
+
     /// <summary>
     /// Called whenever the lobby countdown starts.
     /// </summary>
