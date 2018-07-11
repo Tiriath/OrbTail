@@ -215,7 +215,7 @@ desktop
 \emph on
 splitscreen
 \emph default
- 
+
 \begin_inset Foot
 status collapsed
 
@@ -247,7 +247,7 @@ cross-platform play
 \emph default
 , ha portato allo sviluppo di un 
 \emph on
-gameplay 
+gameplay
 \begin_inset Foot
 status collapsed
 
@@ -382,9 +382,9 @@ di gioco e la direzione stilistica del progetto.
 \end_layout
 
 \begin_layout Standard
-Nel terzo capitolo vengono delineato il design del gioco, partendo dalle
- meccaniche di base e descrivendo le varie modalità, i livelli, i veicoli
- e le loro caratteristiche.
+Nel terzo capitolo viene delineato il design del gioco, partendo dalle meccanich
+e di base e descrivendo le varie modalità, i livelli, i veicoli e le loro
+ caratteristiche.
 \end_layout
 
 \begin_layout Standard

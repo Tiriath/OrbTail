@@ -110,10 +110,6 @@ e
 console 
 \emph default
 combinati
-\emph on
- 
-\emph default
-
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GameStatistics"
@@ -153,7 +149,7 @@ e
 \emph default
 Recenti sviluppi tecnologici quali 
 \emph on
-realtà aumentata 
+realtà aumentata
 \begin_inset Foot
 status collapsed
 
@@ -261,7 +257,7 @@ L'ampio parco di periferiche di input supportate, dalle più comuni quali
  tastiere, mouse e gamepad a quelle più specializzate quali volanti, pedaliere
  e 
 \emph on
-HOTAS 
+HOTAS
 \emph default
 
 \begin_inset Foot
@@ -733,6 +729,7 @@ MMO
 \emph default
  i cui mondi persistenti vantano migliaia di giocatori attivi contemporaneamente
 (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:EVE"

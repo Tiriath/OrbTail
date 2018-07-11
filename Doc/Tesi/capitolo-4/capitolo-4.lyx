@@ -89,7 +89,14 @@ git
 \emph on
 controllo di versione 
 \emph default
-distribuito.
+distribuito
+\begin_inset CommandInset citation
+LatexCommand cite
+key "OrbTailRepository"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -298,7 +305,7 @@ Per lo sviluppo di OrbTail sono state usate prevalentemente funzionalità
  L'uso di funzionalità generiche ha permesso di evitare tutte le problematiche
  legate ai sistemi più specifici, quali gestione del 2D e delle 
 \emph on
-nav mesh 
+nav mesh
 \begin_inset Foot
 status collapsed
 

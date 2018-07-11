@@ -298,7 +298,7 @@ Per lo sviluppo di OrbTail sono state usate prevalentemente funzionalità
  L'uso di funzionalità generiche ha permesso di evitare tutte le problematiche
  legate ai sistemi più specifici, quali gestione del 2D e delle 
 \emph on
-nav mesh 
+nav mesh
 \begin_inset Foot
 status collapsed
 
@@ -2848,7 +2848,7 @@ giocatore
 \emph on
 locale
 \emph default
-, il veicolo selezionato e l'identitá del giocatore (umano o comandato dall'
+, il veicolo selezionato e l'identità del giocatore (umano o comandato dall'
 \emph on
 intelligenza artificiale
 \emph default
@@ -3112,8 +3112,8 @@ fa invece eccezione.
  Originariamente era stato valutato di suddividere lo schermo in quadranti
  e lasciare uno di questi vuoto, tuttavia l'effetto non risultava piacevole
  e pertanto è stato deciso di suddividere in maniera asimmetrica lo schermo,
- assegnando una metá al primo giocatore e lasciando che gli altri due si
- spartissero l'altra metá (Fig.
+ assegnando una metà al primo giocatore e lasciando che gli altri due si
+ spartissero l'altra metà (Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3208,7 +3208,7 @@ Il gioco non usa il sistema di interfaccia utente messo a disposizione da
 HUD Handler 
 \emph default
 e permette di ottenere un'interfaccia mobile dotata di un certo grado di
- libertá ed inerzia.
+ libertà ed inerzia.
  Questi pannelli utilizzano componenti come il 
 \emph on
 Text Mesh, 
@@ -3224,7 +3224,7 @@ Sprite Renderer
 \emph on
 HUD 
 \emph default
-di ogni altro giocatore in prossimitá del veicolo di quest'ultimo.
+di ogni altro giocatore in prossimità del veicolo di quest'ultimo.
  Per ovviare a questo inconveniente ci si è affidati al sistema di 
 \emph on
 layer 
@@ -3269,7 +3269,7 @@ re nello spazio, al fine di determinare la resa degli effetti sonori spaziali,
  quali esplosioni e il motore dei veicoli.
  Sebbene esistano diversi plugin a pagamento che possono essere usati per
  ovviare a questo inconveniente, è stato deciso di non usarne nessuno, sia
- per mancanza di tempo e sia perchè le meccaniche di gioco non si basano
+ per mancanza di tempo e sia perché le meccaniche di gioco non si basano
  sul corretto uso dell'audio.
  Come soluzione temporanea sono stati disabilitati gli 
 \emph on
