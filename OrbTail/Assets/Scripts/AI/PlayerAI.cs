@@ -194,13 +194,13 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         }
     }
     
-    void OnEventFight(GameObject attacker, GameObject defender, IList<GameObject> orbs) {
-        
-        if (attacker == this.gameObject && defender == target) {
+    void OnEventFight(GameObject attacker, GameObject defender)
+    {
+        if (attacker == this.gameObject && defender == target)
+        {
             alreadyCollided = true;
             StartCoroutine("DecideWhetherContinueFight");
         }
-        
     }
     
     void OnEventOrbAttached(Ship ship, GameObject orb)
@@ -234,7 +234,8 @@ public class PlayerAI : MonoBehaviour, IInputBroker
 
     private void CheckVisibility() {
         
-        if (target != null && !IsPatrolling() && !IsVisible()) {
+        if (target != null && !IsPatrolling() && !IsVisible())
+        {
             ResetTarget();
         }
         

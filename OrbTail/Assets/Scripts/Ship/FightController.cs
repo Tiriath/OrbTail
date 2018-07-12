@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 /// </summary>
 public class FightController : NetworkBehaviour
 {
-    public delegate void DelegateFight(GameObject attacker, GameObject defender, IList<GameObject> orbs);
+    public delegate void DelegateFight(GameObject attacker, GameObject defender);
 
     public event DelegateFight FightEvent;
 
@@ -33,7 +33,7 @@ public class FightController : NetworkBehaviour
     /// <param name="collision">Collision data.</param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (isServer)
+        if (hasAuthority)
         {
             // This ship is the defender, whereas the other is the attacker. This event is triggered on both ships simultaneously with reversed roles.
 
@@ -41,13 +41,17 @@ public class FightController : NetworkBehaviour
 
             if (attacker)
             {
-                ReceiveDamage(attacker.GetDamage(collision));
+                var damage = attacker.GetDamage(collision);
 
-                //if (FightEvent != null)
-                //{
-                //    FightEvent(game_object, this.gameObject, lost_orbs);                          // Notify.
-                //}
+                Debug.Log(gameObject.name + " received " + damage + " damage");
+
+                CmdReceiveDamage(damage);
             }
+        }
+
+        if (FightEvent != null)
+        {
+            FightEvent(collision.gameObject, this.gameObject);
         }
     }
 
@@ -77,7 +81,8 @@ public class FightController : NetworkBehaviour
     /// <summary>
     /// Receive some damage and detach orbs as result.
     /// </summary>
-    private void ReceiveDamage(float damage)
+    [Command]
+    private void CmdReceiveDamage(float damage)
     {
         var lost_orbs = Mathf.FloorToInt(damage / defence);
 
