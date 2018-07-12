@@ -35,9 +35,20 @@ public class InputProxy : NetworkBehaviour, IInputBroker
     {
         get
         {
-            return (InputBroker != null) ? InputBroker.PowerUpInput : false;
+            var input_value = (InputBroker != null) ? InputBroker.PowerUpInput : false;
+
+            input_value |= PowerUpSignal;
+
+            PowerUpSignal = false;              // Consume the signal at the first read.
+
+            return input_value;
         }
     }
+
+    /// <summary>
+    /// Value used to signal the power input status externally (from HUD, for example)
+    /// </summary>
+    public bool PowerUpSignal{ private get; set; }
 
     public override void OnStartLocalPlayer()
     {

@@ -30,8 +30,9 @@ public class HUDPowerUp : HUDElement
         if (Owner)
         {
             power_controller = Owner.GetComponent<PowerController>();
+            input = Owner.GetComponent<InputProxy>();
 
-            if(power_controller)
+            if (power_controller)
             {
                 power_controller.PowerAcquiredEvent += OnPowerAcquired;
 
@@ -42,6 +43,13 @@ public class HUDPowerUp : HUDElement
         }
 
         renderer_component.enabled = false;
+    }
+    public override void OnInputConfirm()
+    {
+        if(input)
+        {
+            input.PowerUpSignal = true;
+        }
     }
 
     /// <summary>
@@ -57,9 +65,6 @@ public class HUDPowerUp : HUDElement
             renderer_component.sprite = power.icon;
 
             renderer_component.enabled = true;
-
-            // #TODO Change the power icon.
-            Debug.Log("Power-up: " + power.power_up_name);
 
             power.DestroyedEvent += OnPowerUpDestroyed;
         }
@@ -98,4 +103,9 @@ public class HUDPowerUp : HUDElement
     /// Renderer component.
     /// </summary>
     private SpriteRenderer renderer_component;
+
+    /// <summary>
+    /// Used to read user input.
+    /// </summary>
+    private InputProxy input;
 }
