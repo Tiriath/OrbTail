@@ -10,16 +10,19 @@ using UnityEngine.PostProcessing;
 public class ScalablePostProcessing : PostProcessingBehaviour
 {
     /// <summary>
-    /// Quality level below of which post processing is disabled.
+    /// Post processing profiles, for each supported quality level.
     /// </summary>
-    int quality_level_threshold = 0;
+    public PostProcessingProfile[] profiles;
 
     void Start ()
     {
-        // Kill any post process when the quality level is low enough (like on mobile)
+        // Switch post-processing profile according to the current quality level.
 
-        int quality_level = QualitySettings.GetQualityLevel();
+        if(profiles != null && profiles.Length > 0)
+        {
+            int quality_level = Mathf.Clamp(QualitySettings.GetQualityLevel(), 0, profiles.Length - 1);
 
-        enabled = (quality_level > quality_level_threshold);
+            profile = profiles[quality_level];
+        }
     }
 }
