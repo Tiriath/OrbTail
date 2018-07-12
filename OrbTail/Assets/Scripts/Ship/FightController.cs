@@ -43,7 +43,7 @@ public class FightController : NetworkBehaviour
             {
                 var damage = attacker.GetDamage(collision);
 
-                Debug.Log(gameObject.name + " received " + damage + " damage");
+                //Debug.Log(gameObject.name + " received " + damage + " damage");
 
                 CmdReceiveDamage(damage);
             }
