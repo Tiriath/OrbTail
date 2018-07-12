@@ -43,9 +43,9 @@ public class MovementController : NetworkBehaviour
     {
         get
         {
-            var value = (speed * ThrottleInput - hover.ForwardVelocity) * speed_smooth * Time.fixedDeltaTime;
+            var value = (speed * ThrottleInput - hover.ForwardVelocity) * speed_smooth;
 
-            return Mathf.Clamp(value, -speed, +speed) * (1.0f + Overdrive);
+            return Mathf.Clamp(value, -speed, +speed) * (1.0f + Overdrive) * Time.fixedDeltaTime;
         }
     }
 
@@ -56,9 +56,9 @@ public class MovementController : NetworkBehaviour
     {
         get
         {
-            var value = (steer * SteerInput - hover.AngularVelocity) * steer_smooth * Time.fixedDeltaTime;
+            var value = (steer * SteerInput - hover.AngularVelocity) * steer_smooth;
 
-            return Mathf.Clamp(value, -steer, +steer);
+            return Mathf.Clamp(value, -steer, +steer) * Time.fixedDeltaTime;
         }
     }
 
