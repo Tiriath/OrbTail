@@ -46,7 +46,7 @@ public class Projectile : PowerUpEffect
     {
         base.Update();
 
-        rigid_body.AddForce(transform.forward * speed, ForceMode.VelocityChange);
+        rigid_body.AddForce(transform.forward * speed * Time.deltaTime, ForceMode.VelocityChange);
     }
 
     /// <summary>
