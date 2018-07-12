@@ -84,12 +84,12 @@ public class GameConfiguration : MonoBehaviour
     {
         var fields = match_name.Split(';');
 
-        if(arena.IsValid && arena.SceneName != fields[1])
+        if (game_mode != null && !game_mode.name.Equals(fields[1]))
         {
             return false;
         }
 
-        if(game_mode != null && game_mode.name != fields[2])
+        if (arena.IsValid && !arena.SceneName.Equals(fields[2]))
         {
             return false;
         }
