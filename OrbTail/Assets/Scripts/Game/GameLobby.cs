@@ -515,7 +515,7 @@ public class GameLobby : NetworkLobbyManager
 
         if (match_info != null)
         {
-            //matchMaker.SetMatchAttributes(match_info.networkId, false, 0, OnSetMatchAttributes);
+            matchMaker.SetMatchAttributes(match_info.networkId, false, 0, OnSetMatchAttributes);
         }
     }
 
