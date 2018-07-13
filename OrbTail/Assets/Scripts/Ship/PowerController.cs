@@ -59,7 +59,7 @@ public class PowerController : NetworkBehaviour
 
             if (PowerUp != null)
             {
-                Destroy(PowerUp);
+                Destroy(PowerUp.gameObject);
             }
 
             // Collect a new powerup.
