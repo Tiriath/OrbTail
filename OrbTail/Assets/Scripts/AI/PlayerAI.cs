@@ -144,12 +144,18 @@ public class PlayerAI : MonoBehaviour, IInputBroker
 
         AvoidOstacles();
 
+        if(!powerController || !powerController.PowerUp)
+        {
+            fire_power_up = false;
+        }
+
         // Input
 
         float steering = Vector3.Dot(-floatingObject.ArenaDown, Vector3.Cross(transform.forward, desideredDirection.normalized));
 
         SteerInput = Mathf.Clamp(steering * 5f, -1f, 1f);
         ThrottleInput = Mathf.Min(maxAcceleration, 1f - Mathf.Clamp01(Mathf.Abs(steering)));
+        PowerUpInput = fire_power_up;
     }
 
     void ChasingOrb() {
@@ -253,19 +259,16 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     
     private void OnEventPowerAttached(PowerController sender)
     {
-        if (sender.GetComponent<Ship>() == gameObject)
-        {
-            StartCoroutine("FirePowerUp");
-        }
+        StartCoroutine("FirePowerUp");
     }
-    
+
     private IEnumerator FirePowerUp()
     {
         float timeToWait = Random.value * maxTimeToFirePowerUp;
         yield return new WaitForSeconds(timeToWait);
-        PowerUpInput = true;
+        fire_power_up = true;
     }
-    
+
     private bool IsFreeOrb(GameObject orb) {
         return orb.tag == Tags.Orb && !orb.GetComponent<OrbController>().IsLinked;
     }
@@ -306,4 +309,5 @@ public class PlayerAI : MonoBehaviour, IInputBroker
         orbController = null;
     }
 
+    bool fire_power_up = false;
 }
