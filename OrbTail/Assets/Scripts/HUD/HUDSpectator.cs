@@ -13,7 +13,7 @@ public class HUDSpectator : HUDElement
     public void Awake()
     {
         text_mesh = gameObject.GetComponent<TextMesh>();
-        collider = gameObject.GetComponent<Collider>();
+        input_collider = gameObject.GetComponent<Collider>();
 
         BaseGameMode.Instance.MatchEndEvent += OnMatchEnd;
     }
@@ -46,13 +46,13 @@ public class HUDSpectator : HUDElement
         if (spectator != null)
         {
             text_mesh.text = spectating_message;
-            collider.enabled = true;
+            input_collider.enabled = true;
             is_spectating = true;
         }
         else
         {
             text_mesh.text = "";
-            collider.enabled = false;
+            input_collider.enabled = false;
             is_spectating = false;
         }
     }
@@ -71,7 +71,7 @@ public class HUDSpectator : HUDElement
     private TextMesh text_mesh;
 
     /// <summary>
-    /// Whether the player is currently  spectating.
+    /// Whether the player is currently spectating.
     /// </summary>
     private bool is_spectating = false;
 
@@ -83,5 +83,5 @@ public class HUDSpectator : HUDElement
     /// <summary>
     /// HUD element collider.
     /// </summary>
-    private Collider collider;
+    private Collider input_collider;
 }
