@@ -80,9 +80,14 @@ public class GameLobby : NetworkLobbyManager
         {
             StopClient();                                                           // Client.
         }
-        else if(match_id.HasValue)
+        else if(match_info != null)
         {
-            matchMaker.DestroyMatch(match_id.Value, 0, OnDestroyMatch);             // Online host.
+            matchMaker.DestroyMatch(match_info.networkId, 0, OnDestroyMatch);       // Online host.
+
+            match_info = null;
+
+            StopMatchMaker();
+            StopHost();
         }
         else
         {
@@ -145,13 +150,14 @@ public class GameLobby : NetworkLobbyManager
     {
         Debug.Log("OnMatchCreate");
 
+        this.match_info = match_info;
+
         if (!success)
         {
             Debug.LogError("Could not create an online match.");
+            this.match_info = null;
         }
-
-        match_id = match_info.networkId;
-
+        
         base.OnMatchCreate(success, extended_info, match_info);
 
         if(success)
@@ -171,9 +177,9 @@ public class GameLobby : NetworkLobbyManager
 
         --connection_attempts;
 
-        match_id = match_info.networkId;
+        this.match_info = match_info;
 
-        if(!success)
+        if (!success)
         {
             TryConnectToMatch();            // Process the next candidate match.
         }
@@ -193,7 +199,7 @@ public class GameLobby : NetworkLobbyManager
         StopMatchMaker();
         StopHost();
 
-        match_id = null;
+        match_info = null;
     }
 
     /// <summary>
@@ -507,9 +513,9 @@ public class GameLobby : NetworkLobbyManager
     {
         // Unlist the match so other players don't join it.
 
-        if (match_id.HasValue)
+        if (match_info != null)
         {
-            matchMaker.SetMatchAttributes(match_id.Value, false, 0, OnSetMatchAttributes);
+            //matchMaker.SetMatchAttributes(match_info.networkId, false, 0, OnSetMatchAttributes);
         }
     }
 
@@ -534,9 +540,9 @@ public class GameLobby : NetworkLobbyManager
     private bool is_host = false;
 
     /// <summary>
-    /// Current match ID.
+    /// Current match info.
     /// </summary>
-    private NetworkID? match_id;
+    private MatchInfo match_info = null;
 
     /// <summary>
     /// Number of host to list per page.
