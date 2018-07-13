@@ -32,6 +32,7 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     private bool alreadyCollided = false;
     
     private OrbController orbController;
+    private PowerUpCollectable powerupCollectable;
     private FloatingObject floatingObject;
 
     private float maxTimeToGoAway = 4f;
@@ -53,11 +54,28 @@ public class PlayerAI : MonoBehaviour, IInputBroker
 
             if (colObject.tag == Tags.Ship && colObject.GetComponent<Ship>().TailLength >= minOrbsToStartFight) {
                 target = colObject;
+                orbController = null;
+                powerupCollectable = null;
                 StartCoroutine("GiveUpHandler");
             }
             else if (IsFreeOrb(colObject)) {
                 target = colObject;
+                powerupCollectable = null;
                 orbController = colObject.GetComponent<OrbController>();
+            }
+            else
+            {
+                powerupCollectable = colObject.GetComponent<PowerUpCollectable>();
+
+                if (powerupCollectable && powerupCollectable.IsActive)
+                {
+                    target = colObject;
+                    orbController = null;
+                }
+                else
+                {
+                    powerupCollectable = null;
+                }
             }
         }
     }
@@ -159,7 +177,8 @@ public class PlayerAI : MonoBehaviour, IInputBroker
     }
 
     void ChasingOrb() {
-        if (!orbController.IsLinked) {
+        if ((orbController && !orbController.IsLinked) || (powerupCollectable && powerupCollectable.IsActive))
+        {
             Vector3 relVector = target.transform.position - gameObject.transform.position;
             desideredDirection = relVector;
         }
