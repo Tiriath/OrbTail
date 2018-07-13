@@ -52,6 +52,14 @@ public class InputProxy : NetworkBehaviour, IInputBroker
 
     public override void OnStartLocalPlayer()
     {
+        Initialize(playerControllerId);
+    }
+
+    /// <summary>
+    /// Initialize the input proxy.
+    /// </summary>
+    public void Initialize(short controller_id)
+    {
         var AI = GetComponent<PlayerAI>();
 
         if (AI)
@@ -64,7 +72,7 @@ public class InputProxy : NetworkBehaviour, IInputBroker
         }
         else
         {
-            InputBroker = new DesktopInputBroker(playerControllerId);       // Desktop.
+            InputBroker = new DesktopInputBroker(controller_id);            // Desktop.
         }
     }
 

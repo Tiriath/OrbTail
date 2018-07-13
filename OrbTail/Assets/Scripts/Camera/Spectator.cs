@@ -9,11 +9,20 @@ public class Spectator : MonoBehaviour
     /// <summary>
     /// Get the lobby player associated to this spectator.
     /// </summary>
-    public LobbyPlayer LobbyPlayer { get; set; }
-
-    public void Awake()
+    public LobbyPlayer LobbyPlayer
     {
-        input = this.GetComponent<InputProxy>();
+        get
+        {
+            return lobby_player;
+        }
+        set
+        {
+            lobby_player = value;
+
+            input = this.GetComponent<InputProxy>();
+
+            input.Initialize(LobbyPlayer.playerControllerId);
+        }
     }
 
     public void OnDestroy()
@@ -93,4 +102,9 @@ public class Spectator : MonoBehaviour
     /// Proxy used to read user or AI input.
     /// </summary>
     private InputProxy input;
+
+    /// <summary>
+    /// The lobby player this spectator refers to.
+    /// </summary>
+    LobbyPlayer lobby_player;
 }
