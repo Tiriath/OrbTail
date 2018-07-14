@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Script used to disconnect from the current lobby and return to another scene.
@@ -12,16 +13,20 @@ public class GUIButtonDisconnectBehaviour : GUIElement
     /// </summary>
     public SceneField scene;
 
+    public void Start()
+    {
+        GameLobby.Instance.offlineScene = scene;
+    }
     public override void OnInputConfirm()
     {
         base.OnInputConfirm();
 
         var game_lobby = GameLobby.Instance;
 
-        game_lobby.disconnected_scene = scene;
-
         game_lobby.Clear();
 
         game_lobby.DisconnectLobby();
+
+        SceneManager.LoadSceneAsync(scene);
     }
 }

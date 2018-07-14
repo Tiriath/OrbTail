@@ -63,11 +63,6 @@ public class GameLobby : NetworkLobbyManager
     }
 
     /// <summary>
-    /// Scene to travel to load when disconnected from the lobby.
-    /// </summary>
-    public SceneField disconnected_scene;
-
-    /// <summary>
     /// Disconnect from the lobby.
     /// If the lobby is hosted it will be destroyed.
     /// </summary>
@@ -124,6 +119,24 @@ public class GameLobby : NetworkLobbyManager
         base.OnClientConnect(connection);
 
         AddLocalPlayers();
+    }
+
+    /// <summary>
+    /// Called on clients when disconnected from a server.
+    /// </summary>
+    public override void OnClientDisconnect(NetworkConnection conn)
+    {
+        Clear();
+
+        base.OnClientDisconnect(conn);
+    }
+
+    /// <summary>
+    /// Called on the server when a client disconnects.
+    /// </summary>
+    public override void OnServerDisconnect(NetworkConnection conn)
+    {
+        base.OnServerDisconnect(conn);
     }
 
     /// <summary>
@@ -262,11 +275,6 @@ public class GameLobby : NetworkLobbyManager
     public override void OnLobbyStopClient()
     {
         base.OnLobbyStopClient();
-
-        if (disconnected_scene.IsValid)
-        {
-            SceneManager.LoadSceneAsync(disconnected_scene);
-        }
     }
 
     public void OnEnable()
@@ -290,6 +298,9 @@ public class GameLobby : NetworkLobbyManager
 
     public void Clear()
     {
+        game_lobby.onlineScene = null;
+        game_lobby.playScene = null;
+
         // Remove any component that is not part of the original set.
 
         var components = new List<Component>(GetComponents<Component>().Where(component => !original_components.Contains(component)));
@@ -311,6 +322,7 @@ public class GameLobby : NetworkLobbyManager
         {
             lobbyScene = original_lobby_scene;
             playScene = original_lobby_scene;       // Any valid scene will do, this is only needed to prevent some validation errors. OnLobbyServerPlayersReady will take care of the actual arena to load.
+            networkSceneName = null;
 
             is_host = false;
 
