@@ -51,6 +51,7 @@ public class HUDGameCountdown : HUDElement
         text_mesh.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
         BaseGameMode.Instance.MatchCountdownEvent += OnMatchCountdown;
+        BaseGameMode.Instance.MatchStartEvent += OnMatchStart;
     }
 
     public void OnDestroy()
@@ -60,6 +61,7 @@ public class HUDGameCountdown : HUDElement
         if(game_mode)
         {
             game_mode.MatchCountdownEvent -= OnMatchCountdown;
+            game_mode.MatchStartEvent -= OnMatchStart;
         }
 
         timer.TickEvent -= OnTick;
@@ -77,6 +79,21 @@ public class HUDGameCountdown : HUDElement
         PulseTimer(0.0f);
     }
 
+    private void OnMatchStart(BaseGameMode game_mode)
+    {
+        BaseGameMode.Instance.MatchStartEvent -= OnMatchStart;
+
+        timer.TickEvent -= OnTick;
+
+        time = 0;
+
+        iTween.FadeTo(this.gameObject, iTween.Hash(
+            "alpha", 0f,
+            "time", fade_duration,
+            "easeType", fade_ease,
+            "delay", fade_delay));
+    }
+
     /// <summary>
     /// Called whenever the timer ticks.
     /// </summary>
@@ -90,17 +107,6 @@ public class HUDGameCountdown : HUDElement
             "time", pulse_duration,
             "easeType", pulse_ease,
             "onUpdate", "PulseTimer"));
-
-        if(timer.time <= 0)
-        {
-            timer.TickEvent -= OnTick;
-
-            iTween.FadeTo(this.gameObject, iTween.Hash(
-                "alpha", 0f,
-                "time", fade_duration,
-                "easeType", fade_ease,
-                "delay", fade_delay));
-        }
     }
 
     /// <summary>
